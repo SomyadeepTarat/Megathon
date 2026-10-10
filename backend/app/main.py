@@ -10,6 +10,9 @@ from app.schemas.models import AssessmentRequest, AssessmentResponse, ScenarioRe
 from app.schemas.engines import PropertyRecord, PropertySummary, ScenarioResponse
 from app.services.adapters import PendingRetrofitEngine, PendingCarbonEngine, ExistingValuationAdapter
 from app.services.orchestrator import EngineContractError, run_scenario
+from app.api.advisor import router as advisor_router
+from app.services.advisor_adapter import BackendAdvisorEngines
+from app.services.llm_service import AdvisorService, provider_from_env
 
 app = FastAPI(title='GreenPrint AI', version='0.2.0')
 app.add_middleware(CORSMiddleware,
@@ -51,7 +54,7 @@ async def engine_contract_error(request, exc):
 def health():
     return {'status': 'ok', 'version': '0.2.0',
             'capabilities': {'scoring': True, 'property_repository': f'synthetic_{dataset_kind}',
-                             'retrofit_simulation': False, 'valuation': 'adapter_present', 'advisor': False}}
+                             'retrofit_simulation': False, 'valuation': 'adapter_present', 'advisor': True}}
 
 
 @app.get('/properties', response_model=list[PropertySummary])
@@ -91,3 +94,11 @@ def simulate(request: ScenarioRequest, retrofit=Depends(get_retrofit_engine),
     result = run_scenario(request, retrofit, carbon, valuation)
     status_code = {'rejected': 409, 'unavailable': 503}.get(result.status, 200)
     return JSONResponse(status_code=status_code, content=result.model_dump(mode='json'))
+
+
+app.include_router(advisor_router)
+app.state.advisor_service = AdvisorService(
+    BackendAdvisorEngines(lambda: get_repository(), lambda: get_retrofit_engine(),
+                         lambda: get_carbon_engine(), lambda: get_valuation_engine()),
+    provider=provider_from_env(),
+)

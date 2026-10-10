@@ -156,6 +156,14 @@ class AdvisorTests(unittest.IsolatedAsyncioTestCase):
         response = await AdvisorService(engines).chat(ChatRequest(property_id='P1', message='install solar'))
         self.assertEqual(response.status, 'unavailable')
 
+    async def test_partial_scenario_keeps_energy_when_valuation_unavailable(self):
+        engines = FakeEngines()
+        engines.result['status'] = 'partial'
+        response = await AdvisorService(engines).chat(ChatRequest(property_id='P1', message='install heat pump'))
+        self.assertEqual(response.status, 'partial')
+        self.assertIn('-1200 kWh/year', response.explanation)
+        self.assertIn('Valuation estimate is unavailable', response.explanation)
+
     async def test_explicit_selection_resolves_negation(self):
         engines = FakeEngines()
         response = await AdvisorService(engines).chat(ChatRequest(property_id='P1',
@@ -169,11 +177,11 @@ class AdvisorTests(unittest.IsolatedAsyncioTestCase):
             scenario=Intent(intent='simulate_retrofit', retrofits=[])))
         self.assertEqual(response.tool_calls, ['feasibility', 'simulate'])
 
-    async def test_llm_can_extract_complex_intent(self):
+    async def test_negation_requires_explicit_selection_even_if_model_claims_valid(self):
         intent, _ = await extract_intent('Skip insulation and install only a heat pump', FakeProvider({
             'intent': 'simulate_retrofit', 'retrofits': ['heat_pump'], 'budget_gbp': None,
             'objective': 'carbon_reduction'}))
-        self.assertEqual(intent.retrofits, ['heat_pump'])
+        self.assertEqual(intent.intent, 'clarify')
 
     async def test_invalid_llm_intent_never_executes(self):
         response = await self.ask('What if I install solar?', provider=FakeProvider({'intent': 'execute_shell'}))
@@ -210,7 +218,9 @@ class AdvisorTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(answer, {'fact_ids': ['f0']})
         payload = json.loads(send.call_args.args[0].data)
         self.assertFalse(payload['stream'])
-        self.assertEqual(payload['format'], 'json')
+        self.assertEqual(payload['format']['type'], 'object')
+        self.assertFalse(payload['format']['additionalProperties'])
+        self.assertFalse(payload['think'])
 
     async def test_llm_cannot_invent_upgrade(self):
         intent, _ = await extract_intent('What if I replace my boiler?', FakeProvider({
