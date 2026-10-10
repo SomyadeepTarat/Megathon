@@ -20,7 +20,7 @@ Calibration samples one transaction per property/customer group to avoid treatin
 
 For a changed EPC, the model contrast is `f(after)-f(before)`. Its conservative range subtracts two marginal bands calibrated at `alpha/2`, giving contrast ± twice that radius. This uses a union-bound construction under exchangeability for both observations. It is **not a validated causal-effect interval**, and no paired counterfactual coverage is claimed. A scenario EPC may lie outside the observational distribution. Negative contrasts are preserved. Exact identical supported features produce zero model contrast and [0,0]; that does not assert a real-world zero effect.
 
-We report held-out MAE, RMSE, R², median baseline, both candidate results, interval coverage/width, split counts, overlap audit and dataset hash. A validation-only ablation trains the selected model family without EPC; reviewed observed evidence can enable inference only if adding EPC also improves selection MAE. This predictive signal is not causal proof. Random grouped testing does not assess market drift; chronological evaluation remains explicitly unrun until dated observed data is supplied.
+We report held-out MAE, RMSE, R², median baseline, both candidate results, interval coverage/width, split counts, overlap audit and dataset hash. A validation-only ablation trains the selected model family without EPC; reviewed observed evidence can enable inference only if adding EPC also improves selection MAE. This predictive signal is not causal proof. Random grouped testing does not assess market drift; a separate chronological diagnostic now runs for observed dated sales, excluding groups spanning its cutoff. It does not select or calibrate the production model. The supplied snapshot has no observed dated sales, so this diagnostic remains unavailable for it.
 
 ## Backend contract for Persons 1 and 4
 
@@ -34,3 +34,16 @@ Both mappings contain the same `property_id`, region, type, area, bedrooms, age 
 The service defaults to `ml/models/valuation.joblib`; override with `VALUATION_MODEL_PATH` or `model_path`. It returns `unavailable` with a reason for missing models/data, unsupported categories, numeric values outside development bounds, synthetic data in normal mode, unrelated changes, or absent reviewed evidence. Synthetic demonstrations require explicit `allow_illustrative=True` and return `status="illustrative"`. Observed supported estimates return `status="indicative"`. Output includes baseline/after predictions and bands, signed value change, contrast band, method and warnings. Both values use the same model; `current_value_estimate` is never used to anchor only one side.
 
 Only load trusted local joblib artifacts (pickle can execute code). Keep the repository root importable; run CLI commands from it. No FastAPI routes or shared schemas are owned here; Person 1 adapts the mappings to the API.
+
+## Synthetic snapshot baseline
+
+Train the supplied dataset without inventing sales or dates:
+
+```sh
+.venv/bin/python -m ml.train_valuation --target-kind snapshot --data Data/csv/properties.csv --provenance ml/snapshot_provenance.json --output ml/models/snapshot.joblib --reports ml/reports/current_snapshot
+.venv/bin/python -m evaluation.evaluate_initial_dataset --output evaluation/results/person5_fixes
+```
+
+`GET` or `POST /properties/{property_id}/valuation` predicts baseline value, with a validated response and an explicit illustrative label. `predict_property_value` accepts a complete property object, translates area/age aliases and category spellings, and refuses unsupported inputs. Configure `VALUATION_BASELINE_MODEL_PATH` to override the artifact; otherwise it prefers the snapshot artifact when present. Models are generated locally and ignored by Git.
+
+The target is `current_value_estimate_gbp`; features are area, age, bedrooms, region and property type. Neither the target, market index nor EPC is used as a snapshot feature. The snapshot artifact uses the same loader/inference contract as sales artifacts but cannot support retrofit uplift. Five-fold customer-grouped CV uses fit groups only; selection, calibration and test remain separate. Region/type subgroup errors and coverage are descriptive small-sample diagnostics. Optional physical eligibility columns may be blank without preventing ML evaluation.

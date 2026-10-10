@@ -1,5 +1,6 @@
 """Checks consume teammates' outputs; they do not duplicate their engines."""
 import math
+from decimal import Decimal, ROUND_HALF_UP
 
 
 def close(actual, expected, label, tolerance=.02):
@@ -36,7 +37,9 @@ def check_score(result):
         if not 0 <= component["subscore"] <= 100:
             raise AssertionError("Subscore outside [0,100]")
         close(component["contribution"], component["subscore"] * component["weight"], "contribution")
-    close(result["score"], round(sum(c["contribution"] for c in components)), "rounded score", 0)
+    total = sum((Decimal(str(c["subscore"])) * Decimal(str(c["weight"])) for c in components), Decimal("0"))
+    expected_score = int(total.quantize(Decimal("1"), rounding=ROUND_HALF_UP))
+    close(result["score"], expected_score, "rounded score", 0)
     score = result["score"]
     category = "Highly efficient" if score >= 80 else "Good" if score >= 65 else "Moderate" if score >= 50 else "Poor" if score >= 30 else "Very poor"
     if result["classification"] != category:

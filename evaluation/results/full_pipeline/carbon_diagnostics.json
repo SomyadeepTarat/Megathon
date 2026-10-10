@@ -1,0 +1,459 @@
+{
+  "warning": "Synthetic test factors/physical inputs; not official carbon estimates or real retrofit predictions.",
+  "baseline_test_arithmetic": {
+    "status": "available",
+    "property_id": "P00001",
+    "energy_use": {
+      "electricity_kwh": 2997.41,
+      "gas_kwh": 27040.56,
+      "total_kwh": 30037.97
+    },
+    "emissions": {
+      "status": "available",
+      "electricity_kg_co2e": 599.482,
+      "gas_kg_co2e": 4867.3008,
+      "total_kg_co2e": 5466.7828,
+      "reason": null,
+      "factors": {
+        "electricity": {
+          "fuel": "electricity",
+          "kg_co2e_per_kwh": 0.2,
+          "source": "AUDIT TEST ONLY",
+          "source_year": 2026,
+          "accounting_boundary": "test",
+          "version": "audit-test"
+        },
+        "gas": {
+          "fuel": "gas",
+          "kg_co2e_per_kwh": 0.18,
+          "source": "AUDIT TEST ONLY",
+          "source_year": 2026,
+          "accounting_boundary": "test",
+          "version": "audit-test"
+        }
+      }
+    },
+    "warnings": [
+      "Property snapshot and energy year differ; see dataset methodology."
+    ]
+  },
+  "supplied_dataset_heat_pump": {
+    "status": "unavailable",
+    "reason": "Heating demand is missing; provide thermal_demand_kwh (or heating_energy_kwh with its conversion input).",
+    "property_id": "P00001",
+    "selected_retrofits": [
+      "heat_pump"
+    ],
+    "baseline": {
+      "energy_use": {
+        "electricity_kwh": 2997.41,
+        "gas_kwh": 27040.56,
+        "total_kwh": 30037.97
+      },
+      "emissions": {
+        "status": "available",
+        "electricity_kg_co2e": 599.482,
+        "gas_kg_co2e": 4867.3008,
+        "total_kg_co2e": 5466.7828,
+        "reason": null,
+        "factors": {
+          "electricity": {
+            "fuel": "electricity",
+            "kg_co2e_per_kwh": 0.2,
+            "source": "AUDIT TEST ONLY",
+            "source_year": 2026,
+            "accounting_boundary": "test",
+            "version": "audit-test"
+          },
+          "gas": {
+            "fuel": "gas",
+            "kg_co2e_per_kwh": 0.18,
+            "source": "AUDIT TEST ONLY",
+            "source_year": 2026,
+            "accounting_boundary": "test",
+            "version": "audit-test"
+          }
+        }
+      }
+    },
+    "after": null,
+    "savings": {
+      "electricity_kwh": null,
+      "gas_kwh": null,
+      "net_energy_kwh": null,
+      "annual_carbon_reduction_kg_co2e": null,
+      "reason": "Heating demand is missing; provide thermal_demand_kwh (or heating_energy_kwh with its conversion input)."
+    },
+    "feasibility": {
+      "heat_pump": {
+        "status": "feasible",
+        "reason": "No known property input blocks this retrofit; site survey may still be needed."
+      }
+    },
+    "assumptions": [
+      "Brief gives 15\u201325% purchased-energy reduction; midpoint 20% is a screening assumption. Actual electricity is thermal demand / supplied SCOP; no generic percentage is applied to total use."
+    ],
+    "warnings": [
+      "Property snapshot and energy year differ; see dataset methodology."
+    ]
+  },
+  "heat_pump_incompatible_false": {
+    "status": "available",
+    "property_id": "P00001",
+    "selected_retrofits": [
+      "heat_pump"
+    ],
+    "baseline": {
+      "energy_use": {
+        "electricity_kwh": 2997.41,
+        "gas_kwh": 27040.56,
+        "total_kwh": 30037.97
+      },
+      "emissions": {
+        "status": "available",
+        "electricity_kg_co2e": 599.482,
+        "gas_kg_co2e": 4867.3008,
+        "total_kg_co2e": 5466.7828,
+        "reason": null,
+        "factors": {
+          "electricity": {
+            "fuel": "electricity",
+            "kg_co2e_per_kwh": 0.2,
+            "source": "AUDIT TEST ONLY",
+            "source_year": 2026,
+            "accounting_boundary": "test",
+            "version": "audit-test"
+          },
+          "gas": {
+            "fuel": "gas",
+            "kg_co2e_per_kwh": 0.18,
+            "source": "AUDIT TEST ONLY",
+            "source_year": 2026,
+            "accounting_boundary": "test",
+            "version": "audit-test"
+          }
+        }
+      }
+    },
+    "after": {
+      "energy_use": {
+        "electricity_kwh": 4997.41,
+        "gas_kwh": 17040.56,
+        "total_kwh": 22037.97
+      },
+      "emissions": {
+        "status": "available",
+        "electricity_kg_co2e": 999.482,
+        "gas_kg_co2e": 3067.3008,
+        "total_kg_co2e": 4066.7828,
+        "reason": null,
+        "factors": {
+          "electricity": {
+            "fuel": "electricity",
+            "kg_co2e_per_kwh": 0.2,
+            "source": "AUDIT TEST ONLY",
+            "source_year": 2026,
+            "accounting_boundary": "test",
+            "version": "audit-test"
+          },
+          "gas": {
+            "fuel": "gas",
+            "kg_co2e_per_kwh": 0.18,
+            "source": "AUDIT TEST ONLY",
+            "source_year": 2026,
+            "accounting_boundary": "test",
+            "version": "audit-test"
+          }
+        }
+      }
+    },
+    "savings": {
+      "electricity_kwh": -2000.0,
+      "gas_kwh": 10000.0,
+      "net_energy_kwh": 8000.0,
+      "annual_carbon_reduction_kg_co2e": 1400.0
+    },
+    "feasibility": {
+      "heat_pump": {
+        "status": "feasible",
+        "reason": "No known property input blocks this retrofit; site survey may still be needed."
+      }
+    },
+    "assumptions": [
+      "Brief gives 15\u201325% purchased-energy reduction; midpoint 20% is a screening assumption. Actual electricity is thermal demand / supplied SCOP; no generic percentage is applied to total use.",
+      "Heat pump substitutes for existing heating fuel; heating electricity = post-measure thermal demand / supplied SCOP."
+    ],
+    "warnings": [
+      "Property snapshot and energy year differ; see dataset methodology."
+    ]
+  },
+  "controls_incompatible_false": {
+    "status": "available",
+    "property_id": "P00001",
+    "selected_retrofits": [
+      "smart_thermostat"
+    ],
+    "baseline": {
+      "energy_use": {
+        "electricity_kwh": 2997.41,
+        "gas_kwh": 27040.56,
+        "total_kwh": 30037.97
+      },
+      "emissions": {
+        "status": "available",
+        "electricity_kg_co2e": 599.482,
+        "gas_kg_co2e": 4867.3008,
+        "total_kg_co2e": 5466.7828,
+        "reason": null,
+        "factors": {
+          "electricity": {
+            "fuel": "electricity",
+            "kg_co2e_per_kwh": 0.2,
+            "source": "AUDIT TEST ONLY",
+            "source_year": 2026,
+            "accounting_boundary": "test",
+            "version": "audit-test"
+          },
+          "gas": {
+            "fuel": "gas",
+            "kg_co2e_per_kwh": 0.18,
+            "source": "AUDIT TEST ONLY",
+            "source_year": 2026,
+            "accounting_boundary": "test",
+            "version": "audit-test"
+          }
+        }
+      }
+    },
+    "after": {
+      "energy_use": {
+        "electricity_kwh": 2997.41,
+        "gas_kwh": 26290.56,
+        "total_kwh": 29287.97
+      },
+      "emissions": {
+        "status": "available",
+        "electricity_kg_co2e": 599.482,
+        "gas_kg_co2e": 4732.3008,
+        "total_kg_co2e": 5331.7828,
+        "reason": null,
+        "factors": {
+          "electricity": {
+            "fuel": "electricity",
+            "kg_co2e_per_kwh": 0.2,
+            "source": "AUDIT TEST ONLY",
+            "source_year": 2026,
+            "accounting_boundary": "test",
+            "version": "audit-test"
+          },
+          "gas": {
+            "fuel": "gas",
+            "kg_co2e_per_kwh": 0.18,
+            "source": "AUDIT TEST ONLY",
+            "source_year": 2026,
+            "accounting_boundary": "test",
+            "version": "audit-test"
+          }
+        }
+      }
+    },
+    "savings": {
+      "electricity_kwh": 0.0,
+      "gas_kwh": 750.0,
+      "net_energy_kwh": 750.0,
+      "annual_carbon_reduction_kg_co2e": 135.0
+    },
+    "feasibility": {
+      "smart_thermostat": {
+        "status": "feasible",
+        "reason": "No known property input blocks this retrofit; site survey may still be needed."
+      }
+    },
+    "assumptions": [
+      "Reduces remaining modeled thermal demand by 7.5% (brief range 5\u201310%)."
+    ],
+    "warnings": [
+      "Property snapshot and energy year differ; see dataset methodology."
+    ]
+  },
+  "solar_self_consumption_exceeds_generation": {
+    "status": "available",
+    "property_id": "P00001",
+    "selected_retrofits": [
+      "solar_panels"
+    ],
+    "baseline": {
+      "energy_use": {
+        "electricity_kwh": 2997.41,
+        "gas_kwh": 27040.56,
+        "total_kwh": 30037.97
+      },
+      "emissions": {
+        "status": "available",
+        "electricity_kg_co2e": 599.482,
+        "gas_kg_co2e": 4867.3008,
+        "total_kg_co2e": 5466.7828,
+        "reason": null,
+        "factors": {
+          "electricity": {
+            "fuel": "electricity",
+            "kg_co2e_per_kwh": 0.2,
+            "source": "AUDIT TEST ONLY",
+            "source_year": 2026,
+            "accounting_boundary": "test",
+            "version": "audit-test"
+          },
+          "gas": {
+            "fuel": "gas",
+            "kg_co2e_per_kwh": 0.18,
+            "source": "AUDIT TEST ONLY",
+            "source_year": 2026,
+            "accounting_boundary": "test",
+            "version": "audit-test"
+          }
+        }
+      }
+    },
+    "after": {
+      "energy_use": {
+        "electricity_kwh": 1997.4099999999999,
+        "gas_kwh": 27040.56,
+        "total_kwh": 29037.97
+      },
+      "emissions": {
+        "status": "available",
+        "electricity_kg_co2e": 399.48199999999997,
+        "gas_kg_co2e": 4867.3008,
+        "total_kg_co2e": 5266.7828,
+        "reason": null,
+        "factors": {
+          "electricity": {
+            "fuel": "electricity",
+            "kg_co2e_per_kwh": 0.2,
+            "source": "AUDIT TEST ONLY",
+            "source_year": 2026,
+            "accounting_boundary": "test",
+            "version": "audit-test"
+          },
+          "gas": {
+            "fuel": "gas",
+            "kg_co2e_per_kwh": 0.18,
+            "source": "AUDIT TEST ONLY",
+            "source_year": 2026,
+            "accounting_boundary": "test",
+            "version": "audit-test"
+          }
+        }
+      }
+    },
+    "savings": {
+      "electricity_kwh": 1000.0,
+      "gas_kwh": 0.0,
+      "net_energy_kwh": 1000.0,
+      "annual_carbon_reduction_kg_co2e": 200.0
+    },
+    "feasibility": {
+      "solar_panels": {
+        "status": "feasible",
+        "reason": "No known property input blocks this retrofit; site survey may still be needed."
+      }
+    },
+    "assumptions": [
+      "Solar reduces grid imports by measured/projected self-consumed generation only; export is not counted as avoided purchased electricity."
+    ],
+    "warnings": [
+      "Property snapshot and energy year differ; see dataset methodology."
+    ]
+  },
+  "existing_solar_in_backend_record": {
+    "status": "available",
+    "property_id": "P00003",
+    "selected_retrofits": [
+      "solar_panels"
+    ],
+    "baseline": {
+      "energy_use": {
+        "electricity_kwh": 5051.29,
+        "gas_kwh": 0.0,
+        "total_kwh": 5051.29
+      },
+      "emissions": {
+        "status": "available",
+        "electricity_kg_co2e": 1010.258,
+        "gas_kg_co2e": 0.0,
+        "total_kg_co2e": 1010.258,
+        "reason": null,
+        "factors": {
+          "electricity": {
+            "fuel": "electricity",
+            "kg_co2e_per_kwh": 0.2,
+            "source": "AUDIT TEST ONLY",
+            "source_year": 2026,
+            "accounting_boundary": "test",
+            "version": "audit-test"
+          },
+          "gas": {
+            "fuel": "gas",
+            "kg_co2e_per_kwh": 0.18,
+            "source": "AUDIT TEST ONLY",
+            "source_year": 2026,
+            "accounting_boundary": "test",
+            "version": "audit-test"
+          }
+        }
+      }
+    },
+    "after": {
+      "energy_use": {
+        "electricity_kwh": 4951.29,
+        "gas_kwh": 0.0,
+        "total_kwh": 4951.29
+      },
+      "emissions": {
+        "status": "available",
+        "electricity_kg_co2e": 990.258,
+        "gas_kg_co2e": 0.0,
+        "total_kg_co2e": 990.258,
+        "reason": null,
+        "factors": {
+          "electricity": {
+            "fuel": "electricity",
+            "kg_co2e_per_kwh": 0.2,
+            "source": "AUDIT TEST ONLY",
+            "source_year": 2026,
+            "accounting_boundary": "test",
+            "version": "audit-test"
+          },
+          "gas": {
+            "fuel": "gas",
+            "kg_co2e_per_kwh": 0.18,
+            "source": "AUDIT TEST ONLY",
+            "source_year": 2026,
+            "accounting_boundary": "test",
+            "version": "audit-test"
+          }
+        }
+      }
+    },
+    "savings": {
+      "electricity_kwh": 100.0,
+      "gas_kwh": 0.0,
+      "net_energy_kwh": 100.0,
+      "annual_carbon_reduction_kg_co2e": 20.0
+    },
+    "feasibility": {
+      "solar_panels": {
+        "status": "feasible",
+        "reason": "No known property input blocks this retrofit; site survey may still be needed."
+      }
+    },
+    "assumptions": [
+      "Solar reduces grid imports by measured/projected self-consumed generation only; export is not counted as avoided purchased electricity."
+    ],
+    "warnings": [
+      "Heat pump recorded, but air-source/ground-source subtype is unknown.",
+      "Solar is present, but contribution category is not supplied.",
+      "Property snapshot and energy year differ; see dataset methodology."
+    ]
+  }
+}

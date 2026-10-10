@@ -178,9 +178,12 @@ def test_property_routes():
     assert len(listing.json()) == 100
     assert all(row['dataset_kind'] == 'synthetic' for row in listing.json())
     detail = client.get('/properties/P00001').json()
-    assert detail['benchmark'] is None
+    assert detail['benchmark'] is not None
+    assessment = client.get('/properties/P00001/assessment').json()
+    assert assessment['score']['status'] == 'available'
+    assert assessment['score']['score'] is not None
     assert detail['annual_energy']['quality'] == 'synthetic'
-    assert client.get('/properties/P00001/assessment').json()['score']['status'] == 'unavailable'
+    assert client.get('/properties/P00001/assessment').json()['score']['status'] == 'available'
     assert client.get('/properties/missing').status_code == 404
     assert client.get('/properties/missing/assessment').status_code == 404
     detail['property']['energy_rating'] = 'A'
