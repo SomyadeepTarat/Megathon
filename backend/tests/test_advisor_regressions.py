@@ -80,12 +80,12 @@ class MountedRouteTests(unittest.TestCase):
         self.assertEqual(data['result']['property_id'], pid)
         self.assertIn('Property dataset: synthetic', data['explanation'])
 
-    def test_actual_route_reports_missing_scenario_engine(self):
+    def test_actual_route_reports_unknown_heat_pump_compatibility(self):
         pid = self.client.get('/properties').json()[0]['property_id']
         response = self.client.post('/advisor/chat', json={'property_id': pid, 'message': 'Install heat pump'})
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json()['status'], 'unavailable')
-        self.assertIsNone(response.json()['result'])
+        self.assertEqual(response.json()['status'], 'conditional')
+        self.assertIn('heat_pump', response.json()['result']['feasibility']['conditional_retrofits'])
 
     def test_actual_route_missing_property_and_validation(self):
         response = self.client.post('/advisor/chat', json={'property_id': 'DOES_NOT_EXIST', 'message': 'Explain my score'})
