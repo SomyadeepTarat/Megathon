@@ -8,6 +8,7 @@ import { api } from '@/lib/api';
 import type { Assessment, AssessmentRequest, PropertyRecord, PropertySummary, Scenario } from '@/lib/types';
 import { label } from '@/lib/format';
 import { Advisor } from './advisor';
+import { HomeJourney, ReplayJourney } from './home-journey';
 
 interface State {
   properties: PropertySummary[]; record: PropertyRecord | null; assessment: Assessment | null; scenario: Scenario | null;
@@ -59,8 +60,9 @@ export function Workspace({ children }: { children: ReactNode }) {
   const title = pathname === '/compare' ? 'Scenario comparison' : navigation.find((item) => item.href === pathname)?.name || 'Workspace';
   const value: State = { properties, record, assessment, scenario, dirty, loading, error, service, selectProperty, newProperty, edit, runAssessment, setScenario, openAdvisor: () => setAdvisor(true), refresh };
   return <Context.Provider value={value}>
+    {pathname === '/' && <HomeJourney />}
     <a href="#main" className="skip-link">Skip to content</a>
-    <div className="app-shell">
+    <div id="kew-workspace" className={`app-shell ${pathname === '/' ? 'journey-workspace' : ''}`}>
       {mobile && <button className="nav-backdrop" aria-label="Close navigation" onClick={() => setMobile(false)} />}
       <aside id="workspace-navigation" className={`sidebar ${mobile ? 'is-open' : ''}`}>
         <Link href="/" className="brand" aria-label="Kew home"><span className="brand-mark"><Leaf size={24} strokeWidth={1.6} /></span><span>Kew<span className="brand-caption">A greener way home.</span></span></Link>
@@ -70,7 +72,7 @@ export function Workspace({ children }: { children: ReactNode }) {
       </aside>
       <div className="main-shell"><header className="topbar"><div className="breadcrumb"><button className="icon-button mobile-menu" onClick={() => setMobile(!mobile)} aria-label="Open navigation" aria-expanded={mobile} aria-controls="workspace-navigation"><Menu size={21} /></button><Link href="/">Kew</Link><ChevronRight size={14} /><span>{title}</span></div><div className="header-actions"><span className={`service-state ${service}`}><i />{service === 'online' ? 'Your workspace' : service === 'checking' ? 'Loading…' : 'Service unavailable'}</span><button className="icon-button" onClick={() => void refresh()} aria-label="Refresh properties"><RefreshCw size={18} /></button><span className="header-separator" /><button className="icon-button" aria-label="Open Kew advisor" onClick={() => setAdvisor(true)}><MessageCircle size={20} /></button></div></header>
         {service === 'offline' && <div className="connection-notice" role="status">The assessment service is offline. You can explore Kew and enter your details. <button onClick={() => void refresh()}>Reconnect <ArrowUpRight size={13} /></button></div>}
-        <main id="main" className="main-content">{children}</main>
+        <main id="main" tabIndex={-1} className="main-content">{pathname === '/' && <ReplayJourney />}{children}</main>
         <footer className="footer"><span><Leaf size={13} /> Kew · A considered path to a greener home</span><span>Transparent estimates. Informed decisions.</span></footer>
       </div>
     </div>

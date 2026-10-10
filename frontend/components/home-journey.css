@@ -1,0 +1,43 @@
+.kew-journey{height:440vh;position:relative;background:var(--bg);z-index:50}
+.kew-journey-stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:var(--bg)}
+.kew-journey canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.kew-journey-wash{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,#f8f7f3f5 0,#f8f7f3b5 26%,transparent 55%),linear-gradient(0deg,var(--bg),transparent 22%)}
+.kew-journey-header{position:absolute;top:28px;left:4vw;right:4vw;display:flex;justify-content:space-between;align-items:center;gap:16px;z-index:2}
+.kew-journey-brand{display:flex;align-items:center;gap:10px;font:700 32px 'Manrope',sans-serif;letter-spacing:-1px}
+.kew-journey-brand small{font:11px 'DM Sans',sans-serif;letter-spacing:0;margin-left:15px;color:var(--body)}
+.kew-journey-header button{display:flex;gap:16px;align-items:center;background:#f8f7f3e8;border:1px solid #c7cebc;border-radius:30px;padding:13px 17px;font-size:12px}
+.kew-journey-copy{position:absolute;left:8vw;top:26%;max-width:48%;pointer-events:none}
+.kew-journey-copy button{pointer-events:auto}
+.kew-journey-copy h1,.kew-journey-copy h2{font-size:clamp(45px,5.5vw,82px);line-height:1.13;letter-spacing:-.06em;margin:24px 0;font-weight:650}
+.kew-journey-copy p{font-size:17px;line-height:1.8}
+.kew-eco-copy,.kew-land-copy,.kew-callout{opacity:0;visibility:hidden}
+.kew-journey-callouts{position:absolute;right:6vw;top:29%;display:flex;flex-direction:column;gap:17px;width:280px;pointer-events:none}
+.kew-callout{display:flex;align-items:center;gap:14px;background:#fdfcf9ed;border:1px solid #d4ddcb;border-radius:12px;padding:16px 18px;box-shadow:0 10px 40px #284c3310;color:var(--green)}
+.kew-callout strong{display:block;color:var(--ink);font-size:13px;margin-bottom:5px}
+.kew-callout span{font-size:11px;color:var(--body);line-height:1.5;display:block}
+.kew-journey-note{position:absolute;left:4vw;bottom:26px;font-size:10px;letter-spacing:.08em;max-width:38%;line-height:1.6}
+.kew-journey-note small{display:block;font-size:9px;letter-spacing:0;color:var(--body);margin-top:7px}
+.kew-scroll-cue{position:absolute;bottom:42px;right:6vw;display:flex;align-items:center;gap:12px;font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+.kew-journey-status{position:absolute;right:5vw;bottom:80px;font-size:11px;color:var(--body)}
+.kew-replay{border:1px solid var(--line);background:var(--paper);border-radius:6px;padding:8px 12px;font-size:10px}
+.journey-workspace .sidebar{position:sticky;top:0;align-self:flex-start;height:100dvh;flex-shrink:0}
+.journey-workspace .main-shell{margin-left:0;flex:1;min-width:0}
+.kew-journey-fallback{position:absolute;right:6vw;top:21%;width:44%;text-align:center}
+.kew-journey-fallback img{width:100%;max-height:48svh;object-fit:contain;border-radius:10px}
+.kew-journey-fallback p{font-size:12px;margin:10px 0}
+.kew-journey.is-static{height:100svh;min-height:650px}
+.is-static .kew-journey-stage{height:100%;min-height:650px;position:relative}
+.is-static canvas,.is-static .kew-journey-callouts,.is-static .kew-eco-copy,.is-static .kew-land-copy,.is-static .kew-scroll-cue{display:none}
+.is-static .kew-city-copy{opacity:1!important;visibility:visible!important}
+@media(max-width:700px){
+ .kew-journey{height:390svh}
+ .kew-journey-header{top:19px;left:6vw;right:6vw}.kew-journey-brand{font-size:26px}.kew-journey-brand small{display:none}.kew-journey-header button{font-size:10px;padding:10px 12px;gap:5px}
+ .kew-journey-copy{left:7vw;top:17%;max-width:87%}.kew-journey-copy h1,.kew-journey-copy h2{font-size:clamp(36px,9vw,52px);margin:12px 0}.kew-journey-copy .eyebrow{font-size:8px;margin-bottom:13px}.kew-journey-copy p{font-size:13px;line-height:1.6}
+ .kew-journey-wash{background:linear-gradient(180deg,#f8f7f3e6,transparent 66%),linear-gradient(0deg,var(--bg),transparent 28%)}
+ .kew-journey-callouts{right:5vw;top:auto;bottom:11%;width:90%;gap:6px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}.kew-callout{display:block;padding:9px 8px;border-radius:8px}.kew-callout strong{font-size:10px;margin-bottom:3px}.kew-callout span{font-size:9px}.kew-callout svg{width:18px;margin-bottom:4px}
+ .kew-journey-note{left:7vw;bottom:20px;max-width:85%;font-size:8px}.kew-journey-note small{font-size:8px}.kew-scroll-cue{bottom:92px;font-size:8px;right:7vw}
+ .kew-journey-fallback{top:43%;width:86%;right:7vw}.kew-journey-fallback img{max-height:24svh}.kew-journey-fallback p{font-size:10px;margin:6px 0}.is-static .kew-city-copy{top:15%}.is-static .kew-city-copy p{display:none}
+}
+@media(max-width:680px){.journey-workspace .sidebar{position:fixed}.kew-replay{font-size:8px;padding:7px}.header-actions{flex-wrap:wrap}}
+@media(max-height:550px) and (min-width:701px){.kew-journey-copy{top:23%}.kew-journey-copy h1,.kew-journey-copy h2{font-size:42px;margin:12px 0}.kew-journey-copy p{font-size:13px}.kew-journey-callouts{top:24%;gap:8px}.kew-callout{padding:10px}.kew-journey-header{top:15px}}
+@media(prefers-reduced-motion:reduce){.kew-journey{height:100svh;min-height:650px}.kew-journey-stage{height:100%;min-height:650px;position:relative}.kew-scroll-cue{display:none}}
