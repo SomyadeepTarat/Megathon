@@ -2,11 +2,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { ArrowUp, Leaf, LoaderCircle } from 'lucide-react';
 import { api } from '@/lib/api';
-<<<<<<< HEAD
 import { needsPackageSelection } from '@/lib/advisor-context';
-=======
 import { advisorOutput } from '@/lib/results';
->>>>>>> 8378ff5cc04ffc50a7b536cd88ec319fb0172798
 import { label, number } from '@/lib/format';
 import { inputOf, useWorkspace } from './workspace';
 import type { AdvisorResult, Objective, Retrofit } from '@/lib/types';
@@ -34,14 +31,10 @@ export function Advisor() {
     setMessages((value) => [...value, { role: 'user', text }]); setQuestion(''); setBusy(true); setConfirm(false);
     setProgress('Connecting to your home advisor…');
     try {
-<<<<<<< HEAD
       const result = await api.advisorStream(record.property.property_id, text, setProgress, selected ? { intent: 'simulate_retrofit', retrofits: selected, budget_gbp: null, objective: 'carbon_reduction' as Objective } : undefined, dirty ? inputOf(record) : undefined);
       if (currentProperty.current !== record.property.property_id) return;
-=======
-      const result = await api.advisor(record.property.property_id, text, selected ? { intent: 'simulate_retrofit', retrofits: selected, budget_gbp: null, objective: 'carbon_reduction' as Objective } : undefined, dirty ? inputOf(record) : undefined);
       const output = advisorOutput(result);
       if (output) { setScenario(null); addOutput(output); }
->>>>>>> 8378ff5cc04ffc50a7b536cd88ec319fb0172798
       setMessages((value) => [...value, { role: 'assistant', text: result.explanation, result }]);
       setConfirm(needsPackageSelection(result));
       if (result.clarification_kind === 'package') setPackageIds([]);
