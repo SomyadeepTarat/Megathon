@@ -95,8 +95,23 @@ def run_scenario(request: ScenarioRequest, retrofit: RetrofitEngine,
     if hasattr(carbon, 'baseline'):
         response.baseline_carbon = carbon.baseline(original)
         if response.baseline_carbon.get('status') == 'available' and carbon_result.status == 'available':
-            response.after_carbon = {'status': 'available', 'total_kg_co2e': response.baseline_carbon['total_kg_co2e'] - carbon_result.reduction_kg_co2e}
+            factors = {factor.fuel: factor.kg_co2e_per_kwh for factor in carbon_result.factors}
+            after_e = impact.after.electricity_kwh * factors['electricity']
+            after_g = impact.after.gas_kwh * factors['gas']
+            response.after_carbon = {
+                'status': 'available', 'electricity_kg_co2e': after_e,
+                'gas_kg_co2e': after_g, 'total_kg_co2e': after_e + after_g,
+                'factors': [factor.model_dump(mode='json') for factor in carbon_result.factors],
+            }
+            response.carbon_savings_by_fuel_kg_co2e = {
+                'electricity': e * factors['electricity'],
+                'gas': g * factors['gas'],
+            }
     response.installation_cost_gbp = result.installation_cost_gbp
+    response.annual_bill_savings_gbp = result.annual_bill_savings_gbp
+    response.bill_savings_reason = result.bill_savings_reason
+    response.simple_payback_years = result.simple_payback_years
+    response.payback_reason = result.payback_reason
     response.applied_retrofits = result.applied_retrofits
     response.assumptions = result.assumptions
     response.warnings = list(baseline.warnings) + result.warnings

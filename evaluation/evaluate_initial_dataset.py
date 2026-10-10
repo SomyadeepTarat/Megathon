@@ -101,8 +101,8 @@ def run(data, output):
                           "gas_heated_median_kwh": float(scores.loc[scores.annual_gas_kwh > 0, "annual_gas_kwh"].median())},
         "valuation": report,
         "pending": ["Official benchmark validation (current supplied references are synthetic)",
-                    "Retrofit feasibility and scenario engine", "Carbon engine and documented factors",
-                    "Recorded LLM responses and reviews", "Observed sales for real valuation"]}
+                    "Independent validation of retrofit assumptions on observed homes",
+                    "Human review of recorded LLM explanations", "Observed sales for real valuation"]}
     (output / "initial_metrics.json").write_text(json.dumps(summary, indent=2))
     print(json.dumps(summary, indent=2))
 

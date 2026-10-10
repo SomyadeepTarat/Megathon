@@ -8,15 +8,18 @@ from fastapi.responses import JSONResponse
 from app.core.efficiency import assess
 from app.db.repository import JsonPropertyRepository, CsvPropertyRepository, EditableRepository
 from app.schemas.models import AssessmentRequest, AssessmentResponse, ScenarioRequest, RecommendationRequest
-from app.schemas.engines import PropertyRecord, PropertySummary, ScenarioResponse, RecommendationResponse, ValuationRequest, ValuationResult, FullAssessmentResponse
+from app.schemas.engines import PropertyRecord, PropertySummary, ScenarioResponse, RecommendationResponse, OptimizationResult, ValuationRequest, ValuationResult, FullAssessmentResponse
 from app.services.adapters import ExistingValuationAdapter
 from app.services.p4_adapter import P4RetrofitAdapter, P4CarbonAdapter, configured_factors
 from app.services.recommendations import recommend
+from app.services.optimization import optimize_packages
 from app.services.orchestrator import EngineContractError, run_scenario
 from app.api.advisor import router as advisor_router
 from app.services.advisor_adapter import BackendAdvisorEngines
 from app.services.llm_service import AdvisorService, provider_from_env
 from app.schemas.valuation import BaselineValuationResponse
+from app.schemas.engines import HealthResponse, PortfolioEntry
+from app.services.portfolio import rank_portfolio
 
 app = FastAPI(title='GreenPrint AI', version='0.3.0')
 app.add_middleware(CORSMiddleware,
@@ -26,13 +29,15 @@ project_root = Path(__file__).resolve().parents[2]
 dataset_kind = os.getenv('GREENPRINT_PROPERTY_DATASET', 'csv')
 if dataset_kind == 'csv':
     repository = CsvPropertyRepository.from_project_root(project_root)
+elif dataset_kind == 'demo':
+    repository = JsonPropertyRepository(project_root / 'backend/data/curated_demo_properties.json')
 elif dataset_kind == 'fixtures':
     repository = JsonPropertyRepository(project_root / 'backend/data/demo_properties.json')
 else:
-    raise ValueError('GREENPRINT_PROPERTY_DATASET must be csv or fixtures')
+    raise ValueError('GREENPRINT_PROPERTY_DATASET must be csv, demo or fixtures')
 
 
-repository = EditableRepository(repository)
+repository = EditableRepository(repository, os.getenv('GREENPRINT_DB_PATH', str(project_root / 'backend/data/user_properties.db')))
 
 
 def get_repository():
@@ -57,7 +62,7 @@ async def engine_contract_error(request, exc):
     return JSONResponse(status_code=500, content={'status': 'error', 'reason': 'An engine returned inconsistent results.'})
 
 
-@app.get('/health')
+@app.get('/health', response_model=HealthResponse)
 def health():
     try:
         factors = configured_factors()
@@ -73,7 +78,7 @@ def health():
                           'valuation': {'artifact_present': model_ready, 'evidence_supported': 'checked per request; synthetic uplift disabled'},
                           'advisor': {'mounted': True, 'provider': os.getenv('LLM_PROVIDER', 'deterministic')},
                           'scoring': {'complete_dataset_scores_ready': all(assess(row).score.status == 'available' for row in repository.list_properties()), 'requires': ['applicable benchmark and complete component inputs']},
-                          'budget_optimizer': {'ready': False, 'reason': 'P4 cost catalogue, tariffs and optimizer remain pending.'}}}
+                          'budget_optimizer': {'ready': True, 'requires': ['budget', 'documented costs for selected measures', 'objective-specific inputs']}}}
 
 
 @app.get('/properties', response_model=list[PropertySummary])
@@ -140,13 +145,21 @@ def register_property(request: AssessmentRequest, repo=Depends(get_repository)):
     declared = request.property.provenance.get('record')
     kind = declared if declared in ('synthetic', 'observed', 'estimated', 'imported') else 'synthetic' if request.annual_energy.quality == 'synthetic' else 'imported'
     return repo.save_property(PropertyRecord(**request.model_dump(), dataset_kind=kind,
-        dataset_source='User-supplied API snapshot; retained in memory until server restart.'))
+        dataset_source='User-supplied API snapshot; persisted in the local SQLite repository.'))
 
 
 @app.post('/retrofits/recommend', response_model=RecommendationResponse)
 def recommendations(request: RecommendationRequest, retrofit=Depends(get_retrofit_engine),
                     carbon=Depends(get_carbon_engine), valuation=Depends(get_valuation_engine)):
     return recommend(request, retrofit, P4CarbonAdapter(request.emission_factors) if isinstance(carbon, P4CarbonAdapter) else carbon, valuation)
+
+
+@app.post('/retrofits/optimize', response_model=OptimizationResult)
+def optimize(request: RecommendationRequest, retrofit=Depends(get_retrofit_engine),
+             carbon=Depends(get_carbon_engine), valuation=Depends(get_valuation_engine)):
+    return optimize_packages(request, retrofit,
+        P4CarbonAdapter(request.emission_factors) if isinstance(carbon, P4CarbonAdapter) else carbon,
+        valuation)
 
 
 @app.post('/properties/{property_id}/valuation/impact', response_model=ValuationResult)
@@ -169,3 +182,9 @@ app.state.advisor_service = AdvisorService(
                          lambda: get_carbon_engine(), lambda: get_valuation_engine()),
     provider=provider_from_env(),
 )
+
+
+@app.get('/portfolio/rank', response_model=list[PortfolioEntry])
+def portfolio(repo=Depends(get_repository), retrofit=Depends(get_retrofit_engine),
+              carbon=Depends(get_carbon_engine), valuation=Depends(get_valuation_engine)):
+    return rank_portfolio(repo, retrofit, carbon, valuation)

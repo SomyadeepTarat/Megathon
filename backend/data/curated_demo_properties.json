@@ -1,0 +1,1192 @@
+[
+  {
+    "property": {
+      "property_id": "DEMO-P00001",
+      "property_type": "detached",
+      "region": "Greater London",
+      "floor_area_m2": 148.0,
+      "property_age_years": 95,
+      "bedrooms": 4,
+      "energy_rating": "F",
+      "insulation": "poor",
+      "heating_system": "old_gas_boiler",
+      "glazing": "single",
+      "renewable_contribution": "none",
+      "smart_controls": "none",
+      "solar_installed": false,
+      "heat_pump_installed": false,
+      "loft_insulation_installed": false,
+      "smart_thermostat_installed": null,
+      "physical_inputs": {
+        "thermal_demand_kwh": 19469.20666,
+        "thermal_demand_scope": "space_heating_plus_hot_water",
+        "space_heating_demand_kwh": 17435.676581,
+        "hot_water_demand_kwh": 2033.530079,
+        "base_appliance_electricity_kwh": 2997.423337,
+        "annual_electricity_demand_kwh": 2997.423337,
+        "gas_space_heating_kwh": 24216.217474,
+        "gas_hot_water_kwh": 2824.347332,
+        "electric_space_heating_kwh": 0.0,
+        "electric_hot_water_kwh": 0.0,
+        "heating_energy_kwh": null,
+        "boiler_efficiency": 0.72,
+        "heating_efficiency": null,
+        "scop": 3.0,
+        "hot_water_cop": 2.5,
+        "electric_resistance_efficiency": null,
+        "solar_generation_kwh": 0.0,
+        "solar_self_consumed_kwh": 0.0,
+        "solar_self_consumption_fraction": null,
+        "proposed_solar_generation_kwh": 3000.0,
+        "proposed_solar_self_consumed_kwh": null,
+        "proposed_solar_self_consumption_fraction": 0.45,
+        "proposed_heat_pump_type": "air_source_heat_pump",
+        "provenance": {
+          "source": "generate_energy_usage.py v1; not measured; see Data/relations/P3_HANDOFF.md",
+          "status": "synthetic_modelled",
+          "year": "2025",
+          "generation_seed": "42",
+          "demo_assumptions": "Curated synthetic demo assumptions; not survey evidence, market tariffs or contractor quotes"
+        }
+      },
+      "roof_suitable_for_loft": true,
+      "roof_suitable_for_solar": true,
+      "heat_pump_compatible": true,
+      "controls_compatible": true,
+      "current_property_value_gbp": 640000.0,
+      "market_index": null,
+      "provenance": {
+        "record": "synthetic",
+        "source": "/Users/somyadeeptarat/Desktop/Megathon/Data/csv/properties.csv",
+        "source_heating": "Old gas boiler",
+        "solar_installed": "false",
+        "generation_seed": "42",
+        "customer_id": "C00001",
+        "demo_assumptions": "Curated synthetic demo assumptions; not survey evidence, market tariffs or contractor quotes"
+      }
+    },
+    "annual_energy": {
+      "electricity_kwh": 2997.41,
+      "gas_kwh": 27040.56,
+      "quality": "synthetic",
+      "method": "Sum of 12 monthly purchased-energy readings for 2025; incomplete fuel totals remain null",
+      "electricity_months_covered": 12,
+      "gas_months_covered": 12,
+      "warnings": [
+        "Score uses a synthetic reference benchmark, not an official consumption standard.",
+        "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+        "Confirm alignment of the property snapshot and energy period; see source methodology."
+      ]
+    },
+    "benchmark": {
+      "property_type": "detached",
+      "intensity_kwh_m2_year": 128.212778,
+      "source": "Synthetic fixed reference model v1; not an official NEED benchmark",
+      "methodology": "100 m2, 3 occupants, scenario age 54, average insulation, double glazing, modern gas efficiency .90, no PV or controls, climate factor 1.0. Renewable substantial at self-consumed PV/demand >=20%; heat pumps assumed air-source.",
+      "region": null
+    },
+    "emission_factors": null,
+    "retrofit_costs": {
+      "loft_insulation": {
+        "amount_gbp": 1500.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      },
+      "heat_pump": {
+        "amount_gbp": 12500.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      },
+      "solar_panels": {
+        "amount_gbp": 6500.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      },
+      "double_glazing": {
+        "amount_gbp": 5000.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      },
+      "smart_thermostat": {
+        "amount_gbp": 200.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      }
+    },
+    "electricity_tariff_gbp_per_kwh": 0.25,
+    "gas_tariff_gbp_per_kwh": 0.06,
+    "dataset_kind": "synthetic",
+    "dataset_source": "Curated synthetic demo assumptions; not survey evidence, market tariffs or contractor quotes; base data from Data/csv/properties.csv and energy_usage.csv"
+  },
+  {
+    "property": {
+      "property_id": "DEMO-P00002",
+      "property_type": "flat",
+      "region": "Greater London",
+      "floor_area_m2": 68.0,
+      "property_age_years": 8,
+      "bedrooms": 2,
+      "energy_rating": "B",
+      "insulation": "good",
+      "heating_system": "modern_gas_boiler",
+      "glazing": "double",
+      "renewable_contribution": "none",
+      "smart_controls": "advanced",
+      "solar_installed": false,
+      "heat_pump_installed": false,
+      "loft_insulation_installed": true,
+      "smart_thermostat_installed": null,
+      "physical_inputs": {
+        "thermal_demand_kwh": 3189.379192,
+        "thermal_demand_scope": "space_heating_plus_hot_water",
+        "space_heating_demand_kwh": 1967.742152,
+        "hot_water_demand_kwh": 1221.63704,
+        "base_appliance_electricity_kwh": 1755.398454,
+        "annual_electricity_demand_kwh": 1755.398454,
+        "gas_space_heating_kwh": 2186.380169,
+        "gas_hot_water_kwh": 1357.374488,
+        "electric_space_heating_kwh": 0.0,
+        "electric_hot_water_kwh": 0.0,
+        "heating_energy_kwh": null,
+        "boiler_efficiency": 0.9,
+        "heating_efficiency": null,
+        "scop": 3.0,
+        "hot_water_cop": 2.5,
+        "electric_resistance_efficiency": null,
+        "solar_generation_kwh": 0.0,
+        "solar_self_consumed_kwh": 0.0,
+        "solar_self_consumption_fraction": null,
+        "proposed_solar_generation_kwh": null,
+        "proposed_solar_self_consumed_kwh": null,
+        "proposed_solar_self_consumption_fraction": null,
+        "proposed_heat_pump_type": "air_source_heat_pump",
+        "provenance": {
+          "source": "generate_energy_usage.py v1; not measured; see Data/relations/P3_HANDOFF.md",
+          "status": "synthetic_modelled",
+          "year": "2025",
+          "generation_seed": "42",
+          "demo_assumptions": "Curated synthetic demo assumptions; not survey evidence, market tariffs or contractor quotes"
+        }
+      },
+      "roof_suitable_for_loft": false,
+      "roof_suitable_for_solar": false,
+      "heat_pump_compatible": false,
+      "controls_compatible": true,
+      "current_property_value_gbp": 455000.0,
+      "market_index": null,
+      "provenance": {
+        "record": "synthetic",
+        "source": "/Users/somyadeeptarat/Desktop/Megathon/Data/csv/properties.csv",
+        "source_heating": "Modern gas boiler",
+        "solar_installed": "false",
+        "generation_seed": "42",
+        "customer_id": "C00002",
+        "demo_assumptions": "Curated synthetic demo assumptions; not survey evidence, market tariffs or contractor quotes"
+      }
+    },
+    "annual_energy": {
+      "electricity_kwh": 1755.41,
+      "gas_kwh": 3543.74,
+      "quality": "synthetic",
+      "method": "Sum of 12 monthly purchased-energy readings for 2025; incomplete fuel totals remain null",
+      "electricity_months_covered": 12,
+      "gas_months_covered": 12,
+      "warnings": [
+        "Score uses a synthetic reference benchmark, not an official consumption standard.",
+        "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+        "Confirm alignment of the property snapshot and energy period; see source methodology."
+      ]
+    },
+    "benchmark": {
+      "property_type": "flat",
+      "intensity_kwh_m2_year": 96.983889,
+      "source": "Synthetic fixed reference model v1; not an official NEED benchmark",
+      "methodology": "100 m2, 3 occupants, scenario age 54, average insulation, double glazing, modern gas efficiency .90, no PV or controls, climate factor 1.0. Renewable substantial at self-consumed PV/demand >=20%; heat pumps assumed air-source.",
+      "region": null
+    },
+    "emission_factors": null,
+    "retrofit_costs": {
+      "loft_insulation": {
+        "amount_gbp": 1500.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      },
+      "heat_pump": {
+        "amount_gbp": 12500.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      },
+      "solar_panels": {
+        "amount_gbp": 6500.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      },
+      "double_glazing": {
+        "amount_gbp": 5000.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      },
+      "smart_thermostat": {
+        "amount_gbp": 200.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      }
+    },
+    "electricity_tariff_gbp_per_kwh": 0.25,
+    "gas_tariff_gbp_per_kwh": 0.06,
+    "dataset_kind": "synthetic",
+    "dataset_source": "Curated synthetic demo assumptions; not survey evidence, market tariffs or contractor quotes; base data from Data/csv/properties.csv and energy_usage.csv"
+  },
+  {
+    "property": {
+      "property_id": "DEMO-P00003",
+      "property_type": "detached",
+      "region": "South East",
+      "floor_area_m2": 192.0,
+      "property_age_years": 12,
+      "bedrooms": 5,
+      "energy_rating": "A",
+      "insulation": "good",
+      "heating_system": "air_source_heat_pump",
+      "glazing": "triple",
+      "renewable_contribution": "substantial",
+      "smart_controls": "advanced",
+      "solar_installed": true,
+      "heat_pump_installed": true,
+      "loft_insulation_installed": true,
+      "smart_thermostat_installed": null,
+      "physical_inputs": {
+        "thermal_demand_kwh": 10748.458902,
+        "thermal_demand_scope": "space_heating_plus_hot_water",
+        "space_heating_demand_kwh": 8439.289755,
+        "hot_water_demand_kwh": 2309.169147,
+        "base_appliance_electricity_kwh": 3431.327091,
+        "annual_electricity_demand_kwh": 7168.091335,
+        "gas_space_heating_kwh": 0.0,
+        "gas_hot_water_kwh": 0.0,
+        "electric_space_heating_kwh": 2813.096585,
+        "electric_hot_water_kwh": 923.667659,
+        "heating_energy_kwh": null,
+        "boiler_efficiency": null,
+        "heating_efficiency": null,
+        "scop": 3.0,
+        "hot_water_cop": 2.5,
+        "electric_resistance_efficiency": null,
+        "solar_generation_kwh": 4704.0,
+        "solar_self_consumed_kwh": 2116.8,
+        "solar_self_consumption_fraction": null,
+        "proposed_solar_generation_kwh": null,
+        "proposed_solar_self_consumed_kwh": null,
+        "proposed_solar_self_consumption_fraction": null,
+        "proposed_heat_pump_type": null,
+        "provenance": {
+          "source": "generate_energy_usage.py v1; not measured; see Data/relations/P3_HANDOFF.md",
+          "status": "synthetic_modelled",
+          "year": "2025",
+          "generation_seed": "42",
+          "demo_assumptions": "Curated synthetic demo assumptions; not survey evidence, market tariffs or contractor quotes"
+        }
+      },
+      "roof_suitable_for_loft": true,
+      "roof_suitable_for_solar": true,
+      "heat_pump_compatible": true,
+      "controls_compatible": true,
+      "current_property_value_gbp": 725000.0,
+      "market_index": null,
+      "provenance": {
+        "record": "synthetic",
+        "source": "/Users/somyadeeptarat/Desktop/Megathon/Data/csv/properties.csv",
+        "source_heating": "Heat pump",
+        "solar_installed": "true",
+        "generation_seed": "42",
+        "customer_id": "C00003",
+        "demo_assumptions": "Curated synthetic demo assumptions; not survey evidence, market tariffs or contractor quotes"
+      }
+    },
+    "annual_energy": {
+      "electricity_kwh": 5051.29,
+      "gas_kwh": 0.0,
+      "quality": "synthetic",
+      "method": "Sum of 12 monthly purchased-energy readings for 2025; incomplete fuel totals remain null",
+      "electricity_months_covered": 12,
+      "gas_months_covered": 12,
+      "warnings": [
+        "Score uses a synthetic reference benchmark, not an official consumption standard.",
+        "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+        "Confirm alignment of the property snapshot and energy period; see source methodology."
+      ]
+    },
+    "benchmark": {
+      "property_type": "detached",
+      "intensity_kwh_m2_year": 128.212778,
+      "source": "Synthetic fixed reference model v1; not an official NEED benchmark",
+      "methodology": "100 m2, 3 occupants, scenario age 54, average insulation, double glazing, modern gas efficiency .90, no PV or controls, climate factor 1.0. Renewable substantial at self-consumed PV/demand >=20%; heat pumps assumed air-source.",
+      "region": null
+    },
+    "emission_factors": null,
+    "retrofit_costs": {
+      "loft_insulation": {
+        "amount_gbp": 1500.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      },
+      "heat_pump": {
+        "amount_gbp": 12500.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      },
+      "solar_panels": {
+        "amount_gbp": 6500.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      },
+      "double_glazing": {
+        "amount_gbp": 5000.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      },
+      "smart_thermostat": {
+        "amount_gbp": 200.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      }
+    },
+    "electricity_tariff_gbp_per_kwh": 0.25,
+    "gas_tariff_gbp_per_kwh": 0.06,
+    "dataset_kind": "synthetic",
+    "dataset_source": "Curated synthetic demo assumptions; not survey evidence, market tariffs or contractor quotes; base data from Data/csv/properties.csv and energy_usage.csv"
+  },
+  {
+    "property": {
+      "property_id": "DEMO-P00004",
+      "property_type": "semi_detached",
+      "region": "West Midlands",
+      "floor_area_m2": 108.0,
+      "property_age_years": 55,
+      "bedrooms": 3,
+      "energy_rating": "D",
+      "insulation": "average",
+      "heating_system": "modern_gas_boiler",
+      "glazing": "double",
+      "renewable_contribution": "none",
+      "smart_controls": "none",
+      "solar_installed": false,
+      "heat_pump_installed": false,
+      "loft_insulation_installed": false,
+      "smart_thermostat_installed": null,
+      "physical_inputs": {
+        "thermal_demand_kwh": 8352.916074,
+        "thermal_demand_scope": "space_heating_plus_hot_water",
+        "space_heating_demand_kwh": 6846.250176,
+        "hot_water_demand_kwh": 1506.665898,
+        "base_appliance_electricity_kwh": 2198.819081,
+        "annual_electricity_demand_kwh": 2198.819081,
+        "gas_space_heating_kwh": 7606.94464,
+        "gas_hot_water_kwh": 1674.07322,
+        "electric_space_heating_kwh": 0.0,
+        "electric_hot_water_kwh": 0.0,
+        "heating_energy_kwh": null,
+        "boiler_efficiency": 0.9,
+        "heating_efficiency": null,
+        "scop": 3.0,
+        "hot_water_cop": 2.5,
+        "electric_resistance_efficiency": null,
+        "solar_generation_kwh": 0.0,
+        "solar_self_consumed_kwh": 0.0,
+        "solar_self_consumption_fraction": null,
+        "proposed_solar_generation_kwh": 3000.0,
+        "proposed_solar_self_consumed_kwh": null,
+        "proposed_solar_self_consumption_fraction": 0.45,
+        "proposed_heat_pump_type": "air_source_heat_pump",
+        "provenance": {
+          "source": "generate_energy_usage.py v1; not measured; see Data/relations/P3_HANDOFF.md",
+          "status": "synthetic_modelled",
+          "year": "2025",
+          "generation_seed": "42",
+          "demo_assumptions": "Curated synthetic demo assumptions; not survey evidence, market tariffs or contractor quotes"
+        }
+      },
+      "roof_suitable_for_loft": true,
+      "roof_suitable_for_solar": true,
+      "heat_pump_compatible": true,
+      "controls_compatible": true,
+      "current_property_value_gbp": 285000.0,
+      "market_index": null,
+      "provenance": {
+        "record": "synthetic",
+        "source": "/Users/somyadeeptarat/Desktop/Megathon/Data/csv/properties.csv",
+        "source_heating": "Modern gas boiler",
+        "solar_installed": "false",
+        "generation_seed": "42",
+        "customer_id": "C00004",
+        "demo_assumptions": "Curated synthetic demo assumptions; not survey evidence, market tariffs or contractor quotes"
+      }
+    },
+    "annual_energy": {
+      "electricity_kwh": 2198.82,
+      "gas_kwh": 9281.02,
+      "quality": "synthetic",
+      "method": "Sum of 12 monthly purchased-energy readings for 2025; incomplete fuel totals remain null",
+      "electricity_months_covered": 12,
+      "gas_months_covered": 12,
+      "warnings": [
+        "Score uses a synthetic reference benchmark, not an official consumption standard.",
+        "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+        "Confirm alignment of the property snapshot and energy period; see source methodology."
+      ]
+    },
+    "benchmark": {
+      "property_type": "semi_detached",
+      "intensity_kwh_m2_year": 116.501944,
+      "source": "Synthetic fixed reference model v1; not an official NEED benchmark",
+      "methodology": "100 m2, 3 occupants, scenario age 54, average insulation, double glazing, modern gas efficiency .90, no PV or controls, climate factor 1.0. Renewable substantial at self-consumed PV/demand >=20%; heat pumps assumed air-source.",
+      "region": null
+    },
+    "emission_factors": null,
+    "retrofit_costs": {
+      "loft_insulation": {
+        "amount_gbp": 1500.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      },
+      "heat_pump": {
+        "amount_gbp": 12500.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      },
+      "solar_panels": {
+        "amount_gbp": 6500.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      },
+      "double_glazing": {
+        "amount_gbp": 5000.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      },
+      "smart_thermostat": {
+        "amount_gbp": 200.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      }
+    },
+    "electricity_tariff_gbp_per_kwh": 0.25,
+    "gas_tariff_gbp_per_kwh": 0.06,
+    "dataset_kind": "synthetic",
+    "dataset_source": "Curated synthetic demo assumptions; not survey evidence, market tariffs or contractor quotes; base data from Data/csv/properties.csv and energy_usage.csv"
+  },
+  {
+    "property": {
+      "property_id": "DEMO-P00005",
+      "property_type": "terraced",
+      "region": "North West",
+      "floor_area_m2": 88.0,
+      "property_age_years": 105,
+      "bedrooms": 3,
+      "energy_rating": "E",
+      "insulation": "poor",
+      "heating_system": "modern_gas_boiler",
+      "glazing": "single",
+      "renewable_contribution": "none",
+      "smart_controls": "none",
+      "solar_installed": false,
+      "heat_pump_installed": false,
+      "loft_insulation_installed": false,
+      "smart_thermostat_installed": null,
+      "physical_inputs": {
+        "thermal_demand_kwh": 11340.56299,
+        "thermal_demand_scope": "space_heating_plus_hot_water",
+        "space_heating_demand_kwh": 9595.830748,
+        "hot_water_demand_kwh": 1744.732242,
+        "base_appliance_electricity_kwh": 2525.10339,
+        "annual_electricity_demand_kwh": 2525.10339,
+        "gas_space_heating_kwh": 10662.034164,
+        "gas_hot_water_kwh": 1938.59138,
+        "electric_space_heating_kwh": 0.0,
+        "electric_hot_water_kwh": 0.0,
+        "heating_energy_kwh": null,
+        "boiler_efficiency": 0.9,
+        "heating_efficiency": null,
+        "scop": 3.0,
+        "hot_water_cop": 2.5,
+        "electric_resistance_efficiency": null,
+        "solar_generation_kwh": 0.0,
+        "solar_self_consumed_kwh": 0.0,
+        "solar_self_consumption_fraction": null,
+        "proposed_solar_generation_kwh": 3000.0,
+        "proposed_solar_self_consumed_kwh": null,
+        "proposed_solar_self_consumption_fraction": 0.45,
+        "proposed_heat_pump_type": "air_source_heat_pump",
+        "provenance": {
+          "source": "generate_energy_usage.py v1; not measured; see Data/relations/P3_HANDOFF.md",
+          "status": "synthetic_modelled",
+          "year": "2025",
+          "generation_seed": "42",
+          "demo_assumptions": "Curated synthetic demo assumptions; not survey evidence, market tariffs or contractor quotes"
+        }
+      },
+      "roof_suitable_for_loft": true,
+      "roof_suitable_for_solar": true,
+      "heat_pump_compatible": true,
+      "controls_compatible": true,
+      "current_property_value_gbp": 195000.0,
+      "market_index": null,
+      "provenance": {
+        "record": "synthetic",
+        "source": "/Users/somyadeeptarat/Desktop/Megathon/Data/csv/properties.csv",
+        "source_heating": "Modern gas boiler",
+        "solar_installed": "false",
+        "generation_seed": "42",
+        "customer_id": "C00005",
+        "demo_assumptions": "Curated synthetic demo assumptions; not survey evidence, market tariffs or contractor quotes"
+      }
+    },
+    "annual_energy": {
+      "electricity_kwh": 2525.12,
+      "gas_kwh": 12600.62,
+      "quality": "synthetic",
+      "method": "Sum of 12 monthly purchased-energy readings for 2025; incomplete fuel totals remain null",
+      "electricity_months_covered": 12,
+      "gas_months_covered": 12,
+      "warnings": [
+        "Score uses a synthetic reference benchmark, not an official consumption standard.",
+        "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+        "Confirm alignment of the property snapshot and energy period; see source methodology."
+      ]
+    },
+    "benchmark": {
+      "property_type": "terraced",
+      "intensity_kwh_m2_year": 108.694722,
+      "source": "Synthetic fixed reference model v1; not an official NEED benchmark",
+      "methodology": "100 m2, 3 occupants, scenario age 54, average insulation, double glazing, modern gas efficiency .90, no PV or controls, climate factor 1.0. Renewable substantial at self-consumed PV/demand >=20%; heat pumps assumed air-source.",
+      "region": null
+    },
+    "emission_factors": null,
+    "retrofit_costs": {
+      "loft_insulation": {
+        "amount_gbp": 1500.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      },
+      "heat_pump": {
+        "amount_gbp": 12500.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      },
+      "solar_panels": {
+        "amount_gbp": 6500.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      },
+      "double_glazing": {
+        "amount_gbp": 5000.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      },
+      "smart_thermostat": {
+        "amount_gbp": 200.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      }
+    },
+    "electricity_tariff_gbp_per_kwh": 0.25,
+    "gas_tariff_gbp_per_kwh": 0.06,
+    "dataset_kind": "synthetic",
+    "dataset_source": "Curated synthetic demo assumptions; not survey evidence, market tariffs or contractor quotes; base data from Data/csv/properties.csv and energy_usage.csv"
+  },
+  {
+    "property": {
+      "property_id": "DEMO-P00006",
+      "property_type": "detached",
+      "region": "South West",
+      "floor_area_m2": 142.0,
+      "property_age_years": 25,
+      "bedrooms": 4,
+      "energy_rating": "C",
+      "insulation": "good",
+      "heating_system": "air_source_heat_pump",
+      "glazing": "double",
+      "renewable_contribution": "none",
+      "smart_controls": "advanced",
+      "solar_installed": false,
+      "heat_pump_installed": true,
+      "loft_insulation_installed": true,
+      "smart_thermostat_installed": null,
+      "physical_inputs": {
+        "thermal_demand_kwh": 9846.403593,
+        "thermal_demand_scope": "space_heating_plus_hot_water",
+        "space_heating_demand_kwh": 7669.144736,
+        "hot_water_demand_kwh": 2177.258857,
+        "base_appliance_electricity_kwh": 3202.747778,
+        "annual_electricity_demand_kwh": 6630.0329,
+        "gas_space_heating_kwh": 0.0,
+        "gas_hot_water_kwh": 0.0,
+        "electric_space_heating_kwh": 2556.381579,
+        "electric_hot_water_kwh": 870.903543,
+        "heating_energy_kwh": null,
+        "boiler_efficiency": null,
+        "heating_efficiency": null,
+        "scop": 3.0,
+        "hot_water_cop": 2.5,
+        "electric_resistance_efficiency": null,
+        "solar_generation_kwh": 0.0,
+        "solar_self_consumed_kwh": 0.0,
+        "solar_self_consumption_fraction": null,
+        "proposed_solar_generation_kwh": 3000.0,
+        "proposed_solar_self_consumed_kwh": null,
+        "proposed_solar_self_consumption_fraction": 0.45,
+        "proposed_heat_pump_type": null,
+        "provenance": {
+          "source": "generate_energy_usage.py v1; not measured; see Data/relations/P3_HANDOFF.md",
+          "status": "synthetic_modelled",
+          "year": "2025",
+          "generation_seed": "42",
+          "demo_assumptions": "Curated synthetic demo assumptions; not survey evidence, market tariffs or contractor quotes"
+        }
+      },
+      "roof_suitable_for_loft": true,
+      "roof_suitable_for_solar": true,
+      "heat_pump_compatible": true,
+      "controls_compatible": true,
+      "current_property_value_gbp": 435000.0,
+      "market_index": null,
+      "provenance": {
+        "record": "synthetic",
+        "source": "/Users/somyadeeptarat/Desktop/Megathon/Data/csv/properties.csv",
+        "source_heating": "Heat pump",
+        "solar_installed": "false",
+        "generation_seed": "42",
+        "customer_id": "C00006",
+        "demo_assumptions": "Curated synthetic demo assumptions; not survey evidence, market tariffs or contractor quotes"
+      }
+    },
+    "annual_energy": {
+      "electricity_kwh": 6630.04,
+      "gas_kwh": 0.0,
+      "quality": "synthetic",
+      "method": "Sum of 12 monthly purchased-energy readings for 2025; incomplete fuel totals remain null",
+      "electricity_months_covered": 12,
+      "gas_months_covered": 12,
+      "warnings": [
+        "Score uses a synthetic reference benchmark, not an official consumption standard.",
+        "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+        "Confirm alignment of the property snapshot and energy period; see source methodology."
+      ]
+    },
+    "benchmark": {
+      "property_type": "detached",
+      "intensity_kwh_m2_year": 128.212778,
+      "source": "Synthetic fixed reference model v1; not an official NEED benchmark",
+      "methodology": "100 m2, 3 occupants, scenario age 54, average insulation, double glazing, modern gas efficiency .90, no PV or controls, climate factor 1.0. Renewable substantial at self-consumed PV/demand >=20%; heat pumps assumed air-source.",
+      "region": null
+    },
+    "emission_factors": null,
+    "retrofit_costs": {
+      "loft_insulation": {
+        "amount_gbp": 1500.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      },
+      "heat_pump": {
+        "amount_gbp": 12500.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      },
+      "solar_panels": {
+        "amount_gbp": 6500.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      },
+      "double_glazing": {
+        "amount_gbp": 5000.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      },
+      "smart_thermostat": {
+        "amount_gbp": 200.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      }
+    },
+    "electricity_tariff_gbp_per_kwh": 0.25,
+    "gas_tariff_gbp_per_kwh": 0.06,
+    "dataset_kind": "synthetic",
+    "dataset_source": "Curated synthetic demo assumptions; not survey evidence, market tariffs or contractor quotes; base data from Data/csv/properties.csv and energy_usage.csv"
+  },
+  {
+    "property": {
+      "property_id": "DEMO-P00007",
+      "property_type": "detached",
+      "region": "East of England",
+      "floor_area_m2": 155.0,
+      "property_age_years": 42,
+      "bedrooms": 4,
+      "energy_rating": "C",
+      "insulation": "average",
+      "heating_system": "modern_gas_boiler",
+      "glazing": "double",
+      "renewable_contribution": "substantial",
+      "smart_controls": "none",
+      "solar_installed": true,
+      "heat_pump_installed": false,
+      "loft_insulation_installed": false,
+      "smart_thermostat_installed": null,
+      "physical_inputs": {
+        "thermal_demand_kwh": 14384.206224,
+        "thermal_demand_scope": "space_heating_plus_hot_water",
+        "space_heating_demand_kwh": 12294.097368,
+        "hot_water_demand_kwh": 2090.108857,
+        "base_appliance_electricity_kwh": 3088.135836,
+        "annual_electricity_demand_kwh": 3088.135836,
+        "gas_space_heating_kwh": 13660.108186,
+        "gas_hot_water_kwh": 2322.343174,
+        "electric_space_heating_kwh": 0.0,
+        "electric_hot_water_kwh": 0.0,
+        "heating_energy_kwh": null,
+        "boiler_efficiency": 0.9,
+        "heating_efficiency": null,
+        "scop": 3.0,
+        "hot_water_cop": 2.5,
+        "electric_resistance_efficiency": null,
+        "solar_generation_kwh": 3681.25,
+        "solar_self_consumed_kwh": 1646.60765,
+        "solar_self_consumption_fraction": null,
+        "proposed_solar_generation_kwh": null,
+        "proposed_solar_self_consumed_kwh": null,
+        "proposed_solar_self_consumption_fraction": null,
+        "proposed_heat_pump_type": "air_source_heat_pump",
+        "provenance": {
+          "source": "generate_energy_usage.py v1; not measured; see Data/relations/P3_HANDOFF.md",
+          "status": "synthetic_modelled",
+          "year": "2025",
+          "generation_seed": "42",
+          "demo_assumptions": "Curated synthetic demo assumptions; not survey evidence, market tariffs or contractor quotes"
+        }
+      },
+      "roof_suitable_for_loft": true,
+      "roof_suitable_for_solar": true,
+      "heat_pump_compatible": true,
+      "controls_compatible": true,
+      "current_property_value_gbp": 480000.0,
+      "market_index": null,
+      "provenance": {
+        "record": "synthetic",
+        "source": "/Users/somyadeeptarat/Desktop/Megathon/Data/csv/properties.csv",
+        "source_heating": "Modern gas boiler",
+        "solar_installed": "true",
+        "generation_seed": "42",
+        "customer_id": "C00007",
+        "demo_assumptions": "Curated synthetic demo assumptions; not survey evidence, market tariffs or contractor quotes"
+      }
+    },
+    "annual_energy": {
+      "electricity_kwh": 1441.54,
+      "gas_kwh": 15982.45,
+      "quality": "synthetic",
+      "method": "Sum of 12 monthly purchased-energy readings for 2025; incomplete fuel totals remain null",
+      "electricity_months_covered": 12,
+      "gas_months_covered": 12,
+      "warnings": [
+        "Score uses a synthetic reference benchmark, not an official consumption standard.",
+        "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+        "Confirm alignment of the property snapshot and energy period; see source methodology."
+      ]
+    },
+    "benchmark": {
+      "property_type": "detached",
+      "intensity_kwh_m2_year": 128.212778,
+      "source": "Synthetic fixed reference model v1; not an official NEED benchmark",
+      "methodology": "100 m2, 3 occupants, scenario age 54, average insulation, double glazing, modern gas efficiency .90, no PV or controls, climate factor 1.0. Renewable substantial at self-consumed PV/demand >=20%; heat pumps assumed air-source.",
+      "region": null
+    },
+    "emission_factors": null,
+    "retrofit_costs": {
+      "loft_insulation": {
+        "amount_gbp": 1500.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      },
+      "heat_pump": {
+        "amount_gbp": 12500.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      },
+      "solar_panels": {
+        "amount_gbp": 6500.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      },
+      "double_glazing": {
+        "amount_gbp": 5000.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      },
+      "smart_thermostat": {
+        "amount_gbp": 200.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      }
+    },
+    "electricity_tariff_gbp_per_kwh": 0.25,
+    "gas_tariff_gbp_per_kwh": 0.06,
+    "dataset_kind": "synthetic",
+    "dataset_source": "Curated synthetic demo assumptions; not survey evidence, market tariffs or contractor quotes; base data from Data/csv/properties.csv and energy_usage.csv"
+  },
+  {
+    "property": {
+      "property_id": "DEMO-P00008",
+      "property_type": "flat",
+      "region": "East Midlands",
+      "floor_area_m2": 62.0,
+      "property_age_years": 6,
+      "bedrooms": 2,
+      "energy_rating": "B",
+      "insulation": "good",
+      "heating_system": "electric_resistance",
+      "glazing": "triple",
+      "renewable_contribution": "none",
+      "smart_controls": "advanced",
+      "solar_installed": false,
+      "heat_pump_installed": false,
+      "loft_insulation_installed": true,
+      "smart_thermostat_installed": null,
+      "physical_inputs": {
+        "thermal_demand_kwh": 3080.029902,
+        "thermal_demand_scope": "space_heating_plus_hot_water",
+        "space_heating_demand_kwh": 1826.227386,
+        "hot_water_demand_kwh": 1253.802516,
+        "base_appliance_electricity_kwh": 1795.830988,
+        "annual_electricity_demand_kwh": 4875.86089,
+        "gas_space_heating_kwh": 0.0,
+        "gas_hot_water_kwh": 0.0,
+        "electric_space_heating_kwh": 1826.227386,
+        "electric_hot_water_kwh": 1253.802516,
+        "heating_energy_kwh": null,
+        "boiler_efficiency": null,
+        "heating_efficiency": null,
+        "scop": null,
+        "hot_water_cop": null,
+        "electric_resistance_efficiency": 1.0,
+        "solar_generation_kwh": 0.0,
+        "solar_self_consumed_kwh": 0.0,
+        "solar_self_consumption_fraction": null,
+        "proposed_solar_generation_kwh": null,
+        "proposed_solar_self_consumed_kwh": null,
+        "proposed_solar_self_consumption_fraction": null,
+        "proposed_heat_pump_type": null,
+        "provenance": {
+          "source": "generate_energy_usage.py v1; not measured; see Data/relations/P3_HANDOFF.md",
+          "status": "synthetic_modelled",
+          "year": "2025",
+          "generation_seed": "42",
+          "demo_assumptions": "Curated synthetic demo assumptions; not survey evidence, market tariffs or contractor quotes"
+        }
+      },
+      "roof_suitable_for_loft": false,
+      "roof_suitable_for_solar": false,
+      "heat_pump_compatible": false,
+      "controls_compatible": true,
+      "current_property_value_gbp": 180000.0,
+      "market_index": null,
+      "provenance": {
+        "record": "synthetic",
+        "source": "/Users/somyadeeptarat/Desktop/Megathon/Data/csv/properties.csv",
+        "source_heating": "Electric resistance",
+        "solar_installed": "false",
+        "generation_seed": "42",
+        "customer_id": "C00008",
+        "demo_assumptions": "Curated synthetic demo assumptions; not survey evidence, market tariffs or contractor quotes"
+      }
+    },
+    "annual_energy": {
+      "electricity_kwh": 4875.86,
+      "gas_kwh": 0.0,
+      "quality": "synthetic",
+      "method": "Sum of 12 monthly purchased-energy readings for 2025; incomplete fuel totals remain null",
+      "electricity_months_covered": 12,
+      "gas_months_covered": 12,
+      "warnings": [
+        "Score uses a synthetic reference benchmark, not an official consumption standard.",
+        "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+        "Confirm alignment of the property snapshot and energy period; see source methodology."
+      ]
+    },
+    "benchmark": {
+      "property_type": "flat",
+      "intensity_kwh_m2_year": 96.983889,
+      "source": "Synthetic fixed reference model v1; not an official NEED benchmark",
+      "methodology": "100 m2, 3 occupants, scenario age 54, average insulation, double glazing, modern gas efficiency .90, no PV or controls, climate factor 1.0. Renewable substantial at self-consumed PV/demand >=20%; heat pumps assumed air-source.",
+      "region": null
+    },
+    "emission_factors": null,
+    "retrofit_costs": {
+      "loft_insulation": {
+        "amount_gbp": 1500.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      },
+      "heat_pump": {
+        "amount_gbp": 12500.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      },
+      "solar_panels": {
+        "amount_gbp": 6500.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      },
+      "double_glazing": {
+        "amount_gbp": 5000.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      },
+      "smart_thermostat": {
+        "amount_gbp": 200.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      }
+    },
+    "electricity_tariff_gbp_per_kwh": 0.25,
+    "gas_tariff_gbp_per_kwh": 0.06,
+    "dataset_kind": "synthetic",
+    "dataset_source": "Curated synthetic demo assumptions; not survey evidence, market tariffs or contractor quotes; base data from Data/csv/properties.csv and energy_usage.csv"
+  },
+  {
+    "property": {
+      "property_id": "DEMO-P00009",
+      "property_type": "detached",
+      "region": "Wales",
+      "floor_area_m2": 175.0,
+      "property_age_years": 150,
+      "bedrooms": 4,
+      "energy_rating": "G",
+      "insulation": "poor",
+      "heating_system": "old_gas_boiler",
+      "glazing": "single",
+      "renewable_contribution": "none",
+      "smart_controls": "none",
+      "solar_installed": false,
+      "heat_pump_installed": false,
+      "loft_insulation_installed": false,
+      "smart_thermostat_installed": null,
+      "physical_inputs": {
+        "thermal_demand_kwh": 27168.343037,
+        "thermal_demand_scope": "space_heating_plus_hot_water",
+        "space_heating_demand_kwh": 25028.909642,
+        "hot_water_demand_kwh": 2139.433394,
+        "base_appliance_electricity_kwh": 3182.407174,
+        "annual_electricity_demand_kwh": 3182.407174,
+        "gas_space_heating_kwh": 34762.374503,
+        "gas_hot_water_kwh": 2971.43527,
+        "electric_space_heating_kwh": 0.0,
+        "electric_hot_water_kwh": 0.0,
+        "heating_energy_kwh": null,
+        "boiler_efficiency": 0.72,
+        "heating_efficiency": null,
+        "scop": 3.0,
+        "hot_water_cop": 2.5,
+        "electric_resistance_efficiency": null,
+        "solar_generation_kwh": 0.0,
+        "solar_self_consumed_kwh": 0.0,
+        "solar_self_consumption_fraction": null,
+        "proposed_solar_generation_kwh": 3000.0,
+        "proposed_solar_self_consumed_kwh": null,
+        "proposed_solar_self_consumption_fraction": 0.45,
+        "proposed_heat_pump_type": "air_source_heat_pump",
+        "provenance": {
+          "source": "generate_energy_usage.py v1; not measured; see Data/relations/P3_HANDOFF.md",
+          "status": "synthetic_modelled",
+          "year": "2025",
+          "generation_seed": "42",
+          "demo_assumptions": "Curated synthetic demo assumptions; not survey evidence, market tariffs or contractor quotes"
+        }
+      },
+      "roof_suitable_for_loft": true,
+      "roof_suitable_for_solar": true,
+      "heat_pump_compatible": true,
+      "controls_compatible": true,
+      "current_property_value_gbp": 310000.0,
+      "market_index": null,
+      "provenance": {
+        "record": "synthetic",
+        "source": "/Users/somyadeeptarat/Desktop/Megathon/Data/csv/properties.csv",
+        "source_heating": "Old gas boiler",
+        "solar_installed": "false",
+        "generation_seed": "42",
+        "customer_id": "C00009",
+        "demo_assumptions": "Curated synthetic demo assumptions; not survey evidence, market tariffs or contractor quotes"
+      }
+    },
+    "annual_energy": {
+      "electricity_kwh": 3182.41,
+      "gas_kwh": 37733.81,
+      "quality": "synthetic",
+      "method": "Sum of 12 monthly purchased-energy readings for 2025; incomplete fuel totals remain null",
+      "electricity_months_covered": 12,
+      "gas_months_covered": 12,
+      "warnings": [
+        "Score uses a synthetic reference benchmark, not an official consumption standard.",
+        "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+        "Confirm alignment of the property snapshot and energy period; see source methodology."
+      ]
+    },
+    "benchmark": {
+      "property_type": "detached",
+      "intensity_kwh_m2_year": 128.212778,
+      "source": "Synthetic fixed reference model v1; not an official NEED benchmark",
+      "methodology": "100 m2, 3 occupants, scenario age 54, average insulation, double glazing, modern gas efficiency .90, no PV or controls, climate factor 1.0. Renewable substantial at self-consumed PV/demand >=20%; heat pumps assumed air-source.",
+      "region": null
+    },
+    "emission_factors": null,
+    "retrofit_costs": {
+      "loft_insulation": {
+        "amount_gbp": 1500.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      },
+      "heat_pump": {
+        "amount_gbp": 12500.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      },
+      "solar_panels": {
+        "amount_gbp": 6500.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      },
+      "double_glazing": {
+        "amount_gbp": 5000.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      },
+      "smart_thermostat": {
+        "amount_gbp": 200.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      }
+    },
+    "electricity_tariff_gbp_per_kwh": 0.25,
+    "gas_tariff_gbp_per_kwh": 0.06,
+    "dataset_kind": "synthetic",
+    "dataset_source": "Curated synthetic demo assumptions; not survey evidence, market tariffs or contractor quotes; base data from Data/csv/properties.csv and energy_usage.csv"
+  },
+  {
+    "property": {
+      "property_id": "DEMO-P00010",
+      "property_type": "semi_detached",
+      "region": "Yorkshire and The Humber",
+      "floor_area_m2": 165.0,
+      "property_age_years": 10,
+      "bedrooms": 4,
+      "energy_rating": "B",
+      "insulation": "good",
+      "heating_system": "modern_gas_boiler",
+      "glazing": "double",
+      "renewable_contribution": "none",
+      "smart_controls": "advanced",
+      "solar_installed": false,
+      "heat_pump_installed": false,
+      "loft_insulation_installed": true,
+      "smart_thermostat_installed": null,
+      "physical_inputs": {
+        "thermal_demand_kwh": 10970.414161,
+        "thermal_demand_scope": "space_heating_plus_hot_water",
+        "space_heating_demand_kwh": 8778.094873,
+        "hot_water_demand_kwh": 2192.319288,
+        "base_appliance_electricity_kwh": 3250.113344,
+        "annual_electricity_demand_kwh": 3250.113344,
+        "gas_space_heating_kwh": 9753.438748,
+        "gas_hot_water_kwh": 2435.91032,
+        "electric_space_heating_kwh": 0.0,
+        "electric_hot_water_kwh": 0.0,
+        "heating_energy_kwh": null,
+        "boiler_efficiency": 0.9,
+        "heating_efficiency": null,
+        "scop": 3.0,
+        "hot_water_cop": 2.5,
+        "electric_resistance_efficiency": null,
+        "solar_generation_kwh": 0.0,
+        "solar_self_consumed_kwh": 0.0,
+        "solar_self_consumption_fraction": null,
+        "proposed_solar_generation_kwh": 3000.0,
+        "proposed_solar_self_consumed_kwh": null,
+        "proposed_solar_self_consumption_fraction": 0.45,
+        "proposed_heat_pump_type": "air_source_heat_pump",
+        "provenance": {
+          "source": "generate_energy_usage.py v1; not measured; see Data/relations/P3_HANDOFF.md",
+          "status": "synthetic_modelled",
+          "year": "2025",
+          "generation_seed": "42",
+          "demo_assumptions": "Curated synthetic demo assumptions; not survey evidence, market tariffs or contractor quotes"
+        }
+      },
+      "roof_suitable_for_loft": true,
+      "roof_suitable_for_solar": true,
+      "heat_pump_compatible": true,
+      "controls_compatible": true,
+      "current_property_value_gbp": 365000.0,
+      "market_index": null,
+      "provenance": {
+        "record": "synthetic",
+        "source": "/Users/somyadeeptarat/Desktop/Megathon/Data/csv/properties.csv",
+        "source_heating": "Modern gas boiler",
+        "solar_installed": "false",
+        "generation_seed": "42",
+        "customer_id": "C00010",
+        "demo_assumptions": "Curated synthetic demo assumptions; not survey evidence, market tariffs or contractor quotes"
+      }
+    },
+    "annual_energy": {
+      "electricity_kwh": 3250.11,
+      "gas_kwh": 12189.34,
+      "quality": "synthetic",
+      "method": "Sum of 12 monthly purchased-energy readings for 2025; incomplete fuel totals remain null",
+      "electricity_months_covered": 12,
+      "gas_months_covered": 12,
+      "warnings": [
+        "Score uses a synthetic reference benchmark, not an official consumption standard.",
+        "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+        "Confirm alignment of the property snapshot and energy period; see source methodology."
+      ]
+    },
+    "benchmark": {
+      "property_type": "semi_detached",
+      "intensity_kwh_m2_year": 116.501944,
+      "source": "Synthetic fixed reference model v1; not an official NEED benchmark",
+      "methodology": "100 m2, 3 occupants, scenario age 54, average insulation, double glazing, modern gas efficiency .90, no PV or controls, climate factor 1.0. Renewable substantial at self-consumed PV/demand >=20%; heat pumps assumed air-source.",
+      "region": null
+    },
+    "emission_factors": null,
+    "retrofit_costs": {
+      "loft_insulation": {
+        "amount_gbp": 1500.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      },
+      "heat_pump": {
+        "amount_gbp": 12500.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      },
+      "solar_panels": {
+        "amount_gbp": 6500.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      },
+      "double_glazing": {
+        "amount_gbp": 5000.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      },
+      "smart_thermostat": {
+        "amount_gbp": 200.0,
+        "source": "backend/catalog.json; illustrative team cost assumption",
+        "date": "2026-10-11"
+      }
+    },
+    "electricity_tariff_gbp_per_kwh": 0.25,
+    "gas_tariff_gbp_per_kwh": 0.06,
+    "dataset_kind": "synthetic",
+    "dataset_source": "Curated synthetic demo assumptions; not survey evidence, market tariffs or contractor quotes; base data from Data/csv/properties.csv and energy_usage.csv"
+  }
+]

@@ -7,11 +7,11 @@ import { inputOf, useWorkspace } from './workspace';
 import type { AdvisorResult, Objective, Retrofit } from '@/lib/types';
 interface Message { role: 'user' | 'assistant'; text: string; result?: AdvisorResult }
 function ScenarioEvidence({ result }: { result: AdvisorResult }) {
-  if (!result.tool_calls.includes('simulate') || !['success', 'partial'].includes(result.status)) return null;
+  if (!result.tool_calls.some((call) => ['simulate', 'optimize'].includes(call)) || !['success', 'partial'].includes(result.status)) return null;
   const energy = result.result?.energy;
   if (!energy || typeof energy !== 'object') return null;
   const data = energy as Record<string, unknown>;
-  return <div className="chat-scenario"><strong>Sample scenario</strong>{(['electricity_savings_kwh', 'gas_savings_kwh', 'net_savings_kwh'] as const).map((key) => <div key={key}><span>{label(key.replace('_kwh', ''))}</span><b>{number(typeof data[key] === 'number' ? data[key] : null, 'kWh/year')}</b></div>)}</div>;
+  return <div className="chat-scenario"><strong>Calculated scenario</strong>{(['electricity_savings_kwh', 'gas_savings_kwh', 'net_savings_kwh'] as const).map((key) => <div key={key}><span>{label(key.replace('_kwh', ''))}</span><b>{number(typeof data[key] === 'number' ? data[key] : null, 'kWh/year')}</b></div>)}</div>;
 }
 export function Advisor() {
   const { record, dirty, openAdvisor } = useWorkspace();

@@ -1,112 +1,97 @@
-# GreenPrint AI
+# GreenPrint AI / Kew
 
-Current integration status and owner-specific fixes: [full pipeline audit](evaluation/results/full_pipeline/README.md). Reproduce the runtime audit with `.venv/bin/python -m evaluation.audit_full_pipeline`; append `--ollama --model qwen3:4b` to run the installed local model. Include `carbon_engine/tests` explicitly when running the complete suite, since default `pytest.ini` currently excludes them.
+Local Next.js frontend, FastAPI backend, SQLite property snapshots, deterministic scoring/retrofit/carbon engines, guarded valuation ML and grounded AI explanations. Requirements: [prd.md](prd.md). Current verification and remaining evidence gaps: [pipeline report](evaluation/results/current_pipeline/README.md). Older reports are historical snapshots, not current readiness statements.
 
-FastAPI backend, explainable scoring, teammate integration contracts, property fixtures, and the existing Person 5 valuation/evaluation module.
+## Install and prepare
 
-## Backend setup on Omarchy
-
-From the repository root:
-
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r backend/requirements.lock.txt
-python -m uvicorn app.main:app --app-dir backend --reload --port 8001
-```
-
-Open http://localhost:8001/docs. Stop the old server using port 8001 before starting this checkout. Configuration is read from shell environment variables; `.env.example` is a template, not automatically loaded.
-
-For the exact combined dependency snapshot and the complete test suite:
-
-```bash
-pip install -r requirements.lock.txt
-python -m pytest -q
-```
-
-For backend-only verification:
-
-```bash
-python -m pytest backend/tests -q
-```
-
-## Available API
-
-| Route | Behavior |
-|---|---|
-| GET /health | Implementation status |
-| GET /properties | 100 synthetic homes from the teammate CSV dataset |
-| GET /properties/{id} | Validated property and annual energy snapshot |
-| GET /properties/{id}/assessment | Score components and issues |
-| POST /assessments | Assessment of a supplied or edited snapshot |
-| POST /scenarios/simulate | Orchestration through dependency-injected engines |
-| POST /advisor/chat | Grounded explanations of server-owned results; explicit partial/unavailable status |
-
-The CSV dataset intentionally has no scoring benchmark. Full score is unavailable until a documented applicable benchmark is supplied; known component subscores remain visible. No invented official benchmark is bundled. Benchmark source authenticity is not verified by Pydantic: P3 must provide a trusted repository.
-
-The real P4 adapter is connected. Scenarios require confirmed eligibility, sufficient physical inputs, and documented fuel factors; missing dependencies return HTTP 503 with a reason. Rejected or conditional packages use HTTP 409; completed simulations use HTTP 200 with success or partial status. Numerical test adapters are confined to tests and never installed in runtime routes. The existing valuation adapter disables illustrative synthetic-model uplift by default.
-
-The API defaults to `Data/csv/properties.csv` and `Data/csv/energy_usage.csv`. Complete annual consumption is the sum of twelve monthly readings per fuel. Missing fuel coverage produces null annual totals. Set `GREENPRINT_PROPERTY_DATASET=fixtures` to select the original three development homes. Generic heat-pump subtype and solar contribution stay unknown when the CSV does not provide them. See [dataset integration](docs/dataset_integration.md).
-
-See [backend handoff](docs/backend_handoff.md), [scoring methodology](docs/scoring_methodology.md), and [architecture](docs/backend_architecture.md). Existing teammate implementation and documentation are preserved below.
-
-## Local AI advisor (Person 2)
-
-The advisor is mounted in the existing backend. Without an LLM it uses deterministic
-explanations. For local Ollama, start its server, ensure `qwen3:4b` is already installed,
-and set `LLM_PROVIDER=ollama`, `LLM_MODEL=qwen3:4b` before starting the backend.
-The adapter disables thinking and enforces task-specific JSON output schemas.
-
-Use `/docs` to call `/advisor/chat` with a property ID from `/properties` and a message
-such as `Explain my score`. Verified partial evidence remains visible when the full
-score or valuation is unavailable. What-if requests report unavailable while P4's
-runtime engine is pending; budget optimization is also pending. Negated/comparison
-requests require explicit full package selection. Frontend implementation is deferred.
-See [AI advisor methodology and integration](docs/llm_methodology.md) for request examples,
-PowerShell settings and limitations.
-
----
-
-# GreenPrint AI — Person 5 module
-
-Initial evaluation of the contributed property/energy dataset: run `.venv/bin/python -m evaluation.evaluate_initial_dataset`. Results and limitations are in [the dataset report](evaluation/results/initial_dataset/README.md). Install `backend/requirements.txt` as well as the ML requirements for scoring integration.
-
-Valuation ML, conservative uncertainty, backend inference and evaluation tooling from `prd.md`. Other team members' engines are not implemented here.
-
-## Reproduce
-
-Run from the repository root with Python 3.11+:
+Run from the repository root with Python 3.11+ and Node.js 22+:
 
 ```sh
 python3 -m venv .venv
-.venv/bin/python -m pip install -r ml/requirements.txt
+.venv/bin/python -m pip install -r requirements.lock.txt
+npm --prefix frontend ci
+.venv/bin/python -m ml.train_valuation --data Data/csv/properties.csv --provenance ml/snapshot_provenance.json --target-kind snapshot --output ml/models/snapshot.joblib --reports ml/reports/snapshot
+.venv/bin/python scripts/prepare_demo.py
+npm --prefix frontend run build
+```
+
+Model binaries, SQLite databases, dependencies and build output are ignored by Git. The supplied 100 homes and 1,200 monthly readings are **synthetic**. Snapshot-model metrics measure fit to synthetic baseline estimates, not real sale prices or retrofit premiums. For the separate synthetic sales experiment:
+
+```sh
 .venv/bin/python -m ml.make_fixture
-.venv/bin/python -m ml.train_valuation --data ml/fixtures/synthetic_sales.csv --provenance ml/fixtures/provenance.json
-.venv/bin/python -m pytest ml/tests evaluation/tests -q
+.venv/bin/python -m ml.train_valuation --data ml/fixtures/synthetic_sales.csv --provenance ml/fixtures/provenance.json --reports ml/reports/sales
 .venv/bin/python -m ml.demo_valuation
 ```
 
-This generates a **synthetic demonstration model**, `ml/models/valuation.joblib`, metrics, held-out predictions and a split manifest in `ml/reports/`. The binary is ignored by Git; reproduce it using these commands. Replace the fixture paths with Person 3's audited observed data and provenance to train a real-data model. Do not describe fixture metrics as market accuracy.
+## Run the demo
 
-External evaluation rejects IDs present in the original training/calibration/test manifest:
+In one terminal, from the repository root:
 
 ```sh
-.venv/bin/python -m ml.evaluate_valuation --model ml/models/valuation.joblib --data PATH_TO_NEW_SALES.csv --manifest ml/reports/split_manifest.csv
-.venv/bin/python -m evaluation.test_scenarios --input PATH_TO_RECORDED_SCENARIOS.json
-.venv/bin/python -m evaluation.evaluate_recommendations --input PATH_TO_REVIEWED_LABELS.json
-.venv/bin/python -m evaluation.evaluate_energy --input PATH_TO_INDEPENDENT_ENERGY_REFERENCES.json
-.venv/bin/python -m evaluation.evaluate_explanations --input PATH_TO_RECORDED_RESPONSES.json
+GREENPRINT_PROPERTY_DATASET=demo LLM_PROVIDER=ollama LLM_MODEL=qwen3:4b .venv/bin/python -m uvicorn app.main:app --app-dir backend --host 127.0.0.1 --port 8001
 ```
 
-Read [the walkthrough](docs/person5_walkthrough.md), [the data and backend handoff](docs/valuation_methodology.md), [evaluation status](docs/evaluation_report.md) and [responsible AI note](docs/responsible_ai.md). `evaluation/explanation_cases.json` contains 25 questions awaiting actual responses and reviewer labels. The evaluator must receive recorded responses, not this unfilled template. Exact versions used for the recorded run are in `ml/requirements-lock.txt`; the broader requirements support other compatible Python installations.
+In a second terminal:
 
+```sh
+npm --prefix frontend start -- --port 3000
+```
 
-## Person 1 runtime integration
+Open http://127.0.0.1:3000; API documentation is at http://127.0.0.1:8001/docs. Ollama must already be serving at http://127.0.0.1:11434 with the selected model installed. Omit `LLM_PROVIDER` and `LLM_MODEL` for deterministic explanations. Provider errors also fall back to verified facts. Configuration is read from shell variables; `.env.example` is not automatically loaded by the backend.
 
-The production routes call the contributed carbon_engine through a typed adapter. POST /retrofits/recommend screens individual feasible measures; it does not promise package optimization. GET or POST /properties/{id}/valuation returns baseline valuation; POST /properties/{id}/valuation/impact exposes the guarded scenario-impact service. POST /assessments/full returns baseline assessment, energy, carbon and valuation statuses together. GET /health includes readiness requirements; process liveness does not imply complete calculations.
+`GREENPRINT_PROPERTY_DATASET=csv` (default) selects all 100 supplied homes. `demo` selects 10 curated synthetic variants with clearly labelled suitability, proposed system, cost and tariff assumptions; it never modifies the supplied CSVs. `fixtures` selects three original development examples. Edited/API-submitted snapshots persist in `backend/data/user_properties.db`; override with `GREENPRINT_DB_PATH`.
 
-Provide physical inputs under property.physical_inputs, preserving per-field source metadata. solar_installed, heat_pump_installed and loft_insulation_installed are explicit optional booleans. Unsupported heat-pump subtype, renewable contribution and projected EPC remain unknown. Installation costs may be supplied as documented retrofit_costs; missing costs are null and cannot prove budget compliance.
+Demo sequence: select `DEMO-P00001` → run assessment → retrofit planner → choose measures or optimize a £15,000 budget → compare fuel, carbon, bills and payback → ask the advisor. Property-value impact remains explicitly unavailable where evidence does not support it. Conditional/infeasible measures are not simulated or recommended as confirmed installations.
 
-Supply emission_factors in the request or set GREENPRINT_EMISSION_FACTORS_FILE to a documented factor JSON containing electricity and gas records, each with fuel, kg_co2e_per_kwh, source, source_year, accounting_boundary and version. No invented factors are bundled. Factor metadata is operator-supplied; the API validates shape, not source authenticity. To use the advisor with those factors and edited inputs, register the snapshot with POST /properties first. Registered snapshots are kept in memory until restart.
+## Verification
 
-See docs/person1_runtime_integration.md for contracts, verification and remaining teammate dependencies.
+```sh
+.venv/bin/python -m pytest -q
+.venv/bin/python -m pip check
+npm --prefix frontend run typecheck
+npm --prefix frontend test
+npm --prefix frontend run build
+.venv/bin/python -m evaluation.evaluate_initial_dataset --output evaluation/results/current_dataset
+.venv/bin/python -m evaluation.verify_runtime
+.venv/bin/python -m evaluation.audit_full_pipeline --ollama --model qwen3:4b --timeout 20
+```
+
+With the servers running, append `--frontend-url http://127.0.0.1:3000` to `evaluation.verify_runtime` to verify production pages and the backend proxy. The runtime verifier exercises 100 assessments and 10 curated homes × three objectives × 32 package decisions using production adapters. The advisor audit records 25 actual responses; human review fields remain unfilled until independently reviewed. It does not claim the PRD's human accuracy thresholds are met.
+
+Data regeneration works from any working directory and preserves the enriched columns:
+
+```sh
+.venv/bin/python Data/scripts/generate_properties.py --output /tmp/properties.csv
+.venv/bin/python Data/scripts/generate_energy_usage.py --output /tmp/energy_usage.csv
+```
+
+The property generator preserves contributed physical fields only when they match the reproducible base homes; it rejects stale enrichment rather than assigning it to different generated homes.
+
+## API and calculation rules
+
+| Route | Behavior |
+|---|---|
+| GET /health | Liveness and calculation readiness |
+| GET /properties; GET /properties/{id} | Validated property snapshots |
+| POST /properties | Persist an edited snapshot, including documented costs/tariffs |
+| GET /properties/{id}/assessment; POST /assessments | Seven-component weighted Green Home Score and issues |
+| POST /assessments/full | Score, energy, sourced baseline carbon and impact availability |
+| GET or POST /properties/{id}/valuation | Illustrative/indicative baseline estimate with calibrated range |
+| POST /properties/{id}/valuation/impact | Guarded value-impact estimate; critical missing fields return nulls and a reason |
+| POST /scenarios/simulate | Confirmed-feasible, sequential retrofit simulation |
+| POST /retrofits/recommend | Feasibility and objective-ranked individual measures |
+| POST /retrofits/optimize | All 32 subsets; explicit budget, documented costs and objective |
+| GET /portfolio/rank | Complete feasible-package improvement potential; unavailable stays null |
+| POST /advisor/chat | Fresh backend calculations followed by fact selection or deterministic explanation |
+
+Scores use PRD weights and mappings; unknown fields stay unknown. Annual energy requires all 12 monthly readings per fuel. Envelope/controls changes affect space heating; hot water and appliance loads are retained. Heat pumps preserve signed electricity/gas changes, and solar reduces grid imports. Financial outputs require supplied cost sources and tariffs. Missing dependencies/physical inputs are explicit, not invented zeroes.
+
+The default carbon factors are extracted from the corrected 2026 DESNZ flat workbook. [Factor provenance](Data/csv/emission_factors_2026.provenance.json) records exact workbook IDs, source URL, SHA256, accounting boundaries and licence. Electricity is UK location-based generation; gas is direct combustion on a gross-calorific basis. Upstream and transmission/distribution emissions are excluded. Set `GREENPRINT_EMISSION_FACTORS_FILE` to a documented CSV/JSON, or explicitly empty to disable carbon. To reproduce extraction from the official downloaded workbook:
+
+```sh
+.venv/bin/python scripts/extract_emission_factors.py --help
+```
+
+Valuation selects the simplest validated model against Ridge/HistGradientBoosting alternatives, uses property-group separation and held-out conformal calibration, and checks input support. Synthetic uplift is disabled in production. New EPC estimates and causal premiums are never fabricated. Solar contribution and whole-home insulation categories remain unknown/unchanged without a supported category estimator, so some after-scenario full scores are unavailable even when fuel/carbon calculations work.
+
+Methodology: [scoring](docs/scoring_methodology.md), [valuation](docs/valuation_methodology.md), [advisor](docs/llm_methodology.md), [responsible AI](docs/responsible_ai.md). External evaluators require actual reviewed inputs, not unfilled templates: `evaluation.evaluate_energy`, `evaluation.evaluate_recommendations`, `evaluation.evaluate_explanations`, `ml.evaluate_valuation` (each provides `--help`).

@@ -95,6 +95,28 @@ class AdvisorTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(response.tool_calls, ['assessment'])
         self.assertIn('38 points', response.explanation)
 
+    async def test_simple_explanations_do_not_depend_on_model_intent_guess(self):
+        for question in ['Why is my score low?', 'How is carbon calculated?',
+                         'Why does electricity use increase with a heat pump?',
+                         'Does the model prove a causal premium?', 'Why is valuation unavailable?']:
+            with self.subTest(question=question):
+                response = await self.ask(question, provider=FakeProvider(response={
+                    'intent': 'clarify', 'retrofits': [], 'budget_gbp': None, 'objective': 'carbon_reduction'}))
+                self.assertEqual(response.tool_calls, ['assessment'])
+
+    async def test_natural_budget_and_combination_requests(self):
+        response = await self.ask('What can I do with a £5000 budget?')
+        self.assertEqual(response.tool_calls, ['optimize'])
+        self.assertEqual(response.intent.budget_gbp, 5000)
+        response = await self.ask('What if I combine insulation and glazing?')
+        self.assertEqual(response.tool_calls, ['feasibility', 'simulate'])
+
+    async def test_model_cannot_explain_baseline_instead_of_optimizing(self):
+        response = await self.ask('Which package saves most carbon?', provider=FakeProvider(response={
+            'intent': 'explain', 'retrofits': [], 'budget_gbp': None, 'objective': 'carbon_reduction'}))
+        self.assertEqual(response.status, 'clarification_required')
+        self.assertEqual(self.engines.calls, [])
+
     async def test_infeasible_blocks_simulation(self):
         engines = FakeEngines()
         engines.feasible = {'all_feasible': False, 'rejected_retrofits': ['solar_panels']}

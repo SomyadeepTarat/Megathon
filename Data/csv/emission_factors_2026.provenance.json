@@ -1,0 +1,33 @@
+{
+  "publication": "https://www.gov.uk/government/publications/greenhouse-gas-reporting-conversion-factors-2026",
+  "download": "https://assets.publishing.service.gov.uk/media/6a6c9748862aaf18d9c62ac9/ghg-conversion-factors-2026-flat-format-revised.xlsx",
+  "license": "Open Government Licence v3.0; Crown copyright",
+  "source_sha256": "a9a455ab396dae226d510c7be6233748416d490c41a5d20f3dc7a0c45feecd5e",
+  "extracted_rows": [
+    {
+      "fuel": "electricity",
+      "kg_co2e_per_kwh": "0.13096",
+      "source": "https://www.gov.uk/government/publications/greenhouse-gas-reporting-conversion-factors-2026",
+      "source_year": 2026,
+      "accounting_boundary": "Scope 2 location-based UK generation; excludes transmission/distribution and well-to-tank emissions",
+      "version": "DESNZ-2026-flat-revised-2026-07-31",
+      "source_row_id": "7_400_4000_5_1",
+      "units": "kg CO2e/kWh",
+      "source_sheet": "xl/worksheets/sheet2.xml",
+      "source_excel_row": "3066"
+    },
+    {
+      "fuel": "gas",
+      "kg_co2e_per_kwh": "0.18231",
+      "source": "https://www.gov.uk/government/publications/greenhouse-gas-reporting-conversion-factors-2026",
+      "source_year": 2026,
+      "accounting_boundary": "Scope 1 natural gas combustion; gross calorific value; excludes well-to-tank emissions",
+      "version": "DESNZ-2026-flat-revised-2026-07-31",
+      "source_row_id": "1_100_1004_6_1",
+      "units": "kg CO2e/kWh",
+      "source_sheet": "xl/worksheets/sheet2.xml",
+      "source_excel_row": "83"
+    }
+  ],
+  "limitations": "Operational emissions only, not lifecycle retrofit emissions. 2026 factors applied as scenario assumptions; supplied meter year is 2025."
+}

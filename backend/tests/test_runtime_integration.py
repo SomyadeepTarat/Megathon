@@ -19,12 +19,14 @@ def complete_input():
     value['property'].update(property_id='INTEGRATION1', current_property_value_gbp=250000, solar_installed=False, heat_pump_installed=False,
         heat_pump_compatible=True, controls_compatible=True, roof_suitable_for_solar=True,
         roof_suitable_for_loft=True, loft_insulation_installed=False,
-        physical_inputs={'thermal_demand_kwh': 8000, 'boiler_efficiency': .8, 'scop': 4,
+        physical_inputs={'thermal_demand_kwh': 8000, 'thermal_demand_scope': 'space_heating',
+                         'space_heating_demand_kwh': 8000, 'hot_water_demand_kwh': 0,
+                         'boiler_efficiency': .8, 'scop': 4,
                          'proposed_heat_pump_type': 'air_source_heat_pump',
-                         'solar_generation_kwh': 1000, 'solar_self_consumed_kwh': 500,
+                         'proposed_solar_generation_kwh': 1000, 'proposed_solar_self_consumed_kwh': 500,
                          'provenance': {'thermal_demand_kwh': 'TEST ONLY', 'boiler_efficiency': 'TEST ONLY',
                                         'scop': 'TEST ONLY', 'proposed_heat_pump_type': 'TEST ONLY',
-                                        'solar_generation_kwh': 'TEST ONLY', 'solar_self_consumed_kwh': 'TEST ONLY'}})
+                                        'proposed_solar_generation_kwh': 'TEST ONLY', 'proposed_solar_self_consumed_kwh': 'TEST ONLY'}})
     value['emission_factors'] = {fuel: {'fuel': fuel, 'kg_co2e_per_kwh': factor,
         'source': 'TEST FIXTURE ONLY', 'source_year': 2026, 'accounting_boundary': 'test boundary',
         'version': 'test-only-v1'} for fuel, factor in [('electricity', .2), ('gas', .18)]}
@@ -40,11 +42,14 @@ def test_real_p4_route_returns_signed_fuels_and_partial_results(client, complete
     assert result['energy']['electricity_savings_kwh'] == -2000
     assert result['energy']['gas_savings_kwh'] == 10000
     assert result['carbon']['reduction_kg_co2e'] == 1400
+    assert result['carbon_savings_by_fuel_kg_co2e'] == {'electricity': -400, 'gas': 1800}
     assert result['updated_property']['heat_pump_installed'] is True
     assert result['updated_property']['heating_system'] == 'air_source_heat_pump'
     assert result['updated_property']['energy_rating'] == 'E'
     assert result['baseline_carbon']['total_kg_co2e'] == 3120
     assert result['after_carbon']['total_kg_co2e'] == 1720
+    assert result['after_carbon']['electricity_kg_co2e'] == 1360
+    assert result['after_carbon']['gas_kg_co2e'] == 360
     assert result['installation_cost_gbp'] is None
     assert result['valuation']['status'] == 'unavailable'
     assert 'EPC' in result['valuation']['reason']
@@ -73,10 +78,14 @@ def test_real_adapter_blocks_incompatibility(client, complete_input, measure, fi
     assert result.json()['energy'] is None
 
 
-def test_solar_generation_consistency_is_validated(client, complete_input):
-    complete_input['property']['physical_inputs']['solar_generation_kwh'] = 10
+def test_solar_self_consumption_is_capped_to_generation_and_demand(client, complete_input):
+    complete_input['property']['physical_inputs']['proposed_solar_generation_kwh'] = 10
+    complete_input['property']['physical_inputs']['proposed_solar_self_consumed_kwh'] = 100
     complete_input['retrofits'] = ['solar_panels']
-    assert client.post('/scenarios/simulate', json=complete_input).status_code == 422
+    result = client.post('/scenarios/simulate', json=complete_input)
+    assert result.status_code == 200
+    assert result.json()['energy']['after']['electricity_kwh'] == 4790
+    assert any('capped' in warning for warning in result.json()['warnings'])
 
 
 def test_existing_solar_is_not_recommended(client, complete_input):
@@ -86,18 +95,29 @@ def test_existing_solar_is_not_recommended(client, complete_input):
     assert client.get('/properties/P00003').json()['property']['solar_installed'] is True
 
 
+def test_smart_thermostat_updates_documented_controls_category(client, complete_input):
+    complete_input['retrofits'] = ['smart_thermostat']
+    result = client.post('/scenarios/simulate', json=complete_input)
+    assert result.status_code == 200
+    updated = result.json()['updated_property']
+    assert updated['smart_thermostat_installed'] is True
+    assert updated['smart_controls'] == 'advanced'
+
+
 def test_missing_factors_and_missing_physics_are_explicit(client, complete_input, monkeypatch):
-    monkeypatch.delenv('GREENPRINT_EMISSION_FACTORS_FILE', raising=False)
+    monkeypatch.setenv('GREENPRINT_EMISSION_FACTORS_FILE', '')
     complete_input['retrofits'] = ['heat_pump']
     factors = complete_input.pop('emission_factors')
     response = client.post('/scenarios/simulate', json=complete_input)
-    assert response.status_code == 503
-    assert 'factors' in response.json()['reason']
+    assert response.status_code == 200
+    assert response.json()['energy'] is not None
+    assert response.json()['carbon']['status'] == 'unavailable'
+    assert 'factors' in response.json()['carbon']['reason']
     complete_input['emission_factors'] = factors
     complete_input['property']['physical_inputs'] = {}
     response = client.post('/scenarios/simulate', json=complete_input)
     assert response.status_code == 503
-    assert 'Heating demand' in response.json()['reason']
+    assert 'heating demand' in response.json()['reason'].lower()
 
 
 def test_cost_and_budget_validation(client, complete_input):
@@ -111,6 +131,12 @@ def test_cost_and_budget_validation(client, complete_input):
     result = client.post('/scenarios/simulate', json=complete_input)
     assert result.status_code == 200
     assert result.json()['installation_cost_gbp'] == 7000
+    complete_input['electricity_tariff_gbp_per_kwh'] = .2
+    complete_input['gas_tariff_gbp_per_kwh'] = .1
+    result = client.post('/scenarios/simulate', json=complete_input)
+    assert result.status_code == 200
+    assert result.json()['annual_bill_savings_gbp'] == 600
+    assert result.json()['simple_payback_years'] == pytest.approx(7000 / 600)
 
 
 def test_real_recommendation_and_valuation_routes(client, complete_input):
@@ -136,7 +162,7 @@ def test_health_reports_dependency_requirements(client):
     result = client.get('/health').json()
     assert result['readiness']['retrofit_engine']['connected'] is True
     assert result['readiness']['advisor']['mounted'] is True
-    assert result['readiness']['budget_optimizer']['ready'] is False
+    assert result['readiness']['budget_optimizer']['ready'] is True
 
 
 def test_full_baseline_route(client, complete_input):
@@ -219,3 +245,37 @@ def test_impact_api_incomplete_scenario(client, field, mode):
     assert value['status'] == 'unavailable'
     assert 'Insufficient property details' in value['reason']
     assert value['value_before'] is value['value_after'] is value['uplift_range'] is None
+
+
+def test_property_route_preserves_dataset_physics_and_nulls(client):
+    result = client.get('/properties/P00001')
+    assert result.status_code == 200
+    physical = result.json()['property']['physical_inputs']
+    assert physical['space_heating_demand_kwh'] > 0
+    assert physical['hot_water_demand_kwh'] > 0
+    assert physical['boiler_efficiency'] == .72
+    assert physical['scop'] is None
+    assert result.json()['property']['heat_pump_compatible'] is None
+
+
+def test_package_optimizer_enumerates_packages_and_respects_budget(client, complete_input):
+    names = ['loft_insulation', 'heat_pump', 'solar_panels', 'double_glazing', 'smart_thermostat']
+    costs = {measure: {'amount_gbp': 1000, 'source': 'TEST ONLY', 'date': '2026-10-10'} for measure in names}
+    complete_input.update(retrofits=[], objective='energy_reduction', budget_gbp=2000, retrofit_costs=costs)
+    response = client.post('/retrofits/optimize', json=complete_input)
+    assert response.status_code == 200
+    body = response.json()
+    assert body['status'] == 'available'
+    assert len(body['package_decisions']) == 32
+    assert any(row['status'] == 'rejected' and row['cost_gbp'] > 2000 for row in body['package_decisions'])
+    assert body['ranked_packages'][0]['after']['gas_kwh'] >= 0
+
+
+def test_package_optimizer_does_not_treat_missing_cost_as_zero(client, complete_input):
+    complete_input.update(retrofits=[], objective='energy_reduction', budget_gbp=5000,
+                          retrofit_costs={'heat_pump': {'amount_gbp': 1000, 'source': 'TEST ONLY', 'date': '2026-10-10'}})
+    response = client.post('/retrofits/optimize', json=complete_input)
+    assert response.status_code == 200
+    decisions = response.json()['package_decisions']
+    assert any(row['status'] == 'unavailable' and 'Documented installation cost missing' in row['reason']
+               for row in decisions)

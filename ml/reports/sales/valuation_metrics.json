@@ -1,0 +1,258 @@
+{
+  "selected_model": "hist_gradient_boosting",
+  "seed": 42,
+  "alpha": 0.1,
+  "target_kind": "sales",
+  "target": "sale_price",
+  "grouped_cross_validation": {
+    "ridge": {
+      "folds": [
+        {
+          "mae_gbp": 17580.140403589954,
+          "rmse_gbp": 22787.21285696899,
+          "r2": 0.9591697205283286
+        },
+        {
+          "mae_gbp": 19145.609086165365,
+          "rmse_gbp": 24130.202907215236,
+          "r2": 0.9638954314030436
+        },
+        {
+          "mae_gbp": 15424.866090335412,
+          "rmse_gbp": 19069.706619351873,
+          "r2": 0.9755225027556931
+        },
+        {
+          "mae_gbp": 19494.440195991836,
+          "rmse_gbp": 23904.71089222935,
+          "r2": 0.9547097477819009
+        },
+        {
+          "mae_gbp": 16469.613028061587,
+          "rmse_gbp": 20065.950398345067,
+          "r2": 0.9749967769530382
+        }
+      ],
+      "mean_mae_gbp": 17622.93376082883,
+      "scope": "fit groups only; calibration/test untouched"
+    },
+    "hist_gradient_boosting": {
+      "folds": [
+        {
+          "mae_gbp": 20230.937373039927,
+          "rmse_gbp": 24880.876229692818,
+          "r2": 0.9513221625670482
+        },
+        {
+          "mae_gbp": 18220.44162496112,
+          "rmse_gbp": 23013.80419980952,
+          "r2": 0.9671589495425158
+        },
+        {
+          "mae_gbp": 19500.372932109014,
+          "rmse_gbp": 23332.778892433842,
+          "r2": 0.9633552369162488
+        },
+        {
+          "mae_gbp": 20100.246926697288,
+          "rmse_gbp": 26351.252607751485,
+          "r2": 0.9449648345430235
+        },
+        {
+          "mae_gbp": 18531.53309566104,
+          "rmse_gbp": 22778.685108458503,
+          "r2": 0.9677793847978313
+        }
+      ],
+      "mean_mae_gbp": 19316.706390493677,
+      "scope": "fit groups only; calibration/test untouched"
+    }
+  },
+  "provenance": {
+    "kind": "synthetic",
+    "source": "ml.make_fixture, seed 42; invented price equation",
+    "license": "Project-generated test fixture; no external data",
+    "energy_evidence": {
+      "reviewed": false,
+      "reference": null
+    },
+    "data_sha256": "d63d5bb97a2a4dd295cfe71c01a1db8abe43c64984fd9b903c669b974f781011"
+  },
+  "selection_metrics": {
+    "ridge": {
+      "mae_gbp": 18396.106836174225,
+      "rmse_gbp": 21847.12032336187,
+      "r2": 0.9704798631371038
+    },
+    "hist_gradient_boosting": {
+      "mae_gbp": 17773.185183439982,
+      "rmse_gbp": 22246.08540106752,
+      "r2": 0.9693918440286938
+    }
+  },
+  "energy_signal_ablation": {
+    "without_epc_selection_mae_gbp": 19888.015258744526,
+    "with_epc_selection_mae_gbp": 17773.185183439982,
+    "relative_mae_improvement": 0.10633690932908342
+  },
+  "held_out_metrics": {
+    "ridge": {
+      "mae_gbp": 16372.703376612579,
+      "rmse_gbp": 20328.48359675902,
+      "r2": 0.9695877909211612
+    },
+    "hist_gradient_boosting": {
+      "mae_gbp": 19613.45043820793,
+      "rmse_gbp": 24456.336544554295,
+      "r2": 0.9559829630308359
+    }
+  },
+  "median_baseline": {
+    "mae_gbp": 95223.41370317273,
+    "rmse_gbp": 117070.81452129898,
+    "r2": -0.008637893598058444
+  },
+  "interval_coverage": 0.9444444444444444,
+  "mean_interval_width_gbp": 88420.91831109277,
+  "pair_marginal_coverage": 0.9888888888888889,
+  "counts": {
+    "fit": {
+      "rows": 330,
+      "properties": 330,
+      "groups": 165
+    },
+    "selection": {
+      "rows": 90,
+      "properties": 90,
+      "groups": 45
+    },
+    "calibration": {
+      "rows": 90,
+      "properties": 90,
+      "groups": 45
+    },
+    "test": {
+      "rows": 90,
+      "properties": 90,
+      "groups": 45
+    }
+  },
+  "calibration_independent_groups": 45,
+  "group_overlap": false,
+  "time_evaluation": {
+    "status": "unavailable",
+    "reason": "No observed dated sales supplied; synthetic dates are not market evidence"
+  },
+  "limitations": [
+    "Observational associations are not causal retrofit effects.",
+    "Conformal coverage is marginal under exchangeability; scenario shifts can invalidate it.",
+    "Synthetic metrics verify implementation, not market accuracy.",
+    "Value-change intervals have no paired counterfactual coverage validation."
+  ],
+  "subgroup_metrics": {
+    "region": {
+      "Fixture Central": {
+        "rows": 28,
+        "mae_gbp": 15070.02410955855,
+        "rmse_gbp": 18406.138938828713,
+        "r2": 0.9702936496414606,
+        "coverage": 0.9642857142857143
+      },
+      "Fixture North": {
+        "rows": 33,
+        "mae_gbp": 20872.629547766737,
+        "rmse_gbp": 25041.635869825892,
+        "r2": 0.9465951636539264,
+        "coverage": 0.9696969696969697
+      },
+      "Fixture South": {
+        "rows": 29,
+        "mae_gbp": 22567.347906716273,
+        "rmse_gbp": 28557.475460861042,
+        "r2": 0.9285233592137845,
+        "coverage": 0.896551724137931
+      }
+    },
+    "property_type": {
+      "Detached": {
+        "rows": 21,
+        "mae_gbp": 19427.479036137436,
+        "rmse_gbp": 24920.837626230237,
+        "r2": 0.9647197318351428,
+        "coverage": 0.9047619047619048
+      },
+      "Flat": {
+        "rows": 18,
+        "mae_gbp": 26764.86899513715,
+        "rmse_gbp": 29962.80454794912,
+        "r2": 0.8334918658514315,
+        "coverage": 0.9444444444444444
+      },
+      "Semi-detached": {
+        "rows": 28,
+        "mae_gbp": 16296.423075935423,
+        "rmse_gbp": 21158.970415411055,
+        "r2": 0.9623358102260421,
+        "coverage": 0.9642857142857143
+      },
+      "Terraced": {
+        "rows": 23,
+        "mae_gbp": 18224.608332224645,
+        "rmse_gbp": 22929.56512837032,
+        "r2": 0.9682736351604906,
+        "coverage": 0.9565217391304348
+      }
+    },
+    "energy_rating": {
+      "A": {
+        "rows": 13,
+        "mae_gbp": 22782.572258442833,
+        "rmse_gbp": 25719.739458456334,
+        "r2": 0.9260717660615123,
+        "coverage": 0.8461538461538461
+      },
+      "B": {
+        "rows": 20,
+        "mae_gbp": 17617.67641560246,
+        "rmse_gbp": 21415.06689595819,
+        "r2": 0.9562887667390244,
+        "coverage": 1.0
+      },
+      "C": {
+        "rows": 12,
+        "mae_gbp": 11697.25854781174,
+        "rmse_gbp": 16845.336759158497,
+        "r2": 0.9791611862363422,
+        "coverage": 1.0
+      },
+      "D": {
+        "rows": 11,
+        "mae_gbp": 19406.28779177609,
+        "rmse_gbp": 23538.04153689824,
+        "r2": 0.9364596833685421,
+        "coverage": 1.0
+      },
+      "E": {
+        "rows": 10,
+        "mae_gbp": 19519.328276020013,
+        "rmse_gbp": 24301.565864909877,
+        "r2": 0.9724676849105944,
+        "coverage": 1.0
+      },
+      "F": {
+        "rows": 9,
+        "mae_gbp": 22791.505578125307,
+        "rmse_gbp": 26042.159582130593,
+        "r2": 0.9458627576723592,
+        "coverage": 1.0
+      },
+      "G": {
+        "rows": 15,
+        "mae_gbp": 24168.698034686793,
+        "rmse_gbp": 31144.20589846195,
+        "r2": 0.94079024517952,
+        "coverage": 0.8
+      }
+    }
+  }
+}

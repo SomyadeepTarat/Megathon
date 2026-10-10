@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Roof or loft insulation",
+    "cost": 1500,
+    "estimated saving": "12-18"
+  },
+  {
+    "name": "Heat pump",
+    "cost": 12500,
+    "estimated saving": "15-25"
+  },
+  {
+    "name": "Solar panels",
+    "cost": 6500,
+    "estimated saving": "20-35"
+  },
+  {
+    "name": "Double glazing",
+    "cost": 5000,
+    "estimated saving": "8-12"
+  },
+  {
+    "name": "Smart thermostat",
+    "cost": 200,
+    "estimated saving": "5-10"
+  }
+]

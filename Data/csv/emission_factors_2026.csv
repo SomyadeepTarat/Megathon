@@ -1,0 +1,3 @@
+fuel,kg_co2e_per_kwh,source,source_year,accounting_boundary,version,source_row_id,units,source_sheet,source_excel_row
+electricity,0.13096,https://www.gov.uk/government/publications/greenhouse-gas-reporting-conversion-factors-2026,2026,Scope 2 location-based UK generation; excludes transmission/distribution and well-to-tank emissions,DESNZ-2026-flat-revised-2026-07-31,7_400_4000_5_1,kg CO2e/kWh,xl/worksheets/sheet2.xml,3066
+gas,0.18231,https://www.gov.uk/government/publications/greenhouse-gas-reporting-conversion-factors-2026,2026,Scope 1 natural gas combustion; gross calorific value; excludes well-to-tank emissions,DESNZ-2026-flat-revised-2026-07-31,1_100_1004_6_1,kg CO2e/kWh,xl/worksheets/sheet2.xml,83

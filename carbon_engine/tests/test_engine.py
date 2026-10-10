@@ -27,10 +27,21 @@ def property_with_heat_inputs():
         "boiler_efficiency": 0.8,
         "scop": 4.0,
         "thermal_demand_kwh": 8000,
+        "thermal_demand_scope": "space_heating",
+        "space_heating_demand_kwh": 8000,
+        "hot_water_demand_kwh": 0,
+        "heat_pump_compatible": True,
+        "heat_pump_installed": False,
+        "loft_insulation_installed": False,
+        "solar_installed": False,
+        "solar": False,
         "roof_suitable_for_loft": True,
         "roof_suitable_for_solar": True,
-        "solar_generation_kwh": 1000,
-        "solar_self_consumption_fraction": 0.5,
+        "glazing": "single",
+        "smart_controls": "none",
+        "controls_compatible": True,
+        "proposed_solar_generation_kwh": 1000,
+        "proposed_solar_self_consumption_fraction": 0.5,
     })
     return data
 
@@ -70,11 +81,13 @@ def test_factor_without_provenance_is_rejected():
 
 
 def test_missing_thermal_data_makes_retrofit_unavailable():
-    result = simulate_carbon_impact(DEMO[0], ["loft_insulation"], FACTORS)
+    data = json.loads(json.dumps(DEMO[0]))
+    data["property"].update(loft_insulation_installed=False, roof_suitable_for_loft=True)
+    result = simulate_carbon_impact(data, ["loft_insulation"], FACTORS)
     assert result["status"] == "unavailable"
     assert result["after"] is None
     assert result["savings"]["annual_carbon_reduction_kg_co2e"] is None
-    assert "Heating demand is missing" in result["reason"]
+    assert "Space-heating demand is missing" in result["reason"]
 
 
 def test_heat_pump_switches_gas_heating_to_scop_electricity():
@@ -97,11 +110,11 @@ def test_solar_uses_self_consumption_and_does_not_change_demand():
 
 def test_solar_without_generation_or_self_consumption_is_unavailable():
     data = property_with_heat_inputs()
-    del data["property"]["solar_generation_kwh"]
-    del data["property"]["solar_self_consumption_fraction"]
+    del data["property"]["proposed_solar_generation_kwh"]
+    del data["property"]["proposed_solar_self_consumption_fraction"]
     result = simulate_carbon_impact(data, ["solar_panels"], FACTORS)
     assert result["status"] == "unavailable"
-    assert "generation and self-consumption data are missing" in result["reason"]
+    assert "Proposed solar generation is missing" in result["reason"]
 
 
 def test_combined_measures_apply_thermal_effects_sequentially_then_hp_and_solar():
@@ -114,7 +127,7 @@ def test_combined_measures_apply_thermal_effects_sequentially_then_hp_and_solar(
     # measures change heat-pump electricity but cannot affect that gas load.
     assert result["after"]["energy_use"]["gas_kwh"] == pytest.approx(2000)
     assert result["after"]["energy_use"]["total_kwh"] == pytest.approx(7830)
-    assert len(result["assumptions"]) == 5
+    assert len(result["assumptions"]) == 6
 
 
 def test_existing_retrofit_is_not_recommended_or_applied():
@@ -137,8 +150,121 @@ def test_rank_separates_missing_data_options_and_is_deterministic():
     assert "smart_thermostat" in {item["retrofit"] for item in first["ranking"]}
 
 
+def test_unknown_and_explicitly_incompatible_eligibility_stay_distinct():
+    data = property_with_heat_inputs()
+    data["property"].pop("roof_suitable_for_loft")
+    unknown = simulate_carbon_impact(data, ["loft_insulation"], FACTORS)
+    assert unknown["feasibility"]["loft_insulation"]["status"] == "conditional"
+    data["property"]["roof_suitable_for_loft"] = False
+    blocked = simulate_carbon_impact(data, ["loft_insulation"], FACTORS)
+    assert blocked["feasibility"]["loft_insulation"]["status"] == "infeasible"
+    data["property"].update(roof_suitable_for_loft=True, loft_insulation_installed=False, insulation="good")
+    assert simulate_carbon_impact(data, ["loft_insulation"], FACTORS)["feasibility"]["loft_insulation"]["status"] == "infeasible"
+
+
+def test_space_heat_reductions_do_not_change_hot_water_demand():
+    data = property_with_heat_inputs()
+    data["property"].update(space_heating_demand_kwh=8000, hot_water_demand_kwh=2000,
+                            thermal_demand_kwh=10000, thermal_demand_scope="space_heating_plus_hot_water",
+                            gas_space_heating_kwh=10000, gas_hot_water_kwh=2500,
+                            base_appliance_electricity_kwh=4800)
+    data["annual_energy"]["gas_kwh"] = 12500
+    result = simulate_carbon_impact(data, ["loft_insulation"], FACTORS)
+    assert result["status"] == "available"
+    # Space heat drops 15%; hot water remains 2,000 thermal kWh.
+    assert result["after"]["energy_use"]["gas_kwh"] == pytest.approx(11000)
+
+
+def test_solar_caps_self_consumption_and_never_uses_existing_generation_as_proposal():
+    data = property_with_heat_inputs()
+    data["property"].update(proposed_solar_generation_kwh=10000,
+                            proposed_solar_self_consumed_kwh=9000)
+    result = simulate_carbon_impact(data, ["solar_panels"], FACTORS)
+    assert result["after"]["solar"] == {"generation_kwh": 10000, "self_consumed_kwh": 4800, "exported_kwh": 5200}
+    data["property"].pop("proposed_solar_generation_kwh")
+    data["property"].pop("proposed_solar_self_consumed_kwh")
+    data["property"]["solar_generation_kwh"] = 10000
+    result = simulate_carbon_impact(data, ["solar_panels"], FACTORS)
+    assert result["status"] == "unavailable"
+
+
+def test_energy_simulation_survives_missing_production_factors():
+    result = simulate_carbon_impact(property_with_heat_inputs(), ["heat_pump"], None)
+    assert result["status"] == "available"
+    assert result["after"]["energy_use"]["gas_kwh"] == 2000
+    assert result["after"]["emissions"]["status"] == "unavailable"
+    assert result["savings"]["annual_carbon_reduction_kg_co2e"] is None
+
+
+def test_missing_boiler_scop_and_hot_water_cop_never_get_defaulted():
+    data = property_with_heat_inputs()
+    data["property"].pop("boiler_efficiency")
+    assert "boiler_efficiency is required" in simulate_carbon_impact(data, ["loft_insulation"], FACTORS)["reason"]
+    data = property_with_heat_inputs()
+    data["property"].pop("scop")
+    assert "SCOP is required" in simulate_carbon_impact(data, ["heat_pump"], FACTORS)["reason"]
+    data = property_with_heat_inputs()
+    data["property"].pop("hot_water_demand_kwh")
+    assert "Hot-water demand is missing" in simulate_carbon_impact(data, ["heat_pump"], FACTORS)["reason"]
+    data = property_with_heat_inputs()
+    data["property"].update(hot_water_demand_kwh=2000)
+    data["annual_energy"]["gas_kwh"] = 12500
+    assert "Hot-water COP is required" in simulate_carbon_impact(data, ["heat_pump"], FACTORS)["reason"]
+
+
+def test_signed_carbon_reduction_can_be_negative():
+    data = property_with_heat_inputs()
+    factors = {**FACTORS, "electricity": {**FACTORS["electricity"], "kg_co2e_per_kwh": 2.0}}
+    result = simulate_carbon_impact(data, ["heat_pump"], factors)
+    assert result["savings"]["annual_carbon_reduction_kg_co2e"] < 0
+
+
 def test_results_are_json_serializable():
     for result in (calculate_baseline_carbon(DEMO[0], FACTORS),
                    simulate_carbon_impact(property_with_heat_inputs(), ["heat_pump"], FACTORS),
                    rank_retrofits_by_carbon(property_with_heat_inputs(), FACTORS)):
         json.dumps(result, allow_nan=False)
+
+
+def test_nested_backend_physical_inputs_are_accepted_without_mutating_record():
+    from app.db.repository import CsvPropertyRepository
+    record = CsvPropertyRepository.from_project_root(ROOT).load_property('P00001')
+    original = record.model_dump(mode='json')
+    record.property.roof_suitable_for_loft = True
+    record.property.loft_insulation_installed = False
+    original_space = record.property.physical_inputs.space_heating_demand_kwh
+    result = simulate_carbon_impact(record, ['loft_insulation'], FACTORS)
+    assert result['status'] == 'available'
+    assert result['baseline']['energy_use']['gas_kwh'] == record.annual_energy.gas_kwh
+    assert original['property']['physical_inputs']['scop'] is None
+    assert record.property.physical_inputs.scop is None
+    assert record.property.physical_inputs.space_heating_demand_kwh == original_space
+
+
+def test_existing_solar_is_preserved_during_heating_upgrade():
+    data = property_with_heat_inputs()
+    data['property'].update(solar_installed=True, solar=True, solar_generation_kwh=2000,
+                            solar_self_consumed_kwh=1000, base_appliance_electricity_kwh=5800)
+    result = simulate_carbon_impact(data, ['loft_insulation'], FACTORS)
+    assert result['status'] == 'available'
+    assert result['after']['energy_use']['electricity_kwh'] == 4800
+    assert result['after']['physical_inputs']['annual_electricity_demand_kwh'] == 5800
+
+
+def test_measured_heat_pump_components_can_derive_missing_cops():
+    data = property_with_heat_inputs()
+    data['annual_energy'].update(electricity_kwh=4800, gas_kwh=0)
+    data['property'].update(heating_system='air_source_heat_pump', space_heating_demand_kwh=8000,
+        electric_space_heating_kwh=2000, hot_water_demand_kwh=1000,
+        electric_hot_water_kwh=400, base_appliance_electricity_kwh=2400)
+    data['property'].pop('scop')
+    result = simulate_carbon_impact(data, ['double_glazing'], FACTORS)
+    assert result['status'] == 'available'
+    assert result['after']['energy_use']['electricity_kwh'] == pytest.approx(4600)
+
+
+def test_basic_programmable_controls_do_not_block_smart_upgrade():
+    data = property_with_heat_inputs()
+    data['property']['smart_controls'] = 'basic'
+    result = simulate_carbon_impact(data, ['smart_thermostat'], FACTORS)
+    assert result['status'] == 'available'

@@ -8,7 +8,7 @@ from statistics import median
 
 SEED = 42
 YEAR = 2025
-FIELDS = ['property_id', 'month', 'electricity_kwh', 'gas_kwh', 'reading_status']
+FIELDS = ['property_id', 'month', 'electricity_kwh', 'gas_kwh', 'reading_status', 'electricity_demand_kwh', 'solar_generation_kwh', 'solar_self_consumed_kwh', 'solar_export_kwh', 'space_heating_demand_kwh', 'hot_water_demand_kwh', 'physical_inputs_status', 'reading_source']
 HEAT = [.17,.145,.12,.08,.04,.015,.005,.005,.035,.085,.13,.17]
 APPLIANCES = [.095,.085,.085,.08,.08,.075,.075,.075,.08,.085,.09,.095]
 SOLAR = [.025,.04,.075,.10,.125,.135,.135,.115,.09,.065,.035,.025]
@@ -62,7 +62,7 @@ def monthly_components(p, behavior=1.0, heat_share=None, appliance_share=None):
             raise ValueError(f'Unsupported heating system: {p["heating"]}')
         self_consumed=min(demand,.45*generation*ss[m])
         grid=max(0.0,demand-self_consumed)
-        result.append({'grid':grid,'gas':gas,'demand':demand,'solar_self_consumed':self_consumed,'thermal':heat})
+        result.append({'grid':grid,'gas':gas,'demand':demand,'solar_self_consumed':self_consumed,'thermal':heat,'hot_water':water,'generation':generation*ss[m],'export':generation*ss[m]-self_consumed})
     return result
 
 def generate(properties):
@@ -76,7 +76,7 @@ def generate(properties):
         appliance_share=[x*rng.uniform(.95,1.05) for x in APPLIANCES]
         monthly=monthly_components(p,behavior,heat_share,appliance_share)
         for m,v in enumerate(monthly,1):
-            rows.append(dict(zip(FIELDS,[p['property_id'],f'{YEAR}-{m:02d}',f'{v["grid"]:.2f}',f'{v["gas"]:.2f}','synthetic'])))
+            rows.append(dict(zip(FIELDS,[p['property_id'],f'{YEAR}-{m:02d}',f'{v["grid"]:.2f}',f'{v["gas"]:.2f}','synthetic',f'{v["demand"]:.6f}',f'{v["generation"]:.6f}',f'{v["solar_self_consumed"]:.6f}',f'{v["export"]:.6f}',f'{v["thermal"]:.6f}',f'{v["hot_water"]:.6f}','synthetic_modelled','generate_energy_usage.py v1; no observed meter record'])))
     return rows
 
 def validate(properties,rows):
@@ -116,13 +116,18 @@ def validate(properties,rows):
     return groups
 
 def main():
-    directory=Path(__file__).resolve().parent
-    with (directory/'properties.csv').open(newline='') as f:
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--properties', type=Path, default=Path(__file__).resolve().parents[1] / 'csv/properties.csv')
+    parser.add_argument('--output', type=Path, default=Path(__file__).resolve().parents[1] / 'csv/energy_usage.csv')
+    args = parser.parse_args()
+    with args.properties.open(newline='') as f:
         properties=list(csv.DictReader(f))
     rows=generate(properties)
     assert rows==generate(properties)
     groups=validate(properties,rows)
-    output=directory/'energy_usage.csv'
+    output=args.output
+    output.parent.mkdir(parents=True, exist_ok=True)
     with output.open('w',newline='') as f:
         writer=csv.DictWriter(f,fieldnames=FIELDS,lineterminator='\n');writer.writeheader();writer.writerows(rows)
     gas_totals=[sum(float(r['gas_kwh']) for r in groups[p['property_id']]) for p in properties if 'gas boiler' in p['heating']]

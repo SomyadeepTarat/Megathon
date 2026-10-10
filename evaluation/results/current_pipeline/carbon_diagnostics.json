@@ -1,0 +1,352 @@
+{
+  "warning": "Synthetic test factors/physical inputs; not official carbon estimates or real retrofit predictions.",
+  "baseline_test_arithmetic": {
+    "status": "available",
+    "property_id": "P00001",
+    "energy_use": {
+      "electricity_kwh": 2997.41,
+      "gas_kwh": 27040.56,
+      "total_kwh": 30037.97
+    },
+    "emissions": {
+      "status": "available",
+      "electricity_kg_co2e": 599.482,
+      "gas_kg_co2e": 4867.3008,
+      "total_kg_co2e": 5466.7828,
+      "reason": null,
+      "factors": {
+        "electricity": {
+          "fuel": "electricity",
+          "kg_co2e_per_kwh": 0.2,
+          "source": "AUDIT TEST ONLY",
+          "source_year": 2026,
+          "accounting_boundary": "test",
+          "version": "audit-test"
+        },
+        "gas": {
+          "fuel": "gas",
+          "kg_co2e_per_kwh": 0.18,
+          "source": "AUDIT TEST ONLY",
+          "source_year": 2026,
+          "accounting_boundary": "test",
+          "version": "audit-test"
+        }
+      }
+    },
+    "warnings": [
+      "Score uses a synthetic reference benchmark, not an official consumption standard.",
+      "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+      "Confirm alignment of the property snapshot and energy period; see source methodology."
+    ]
+  },
+  "supplied_dataset_heat_pump": {
+    "status": "unavailable",
+    "reason": "Selected package has unknown eligibility and remains conditional: heat_pump",
+    "property_id": "P00001",
+    "selected_retrofits": [
+      "heat_pump"
+    ],
+    "baseline": {
+      "energy_use": {
+        "electricity_kwh": 2997.41,
+        "gas_kwh": 27040.56,
+        "total_kwh": 30037.97
+      },
+      "emissions": {
+        "status": "available",
+        "electricity_kg_co2e": 599.482,
+        "gas_kg_co2e": 4867.3008,
+        "total_kg_co2e": 5466.7828,
+        "reason": null,
+        "factors": {
+          "electricity": {
+            "fuel": "electricity",
+            "kg_co2e_per_kwh": 0.2,
+            "source": "AUDIT TEST ONLY",
+            "source_year": 2026,
+            "accounting_boundary": "test",
+            "version": "audit-test"
+          },
+          "gas": {
+            "fuel": "gas",
+            "kg_co2e_per_kwh": 0.18,
+            "source": "AUDIT TEST ONLY",
+            "source_year": 2026,
+            "accounting_boundary": "test",
+            "version": "audit-test"
+          }
+        }
+      }
+    },
+    "after": null,
+    "savings": {
+      "electricity_kwh": null,
+      "gas_kwh": null,
+      "net_energy_kwh": null,
+      "annual_carbon_reduction_kg_co2e": null,
+      "reason": "Selected package has unknown eligibility and remains conditional: heat_pump"
+    },
+    "feasibility": {
+      "heat_pump": {
+        "status": "conditional",
+        "reason": "Heat pump compatibility is unknown; a site assessment is required."
+      }
+    },
+    "assumptions": [
+      "Brief reports a 15\u201325% purchased-energy reduction range for context; scenario fuel changes are calculated from useful demand / supplied SCOP (and hot-water COP), with no blanket percentage applied."
+    ],
+    "warnings": [
+      "Score uses a synthetic reference benchmark, not an official consumption standard.",
+      "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+      "Confirm alignment of the property snapshot and energy period; see source methodology."
+    ]
+  },
+  "heat_pump_incompatible_false": {
+    "status": "unavailable",
+    "reason": "Selected package includes explicitly infeasible or already-installed measures: heat_pump",
+    "property_id": "P00001",
+    "selected_retrofits": [
+      "heat_pump"
+    ],
+    "baseline": {
+      "energy_use": {
+        "electricity_kwh": 2997.41,
+        "gas_kwh": 27040.56,
+        "total_kwh": 30037.97
+      },
+      "emissions": {
+        "status": "available",
+        "electricity_kg_co2e": 599.482,
+        "gas_kg_co2e": 4867.3008,
+        "total_kg_co2e": 5466.7828,
+        "reason": null,
+        "factors": {
+          "electricity": {
+            "fuel": "electricity",
+            "kg_co2e_per_kwh": 0.2,
+            "source": "AUDIT TEST ONLY",
+            "source_year": 2026,
+            "accounting_boundary": "test",
+            "version": "audit-test"
+          },
+          "gas": {
+            "fuel": "gas",
+            "kg_co2e_per_kwh": 0.18,
+            "source": "AUDIT TEST ONLY",
+            "source_year": 2026,
+            "accounting_boundary": "test",
+            "version": "audit-test"
+          }
+        }
+      }
+    },
+    "after": null,
+    "savings": {
+      "electricity_kwh": null,
+      "gas_kwh": null,
+      "net_energy_kwh": null,
+      "annual_carbon_reduction_kg_co2e": null,
+      "reason": "Selected package includes explicitly infeasible or already-installed measures: heat_pump"
+    },
+    "feasibility": {
+      "heat_pump": {
+        "status": "infeasible",
+        "reason": "Heat pump compatibility is explicitly false."
+      }
+    },
+    "assumptions": [
+      "Brief reports a 15\u201325% purchased-energy reduction range for context; scenario fuel changes are calculated from useful demand / supplied SCOP (and hot-water COP), with no blanket percentage applied."
+    ],
+    "warnings": [
+      "Score uses a synthetic reference benchmark, not an official consumption standard.",
+      "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+      "Confirm alignment of the property snapshot and energy period; see source methodology."
+    ]
+  },
+  "controls_incompatible_false": {
+    "status": "unavailable",
+    "reason": "Selected package includes explicitly infeasible or already-installed measures: smart_thermostat",
+    "property_id": "P00001",
+    "selected_retrofits": [
+      "smart_thermostat"
+    ],
+    "baseline": {
+      "energy_use": {
+        "electricity_kwh": 2997.41,
+        "gas_kwh": 27040.56,
+        "total_kwh": 30037.97
+      },
+      "emissions": {
+        "status": "available",
+        "electricity_kg_co2e": 599.482,
+        "gas_kg_co2e": 4867.3008,
+        "total_kg_co2e": 5466.7828,
+        "reason": null,
+        "factors": {
+          "electricity": {
+            "fuel": "electricity",
+            "kg_co2e_per_kwh": 0.2,
+            "source": "AUDIT TEST ONLY",
+            "source_year": 2026,
+            "accounting_boundary": "test",
+            "version": "audit-test"
+          },
+          "gas": {
+            "fuel": "gas",
+            "kg_co2e_per_kwh": 0.18,
+            "source": "AUDIT TEST ONLY",
+            "source_year": 2026,
+            "accounting_boundary": "test",
+            "version": "audit-test"
+          }
+        }
+      }
+    },
+    "after": null,
+    "savings": {
+      "electricity_kwh": null,
+      "gas_kwh": null,
+      "net_energy_kwh": null,
+      "annual_carbon_reduction_kg_co2e": null,
+      "reason": "Selected package includes explicitly infeasible or already-installed measures: smart_thermostat"
+    },
+    "feasibility": {
+      "smart_thermostat": {
+        "status": "infeasible",
+        "reason": "Controls compatibility is explicitly false."
+      }
+    },
+    "assumptions": [
+      "Reduces remaining space-heating demand by 7.5% (brief range 5\u201310%); hot-water demand is unchanged."
+    ],
+    "warnings": [
+      "Score uses a synthetic reference benchmark, not an official consumption standard.",
+      "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+      "Confirm alignment of the property snapshot and energy period; see source methodology."
+    ]
+  },
+  "solar_self_consumption_exceeds_generation": {
+    "status": "unavailable",
+    "reason": "Proposed solar generation is missing. Existing solar generation is not reused as a new-installation estimate.",
+    "property_id": "P00001",
+    "selected_retrofits": [
+      "solar_panels"
+    ],
+    "baseline": {
+      "energy_use": {
+        "electricity_kwh": 2997.41,
+        "gas_kwh": 27040.56,
+        "total_kwh": 30037.97
+      },
+      "emissions": {
+        "status": "available",
+        "electricity_kg_co2e": 599.482,
+        "gas_kg_co2e": 4867.3008,
+        "total_kg_co2e": 5466.7828,
+        "reason": null,
+        "factors": {
+          "electricity": {
+            "fuel": "electricity",
+            "kg_co2e_per_kwh": 0.2,
+            "source": "AUDIT TEST ONLY",
+            "source_year": 2026,
+            "accounting_boundary": "test",
+            "version": "audit-test"
+          },
+          "gas": {
+            "fuel": "gas",
+            "kg_co2e_per_kwh": 0.18,
+            "source": "AUDIT TEST ONLY",
+            "source_year": 2026,
+            "accounting_boundary": "test",
+            "version": "audit-test"
+          }
+        }
+      }
+    },
+    "after": null,
+    "savings": {
+      "electricity_kwh": null,
+      "gas_kwh": null,
+      "net_energy_kwh": null,
+      "annual_carbon_reduction_kg_co2e": null,
+      "reason": "Proposed solar generation is missing. Existing solar generation is not reused as a new-installation estimate."
+    },
+    "feasibility": {
+      "solar_panels": {
+        "status": "feasible",
+        "reason": "Known installation and compatibility fields permit screening; survey confirmation may still be needed."
+      }
+    },
+    "assumptions": [
+      "Brief gives 20\u201335% grid-import reduction; midpoint 27.5% is used only when the caller supplies generation or self-consumption data, and the reduction is capped by remaining import demand."
+    ],
+    "warnings": [
+      "Score uses a synthetic reference benchmark, not an official consumption standard.",
+      "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+      "Confirm alignment of the property snapshot and energy period; see source methodology."
+    ]
+  },
+  "existing_solar_in_backend_record": {
+    "status": "unavailable",
+    "reason": "Selected package includes explicitly infeasible or already-installed measures: solar_panels",
+    "property_id": "P00003",
+    "selected_retrofits": [
+      "solar_panels"
+    ],
+    "baseline": {
+      "energy_use": {
+        "electricity_kwh": 5051.29,
+        "gas_kwh": 0.0,
+        "total_kwh": 5051.29
+      },
+      "emissions": {
+        "status": "available",
+        "electricity_kg_co2e": 1010.258,
+        "gas_kg_co2e": 0.0,
+        "total_kg_co2e": 1010.258,
+        "reason": null,
+        "factors": {
+          "electricity": {
+            "fuel": "electricity",
+            "kg_co2e_per_kwh": 0.2,
+            "source": "AUDIT TEST ONLY",
+            "source_year": 2026,
+            "accounting_boundary": "test",
+            "version": "audit-test"
+          },
+          "gas": {
+            "fuel": "gas",
+            "kg_co2e_per_kwh": 0.18,
+            "source": "AUDIT TEST ONLY",
+            "source_year": 2026,
+            "accounting_boundary": "test",
+            "version": "audit-test"
+          }
+        }
+      }
+    },
+    "after": null,
+    "savings": {
+      "electricity_kwh": null,
+      "gas_kwh": null,
+      "net_energy_kwh": null,
+      "annual_carbon_reduction_kg_co2e": null,
+      "reason": "Selected package includes explicitly infeasible or already-installed measures: solar_panels"
+    },
+    "feasibility": {
+      "solar_panels": {
+        "status": "infeasible",
+        "reason": "This measure is already present; installing it again is not recommended."
+      }
+    },
+    "assumptions": [
+      "Brief gives 20\u201335% grid-import reduction; midpoint 27.5% is used only when the caller supplies generation or self-consumption data, and the reduction is capped by remaining import demand."
+    ],
+    "warnings": [
+      "Score uses a synthetic reference benchmark, not an official consumption standard.",
+      "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+      "Confirm alignment of the property snapshot and energy period; see source methodology."
+    ]
+  }
+}

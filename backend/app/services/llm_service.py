@@ -155,7 +155,12 @@ Use only explicitly requested upgrades. Never include a negated upgrade. For amb
 comparisons, removal from an unspecified previous package, pronouns, unsupported upgrades,
 or unclear budgets choose clarify. No prior conversation is available. A budget planning
 question without an explicit package uses optimize_budget. Do not invent a budget.
-Use null for absent budget. Default objective is carbon_reduction."""
+Use null for absent budget. Default objective is carbon_reduction.
+Ordinary questions about scores, calculations, missing evidence, valuation, or methodology
+use explain, even when they mention a retrofit. Examples: 'Why is my score low?',
+'How is carbon calculated?', 'Why does electricity increase with a heat pump?',
+'Why is valuation unavailable?' all use explain with an empty retrofit list.
+Clarify is for unresolved action requests, not ordinary explanation questions."""
 
 EXPLANATION_PROMPT = """You are GreenPrint AI, a residential energy explanation assistant.
 Never calculate, invent, interpolate or modify scores, savings, costs, carbon or values.
@@ -189,13 +194,20 @@ def ambiguous_package(message: str) -> bool:
 def parse_explicit(message: str) -> Intent | None:
     """Conservative offline grammar; complex text goes to clarification/LLM."""
     text = message.lower().strip().rstrip('?.!')
+    # These requests select current verified evidence, never a hypothetical package.
+    if re.match(r'^(?:why\b|how\b|explain\b|does the model\b|can i\b)', text) and not re.search(
+            r'\b(?:what if|simulate|budget|compare|versus|instead|remove|skip)\b', text):
+        return Intent(intent='explain')
+    match = re.fullmatch(r'what can i do with (?:a )?[£]([\d,]+(?:\.\d{1,2})?) budget', text)
+    if match:
+        return Intent(intent='optimize_budget', budget_gbp=float(match[1].replace(',', '')))
     match = re.fullmatch(r'(?:what if i (?:have|had)|my budget is|budget)\s+(?:only\s+)?[£]?([\d,]+(?:\.\d{1,2})?)', text)
     if match:
         try:
             return Intent(intent='optimize_budget', budget_gbp=float(match[1].replace(',', '')))
         except ValueError:
             return Intent(intent='clarify')
-    match = re.fullmatch(r'(?:what if i|what happens if i|simulate|install|add)\s+(?:(?:install|add)\s+)?(?:only\s+)?(.+)', text)
+    match = re.fullmatch(r'(?:what if i|what happens if i|simulate|install|add)\s+(?:(?:install|add|combine)\s+)?(?:only\s+)?(.+)', text)
     if match:
         remainder = match[1]
         found = []
@@ -229,6 +241,9 @@ async def extract_intent(message: str, provider: Provider | None) -> tuple[Inten
                 raise ValueError('Empty package requires explicit selection')
             if intent.intent == 'explain' and re.search(r'\b(?:what if|what happens if)\b', message.lower()):
                 raise ValueError('What-if cannot use stale assessment')
+            if intent.intent == 'explain' and re.search(
+                    r'\b(?:which package|what combination|what can i do|most|best|budget)\b', message.lower()):
+                raise ValueError('Package optimization cannot use a baseline explanation')
             return intent, None
         except Exception:
             reason = 'intent_provider_failed'

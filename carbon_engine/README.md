@@ -63,22 +63,58 @@ unavailable. The demo record is synthetic and is only a software fixture.
 ## Modeling assumptions
 
 `retrofit_catalogue.py` records the brief's ranges and deterministic midpoint
-screening values: loft insulation 15% (12–18%), heat pump 20% (15–25%, treated
-as a brief-level purchased-energy statement but not applied as a blanket fuel
-cut), solar import reduction 27.5% (20–35%, usable only with physical
-self-consumption data), double glazing 10% (8–12%), and thermostat 7.5%
-(5–10%). Envelope and thermostat percentages apply sequentially to explicit
-thermal demand only. Gas heating needs boiler efficiency; a heat pump needs
-SCOP. Solar offsets only supplied/projected self-consumed generation and is
-capped at post-measure grid imports. The engine does not count exports.
+assumptions: loft insulation 15% (12–18%), double glazing 10% (8–12%), and
+thermostat 7.5% (5–10%). They are applied sequentially to explicit
+space-heating demand; hot-water demand is unchanged. The heat-pump (15–25%)
+and solar (20–35%) brief ranges are context, not blanket multipliers: heat
+pump electricity is useful space/hot-water demand divided by supplied SCOP
+and hot-water COP; solar requires separately supplied proposed generation and
+self-consumption. Existing solar generation is never reused as predicted new
+generation. Solar offsets grid imports only, is capped at generation and
+remaining imports, and exports are reported separately.
+
+## Physical input fields
+
+Prefer separate `space_heating_demand_kwh` and `hot_water_demand_kwh`, with
+`thermal_demand_scope` when a total is also provided. The adapter preserves
+source gas/electric heating components, appliance electricity, boiler
+efficiency, SCOP, hot-water COP, and provenance. A heat-pump scenario needs
+SCOP and, when hot-water demand is present, hot-water COP (unless measured
+electric hot-water use is available for the existing system). Missing values
+remain unavailable; they are never filled with zero or a generic estimate.
+For a proposed solar installation provide `proposed_solar_generation_kwh`
+and either `proposed_solar_self_consumed_kwh` or
+`proposed_solar_self_consumption_fraction`.
+
+The backend exposes `POST /retrofits/optimize`. It enumerates all 32 measure
+subsets against the same baseline, but only ranks packages whose eligibility,
+objective inputs, and per-measure costs are known and whose total cost is
+within `budget_gbp`. Costs must be supplied with source and date; no default
+catalogue prices are treated as production evidence. Carbon ranking requires
+documented fuel factors; energy ranking does not. Shortest-payback ranking
+requires both tariffs, known cost, and positive bill savings. Every tested
+subset is returned in `package_decisions` with an eligible, rejected,
+conditional, or unavailable reason.
+
+Recommendation suitability is an evidence label, not a rank score: High
+requires confirmed eligibility, positive modeled objective benefit, observed
+annual energy, and observed physical-input provenance; Medium identifies
+conditional eligibility or synthetic/estimated screening evidence; Low marks
+explicit incompatibility/already-present measures or non-positive modeled
+benefit. Package ordering uses the selected objective directly and applies
+cost/measure IDs only as deterministic tie-breakers.
+Scenario state records the smart-thermostat installation flag while retaining
+the prior smart-controls category; no unsupported score-category mapping is
+assumed.
 
 Retrofit input data should provide, as applicable:
 
 - annual purchased `electricity_kwh` and `gas_kwh` (null is missing; zero is known zero);
 - `heating_system`, `thermal_demand_kwh`, and `boiler_efficiency` for gas systems;
 - `scop` for existing or proposed heat pumps; optional explicit `heating_energy_kwh` can be cross-checked;
-- `solar_self_consumed_kwh`, or both `solar_generation_kwh` and
-  `solar_self_consumption_fraction` for proposed PV;
+- `proposed_solar_generation_kwh` and either
+  `proposed_solar_self_consumed_kwh` or
+  `proposed_solar_self_consumption_fraction` for a new PV installation;
 - `roof_suitable_for_loft`, `roof_suitable_for_solar`, and explicit installed
   flags where the existing generic property fields cannot establish status.
 

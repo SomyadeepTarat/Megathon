@@ -42,6 +42,11 @@ def scenario_view(value, requested):
                   valuation=value.valuation.model_dump(mode='json'),
                   assumptions=list(value.assumptions), warnings=list(value.warnings),
                   installation_cost_gbp=value.installation_cost_gbp,
+                  annual_bill_savings_gbp=value.annual_bill_savings_gbp,
+                  bill_savings_reason=value.bill_savings_reason,
+                  simple_payback_years=value.simple_payback_years,
+                  payback_reason=value.payback_reason,
+                  carbon_savings_by_fuel_kg_co2e=value.carbon_savings_by_fuel_kg_co2e,
                   applied_retrofits=list(value.applied_retrofits), versions=value.versions)
     if value.after_assessment:
         result['score']['after'] = value.after_assessment.score.score
@@ -77,7 +82,10 @@ class BackendAdvisorEngines:
         row = self._record(property_id)
         return ScenarioRequest(property=row.property, annual_energy=row.annual_energy,
                                benchmark=row.benchmark, retrofits=retrofits,
-                               budget_gbp=budget, objective=objective, emission_factors=row.emission_factors)
+                               budget_gbp=budget, objective=objective, emission_factors=row.emission_factors,
+                               retrofit_costs=row.retrofit_costs,
+                               electricity_tariff_gbp_per_kwh=row.electricity_tariff_gbp_per_kwh,
+                               gas_tariff_gbp_per_kwh=row.gas_tariff_gbp_per_kwh)
 
     async def assessment(self, property_id):
         def execute():
@@ -88,6 +96,7 @@ class BackendAdvisorEngines:
             result['energy'] = {'baseline_electricity_kwh': row.annual_energy.electricity_kwh,
                                 'baseline_gas_kwh': row.annual_energy.gas_kwh}
             result['carbon'] = self.carbon().baseline(row) if hasattr(self.carbon(), 'baseline') else {'status': 'unavailable'}
+            result['valuation'] = self.valuation().predict_value_impact(row.property, row.property).model_dump(mode='json')
             result['sources'] = [f'Property dataset: {row.dataset_kind}; {row.dataset_source}',
                                  f'Annual energy: {row.annual_energy.quality}; {row.annual_energy.method}']
             if row.benchmark:
@@ -121,7 +130,19 @@ class BackendAdvisorEngines:
         return await asyncio.to_thread(execute)
 
     async def optimize(self, property_id, budget_gbp, objective):
-        # P1's OptimizationResult contains ranked simulation outputs but no full selected
-        # ScenarioResponse. Until its objective/selection contract is wired, fail honestly.
-        await asyncio.to_thread(self._record, property_id)
-        raise EngineUnavailable('Budget optimization is not integrated with the application.')
+        def execute():
+            from app.services.optimization import optimize_packages
+            from app.services.p4_adapter import P4CarbonAdapter
+            request = self._request(property_id, [], budget_gbp, objective)
+            carbon = self.carbon()
+            if isinstance(carbon, P4CarbonAdapter):
+                carbon = P4CarbonAdapter(request.emission_factors)
+            value = optimize_packages(request, self.retrofit(), carbon, self.valuation())
+            if value.best_scenario is None:
+                return {'property_id': property_id, 'status': 'unavailable', 'reason': value.reason,
+                        'package_decisions': value.package_decisions, 'warnings': [value.methodology]}
+            result = scenario_view(value.best_scenario, value.best_scenario.applied_retrofits)
+            result['package_decisions'] = value.package_decisions
+            result['sources'] = [value.methodology]
+            return result
+        return await asyncio.to_thread(execute)

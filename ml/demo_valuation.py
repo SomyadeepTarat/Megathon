@@ -12,6 +12,9 @@ def main():
     for _, row in df.iterrows():
         if all(lo <= row[c] <= hi for c, (lo, hi) in artifact["numeric_bounds"].items()):
             baseline = row.to_dict()
+            # Declared synthetic input required by the API guard, not a model
+            # feature or an anchor derived from this row's sale-price target.
+            baseline['current_property_value_gbp'] = 300000
             break
     else:
         raise ValueError("No fixture row inside training support")

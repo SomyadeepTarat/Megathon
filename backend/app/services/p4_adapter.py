@@ -11,7 +11,8 @@ class CalculationUnavailable(Exception):
 
 
 def configured_factors():
-    path = os.getenv('GREENPRINT_EMISSION_FACTORS_FILE')
+    default = Path(__file__).resolve().parents[3] / 'Data/csv/emission_factors_2026.csv'
+    path = os.getenv('GREENPRINT_EMISSION_FACTORS_FILE', str(default))
     if not path:
         return None
     return FactorSet.model_validate(load_emission_factors(Path(path)))
@@ -58,7 +59,13 @@ class P4RetrofitAdapter:
         return FeasibilityResult(status='available', items=items)
 
     def raw_simulation(self, request):
-        result = simulate_carbon_impact(engine_payload(request), request.retrofits, factor_data(request))
+        try:
+            factors = factor_data(request)
+        except CalculationUnavailable:
+            # Fuel changes do not depend on emission factors. Carbon is attached
+            # as explicitly unavailable by the carbon adapter in this case.
+            factors = None
+        result = simulate_carbon_impact(engine_payload(request), request.retrofits, factors)
         if result['status'] != 'available':
             raise CalculationUnavailable(result.get('reason', 'P4 simulation unavailable'))
         return result
@@ -80,17 +87,33 @@ class P4RetrofitAdapter:
         if 'double_glazing' in request.retrofits:
             updated.glazing = 'double'
         if 'smart_thermostat' in request.retrofits:
+            updated.smart_thermostat_installed = True
             updated.smart_controls = 'advanced'
         if 'loft_insulation' in request.retrofits:
             updated.loft_insulation_installed = True
             warnings.append('Loft upgraded; whole-home insulation category is retained without an estimator.')
-        demand = updated.physical_inputs.thermal_demand_kwh
-        if demand is not None:
-            from carbon_engine.retrofit_catalogue import RETROFIT_CATALOGUE, SEQUENTIAL_ORDER
+        from carbon_engine.retrofit_catalogue import RETROFIT_CATALOGUE, SEQUENTIAL_ORDER
+        space = updated.physical_inputs.space_heating_demand_kwh
+        legacy_space_demand = space is None and updated.physical_inputs.thermal_demand_kwh is not None and updated.physical_inputs.hot_water_demand_kwh is None and updated.physical_inputs.thermal_demand_scope not in ('space_heating_plus_hot_water', 'total')
+        if legacy_space_demand:
+            space = updated.physical_inputs.thermal_demand_kwh
+        if space is not None:
             for measure in SEQUENTIAL_ORDER:
-                if measure in request.retrofits and RETROFIT_CATALOGUE[measure]['effect_kind'] == 'thermal_demand_reduction':
-                    demand *= 1 - RETROFIT_CATALOGUE[measure]['fraction']
-            updated.physical_inputs.thermal_demand_kwh = demand
+                if measure in request.retrofits and RETROFIT_CATALOGUE[measure]['effect_kind'] == 'space_heating_demand_reduction':
+                    space *= 1 - RETROFIT_CATALOGUE[measure]['fraction']
+            updated.physical_inputs.space_heating_demand_kwh = space
+            if updated.physical_inputs.thermal_demand_scope == 'space_heating' or legacy_space_demand:
+                updated.physical_inputs.thermal_demand_kwh = space
+            elif updated.physical_inputs.thermal_demand_scope == 'space_heating_plus_hot_water' and updated.physical_inputs.hot_water_demand_kwh is not None:
+                updated.physical_inputs.thermal_demand_kwh = space + updated.physical_inputs.hot_water_demand_kwh
+        if 'solar_panels' in request.retrofits:
+            updated.physical_inputs.solar_generation_kwh = result['after']['solar']['generation_kwh']
+            updated.physical_inputs.solar_self_consumed_kwh = result['after']['solar']['self_consumed_kwh']
+        if result['after'].get('physical_inputs'):
+            for field, value in result['after']['physical_inputs'].items():
+                setattr(updated.physical_inputs, field, value)
+        updated.physical_inputs.provenance = {**updated.physical_inputs.provenance,
+            'scenario': self.version}
         if request.retrofits:
             updated.physical_inputs.heating_energy_kwh = None
         costs = request.retrofit_costs
@@ -100,10 +123,30 @@ class P4RetrofitAdapter:
         for key, value in request.property.physical_inputs.model_dump().items():
             if key != 'provenance' and value is not None and key not in request.property.physical_inputs.provenance:
                 warnings.append(f'Physical input {key} has no per-field source metadata.')
+        e_saving = request.annual_energy.electricity_kwh - result['after']['energy_use']['electricity_kwh']
+        g_saving = request.annual_energy.gas_kwh - result['after']['energy_use']['gas_kwh']
+        bill = None
+        bill_reason = None
+        if request.electricity_tariff_gbp_per_kwh is None or request.gas_tariff_gbp_per_kwh is None:
+            bill_reason = 'Both electricity and gas tariffs are required to calculate annual bill savings.'
+        else:
+            bill = e_saving * request.electricity_tariff_gbp_per_kwh + g_saving * request.gas_tariff_gbp_per_kwh
+        payback = None
+        payback_reason = None
+        if cost is None:
+            payback_reason = 'Documented installation cost is unavailable.'
+        elif bill is None:
+            payback_reason = bill_reason
+        elif bill <= 0:
+            payback_reason = 'Annual bill savings are not positive.'
+        else:
+            payback = cost / bill
         return SimulationResult(updated_property=updated, after=FuelState(**{
             fuel: result['after']['energy_use'][fuel] for fuel in ('electricity_kwh', 'gas_kwh')}),
             applied_retrofits=request.retrofits, installation_cost_gbp=cost,
-            methodology_version=self.version, assumptions=result['assumptions'], warnings=warnings)
+            methodology_version=self.version, assumptions=result['assumptions'], warnings=warnings,
+            annual_bill_savings_gbp=bill, bill_savings_reason=bill_reason,
+            simple_payback_years=payback, payback_reason=payback_reason)
 
 
 class P4CarbonAdapter:
