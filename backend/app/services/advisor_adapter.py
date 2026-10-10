@@ -42,6 +42,11 @@ def scenario_view(value, requested):
                   valuation=value.valuation.model_dump(mode='json'),
                   assumptions=list(value.assumptions), warnings=list(value.warnings),
                   installation_cost_gbp=value.installation_cost_gbp,
+                  annual_bill_savings_gbp=value.annual_bill_savings_gbp,
+                  bill_savings_reason=value.bill_savings_reason,
+                  simple_payback_years=value.simple_payback_years,
+                  payback_reason=value.payback_reason,
+                  carbon_savings_by_fuel_kg_co2e=value.carbon_savings_by_fuel_kg_co2e,
                   applied_retrofits=list(value.applied_retrofits), versions=value.versions)
     if value.after_assessment:
         result['score']['after'] = value.after_assessment.score.score

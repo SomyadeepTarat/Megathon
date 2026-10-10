@@ -38,6 +38,10 @@ class SimulationResult(StrictModel):
     methodology_version: str = Field(min_length=1)
     assumptions: list[str] = Field(default_factory=list)
     warnings: list[str] = Field(default_factory=list)
+    annual_bill_savings_gbp: float | None = Field(default=None, allow_inf_nan=False)
+    bill_savings_reason: str | None = None
+    simple_payback_years: float | None = Field(default=None, ge=0, allow_inf_nan=False)
+    payback_reason: str | None = None
 
 
 class EnergyImpact(StrictModel):
@@ -131,6 +135,7 @@ class ScenarioResponse(StrictModel):
     status: Literal['success', 'partial', 'rejected', 'unavailable']
     baseline_carbon: dict | None = None
     after_carbon: dict | None = None
+    carbon_savings_by_fuel_kg_co2e: dict[str, float] | None = None
     reason: str | None = None
     baseline_assessment: AssessmentResponse
     feasibility: FeasibilityResult
@@ -144,6 +149,10 @@ class ScenarioResponse(StrictModel):
     assumptions: list[str] = Field(default_factory=list)
     warnings: list[str] = Field(default_factory=list)
     versions: dict[str, str] = Field(default_factory=dict)
+    annual_bill_savings_gbp: float | None = Field(default=None, allow_inf_nan=False)
+    bill_savings_reason: str | None = None
+    simple_payback_years: float | None = Field(default=None, ge=0, allow_inf_nan=False)
+    payback_reason: str | None = None
 
 
 class PropertyRecord(AssessmentRequest):
@@ -175,6 +184,7 @@ class OptimizationResult(StrictModel):
     status: Literal['available', 'unavailable']
     reason: str | None = None
     ranked_packages: list[SimulationResult] = Field(default_factory=list)
+    package_decisions: list[dict] = Field(default_factory=list)
     objective: Literal['carbon_reduction', 'energy_reduction', 'shortest_payback']
     methodology: str
 
@@ -191,6 +201,10 @@ class RecommendationOption(StrictModel):
     retrofit: Retrofit
     feasibility: FeasibilityItem
     scenario: ScenarioResponse
+    suitability: Literal['High', 'Medium', 'Low']
+    suitability_reason: str = Field(min_length=1)
+    priority: int | None = Field(default=None, ge=1)
+    estimated_cost_gbp: float | None = Field(default=None, ge=0, allow_inf_nan=False)
 
 
 class RecommendationResponse(StrictModel):

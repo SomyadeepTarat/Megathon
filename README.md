@@ -40,6 +40,8 @@ python -m pytest backend/tests -q
 | GET /properties/{id}/assessment | Score components and issues |
 | POST /assessments | Assessment of a supplied or edited snapshot |
 | POST /scenarios/simulate | Orchestration through dependency-injected engines |
+| POST /retrofits/recommend | Individual feasible measures with objective ranking and evidence-based suitability |
+| POST /retrofits/optimize | Exhaustive 32-package budget/objective search; requires caller-supplied documented costs |
 | POST /advisor/chat | Grounded explanations of server-owned results; explicit partial/unavailable status |
 
 The CSV dataset intentionally has no scoring benchmark. Full score is unavailable until a documented applicable benchmark is supplied; known component subscores remain visible. No invented official benchmark is bundled. Benchmark source authenticity is not verified by Pydantic: P3 must provide a trusted repository.

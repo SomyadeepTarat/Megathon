@@ -7,10 +7,11 @@ from fastapi.responses import JSONResponse
 from app.core.efficiency import assess
 from app.db.repository import JsonPropertyRepository, CsvPropertyRepository, EditableRepository
 from app.schemas.models import AssessmentRequest, AssessmentResponse, ScenarioRequest, RecommendationRequest
-from app.schemas.engines import PropertyRecord, PropertySummary, ScenarioResponse, RecommendationResponse, ValuationRequest, ValuationResult, FullAssessmentResponse
+from app.schemas.engines import PropertyRecord, PropertySummary, ScenarioResponse, RecommendationResponse, OptimizationResult, ValuationRequest, ValuationResult, FullAssessmentResponse
 from app.services.adapters import ExistingValuationAdapter
 from app.services.p4_adapter import P4RetrofitAdapter, P4CarbonAdapter, configured_factors
 from app.services.recommendations import recommend
+from app.services.optimization import optimize_packages
 from app.services.orchestrator import EngineContractError, run_scenario
 from app.api.advisor import router as advisor_router
 from app.services.advisor_adapter import BackendAdvisorEngines
@@ -72,7 +73,7 @@ def health():
                           'valuation': {'artifact_present': model_ready, 'evidence_supported': 'checked per request; synthetic uplift disabled'},
                           'advisor': {'mounted': True, 'provider': os.getenv('LLM_PROVIDER', 'deterministic')},
                           'scoring': {'complete_dataset_scores_ready': all(assess(row).score.status == 'available' for row in repository.list_properties()), 'requires': ['applicable benchmark and complete component inputs']},
-                          'budget_optimizer': {'ready': False, 'reason': 'P4 cost catalogue, tariffs and optimizer remain pending.'}}}
+                          'budget_optimizer': {'ready': True, 'requires': ['budget', 'documented costs for selected measures', 'objective-specific inputs']}}}
 
 
 @app.get('/properties', response_model=list[PropertySummary])
@@ -146,6 +147,14 @@ def register_property(request: AssessmentRequest, repo=Depends(get_repository)):
 def recommendations(request: RecommendationRequest, retrofit=Depends(get_retrofit_engine),
                     carbon=Depends(get_carbon_engine), valuation=Depends(get_valuation_engine)):
     return recommend(request, retrofit, P4CarbonAdapter(request.emission_factors) if isinstance(carbon, P4CarbonAdapter) else carbon, valuation)
+
+
+@app.post('/retrofits/optimize', response_model=OptimizationResult)
+def optimize(request: RecommendationRequest, retrofit=Depends(get_retrofit_engine),
+             carbon=Depends(get_carbon_engine), valuation=Depends(get_valuation_engine)):
+    return optimize_packages(request, retrofit,
+        P4CarbonAdapter(request.emission_factors) if isinstance(carbon, P4CarbonAdapter) else carbon,
+        valuation)
 
 
 @app.post('/properties/{property_id}/valuation/impact', response_model=ValuationResult)

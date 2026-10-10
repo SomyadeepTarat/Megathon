@@ -115,8 +115,39 @@ class CsvPropertyRepository:
                 insulation=row['insulation'].lower(), heating_system=system, glazing=row['glazing'].lower(),
                 solar_installed=solar,
                 heat_pump_installed=row['heating'] == 'Heat pump',
+                # The source CSV is the canonical source for P3/P4 physical
+                # inputs. Empty cells remain null; no values are inferred.
+                loft_insulation_installed=self._optional_bool(row.get('loft_insulation_installed')),
+                roof_suitable_for_loft=self._optional_bool(row.get('roof_suitable_for_loft')),
+                roof_suitable_for_solar=self._optional_bool(row.get('roof_suitable_for_solar')),
+                heat_pump_compatible=self._optional_bool(row.get('heat_pump_compatible')),
+                controls_compatible=self._optional_bool(row.get('controls_compatible')),
                 renewable_contribution=renewable,
                 smart_controls='advanced' if row['smart_controls'] == 'true' else 'none',
+                physical_inputs={
+                    'thermal_demand_kwh': self._optional_number(row.get('thermal_demand_kwh')),
+                    'thermal_demand_scope': row.get('thermal_demand_scope') or None,
+                    'space_heating_demand_kwh': self._optional_number(row.get('annual_space_heating_demand_kwh')),
+                    'hot_water_demand_kwh': self._optional_number(row.get('annual_hot_water_demand_kwh')),
+                    'base_appliance_electricity_kwh': self._optional_number(row.get('annual_base_appliance_electricity_kwh')),
+                    'annual_electricity_demand_kwh': self._optional_number(row.get('annual_electricity_demand_kwh')),
+                    'gas_space_heating_kwh': self._optional_number(row.get('annual_gas_space_heating_kwh')),
+                    'gas_hot_water_kwh': self._optional_number(row.get('annual_gas_hot_water_kwh')),
+                    'electric_space_heating_kwh': self._optional_number(row.get('annual_electric_space_heating_kwh')),
+                    'electric_hot_water_kwh': self._optional_number(row.get('annual_electric_hot_water_kwh')),
+                    'boiler_efficiency': self._optional_number(row.get('boiler_efficiency')),
+                    'scop': self._optional_number(row.get('scop')),
+                    'hot_water_cop': self._optional_number(row.get('hot_water_cop')),
+                    'electric_resistance_efficiency': self._optional_number(row.get('electric_resistance_efficiency')),
+                    'solar_generation_kwh': self._optional_number(row.get('annual_solar_generation_kwh')),
+                    'solar_self_consumed_kwh': self._optional_number(row.get('annual_solar_self_consumed_kwh')),
+                    'provenance': {key: value for key, value in {
+                        'source': row.get('physical_inputs_source') or None,
+                        'status': row.get('physical_inputs_status') or None,
+                        'year': row.get('physical_inputs_year') or None,
+                        'generation_seed': row.get('physical_inputs_generation_seed') or None,
+                    }.items() if value is not None},
+                },
                 current_property_value_gbp=row['current_value_estimate_gbp'],
                 provenance={'record': row['data_status'], 'source': str(properties_path),
                             'source_heating': row['heating'], 'solar_installed': row['solar'],
@@ -141,6 +172,23 @@ class CsvPropertyRepository:
         if property_id not in self._records:
             raise KeyError(property_id)
         return self._records[property_id].model_copy(deep=True)
+
+    @staticmethod
+    def _optional_number(value):
+        if value is None or str(value).strip() == '':
+            return None
+        return value
+
+    @staticmethod
+    def _optional_bool(value):
+        if value is None or str(value).strip() == '':
+            return None
+        normalized = str(value).strip().lower()
+        if normalized in ('true', '1', 'yes'):
+            return True
+        if normalized in ('false', '0', 'no'):
+            return False
+        raise ValueError(f'Invalid boolean value: {value}')
 
     @classmethod
     def from_project_root(cls, project_root=None):

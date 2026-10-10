@@ -45,6 +45,12 @@ def property_and_energy(data: Mapping[str, Any]) -> tuple[dict[str, Any], dict[s
     """Accept either a PropertyRecord-like object or flat property input."""
     data = json_value(data)
     prop = json_value(data.get("property", data))
+    # Backend Property keeps P4 physical inputs nested; flatten a copy for the
+    # standalone numerical engine while preserving the caller's original data.
+    physical = json_value(prop.pop("physical_inputs", {}))
+    if isinstance(physical, Mapping):
+        prop.update({key: value for key, value in physical.items()
+                     if key != "provenance" and value is not None})
     energy = json_value(data.get("annual_energy", data.get("energy", {})))
     return dict(prop), dict(energy)
 

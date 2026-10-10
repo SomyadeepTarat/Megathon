@@ -17,23 +17,34 @@ class Heating(str, Enum):
 
 class PhysicalInputs(StrictModel):
     thermal_demand_kwh: float | None = Field(default=None, ge=0, allow_inf_nan=False)
+    thermal_demand_scope: str | None = None
+    space_heating_demand_kwh: float | None = Field(default=None, ge=0, allow_inf_nan=False)
+    hot_water_demand_kwh: float | None = Field(default=None, ge=0, allow_inf_nan=False)
+    base_appliance_electricity_kwh: float | None = Field(default=None, ge=0, allow_inf_nan=False)
+    annual_electricity_demand_kwh: float | None = Field(default=None, ge=0, allow_inf_nan=False)
+    gas_space_heating_kwh: float | None = Field(default=None, ge=0, allow_inf_nan=False)
+    gas_hot_water_kwh: float | None = Field(default=None, ge=0, allow_inf_nan=False)
+    electric_space_heating_kwh: float | None = Field(default=None, ge=0, allow_inf_nan=False)
+    electric_hot_water_kwh: float | None = Field(default=None, ge=0, allow_inf_nan=False)
     heating_energy_kwh: float | None = Field(default=None, ge=0, allow_inf_nan=False)
     boiler_efficiency: float | None = Field(default=None, gt=0, le=1, allow_inf_nan=False)
     heating_efficiency: float | None = Field(default=None, gt=0, le=1, allow_inf_nan=False)
     scop: float | None = Field(default=None, gt=0, allow_inf_nan=False)
+    hot_water_cop: float | None = Field(default=None, gt=0, allow_inf_nan=False)
+    electric_resistance_efficiency: float | None = Field(default=None, gt=0, le=1, allow_inf_nan=False)
     solar_generation_kwh: float | None = Field(default=None, ge=0, allow_inf_nan=False)
     solar_self_consumed_kwh: float | None = Field(default=None, ge=0, allow_inf_nan=False)
     solar_self_consumption_fraction: float | None = Field(default=None, ge=0, le=1, allow_inf_nan=False)
+    proposed_solar_generation_kwh: float | None = Field(default=None, ge=0, allow_inf_nan=False)
+    proposed_solar_self_consumed_kwh: float | None = Field(default=None, ge=0, allow_inf_nan=False)
+    proposed_solar_self_consumption_fraction: float | None = Field(default=None, ge=0, le=1, allow_inf_nan=False)
     proposed_heat_pump_type: Literal['air_source_heat_pump', 'ground_source_heat_pump'] | None = None
     provenance: dict[str, str] = Field(default_factory=dict)
 
     @model_validator(mode='after')
     def solar_consistency(self):
-        if self.solar_self_consumed_kwh is not None:
-            if self.solar_generation_kwh is None:
-                raise ValueError('Solar self-consumption requires available generation')
-            if self.solar_self_consumed_kwh > self.solar_generation_kwh:
-                raise ValueError('Solar self-consumption cannot exceed generation')
+        # Physical observations are preserved even when inconsistent. The
+        # simulation caps self-consumption at generation and eligible demand.
         return self
 
 
@@ -79,6 +90,7 @@ class Property(StrictModel):
     solar_installed: bool | None = None
     heat_pump_installed: bool | None = None
     loft_insulation_installed: bool | None = None
+    smart_thermostat_installed: bool | None = None
     physical_inputs: PhysicalInputs = Field(default_factory=PhysicalInputs)
     roof_suitable_for_loft: bool | None = None
     roof_suitable_for_solar: bool | None = None
@@ -175,6 +187,8 @@ class ScenarioRequest(AssessmentRequest):
     budget_gbp: float | None = Field(default=None, ge=0, allow_inf_nan=False)
     objective: Literal["carbon_reduction", "energy_reduction", "shortest_payback"] = "carbon_reduction"
     retrofit_costs: dict[Literal["loft_insulation", "heat_pump", "solar_panels", "double_glazing", "smart_thermostat"], RetrofitCost] = Field(default_factory=dict)
+    electricity_tariff_gbp_per_kwh: float | None = Field(default=None, ge=0, allow_inf_nan=False)
+    gas_tariff_gbp_per_kwh: float | None = Field(default=None, ge=0, allow_inf_nan=False)
 
     @model_validator(mode="after")
     def unique_retrofits(self):
