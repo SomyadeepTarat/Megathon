@@ -1,0 +1,44 @@
+export type Retrofit = 'loft_insulation' | 'heat_pump' | 'solar_panels' | 'double_glazing' | 'smart_thermostat';
+export type Objective = 'carbon_reduction' | 'energy_reduction' | 'shortest_payback';
+export interface Property {
+  property_id: string; property_type: string; region: string; floor_area_m2: number;
+  property_age_years: number | null; bedrooms: number | null; energy_rating: string | null;
+  insulation: string | null; heating_system: string | null; glazing: string | null;
+  renewable_contribution: string | null; smart_controls: string | null;
+  roof_suitable_for_loft: boolean | null; roof_suitable_for_solar: boolean | null;
+  heat_pump_compatible: boolean | null; controls_compatible: boolean | null;
+  current_property_value_gbp: number | null; market_index: number | null;
+  provenance: Record<string, string>;
+}
+export interface AnnualEnergy {
+  electricity_kwh: number | null; gas_kwh: number | null;
+  quality: 'observed' | 'estimated' | 'synthetic' | 'missing'; method: string;
+  electricity_months_covered: number; gas_months_covered: number; warnings: string[];
+}
+export interface Benchmark { property_type: string; intensity_kwh_m2_year: number; source: string; methodology: string; region?: string | null }
+export interface AssessmentRequest { property: Property; annual_energy: AnnualEnergy; benchmark: Benchmark | null }
+export interface PropertyRecord extends AssessmentRequest { dataset_kind: 'synthetic' | 'observed'; dataset_source: string }
+export interface PropertySummary { property_id: string; property_type: string; region: string; dataset_kind: 'synthetic' | 'observed'; dataset_source: string }
+export interface Component { name: string; subscore: number | null; weight: number; contribution: number | null; evidence: Record<string, string | number | null> }
+export interface Assessment {
+  property_id: string; score: { status: string; score: number | null; classification: string | null; components: Component[]; missing_fields: string[]; methodology_version: string };
+  poor_home: boolean | null; intensity_kwh_m2_year: number | null;
+  issues: { code: string; severity: string; message: string; evidence: Record<string, unknown> }[]; warnings: string[];
+}
+export interface EnergyImpact {
+  baseline: { electricity_kwh: number; gas_kwh: number }; after: { electricity_kwh: number; gas_kwh: number };
+  electricity_savings_kwh: number; gas_savings_kwh: number; net_savings_kwh: number; improvement_percentage: number | null;
+}
+export interface Scenario {
+  property_id: string; scenario_id: string; status: 'success' | 'partial' | 'rejected' | 'unavailable'; reason: string | null;
+  baseline_assessment: Assessment; after_assessment: Assessment | null; updated_property: Property | null;
+  feasibility: { status: string; items: { retrofit: Retrofit; status: string; reason: string }[]; reason: string | null };
+  energy: EnergyImpact | null;
+  carbon: { status: string; reduction_kg_co2e: number | null; reason: string | null; factors: { source: string; source_year: number; accounting_boundary: string }[] };
+  valuation: { status: string; reason: string | null; baseline_value_gbp: number | null; after_value_gbp: number | null; value_change_gbp: number | null; value_change_range_gbp: [number, number] | null; warnings: string[] };
+  installation_cost_gbp: number | null; applied_retrofits: Retrofit[]; assumptions: string[]; warnings: string[];
+  annual_bill_savings_gbp?: number | null; simple_payback_years?: number | null;
+}
+export interface Recommendation { retrofit: Retrofit; feasibility: { status: string; reason: string }; suitability: string; priority: number; estimated_cost_gbp: number; energy: EnergyImpact | null; carbon: Scenario['carbon'] | null; reason: string; assumptions: string[] }
+export interface AdvisorResult { status: string; explanation: string; mode: string; fallback_reason: string | null; tool_calls: string[]; result: Record<string, unknown> | null; intent: { intent: string; retrofits: Retrofit[]; budget_gbp: number | null; objective: Objective } }
+export interface PortfolioRow { property_id: string; property_type: string; region: string; score: number | null; intensity: number | null; improvement: number | null; carbon: number | null; classification: string | null; error?: string; dataset_kind: string }

@@ -1,0 +1,34 @@
+'use client';
+import { useEffect, useRef, useState } from 'react';
+import { ArrowUp, Leaf, LoaderCircle } from 'lucide-react';
+import { api } from '@/lib/api';
+import { label, number } from '@/lib/format';
+import { inputOf, useWorkspace } from './workspace';
+import type { AdvisorResult, Objective, Retrofit } from '@/lib/types';
+interface Message { role: 'user' | 'assistant'; text: string; result?: AdvisorResult }
+function ScenarioEvidence({ result }: { result: AdvisorResult }) {
+  if (!result.tool_calls.includes('simulate') || !['success', 'partial'].includes(result.status)) return null;
+  const energy = result.result?.energy;
+  if (!energy || typeof energy !== 'object') return null;
+  const data = energy as Record<string, unknown>;
+  return <div className="chat-scenario"><strong>Sample scenario</strong>{(['electricity_savings_kwh', 'gas_savings_kwh', 'net_savings_kwh'] as const).map((key) => <div key={key}><span>{label(key.replace('_kwh', ''))}</span><b>{number(typeof data[key] === 'number' ? data[key] : null, 'kWh/year')}</b></div>)}</div>;
+}
+export function Advisor() {
+  const { record, dirty, openAdvisor } = useWorkspace();
+  const [messages, setMessages] = useState<Message[]>([]); const [question, setQuestion] = useState('');
+  const [busy, setBusy] = useState(false); const [confirm, setConfirm] = useState(false);
+  const [packageIds, setPackageIds] = useState<Retrofit[]>([]); const end = useRef<HTMLDivElement>(null);
+  const ids: Retrofit[] = ['loft_insulation', 'heat_pump', 'solar_panels', 'double_glazing', 'smart_thermostat'];
+  useEffect(() => { end.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, [messages, busy]);
+  async function send(text: string, selected?: Retrofit[]) {
+    if (!record || !text.trim() || busy) return;
+    setMessages((value) => [...value, { role: 'user', text }]); setQuestion(''); setBusy(true); setConfirm(false);
+    try {
+      const result = await api.advisor(record.property.property_id, text, selected ? { intent: 'simulate_retrofit', retrofits: selected, budget_gbp: null, objective: 'carbon_reduction' as Objective } : undefined, dirty ? inputOf(record) : undefined);
+      setMessages((value) => [...value, { role: 'assistant', text: result.explanation, result }]);
+      setConfirm(result.status === 'clarification_required');
+    } catch (e) { setMessages((value) => [...value, { role: 'assistant', text: (e as Error).message }]); }
+    finally { setBusy(false); }
+  }
+  return <><div className="advisor-messages"><div className="advisor-intro"><span><Leaf size={22} strokeWidth={1.5} /></span><h3>A little clarity for<br />your next step.</h3><p>Make sense of your home’s performance and explore your next steps.</p></div>{!record ? <p className="advisor-hint">Select or enter a property in Assessment to start.</p> : <><div className="context-pill">{record.property.property_id} · {dirty ? 'Your property details' : 'Your home'}</div>{messages.length === 0 && <div className="suggestions">{['Why is my score low?', 'What if I install a heat pump?', 'What if I have only £5,000?'].map((text) => <button key={text} onClick={() => void send(text)}>{text}<ArrowUp size={13} /></button>)}</div>}</>}{messages.map((message, i) => <div key={i} className={`chat-message ${message.role}`}><span>{message.role === 'user' ? 'You' : 'Kew'}</span><p>{message.text}</p>{message.result && <small>{'Home advisor'}{message.result.status === 'partial' ? ' · Partial data' : ''}</small>}{message.result && <ScenarioEvidence result={message.result} />}</div>)}{confirm && <div className="package-confirm"><strong>Confirm your complete package</strong><p>Select only the upgrades you want to simulate.</p>{ids.map((id) => <label key={id}><input type="checkbox" checked={packageIds.includes(id)} onChange={() => setPackageIds((value) => value.includes(id) ? value.filter((r) => r !== id) : [...value, id])} />{label(id)}</label>)}<button className="button primary" onClick={() => void send('Simulate my confirmed retrofit package', packageIds)}>Simulate selected package</button></div>}{busy && <div className="busy"><LoaderCircle size={17} className="spin" />Checking your home’s evidence…</div>}<div ref={end} /></div><form className="advisor-input" onSubmit={(e) => { e.preventDefault(); void send(question); }}><label className="sr-only" htmlFor="advisor-question">Ask Kew a question</label><input id="advisor-question" placeholder="Ask about your home…" value={question} onChange={(e) => setQuestion(e.target.value)} disabled={!record || busy} maxLength={4000} /><button aria-label="Send question" disabled={!record || busy || !question.trim()}><ArrowUp size={18} /></button></form></>;
+}
