@@ -44,7 +44,7 @@ python -m pytest backend/tests -q
 
 The CSV dataset intentionally has no scoring benchmark. Full score is unavailable until a documented applicable benchmark is supplied; known component subscores remain visible. No invented official benchmark is bundled. Benchmark source authenticity is not verified by Pydantic: P3 must provide a trusted repository.
 
-Default scenario responses are HTTP 503 with baseline assessment and explicit unavailable results while P4's engine is absent. Rejected or conditional packages use HTTP 409; completed simulations use HTTP 200 with success or partial status. Numerical test adapters are confined to tests and never installed in runtime routes. The existing valuation adapter disables illustrative synthetic-model uplift by default.
+The real P4 adapter is connected. Scenarios require confirmed eligibility, sufficient physical inputs, and documented fuel factors; missing dependencies return HTTP 503 with a reason. Rejected or conditional packages use HTTP 409; completed simulations use HTTP 200 with success or partial status. Numerical test adapters are confined to tests and never installed in runtime routes. The existing valuation adapter disables illustrative synthetic-model uplift by default.
 
 The API defaults to `Data/csv/properties.csv` and `Data/csv/energy_usage.csv`. Complete annual consumption is the sum of twelve monthly readings per fuel. Missing fuel coverage produces null annual totals. Set `GREENPRINT_PROPERTY_DATASET=fixtures` to select the original three development homes. Generic heat-pump subtype and solar contribution stay unknown when the CSV does not provide them. See [dataset integration](docs/dataset_integration.md).
 
@@ -99,3 +99,14 @@ External evaluation rejects IDs present in the original training/calibration/tes
 ```
 
 Read [the walkthrough](docs/person5_walkthrough.md), [the data and backend handoff](docs/valuation_methodology.md), [evaluation status](docs/evaluation_report.md) and [responsible AI note](docs/responsible_ai.md). `evaluation/explanation_cases.json` contains 25 questions awaiting actual responses and reviewer labels. The evaluator must receive recorded responses, not this unfilled template. Exact versions used for the recorded run are in `ml/requirements-lock.txt`; the broader requirements support other compatible Python installations.
+
+
+## Person 1 runtime integration
+
+The production routes call the contributed carbon_engine through a typed adapter. POST /retrofits/recommend screens individual feasible measures; it does not promise package optimization. POST /properties/{id}/valuation exposes the existing P5 service. POST /assessments/full returns baseline assessment, energy, carbon and valuation statuses together. GET /health includes readiness requirements; process liveness does not imply complete calculations.
+
+Provide physical inputs under property.physical_inputs, preserving per-field source metadata. solar_installed, heat_pump_installed and loft_insulation_installed are explicit optional booleans. Unsupported heat-pump subtype, renewable contribution and projected EPC remain unknown. Installation costs may be supplied as documented retrofit_costs; missing costs are null and cannot prove budget compliance.
+
+Supply emission_factors in the request or set GREENPRINT_EMISSION_FACTORS_FILE to a documented factor JSON containing electricity and gas records, each with fuel, kg_co2e_per_kwh, source, source_year, accounting_boundary and version. No invented factors are bundled. Factor metadata is operator-supplied; the API validates shape, not source authenticity. To use the advisor with those factors and edited inputs, register the snapshot with POST /properties first. Registered snapshots are kept in memory until restart.
+
+See docs/person1_runtime_integration.md for contracts, verification and remaining teammate dependencies.

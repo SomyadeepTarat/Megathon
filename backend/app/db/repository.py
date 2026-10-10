@@ -50,8 +50,8 @@ class CsvPropertyRepository:
         self._records = {}
         for row in properties:
             identifier = row['property_id']
-            if row['data_status'] != 'synthetic':
-                raise ValueError('This dataset adapter requires declared synthetic properties')
+            if row['data_status'] not in ('synthetic', 'observed', 'estimated', 'imported'):
+                raise ValueError('Property data_status must declare provenance')
             if row['solar'] not in ('true', 'false') or row['smart_controls'] not in ('true', 'false'):
                 raise ValueError('Invalid property boolean')
             warnings = []
@@ -71,7 +71,7 @@ class CsvPropertyRepository:
             for fuel in ('electricity', 'gas'):
                 values = []
                 for _, reading in monthly:
-                    if reading['reading_status'] not in ('synthetic', 'missing'):
+                    if reading['reading_status'] not in ('synthetic', 'missing', 'observed', 'estimated', 'imported'):
                         raise ValueError('Unsupported reading provenance')
                     raw = reading[f'{fuel}_kwh'].strip()
                     if raw and reading['reading_status'] != 'missing':
@@ -89,20 +89,25 @@ class CsvPropertyRepository:
                 region=row['region'], floor_area_m2=row['floor_area_m2'],
                 property_age_years=row['age'], bedrooms=row['bedrooms'], energy_rating=row['energy_rating'],
                 insulation=row['insulation'].lower(), heating_system=system, glazing=row['glazing'].lower(),
-                renewable_contribution=None if solar else 'none',
+                renewable_contribution=None if solar else 'none', solar_installed=solar,
+                heat_pump_installed=row['heating'] == 'Heat pump',
                 smart_controls='advanced' if row['smart_controls'] == 'true' else 'none',
                 current_property_value_gbp=row['current_value_estimate_gbp'],
-                provenance={'record': 'synthetic', 'source': str(properties_path),
+                provenance={'record': row['data_status'], 'source': str(properties_path),
                             'source_heating': row['heating'], 'solar_installed': row['solar'],
-                            'generation_seed': row['generation_seed'], 'customer_id': row['customer_id']})
+                            'generation_seed': row.get('generation_seed', ''), 'customer_id': row.get('customer_id', '')})
+            statuses = {reading['reading_status'] for _, reading in monthly if reading['reading_status'] != 'missing'}
+            quality = 'synthetic' if statuses == {'synthetic'} else 'estimated' if statuses & {'synthetic', 'estimated'} else 'observed'
+            if all(value is None for value in totals.values()):
+                quality = 'missing'
             annual = AnnualEnergy(
                 electricity_kwh=totals['electricity'], gas_kwh=totals['gas'],
-                quality='synthetic' if any(value is not None for value in totals.values()) else 'missing',
+                quality=quality,
                 method=f'Sum of 12 monthly purchased-energy readings for {year}; incomplete fuel totals remain null',
                 electricity_months_covered=coverage['electricity'], gas_months_covered=coverage['gas'],
-                warnings=warnings + ['Property snapshot and energy year differ; see dataset methodology.'])
+                warnings=warnings + ['Confirm alignment of the property snapshot and energy period; see source methodology.'])
             self._records[identifier] = PropertyRecord(property=prop, annual_energy=annual, benchmark=None,
-                dataset_kind='synthetic', dataset_source='Data/csv/properties.csv and Data/csv/energy_usage.csv')
+                dataset_kind=row['data_status'], dataset_source='Data/csv/properties.csv and Data/csv/energy_usage.csv')
 
     def list_properties(self):
         return [record.model_copy(deep=True) for record in self._records.values()]
@@ -111,3 +116,28 @@ class CsvPropertyRepository:
         if property_id not in self._records:
             raise KeyError(property_id)
         return self._records[property_id].model_copy(deep=True)
+
+
+class EditableRepository:
+    def __init__(self, source):
+        from threading import RLock
+        self.source = source
+        self.overrides = {}
+        self.lock = RLock()
+
+    def list_properties(self):
+        with self.lock:
+            rows = {row.property.property_id: row for row in self.source.list_properties()}
+            rows.update(self.overrides)
+            return [row.model_copy(deep=True) for row in rows.values()]
+
+    def load_property(self, property_id):
+        with self.lock:
+            if property_id in self.overrides:
+                return self.overrides[property_id].model_copy(deep=True)
+            return self.source.load_property(property_id)
+
+    def save_property(self, row):
+        with self.lock:
+            self.overrides[row.property.property_id] = row.model_copy(deep=True)
+            return row.model_copy(deep=True)

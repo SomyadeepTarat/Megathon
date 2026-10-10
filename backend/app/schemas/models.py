@@ -15,6 +15,54 @@ class Heating(str, Enum):
     GROUND_HEAT_PUMP = "ground_source_heat_pump"
 
 
+class PhysicalInputs(StrictModel):
+    thermal_demand_kwh: float | None = Field(default=None, ge=0, allow_inf_nan=False)
+    heating_energy_kwh: float | None = Field(default=None, ge=0, allow_inf_nan=False)
+    boiler_efficiency: float | None = Field(default=None, gt=0, le=1, allow_inf_nan=False)
+    heating_efficiency: float | None = Field(default=None, gt=0, le=1, allow_inf_nan=False)
+    scop: float | None = Field(default=None, gt=0, allow_inf_nan=False)
+    solar_generation_kwh: float | None = Field(default=None, ge=0, allow_inf_nan=False)
+    solar_self_consumed_kwh: float | None = Field(default=None, ge=0, allow_inf_nan=False)
+    solar_self_consumption_fraction: float | None = Field(default=None, ge=0, le=1, allow_inf_nan=False)
+    proposed_heat_pump_type: Literal['air_source_heat_pump', 'ground_source_heat_pump'] | None = None
+    provenance: dict[str, str] = Field(default_factory=dict)
+
+    @model_validator(mode='after')
+    def solar_consistency(self):
+        if self.solar_self_consumed_kwh is not None:
+            if self.solar_generation_kwh is None:
+                raise ValueError('Solar self-consumption requires available generation')
+            if self.solar_self_consumed_kwh > self.solar_generation_kwh:
+                raise ValueError('Solar self-consumption cannot exceed generation')
+        return self
+
+
+class DocumentedFactor(StrictModel):
+    fuel: Literal['electricity', 'gas']
+    kg_co2e_per_kwh: float = Field(ge=0, allow_inf_nan=False)
+    source: str = Field(min_length=1)
+    source_year: int = Field(ge=1900)
+    accounting_boundary: str = Field(min_length=1)
+    version: str = Field(min_length=1)
+
+
+class FactorSet(StrictModel):
+    electricity: DocumentedFactor
+    gas: DocumentedFactor
+
+    @model_validator(mode='after')
+    def matching_fuel(self):
+        if self.electricity.fuel != 'electricity' or self.gas.fuel != 'gas':
+            raise ValueError('Factor names must match their fuel')
+        return self
+
+
+class RetrofitCost(StrictModel):
+    amount_gbp: float = Field(ge=0, allow_inf_nan=False)
+    source: str = Field(min_length=1)
+    date: str = Field(min_length=1)
+
+
 class Property(StrictModel):
     property_id: str = Field(min_length=1, max_length=100)
     property_type: Literal["detached", "semi_detached", "terraced", "flat", "bungalow"]
@@ -28,6 +76,10 @@ class Property(StrictModel):
     glazing: Literal["single", "double", "triple"] | None = None
     renewable_contribution: Literal["none", "limited", "substantial"] | None = None
     smart_controls: Literal["none", "basic", "advanced"] | None = None
+    solar_installed: bool | None = None
+    heat_pump_installed: bool | None = None
+    loft_insulation_installed: bool | None = None
+    physical_inputs: PhysicalInputs = Field(default_factory=PhysicalInputs)
     roof_suitable_for_loft: bool | None = None
     roof_suitable_for_solar: bool | None = None
     heat_pump_compatible: bool | None = None
@@ -69,6 +121,7 @@ class AssessmentRequest(StrictModel):
     property: Property
     annual_energy: AnnualEnergy
     benchmark: Benchmark | None = None
+    emission_factors: FactorSet | None = None
 
     @model_validator(mode="after")
     def matching_benchmark(self):
@@ -121,6 +174,7 @@ class ScenarioRequest(AssessmentRequest):
     retrofits: list[Retrofit]
     budget_gbp: float | None = Field(default=None, ge=0, allow_inf_nan=False)
     objective: Literal["carbon_reduction", "energy_reduction", "shortest_payback"] = "carbon_reduction"
+    retrofit_costs: dict[Literal["loft_insulation", "heat_pump", "solar_panels", "double_glazing", "smart_thermostat"], RetrofitCost] = Field(default_factory=dict)
 
     @model_validator(mode="after")
     def unique_retrofits(self):
@@ -132,3 +186,7 @@ class ScenarioRequest(AssessmentRequest):
 class UnavailableResponse(StrictModel):
     status: Literal["unavailable"] = "unavailable"
     reason: str
+
+
+class RecommendationRequest(ScenarioRequest):
+    retrofits: list[Retrofit] = Field(default_factory=list)

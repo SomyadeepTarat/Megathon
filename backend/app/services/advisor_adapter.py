@@ -77,16 +77,17 @@ class BackendAdvisorEngines:
         row = self._record(property_id)
         return ScenarioRequest(property=row.property, annual_energy=row.annual_energy,
                                benchmark=row.benchmark, retrofits=retrofits,
-                               budget_gbp=budget, objective=objective)
+                               budget_gbp=budget, objective=objective, emission_factors=row.emission_factors)
 
     async def assessment(self, property_id):
         def execute():
             row = self._record(property_id)
             value = assess(AssessmentRequest(property=row.property, annual_energy=row.annual_energy,
-                                             benchmark=row.benchmark))
+                                             benchmark=row.benchmark, emission_factors=row.emission_factors))
             result = assessment_view(value)
             result['energy'] = {'baseline_electricity_kwh': row.annual_energy.electricity_kwh,
                                 'baseline_gas_kwh': row.annual_energy.gas_kwh}
+            result['carbon'] = self.carbon().baseline(row) if hasattr(self.carbon(), 'baseline') else {'status': 'unavailable'}
             result['sources'] = [f'Property dataset: {row.dataset_kind}; {row.dataset_source}',
                                  f'Annual energy: {row.annual_energy.quality}; {row.annual_energy.method}']
             if row.benchmark:
@@ -105,7 +106,11 @@ class BackendAdvisorEngines:
     async def simulate(self, property_id, retrofits, budget_gbp, objective):
         def execute():
             request = self._request(property_id, retrofits, budget_gbp, objective)
-            value = run_scenario(request, self.retrofit(), self.carbon(), self.valuation())
+            from app.services.p4_adapter import P4CarbonAdapter
+            carbon = self.carbon()
+            if isinstance(carbon, P4CarbonAdapter):
+                carbon = P4CarbonAdapter(request.emission_factors)
+            value = run_scenario(request, self.retrofit(), carbon, self.valuation())
             result = scenario_view(value, retrofits)
             row = self._record(property_id)
             result['sources'] = [f'Property dataset: {row.dataset_kind}; {row.dataset_source}',

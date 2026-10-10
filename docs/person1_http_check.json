@@ -1,0 +1,44 @@
+[
+  {
+    "path": "/health",
+    "http_status": 200,
+    "status": "ok",
+    "reason": null
+  },
+  {
+    "path": "/properties/P00001",
+    "http_status": 200,
+    "status": null,
+    "reason": null
+  },
+  {
+    "path": "/assessments/full",
+    "http_status": 200,
+    "status": null,
+    "reason": null
+  },
+  {
+    "path": "/properties/P00001/valuation",
+    "http_status": 200,
+    "status": "unavailable",
+    "reason": "No calibrated valuation model available"
+  },
+  {
+    "path": "/advisor/chat",
+    "http_status": 200,
+    "status": "partial",
+    "reason": null
+  },
+  {
+    "path": "/retrofits/recommend",
+    "http_status": 200,
+    "status": "unavailable",
+    "reason": null
+  },
+  {
+    "path": "/scenarios/simulate",
+    "http_status": 409,
+    "status": "rejected",
+    "reason": "Package contains infeasible or conditional measures; resolve conditions before simulation."
+  }
+]

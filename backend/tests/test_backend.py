@@ -107,8 +107,8 @@ def test_invalid_inputs(payload, section, field, value):
 def test_no_simulation_numbers(payload):
     payload["retrofits"] = ["heat_pump"]
     response = client.post("/scenarios/simulate", json=payload)
-    assert response.status_code == 503
-    assert response.json()["status"] == "unavailable"
+    assert response.status_code == 409
+    assert response.json()["status"] == "rejected"
     assert response.json()["energy"] is None
     payload["retrofits"] = ["heat_pump", "heat_pump"]
     assert client.post("/scenarios/simulate", json=payload).status_code == 422

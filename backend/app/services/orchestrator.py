@@ -4,6 +4,7 @@ from app.core.efficiency import assess
 from app.schemas.models import AssessmentRequest, AnnualEnergy, ScenarioRequest
 from app.schemas.engines import (ScenarioResponse, FuelState, EnergyImpact, CarbonResult,
                                 ValuationResult)
+from app.services.p4_adapter import CalculationUnavailable
 from app.services.contracts import RetrofitEngine, CarbonEngine, ValuationEngine
 
 
@@ -39,7 +40,11 @@ def run_scenario(request: ScenarioRequest, retrofit: RetrofitEngine,
     if energy.electricity_kwh is None or energy.gas_kwh is None:
         response.reason = 'Both baseline fuel values are required for simulation.'
         return response
-    result = retrofit.simulate_retrofits(original.model_copy(deep=True))
+    try:
+        result = retrofit.simulate_retrofits(original.model_copy(deep=True))
+    except CalculationUnavailable as exc:
+        response.reason = str(exc)
+        return response
     if len(result.applied_retrofits) != len(set(result.applied_retrofits)) or set(result.applied_retrofits) != set(original.retrofits):
         raise EngineContractError('Simulation must apply exactly the requested measures')
 
@@ -48,6 +53,9 @@ def run_scenario(request: ScenarioRequest, retrofit: RetrofitEngine,
                   'current_property_value_gbp']:
         if getattr(result.updated_property, field) != getattr(original.property, field):
             raise EngineContractError(f'Simulation changed protected baseline field: {field}')
+    if original.budget_gbp is not None and result.installation_cost_gbp is None:
+        response.reason = 'Budget validation requires documented installation costs.'
+        return response
     if original.budget_gbp is not None and result.installation_cost_gbp > original.budget_gbp:
         response.status = 'rejected'
         response.reason = 'Selected package exceeds the requested budget.'
@@ -75,8 +83,15 @@ def run_scenario(request: ScenarioRequest, retrofit: RetrofitEngine,
         if not math.isclose(carbon_result.reduction_kg_co2e, expected, abs_tol=1e-7, rel_tol=1e-9):
             raise EngineContractError('Carbon result disagrees with fuel changes and factors')
     response.carbon = carbon_result
-    response.valuation = valuation.predict_value_impact(original.property.model_copy(deep=True),
-                                                         result.updated_property.model_copy(deep=True))
+    if original.property.model_dump() != result.updated_property.model_dump() and original.property.energy_rating == result.updated_property.energy_rating:
+        response.valuation = ValuationResult(status='unavailable', reason='No supported projected EPC estimate; the existing valuation model uses recorded EPC as its energy feature.')
+    else:
+        response.valuation = valuation.predict_value_impact(original.property.model_copy(deep=True),
+                                                           result.updated_property.model_copy(deep=True))
+    if hasattr(carbon, 'baseline'):
+        response.baseline_carbon = carbon.baseline(original)
+        if response.baseline_carbon.get('status') == 'available' and carbon_result.status == 'available':
+            response.after_carbon = {'status': 'available', 'total_kg_co2e': response.baseline_carbon['total_kg_co2e'] - carbon_result.reduction_kg_co2e}
     response.installation_cost_gbp = result.installation_cost_gbp
     response.applied_retrofits = result.applied_retrofits
     response.assumptions = result.assumptions
