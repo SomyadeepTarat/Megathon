@@ -27,6 +27,49 @@ const navigation = [{ href: '/', name: 'Overview', icon: House }, { href: '/asse
 
 export function Workspace({ children }: { children: ReactNode }) {
   const pathname = usePathname(); const router = useRouter();
+  const [showIntroduction, setShowIntroduction] = useState(true);
+  const [resumeIntroduction, setResumeIntroduction] = useState(false);
+  const [returningToIntroduction, setReturningToIntroduction] = useState(false);
+  const overviewEnteredAt = useRef(0);
+  const introductionActive = pathname === '/' && showIntroduction;
+  const finishIntroduction = () => {
+    overviewEnteredAt.current = performance.now();
+    setReturningToIntroduction(false);
+    setShowIntroduction(false);
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    requestAnimationFrame(() => { window.scrollTo({ top: 0, behavior: 'instant' }); document.getElementById('main')?.focus({ preventScroll: true }); });
+  };
+  const replayIntroduction = () => { window.scrollTo({ top: 0, behavior: 'instant' }); setResumeIntroduction(false); setShowIntroduction(true); };
+  useEffect(() => {
+    document.documentElement.classList.toggle('kew-introduction-active', introductionActive);
+    return () => document.documentElement.classList.remove('kew-introduction-active');
+  }, [introductionActive]);
+  useEffect(() => {
+    if (pathname !== '/' || introductionActive) return;
+    let touchY = 0, switching = false;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const returnToJourney = (event: Event) => {
+      const node = event.target instanceof Element ? event.target : null;
+      if (window.scrollY > 1 || switching || performance.now() - overviewEnteredAt.current < 800 || node?.closest('input, textarea, select, [role="dialog"]')) return;
+      if (event.cancelable) event.preventDefault();
+      switching = true;
+      setReturningToIntroduction(true);
+      timer = setTimeout(() => {
+        setResumeIntroduction(true);
+        setShowIntroduction(true);
+        setReturningToIntroduction(false);
+      }, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 250);
+    };
+    const wheel = (event: WheelEvent) => { if (event.deltaY < -3) returnToJourney(event); };
+    const touchStart = (event: TouchEvent) => { touchY = event.touches[0]?.clientY ?? 0; };
+    const touchMove = (event: TouchEvent) => { if ((event.touches[0]?.clientY ?? 0) - touchY > 35) returnToJourney(event); };
+    const key = (event: KeyboardEvent) => { if (event.key === 'ArrowUp' || event.key === 'PageUp') returnToJourney(event); };
+    window.addEventListener('wheel', wheel, { passive: false });
+    window.addEventListener('touchstart', touchStart, { passive: true });
+    window.addEventListener('touchmove', touchMove, { passive: false });
+    window.addEventListener('keydown', key);
+    return () => { clearTimeout(timer); window.removeEventListener('wheel', wheel); window.removeEventListener('touchstart', touchStart); window.removeEventListener('touchmove', touchMove); window.removeEventListener('keydown', key); };
+  }, [pathname, introductionActive]);
   const [properties, setProperties] = useState<PropertySummary[]>([]);
   const [record, setRecord] = useState<PropertyRecord | null>(null);
   const [assessment, setAssessment] = useState<Assessment | null>(null);
@@ -60,23 +103,23 @@ export function Workspace({ children }: { children: ReactNode }) {
   const title = pathname === '/compare' ? 'Scenario comparison' : navigation.find((item) => item.href === pathname)?.name || 'Workspace';
   const value: State = { properties, record, assessment, scenario, dirty, loading, error, service, selectProperty, newProperty, edit, runAssessment, setScenario, openAdvisor: () => setAdvisor(true), refresh };
   return <Context.Provider value={value}>
-    {pathname === '/' && <HomeJourney />}
+    {introductionActive && <HomeJourney onComplete={finishIntroduction} resumeFromEnd={resumeIntroduction} />}
     <a href="#main" className="skip-link">Skip to content</a>
-    <div id="kew-workspace" className={`app-shell ${pathname === '/' ? 'journey-workspace' : ''}`}>
+    <div id="kew-workspace" hidden={introductionActive} className={`app-shell ${returningToIntroduction ? 'is-returning-to-intro' : ''} ${pathname === '/' ? 'journey-workspace' : ''}`}>
       {mobile && <button className="nav-backdrop" aria-label="Close navigation" onClick={() => setMobile(false)} />}
       <aside id="workspace-navigation" className={`sidebar ${mobile ? 'is-open' : ''}`}>
-        <Link href="/" className="brand" aria-label="Kew home"><span className="brand-mark"><Leaf size={24} strokeWidth={1.6} /></span><span>Kew<span className="brand-caption">A greener way home.</span></span></Link>
+        <Link href="/" className="brand" aria-label="Kew home"><span className="brand-mark"><Leaf size={24} strokeWidth={1.6} /></span><span className="intro-wordmark">Kew</span></Link>
         <div className="nav-heading">Your workspace</div>
         <nav aria-label="Main navigation">{navigation.map(({ href, name, icon: Icon }) => <Link key={href} href={href} aria-current={pathname === href || (href === '/planner' && pathname === '/compare') ? 'page' : undefined} className={`nav-link ${pathname === href || (href === '/planner' && pathname === '/compare') ? 'active' : ''}`}><Icon size={19} strokeWidth={1.6} />{name}</Link>)}</nav>
         <div className="sidebar-bottom"><div className="sidebar-note"><span className="mini-label">A little clarity.</span><p>A better future starts<br />with understanding home.</p><Leaf size={28} strokeWidth={1} /></div><button className="nav-link help-link" onClick={() => setAdvisor(true)}><CircleHelp size={18} /> Ask Kew</button><div className="profile"><span className="avatar">YH</span><div>Your home workspace<small>Personal assessment</small></div></div></div>
       </aside>
       <div className="main-shell"><header className="topbar"><div className="breadcrumb"><button className="icon-button mobile-menu" onClick={() => setMobile(!mobile)} aria-label="Open navigation" aria-expanded={mobile} aria-controls="workspace-navigation"><Menu size={21} /></button><Link href="/">Kew</Link><ChevronRight size={14} /><span>{title}</span></div><div className="header-actions"><span className={`service-state ${service}`}><i />{service === 'online' ? 'Your workspace' : service === 'checking' ? 'Loading…' : 'Service unavailable'}</span><button className="icon-button" onClick={() => void refresh()} aria-label="Refresh properties"><RefreshCw size={18} /></button><span className="header-separator" /><button className="icon-button" aria-label="Open Kew advisor" onClick={() => setAdvisor(true)}><MessageCircle size={20} /></button></div></header>
         {service === 'offline' && <div className="connection-notice" role="status">The assessment service is offline. You can explore Kew and enter your details. <button onClick={() => void refresh()}>Reconnect <ArrowUpRight size={13} /></button></div>}
-        <main id="main" tabIndex={-1} className="main-content">{pathname === '/' && <ReplayJourney />}{children}</main>
+        <main id="main" tabIndex={-1} className="main-content">{pathname === '/' && <ReplayJourney onReplay={replayIntroduction} />}{children}</main>
         <footer className="footer"><span><Leaf size={13} /> Kew · A considered path to a greener home</span><span>Transparent estimates. Informed decisions.</span></footer>
       </div>
     </div>
-    {!advisor && <button className="advisor-launch" onClick={() => setAdvisor(true)}><span className="advisor-dot"><Leaf size={16} /></span>Ask Kew<ArrowUpRight size={15} /></button>}
+    {!introductionActive && !advisor && <button className="advisor-launch" onClick={() => setAdvisor(true)}><span className="advisor-dot"><Leaf size={16} /></span>Ask Kew<ArrowUpRight size={15} /></button>}
     {advisor && <section className="advisor-panel" role="dialog" aria-modal="false" aria-label="Kew advisor"><header><div><span className="brand-mark"><Leaf size={18} /></span><div><strong>Ask Kew</strong><small>Your home, explained.</small></div></div><button className="icon-button" onClick={() => setAdvisor(false)} aria-label="Close advisor"><X size={19} /></button></header><Advisor key={JSON.stringify(record)} /></section>}
   </Context.Provider>;
 }

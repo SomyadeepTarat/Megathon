@@ -26,3 +26,15 @@ h1,h2,h3{color:#233e32;font-weight:750}
 .tradeoff-table th, .tradeoff-table td { text-align: left; padding: 12px; border-bottom: 1px solid #e5e8e1; vertical-align: top; min-width: 110px; }
 .tradeoff-table th small { display: block; font-weight: normal; margin-top: 6px; }
 .upgrade-title { flex-wrap: wrap; }
+
+/* Page title > section heading > card heading > supporting copy. */
+.page-heading h1{font-size:clamp(38px,4vw,58px);font-weight:800;line-height:1.15;margin-bottom:18px;text-wrap:balance}
+.page-heading p{font-size:16px;line-height:1.75;max-width:680px}
+.section-heading h2,.panel>h2,.portfolio-intro h2,.intro-strip h2{font-size:30px;line-height:1.3;font-weight:750;margin-bottom:12px}
+.section-heading h3,.panel>h3,.contributions h3,.insight-grid h3{font-size:23px;line-height:1.4;font-weight:700}
+.feature-card h3,.upgrade-title h3{font-size:22px;line-height:1.4;font-weight:700}
+.section-heading p,.feature-card p,.upgrade-main p{font-size:14px;line-height:1.75}
+.eyebrow{font-size:12px;line-height:1.6;font-weight:700;color:#536b59}
+.mini-label{font-size:11px;line-height:1.6;font-weight:700;color:#536b59}
+.empty-state h3{font-size:28px;line-height:1.35}
+@media(max-width:680px){.page-heading h1{font-size:36px}.page-heading p{font-size:14px}.section-heading h2,.panel>h2,.portfolio-intro h2,.intro-strip h2{font-size:26px}.section-heading h3,.panel>h3,.contributions h3,.insight-grid h3{font-size:21px}.feature-card h3,.upgrade-title h3{font-size:20px}.section-heading p,.feature-card p,.upgrade-main p{font-size:13px}.eyebrow,.mini-label{font-size:10px}.empty-state h3{font-size:25px}}
