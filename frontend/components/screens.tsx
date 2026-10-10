@@ -74,7 +74,7 @@ function AssessmentResults({ result }: { result: Assessment }) {
 
 function Planner() {
   const { record, assessment, setScenario, dirty } = useWorkspace(); const router = useRouter();
-  const [selected, setSelected] = useState<Retrofit[]>([]); const [budget, setBudget] = useState(''); const [objective, setObjective] = useState<Objective>('carbon_reduction');
+  const [selected, setSelected] = useState<Retrofit[]>([]); const [budget, setBudget] = useState(''); const [objective, setObjective] = useState<Objective>('energy_reduction');
   const [recommendations, setRecommendations] = useState<Recommendation[]>([]); const [recommendationNote, setRecommendationNote] = useState('');
   const [busy, setBusy] = useState(false); const [error, setError] = useState(''); const [checking, setChecking] = useState(false);
   const requestVersion = useRef(0);

@@ -22,7 +22,7 @@ test('unstructured server errors never become scenario estimates', async () => {
   await assert.rejects(api.simulate(input, [], null, 'carbon_reduction'), (error) => error instanceof ApiError && error.status === 503);
 });
 test('recommendations preserve conditional options and unknown costs', async () => {
-  globalThis.fetch = async () => Response.json({ recommendations: [], other_options: [{ retrofit: 'solar_panels', feasibility: { status: 'conditional', reason: 'Roof unknown' }, scenario: { installation_cost_gbp: null, energy: null, carbon: null, reason: 'Needs confirmation', assumptions: [], warnings: [] } }], methodology: 'Individual screening', warnings: ['Optimizer pending'] });
+  globalThis.fetch = async () => Response.json({ property_id: 'EDIT-1', scenario_id: 'R1', recommendations: [], other_options: [{ retrofit: 'solar_panels', feasibility: { status: 'conditional', reason: 'Roof unknown' }, scenario: { installation_cost_gbp: null, energy: null, carbon: null, reason: 'Needs confirmation', assumptions: [], warnings: [] } }], methodology: 'Individual screening', warnings: ['Optimizer pending'] });
   const result = await api.recommendations(input, null, 'carbon_reduction');
   assert.equal(result.items[0].estimated_cost_gbp, null);
   assert.equal(result.items[0].feasibility.status, 'conditional');
@@ -63,6 +63,7 @@ test('optimizer requests actual package calculation and preserves null results',
 test('recommendation mapping preserves suitability, backend rank and unranked options', async () => {
   const scenario = { installation_cost_gbp: 1000, energy: null, carbon: null, reason: null, assumptions: [], warnings: [], annual_bill_savings_gbp: 100, simple_payback_years: 10 };
   globalThis.fetch = async () => Response.json({
+    property_id: 'EDIT-1', scenario_id: 'R1',
     recommendations: [{ retrofit: 'heat_pump', priority: 2, suitability: 'Medium', suitability_reason: 'Synthetic screening estimate', feasibility: { status: 'feasible', reason: 'Compatible' }, scenario }],
     other_options: [{ retrofit: 'solar_panels', priority: null, suitability: 'Low', suitability_reason: 'Roof unsuitable', feasibility: { status: 'infeasible', reason: 'Roof unsuitable' }, scenario }], methodology: 'Ranked individual measures', warnings: []
   });
@@ -94,4 +95,28 @@ test('advisor stream handles split network chunks and delivers real progress', a
 test('advisor stream never treats an interrupted connection as an answer', async () => {
   globalThis.fetch = async () => new Response(new ReadableStream({ start(controller) { controller.close(); } }));
   await assert.rejects(api.advisorStream('P1', 'Explain', () => {}), /ended before an answer/);
+});
+
+test('recommendations render the property/scenario list retrieved from storage in its saved order', async () => {
+  const calls: string[] = [];
+  const scenario = { installation_cost_gbp: null, energy: { electricity_savings_kwh: -2000, gas_savings_kwh: 10000 }, carbon: { status: 'unavailable', reason: 'No factors' }, assumptions: ['Physical calculation'], warnings: [], reason: null };
+  globalThis.fetch = async (url, init) => {
+    calls.push(String(url));
+    if (init?.method === 'POST') return Response.json({ property_id: 'EDIT-1', scenario_id: 'session /1', recommendations: [] });
+    return Response.json({ property_id: 'EDIT-1', scenario_id: 'session /1', revision: 2, installation_order: ['loft_insulation', 'heat_pump'], recommendations: [
+      { retrofit: 'heat_pump', priority: 1, feasibility: { status: 'feasible', reason: 'Compatible' }, suitability: 'Medium', suitability_reason: 'Synthetic inputs', scenario },
+      { retrofit: 'loft_insulation', priority: 2, feasibility: { status: 'feasible', reason: 'Suitable roof' }, suitability: 'Medium', suitability_reason: 'Synthetic inputs', scenario },
+    ], other_options: [], methodology: 'Percentage reduction', warnings: [] });
+  };
+  const result = await api.recommendations(input, null, 'energy_reduction');
+  assert.deepEqual(calls, ['/api/backend/retrofits/recommend', '/api/backend/properties/EDIT-1/recommendations?scenario_id=session%20%2F1']);
+  assert.deepEqual(result.items.map((row) => row.retrofit), ['heat_pump', 'loft_insulation']);
+  assert.equal(result.items[0].energy?.electricity_savings_kwh, -2000);
+  assert.equal(result.items[0].carbon?.status, 'unavailable');
+  assert.ok(result.warnings.some((text) => text.includes('loft insulation → heat pump')));
+});
+
+test('stored recommendation response cannot leak another property into the planner', async () => {
+  globalThis.fetch = async (_url, init) => Response.json({ property_id: init?.method === 'POST' ? 'EDIT-1' : 'OTHER', scenario_id: 'R1' });
+  await assert.rejects(api.recommendations(input, null, 'energy_reduction'), /differ from the requested property/);
 });

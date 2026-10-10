@@ -205,3 +205,10 @@ class UnavailableResponse(StrictModel):
 
 class RecommendationRequest(ScenarioRequest):
     retrofits: list[Retrofit] = Field(default_factory=list)
+    objective: Literal["carbon_reduction", "energy_reduction", "shortest_payback"] = "energy_reduction"
+    scenario_id: str | None = Field(default=None, min_length=1, max_length=200)
+
+
+class OptimizationRequest(RecommendationRequest):
+    """Preserve the optimizer's existing default objective."""
+    objective: Literal["carbon_reduction", "energy_reduction", "shortest_payback"] = "carbon_reduction"

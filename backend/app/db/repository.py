@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-from app.schemas.engines import PropertyRecord
+from app.schemas.engines import PropertyRecord, RecommendationResponse
 
 
 class JsonPropertyRepository:
@@ -261,10 +261,12 @@ class EditableRepository:
         self.lock = RLock()
         self.database_path = Path(database_path) if database_path else None
         self._overrides = {}
+        self._recommendations = {}
         if self.database_path:
             self.database_path.parent.mkdir(parents=True, exist_ok=True)
             with sqlite3.connect(self.database_path) as connection:
                 connection.execute('CREATE TABLE IF NOT EXISTS property_snapshots (property_id TEXT PRIMARY KEY, payload TEXT NOT NULL)')
+                connection.executescript((Path(__file__).parent / 'migrations/001_recommendation_snapshots.sql').read_text())
                 self._overrides = {identifier: PropertyRecord.model_validate_json(payload)
                     for identifier, payload in connection.execute('SELECT property_id, payload FROM property_snapshots')}
 
@@ -299,3 +301,58 @@ class EditableRepository:
         with self.lock:
             self.overrides = {**self.overrides, row.property.property_id: row.model_copy(deep=True)}
             return row.model_copy(deep=True)
+
+    def save_recommendations(self, request, result):
+        """Upsert a property/scenario snapshot and return its stored JSON contract.
+
+        Without a caller scenario ID, identical inputs share a stable ID. Input
+        changes produce separate scenarios; explicit IDs update the same scenario.
+        Full requests retain assumptions/provenance needed to explain the result.
+        """
+        import hashlib
+        import sqlite3
+        from datetime import datetime, timezone
+        payload = json.dumps(request.model_dump(mode='json', exclude={'scenario_id'}), sort_keys=True, separators=(',', ':'))
+        identifier = request.scenario_id or 'rec-' + hashlib.sha256(payload.encode()).hexdigest()
+        key = (request.property.property_id, identifier)
+        if result.property_id != key[0]:
+            raise ValueError('Recommendation property differs from request property')
+        updated_at = datetime.now(timezone.utc).isoformat()
+        with self.lock:
+            stored = result.model_copy(deep=True)
+            stored.scenario_id = identifier
+            if self.database_path:
+                with sqlite3.connect(self.database_path) as connection:
+                    connection.execute('BEGIN IMMEDIATE')
+                    previous = connection.execute('SELECT revision FROM recommendation_snapshots WHERE property_id=? AND scenario_id=?', key).fetchone()
+                    stored.revision = previous[0] + 1 if previous else 1
+                    connection.execute('INSERT INTO recommendation_snapshots VALUES (?, ?, ?, ?, ?, ?) '
+                        'ON CONFLICT(property_id, scenario_id) DO UPDATE SET revision=excluded.revision, '
+                        'request_payload=excluded.request_payload, response_payload=excluded.response_payload, updated_at=excluded.updated_at',
+                        (*key, stored.revision, payload, stored.model_dump_json(), updated_at))
+                    saved = connection.execute('SELECT response_payload FROM recommendation_snapshots WHERE property_id=? AND scenario_id=?', key).fetchone()[0]
+            else:
+                previous = self._recommendations.get(key)
+                stored.revision = previous[0].revision + 1 if previous else 1
+                self._recommendations[key] = (stored.model_copy(deep=True), updated_at)
+                saved = stored.model_dump_json()
+            return RecommendationResponse.model_validate_json(saved)
+
+    def load_recommendations(self, property_id, scenario_id=None):
+        """Retrieve only this property's scenario, or its latest saved result."""
+        import sqlite3
+        with self.lock:
+            if self.database_path:
+                with sqlite3.connect(self.database_path) as connection:
+                    if scenario_id is None:
+                        row = connection.execute('SELECT response_payload FROM recommendation_snapshots WHERE property_id=? ORDER BY updated_at DESC, scenario_id DESC LIMIT 1', (property_id,)).fetchone()
+                    else:
+                        row = connection.execute('SELECT response_payload FROM recommendation_snapshots WHERE property_id=? AND scenario_id=?', (property_id, scenario_id)).fetchone()
+                if row:
+                    return RecommendationResponse.model_validate_json(row[0])
+            else:
+                rows = [(value, date) for (pid, sid), (value, date) in self._recommendations.items()
+                        if pid == property_id and (scenario_id is None or sid == scenario_id)]
+                if rows:
+                    return max(rows, key=lambda item: item[1])[0].model_copy(deep=True)
+            raise KeyError((property_id, scenario_id))

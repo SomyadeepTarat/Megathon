@@ -232,12 +232,17 @@ class RecommendationOption(StrictModel):
     scenario: ScenarioResponse
     suitability: Literal['High', 'Medium', 'Low']
     suitability_reason: str = Field(min_length=1)
+    ranking_reason: str | None = None
     priority: int | None = Field(default=None, ge=1)
     estimated_cost_gbp: float | None = Field(default=None, ge=0, allow_inf_nan=False)
 
 
 class RecommendationResponse(StrictModel):
     property_id: str
+    scenario_id: str | None = None
+    revision: int | None = Field(default=None, ge=1)
+    objective: Literal['carbon_reduction', 'energy_reduction', 'shortest_payback'] = 'energy_reduction'
+    installation_order: list[Retrofit] = Field(default_factory=list)
     status: Literal['available', 'partial', 'unavailable']
     recommendations: list[RecommendationOption]
     other_options: list[RecommendationOption]
