@@ -12,7 +12,7 @@ from sklearn.ensemble import HistGradientBoostingRegressor
 from sklearn.impute import SimpleImputer
 from sklearn.linear_model import Ridge
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
-from sklearn.model_selection import GroupShuffleSplit
+from sklearn.model_selection import GroupShuffleSplit, GroupKFold
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
@@ -23,6 +23,12 @@ ENERGY = "energy_rating"
 
 def validate_data(df: pd.DataFrame) -> pd.DataFrame:
     df = df.copy()
+    if "floor_area" not in df and "floor_area_m2" in df:
+        df = df.rename(columns={"floor_area_m2": "floor_area"})
+    if "energy_rating_at_sale" in df:
+        if ENERGY in df and not df[ENERGY].astype(str).str.upper().equals(df.energy_rating_at_sale.astype(str).str.upper()):
+            raise ValueError("Recorded EPC conflicts with EPC at sale")
+        df[ENERGY] = df.energy_rating_at_sale
     required = ["property_id", "sale_date", "sale_price", *NUMERIC, *CATEGORICAL]
     missing = sorted(set(required) - set(df.columns))
     if missing:
@@ -44,6 +50,10 @@ def validate_data(df: pd.DataFrame) -> pd.DataFrame:
     df["sale_date"] = pd.to_datetime(df.sale_date, errors="raise")
     if df.sale_date.isna().any():
         raise ValueError("Missing sale date")
+    if "epc_date" in df:
+        epc_dates = pd.to_datetime(df.epc_date, errors="raise")
+        if epc_dates.isna().any() or (epc_dates > df.sale_date).any():
+            raise ValueError("EPC must be recorded on or before sale")
     if df.duplicated(["property_id", "sale_date"]).any():
         raise ValueError("Duplicate property/date transactions")
     if ENERGY in df:
@@ -59,7 +69,7 @@ def validate_data(df: pd.DataFrame) -> pd.DataFrame:
     return df.reset_index(drop=True)
 
 
-def grouped_splits(df, seed=42):
+def grouped_splits(df, seed=42, calibration_fraction=.15, test_fraction=.15, selection_fraction=.15):
     """70% development (55 fit +15 selection), 15 calibration, 15 test."""
     groups = df["customer_id"] if "customer_id" in df else df.property_id
     if groups.nunique() < 40:
@@ -68,16 +78,17 @@ def grouped_splits(df, seed=42):
         a, b = next(GroupShuffleSplit(n_splits=1, test_size=fraction, random_state=seed + offset)
                     .split(indices, groups=groups.iloc[indices]))
         return indices[a], indices[b]
-    development, test = partition(np.arange(len(df)), .15, 0)
-    development, calibration = partition(development, .15 / .85, 1)
-    fit, selection = partition(development, .15 / .70, 2)
+    development, test = partition(np.arange(len(df)), test_fraction, 0)
+    development, calibration = partition(development, calibration_fraction / (1-test_fraction), 1)
+    fit, selection = partition(development, selection_fraction / (1-test_fraction-calibration_fraction), 2)
     return dict(fit=fit, selection=selection, calibration=calibration, test=test)
 
 
-def pipeline(kind, energy=True):
+def pipeline(kind, energy=True, numeric=None):
+    numeric = NUMERIC if numeric is None else numeric
     cats = CATEGORICAL + ([ENERGY] if energy else [])
     prep = ColumnTransformer([
-        ("numeric", make_pipeline(SimpleImputer(strategy="median"), StandardScaler()), NUMERIC),
+        ("numeric", make_pipeline(SimpleImputer(strategy="median"), StandardScaler()), numeric),
         ("category", OneHotEncoder(handle_unknown="ignore", sparse_output=False), cats),
     ])
     model = Ridge(alpha=10) if kind == "ridge" else HistGradientBoostingRegressor(
@@ -95,37 +106,76 @@ def conformal_radius(residuals, alpha):
     """Finite-sample corrected order statistic; never interpolate quantiles."""
     if not 0 < alpha < 1:
         raise ValueError("alpha must be between zero and one")
+    residuals = np.asarray(residuals, dtype=float)
+    if residuals.ndim != 1 or not len(residuals) or not np.isfinite(residuals).all() or (residuals < 0).any():
+        raise ValueError("Calibration residuals must be finite, nonnegative and nonempty")
     rank = math.ceil((len(residuals) + 1) * (1 - alpha))
     if rank > len(residuals):
         raise ValueError("Too few calibration examples for requested coverage")
     return float(np.sort(residuals)[rank - 1])
 
 
-def train(df, provenance, seed=42, alpha=.1):
-    df = validate_data(df)
+def validate_snapshot(df):
+    """Use synthetic baseline estimates as their actual target, never invent sales."""
+    df = df.rename(columns={"floor_area_m2": "floor_area"}).copy()
+    required = ["property_id", "customer_id", "floor_area", "bedrooms", "age",
+                "region", "property_type", "current_value_estimate_gbp", "data_status"]
+    if set(required) - set(df):
+        raise ValueError(f"Missing snapshot fields: {sorted(set(required)-set(df))}")
+    if not df.property_id.is_unique or not df.data_status.eq("synthetic").all():
+        raise ValueError("Snapshot training requires unique explicitly synthetic properties")
+    for col in ["property_id", "customer_id", *CATEGORICAL]:
+        if df[col].isna().any() or df[col].astype(str).str.strip().eq("").any():
+            raise ValueError(f"Missing {col}")
+        df[col] = df[col].astype(str).str.strip()
+    for col in ["floor_area", "bedrooms", "age", "current_value_estimate_gbp"]:
+        df[col] = pd.to_numeric(df[col], errors="raise")
+        if not np.isfinite(df[col]).all() or (df[col] < 0).any():
+            raise ValueError(f"Invalid {col}")
+    if (df[["floor_area", "current_value_estimate_gbp"]] <= 0).any().any() or (df.bedrooms % 1 != 0).any():
+        raise ValueError("Snapshot area/value must be positive and bedrooms integral")
+    return df.reset_index(drop=True)
+
+
+def train(df, provenance, seed=42, alpha=.1, target_kind="sales"):
+    if target_kind not in {"sales", "snapshot"}:
+        raise ValueError("target_kind must be sales or snapshot")
+    df = validate_snapshot(df) if target_kind == "snapshot" else validate_data(df)
     if provenance.get("kind") not in {"observed", "synthetic"}:
         raise ValueError("Provenance kind must be observed or synthetic")
     if not provenance.get("source") or not provenance.get("license"):
         raise ValueError("Document source and license in provenance JSON")
-    energy = ENERGY in df
-    features = NUMERIC + CATEGORICAL + ([ENERGY] if energy else [])
-    splits = grouped_splits(df, seed)
+    if target_kind == "snapshot" and provenance["kind"] != "synthetic":
+        raise ValueError("Snapshot target cannot be presented as observed sales")
+    numeric = NUMERIC[:-1] if target_kind == "snapshot" else NUMERIC
+    target = "current_value_estimate_gbp" if target_kind == "snapshot" else "sale_price"
+    # Synthetic snapshot generation has no EPC premium. Do not train one into inference.
+    energy = ENERGY in df and target_kind == "sales"
+    features = numeric + CATEGORICAL + ([ENERGY] if energy else [])
+    splits = grouped_splits(df, seed, .2, .2, .2) if target_kind == "snapshot" else grouped_splits(df, seed)
     fit, select, cal, test = (df.iloc[splits[k]] for k in ["fit", "selection", "calibration", "test"])
-    candidates, selection_metrics = {}, {}
+    candidates, selection_metrics, cross_validation = {}, {}, {}
     for kind in ["ridge", "hist_gradient_boosting"]:
-        model = pipeline(kind, energy).fit(fit[features], fit.sale_price)
+        model = pipeline(kind, energy, numeric).fit(fit[features], fit[target])
         candidates[kind] = model
-        selection_metrics[kind] = metrics(select.sale_price, model.predict(select[features]))
+        selection_metrics[kind] = metrics(select[target], model.predict(select[features]))
+        groups = fit["customer_id"] if "customer_id" in fit else fit.property_id
+        folds = []
+        for a, b in GroupKFold(n_splits=min(5, groups.nunique())).split(fit, groups=groups):
+            folded = pipeline(kind, energy, numeric).fit(fit.iloc[a][features], fit.iloc[a][target])
+            folds.append(metrics(fit.iloc[b][target], folded.predict(fit.iloc[b][features])))
+        cross_validation[kind] = {"folds": folds, "mean_mae_gbp": float(np.mean([x["mae_gbp"] for x in folds])),
+                                  "scope": "fit groups only; calibration/test untouched"}
     # Require a material improvement; selection never touches calibration/test.
     selected = "hist_gradient_boosting" if selection_metrics["hist_gradient_boosting"]["mae_gbp"] < .98 * selection_metrics["ridge"]["mae_gbp"] else "ridge"
     dev = pd.concat([fit, select])
     for kind in candidates:
-        candidates[kind].fit(dev[features], dev.sale_price)
+        candidates[kind].fit(dev[features], dev[target])
     model = candidates[selected]
     energy_signal = None
     if energy:
-        without_energy = pipeline(selected, False).fit(fit[NUMERIC + CATEGORICAL], fit.sale_price)
-        without_mae = metrics(select.sale_price, without_energy.predict(select[NUMERIC + CATEGORICAL]))["mae_gbp"]
+        without_energy = pipeline(selected, False, numeric).fit(fit[numeric + CATEGORICAL], fit[target])
+        without_mae = metrics(select[target], without_energy.predict(select[numeric + CATEGORICAL]))["mae_gbp"]
         with_mae = selection_metrics[selected]["mae_gbp"]
         energy_signal = {"without_epc_selection_mae_gbp": without_mae,
                          "with_epc_selection_mae_gbp": with_mae,
@@ -134,25 +184,27 @@ def train(df, provenance, seed=42, alpha=.1):
     # repeated transactions/customers as independent conformal observations.
     group_col = "customer_id" if "customer_id" in df else "property_id"
     cal_independent = cal.sample(frac=1, random_state=seed).drop_duplicates(group_col)
-    residuals = np.abs(cal_independent.sale_price.to_numpy() - model.predict(cal_independent[features]))
+    residuals = np.abs(cal_independent[target].to_numpy() - model.predict(cal_independent[features]))
     radius = conformal_radius(residuals, alpha)
     pair_radius = conformal_radius(residuals, alpha / 2)
     pred = model.predict(test[features])
     report = {
-        "selected_model": selected, "seed": seed, "alpha": alpha,
+        "selected_model": selected, "seed": seed, "alpha": alpha, "target_kind": target_kind, "target": target,
+        "grouped_cross_validation": cross_validation,
         "provenance": provenance, "selection_metrics": selection_metrics,
         "energy_signal_ablation": energy_signal,
-        "held_out_metrics": {k: metrics(test.sale_price, m.predict(test[features])) for k, m in candidates.items()},
-        "median_baseline": metrics(test.sale_price, np.full(len(test), dev.sale_price.median())),
-        "interval_coverage": float(np.mean(np.abs(test.sale_price - pred) <= radius)),
+        "held_out_metrics": {k: metrics(test[target], m.predict(test[features])) for k, m in candidates.items()},
+        "median_baseline": metrics(test[target], np.full(len(test), dev[target].median())),
+        "interval_coverage": float(np.mean(np.abs(test[target] - pred) <= radius)),
         "mean_interval_width_gbp": float(np.mean(pred + radius - np.maximum(0, pred - radius))),
-        "pair_marginal_coverage": float(np.mean(np.abs(test.sale_price - pred) <= pair_radius)),
+        "pair_marginal_coverage": float(np.mean(np.abs(test[target] - pred) <= pair_radius)),
         "counts": {k: {"rows": len(v), "properties": df.iloc[v].property_id.nunique(),
                        "groups": df.iloc[v]["customer_id" if "customer_id" in df else "property_id"].nunique()} for k, v in splits.items()},
         "calibration_independent_groups": len(cal_independent),
         "group_overlap": any(set(df.iloc[splits[a]][group_col]) & set(df.iloc[splits[b]][group_col])
                              for i, a in enumerate(splits) for b in list(splits)[i + 1:]),
-        "time_evaluation": "not_run; random grouped split does not measure temporal generalization",
+        "time_evaluation": chronological_evaluation(df, numeric, features, target) if provenance['kind'] == 'observed' and target_kind == 'sales' else
+                           {"status": "unavailable", "reason": "No observed dated sales supplied; synthetic dates are not market evidence"},
         "limitations": ["Observational associations are not causal retrofit effects.",
                         "Conformal coverage is marginal under exchangeability; scenario shifts can invalidate it.",
                         "Synthetic metrics verify implementation, not market accuracy.",
@@ -162,13 +214,21 @@ def train(df, provenance, seed=42, alpha=.1):
     evidence = provenance.get("energy_evidence", {})
     supported = (energy and energy_signal["relative_mae_improvement"] > 0 and provenance["kind"] == "observed" and
                  evidence.get("reviewed") is True and bool(evidence.get("reference")))
-    artifact = {"format_version": 1, "model": model, "features": features,
+    report["subgroup_metrics"] = {}
+    for col in CATEGORICAL + ([ENERGY] if energy else []):
+        report["subgroup_metrics"][col] = {}
+        for value in sorted(test[col].unique()):
+            mask = test[col].eq(value).to_numpy()
+            report["subgroup_metrics"][col][value] = {"rows": int(mask.sum()),
+                **metrics(test.loc[mask, target], pred[mask]),
+                "coverage": float(np.mean(np.abs(test.loc[mask, target].to_numpy()-pred[mask]) <= radius))}
+    artifact = {"format_version": 1, "model": model, "features": features, "target_kind": target_kind,
                 "radius": radius, "pair_radius": pair_radius, "alpha": alpha,
                 "provenance": provenance, "energy_supported": supported,
-                "numeric_bounds": {c: [float(dev[c].min()), float(dev[c].max())] for c in NUMERIC},
+                "numeric_bounds": {c: [float(dev[c].min()), float(dev[c].max())] for c in numeric},
                 "categories": {c: sorted(dev[c].unique().tolist()) for c in CATEGORICAL + ([ENERGY] if energy else [])},
                 "report": report}
-    held_out = test[["property_id", "sale_date", "sale_price"]].copy()
+    held_out = test[["property_id"] + (["sale_date"] if target_kind == "sales" else []) + [target]].copy()
     held_out["prediction_gbp"] = pred
     held_out["lower_gbp"] = np.maximum(0, pred - radius)
     held_out["upper_gbp"] = pred + radius
@@ -183,4 +243,32 @@ def load_artifact(path):
     artifact = joblib.load(Path(path))
     if artifact.get("format_version") != 1:
         raise ValueError("Unsupported valuation artifact")
+    required = {"model", "features", "radius", "pair_radius", "alpha", "provenance", "energy_supported", "numeric_bounds", "categories"}
+    if required - set(artifact):
+        raise ValueError("Incomplete valuation artifact")
+    if not hasattr(artifact['model'], 'predict') or not 0 < artifact['alpha'] < 1:
+        raise ValueError("Invalid valuation artifact model or confidence")
+    if artifact['provenance'].get('kind') not in {'observed', 'synthetic'}:
+        raise ValueError("Invalid artifact provenance")
+    if not np.isfinite([artifact['radius'], artifact['pair_radius']]).all() or min(artifact['radius'], artifact['pair_radius']) < 0:
+        raise ValueError("Invalid calibration radii")
     return artifact
+
+
+def chronological_evaluation(df, numeric, features, target):
+    """Standalone fixed-family backtest; groups spanning the cutoff are excluded."""
+    group_col = 'customer_id' if 'customer_id' in df else 'property_id'
+    cutoff = df.sale_date.quantile(.7)
+    periods = df.groupby(group_col).sale_date.agg(['min', 'max'])
+    early = df[df[group_col].isin(periods.index[periods['max'] <= cutoff])]
+    later = df[df[group_col].isin(periods.index[periods['min'] > cutoff])]
+    if early[group_col].nunique() < 20 or later[group_col].nunique() < 5:
+        return {'status': 'unavailable', 'reason': 'Insufficient nonoverlapping earlier/later groups'}
+    results = {}
+    for kind in ['ridge', 'hist_gradient_boosting']:
+        model = pipeline(kind, ENERGY in features, numeric).fit(early[features], early[target])
+        results[kind] = metrics(later[target], model.predict(later[features]))
+    return {'status': 'available', 'cutoff': cutoff.isoformat(), 'earlier_rows': len(early),
+            'later_rows': len(later), 'excluded_cross_cutoff_rows': len(df)-len(early)-len(later),
+            'metrics': results, 'median_baseline': metrics(later[target], np.full(len(later), early[target].median())),
+            'note': 'Separate chronological diagnostic; neither chooses nor calibrates the production model'}

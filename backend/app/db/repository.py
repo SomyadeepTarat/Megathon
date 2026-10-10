@@ -24,7 +24,7 @@ class CsvPropertyRepository:
         import csv
         from datetime import datetime
         from decimal import Decimal
-        from app.schemas.models import Property, AnnualEnergy
+        from app.schemas.models import Property, AnnualEnergy, Benchmark, Heating
 
         with properties_path.open(newline='') as stream:
             properties = list(csv.DictReader(stream))
@@ -55,14 +55,33 @@ class CsvPropertyRepository:
             if row['solar'] not in ('true', 'false') or row['smart_controls'] not in ('true', 'false'):
                 raise ValueError('Invalid property boolean')
             warnings = []
-            system = heating.get(row['heating'])
+            system = row.get('heating_system', '').strip() or heating.get(row['heating'])
+            if system is not None and system not in {value.value for value in Heating}:
+                raise ValueError(f'Unknown heating_system: {system}')
             if system is None:
                 if row['heating'] != 'Heat pump':
                     raise ValueError(f'Unknown heating category: {row["heating"]}')
                 warnings.append('Heat pump recorded, but air-source/ground-source subtype is unknown.')
             solar = row['solar'] == 'true'
-            if solar:
+            renewable = row.get('renewable_contribution', '').strip() or (None if solar else 'none')
+            if solar and renewable is None:
                 warnings.append('Solar is present, but contribution category is not supplied.')
+            if not solar and renewable not in (None, 'none'):
+                raise ValueError('Renewable contribution contradicts solar installation flag')
+            benchmark = None
+            benchmark_fields = ['benchmark_property_type', 'benchmark_intensity_kwh_m2_year',
+                                'benchmark_source', 'benchmark_methodology']
+            benchmark_values = [row.get(field, '').strip() for field in benchmark_fields]
+            if any(benchmark_values):
+                if not all(benchmark_values):
+                    raise ValueError('Incomplete benchmark metadata in property CSV')
+                benchmark = Benchmark(property_type=benchmark_values[0],
+                                      intensity_kwh_m2_year=benchmark_values[1],
+                                      source=benchmark_values[2], methodology=benchmark_values[3])
+                if row.get('benchmark_data_status') == 'synthetic':
+                    warnings.append('Score uses a synthetic reference benchmark, not an official consumption standard.')
+            if row.get('heating_system_status', '').startswith(('synthetic', 'derived_from_synthetic')):
+                warnings.append('Heating subtype is a disclosed synthetic modeling input, not survey evidence.')
             monthly = grouped[identifier]
             years = {month.year for month, _ in monthly}
             if len(years) > 1:
@@ -89,7 +108,7 @@ class CsvPropertyRepository:
                 region=row['region'], floor_area_m2=row['floor_area_m2'],
                 property_age_years=row['age'], bedrooms=row['bedrooms'], energy_rating=row['energy_rating'],
                 insulation=row['insulation'].lower(), heating_system=system, glazing=row['glazing'].lower(),
-                renewable_contribution=None if solar else 'none',
+                renewable_contribution=renewable,
                 smart_controls='advanced' if row['smart_controls'] == 'true' else 'none',
                 current_property_value_gbp=row['current_value_estimate_gbp'],
                 provenance={'record': 'synthetic', 'source': str(properties_path),
@@ -101,7 +120,7 @@ class CsvPropertyRepository:
                 method=f'Sum of 12 monthly purchased-energy readings for {year}; incomplete fuel totals remain null',
                 electricity_months_covered=coverage['electricity'], gas_months_covered=coverage['gas'],
                 warnings=warnings + ['Property snapshot and energy year differ; see dataset methodology.'])
-            self._records[identifier] = PropertyRecord(property=prop, annual_energy=annual, benchmark=None,
+            self._records[identifier] = PropertyRecord(property=prop, annual_energy=annual, benchmark=benchmark,
                 dataset_kind='synthetic', dataset_source='Data/csv/properties.csv and Data/csv/energy_usage.csv')
 
     def list_properties(self):

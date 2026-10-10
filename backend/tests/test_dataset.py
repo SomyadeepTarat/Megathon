@@ -16,9 +16,21 @@ def test_csv_dataset_loads_and_sums():
     assert first.dataset_kind == 'synthetic'
     pump = repo.load_property('P00003')
     assert pump.annual_energy.gas_kwh == 0
-    assert pump.property.heating_system is None
-    assert pump.property.renewable_contribution is None
-    assert pump.benchmark is None
+    assert pump.property.heating_system == 'air_source_heat_pump'
+    assert pump.property.renewable_contribution in ('limited', 'substantial')
+    assert pump.benchmark is not None
+    assert any('synthetic reference benchmark' in warning for warning in pump.annual_energy.warnings)
+
+
+def test_updated_dataset_produces_all_full_scores():
+    from app.core.scoring import calculate_score
+    repo = CsvPropertyRepository(ROOT / 'Data/csv/properties.csv', ROOT / 'Data/csv/energy_usage.csv')
+    for record in repo.list_properties():
+        score = calculate_score(record)
+        assert score.status == 'available'
+        assert len(score.components) == 7
+        assert 0 <= score.score <= 100
+        assert score.missing_fields == []
 
 
 def write_energy(tmp_path, rows):

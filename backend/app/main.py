@@ -13,6 +13,7 @@ from app.services.orchestrator import EngineContractError, run_scenario
 from app.api.advisor import router as advisor_router
 from app.services.advisor_adapter import BackendAdvisorEngines
 from app.services.llm_service import AdvisorService, provider_from_env
+from app.schemas.valuation import BaselineValuationResponse
 
 app = FastAPI(title='GreenPrint AI', version='0.2.0')
 app.add_middleware(CORSMiddleware,
@@ -85,6 +86,19 @@ def property_assessment(property_id: str, repo=Depends(get_repository)):
 @app.post('/assessments', response_model=AssessmentResponse)
 def assessment(request: AssessmentRequest):
     return assess(request)
+
+
+@app.get('/properties/{property_id}/valuation', response_model=BaselineValuationResponse)
+@app.post('/properties/{property_id}/valuation', response_model=BaselineValuationResponse)
+def baseline_valuation(property_id: str, repo=Depends(get_repository)):
+    record = load_record(repo, property_id)
+    try:
+        from app.services.valuation_service import predict_property_value
+    except ImportError:
+        result = {'status': 'unavailable', 'reason': 'Install the ML dependencies to enable baseline valuation'}
+    else:
+        result = predict_property_value(record.property, allow_illustrative=record.dataset_kind == 'synthetic')
+    return {'property_id': property_id, **result}
 
 
 @app.post('/scenarios/simulate', response_model=ScenarioResponse,
