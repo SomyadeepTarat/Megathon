@@ -11,7 +11,7 @@ function ScenarioEvidence({ result }: { result: AdvisorResult }) {
   const energy = result.result?.energy;
   if (!energy || typeof energy !== 'object') return null;
   const data = energy as Record<string, unknown>;
-  return <div className="chat-scenario"><strong>Sample scenario</strong>{(['electricity_savings_kwh', 'gas_savings_kwh', 'net_savings_kwh'] as const).map((key) => <div key={key}><span>{label(key.replace('_kwh', ''))}</span><b>{number(typeof data[key] === 'number' ? data[key] : null, 'kWh/year')}</b></div>)}</div>;
+  return <div className="chat-scenario"><strong>Calculated scenario</strong>{(['electricity_savings_kwh', 'gas_savings_kwh', 'net_savings_kwh'] as const).map((key) => <div key={key}><span>{label(key.replace('_kwh', ''))}</span><b>{number(typeof data[key] === 'number' ? data[key] : null, 'kWh/year')}</b></div>)}</div>;
 }
 export function Advisor() {
   const { record, dirty, openAdvisor } = useWorkspace();
