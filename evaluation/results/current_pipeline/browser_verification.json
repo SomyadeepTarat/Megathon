@@ -1,0 +1,66 @@
+{
+  "status": "passed",
+  "date": "2026-10-11",
+  "tool": "Codex in-app browser",
+  "viewports": [
+    {
+      "width": 1280,
+      "height": 900
+    },
+    {
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "checks": [
+    {
+      "name": "property selection and assessment",
+      "result": "Score 22; baseline carbon 5322.3 kg CO2e/year; illustrative baseline valuation 629506 GBP"
+    },
+    {
+      "name": "budget optimization",
+      "result": "15000 GBP carbon objective selects loft insulation, heat pump, smart thermostat; cost 14200 GBP; after score 49"
+    },
+    {
+      "name": "scenario financial/fuel outputs",
+      "result": "Electricity savings -5383 kWh/year; gas savings 27040.6; net savings 21657.5; carbon reduction 4224.8; payback 51.3 years"
+    },
+    {
+      "name": "advisor heat-pump what-if",
+      "result": "Fresh calculated scenario shown with negative electricity savings, zero after-gas and explicit unavailable uplift"
+    },
+    {
+      "name": "mobile navigation",
+      "result": "Open/close navigation and portfolio route exercised at 390x844"
+    },
+    {
+      "name": "portfolio",
+      "result": "10 rows loaded; improvement column sorting exercised; true zero potential preserved"
+    },
+    {
+      "name": "mobile width",
+      "result": "document width 390 equals viewport width 390; wide table remains contained"
+    },
+    {
+      "name": "missing fuel",
+      "result": "Cleared gas; score, consumption subscore and baseline carbon unavailable; known components and illustrative baseline value retained"
+    },
+    {
+      "name": "restore after missing-data check",
+      "result": "Restored original gas 27040.56; score 22 and optimizer comparison returned"
+    },
+    {
+      "name": "duplicate benchmark editor",
+      "result": "One benchmark editor in final rebuilt assessment form"
+    }
+  ],
+  "screenshots": [
+    "browser-desktop.png",
+    "browser-mobile.png"
+  ],
+  "limitations": [
+    "Smoke coverage, not exhaustive accessibility or every browser/device certification",
+    "Synthetic estimates, not measured predictive accuracy",
+    "Somyadeep human explanation review remains pending"
+  ]
+}

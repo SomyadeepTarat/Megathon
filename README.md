@@ -95,3 +95,9 @@ The default carbon factors are extracted from the corrected 2026 DESNZ flat work
 Valuation selects the simplest validated model against Ridge/HistGradientBoosting alternatives, uses property-group separation and held-out conformal calibration, and checks input support. Synthetic uplift is disabled in production. New EPC estimates and causal premiums are never fabricated. Solar contribution and whole-home insulation categories remain unknown/unchanged without a supported category estimator, so some after-scenario full scores are unavailable even when fuel/carbon calculations work.
 
 Methodology: [scoring](docs/scoring_methodology.md), [valuation](docs/valuation_methodology.md), [advisor](docs/llm_methodology.md), [responsible AI](docs/responsible_ai.md). External evaluators require actual reviewed inputs, not unfilled templates: `evaluation.evaluate_energy`, `evaluation.evaluate_recommendations`, `evaluation.evaluate_explanations`, `ml.evaluate_valuation` (each provides `--help`).
+
+## Synthetic-demo acceptance
+
+Synthetic data is the agreed hackathon scope. Observed-market and measured retrofit validation remain future work. Numerical implementation checks can be reproduced with `.venv/bin/python -m evaluation.verify_reference_cases`; fixed analytical expectations are not measured predictive accuracy. Desktop/mobile browser smoke testing is recorded in the current pipeline report.
+
+Somyadeep's [25-answer review](evaluation/reviews/somyadeep.md) is ready. Fill the true/false judgements in [the JSON review](evaluation/reviews/somyadeep.json), then run `.venv/bin/python -m evaluation.evaluate_explanations --input evaluation/reviews/somyadeep.json`. Pending human labels remain null; human quality targets have not been claimed.

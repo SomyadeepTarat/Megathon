@@ -36,6 +36,11 @@ def main():
             p.physical_inputs.proposed_solar_self_consumption_fraction = .45
         p.provenance.update(record='synthetic', demo_assumptions=source)
         p.physical_inputs.provenance['demo_assumptions'] = source
+        for key, value in p.physical_inputs.model_dump().items():
+            if key == 'provenance' or value is None:
+                continue
+            assumed = key.startswith('proposed_') or key in ('scop', 'hot_water_cop') and p.heating_system in ('old_gas_boiler', 'modern_gas_boiler')
+            p.physical_inputs.provenance[key] = source if assumed else 'Synthetic source columns in Data/csv/properties.csv; Data/relations/energy_methodology.md'
         record.dataset_source = source + '; base data from Data/csv/properties.csv and energy_usage.csv'
         record.retrofit_costs = {key: RetrofitCost.model_validate(value) for key, value in costs.items()}
         record.electricity_tariff_gbp_per_kwh = .25

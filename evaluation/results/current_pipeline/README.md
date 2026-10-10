@@ -1,6 +1,6 @@
 # Current pipeline verification — 11 October 2026
 
-The implemented local prototype passes its automated checks and production HTTP smoke checks. This is **not** certification of observed-market valuation, real-world retrofit accuracy, browser usability, or the PRD's human explanation-quality targets. The supplied dataset is synthetic and those evidence gaps remain explicit.
+The implemented local prototype passes its automated checks and production HTTP smoke checks. This is **not** certification of observed-market valuation, real-world retrofit accuracy, exhaustive browser accessibility, or the PRD's human explanation-quality targets. The supplied dataset is synthetic and those evidence gaps remain explicit.
 
 ## Verified requirements
 
@@ -21,7 +21,7 @@ The implemented local prototype passes its automated checks and production HTTP 
 
 ## Final executed checks
 
-- `python -m pytest -q`: **210 passed, 34 subtests passed**, exit 0. Two nonblocking dependency/environment warnings: Starlette/httpx deprecation and loky physical-core detection.
+- `python -m pytest -q`: **212 passed, 34 subtests passed**, exit 0. Two nonblocking dependency/environment warnings: Starlette/httpx deprecation and loky physical-core detection.
 - `python -m pip check`: no broken requirements, exit 0.
 - `python -m compileall -q backend/app carbon_engine ml evaluation scripts Data/scripts`: exit 0.
 - Frontend `npm run typecheck`, `npm test`, `npm run build`: exit 0; **12 frontend tests passed**.
@@ -60,8 +60,27 @@ Machine-readable evidence: [runtime verification](runtime_verification.json), [A
 2. **Person 4:** independently validate retrofit reduction assumptions and proposed-system performance; provide supported estimators for whole-home insulation category, renewable contribution and projected EPC. Fuel/carbon changes work, but solar can leave the after-scenario full score unavailable; loft installation alone does not justify rewriting the whole-home insulation category. Annual fixed solar self-consumption is bounded but does not model hourly timing or seasonal COP.
 3. **Person 5:** retrain and externally validate on observed sales when available. Snapshot MAE is £47,391, RMSE £55,334, R² 0.809 on only 20 synthetic held-out homes; interval coverage 20/20 with mean width £301,820 is too broad to establish useful market accuracy. Real uplift remains unavailable; calibrated marginal value intervals do not validate counterfactual uplift coverage or causality.
 4. **Person 2:** review all 25 responses independently for groundedness, factual accuracy, completeness and tool selection. Zero unsupported numeric tokens does not establish ≥90% semantic quality. Hypothetical missing-data questions and package requests without a budget can require clarification. The LLM selects supplied facts; it does not freely compose numerical claims.
-5. **Persons 1 and 2:** manually verify desktop/mobile browser interactions and accessibility. In-app browser attachment timed out and native computer-use permission was absent, so browser clicking/rendering was not verified. Production page delivery, proxy, typecheck, build and API contracts did pass. User cost sources/tariffs are persisted but their external authenticity is not verified.
+5. **Persons 1 and 2:** desktop and mobile browser smoke checks now passed after browser attachment became available. Property selection, score display, optimizer/comparison, fresh advisor what-if, mobile navigation, portfolio loading and sorting were exercised. This is a smoke test, not an exhaustive accessibility audit. User cost sources/tariffs are persisted but their external authenticity is not verified.
 
 Carbon estimates use 2026 operational factors with 2025 synthetic readings as documented scenario assumptions; they exclude lifecycle retrofit, upstream and grid distribution emissions. Optional long-term advisor memory and production deployment/security are outside this local hackathon verification.
 
 For reproduction and demo startup, follow [the current README](../../../README.md). Suggested smooth demo: `DEMO-P00001`, £15,000 carbon objective; demonstrate both supported calculations and honest unavailable value impact.
+
+## Synthetic hackathon scope follow-up
+
+The user confirmed that synthetic data is acceptable for the intended hackathon demo. Observed sales and measured retrofit studies are therefore future real-world validation requirements, not prerequisites for running this synthetic prototype. Unsupported valuation impact remains an intentional PRD fallback: accepting synthetic data does not justify inventing a projected EPC or claiming a causal premium.
+
+- Added [12 fixed analytical references](reference_verification.json), covering each measure, interactions, heat-pump electricity increases, zero baseline, missing fuel and infeasibility. All nine numeric cases have per-fuel MAE 0 kWh. This verifies arithmetic under shared assumptions; it is not measured predictive accuracy.
+- Browser tests at 1280×900 desktop and 390×844 mobile passed for the core flow. Mobile document width remained 390px; portfolio sorting preserves true zero potential. See browser verification evidence in this folder.
+- Removed a duplicate benchmark editor discovered during browser testing. Added per-field provenance to generated synthetic demo physical inputs. Existing saved user snapshots are preserved.
+- Prepared 25 actual advisor answers for **Somyadeep**: [readable review](../../reviews/somyadeep.md), [editable labels](../../reviews/somyadeep.json). Labels remain null until Somyadeep reviews them; naming a reviewer does not complete human validation.
+
+After entering true/false judgements, run:
+
+```sh
+.venv/bin/python -m evaluation.evaluate_explanations --input evaluation/reviews/somyadeep.json
+```
+
+Human review is the remaining acceptance action in the agreed synthetic demo scope. Failed judgements should lead to fixes and fresh recorded answers, not relabelling old responses as successful.
+
+Browser evidence: [checks](browser_verification.json), [desktop screenshot](browser-desktop.png), [mobile screenshot](browser-mobile.png).

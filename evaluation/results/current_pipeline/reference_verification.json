@@ -1,0 +1,168 @@
+{
+  "status": "passed",
+  "cases": [
+    {
+      "case_id": "unchanged",
+      "retrofits": [],
+      "expected_after": {
+        "electricity_kwh": 2000,
+        "gas_kwh": 12000
+      },
+      "actual_after": {
+        "electricity_kwh": 2000.0,
+        "gas_kwh": 12000.0
+      }
+    },
+    {
+      "case_id": "loft",
+      "retrofits": [
+        "loft_insulation"
+      ],
+      "expected_after": {
+        "electricity_kwh": 2000,
+        "gas_kwh": 10500
+      },
+      "actual_after": {
+        "electricity_kwh": 2000.0,
+        "gas_kwh": 10500.0
+      }
+    },
+    {
+      "case_id": "glazing",
+      "retrofits": [
+        "double_glazing"
+      ],
+      "expected_after": {
+        "electricity_kwh": 2000,
+        "gas_kwh": 11000
+      },
+      "actual_after": {
+        "electricity_kwh": 2000.0,
+        "gas_kwh": 11000.0
+      }
+    },
+    {
+      "case_id": "controls",
+      "retrofits": [
+        "smart_thermostat"
+      ],
+      "expected_after": {
+        "electricity_kwh": 2000,
+        "gas_kwh": 11250
+      },
+      "actual_after": {
+        "electricity_kwh": 2000.0,
+        "gas_kwh": 11250.0
+      }
+    },
+    {
+      "case_id": "solar",
+      "retrofits": [
+        "solar_panels"
+      ],
+      "expected_after": {
+        "electricity_kwh": 1500,
+        "gas_kwh": 12000
+      },
+      "actual_after": {
+        "electricity_kwh": 1500.0,
+        "gas_kwh": 12000.0
+      }
+    },
+    {
+      "case_id": "heat_pump",
+      "retrofits": [
+        "heat_pump"
+      ],
+      "expected_after": {
+        "electricity_kwh": 4640,
+        "gas_kwh": 0
+      },
+      "actual_after": {
+        "electricity_kwh": 4640.0,
+        "gas_kwh": 0.0
+      }
+    },
+    {
+      "case_id": "loft_controls",
+      "retrofits": [
+        "loft_insulation",
+        "smart_thermostat"
+      ],
+      "expected_after": {
+        "electricity_kwh": 2000,
+        "gas_kwh": 9862.5
+      },
+      "actual_after": {
+        "electricity_kwh": 2000.0,
+        "gas_kwh": 9862.5
+      }
+    },
+    {
+      "case_id": "solar_heat_pump",
+      "retrofits": [
+        "solar_panels",
+        "heat_pump"
+      ],
+      "expected_after": {
+        "electricity_kwh": 4140,
+        "gas_kwh": 0
+      },
+      "actual_after": {
+        "electricity_kwh": 4140.0,
+        "gas_kwh": 0.0
+      }
+    },
+    {
+      "case_id": "all_five",
+      "retrofits": [
+        "loft_insulation",
+        "double_glazing",
+        "smart_thermostat",
+        "heat_pump",
+        "solar_panels"
+      ],
+      "expected_after": {
+        "electricity_kwh": 3555.25,
+        "gas_kwh": 0
+      },
+      "actual_after": {
+        "electricity_kwh": 3555.25,
+        "gas_kwh": 0.0
+      }
+    },
+    {
+      "case_id": "zero_baseline",
+      "result": {
+        "baseline": {
+          "electricity_kwh": 0.0,
+          "gas_kwh": 0.0
+        },
+        "after": {
+          "electricity_kwh": 0.0,
+          "gas_kwh": 0.0
+        },
+        "electricity_savings_kwh": 0.0,
+        "gas_savings_kwh": 0.0,
+        "net_savings_kwh": 0.0,
+        "improvement_percentage": null
+      }
+    },
+    {
+      "case_id": "missing_fuel",
+      "status": 503,
+      "reason": "Both baseline fuel values are required for simulation."
+    },
+    {
+      "case_id": "infeasible_heat_pump",
+      "status": 409,
+      "reason": "Package contains infeasible or conditional measures; resolve conditions before simulation."
+    }
+  ],
+  "reference_basis": "Fixed hand-calculated synthetic examples: gas=(space+water)/0.8; heat-pump electricity=space/4+water/2.5+2000; solar subtracts 500; sequential space reductions .85, .90, .925.",
+  "per_fuel_mae_kwh": {
+    "electricity_kwh": 0.0,
+    "gas_kwh": 0.0
+  },
+  "limitations": "Implementation agreement under shared assumptions; not independent real-world predictive validation."
+}
