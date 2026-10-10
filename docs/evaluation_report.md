@@ -1,5 +1,13 @@
 # Evaluation report — Person 5
 
+## Integrated-runtime audit
+
+After the carbon/advisor contributions arrived, the [full pipeline audit](../evaluation/results/full_pipeline/README.md) exercised the actual ASGI routes, standalone carbon edge cases, snapshot regression and local Ollama. The full suite passed 110 tests and 17 subtests, but production scenarios remain HTTP 503 and the advisor/recommendation/valuation endpoints remain HTTP 404. All full scores remain unavailable, observed CSV ingestion is rejected, and no frontend is present. See that report for exact reproduced drawbacks and tasks for each team member; passing unit tests does not establish demo readiness.
+
+## Latest supplied-dataset run
+
+The newly supplied `data/` dataset has now been evaluated. See [the initial dataset report](../evaluation/results/initial_dataset/README.md) and its `initial_metrics.json` for authoritative results. It contains 100 synthetic property snapshots and 1,200 monthly readings, with no observed transactions. All calculable score components and annual fuel totals were recorded; full scores are unavailable without benchmarks. Ridge won the illustrative snapshot comparison; EPC worsened validation error. The combined suite passed 97 tests and 17 subtests. The earlier fixture results below remain a separate experiment.
+
 ## Status
 
 The repository started with only the PRD. No observed joined sales/EPC data, scoring engine, retrofit engine or LLM responses were supplied. Valuation training and inference are implemented and exercised on an explicitly synthetic fixture. Overall predictive accuracy, retrofit quality and LLM challenge targets remain unverified.

@@ -1,5 +1,7 @@
 # GreenPrint AI
 
+Current integration status and owner-specific fixes: [full pipeline audit](evaluation/results/full_pipeline/README.md). Reproduce the runtime audit with `.venv/bin/python -m evaluation.audit_full_pipeline`; append `--ollama --model qwen3:4b` to run the installed local model. Include `carbon_engine/tests` explicitly when running the complete suite, since default `pytest.ini` currently excludes them.
+
 FastAPI backend, explainable scoring, teammate integration contracts, property fixtures, and the existing Person 5 valuation/evaluation module.
 
 ## Backend setup on Omarchy
@@ -50,6 +52,8 @@ See [backend handoff](docs/backend_handoff.md), [scoring methodology](docs/scori
 ---
 
 # GreenPrint AI — Person 5 module
+
+Initial evaluation of the contributed property/energy dataset: run `.venv/bin/python -m evaluation.evaluate_initial_dataset`. Results and limitations are in [the dataset report](evaluation/results/initial_dataset/README.md). Install `backend/requirements.txt` as well as the ML requirements for scoring integration.
 
 Valuation ML, conservative uncertainty, backend inference and evaluation tooling from `prd.md`. Other team members' engines are not implemented here.
 

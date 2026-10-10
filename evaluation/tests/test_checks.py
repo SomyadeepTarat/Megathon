@@ -69,3 +69,10 @@ def test_independent_energy_and_zero_percentage_denominator():
 def test_unfilled_llm_template_is_rejected():
     with pytest.raises(ValueError, match="actual response"):
         evaluate([{"case_id": "pending", "response": None}])
+
+
+def test_score_verifier_matches_backend_half_up_rounding():
+    # Exact 40.5 must round to 41, matching P1's published score method.
+    components = [{"weight": w, "subscore": s, "contribution": w*s}
+                  for w, s in zip([.25,.2,.15,.15,.1,.1,.05], [40, 77.5, 20, 50, 20, 0, 50])]
+    check_score({"score": 41, "classification": "Poor", "components": components})

@@ -1,0 +1,298 @@
+{
+  "inputs_sha256": {
+    "Data/csv/properties.csv": "1ce009a5d5a80d9ffe29ed509943043aa0e83c7a335ab119b111e3a99bd18049",
+    "Data/csv/energy_usage.csv": "629f78a44138a7230d4c258f01af4a321ad39287b608420d45a79c10b88f22c9"
+  },
+  "data_quality": {
+    "properties": 100,
+    "monthly_readings": 1200,
+    "complete_years": 100,
+    "regeneration_max_absolute_error_kwh": {
+      "electricity_kwh": 0.0,
+      "gas_kwh": 0.0
+    },
+    "generator_physical_checks": "passed; internal consistency only"
+  },
+  "scoring": {
+    "available_full_scores": 0,
+    "unavailable_full_scores": 100,
+    "missing_field_counts": {
+      "benchmark": 100,
+      "property.heating_system": 4,
+      "property.renewable_contribution": 9
+    },
+    "component_available_counts": {
+      "energy_efficiency": 100,
+      "consumption_intensity": 0,
+      "insulation": 100,
+      "heating_system": 96,
+      "windows": 100,
+      "renewable_energy": 91,
+      "smart_management": 100
+    },
+    "reproducibility": "passed for all properties"
+  },
+  "annual_energy": {
+    "electricity_median_kwh": 2322.04,
+    "gas_heated_median_kwh": 9076.71
+  },
+  "valuation": {
+    "dataset_kind": "synthetic",
+    "target": "current_value_estimate_gbp",
+    "warning": "Illustrative snapshot regression only; not sale valuation or a causal EPC premium.",
+    "selected_model": "ridge",
+    "selection_metrics": {
+      "ridge": {
+        "mae_gbp": 65019.41381846886,
+        "rmse_gbp": 77348.14012351439,
+        "r2": 0.5098082812670894,
+        "median_absolute_error_gbp": 62122.58229349842,
+        "mape_percent": 26.5095198587181
+      },
+      "hist_gradient_boosting": {
+        "mae_gbp": 94470.00000634769,
+        "rmse_gbp": 117255.72762327542,
+        "r2": -0.12650818456653168,
+        "median_absolute_error_gbp": 67539.3895097605,
+        "mape_percent": 40.672363710439825
+      }
+    },
+    "held_out_metrics": {
+      "ridge": {
+        "mae_gbp": 43912.07271788353,
+        "rmse_gbp": 51489.6329606014,
+        "r2": 0.8346118291249409,
+        "median_absolute_error_gbp": 43040.23547326056,
+        "mape_percent": 17.98654715371165
+      },
+      "hist_gradient_boosting": {
+        "mae_gbp": 72829.68535845017,
+        "rmse_gbp": 90620.98347194528,
+        "r2": 0.4877023139387764,
+        "median_absolute_error_gbp": 66576.33849683835,
+        "mape_percent": 29.197172258432385
+      }
+    },
+    "median_baseline": {
+      "mae_gbp": 102800.0,
+      "rmse_gbp": 130302.34073108587,
+      "r2": -0.05917881779606571,
+      "median_absolute_error_gbp": 87000.0,
+      "mape_percent": 39.71578510617023
+    },
+    "epc_ablation_selection_mae_gbp": {
+      "without_epc": 63109.7714201555,
+      "with_epc": 65019.41381846886
+    },
+    "interval_nominal_coverage": 0.9,
+    "interval_coverage": 1.0,
+    "interval_radius_gbp": 163770.71462932287,
+    "mean_interval_width_gbp": 323335.9505091543,
+    "counts": {
+      "fit": {
+        "rows": 40,
+        "groups": 40
+      },
+      "selection": {
+        "rows": 20,
+        "groups": 20
+      },
+      "calibration": {
+        "rows": 20,
+        "groups": 20
+      },
+      "test": {
+        "rows": 20,
+        "groups": 20
+      }
+    },
+    "group_overlap": false,
+    "chronological_evaluation": "unavailable: no transactions or sale dates",
+    "small_sample_subgroups_descriptive_only": {
+      "region": {
+        "East Midlands": {
+          "rows": 3,
+          "mae_gbp": 49950.355475292075,
+          "rmse_gbp": 50228.266038641166,
+          "r2": -2.821256880383141,
+          "median_absolute_error_gbp": 52690.81983049057,
+          "mape_percent": 24.90859763202987,
+          "coverage": 1.0
+        },
+        "East of England": {
+          "rows": 1,
+          "mae_gbp": 98177.98652420519,
+          "rmse_gbp": 98177.98652420519,
+          "r2": null,
+          "median_absolute_error_gbp": 98177.98652420519,
+          "mape_percent": 30.9709736669417,
+          "coverage": 1.0
+        },
+        "Greater London": {
+          "rows": 2,
+          "mae_gbp": 40333.64795052982,
+          "rmse_gbp": 44501.50746154105,
+          "r2": 0.8039272130541726,
+          "median_absolute_error_gbp": 40333.64795052982,
+          "mape_percent": 8.417490009867464,
+          "coverage": 1.0
+        },
+        "North East": {
+          "rows": 2,
+          "mae_gbp": 33403.68573122451,
+          "rmse_gbp": 46539.10489318012,
+          "r2": -2.4654212548134744,
+          "median_absolute_error_gbp": 33403.68573122451,
+          "mape_percent": 22.137150699007467,
+          "coverage": 1.0
+        },
+        "North West": {
+          "rows": 4,
+          "mae_gbp": 46258.14075257175,
+          "rmse_gbp": 52128.68280331616,
+          "r2": 0.5944898466415468,
+          "median_absolute_error_gbp": 49221.43010457566,
+          "mape_percent": 20.778507945503883,
+          "coverage": 1.0
+        },
+        "South East": {
+          "rows": 3,
+          "mae_gbp": 36036.98778049436,
+          "rmse_gbp": 53720.313467781474,
+          "r2": -4.2385737619383494,
+          "median_absolute_error_gbp": 15538.118734722084,
+          "mape_percent": 10.725290065363525,
+          "coverage": 1.0
+        },
+        "Wales": {
+          "rows": 2,
+          "mae_gbp": 31572.66556047756,
+          "rmse_gbp": 31602.859476633006,
+          "r2": 0.8293407275663527,
+          "median_absolute_error_gbp": 31572.66556047756,
+          "mape_percent": 11.316654923680398,
+          "coverage": 1.0
+        },
+        "West Midlands": {
+          "rows": 1,
+          "mae_gbp": 60013.352494597144,
+          "rmse_gbp": 60013.352494597144,
+          "r2": null,
+          "median_absolute_error_gbp": 60013.352494597144,
+          "mape_percent": 26.321645830963657,
+          "coverage": 1.0
+        },
+        "Yorkshire and The Humber": {
+          "rows": 2,
+          "mae_gbp": 33217.76203837915,
+          "rmse_gbp": 34621.160647318815,
+          "r2": 0.8628928748814714,
+          "median_absolute_error_gbp": 33217.76203837915,
+          "mape_percent": 14.340018718510638,
+          "coverage": 1.0
+        }
+      },
+      "property_type": {
+        "Detached": {
+          "rows": 3,
+          "mae_gbp": 42728.51637912829,
+          "rmse_gbp": 49063.99280663099,
+          "r2": 0.850001533452677,
+          "median_absolute_error_gbp": 30191.536853207042,
+          "mape_percent": 10.76676600729951,
+          "coverage": 1.0
+        },
+        "Flat": {
+          "rows": 3,
+          "mae_gbp": 30089.275332251138,
+          "rmse_gbp": 40340.92006665608,
+          "r2": -2.1620268753063514,
+          "median_absolute_error_gbp": 23460.454534304386,
+          "mape_percent": 20.04198662237984,
+          "coverage": 1.0
+        },
+        "Semi-detached": {
+          "rows": 6,
+          "mae_gbp": 33963.50853604752,
+          "rmse_gbp": 45495.708098153125,
+          "r2": 0.7067276168124148,
+          "median_absolute_error_gbp": 29053.774237168313,
+          "mape_percent": 12.283880773867855,
+          "coverage": 1.0
+        },
+        "Terraced": {
+          "rows": 8,
+          "mae_gbp": 57000.87850090592,
+          "rmse_gbp": 59687.198847799904,
+          "r2": 0.49755846466443754,
+          "median_absolute_error_gbp": 54964.137830427615,
+          "mape_percent": 24.20017506774848,
+          "coverage": 1.0
+        }
+      },
+      "energy_rating": {
+        "A": {
+          "rows": 1,
+          "mae_gbp": 60013.352494597144,
+          "rmse_gbp": 60013.352494597144,
+          "r2": null,
+          "median_absolute_error_gbp": 60013.352494597144,
+          "mape_percent": 26.321645830963657,
+          "coverage": 1.0
+        },
+        "B": {
+          "rows": 1,
+          "mae_gbp": 30191.536853207042,
+          "rmse_gbp": 30191.536853207042,
+          "r2": null,
+          "median_absolute_error_gbp": 30191.536853207042,
+          "mape_percent": 7.987179061694985,
+          "coverage": 1.0
+        },
+        "C": {
+          "rows": 5,
+          "mae_gbp": 53592.24399477313,
+          "rmse_gbp": 62737.50486110756,
+          "r2": 0.612553203508535,
+          "median_absolute_error_gbp": 65808.65547088033,
+          "mape_percent": 21.516858015737654,
+          "coverage": 1.0
+        },
+        "D": {
+          "rows": 7,
+          "mae_gbp": 45446.991991370494,
+          "rmse_gbp": 54521.31030399232,
+          "r2": 0.6962840598316302,
+          "median_absolute_error_gbp": 52690.81983049057,
+          "mape_percent": 17.867418568600176,
+          "coverage": 1.0
+        },
+        "E": {
+          "rows": 5,
+          "mae_gbp": 36083.30060412634,
+          "rmse_gbp": 38881.85345417416,
+          "r2": 0.8184069418113828,
+          "median_absolute_error_gbp": 42975.069542453915,
+          "mape_percent": 17.880370309668976,
+          "coverage": 1.0
+        },
+        "F": {
+          "rows": 1,
+          "mae_gbp": 21529.89807577571,
+          "rmse_gbp": 21529.89807577571,
+          "r2": null,
+          "median_absolute_error_gbp": 21529.89807577571,
+          "mape_percent": 3.3640465743399544,
+          "coverage": 1.0
+        }
+      }
+    }
+  },
+  "pending": [
+    "Full scores: documented intensity benchmark; solar contribution; heat-pump subtype",
+    "Retrofit feasibility and scenario engine",
+    "Carbon engine and documented factors",
+    "Recorded LLM responses and reviews",
+    "Observed sales for real valuation"
+  ]
+}

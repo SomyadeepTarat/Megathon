@@ -1,0 +1,62 @@
+[
+  {
+    "case": "intent_default",
+    "think": null,
+    "content": "",
+    "thinking_characters": 2200,
+    "done_reason": "length",
+    "eval_count": 512,
+    "validation_error": "JSONDecodeError",
+    "seconds": 11.734689874981996
+  },
+  {
+    "case": "intent_no_thinking",
+    "think": false,
+    "content": "{\n  \"intent\": \"simulate_retrofit\",\n  \"retrofits\": [\n    \"heat_pump\"\n  ],\n  \"budget_gbp\": null,\n  \"objective\": \"carbon_reduction\"\n}",
+    "thinking_characters": 0,
+    "done_reason": "stop",
+    "eval_count": 44,
+    "parsed_json": {
+      "intent": "simulate_retrofit",
+      "retrofits": [
+        "heat_pump"
+      ],
+      "budget_gbp": null,
+      "objective": "carbon_reduction"
+    },
+    "validated_intent": {
+      "intent": "simulate_retrofit",
+      "retrofits": [
+        "heat_pump"
+      ],
+      "budget_gbp": null,
+      "objective": "carbon_reduction"
+    },
+    "seconds": 1.0272255419986323
+  },
+  {
+    "case": "explanation_no_thinking",
+    "think": false,
+    "content": "{\n  \"question\": \"Why is the score unavailable?\",\n  \"facts\": [\n    {\n      \"id\": \"f0\",\n      \"source\": \"score.status\",\n      \"text\": \"Score estimate is unavailable.\"\n    },\n    {\n      \"id\": \"f1\",\n      \"source\": \"warnings.0\",\n      \"text\": \"A documented consumption benchmark is missing.\"\n    }\n  ]\n}",
+    "thinking_characters": 0,
+    "done_reason": "stop",
+    "eval_count": 84,
+    "parsed_json": {
+      "question": "Why is the score unavailable?",
+      "facts": [
+        {
+          "id": "f0",
+          "source": "score.status",
+          "text": "Score estimate is unavailable."
+        },
+        {
+          "id": "f1",
+          "source": "warnings.0",
+          "text": "A documented consumption benchmark is missing."
+        }
+      ]
+    },
+    "valid_fact_selection": false,
+    "seconds": 2.208765957999276
+  }
+]

@@ -1,0 +1,2849 @@
+[
+  {
+    "case_id": "LLM01",
+    "question": "Why is my score low?",
+    "response": "Baseline purchased electricity: 2997.41 kWh/year (backend estimate).\nBaseline gas: 27040.56 kWh/year (backend estimate).\nScore estimate is unavailable.\nCarbon estimate is unavailable.\nValuation estimate is unavailable.\nIssues: Insulation is poor.\nIssues: An old gas boiler is recorded.\nIssues: Windows are single glazed.\nIssues: No renewable contribution is recorded.\nIssues: No smart energy controls are recorded.\nWarnings: Property snapshot and energy year differ; see dataset methodology.\nWarnings: Energy data quality: synthetic.\nWarnings: Full score unavailable: required inputs are missing.\nSources: Synthetic repository data; real backend assessment, evaluation-only advisor adapter\nScore component (backend evidence): {\"name\": \"energy_efficiency\", \"subscore\": 20.0, \"weight\": 0.25, \"contribution\": 5.0, \"evidence\": {\"energy_rating\": \"F\"}}\nScore component (backend evidence): {\"name\": \"consumption_intensity\", \"subscore\": null, \"weight\": 0.2, \"contribution\": null, \"evidence\": {\"intensity_kwh_m2_year\": 202.95925675675676, \"benchmark_kwh_m2_year\": null, \"benchmark_source\": null}}\nScore component (backend evidence): {\"name\": \"insulation\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"insulation\": \"poor\"}}\nScore component (backend evidence): {\"name\": \"heating_system\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"heating_system\": \"old_gas_boiler\"}}\nScore component (backend evidence): {\"name\": \"windows\", \"subscore\": 20.0, \"weight\": 0.1, \"contribution\": 2.0, \"evidence\": {\"glazing\": \"single\"}}\nScore component (backend evidence): {\"name\": \"renewable_energy\", \"subscore\": 0.0, \"weight\": 0.1, \"contribution\": 0.0, \"evidence\": {\"renewable_contribution\": \"none\"}}\nScore component (backend evidence): {\"name\": \"smart_management\", \"subscore\": 0.0, \"weight\": 0.05, \"contribution\": 0.0, \"evidence\": {\"smart_controls\": \"none\"}}\nNegative fuel savings mean increased consumption. Property-value associations do not prove a causal retrofit premium.",
+    "allowed_numbers": [
+      "0.0",
+      "0.05",
+      "0.1",
+      "0.15",
+      "0.2",
+      "0.25",
+      "2.0",
+      "20.0",
+      "202.95925675675676",
+      "27040.56",
+      "2997.41",
+      "3.0",
+      "5.0"
+    ],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    },
+    "answer": {
+      "status": "success",
+      "intent": {
+        "intent": "explain",
+        "retrofits": [],
+        "budget_gbp": null,
+        "objective": "carbon_reduction"
+      },
+      "explanation": "Baseline purchased electricity: 2997.41 kWh/year (backend estimate).\nBaseline gas: 27040.56 kWh/year (backend estimate).\nScore estimate is unavailable.\nCarbon estimate is unavailable.\nValuation estimate is unavailable.\nIssues: Insulation is poor.\nIssues: An old gas boiler is recorded.\nIssues: Windows are single glazed.\nIssues: No renewable contribution is recorded.\nIssues: No smart energy controls are recorded.\nWarnings: Property snapshot and energy year differ; see dataset methodology.\nWarnings: Energy data quality: synthetic.\nWarnings: Full score unavailable: required inputs are missing.\nSources: Synthetic repository data; real backend assessment, evaluation-only advisor adapter\nScore component (backend evidence): {\"name\": \"energy_efficiency\", \"subscore\": 20.0, \"weight\": 0.25, \"contribution\": 5.0, \"evidence\": {\"energy_rating\": \"F\"}}\nScore component (backend evidence): {\"name\": \"consumption_intensity\", \"subscore\": null, \"weight\": 0.2, \"contribution\": null, \"evidence\": {\"intensity_kwh_m2_year\": 202.95925675675676, \"benchmark_kwh_m2_year\": null, \"benchmark_source\": null}}\nScore component (backend evidence): {\"name\": \"insulation\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"insulation\": \"poor\"}}\nScore component (backend evidence): {\"name\": \"heating_system\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"heating_system\": \"old_gas_boiler\"}}\nScore component (backend evidence): {\"name\": \"windows\", \"subscore\": 20.0, \"weight\": 0.1, \"contribution\": 2.0, \"evidence\": {\"glazing\": \"single\"}}\nScore component (backend evidence): {\"name\": \"renewable_energy\", \"subscore\": 0.0, \"weight\": 0.1, \"contribution\": 0.0, \"evidence\": {\"renewable_contribution\": \"none\"}}\nScore component (backend evidence): {\"name\": \"smart_management\", \"subscore\": 0.0, \"weight\": 0.05, \"contribution\": 0.0, \"evidence\": {\"smart_controls\": \"none\"}}\nNegative fuel savings mean increased consumption. Property-value associations do not prove a causal retrofit premium.",
+      "mode": "deterministic",
+      "fallback_reason": "explanation_provider_failed_or_invalid",
+      "facts": [
+        {
+          "id": "f0",
+          "text": "Baseline purchased electricity: 2997.41 kWh/year (backend estimate).",
+          "source": "energy.baseline_electricity_kwh"
+        },
+        {
+          "id": "f1",
+          "text": "Baseline gas: 27040.56 kWh/year (backend estimate).",
+          "source": "energy.baseline_gas_kwh"
+        },
+        {
+          "id": "f2",
+          "text": "Score estimate is unavailable.",
+          "source": "score.status"
+        },
+        {
+          "id": "f3",
+          "text": "Carbon estimate is unavailable.",
+          "source": "carbon.status"
+        },
+        {
+          "id": "f4",
+          "text": "Valuation estimate is unavailable.",
+          "source": "valuation.status"
+        },
+        {
+          "id": "f5",
+          "text": "Issues: Insulation is poor.",
+          "source": "issues.0"
+        },
+        {
+          "id": "f6",
+          "text": "Issues: An old gas boiler is recorded.",
+          "source": "issues.1"
+        },
+        {
+          "id": "f7",
+          "text": "Issues: Windows are single glazed.",
+          "source": "issues.2"
+        },
+        {
+          "id": "f8",
+          "text": "Issues: No renewable contribution is recorded.",
+          "source": "issues.3"
+        },
+        {
+          "id": "f9",
+          "text": "Issues: No smart energy controls are recorded.",
+          "source": "issues.4"
+        },
+        {
+          "id": "f10",
+          "text": "Warnings: Property snapshot and energy year differ; see dataset methodology.",
+          "source": "warnings.0"
+        },
+        {
+          "id": "f11",
+          "text": "Warnings: Energy data quality: synthetic.",
+          "source": "warnings.1"
+        },
+        {
+          "id": "f12",
+          "text": "Warnings: Full score unavailable: required inputs are missing.",
+          "source": "warnings.2"
+        },
+        {
+          "id": "f13",
+          "text": "Sources: Synthetic repository data; real backend assessment, evaluation-only advisor adapter",
+          "source": "sources.0"
+        },
+        {
+          "id": "f14",
+          "text": "Score component (backend evidence): {\"name\": \"energy_efficiency\", \"subscore\": 20.0, \"weight\": 0.25, \"contribution\": 5.0, \"evidence\": {\"energy_rating\": \"F\"}}",
+          "source": "score.components.0"
+        },
+        {
+          "id": "f15",
+          "text": "Score component (backend evidence): {\"name\": \"consumption_intensity\", \"subscore\": null, \"weight\": 0.2, \"contribution\": null, \"evidence\": {\"intensity_kwh_m2_year\": 202.95925675675676, \"benchmark_kwh_m2_year\": null, \"benchmark_source\": null}}",
+          "source": "score.components.1"
+        },
+        {
+          "id": "f16",
+          "text": "Score component (backend evidence): {\"name\": \"insulation\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"insulation\": \"poor\"}}",
+          "source": "score.components.2"
+        },
+        {
+          "id": "f17",
+          "text": "Score component (backend evidence): {\"name\": \"heating_system\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"heating_system\": \"old_gas_boiler\"}}",
+          "source": "score.components.3"
+        },
+        {
+          "id": "f18",
+          "text": "Score component (backend evidence): {\"name\": \"windows\", \"subscore\": 20.0, \"weight\": 0.1, \"contribution\": 2.0, \"evidence\": {\"glazing\": \"single\"}}",
+          "source": "score.components.4"
+        },
+        {
+          "id": "f19",
+          "text": "Score component (backend evidence): {\"name\": \"renewable_energy\", \"subscore\": 0.0, \"weight\": 0.1, \"contribution\": 0.0, \"evidence\": {\"renewable_contribution\": \"none\"}}",
+          "source": "score.components.5"
+        },
+        {
+          "id": "f20",
+          "text": "Score component (backend evidence): {\"name\": \"smart_management\", \"subscore\": 0.0, \"weight\": 0.05, \"contribution\": 0.0, \"evidence\": {\"smart_controls\": \"none\"}}",
+          "source": "score.components.6"
+        }
+      ],
+      "result": {
+        "property_id": "P00001",
+        "status": "success",
+        "score": {
+          "status": "unavailable",
+          "score": null,
+          "unrounded_score": null,
+          "classification": null,
+          "components": [
+            {
+              "name": "energy_efficiency",
+              "subscore": 20.0,
+              "weight": 0.25,
+              "contribution": 5.0,
+              "evidence": {
+                "energy_rating": "F"
+              }
+            },
+            {
+              "name": "consumption_intensity",
+              "subscore": null,
+              "weight": 0.2,
+              "contribution": null,
+              "evidence": {
+                "intensity_kwh_m2_year": 202.95925675675676,
+                "benchmark_kwh_m2_year": null,
+                "benchmark_source": null
+              }
+            },
+            {
+              "name": "insulation",
+              "subscore": 20.0,
+              "weight": 0.15,
+              "contribution": 3.0,
+              "evidence": {
+                "insulation": "poor"
+              }
+            },
+            {
+              "name": "heating_system",
+              "subscore": 20.0,
+              "weight": 0.15,
+              "contribution": 3.0,
+              "evidence": {
+                "heating_system": "old_gas_boiler"
+              }
+            },
+            {
+              "name": "windows",
+              "subscore": 20.0,
+              "weight": 0.1,
+              "contribution": 2.0,
+              "evidence": {
+                "glazing": "single"
+              }
+            },
+            {
+              "name": "renewable_energy",
+              "subscore": 0.0,
+              "weight": 0.1,
+              "contribution": 0.0,
+              "evidence": {
+                "renewable_contribution": "none"
+              }
+            },
+            {
+              "name": "smart_management",
+              "subscore": 0.0,
+              "weight": 0.05,
+              "contribution": 0.0,
+              "evidence": {
+                "smart_controls": "none"
+              }
+            }
+          ],
+          "missing_fields": [
+            "benchmark"
+          ],
+          "methodology_version": "greenprint-score-v1",
+          "baseline": null
+        },
+        "energy": {
+          "baseline_electricity_kwh": 2997.41,
+          "baseline_gas_kwh": 27040.56
+        },
+        "carbon": {
+          "status": "unavailable"
+        },
+        "valuation": {
+          "status": "unavailable"
+        },
+        "issues": [
+          "Insulation is poor.",
+          "An old gas boiler is recorded.",
+          "Windows are single glazed.",
+          "No renewable contribution is recorded.",
+          "No smart energy controls are recorded."
+        ],
+        "warnings": [
+          "Property snapshot and energy year differ; see dataset methodology.",
+          "Energy data quality: synthetic.",
+          "Full score unavailable: required inputs are missing."
+        ],
+        "sources": [
+          "Synthetic repository data; real backend assessment, evaluation-only advisor adapter"
+        ]
+      },
+      "tool_calls": [
+        "assessment"
+      ]
+    },
+    "latency_seconds": 29.64506320800865
+  },
+  {
+    "case_id": "LLM02",
+    "question": "Explain all seven score components.",
+    "response": "Baseline purchased electricity: 2997.41 kWh/year (backend estimate).\nBaseline gas: 27040.56 kWh/year (backend estimate).\nScore estimate is unavailable.\nCarbon estimate is unavailable.\nValuation estimate is unavailable.\nIssues: Insulation is poor.\nIssues: An old gas boiler is recorded.\nIssues: Windows are single glazed.\nIssues: No renewable contribution is recorded.\nIssues: No smart energy controls are recorded.\nWarnings: Property snapshot and energy year differ; see dataset methodology.\nWarnings: Energy data quality: synthetic.\nWarnings: Full score unavailable: required inputs are missing.\nSources: Synthetic repository data; real backend assessment, evaluation-only advisor adapter\nScore component (backend evidence): {\"name\": \"energy_efficiency\", \"subscore\": 20.0, \"weight\": 0.25, \"contribution\": 5.0, \"evidence\": {\"energy_rating\": \"F\"}}\nScore component (backend evidence): {\"name\": \"consumption_intensity\", \"subscore\": null, \"weight\": 0.2, \"contribution\": null, \"evidence\": {\"intensity_kwh_m2_year\": 202.95925675675676, \"benchmark_kwh_m2_year\": null, \"benchmark_source\": null}}\nScore component (backend evidence): {\"name\": \"insulation\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"insulation\": \"poor\"}}\nScore component (backend evidence): {\"name\": \"heating_system\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"heating_system\": \"old_gas_boiler\"}}\nScore component (backend evidence): {\"name\": \"windows\", \"subscore\": 20.0, \"weight\": 0.1, \"contribution\": 2.0, \"evidence\": {\"glazing\": \"single\"}}\nScore component (backend evidence): {\"name\": \"renewable_energy\", \"subscore\": 0.0, \"weight\": 0.1, \"contribution\": 0.0, \"evidence\": {\"renewable_contribution\": \"none\"}}\nScore component (backend evidence): {\"name\": \"smart_management\", \"subscore\": 0.0, \"weight\": 0.05, \"contribution\": 0.0, \"evidence\": {\"smart_controls\": \"none\"}}\nNegative fuel savings mean increased consumption. Property-value associations do not prove a causal retrofit premium.",
+    "allowed_numbers": [
+      "0.0",
+      "0.05",
+      "0.1",
+      "0.15",
+      "0.2",
+      "0.25",
+      "2.0",
+      "20.0",
+      "202.95925675675676",
+      "27040.56",
+      "2997.41",
+      "3.0",
+      "5.0"
+    ],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    },
+    "answer": {
+      "status": "success",
+      "intent": {
+        "intent": "explain",
+        "retrofits": [],
+        "budget_gbp": null,
+        "objective": "carbon_reduction"
+      },
+      "explanation": "Baseline purchased electricity: 2997.41 kWh/year (backend estimate).\nBaseline gas: 27040.56 kWh/year (backend estimate).\nScore estimate is unavailable.\nCarbon estimate is unavailable.\nValuation estimate is unavailable.\nIssues: Insulation is poor.\nIssues: An old gas boiler is recorded.\nIssues: Windows are single glazed.\nIssues: No renewable contribution is recorded.\nIssues: No smart energy controls are recorded.\nWarnings: Property snapshot and energy year differ; see dataset methodology.\nWarnings: Energy data quality: synthetic.\nWarnings: Full score unavailable: required inputs are missing.\nSources: Synthetic repository data; real backend assessment, evaluation-only advisor adapter\nScore component (backend evidence): {\"name\": \"energy_efficiency\", \"subscore\": 20.0, \"weight\": 0.25, \"contribution\": 5.0, \"evidence\": {\"energy_rating\": \"F\"}}\nScore component (backend evidence): {\"name\": \"consumption_intensity\", \"subscore\": null, \"weight\": 0.2, \"contribution\": null, \"evidence\": {\"intensity_kwh_m2_year\": 202.95925675675676, \"benchmark_kwh_m2_year\": null, \"benchmark_source\": null}}\nScore component (backend evidence): {\"name\": \"insulation\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"insulation\": \"poor\"}}\nScore component (backend evidence): {\"name\": \"heating_system\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"heating_system\": \"old_gas_boiler\"}}\nScore component (backend evidence): {\"name\": \"windows\", \"subscore\": 20.0, \"weight\": 0.1, \"contribution\": 2.0, \"evidence\": {\"glazing\": \"single\"}}\nScore component (backend evidence): {\"name\": \"renewable_energy\", \"subscore\": 0.0, \"weight\": 0.1, \"contribution\": 0.0, \"evidence\": {\"renewable_contribution\": \"none\"}}\nScore component (backend evidence): {\"name\": \"smart_management\", \"subscore\": 0.0, \"weight\": 0.05, \"contribution\": 0.0, \"evidence\": {\"smart_controls\": \"none\"}}\nNegative fuel savings mean increased consumption. Property-value associations do not prove a causal retrofit premium.",
+      "mode": "deterministic",
+      "fallback_reason": "explanation_provider_failed_or_invalid",
+      "facts": [
+        {
+          "id": "f0",
+          "text": "Baseline purchased electricity: 2997.41 kWh/year (backend estimate).",
+          "source": "energy.baseline_electricity_kwh"
+        },
+        {
+          "id": "f1",
+          "text": "Baseline gas: 27040.56 kWh/year (backend estimate).",
+          "source": "energy.baseline_gas_kwh"
+        },
+        {
+          "id": "f2",
+          "text": "Score estimate is unavailable.",
+          "source": "score.status"
+        },
+        {
+          "id": "f3",
+          "text": "Carbon estimate is unavailable.",
+          "source": "carbon.status"
+        },
+        {
+          "id": "f4",
+          "text": "Valuation estimate is unavailable.",
+          "source": "valuation.status"
+        },
+        {
+          "id": "f5",
+          "text": "Issues: Insulation is poor.",
+          "source": "issues.0"
+        },
+        {
+          "id": "f6",
+          "text": "Issues: An old gas boiler is recorded.",
+          "source": "issues.1"
+        },
+        {
+          "id": "f7",
+          "text": "Issues: Windows are single glazed.",
+          "source": "issues.2"
+        },
+        {
+          "id": "f8",
+          "text": "Issues: No renewable contribution is recorded.",
+          "source": "issues.3"
+        },
+        {
+          "id": "f9",
+          "text": "Issues: No smart energy controls are recorded.",
+          "source": "issues.4"
+        },
+        {
+          "id": "f10",
+          "text": "Warnings: Property snapshot and energy year differ; see dataset methodology.",
+          "source": "warnings.0"
+        },
+        {
+          "id": "f11",
+          "text": "Warnings: Energy data quality: synthetic.",
+          "source": "warnings.1"
+        },
+        {
+          "id": "f12",
+          "text": "Warnings: Full score unavailable: required inputs are missing.",
+          "source": "warnings.2"
+        },
+        {
+          "id": "f13",
+          "text": "Sources: Synthetic repository data; real backend assessment, evaluation-only advisor adapter",
+          "source": "sources.0"
+        },
+        {
+          "id": "f14",
+          "text": "Score component (backend evidence): {\"name\": \"energy_efficiency\", \"subscore\": 20.0, \"weight\": 0.25, \"contribution\": 5.0, \"evidence\": {\"energy_rating\": \"F\"}}",
+          "source": "score.components.0"
+        },
+        {
+          "id": "f15",
+          "text": "Score component (backend evidence): {\"name\": \"consumption_intensity\", \"subscore\": null, \"weight\": 0.2, \"contribution\": null, \"evidence\": {\"intensity_kwh_m2_year\": 202.95925675675676, \"benchmark_kwh_m2_year\": null, \"benchmark_source\": null}}",
+          "source": "score.components.1"
+        },
+        {
+          "id": "f16",
+          "text": "Score component (backend evidence): {\"name\": \"insulation\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"insulation\": \"poor\"}}",
+          "source": "score.components.2"
+        },
+        {
+          "id": "f17",
+          "text": "Score component (backend evidence): {\"name\": \"heating_system\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"heating_system\": \"old_gas_boiler\"}}",
+          "source": "score.components.3"
+        },
+        {
+          "id": "f18",
+          "text": "Score component (backend evidence): {\"name\": \"windows\", \"subscore\": 20.0, \"weight\": 0.1, \"contribution\": 2.0, \"evidence\": {\"glazing\": \"single\"}}",
+          "source": "score.components.4"
+        },
+        {
+          "id": "f19",
+          "text": "Score component (backend evidence): {\"name\": \"renewable_energy\", \"subscore\": 0.0, \"weight\": 0.1, \"contribution\": 0.0, \"evidence\": {\"renewable_contribution\": \"none\"}}",
+          "source": "score.components.5"
+        },
+        {
+          "id": "f20",
+          "text": "Score component (backend evidence): {\"name\": \"smart_management\", \"subscore\": 0.0, \"weight\": 0.05, \"contribution\": 0.0, \"evidence\": {\"smart_controls\": \"none\"}}",
+          "source": "score.components.6"
+        }
+      ],
+      "result": {
+        "property_id": "P00001",
+        "status": "success",
+        "score": {
+          "status": "unavailable",
+          "score": null,
+          "unrounded_score": null,
+          "classification": null,
+          "components": [
+            {
+              "name": "energy_efficiency",
+              "subscore": 20.0,
+              "weight": 0.25,
+              "contribution": 5.0,
+              "evidence": {
+                "energy_rating": "F"
+              }
+            },
+            {
+              "name": "consumption_intensity",
+              "subscore": null,
+              "weight": 0.2,
+              "contribution": null,
+              "evidence": {
+                "intensity_kwh_m2_year": 202.95925675675676,
+                "benchmark_kwh_m2_year": null,
+                "benchmark_source": null
+              }
+            },
+            {
+              "name": "insulation",
+              "subscore": 20.0,
+              "weight": 0.15,
+              "contribution": 3.0,
+              "evidence": {
+                "insulation": "poor"
+              }
+            },
+            {
+              "name": "heating_system",
+              "subscore": 20.0,
+              "weight": 0.15,
+              "contribution": 3.0,
+              "evidence": {
+                "heating_system": "old_gas_boiler"
+              }
+            },
+            {
+              "name": "windows",
+              "subscore": 20.0,
+              "weight": 0.1,
+              "contribution": 2.0,
+              "evidence": {
+                "glazing": "single"
+              }
+            },
+            {
+              "name": "renewable_energy",
+              "subscore": 0.0,
+              "weight": 0.1,
+              "contribution": 0.0,
+              "evidence": {
+                "renewable_contribution": "none"
+              }
+            },
+            {
+              "name": "smart_management",
+              "subscore": 0.0,
+              "weight": 0.05,
+              "contribution": 0.0,
+              "evidence": {
+                "smart_controls": "none"
+              }
+            }
+          ],
+          "missing_fields": [
+            "benchmark"
+          ],
+          "methodology_version": "greenprint-score-v1",
+          "baseline": null
+        },
+        "energy": {
+          "baseline_electricity_kwh": 2997.41,
+          "baseline_gas_kwh": 27040.56
+        },
+        "carbon": {
+          "status": "unavailable"
+        },
+        "valuation": {
+          "status": "unavailable"
+        },
+        "issues": [
+          "Insulation is poor.",
+          "An old gas boiler is recorded.",
+          "Windows are single glazed.",
+          "No renewable contribution is recorded.",
+          "No smart energy controls are recorded."
+        ],
+        "warnings": [
+          "Property snapshot and energy year differ; see dataset methodology.",
+          "Energy data quality: synthetic.",
+          "Full score unavailable: required inputs are missing."
+        ],
+        "sources": [
+          "Synthetic repository data; real backend assessment, evaluation-only advisor adapter"
+        ]
+      },
+      "tool_calls": [
+        "assessment"
+      ]
+    },
+    "latency_seconds": 26.45682525000302
+  },
+  {
+    "case_id": "LLM03",
+    "question": "Why prioritize insulation?",
+    "response": "Baseline purchased electricity: 2997.41 kWh/year (backend estimate).\nBaseline gas: 27040.56 kWh/year (backend estimate).\nScore estimate is unavailable.\nCarbon estimate is unavailable.\nValuation estimate is unavailable.\nIssues: Insulation is poor.\nIssues: An old gas boiler is recorded.\nIssues: Windows are single glazed.\nIssues: No renewable contribution is recorded.\nIssues: No smart energy controls are recorded.\nWarnings: Property snapshot and energy year differ; see dataset methodology.\nWarnings: Energy data quality: synthetic.\nWarnings: Full score unavailable: required inputs are missing.\nSources: Synthetic repository data; real backend assessment, evaluation-only advisor adapter\nScore component (backend evidence): {\"name\": \"energy_efficiency\", \"subscore\": 20.0, \"weight\": 0.25, \"contribution\": 5.0, \"evidence\": {\"energy_rating\": \"F\"}}\nScore component (backend evidence): {\"name\": \"consumption_intensity\", \"subscore\": null, \"weight\": 0.2, \"contribution\": null, \"evidence\": {\"intensity_kwh_m2_year\": 202.95925675675676, \"benchmark_kwh_m2_year\": null, \"benchmark_source\": null}}\nScore component (backend evidence): {\"name\": \"insulation\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"insulation\": \"poor\"}}\nScore component (backend evidence): {\"name\": \"heating_system\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"heating_system\": \"old_gas_boiler\"}}\nScore component (backend evidence): {\"name\": \"windows\", \"subscore\": 20.0, \"weight\": 0.1, \"contribution\": 2.0, \"evidence\": {\"glazing\": \"single\"}}\nScore component (backend evidence): {\"name\": \"renewable_energy\", \"subscore\": 0.0, \"weight\": 0.1, \"contribution\": 0.0, \"evidence\": {\"renewable_contribution\": \"none\"}}\nScore component (backend evidence): {\"name\": \"smart_management\", \"subscore\": 0.0, \"weight\": 0.05, \"contribution\": 0.0, \"evidence\": {\"smart_controls\": \"none\"}}\nNegative fuel savings mean increased consumption. Property-value associations do not prove a causal retrofit premium.",
+    "allowed_numbers": [
+      "0.0",
+      "0.05",
+      "0.1",
+      "0.15",
+      "0.2",
+      "0.25",
+      "2.0",
+      "20.0",
+      "202.95925675675676",
+      "27040.56",
+      "2997.41",
+      "3.0",
+      "5.0"
+    ],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    },
+    "answer": {
+      "status": "success",
+      "intent": {
+        "intent": "explain",
+        "retrofits": [],
+        "budget_gbp": null,
+        "objective": "carbon_reduction"
+      },
+      "explanation": "Baseline purchased electricity: 2997.41 kWh/year (backend estimate).\nBaseline gas: 27040.56 kWh/year (backend estimate).\nScore estimate is unavailable.\nCarbon estimate is unavailable.\nValuation estimate is unavailable.\nIssues: Insulation is poor.\nIssues: An old gas boiler is recorded.\nIssues: Windows are single glazed.\nIssues: No renewable contribution is recorded.\nIssues: No smart energy controls are recorded.\nWarnings: Property snapshot and energy year differ; see dataset methodology.\nWarnings: Energy data quality: synthetic.\nWarnings: Full score unavailable: required inputs are missing.\nSources: Synthetic repository data; real backend assessment, evaluation-only advisor adapter\nScore component (backend evidence): {\"name\": \"energy_efficiency\", \"subscore\": 20.0, \"weight\": 0.25, \"contribution\": 5.0, \"evidence\": {\"energy_rating\": \"F\"}}\nScore component (backend evidence): {\"name\": \"consumption_intensity\", \"subscore\": null, \"weight\": 0.2, \"contribution\": null, \"evidence\": {\"intensity_kwh_m2_year\": 202.95925675675676, \"benchmark_kwh_m2_year\": null, \"benchmark_source\": null}}\nScore component (backend evidence): {\"name\": \"insulation\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"insulation\": \"poor\"}}\nScore component (backend evidence): {\"name\": \"heating_system\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"heating_system\": \"old_gas_boiler\"}}\nScore component (backend evidence): {\"name\": \"windows\", \"subscore\": 20.0, \"weight\": 0.1, \"contribution\": 2.0, \"evidence\": {\"glazing\": \"single\"}}\nScore component (backend evidence): {\"name\": \"renewable_energy\", \"subscore\": 0.0, \"weight\": 0.1, \"contribution\": 0.0, \"evidence\": {\"renewable_contribution\": \"none\"}}\nScore component (backend evidence): {\"name\": \"smart_management\", \"subscore\": 0.0, \"weight\": 0.05, \"contribution\": 0.0, \"evidence\": {\"smart_controls\": \"none\"}}\nNegative fuel savings mean increased consumption. Property-value associations do not prove a causal retrofit premium.",
+      "mode": "deterministic",
+      "fallback_reason": "explanation_provider_failed_or_invalid",
+      "facts": [
+        {
+          "id": "f0",
+          "text": "Baseline purchased electricity: 2997.41 kWh/year (backend estimate).",
+          "source": "energy.baseline_electricity_kwh"
+        },
+        {
+          "id": "f1",
+          "text": "Baseline gas: 27040.56 kWh/year (backend estimate).",
+          "source": "energy.baseline_gas_kwh"
+        },
+        {
+          "id": "f2",
+          "text": "Score estimate is unavailable.",
+          "source": "score.status"
+        },
+        {
+          "id": "f3",
+          "text": "Carbon estimate is unavailable.",
+          "source": "carbon.status"
+        },
+        {
+          "id": "f4",
+          "text": "Valuation estimate is unavailable.",
+          "source": "valuation.status"
+        },
+        {
+          "id": "f5",
+          "text": "Issues: Insulation is poor.",
+          "source": "issues.0"
+        },
+        {
+          "id": "f6",
+          "text": "Issues: An old gas boiler is recorded.",
+          "source": "issues.1"
+        },
+        {
+          "id": "f7",
+          "text": "Issues: Windows are single glazed.",
+          "source": "issues.2"
+        },
+        {
+          "id": "f8",
+          "text": "Issues: No renewable contribution is recorded.",
+          "source": "issues.3"
+        },
+        {
+          "id": "f9",
+          "text": "Issues: No smart energy controls are recorded.",
+          "source": "issues.4"
+        },
+        {
+          "id": "f10",
+          "text": "Warnings: Property snapshot and energy year differ; see dataset methodology.",
+          "source": "warnings.0"
+        },
+        {
+          "id": "f11",
+          "text": "Warnings: Energy data quality: synthetic.",
+          "source": "warnings.1"
+        },
+        {
+          "id": "f12",
+          "text": "Warnings: Full score unavailable: required inputs are missing.",
+          "source": "warnings.2"
+        },
+        {
+          "id": "f13",
+          "text": "Sources: Synthetic repository data; real backend assessment, evaluation-only advisor adapter",
+          "source": "sources.0"
+        },
+        {
+          "id": "f14",
+          "text": "Score component (backend evidence): {\"name\": \"energy_efficiency\", \"subscore\": 20.0, \"weight\": 0.25, \"contribution\": 5.0, \"evidence\": {\"energy_rating\": \"F\"}}",
+          "source": "score.components.0"
+        },
+        {
+          "id": "f15",
+          "text": "Score component (backend evidence): {\"name\": \"consumption_intensity\", \"subscore\": null, \"weight\": 0.2, \"contribution\": null, \"evidence\": {\"intensity_kwh_m2_year\": 202.95925675675676, \"benchmark_kwh_m2_year\": null, \"benchmark_source\": null}}",
+          "source": "score.components.1"
+        },
+        {
+          "id": "f16",
+          "text": "Score component (backend evidence): {\"name\": \"insulation\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"insulation\": \"poor\"}}",
+          "source": "score.components.2"
+        },
+        {
+          "id": "f17",
+          "text": "Score component (backend evidence): {\"name\": \"heating_system\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"heating_system\": \"old_gas_boiler\"}}",
+          "source": "score.components.3"
+        },
+        {
+          "id": "f18",
+          "text": "Score component (backend evidence): {\"name\": \"windows\", \"subscore\": 20.0, \"weight\": 0.1, \"contribution\": 2.0, \"evidence\": {\"glazing\": \"single\"}}",
+          "source": "score.components.4"
+        },
+        {
+          "id": "f19",
+          "text": "Score component (backend evidence): {\"name\": \"renewable_energy\", \"subscore\": 0.0, \"weight\": 0.1, \"contribution\": 0.0, \"evidence\": {\"renewable_contribution\": \"none\"}}",
+          "source": "score.components.5"
+        },
+        {
+          "id": "f20",
+          "text": "Score component (backend evidence): {\"name\": \"smart_management\", \"subscore\": 0.0, \"weight\": 0.05, \"contribution\": 0.0, \"evidence\": {\"smart_controls\": \"none\"}}",
+          "source": "score.components.6"
+        }
+      ],
+      "result": {
+        "property_id": "P00001",
+        "status": "success",
+        "score": {
+          "status": "unavailable",
+          "score": null,
+          "unrounded_score": null,
+          "classification": null,
+          "components": [
+            {
+              "name": "energy_efficiency",
+              "subscore": 20.0,
+              "weight": 0.25,
+              "contribution": 5.0,
+              "evidence": {
+                "energy_rating": "F"
+              }
+            },
+            {
+              "name": "consumption_intensity",
+              "subscore": null,
+              "weight": 0.2,
+              "contribution": null,
+              "evidence": {
+                "intensity_kwh_m2_year": 202.95925675675676,
+                "benchmark_kwh_m2_year": null,
+                "benchmark_source": null
+              }
+            },
+            {
+              "name": "insulation",
+              "subscore": 20.0,
+              "weight": 0.15,
+              "contribution": 3.0,
+              "evidence": {
+                "insulation": "poor"
+              }
+            },
+            {
+              "name": "heating_system",
+              "subscore": 20.0,
+              "weight": 0.15,
+              "contribution": 3.0,
+              "evidence": {
+                "heating_system": "old_gas_boiler"
+              }
+            },
+            {
+              "name": "windows",
+              "subscore": 20.0,
+              "weight": 0.1,
+              "contribution": 2.0,
+              "evidence": {
+                "glazing": "single"
+              }
+            },
+            {
+              "name": "renewable_energy",
+              "subscore": 0.0,
+              "weight": 0.1,
+              "contribution": 0.0,
+              "evidence": {
+                "renewable_contribution": "none"
+              }
+            },
+            {
+              "name": "smart_management",
+              "subscore": 0.0,
+              "weight": 0.05,
+              "contribution": 0.0,
+              "evidence": {
+                "smart_controls": "none"
+              }
+            }
+          ],
+          "missing_fields": [
+            "benchmark"
+          ],
+          "methodology_version": "greenprint-score-v1",
+          "baseline": null
+        },
+        "energy": {
+          "baseline_electricity_kwh": 2997.41,
+          "baseline_gas_kwh": 27040.56
+        },
+        "carbon": {
+          "status": "unavailable"
+        },
+        "valuation": {
+          "status": "unavailable"
+        },
+        "issues": [
+          "Insulation is poor.",
+          "An old gas boiler is recorded.",
+          "Windows are single glazed.",
+          "No renewable contribution is recorded.",
+          "No smart energy controls are recorded."
+        ],
+        "warnings": [
+          "Property snapshot and energy year differ; see dataset methodology.",
+          "Energy data quality: synthetic.",
+          "Full score unavailable: required inputs are missing."
+        ],
+        "sources": [
+          "Synthetic repository data; real backend assessment, evaluation-only advisor adapter"
+        ]
+      },
+      "tool_calls": [
+        "assessment"
+      ]
+    },
+    "latency_seconds": 26.53131570800906
+  },
+  {
+    "case_id": "LLM04",
+    "question": "What if I install only insulation?",
+    "response": "The required backend calculation or data is unavailable. No estimates were generated.",
+    "allowed_numbers": [],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    },
+    "answer": {
+      "status": "unavailable",
+      "intent": {
+        "intent": "simulate_retrofit",
+        "retrofits": [
+          "loft_insulation"
+        ],
+        "budget_gbp": null,
+        "objective": "carbon_reduction"
+      },
+      "explanation": "The required backend calculation or data is unavailable. No estimates were generated.",
+      "mode": "deterministic",
+      "fallback_reason": null,
+      "facts": [],
+      "result": null,
+      "tool_calls": [
+        "feasibility"
+      ]
+    },
+    "latency_seconds": 0.0020372500002849847
+  },
+  {
+    "case_id": "LLM05",
+    "question": "What if I install only solar?",
+    "response": "The required backend calculation or data is unavailable. No estimates were generated.",
+    "allowed_numbers": [],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    },
+    "answer": {
+      "status": "unavailable",
+      "intent": {
+        "intent": "simulate_retrofit",
+        "retrofits": [
+          "solar_panels"
+        ],
+        "budget_gbp": null,
+        "objective": "carbon_reduction"
+      },
+      "explanation": "The required backend calculation or data is unavailable. No estimates were generated.",
+      "mode": "deterministic",
+      "fallback_reason": null,
+      "facts": [],
+      "result": null,
+      "tool_calls": [
+        "feasibility"
+      ]
+    },
+    "latency_seconds": 0.00018104200717061758
+  },
+  {
+    "case_id": "LLM06",
+    "question": "What if I install only a heat pump?",
+    "response": "The required backend calculation or data is unavailable. No estimates were generated.",
+    "allowed_numbers": [],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    },
+    "answer": {
+      "status": "unavailable",
+      "intent": {
+        "intent": "simulate_retrofit",
+        "retrofits": [
+          "heat_pump"
+        ],
+        "budget_gbp": null,
+        "objective": "carbon_reduction"
+      },
+      "explanation": "The required backend calculation or data is unavailable. No estimates were generated.",
+      "mode": "deterministic",
+      "fallback_reason": null,
+      "facts": [],
+      "result": null,
+      "tool_calls": [
+        "feasibility"
+      ]
+    },
+    "latency_seconds": 0.00030545800109393895
+  },
+  {
+    "case_id": "LLM07",
+    "question": "What if I install double glazing?",
+    "response": "The required backend calculation or data is unavailable. No estimates were generated.",
+    "allowed_numbers": [],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    },
+    "answer": {
+      "status": "unavailable",
+      "intent": {
+        "intent": "simulate_retrofit",
+        "retrofits": [
+          "double_glazing"
+        ],
+        "budget_gbp": null,
+        "objective": "carbon_reduction"
+      },
+      "explanation": "The required backend calculation or data is unavailable. No estimates were generated.",
+      "mode": "deterministic",
+      "fallback_reason": null,
+      "facts": [],
+      "result": null,
+      "tool_calls": [
+        "feasibility"
+      ]
+    },
+    "latency_seconds": 0.00013916697935201228
+  },
+  {
+    "case_id": "LLM08",
+    "question": "What if I add smart controls?",
+    "response": "The required backend calculation or data is unavailable. No estimates were generated.",
+    "allowed_numbers": [],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    },
+    "answer": {
+      "status": "unavailable",
+      "intent": {
+        "intent": "simulate_retrofit",
+        "retrofits": [
+          "smart_thermostat"
+        ],
+        "budget_gbp": null,
+        "objective": "carbon_reduction"
+      },
+      "explanation": "The required backend calculation or data is unavailable. No estimates were generated.",
+      "mode": "deterministic",
+      "fallback_reason": null,
+      "facts": [],
+      "result": null,
+      "tool_calls": [
+        "feasibility"
+      ]
+    },
+    "latency_seconds": 9.229200077243149e-05
+  },
+  {
+    "case_id": "LLM09",
+    "question": "What if I combine insulation and glazing?",
+    "response": "Please specify the complete retrofit package, or a budget and optimization objective. For comparisons, submit each package separately.",
+    "allowed_numbers": [],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    },
+    "answer": {
+      "status": "clarification_required",
+      "intent": {
+        "intent": "clarify",
+        "retrofits": [],
+        "budget_gbp": null,
+        "objective": "carbon_reduction"
+      },
+      "explanation": "Please specify the complete retrofit package, or a budget and optimization objective. For comparisons, submit each package separately.",
+      "mode": "deterministic",
+      "fallback_reason": "intent_provider_failed",
+      "facts": [],
+      "result": null,
+      "tool_calls": []
+    },
+    "latency_seconds": 12.07093579202774
+  },
+  {
+    "case_id": "LLM10",
+    "question": "What if I combine solar and a heat pump?",
+    "response": "Please specify the complete retrofit package, or a budget and optimization objective. For comparisons, submit each package separately.",
+    "allowed_numbers": [],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    },
+    "answer": {
+      "status": "clarification_required",
+      "intent": {
+        "intent": "clarify",
+        "retrofits": [],
+        "budget_gbp": null,
+        "objective": "carbon_reduction"
+      },
+      "explanation": "Please specify the complete retrofit package, or a budget and optimization objective. For comparisons, submit each package separately.",
+      "mode": "deterministic",
+      "fallback_reason": "intent_provider_failed",
+      "facts": [],
+      "result": null,
+      "tool_calls": []
+    },
+    "latency_seconds": 11.717926040990278
+  },
+  {
+    "case_id": "LLM11",
+    "question": "What can I do with a \u00a35000 budget?",
+    "response": "Please specify the complete retrofit package, or a budget and optimization objective. For comparisons, submit each package separately.",
+    "allowed_numbers": [],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    },
+    "answer": {
+      "status": "clarification_required",
+      "intent": {
+        "intent": "clarify",
+        "retrofits": [],
+        "budget_gbp": null,
+        "objective": "carbon_reduction"
+      },
+      "explanation": "Please specify the complete retrofit package, or a budget and optimization objective. For comparisons, submit each package separately.",
+      "mode": "deterministic",
+      "fallback_reason": "intent_provider_failed",
+      "facts": [],
+      "result": null,
+      "tool_calls": []
+    },
+    "latency_seconds": 11.825833332986804
+  },
+  {
+    "case_id": "LLM12",
+    "question": "Which package saves most carbon?",
+    "response": "Please specify the complete retrofit package, or a budget and optimization objective. For comparisons, submit each package separately.",
+    "allowed_numbers": [],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    },
+    "answer": {
+      "status": "clarification_required",
+      "intent": {
+        "intent": "clarify",
+        "retrofits": [],
+        "budget_gbp": null,
+        "objective": "carbon_reduction"
+      },
+      "explanation": "Please specify the complete retrofit package, or a budget and optimization objective. For comparisons, submit each package separately.",
+      "mode": "deterministic",
+      "fallback_reason": "intent_provider_failed",
+      "facts": [],
+      "result": null,
+      "tool_calls": []
+    },
+    "latency_seconds": 11.674190707999514
+  },
+  {
+    "case_id": "LLM13",
+    "question": "Which package saves most purchased energy?",
+    "response": "Please specify the complete retrofit package, or a budget and optimization objective. For comparisons, submit each package separately.",
+    "allowed_numbers": [],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    },
+    "answer": {
+      "status": "clarification_required",
+      "intent": {
+        "intent": "clarify",
+        "retrofits": [],
+        "budget_gbp": null,
+        "objective": "carbon_reduction"
+      },
+      "explanation": "Please specify the complete retrofit package, or a budget and optimization objective. For comparisons, submit each package separately.",
+      "mode": "deterministic",
+      "fallback_reason": "intent_provider_failed",
+      "facts": [],
+      "result": null,
+      "tool_calls": []
+    },
+    "latency_seconds": 11.66562666700338
+  },
+  {
+    "case_id": "LLM14",
+    "question": "Why does electricity use increase with a heat pump?",
+    "response": "Baseline purchased electricity: 2997.41 kWh/year (backend estimate).\nBaseline gas: 27040.56 kWh/year (backend estimate).\nScore estimate is unavailable.\nCarbon estimate is unavailable.\nValuation estimate is unavailable.\nIssues: Insulation is poor.\nIssues: An old gas boiler is recorded.\nIssues: Windows are single glazed.\nIssues: No renewable contribution is recorded.\nIssues: No smart energy controls are recorded.\nWarnings: Property snapshot and energy year differ; see dataset methodology.\nWarnings: Energy data quality: synthetic.\nWarnings: Full score unavailable: required inputs are missing.\nSources: Synthetic repository data; real backend assessment, evaluation-only advisor adapter\nScore component (backend evidence): {\"name\": \"energy_efficiency\", \"subscore\": 20.0, \"weight\": 0.25, \"contribution\": 5.0, \"evidence\": {\"energy_rating\": \"F\"}}\nScore component (backend evidence): {\"name\": \"consumption_intensity\", \"subscore\": null, \"weight\": 0.2, \"contribution\": null, \"evidence\": {\"intensity_kwh_m2_year\": 202.95925675675676, \"benchmark_kwh_m2_year\": null, \"benchmark_source\": null}}\nScore component (backend evidence): {\"name\": \"insulation\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"insulation\": \"poor\"}}\nScore component (backend evidence): {\"name\": \"heating_system\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"heating_system\": \"old_gas_boiler\"}}\nScore component (backend evidence): {\"name\": \"windows\", \"subscore\": 20.0, \"weight\": 0.1, \"contribution\": 2.0, \"evidence\": {\"glazing\": \"single\"}}\nScore component (backend evidence): {\"name\": \"renewable_energy\", \"subscore\": 0.0, \"weight\": 0.1, \"contribution\": 0.0, \"evidence\": {\"renewable_contribution\": \"none\"}}\nScore component (backend evidence): {\"name\": \"smart_management\", \"subscore\": 0.0, \"weight\": 0.05, \"contribution\": 0.0, \"evidence\": {\"smart_controls\": \"none\"}}\nNegative fuel savings mean increased consumption. Property-value associations do not prove a causal retrofit premium.",
+    "allowed_numbers": [
+      "0.0",
+      "0.05",
+      "0.1",
+      "0.15",
+      "0.2",
+      "0.25",
+      "2.0",
+      "20.0",
+      "202.95925675675676",
+      "27040.56",
+      "2997.41",
+      "3.0",
+      "5.0"
+    ],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    },
+    "answer": {
+      "status": "success",
+      "intent": {
+        "intent": "explain",
+        "retrofits": [],
+        "budget_gbp": null,
+        "objective": "carbon_reduction"
+      },
+      "explanation": "Baseline purchased electricity: 2997.41 kWh/year (backend estimate).\nBaseline gas: 27040.56 kWh/year (backend estimate).\nScore estimate is unavailable.\nCarbon estimate is unavailable.\nValuation estimate is unavailable.\nIssues: Insulation is poor.\nIssues: An old gas boiler is recorded.\nIssues: Windows are single glazed.\nIssues: No renewable contribution is recorded.\nIssues: No smart energy controls are recorded.\nWarnings: Property snapshot and energy year differ; see dataset methodology.\nWarnings: Energy data quality: synthetic.\nWarnings: Full score unavailable: required inputs are missing.\nSources: Synthetic repository data; real backend assessment, evaluation-only advisor adapter\nScore component (backend evidence): {\"name\": \"energy_efficiency\", \"subscore\": 20.0, \"weight\": 0.25, \"contribution\": 5.0, \"evidence\": {\"energy_rating\": \"F\"}}\nScore component (backend evidence): {\"name\": \"consumption_intensity\", \"subscore\": null, \"weight\": 0.2, \"contribution\": null, \"evidence\": {\"intensity_kwh_m2_year\": 202.95925675675676, \"benchmark_kwh_m2_year\": null, \"benchmark_source\": null}}\nScore component (backend evidence): {\"name\": \"insulation\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"insulation\": \"poor\"}}\nScore component (backend evidence): {\"name\": \"heating_system\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"heating_system\": \"old_gas_boiler\"}}\nScore component (backend evidence): {\"name\": \"windows\", \"subscore\": 20.0, \"weight\": 0.1, \"contribution\": 2.0, \"evidence\": {\"glazing\": \"single\"}}\nScore component (backend evidence): {\"name\": \"renewable_energy\", \"subscore\": 0.0, \"weight\": 0.1, \"contribution\": 0.0, \"evidence\": {\"renewable_contribution\": \"none\"}}\nScore component (backend evidence): {\"name\": \"smart_management\", \"subscore\": 0.0, \"weight\": 0.05, \"contribution\": 0.0, \"evidence\": {\"smart_controls\": \"none\"}}\nNegative fuel savings mean increased consumption. Property-value associations do not prove a causal retrofit premium.",
+      "mode": "deterministic",
+      "fallback_reason": "explanation_provider_failed_or_invalid",
+      "facts": [
+        {
+          "id": "f0",
+          "text": "Baseline purchased electricity: 2997.41 kWh/year (backend estimate).",
+          "source": "energy.baseline_electricity_kwh"
+        },
+        {
+          "id": "f1",
+          "text": "Baseline gas: 27040.56 kWh/year (backend estimate).",
+          "source": "energy.baseline_gas_kwh"
+        },
+        {
+          "id": "f2",
+          "text": "Score estimate is unavailable.",
+          "source": "score.status"
+        },
+        {
+          "id": "f3",
+          "text": "Carbon estimate is unavailable.",
+          "source": "carbon.status"
+        },
+        {
+          "id": "f4",
+          "text": "Valuation estimate is unavailable.",
+          "source": "valuation.status"
+        },
+        {
+          "id": "f5",
+          "text": "Issues: Insulation is poor.",
+          "source": "issues.0"
+        },
+        {
+          "id": "f6",
+          "text": "Issues: An old gas boiler is recorded.",
+          "source": "issues.1"
+        },
+        {
+          "id": "f7",
+          "text": "Issues: Windows are single glazed.",
+          "source": "issues.2"
+        },
+        {
+          "id": "f8",
+          "text": "Issues: No renewable contribution is recorded.",
+          "source": "issues.3"
+        },
+        {
+          "id": "f9",
+          "text": "Issues: No smart energy controls are recorded.",
+          "source": "issues.4"
+        },
+        {
+          "id": "f10",
+          "text": "Warnings: Property snapshot and energy year differ; see dataset methodology.",
+          "source": "warnings.0"
+        },
+        {
+          "id": "f11",
+          "text": "Warnings: Energy data quality: synthetic.",
+          "source": "warnings.1"
+        },
+        {
+          "id": "f12",
+          "text": "Warnings: Full score unavailable: required inputs are missing.",
+          "source": "warnings.2"
+        },
+        {
+          "id": "f13",
+          "text": "Sources: Synthetic repository data; real backend assessment, evaluation-only advisor adapter",
+          "source": "sources.0"
+        },
+        {
+          "id": "f14",
+          "text": "Score component (backend evidence): {\"name\": \"energy_efficiency\", \"subscore\": 20.0, \"weight\": 0.25, \"contribution\": 5.0, \"evidence\": {\"energy_rating\": \"F\"}}",
+          "source": "score.components.0"
+        },
+        {
+          "id": "f15",
+          "text": "Score component (backend evidence): {\"name\": \"consumption_intensity\", \"subscore\": null, \"weight\": 0.2, \"contribution\": null, \"evidence\": {\"intensity_kwh_m2_year\": 202.95925675675676, \"benchmark_kwh_m2_year\": null, \"benchmark_source\": null}}",
+          "source": "score.components.1"
+        },
+        {
+          "id": "f16",
+          "text": "Score component (backend evidence): {\"name\": \"insulation\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"insulation\": \"poor\"}}",
+          "source": "score.components.2"
+        },
+        {
+          "id": "f17",
+          "text": "Score component (backend evidence): {\"name\": \"heating_system\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"heating_system\": \"old_gas_boiler\"}}",
+          "source": "score.components.3"
+        },
+        {
+          "id": "f18",
+          "text": "Score component (backend evidence): {\"name\": \"windows\", \"subscore\": 20.0, \"weight\": 0.1, \"contribution\": 2.0, \"evidence\": {\"glazing\": \"single\"}}",
+          "source": "score.components.4"
+        },
+        {
+          "id": "f19",
+          "text": "Score component (backend evidence): {\"name\": \"renewable_energy\", \"subscore\": 0.0, \"weight\": 0.1, \"contribution\": 0.0, \"evidence\": {\"renewable_contribution\": \"none\"}}",
+          "source": "score.components.5"
+        },
+        {
+          "id": "f20",
+          "text": "Score component (backend evidence): {\"name\": \"smart_management\", \"subscore\": 0.0, \"weight\": 0.05, \"contribution\": 0.0, \"evidence\": {\"smart_controls\": \"none\"}}",
+          "source": "score.components.6"
+        }
+      ],
+      "result": {
+        "property_id": "P00001",
+        "status": "success",
+        "score": {
+          "status": "unavailable",
+          "score": null,
+          "unrounded_score": null,
+          "classification": null,
+          "components": [
+            {
+              "name": "energy_efficiency",
+              "subscore": 20.0,
+              "weight": 0.25,
+              "contribution": 5.0,
+              "evidence": {
+                "energy_rating": "F"
+              }
+            },
+            {
+              "name": "consumption_intensity",
+              "subscore": null,
+              "weight": 0.2,
+              "contribution": null,
+              "evidence": {
+                "intensity_kwh_m2_year": 202.95925675675676,
+                "benchmark_kwh_m2_year": null,
+                "benchmark_source": null
+              }
+            },
+            {
+              "name": "insulation",
+              "subscore": 20.0,
+              "weight": 0.15,
+              "contribution": 3.0,
+              "evidence": {
+                "insulation": "poor"
+              }
+            },
+            {
+              "name": "heating_system",
+              "subscore": 20.0,
+              "weight": 0.15,
+              "contribution": 3.0,
+              "evidence": {
+                "heating_system": "old_gas_boiler"
+              }
+            },
+            {
+              "name": "windows",
+              "subscore": 20.0,
+              "weight": 0.1,
+              "contribution": 2.0,
+              "evidence": {
+                "glazing": "single"
+              }
+            },
+            {
+              "name": "renewable_energy",
+              "subscore": 0.0,
+              "weight": 0.1,
+              "contribution": 0.0,
+              "evidence": {
+                "renewable_contribution": "none"
+              }
+            },
+            {
+              "name": "smart_management",
+              "subscore": 0.0,
+              "weight": 0.05,
+              "contribution": 0.0,
+              "evidence": {
+                "smart_controls": "none"
+              }
+            }
+          ],
+          "missing_fields": [
+            "benchmark"
+          ],
+          "methodology_version": "greenprint-score-v1",
+          "baseline": null
+        },
+        "energy": {
+          "baseline_electricity_kwh": 2997.41,
+          "baseline_gas_kwh": 27040.56
+        },
+        "carbon": {
+          "status": "unavailable"
+        },
+        "valuation": {
+          "status": "unavailable"
+        },
+        "issues": [
+          "Insulation is poor.",
+          "An old gas boiler is recorded.",
+          "Windows are single glazed.",
+          "No renewable contribution is recorded.",
+          "No smart energy controls are recorded."
+        ],
+        "warnings": [
+          "Property snapshot and energy year differ; see dataset methodology.",
+          "Energy data quality: synthetic.",
+          "Full score unavailable: required inputs are missing."
+        ],
+        "sources": [
+          "Synthetic repository data; real backend assessment, evaluation-only advisor adapter"
+        ]
+      },
+      "tool_calls": [
+        "assessment"
+      ]
+    },
+    "latency_seconds": 25.79186287499033
+  },
+  {
+    "case_id": "LLM15",
+    "question": "Why are electricity savings negative?",
+    "response": "Baseline purchased electricity: 2997.41 kWh/year (backend estimate).\nBaseline gas: 27040.56 kWh/year (backend estimate).\nScore estimate is unavailable.\nCarbon estimate is unavailable.\nValuation estimate is unavailable.\nIssues: Insulation is poor.\nIssues: An old gas boiler is recorded.\nIssues: Windows are single glazed.\nIssues: No renewable contribution is recorded.\nIssues: No smart energy controls are recorded.\nWarnings: Property snapshot and energy year differ; see dataset methodology.\nWarnings: Energy data quality: synthetic.\nWarnings: Full score unavailable: required inputs are missing.\nSources: Synthetic repository data; real backend assessment, evaluation-only advisor adapter\nScore component (backend evidence): {\"name\": \"energy_efficiency\", \"subscore\": 20.0, \"weight\": 0.25, \"contribution\": 5.0, \"evidence\": {\"energy_rating\": \"F\"}}\nScore component (backend evidence): {\"name\": \"consumption_intensity\", \"subscore\": null, \"weight\": 0.2, \"contribution\": null, \"evidence\": {\"intensity_kwh_m2_year\": 202.95925675675676, \"benchmark_kwh_m2_year\": null, \"benchmark_source\": null}}\nScore component (backend evidence): {\"name\": \"insulation\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"insulation\": \"poor\"}}\nScore component (backend evidence): {\"name\": \"heating_system\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"heating_system\": \"old_gas_boiler\"}}\nScore component (backend evidence): {\"name\": \"windows\", \"subscore\": 20.0, \"weight\": 0.1, \"contribution\": 2.0, \"evidence\": {\"glazing\": \"single\"}}\nScore component (backend evidence): {\"name\": \"renewable_energy\", \"subscore\": 0.0, \"weight\": 0.1, \"contribution\": 0.0, \"evidence\": {\"renewable_contribution\": \"none\"}}\nScore component (backend evidence): {\"name\": \"smart_management\", \"subscore\": 0.0, \"weight\": 0.05, \"contribution\": 0.0, \"evidence\": {\"smart_controls\": \"none\"}}\nNegative fuel savings mean increased consumption. Property-value associations do not prove a causal retrofit premium.",
+    "allowed_numbers": [
+      "0.0",
+      "0.05",
+      "0.1",
+      "0.15",
+      "0.2",
+      "0.25",
+      "2.0",
+      "20.0",
+      "202.95925675675676",
+      "27040.56",
+      "2997.41",
+      "3.0",
+      "5.0"
+    ],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    },
+    "answer": {
+      "status": "success",
+      "intent": {
+        "intent": "explain",
+        "retrofits": [],
+        "budget_gbp": null,
+        "objective": "carbon_reduction"
+      },
+      "explanation": "Baseline purchased electricity: 2997.41 kWh/year (backend estimate).\nBaseline gas: 27040.56 kWh/year (backend estimate).\nScore estimate is unavailable.\nCarbon estimate is unavailable.\nValuation estimate is unavailable.\nIssues: Insulation is poor.\nIssues: An old gas boiler is recorded.\nIssues: Windows are single glazed.\nIssues: No renewable contribution is recorded.\nIssues: No smart energy controls are recorded.\nWarnings: Property snapshot and energy year differ; see dataset methodology.\nWarnings: Energy data quality: synthetic.\nWarnings: Full score unavailable: required inputs are missing.\nSources: Synthetic repository data; real backend assessment, evaluation-only advisor adapter\nScore component (backend evidence): {\"name\": \"energy_efficiency\", \"subscore\": 20.0, \"weight\": 0.25, \"contribution\": 5.0, \"evidence\": {\"energy_rating\": \"F\"}}\nScore component (backend evidence): {\"name\": \"consumption_intensity\", \"subscore\": null, \"weight\": 0.2, \"contribution\": null, \"evidence\": {\"intensity_kwh_m2_year\": 202.95925675675676, \"benchmark_kwh_m2_year\": null, \"benchmark_source\": null}}\nScore component (backend evidence): {\"name\": \"insulation\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"insulation\": \"poor\"}}\nScore component (backend evidence): {\"name\": \"heating_system\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"heating_system\": \"old_gas_boiler\"}}\nScore component (backend evidence): {\"name\": \"windows\", \"subscore\": 20.0, \"weight\": 0.1, \"contribution\": 2.0, \"evidence\": {\"glazing\": \"single\"}}\nScore component (backend evidence): {\"name\": \"renewable_energy\", \"subscore\": 0.0, \"weight\": 0.1, \"contribution\": 0.0, \"evidence\": {\"renewable_contribution\": \"none\"}}\nScore component (backend evidence): {\"name\": \"smart_management\", \"subscore\": 0.0, \"weight\": 0.05, \"contribution\": 0.0, \"evidence\": {\"smart_controls\": \"none\"}}\nNegative fuel savings mean increased consumption. Property-value associations do not prove a causal retrofit premium.",
+      "mode": "deterministic",
+      "fallback_reason": "explanation_provider_failed_or_invalid",
+      "facts": [
+        {
+          "id": "f0",
+          "text": "Baseline purchased electricity: 2997.41 kWh/year (backend estimate).",
+          "source": "energy.baseline_electricity_kwh"
+        },
+        {
+          "id": "f1",
+          "text": "Baseline gas: 27040.56 kWh/year (backend estimate).",
+          "source": "energy.baseline_gas_kwh"
+        },
+        {
+          "id": "f2",
+          "text": "Score estimate is unavailable.",
+          "source": "score.status"
+        },
+        {
+          "id": "f3",
+          "text": "Carbon estimate is unavailable.",
+          "source": "carbon.status"
+        },
+        {
+          "id": "f4",
+          "text": "Valuation estimate is unavailable.",
+          "source": "valuation.status"
+        },
+        {
+          "id": "f5",
+          "text": "Issues: Insulation is poor.",
+          "source": "issues.0"
+        },
+        {
+          "id": "f6",
+          "text": "Issues: An old gas boiler is recorded.",
+          "source": "issues.1"
+        },
+        {
+          "id": "f7",
+          "text": "Issues: Windows are single glazed.",
+          "source": "issues.2"
+        },
+        {
+          "id": "f8",
+          "text": "Issues: No renewable contribution is recorded.",
+          "source": "issues.3"
+        },
+        {
+          "id": "f9",
+          "text": "Issues: No smart energy controls are recorded.",
+          "source": "issues.4"
+        },
+        {
+          "id": "f10",
+          "text": "Warnings: Property snapshot and energy year differ; see dataset methodology.",
+          "source": "warnings.0"
+        },
+        {
+          "id": "f11",
+          "text": "Warnings: Energy data quality: synthetic.",
+          "source": "warnings.1"
+        },
+        {
+          "id": "f12",
+          "text": "Warnings: Full score unavailable: required inputs are missing.",
+          "source": "warnings.2"
+        },
+        {
+          "id": "f13",
+          "text": "Sources: Synthetic repository data; real backend assessment, evaluation-only advisor adapter",
+          "source": "sources.0"
+        },
+        {
+          "id": "f14",
+          "text": "Score component (backend evidence): {\"name\": \"energy_efficiency\", \"subscore\": 20.0, \"weight\": 0.25, \"contribution\": 5.0, \"evidence\": {\"energy_rating\": \"F\"}}",
+          "source": "score.components.0"
+        },
+        {
+          "id": "f15",
+          "text": "Score component (backend evidence): {\"name\": \"consumption_intensity\", \"subscore\": null, \"weight\": 0.2, \"contribution\": null, \"evidence\": {\"intensity_kwh_m2_year\": 202.95925675675676, \"benchmark_kwh_m2_year\": null, \"benchmark_source\": null}}",
+          "source": "score.components.1"
+        },
+        {
+          "id": "f16",
+          "text": "Score component (backend evidence): {\"name\": \"insulation\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"insulation\": \"poor\"}}",
+          "source": "score.components.2"
+        },
+        {
+          "id": "f17",
+          "text": "Score component (backend evidence): {\"name\": \"heating_system\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"heating_system\": \"old_gas_boiler\"}}",
+          "source": "score.components.3"
+        },
+        {
+          "id": "f18",
+          "text": "Score component (backend evidence): {\"name\": \"windows\", \"subscore\": 20.0, \"weight\": 0.1, \"contribution\": 2.0, \"evidence\": {\"glazing\": \"single\"}}",
+          "source": "score.components.4"
+        },
+        {
+          "id": "f19",
+          "text": "Score component (backend evidence): {\"name\": \"renewable_energy\", \"subscore\": 0.0, \"weight\": 0.1, \"contribution\": 0.0, \"evidence\": {\"renewable_contribution\": \"none\"}}",
+          "source": "score.components.5"
+        },
+        {
+          "id": "f20",
+          "text": "Score component (backend evidence): {\"name\": \"smart_management\", \"subscore\": 0.0, \"weight\": 0.05, \"contribution\": 0.0, \"evidence\": {\"smart_controls\": \"none\"}}",
+          "source": "score.components.6"
+        }
+      ],
+      "result": {
+        "property_id": "P00001",
+        "status": "success",
+        "score": {
+          "status": "unavailable",
+          "score": null,
+          "unrounded_score": null,
+          "classification": null,
+          "components": [
+            {
+              "name": "energy_efficiency",
+              "subscore": 20.0,
+              "weight": 0.25,
+              "contribution": 5.0,
+              "evidence": {
+                "energy_rating": "F"
+              }
+            },
+            {
+              "name": "consumption_intensity",
+              "subscore": null,
+              "weight": 0.2,
+              "contribution": null,
+              "evidence": {
+                "intensity_kwh_m2_year": 202.95925675675676,
+                "benchmark_kwh_m2_year": null,
+                "benchmark_source": null
+              }
+            },
+            {
+              "name": "insulation",
+              "subscore": 20.0,
+              "weight": 0.15,
+              "contribution": 3.0,
+              "evidence": {
+                "insulation": "poor"
+              }
+            },
+            {
+              "name": "heating_system",
+              "subscore": 20.0,
+              "weight": 0.15,
+              "contribution": 3.0,
+              "evidence": {
+                "heating_system": "old_gas_boiler"
+              }
+            },
+            {
+              "name": "windows",
+              "subscore": 20.0,
+              "weight": 0.1,
+              "contribution": 2.0,
+              "evidence": {
+                "glazing": "single"
+              }
+            },
+            {
+              "name": "renewable_energy",
+              "subscore": 0.0,
+              "weight": 0.1,
+              "contribution": 0.0,
+              "evidence": {
+                "renewable_contribution": "none"
+              }
+            },
+            {
+              "name": "smart_management",
+              "subscore": 0.0,
+              "weight": 0.05,
+              "contribution": 0.0,
+              "evidence": {
+                "smart_controls": "none"
+              }
+            }
+          ],
+          "missing_fields": [
+            "benchmark"
+          ],
+          "methodology_version": "greenprint-score-v1",
+          "baseline": null
+        },
+        "energy": {
+          "baseline_electricity_kwh": 2997.41,
+          "baseline_gas_kwh": 27040.56
+        },
+        "carbon": {
+          "status": "unavailable"
+        },
+        "valuation": {
+          "status": "unavailable"
+        },
+        "issues": [
+          "Insulation is poor.",
+          "An old gas boiler is recorded.",
+          "Windows are single glazed.",
+          "No renewable contribution is recorded.",
+          "No smart energy controls are recorded."
+        ],
+        "warnings": [
+          "Property snapshot and energy year differ; see dataset methodology.",
+          "Energy data quality: synthetic.",
+          "Full score unavailable: required inputs are missing."
+        ],
+        "sources": [
+          "Synthetic repository data; real backend assessment, evaluation-only advisor adapter"
+        ]
+      },
+      "tool_calls": [
+        "assessment"
+      ]
+    },
+    "latency_seconds": 25.712400832999265
+  },
+  {
+    "case_id": "LLM16",
+    "question": "Can I install solar on an unsuitable roof?",
+    "response": "Please specify the complete retrofit package, or a budget and optimization objective. For comparisons, submit each package separately.",
+    "allowed_numbers": [],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    },
+    "answer": {
+      "status": "clarification_required",
+      "intent": {
+        "intent": "clarify",
+        "retrofits": [],
+        "budget_gbp": null,
+        "objective": "carbon_reduction"
+      },
+      "explanation": "Please specify the complete retrofit package, or a budget and optimization objective. For comparisons, submit each package separately.",
+      "mode": "deterministic",
+      "fallback_reason": "intent_provider_failed",
+      "facts": [],
+      "result": null,
+      "tool_calls": []
+    },
+    "latency_seconds": 11.719629333005287
+  },
+  {
+    "case_id": "LLM17",
+    "question": "Can I replace already triple glazed windows?",
+    "response": "Please specify the complete retrofit package, or a budget and optimization objective. For comparisons, submit each package separately.",
+    "allowed_numbers": [],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    },
+    "answer": {
+      "status": "clarification_required",
+      "intent": {
+        "intent": "clarify",
+        "retrofits": [],
+        "budget_gbp": null,
+        "objective": "carbon_reduction"
+      },
+      "explanation": "Please specify the complete retrofit package, or a budget and optimization objective. For comparisons, submit each package separately.",
+      "mode": "deterministic",
+      "fallback_reason": "intent_provider_failed",
+      "facts": [],
+      "result": null,
+      "tool_calls": []
+    },
+    "latency_seconds": 11.448396332998527
+  },
+  {
+    "case_id": "LLM18",
+    "question": "What if roof suitability is unknown?",
+    "response": "Please specify the complete retrofit package, or a budget and optimization objective. For comparisons, submit each package separately.",
+    "allowed_numbers": [],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    },
+    "answer": {
+      "status": "clarification_required",
+      "intent": {
+        "intent": "clarify",
+        "retrofits": [],
+        "budget_gbp": null,
+        "objective": "carbon_reduction"
+      },
+      "explanation": "Please specify the complete retrofit package, or a budget and optimization objective. For comparisons, submit each package separately.",
+      "mode": "deterministic",
+      "fallback_reason": "intent_provider_failed",
+      "facts": [],
+      "result": null,
+      "tool_calls": []
+    },
+    "latency_seconds": 11.57868504198268
+  },
+  {
+    "case_id": "LLM19",
+    "question": "What if annual consumption is missing?",
+    "response": "Please specify the complete retrofit package, or a budget and optimization objective. For comparisons, submit each package separately.",
+    "allowed_numbers": [],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    },
+    "answer": {
+      "status": "clarification_required",
+      "intent": {
+        "intent": "clarify",
+        "retrofits": [],
+        "budget_gbp": null,
+        "objective": "carbon_reduction"
+      },
+      "explanation": "Please specify the complete retrofit package, or a budget and optimization objective. For comparisons, submit each package separately.",
+      "mode": "deterministic",
+      "fallback_reason": "intent_provider_failed",
+      "facts": [],
+      "result": null,
+      "tool_calls": []
+    },
+    "latency_seconds": 11.536351749993628
+  },
+  {
+    "case_id": "LLM20",
+    "question": "What if baseline energy is zero?",
+    "response": "Please specify the complete retrofit package, or a budget and optimization objective. For comparisons, submit each package separately.",
+    "allowed_numbers": [],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    },
+    "answer": {
+      "status": "clarification_required",
+      "intent": {
+        "intent": "clarify",
+        "retrofits": [],
+        "budget_gbp": null,
+        "objective": "carbon_reduction"
+      },
+      "explanation": "Please specify the complete retrofit package, or a budget and optimization objective. For comparisons, submit each package separately.",
+      "mode": "deterministic",
+      "fallback_reason": "intent_provider_failed",
+      "facts": [],
+      "result": null,
+      "tool_calls": []
+    },
+    "latency_seconds": 11.622374124999624
+  },
+  {
+    "case_id": "LLM21",
+    "question": "How is carbon calculated?",
+    "response": "Baseline purchased electricity: 2997.41 kWh/year (backend estimate).\nBaseline gas: 27040.56 kWh/year (backend estimate).\nScore estimate is unavailable.\nCarbon estimate is unavailable.\nValuation estimate is unavailable.\nIssues: Insulation is poor.\nIssues: An old gas boiler is recorded.\nIssues: Windows are single glazed.\nIssues: No renewable contribution is recorded.\nIssues: No smart energy controls are recorded.\nWarnings: Property snapshot and energy year differ; see dataset methodology.\nWarnings: Energy data quality: synthetic.\nWarnings: Full score unavailable: required inputs are missing.\nSources: Synthetic repository data; real backend assessment, evaluation-only advisor adapter\nScore component (backend evidence): {\"name\": \"energy_efficiency\", \"subscore\": 20.0, \"weight\": 0.25, \"contribution\": 5.0, \"evidence\": {\"energy_rating\": \"F\"}}\nScore component (backend evidence): {\"name\": \"consumption_intensity\", \"subscore\": null, \"weight\": 0.2, \"contribution\": null, \"evidence\": {\"intensity_kwh_m2_year\": 202.95925675675676, \"benchmark_kwh_m2_year\": null, \"benchmark_source\": null}}\nScore component (backend evidence): {\"name\": \"insulation\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"insulation\": \"poor\"}}\nScore component (backend evidence): {\"name\": \"heating_system\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"heating_system\": \"old_gas_boiler\"}}\nScore component (backend evidence): {\"name\": \"windows\", \"subscore\": 20.0, \"weight\": 0.1, \"contribution\": 2.0, \"evidence\": {\"glazing\": \"single\"}}\nScore component (backend evidence): {\"name\": \"renewable_energy\", \"subscore\": 0.0, \"weight\": 0.1, \"contribution\": 0.0, \"evidence\": {\"renewable_contribution\": \"none\"}}\nScore component (backend evidence): {\"name\": \"smart_management\", \"subscore\": 0.0, \"weight\": 0.05, \"contribution\": 0.0, \"evidence\": {\"smart_controls\": \"none\"}}\nNegative fuel savings mean increased consumption. Property-value associations do not prove a causal retrofit premium.",
+    "allowed_numbers": [
+      "0.0",
+      "0.05",
+      "0.1",
+      "0.15",
+      "0.2",
+      "0.25",
+      "2.0",
+      "20.0",
+      "202.95925675675676",
+      "27040.56",
+      "2997.41",
+      "3.0",
+      "5.0"
+    ],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    },
+    "answer": {
+      "status": "success",
+      "intent": {
+        "intent": "explain",
+        "retrofits": [],
+        "budget_gbp": null,
+        "objective": "carbon_reduction"
+      },
+      "explanation": "Baseline purchased electricity: 2997.41 kWh/year (backend estimate).\nBaseline gas: 27040.56 kWh/year (backend estimate).\nScore estimate is unavailable.\nCarbon estimate is unavailable.\nValuation estimate is unavailable.\nIssues: Insulation is poor.\nIssues: An old gas boiler is recorded.\nIssues: Windows are single glazed.\nIssues: No renewable contribution is recorded.\nIssues: No smart energy controls are recorded.\nWarnings: Property snapshot and energy year differ; see dataset methodology.\nWarnings: Energy data quality: synthetic.\nWarnings: Full score unavailable: required inputs are missing.\nSources: Synthetic repository data; real backend assessment, evaluation-only advisor adapter\nScore component (backend evidence): {\"name\": \"energy_efficiency\", \"subscore\": 20.0, \"weight\": 0.25, \"contribution\": 5.0, \"evidence\": {\"energy_rating\": \"F\"}}\nScore component (backend evidence): {\"name\": \"consumption_intensity\", \"subscore\": null, \"weight\": 0.2, \"contribution\": null, \"evidence\": {\"intensity_kwh_m2_year\": 202.95925675675676, \"benchmark_kwh_m2_year\": null, \"benchmark_source\": null}}\nScore component (backend evidence): {\"name\": \"insulation\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"insulation\": \"poor\"}}\nScore component (backend evidence): {\"name\": \"heating_system\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"heating_system\": \"old_gas_boiler\"}}\nScore component (backend evidence): {\"name\": \"windows\", \"subscore\": 20.0, \"weight\": 0.1, \"contribution\": 2.0, \"evidence\": {\"glazing\": \"single\"}}\nScore component (backend evidence): {\"name\": \"renewable_energy\", \"subscore\": 0.0, \"weight\": 0.1, \"contribution\": 0.0, \"evidence\": {\"renewable_contribution\": \"none\"}}\nScore component (backend evidence): {\"name\": \"smart_management\", \"subscore\": 0.0, \"weight\": 0.05, \"contribution\": 0.0, \"evidence\": {\"smart_controls\": \"none\"}}\nNegative fuel savings mean increased consumption. Property-value associations do not prove a causal retrofit premium.",
+      "mode": "deterministic",
+      "fallback_reason": "explanation_provider_failed_or_invalid",
+      "facts": [
+        {
+          "id": "f0",
+          "text": "Baseline purchased electricity: 2997.41 kWh/year (backend estimate).",
+          "source": "energy.baseline_electricity_kwh"
+        },
+        {
+          "id": "f1",
+          "text": "Baseline gas: 27040.56 kWh/year (backend estimate).",
+          "source": "energy.baseline_gas_kwh"
+        },
+        {
+          "id": "f2",
+          "text": "Score estimate is unavailable.",
+          "source": "score.status"
+        },
+        {
+          "id": "f3",
+          "text": "Carbon estimate is unavailable.",
+          "source": "carbon.status"
+        },
+        {
+          "id": "f4",
+          "text": "Valuation estimate is unavailable.",
+          "source": "valuation.status"
+        },
+        {
+          "id": "f5",
+          "text": "Issues: Insulation is poor.",
+          "source": "issues.0"
+        },
+        {
+          "id": "f6",
+          "text": "Issues: An old gas boiler is recorded.",
+          "source": "issues.1"
+        },
+        {
+          "id": "f7",
+          "text": "Issues: Windows are single glazed.",
+          "source": "issues.2"
+        },
+        {
+          "id": "f8",
+          "text": "Issues: No renewable contribution is recorded.",
+          "source": "issues.3"
+        },
+        {
+          "id": "f9",
+          "text": "Issues: No smart energy controls are recorded.",
+          "source": "issues.4"
+        },
+        {
+          "id": "f10",
+          "text": "Warnings: Property snapshot and energy year differ; see dataset methodology.",
+          "source": "warnings.0"
+        },
+        {
+          "id": "f11",
+          "text": "Warnings: Energy data quality: synthetic.",
+          "source": "warnings.1"
+        },
+        {
+          "id": "f12",
+          "text": "Warnings: Full score unavailable: required inputs are missing.",
+          "source": "warnings.2"
+        },
+        {
+          "id": "f13",
+          "text": "Sources: Synthetic repository data; real backend assessment, evaluation-only advisor adapter",
+          "source": "sources.0"
+        },
+        {
+          "id": "f14",
+          "text": "Score component (backend evidence): {\"name\": \"energy_efficiency\", \"subscore\": 20.0, \"weight\": 0.25, \"contribution\": 5.0, \"evidence\": {\"energy_rating\": \"F\"}}",
+          "source": "score.components.0"
+        },
+        {
+          "id": "f15",
+          "text": "Score component (backend evidence): {\"name\": \"consumption_intensity\", \"subscore\": null, \"weight\": 0.2, \"contribution\": null, \"evidence\": {\"intensity_kwh_m2_year\": 202.95925675675676, \"benchmark_kwh_m2_year\": null, \"benchmark_source\": null}}",
+          "source": "score.components.1"
+        },
+        {
+          "id": "f16",
+          "text": "Score component (backend evidence): {\"name\": \"insulation\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"insulation\": \"poor\"}}",
+          "source": "score.components.2"
+        },
+        {
+          "id": "f17",
+          "text": "Score component (backend evidence): {\"name\": \"heating_system\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"heating_system\": \"old_gas_boiler\"}}",
+          "source": "score.components.3"
+        },
+        {
+          "id": "f18",
+          "text": "Score component (backend evidence): {\"name\": \"windows\", \"subscore\": 20.0, \"weight\": 0.1, \"contribution\": 2.0, \"evidence\": {\"glazing\": \"single\"}}",
+          "source": "score.components.4"
+        },
+        {
+          "id": "f19",
+          "text": "Score component (backend evidence): {\"name\": \"renewable_energy\", \"subscore\": 0.0, \"weight\": 0.1, \"contribution\": 0.0, \"evidence\": {\"renewable_contribution\": \"none\"}}",
+          "source": "score.components.5"
+        },
+        {
+          "id": "f20",
+          "text": "Score component (backend evidence): {\"name\": \"smart_management\", \"subscore\": 0.0, \"weight\": 0.05, \"contribution\": 0.0, \"evidence\": {\"smart_controls\": \"none\"}}",
+          "source": "score.components.6"
+        }
+      ],
+      "result": {
+        "property_id": "P00001",
+        "status": "success",
+        "score": {
+          "status": "unavailable",
+          "score": null,
+          "unrounded_score": null,
+          "classification": null,
+          "components": [
+            {
+              "name": "energy_efficiency",
+              "subscore": 20.0,
+              "weight": 0.25,
+              "contribution": 5.0,
+              "evidence": {
+                "energy_rating": "F"
+              }
+            },
+            {
+              "name": "consumption_intensity",
+              "subscore": null,
+              "weight": 0.2,
+              "contribution": null,
+              "evidence": {
+                "intensity_kwh_m2_year": 202.95925675675676,
+                "benchmark_kwh_m2_year": null,
+                "benchmark_source": null
+              }
+            },
+            {
+              "name": "insulation",
+              "subscore": 20.0,
+              "weight": 0.15,
+              "contribution": 3.0,
+              "evidence": {
+                "insulation": "poor"
+              }
+            },
+            {
+              "name": "heating_system",
+              "subscore": 20.0,
+              "weight": 0.15,
+              "contribution": 3.0,
+              "evidence": {
+                "heating_system": "old_gas_boiler"
+              }
+            },
+            {
+              "name": "windows",
+              "subscore": 20.0,
+              "weight": 0.1,
+              "contribution": 2.0,
+              "evidence": {
+                "glazing": "single"
+              }
+            },
+            {
+              "name": "renewable_energy",
+              "subscore": 0.0,
+              "weight": 0.1,
+              "contribution": 0.0,
+              "evidence": {
+                "renewable_contribution": "none"
+              }
+            },
+            {
+              "name": "smart_management",
+              "subscore": 0.0,
+              "weight": 0.05,
+              "contribution": 0.0,
+              "evidence": {
+                "smart_controls": "none"
+              }
+            }
+          ],
+          "missing_fields": [
+            "benchmark"
+          ],
+          "methodology_version": "greenprint-score-v1",
+          "baseline": null
+        },
+        "energy": {
+          "baseline_electricity_kwh": 2997.41,
+          "baseline_gas_kwh": 27040.56
+        },
+        "carbon": {
+          "status": "unavailable"
+        },
+        "valuation": {
+          "status": "unavailable"
+        },
+        "issues": [
+          "Insulation is poor.",
+          "An old gas boiler is recorded.",
+          "Windows are single glazed.",
+          "No renewable contribution is recorded.",
+          "No smart energy controls are recorded."
+        ],
+        "warnings": [
+          "Property snapshot and energy year differ; see dataset methodology.",
+          "Energy data quality: synthetic.",
+          "Full score unavailable: required inputs are missing."
+        ],
+        "sources": [
+          "Synthetic repository data; real backend assessment, evaluation-only advisor adapter"
+        ]
+      },
+      "tool_calls": [
+        "assessment"
+      ]
+    },
+    "latency_seconds": 25.755374708009185
+  },
+  {
+    "case_id": "LLM22",
+    "question": "What if emissions factors are unavailable?",
+    "response": "Please specify the complete retrofit package, or a budget and optimization objective. For comparisons, submit each package separately.",
+    "allowed_numbers": [],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    },
+    "answer": {
+      "status": "clarification_required",
+      "intent": {
+        "intent": "clarify",
+        "retrofits": [],
+        "budget_gbp": null,
+        "objective": "carbon_reduction"
+      },
+      "explanation": "Please specify the complete retrofit package, or a budget and optimization objective. For comparisons, submit each package separately.",
+      "mode": "deterministic",
+      "fallback_reason": "intent_provider_failed",
+      "facts": [],
+      "result": null,
+      "tool_calls": []
+    },
+    "latency_seconds": 11.696163291024277
+  },
+  {
+    "case_id": "LLM23",
+    "question": "How much will my property value rise?",
+    "response": "Baseline purchased electricity: 2997.41 kWh/year (backend estimate).\nBaseline gas: 27040.56 kWh/year (backend estimate).\nScore estimate is unavailable.\nCarbon estimate is unavailable.\nValuation estimate is unavailable.\nIssues: Insulation is poor.\nIssues: An old gas boiler is recorded.\nIssues: Windows are single glazed.\nIssues: No renewable contribution is recorded.\nIssues: No smart energy controls are recorded.\nWarnings: Property snapshot and energy year differ; see dataset methodology.\nWarnings: Energy data quality: synthetic.\nWarnings: Full score unavailable: required inputs are missing.\nSources: Synthetic repository data; real backend assessment, evaluation-only advisor adapter\nScore component (backend evidence): {\"name\": \"energy_efficiency\", \"subscore\": 20.0, \"weight\": 0.25, \"contribution\": 5.0, \"evidence\": {\"energy_rating\": \"F\"}}\nScore component (backend evidence): {\"name\": \"consumption_intensity\", \"subscore\": null, \"weight\": 0.2, \"contribution\": null, \"evidence\": {\"intensity_kwh_m2_year\": 202.95925675675676, \"benchmark_kwh_m2_year\": null, \"benchmark_source\": null}}\nScore component (backend evidence): {\"name\": \"insulation\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"insulation\": \"poor\"}}\nScore component (backend evidence): {\"name\": \"heating_system\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"heating_system\": \"old_gas_boiler\"}}\nScore component (backend evidence): {\"name\": \"windows\", \"subscore\": 20.0, \"weight\": 0.1, \"contribution\": 2.0, \"evidence\": {\"glazing\": \"single\"}}\nScore component (backend evidence): {\"name\": \"renewable_energy\", \"subscore\": 0.0, \"weight\": 0.1, \"contribution\": 0.0, \"evidence\": {\"renewable_contribution\": \"none\"}}\nScore component (backend evidence): {\"name\": \"smart_management\", \"subscore\": 0.0, \"weight\": 0.05, \"contribution\": 0.0, \"evidence\": {\"smart_controls\": \"none\"}}\nNegative fuel savings mean increased consumption. Property-value associations do not prove a causal retrofit premium.",
+    "allowed_numbers": [
+      "0.0",
+      "0.05",
+      "0.1",
+      "0.15",
+      "0.2",
+      "0.25",
+      "2.0",
+      "20.0",
+      "202.95925675675676",
+      "27040.56",
+      "2997.41",
+      "3.0",
+      "5.0"
+    ],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    },
+    "answer": {
+      "status": "success",
+      "intent": {
+        "intent": "explain",
+        "retrofits": [],
+        "budget_gbp": null,
+        "objective": "carbon_reduction"
+      },
+      "explanation": "Baseline purchased electricity: 2997.41 kWh/year (backend estimate).\nBaseline gas: 27040.56 kWh/year (backend estimate).\nScore estimate is unavailable.\nCarbon estimate is unavailable.\nValuation estimate is unavailable.\nIssues: Insulation is poor.\nIssues: An old gas boiler is recorded.\nIssues: Windows are single glazed.\nIssues: No renewable contribution is recorded.\nIssues: No smart energy controls are recorded.\nWarnings: Property snapshot and energy year differ; see dataset methodology.\nWarnings: Energy data quality: synthetic.\nWarnings: Full score unavailable: required inputs are missing.\nSources: Synthetic repository data; real backend assessment, evaluation-only advisor adapter\nScore component (backend evidence): {\"name\": \"energy_efficiency\", \"subscore\": 20.0, \"weight\": 0.25, \"contribution\": 5.0, \"evidence\": {\"energy_rating\": \"F\"}}\nScore component (backend evidence): {\"name\": \"consumption_intensity\", \"subscore\": null, \"weight\": 0.2, \"contribution\": null, \"evidence\": {\"intensity_kwh_m2_year\": 202.95925675675676, \"benchmark_kwh_m2_year\": null, \"benchmark_source\": null}}\nScore component (backend evidence): {\"name\": \"insulation\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"insulation\": \"poor\"}}\nScore component (backend evidence): {\"name\": \"heating_system\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"heating_system\": \"old_gas_boiler\"}}\nScore component (backend evidence): {\"name\": \"windows\", \"subscore\": 20.0, \"weight\": 0.1, \"contribution\": 2.0, \"evidence\": {\"glazing\": \"single\"}}\nScore component (backend evidence): {\"name\": \"renewable_energy\", \"subscore\": 0.0, \"weight\": 0.1, \"contribution\": 0.0, \"evidence\": {\"renewable_contribution\": \"none\"}}\nScore component (backend evidence): {\"name\": \"smart_management\", \"subscore\": 0.0, \"weight\": 0.05, \"contribution\": 0.0, \"evidence\": {\"smart_controls\": \"none\"}}\nNegative fuel savings mean increased consumption. Property-value associations do not prove a causal retrofit premium.",
+      "mode": "deterministic",
+      "fallback_reason": "explanation_provider_failed_or_invalid",
+      "facts": [
+        {
+          "id": "f0",
+          "text": "Baseline purchased electricity: 2997.41 kWh/year (backend estimate).",
+          "source": "energy.baseline_electricity_kwh"
+        },
+        {
+          "id": "f1",
+          "text": "Baseline gas: 27040.56 kWh/year (backend estimate).",
+          "source": "energy.baseline_gas_kwh"
+        },
+        {
+          "id": "f2",
+          "text": "Score estimate is unavailable.",
+          "source": "score.status"
+        },
+        {
+          "id": "f3",
+          "text": "Carbon estimate is unavailable.",
+          "source": "carbon.status"
+        },
+        {
+          "id": "f4",
+          "text": "Valuation estimate is unavailable.",
+          "source": "valuation.status"
+        },
+        {
+          "id": "f5",
+          "text": "Issues: Insulation is poor.",
+          "source": "issues.0"
+        },
+        {
+          "id": "f6",
+          "text": "Issues: An old gas boiler is recorded.",
+          "source": "issues.1"
+        },
+        {
+          "id": "f7",
+          "text": "Issues: Windows are single glazed.",
+          "source": "issues.2"
+        },
+        {
+          "id": "f8",
+          "text": "Issues: No renewable contribution is recorded.",
+          "source": "issues.3"
+        },
+        {
+          "id": "f9",
+          "text": "Issues: No smart energy controls are recorded.",
+          "source": "issues.4"
+        },
+        {
+          "id": "f10",
+          "text": "Warnings: Property snapshot and energy year differ; see dataset methodology.",
+          "source": "warnings.0"
+        },
+        {
+          "id": "f11",
+          "text": "Warnings: Energy data quality: synthetic.",
+          "source": "warnings.1"
+        },
+        {
+          "id": "f12",
+          "text": "Warnings: Full score unavailable: required inputs are missing.",
+          "source": "warnings.2"
+        },
+        {
+          "id": "f13",
+          "text": "Sources: Synthetic repository data; real backend assessment, evaluation-only advisor adapter",
+          "source": "sources.0"
+        },
+        {
+          "id": "f14",
+          "text": "Score component (backend evidence): {\"name\": \"energy_efficiency\", \"subscore\": 20.0, \"weight\": 0.25, \"contribution\": 5.0, \"evidence\": {\"energy_rating\": \"F\"}}",
+          "source": "score.components.0"
+        },
+        {
+          "id": "f15",
+          "text": "Score component (backend evidence): {\"name\": \"consumption_intensity\", \"subscore\": null, \"weight\": 0.2, \"contribution\": null, \"evidence\": {\"intensity_kwh_m2_year\": 202.95925675675676, \"benchmark_kwh_m2_year\": null, \"benchmark_source\": null}}",
+          "source": "score.components.1"
+        },
+        {
+          "id": "f16",
+          "text": "Score component (backend evidence): {\"name\": \"insulation\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"insulation\": \"poor\"}}",
+          "source": "score.components.2"
+        },
+        {
+          "id": "f17",
+          "text": "Score component (backend evidence): {\"name\": \"heating_system\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"heating_system\": \"old_gas_boiler\"}}",
+          "source": "score.components.3"
+        },
+        {
+          "id": "f18",
+          "text": "Score component (backend evidence): {\"name\": \"windows\", \"subscore\": 20.0, \"weight\": 0.1, \"contribution\": 2.0, \"evidence\": {\"glazing\": \"single\"}}",
+          "source": "score.components.4"
+        },
+        {
+          "id": "f19",
+          "text": "Score component (backend evidence): {\"name\": \"renewable_energy\", \"subscore\": 0.0, \"weight\": 0.1, \"contribution\": 0.0, \"evidence\": {\"renewable_contribution\": \"none\"}}",
+          "source": "score.components.5"
+        },
+        {
+          "id": "f20",
+          "text": "Score component (backend evidence): {\"name\": \"smart_management\", \"subscore\": 0.0, \"weight\": 0.05, \"contribution\": 0.0, \"evidence\": {\"smart_controls\": \"none\"}}",
+          "source": "score.components.6"
+        }
+      ],
+      "result": {
+        "property_id": "P00001",
+        "status": "success",
+        "score": {
+          "status": "unavailable",
+          "score": null,
+          "unrounded_score": null,
+          "classification": null,
+          "components": [
+            {
+              "name": "energy_efficiency",
+              "subscore": 20.0,
+              "weight": 0.25,
+              "contribution": 5.0,
+              "evidence": {
+                "energy_rating": "F"
+              }
+            },
+            {
+              "name": "consumption_intensity",
+              "subscore": null,
+              "weight": 0.2,
+              "contribution": null,
+              "evidence": {
+                "intensity_kwh_m2_year": 202.95925675675676,
+                "benchmark_kwh_m2_year": null,
+                "benchmark_source": null
+              }
+            },
+            {
+              "name": "insulation",
+              "subscore": 20.0,
+              "weight": 0.15,
+              "contribution": 3.0,
+              "evidence": {
+                "insulation": "poor"
+              }
+            },
+            {
+              "name": "heating_system",
+              "subscore": 20.0,
+              "weight": 0.15,
+              "contribution": 3.0,
+              "evidence": {
+                "heating_system": "old_gas_boiler"
+              }
+            },
+            {
+              "name": "windows",
+              "subscore": 20.0,
+              "weight": 0.1,
+              "contribution": 2.0,
+              "evidence": {
+                "glazing": "single"
+              }
+            },
+            {
+              "name": "renewable_energy",
+              "subscore": 0.0,
+              "weight": 0.1,
+              "contribution": 0.0,
+              "evidence": {
+                "renewable_contribution": "none"
+              }
+            },
+            {
+              "name": "smart_management",
+              "subscore": 0.0,
+              "weight": 0.05,
+              "contribution": 0.0,
+              "evidence": {
+                "smart_controls": "none"
+              }
+            }
+          ],
+          "missing_fields": [
+            "benchmark"
+          ],
+          "methodology_version": "greenprint-score-v1",
+          "baseline": null
+        },
+        "energy": {
+          "baseline_electricity_kwh": 2997.41,
+          "baseline_gas_kwh": 27040.56
+        },
+        "carbon": {
+          "status": "unavailable"
+        },
+        "valuation": {
+          "status": "unavailable"
+        },
+        "issues": [
+          "Insulation is poor.",
+          "An old gas boiler is recorded.",
+          "Windows are single glazed.",
+          "No renewable contribution is recorded.",
+          "No smart energy controls are recorded."
+        ],
+        "warnings": [
+          "Property snapshot and energy year differ; see dataset methodology.",
+          "Energy data quality: synthetic.",
+          "Full score unavailable: required inputs are missing."
+        ],
+        "sources": [
+          "Synthetic repository data; real backend assessment, evaluation-only advisor adapter"
+        ]
+      },
+      "tool_calls": [
+        "assessment"
+      ]
+    },
+    "latency_seconds": 25.551990833017044
+  },
+  {
+    "case_id": "LLM24",
+    "question": "Does the model prove a causal premium?",
+    "response": "Baseline purchased electricity: 2997.41 kWh/year (backend estimate).\nBaseline gas: 27040.56 kWh/year (backend estimate).\nScore estimate is unavailable.\nCarbon estimate is unavailable.\nValuation estimate is unavailable.\nIssues: Insulation is poor.\nIssues: An old gas boiler is recorded.\nIssues: Windows are single glazed.\nIssues: No renewable contribution is recorded.\nIssues: No smart energy controls are recorded.\nWarnings: Property snapshot and energy year differ; see dataset methodology.\nWarnings: Energy data quality: synthetic.\nWarnings: Full score unavailable: required inputs are missing.\nSources: Synthetic repository data; real backend assessment, evaluation-only advisor adapter\nScore component (backend evidence): {\"name\": \"energy_efficiency\", \"subscore\": 20.0, \"weight\": 0.25, \"contribution\": 5.0, \"evidence\": {\"energy_rating\": \"F\"}}\nScore component (backend evidence): {\"name\": \"consumption_intensity\", \"subscore\": null, \"weight\": 0.2, \"contribution\": null, \"evidence\": {\"intensity_kwh_m2_year\": 202.95925675675676, \"benchmark_kwh_m2_year\": null, \"benchmark_source\": null}}\nScore component (backend evidence): {\"name\": \"insulation\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"insulation\": \"poor\"}}\nScore component (backend evidence): {\"name\": \"heating_system\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"heating_system\": \"old_gas_boiler\"}}\nScore component (backend evidence): {\"name\": \"windows\", \"subscore\": 20.0, \"weight\": 0.1, \"contribution\": 2.0, \"evidence\": {\"glazing\": \"single\"}}\nScore component (backend evidence): {\"name\": \"renewable_energy\", \"subscore\": 0.0, \"weight\": 0.1, \"contribution\": 0.0, \"evidence\": {\"renewable_contribution\": \"none\"}}\nScore component (backend evidence): {\"name\": \"smart_management\", \"subscore\": 0.0, \"weight\": 0.05, \"contribution\": 0.0, \"evidence\": {\"smart_controls\": \"none\"}}\nNegative fuel savings mean increased consumption. Property-value associations do not prove a causal retrofit premium.",
+    "allowed_numbers": [
+      "0.0",
+      "0.05",
+      "0.1",
+      "0.15",
+      "0.2",
+      "0.25",
+      "2.0",
+      "20.0",
+      "202.95925675675676",
+      "27040.56",
+      "2997.41",
+      "3.0",
+      "5.0"
+    ],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    },
+    "answer": {
+      "status": "success",
+      "intent": {
+        "intent": "explain",
+        "retrofits": [],
+        "budget_gbp": null,
+        "objective": "carbon_reduction"
+      },
+      "explanation": "Baseline purchased electricity: 2997.41 kWh/year (backend estimate).\nBaseline gas: 27040.56 kWh/year (backend estimate).\nScore estimate is unavailable.\nCarbon estimate is unavailable.\nValuation estimate is unavailable.\nIssues: Insulation is poor.\nIssues: An old gas boiler is recorded.\nIssues: Windows are single glazed.\nIssues: No renewable contribution is recorded.\nIssues: No smart energy controls are recorded.\nWarnings: Property snapshot and energy year differ; see dataset methodology.\nWarnings: Energy data quality: synthetic.\nWarnings: Full score unavailable: required inputs are missing.\nSources: Synthetic repository data; real backend assessment, evaluation-only advisor adapter\nScore component (backend evidence): {\"name\": \"energy_efficiency\", \"subscore\": 20.0, \"weight\": 0.25, \"contribution\": 5.0, \"evidence\": {\"energy_rating\": \"F\"}}\nScore component (backend evidence): {\"name\": \"consumption_intensity\", \"subscore\": null, \"weight\": 0.2, \"contribution\": null, \"evidence\": {\"intensity_kwh_m2_year\": 202.95925675675676, \"benchmark_kwh_m2_year\": null, \"benchmark_source\": null}}\nScore component (backend evidence): {\"name\": \"insulation\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"insulation\": \"poor\"}}\nScore component (backend evidence): {\"name\": \"heating_system\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"heating_system\": \"old_gas_boiler\"}}\nScore component (backend evidence): {\"name\": \"windows\", \"subscore\": 20.0, \"weight\": 0.1, \"contribution\": 2.0, \"evidence\": {\"glazing\": \"single\"}}\nScore component (backend evidence): {\"name\": \"renewable_energy\", \"subscore\": 0.0, \"weight\": 0.1, \"contribution\": 0.0, \"evidence\": {\"renewable_contribution\": \"none\"}}\nScore component (backend evidence): {\"name\": \"smart_management\", \"subscore\": 0.0, \"weight\": 0.05, \"contribution\": 0.0, \"evidence\": {\"smart_controls\": \"none\"}}\nNegative fuel savings mean increased consumption. Property-value associations do not prove a causal retrofit premium.",
+      "mode": "deterministic",
+      "fallback_reason": "explanation_provider_failed_or_invalid",
+      "facts": [
+        {
+          "id": "f0",
+          "text": "Baseline purchased electricity: 2997.41 kWh/year (backend estimate).",
+          "source": "energy.baseline_electricity_kwh"
+        },
+        {
+          "id": "f1",
+          "text": "Baseline gas: 27040.56 kWh/year (backend estimate).",
+          "source": "energy.baseline_gas_kwh"
+        },
+        {
+          "id": "f2",
+          "text": "Score estimate is unavailable.",
+          "source": "score.status"
+        },
+        {
+          "id": "f3",
+          "text": "Carbon estimate is unavailable.",
+          "source": "carbon.status"
+        },
+        {
+          "id": "f4",
+          "text": "Valuation estimate is unavailable.",
+          "source": "valuation.status"
+        },
+        {
+          "id": "f5",
+          "text": "Issues: Insulation is poor.",
+          "source": "issues.0"
+        },
+        {
+          "id": "f6",
+          "text": "Issues: An old gas boiler is recorded.",
+          "source": "issues.1"
+        },
+        {
+          "id": "f7",
+          "text": "Issues: Windows are single glazed.",
+          "source": "issues.2"
+        },
+        {
+          "id": "f8",
+          "text": "Issues: No renewable contribution is recorded.",
+          "source": "issues.3"
+        },
+        {
+          "id": "f9",
+          "text": "Issues: No smart energy controls are recorded.",
+          "source": "issues.4"
+        },
+        {
+          "id": "f10",
+          "text": "Warnings: Property snapshot and energy year differ; see dataset methodology.",
+          "source": "warnings.0"
+        },
+        {
+          "id": "f11",
+          "text": "Warnings: Energy data quality: synthetic.",
+          "source": "warnings.1"
+        },
+        {
+          "id": "f12",
+          "text": "Warnings: Full score unavailable: required inputs are missing.",
+          "source": "warnings.2"
+        },
+        {
+          "id": "f13",
+          "text": "Sources: Synthetic repository data; real backend assessment, evaluation-only advisor adapter",
+          "source": "sources.0"
+        },
+        {
+          "id": "f14",
+          "text": "Score component (backend evidence): {\"name\": \"energy_efficiency\", \"subscore\": 20.0, \"weight\": 0.25, \"contribution\": 5.0, \"evidence\": {\"energy_rating\": \"F\"}}",
+          "source": "score.components.0"
+        },
+        {
+          "id": "f15",
+          "text": "Score component (backend evidence): {\"name\": \"consumption_intensity\", \"subscore\": null, \"weight\": 0.2, \"contribution\": null, \"evidence\": {\"intensity_kwh_m2_year\": 202.95925675675676, \"benchmark_kwh_m2_year\": null, \"benchmark_source\": null}}",
+          "source": "score.components.1"
+        },
+        {
+          "id": "f16",
+          "text": "Score component (backend evidence): {\"name\": \"insulation\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"insulation\": \"poor\"}}",
+          "source": "score.components.2"
+        },
+        {
+          "id": "f17",
+          "text": "Score component (backend evidence): {\"name\": \"heating_system\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"heating_system\": \"old_gas_boiler\"}}",
+          "source": "score.components.3"
+        },
+        {
+          "id": "f18",
+          "text": "Score component (backend evidence): {\"name\": \"windows\", \"subscore\": 20.0, \"weight\": 0.1, \"contribution\": 2.0, \"evidence\": {\"glazing\": \"single\"}}",
+          "source": "score.components.4"
+        },
+        {
+          "id": "f19",
+          "text": "Score component (backend evidence): {\"name\": \"renewable_energy\", \"subscore\": 0.0, \"weight\": 0.1, \"contribution\": 0.0, \"evidence\": {\"renewable_contribution\": \"none\"}}",
+          "source": "score.components.5"
+        },
+        {
+          "id": "f20",
+          "text": "Score component (backend evidence): {\"name\": \"smart_management\", \"subscore\": 0.0, \"weight\": 0.05, \"contribution\": 0.0, \"evidence\": {\"smart_controls\": \"none\"}}",
+          "source": "score.components.6"
+        }
+      ],
+      "result": {
+        "property_id": "P00001",
+        "status": "success",
+        "score": {
+          "status": "unavailable",
+          "score": null,
+          "unrounded_score": null,
+          "classification": null,
+          "components": [
+            {
+              "name": "energy_efficiency",
+              "subscore": 20.0,
+              "weight": 0.25,
+              "contribution": 5.0,
+              "evidence": {
+                "energy_rating": "F"
+              }
+            },
+            {
+              "name": "consumption_intensity",
+              "subscore": null,
+              "weight": 0.2,
+              "contribution": null,
+              "evidence": {
+                "intensity_kwh_m2_year": 202.95925675675676,
+                "benchmark_kwh_m2_year": null,
+                "benchmark_source": null
+              }
+            },
+            {
+              "name": "insulation",
+              "subscore": 20.0,
+              "weight": 0.15,
+              "contribution": 3.0,
+              "evidence": {
+                "insulation": "poor"
+              }
+            },
+            {
+              "name": "heating_system",
+              "subscore": 20.0,
+              "weight": 0.15,
+              "contribution": 3.0,
+              "evidence": {
+                "heating_system": "old_gas_boiler"
+              }
+            },
+            {
+              "name": "windows",
+              "subscore": 20.0,
+              "weight": 0.1,
+              "contribution": 2.0,
+              "evidence": {
+                "glazing": "single"
+              }
+            },
+            {
+              "name": "renewable_energy",
+              "subscore": 0.0,
+              "weight": 0.1,
+              "contribution": 0.0,
+              "evidence": {
+                "renewable_contribution": "none"
+              }
+            },
+            {
+              "name": "smart_management",
+              "subscore": 0.0,
+              "weight": 0.05,
+              "contribution": 0.0,
+              "evidence": {
+                "smart_controls": "none"
+              }
+            }
+          ],
+          "missing_fields": [
+            "benchmark"
+          ],
+          "methodology_version": "greenprint-score-v1",
+          "baseline": null
+        },
+        "energy": {
+          "baseline_electricity_kwh": 2997.41,
+          "baseline_gas_kwh": 27040.56
+        },
+        "carbon": {
+          "status": "unavailable"
+        },
+        "valuation": {
+          "status": "unavailable"
+        },
+        "issues": [
+          "Insulation is poor.",
+          "An old gas boiler is recorded.",
+          "Windows are single glazed.",
+          "No renewable contribution is recorded.",
+          "No smart energy controls are recorded."
+        ],
+        "warnings": [
+          "Property snapshot and energy year differ; see dataset methodology.",
+          "Energy data quality: synthetic.",
+          "Full score unavailable: required inputs are missing."
+        ],
+        "sources": [
+          "Synthetic repository data; real backend assessment, evaluation-only advisor adapter"
+        ]
+      },
+      "tool_calls": [
+        "assessment"
+      ]
+    },
+    "latency_seconds": 26.24066679200041
+  },
+  {
+    "case_id": "LLM25",
+    "question": "Why is valuation unavailable?",
+    "response": "Baseline purchased electricity: 2997.41 kWh/year (backend estimate).\nBaseline gas: 27040.56 kWh/year (backend estimate).\nScore estimate is unavailable.\nCarbon estimate is unavailable.\nValuation estimate is unavailable.\nIssues: Insulation is poor.\nIssues: An old gas boiler is recorded.\nIssues: Windows are single glazed.\nIssues: No renewable contribution is recorded.\nIssues: No smart energy controls are recorded.\nWarnings: Property snapshot and energy year differ; see dataset methodology.\nWarnings: Energy data quality: synthetic.\nWarnings: Full score unavailable: required inputs are missing.\nSources: Synthetic repository data; real backend assessment, evaluation-only advisor adapter\nScore component (backend evidence): {\"name\": \"energy_efficiency\", \"subscore\": 20.0, \"weight\": 0.25, \"contribution\": 5.0, \"evidence\": {\"energy_rating\": \"F\"}}\nScore component (backend evidence): {\"name\": \"consumption_intensity\", \"subscore\": null, \"weight\": 0.2, \"contribution\": null, \"evidence\": {\"intensity_kwh_m2_year\": 202.95925675675676, \"benchmark_kwh_m2_year\": null, \"benchmark_source\": null}}\nScore component (backend evidence): {\"name\": \"insulation\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"insulation\": \"poor\"}}\nScore component (backend evidence): {\"name\": \"heating_system\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"heating_system\": \"old_gas_boiler\"}}\nScore component (backend evidence): {\"name\": \"windows\", \"subscore\": 20.0, \"weight\": 0.1, \"contribution\": 2.0, \"evidence\": {\"glazing\": \"single\"}}\nScore component (backend evidence): {\"name\": \"renewable_energy\", \"subscore\": 0.0, \"weight\": 0.1, \"contribution\": 0.0, \"evidence\": {\"renewable_contribution\": \"none\"}}\nScore component (backend evidence): {\"name\": \"smart_management\", \"subscore\": 0.0, \"weight\": 0.05, \"contribution\": 0.0, \"evidence\": {\"smart_controls\": \"none\"}}\nNegative fuel savings mean increased consumption. Property-value associations do not prove a causal retrofit premium.",
+    "allowed_numbers": [
+      "0.0",
+      "0.05",
+      "0.1",
+      "0.15",
+      "0.2",
+      "0.25",
+      "2.0",
+      "20.0",
+      "202.95925675675676",
+      "27040.56",
+      "2997.41",
+      "3.0",
+      "5.0"
+    ],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    },
+    "answer": {
+      "status": "success",
+      "intent": {
+        "intent": "explain",
+        "retrofits": [],
+        "budget_gbp": null,
+        "objective": "carbon_reduction"
+      },
+      "explanation": "Baseline purchased electricity: 2997.41 kWh/year (backend estimate).\nBaseline gas: 27040.56 kWh/year (backend estimate).\nScore estimate is unavailable.\nCarbon estimate is unavailable.\nValuation estimate is unavailable.\nIssues: Insulation is poor.\nIssues: An old gas boiler is recorded.\nIssues: Windows are single glazed.\nIssues: No renewable contribution is recorded.\nIssues: No smart energy controls are recorded.\nWarnings: Property snapshot and energy year differ; see dataset methodology.\nWarnings: Energy data quality: synthetic.\nWarnings: Full score unavailable: required inputs are missing.\nSources: Synthetic repository data; real backend assessment, evaluation-only advisor adapter\nScore component (backend evidence): {\"name\": \"energy_efficiency\", \"subscore\": 20.0, \"weight\": 0.25, \"contribution\": 5.0, \"evidence\": {\"energy_rating\": \"F\"}}\nScore component (backend evidence): {\"name\": \"consumption_intensity\", \"subscore\": null, \"weight\": 0.2, \"contribution\": null, \"evidence\": {\"intensity_kwh_m2_year\": 202.95925675675676, \"benchmark_kwh_m2_year\": null, \"benchmark_source\": null}}\nScore component (backend evidence): {\"name\": \"insulation\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"insulation\": \"poor\"}}\nScore component (backend evidence): {\"name\": \"heating_system\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"heating_system\": \"old_gas_boiler\"}}\nScore component (backend evidence): {\"name\": \"windows\", \"subscore\": 20.0, \"weight\": 0.1, \"contribution\": 2.0, \"evidence\": {\"glazing\": \"single\"}}\nScore component (backend evidence): {\"name\": \"renewable_energy\", \"subscore\": 0.0, \"weight\": 0.1, \"contribution\": 0.0, \"evidence\": {\"renewable_contribution\": \"none\"}}\nScore component (backend evidence): {\"name\": \"smart_management\", \"subscore\": 0.0, \"weight\": 0.05, \"contribution\": 0.0, \"evidence\": {\"smart_controls\": \"none\"}}\nNegative fuel savings mean increased consumption. Property-value associations do not prove a causal retrofit premium.",
+      "mode": "deterministic",
+      "fallback_reason": "explanation_provider_failed_or_invalid",
+      "facts": [
+        {
+          "id": "f0",
+          "text": "Baseline purchased electricity: 2997.41 kWh/year (backend estimate).",
+          "source": "energy.baseline_electricity_kwh"
+        },
+        {
+          "id": "f1",
+          "text": "Baseline gas: 27040.56 kWh/year (backend estimate).",
+          "source": "energy.baseline_gas_kwh"
+        },
+        {
+          "id": "f2",
+          "text": "Score estimate is unavailable.",
+          "source": "score.status"
+        },
+        {
+          "id": "f3",
+          "text": "Carbon estimate is unavailable.",
+          "source": "carbon.status"
+        },
+        {
+          "id": "f4",
+          "text": "Valuation estimate is unavailable.",
+          "source": "valuation.status"
+        },
+        {
+          "id": "f5",
+          "text": "Issues: Insulation is poor.",
+          "source": "issues.0"
+        },
+        {
+          "id": "f6",
+          "text": "Issues: An old gas boiler is recorded.",
+          "source": "issues.1"
+        },
+        {
+          "id": "f7",
+          "text": "Issues: Windows are single glazed.",
+          "source": "issues.2"
+        },
+        {
+          "id": "f8",
+          "text": "Issues: No renewable contribution is recorded.",
+          "source": "issues.3"
+        },
+        {
+          "id": "f9",
+          "text": "Issues: No smart energy controls are recorded.",
+          "source": "issues.4"
+        },
+        {
+          "id": "f10",
+          "text": "Warnings: Property snapshot and energy year differ; see dataset methodology.",
+          "source": "warnings.0"
+        },
+        {
+          "id": "f11",
+          "text": "Warnings: Energy data quality: synthetic.",
+          "source": "warnings.1"
+        },
+        {
+          "id": "f12",
+          "text": "Warnings: Full score unavailable: required inputs are missing.",
+          "source": "warnings.2"
+        },
+        {
+          "id": "f13",
+          "text": "Sources: Synthetic repository data; real backend assessment, evaluation-only advisor adapter",
+          "source": "sources.0"
+        },
+        {
+          "id": "f14",
+          "text": "Score component (backend evidence): {\"name\": \"energy_efficiency\", \"subscore\": 20.0, \"weight\": 0.25, \"contribution\": 5.0, \"evidence\": {\"energy_rating\": \"F\"}}",
+          "source": "score.components.0"
+        },
+        {
+          "id": "f15",
+          "text": "Score component (backend evidence): {\"name\": \"consumption_intensity\", \"subscore\": null, \"weight\": 0.2, \"contribution\": null, \"evidence\": {\"intensity_kwh_m2_year\": 202.95925675675676, \"benchmark_kwh_m2_year\": null, \"benchmark_source\": null}}",
+          "source": "score.components.1"
+        },
+        {
+          "id": "f16",
+          "text": "Score component (backend evidence): {\"name\": \"insulation\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"insulation\": \"poor\"}}",
+          "source": "score.components.2"
+        },
+        {
+          "id": "f17",
+          "text": "Score component (backend evidence): {\"name\": \"heating_system\", \"subscore\": 20.0, \"weight\": 0.15, \"contribution\": 3.0, \"evidence\": {\"heating_system\": \"old_gas_boiler\"}}",
+          "source": "score.components.3"
+        },
+        {
+          "id": "f18",
+          "text": "Score component (backend evidence): {\"name\": \"windows\", \"subscore\": 20.0, \"weight\": 0.1, \"contribution\": 2.0, \"evidence\": {\"glazing\": \"single\"}}",
+          "source": "score.components.4"
+        },
+        {
+          "id": "f19",
+          "text": "Score component (backend evidence): {\"name\": \"renewable_energy\", \"subscore\": 0.0, \"weight\": 0.1, \"contribution\": 0.0, \"evidence\": {\"renewable_contribution\": \"none\"}}",
+          "source": "score.components.5"
+        },
+        {
+          "id": "f20",
+          "text": "Score component (backend evidence): {\"name\": \"smart_management\", \"subscore\": 0.0, \"weight\": 0.05, \"contribution\": 0.0, \"evidence\": {\"smart_controls\": \"none\"}}",
+          "source": "score.components.6"
+        }
+      ],
+      "result": {
+        "property_id": "P00001",
+        "status": "success",
+        "score": {
+          "status": "unavailable",
+          "score": null,
+          "unrounded_score": null,
+          "classification": null,
+          "components": [
+            {
+              "name": "energy_efficiency",
+              "subscore": 20.0,
+              "weight": 0.25,
+              "contribution": 5.0,
+              "evidence": {
+                "energy_rating": "F"
+              }
+            },
+            {
+              "name": "consumption_intensity",
+              "subscore": null,
+              "weight": 0.2,
+              "contribution": null,
+              "evidence": {
+                "intensity_kwh_m2_year": 202.95925675675676,
+                "benchmark_kwh_m2_year": null,
+                "benchmark_source": null
+              }
+            },
+            {
+              "name": "insulation",
+              "subscore": 20.0,
+              "weight": 0.15,
+              "contribution": 3.0,
+              "evidence": {
+                "insulation": "poor"
+              }
+            },
+            {
+              "name": "heating_system",
+              "subscore": 20.0,
+              "weight": 0.15,
+              "contribution": 3.0,
+              "evidence": {
+                "heating_system": "old_gas_boiler"
+              }
+            },
+            {
+              "name": "windows",
+              "subscore": 20.0,
+              "weight": 0.1,
+              "contribution": 2.0,
+              "evidence": {
+                "glazing": "single"
+              }
+            },
+            {
+              "name": "renewable_energy",
+              "subscore": 0.0,
+              "weight": 0.1,
+              "contribution": 0.0,
+              "evidence": {
+                "renewable_contribution": "none"
+              }
+            },
+            {
+              "name": "smart_management",
+              "subscore": 0.0,
+              "weight": 0.05,
+              "contribution": 0.0,
+              "evidence": {
+                "smart_controls": "none"
+              }
+            }
+          ],
+          "missing_fields": [
+            "benchmark"
+          ],
+          "methodology_version": "greenprint-score-v1",
+          "baseline": null
+        },
+        "energy": {
+          "baseline_electricity_kwh": 2997.41,
+          "baseline_gas_kwh": 27040.56
+        },
+        "carbon": {
+          "status": "unavailable"
+        },
+        "valuation": {
+          "status": "unavailable"
+        },
+        "issues": [
+          "Insulation is poor.",
+          "An old gas boiler is recorded.",
+          "Windows are single glazed.",
+          "No renewable contribution is recorded.",
+          "No smart energy controls are recorded."
+        ],
+        "warnings": [
+          "Property snapshot and energy year differ; see dataset methodology.",
+          "Energy data quality: synthetic.",
+          "Full score unavailable: required inputs are missing."
+        ],
+        "sources": [
+          "Synthetic repository data; real backend assessment, evaluation-only advisor adapter"
+        ]
+      },
+      "tool_calls": [
+        "assessment"
+      ]
+    },
+    "latency_seconds": 25.910391708021052
+  }
+]
