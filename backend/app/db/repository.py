@@ -33,6 +33,7 @@ class CsvPropertyRepository:
         ids = [row['property_id'] for row in properties]
         if len(set(ids)) != len(ids):
             raise ValueError('Duplicate property IDs in CSV')
+        self._source_properties = {row['property_id']: dict(row) for row in properties}
         grouped = {identifier: [] for identifier in ids}
         keys = set()
         for row in readings:
@@ -45,6 +46,10 @@ class CsvPropertyRepository:
                 raise ValueError(f'Duplicate energy month: {key}')
             keys.add(key)
             grouped[identifier].append((month, row))
+        self._source_monthly_energy = {
+            identifier: [dict(row) for _, row in rows]
+            for identifier, rows in grouped.items()
+        }
         heating = {'Old gas boiler': 'old_gas_boiler', 'Modern gas boiler': 'modern_gas_boiler',
                    'Electric resistance': 'electric_resistance'}
         self._records = {}
@@ -108,7 +113,7 @@ class CsvPropertyRepository:
                 region=row['region'], floor_area_m2=row['floor_area_m2'],
                 property_age_years=row['age'], bedrooms=row['bedrooms'], energy_rating=row['energy_rating'],
                 insulation=row['insulation'].lower(), heating_system=system, glazing=row['glazing'].lower(),
-                renewable_contribution=None if solar else 'none', solar_installed=solar,
+                solar_installed=solar,
                 heat_pump_installed=row['heating'] == 'Heat pump',
                 renewable_contribution=renewable,
                 smart_controls='advanced' if row['smart_controls'] == 'true' else 'none',
@@ -136,6 +141,59 @@ class CsvPropertyRepository:
         if property_id not in self._records:
             raise KeyError(property_id)
         return self._records[property_id].model_copy(deep=True)
+
+    @classmethod
+    def from_project_root(cls, project_root=None):
+        """Load the source CSVs using paths anchored at the project root."""
+        root = Path(project_root) if project_root is not None else Path(__file__).resolve().parents[3]
+        return cls(root / 'Data/csv/properties.csv', root / 'Data/csv/energy_usage.csv')
+
+    def load_combined_record(self, property_id):
+        """Return source property fields, annual energy sums and raw monthly rows.
+
+        Additional monthly energy columns ending in ``_kwh`` are summed
+        independently. Existing annual purchased electricity/gas and their
+        metadata are kept from the typed record. Identifiers, categories,
+        statuses and physical parameters are not aggregated. Columns absent
+        from the source remain absent from ``annual_energy``.
+        """
+        if property_id not in self._source_properties:
+            raise KeyError(property_id)
+        record = self.load_property(property_id).model_dump(mode='json')
+        monthly = self._source_monthly_energy[property_id]
+        energy_fields = {
+            name for row in monthly for name in row
+            if name.endswith('_kwh') and name not in ('electricity_kwh', 'gas_kwh')
+        }
+        monthly_energy_totals = {
+            name: sum(float(row[name]) for row in monthly)
+            for name in sorted(energy_fields)
+        }
+        # Keep the existing PropertyRecord contract and purchased-energy
+        # annualization, while adding every source monthly quantity separately.
+        record['annual_energy'].update(monthly_energy_totals)
+        record['property'] = {
+            name: (None if value == '' else value)
+            for name, value in self._source_properties[property_id].items()
+        }
+        record['monthly_energy'] = [dict(row) for row in monthly]
+        return record
+
+
+_project_csv_repository = None
+
+
+def load_property_energy_data(property_id):
+    """Load the combined source record for a property ID from project CSVs.
+
+    The CSV repository is initialized once and reused for later property IDs.
+    The returned dictionary contains source property fields, annual energy,
+    benchmark and dataset metadata, plus the original monthly energy rows.
+    """
+    global _project_csv_repository
+    if _project_csv_repository is None:
+        _project_csv_repository = CsvPropertyRepository.from_project_root()
+    return _project_csv_repository.load_combined_record(property_id)
 
 
 class EditableRepository:

@@ -24,7 +24,7 @@ app.add_middleware(CORSMiddleware,
 project_root = Path(__file__).resolve().parents[2]
 dataset_kind = os.getenv('GREENPRINT_PROPERTY_DATASET', 'csv')
 if dataset_kind == 'csv':
-    repository = CsvPropertyRepository(project_root / 'Data/csv/properties.csv', project_root / 'Data/csv/energy_usage.csv')
+    repository = CsvPropertyRepository.from_project_root(project_root)
 elif dataset_kind == 'fixtures':
     repository = JsonPropertyRepository(project_root / 'backend/data/demo_properties.json')
 else:

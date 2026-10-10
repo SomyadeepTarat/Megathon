@@ -19,3 +19,38 @@ Live checks on port 8003:
 GET /properties returned 100 records. GET /properties/P00001/assessment returned an unavailable overall score with benchmark identified as missing. A heat-pump scenario request returned HTTP 503 because the retrofit engine is absent. Captured responses are in dataset-run.json.
 
 New tests cover dataset loading and sums, preserved unknown categories, missing fuel coverage, duplicate months, and orphan readings. Existing property route tests were updated for the default CSV dataset.
+
+## Combined source record for energy and retrofit modules
+
+Use the source-preserving adapter on the existing `CsvPropertyRepository`:
+
+```python
+from app.db.repository import CsvPropertyRepository
+
+dataset = CsvPropertyRepository.from_project_root()
+record = dataset.load_combined_record("P00001")
+```
+
+For a one-line lookup without constructing the repository yourself, use the
+project-level loader function. It initializes the CSV repository once and
+reuses it for later lookups:
+
+```python
+from app.db.repository import load_property_energy_data
+
+record = load_property_energy_data("P00001")
+```
+
+The returned dictionary keeps the existing typed record fields (`property`,
+`annual_energy`, `benchmark`, `dataset_kind`, and `dataset_source`) and adds
+`monthly_energy`. In this adapter result, `property` contains all original
+property CSV columns. Empty property cells are represented as `None`.
+`annual_energy` retains the existing purchased electricity/gas totals and
+metadata, with each additional monthly energy quantity whose column ends in
+`_kwh` summed separately. `monthly_energy` contains the original monthly rows.
+The adapter does not combine electricity with gas, electricity imports with
+electricity demand, or solar generation with self-consumption/exports. Status
+and physical parameter columns stay on their source rows and are not
+aggregated. Missing source columns are not added to the annual record. The existing typed
+`load_property(property_id)` method remains unchanged for current API and
+scoring consumers.
