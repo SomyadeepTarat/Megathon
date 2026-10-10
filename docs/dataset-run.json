@@ -1,0 +1,638 @@
+{
+  "dataset_kind": "synthetic",
+  "property_count": 100,
+  "monthly_reading_count": 1200,
+  "sample_assessments": [
+    {
+      "property": {
+        "property": {
+          "property_id": "P00001",
+          "property_type": "detached",
+          "region": "Greater London",
+          "floor_area_m2": 148.0,
+          "property_age_years": 95,
+          "bedrooms": 4,
+          "energy_rating": "F",
+          "insulation": "poor",
+          "heating_system": "old_gas_boiler",
+          "glazing": "single",
+          "renewable_contribution": "none",
+          "smart_controls": "none",
+          "roof_suitable_for_loft": null,
+          "roof_suitable_for_solar": null,
+          "heat_pump_compatible": null,
+          "controls_compatible": null,
+          "current_property_value_gbp": 640000.0,
+          "market_index": null,
+          "provenance": {
+            "record": "synthetic",
+            "source": "/home/mahesh/Documents/Codex/2026-10-10/so-x20/outputs/Megathon/Data/csv/properties.csv",
+            "source_heating": "Old gas boiler",
+            "solar_installed": "false",
+            "generation_seed": "42",
+            "customer_id": "C00001"
+          }
+        },
+        "annual_energy": {
+          "electricity_kwh": 2997.41,
+          "gas_kwh": 27040.56,
+          "quality": "synthetic",
+          "method": "Sum of 12 monthly purchased-energy readings for 2025; incomplete fuel totals remain null",
+          "electricity_months_covered": 12,
+          "gas_months_covered": 12,
+          "warnings": [
+            "Property snapshot and energy year differ; see dataset methodology."
+          ]
+        },
+        "benchmark": null,
+        "dataset_kind": "synthetic",
+        "dataset_source": "Data/csv/properties.csv and Data/csv/energy_usage.csv"
+      },
+      "assessment": {
+        "property_id": "P00001",
+        "score": {
+          "status": "unavailable",
+          "score": null,
+          "unrounded_score": null,
+          "classification": null,
+          "components": [
+            {
+              "name": "energy_efficiency",
+              "subscore": 20.0,
+              "weight": 0.25,
+              "contribution": 5.0,
+              "evidence": {
+                "energy_rating": "F"
+              }
+            },
+            {
+              "name": "consumption_intensity",
+              "subscore": null,
+              "weight": 0.2,
+              "contribution": null,
+              "evidence": {
+                "intensity_kwh_m2_year": 202.95925675675676,
+                "benchmark_kwh_m2_year": null,
+                "benchmark_source": null
+              }
+            },
+            {
+              "name": "insulation",
+              "subscore": 20.0,
+              "weight": 0.15,
+              "contribution": 3.0,
+              "evidence": {
+                "insulation": "poor"
+              }
+            },
+            {
+              "name": "heating_system",
+              "subscore": 20.0,
+              "weight": 0.15,
+              "contribution": 3.0,
+              "evidence": {
+                "heating_system": "old_gas_boiler"
+              }
+            },
+            {
+              "name": "windows",
+              "subscore": 20.0,
+              "weight": 0.1,
+              "contribution": 2.0,
+              "evidence": {
+                "glazing": "single"
+              }
+            },
+            {
+              "name": "renewable_energy",
+              "subscore": 0.0,
+              "weight": 0.1,
+              "contribution": 0.0,
+              "evidence": {
+                "renewable_contribution": "none"
+              }
+            },
+            {
+              "name": "smart_management",
+              "subscore": 0.0,
+              "weight": 0.05,
+              "contribution": 0.0,
+              "evidence": {
+                "smart_controls": "none"
+              }
+            }
+          ],
+          "missing_fields": [
+            "benchmark"
+          ],
+          "methodology_version": "greenprint-score-v1"
+        },
+        "poor_home": null,
+        "intensity_kwh_m2_year": 202.95925675675676,
+        "issues": [
+          {
+            "code": "poor_insulation",
+            "severity": "high",
+            "message": "Insulation is poor.",
+            "evidence": {
+              "insulation": "poor"
+            }
+          },
+          {
+            "code": "old_heating",
+            "severity": "high",
+            "message": "An old gas boiler is recorded.",
+            "evidence": {
+              "heating_system": "old_gas_boiler"
+            }
+          },
+          {
+            "code": "single_glazing",
+            "severity": "medium",
+            "message": "Windows are single glazed.",
+            "evidence": {
+              "glazing": "single"
+            }
+          },
+          {
+            "code": "no_renewables",
+            "severity": "low",
+            "message": "No renewable contribution is recorded.",
+            "evidence": {
+              "renewable_contribution": "none"
+            }
+          },
+          {
+            "code": "no_controls",
+            "severity": "low",
+            "message": "No smart energy controls are recorded.",
+            "evidence": {
+              "smart_controls": "none"
+            }
+          }
+        ],
+        "warnings": [
+          "Property snapshot and energy year differ; see dataset methodology.",
+          "Energy data quality: synthetic.",
+          "Full score unavailable: required inputs are missing."
+        ]
+      }
+    },
+    {
+      "property": {
+        "property": {
+          "property_id": "P00002",
+          "property_type": "flat",
+          "region": "Greater London",
+          "floor_area_m2": 68.0,
+          "property_age_years": 8,
+          "bedrooms": 2,
+          "energy_rating": "B",
+          "insulation": "good",
+          "heating_system": "modern_gas_boiler",
+          "glazing": "double",
+          "renewable_contribution": "none",
+          "smart_controls": "advanced",
+          "roof_suitable_for_loft": null,
+          "roof_suitable_for_solar": null,
+          "heat_pump_compatible": null,
+          "controls_compatible": null,
+          "current_property_value_gbp": 455000.0,
+          "market_index": null,
+          "provenance": {
+            "record": "synthetic",
+            "source": "/home/mahesh/Documents/Codex/2026-10-10/so-x20/outputs/Megathon/Data/csv/properties.csv",
+            "source_heating": "Modern gas boiler",
+            "solar_installed": "false",
+            "generation_seed": "42",
+            "customer_id": "C00002"
+          }
+        },
+        "annual_energy": {
+          "electricity_kwh": 1755.41,
+          "gas_kwh": 3543.74,
+          "quality": "synthetic",
+          "method": "Sum of 12 monthly purchased-energy readings for 2025; incomplete fuel totals remain null",
+          "electricity_months_covered": 12,
+          "gas_months_covered": 12,
+          "warnings": [
+            "Property snapshot and energy year differ; see dataset methodology."
+          ]
+        },
+        "benchmark": null,
+        "dataset_kind": "synthetic",
+        "dataset_source": "Data/csv/properties.csv and Data/csv/energy_usage.csv"
+      },
+      "assessment": {
+        "property_id": "P00002",
+        "score": {
+          "status": "unavailable",
+          "score": null,
+          "unrounded_score": null,
+          "classification": null,
+          "components": [
+            {
+              "name": "energy_efficiency",
+              "subscore": 85.0,
+              "weight": 0.25,
+              "contribution": 21.25,
+              "evidence": {
+                "energy_rating": "B"
+              }
+            },
+            {
+              "name": "consumption_intensity",
+              "subscore": null,
+              "weight": 0.2,
+              "contribution": null,
+              "evidence": {
+                "intensity_kwh_m2_year": 77.92867647058823,
+                "benchmark_kwh_m2_year": null,
+                "benchmark_source": null
+              }
+            },
+            {
+              "name": "insulation",
+              "subscore": 100.0,
+              "weight": 0.15,
+              "contribution": 15.0,
+              "evidence": {
+                "insulation": "good"
+              }
+            },
+            {
+              "name": "heating_system",
+              "subscore": 50.0,
+              "weight": 0.15,
+              "contribution": 7.5,
+              "evidence": {
+                "heating_system": "modern_gas_boiler"
+              }
+            },
+            {
+              "name": "windows",
+              "subscore": 75.0,
+              "weight": 0.1,
+              "contribution": 7.5,
+              "evidence": {
+                "glazing": "double"
+              }
+            },
+            {
+              "name": "renewable_energy",
+              "subscore": 0.0,
+              "weight": 0.1,
+              "contribution": 0.0,
+              "evidence": {
+                "renewable_contribution": "none"
+              }
+            },
+            {
+              "name": "smart_management",
+              "subscore": 100.0,
+              "weight": 0.05,
+              "contribution": 5.0,
+              "evidence": {
+                "smart_controls": "advanced"
+              }
+            }
+          ],
+          "missing_fields": [
+            "benchmark"
+          ],
+          "methodology_version": "greenprint-score-v1"
+        },
+        "poor_home": null,
+        "intensity_kwh_m2_year": 77.92867647058823,
+        "issues": [
+          {
+            "code": "no_renewables",
+            "severity": "low",
+            "message": "No renewable contribution is recorded.",
+            "evidence": {
+              "renewable_contribution": "none"
+            }
+          }
+        ],
+        "warnings": [
+          "Property snapshot and energy year differ; see dataset methodology.",
+          "Energy data quality: synthetic.",
+          "Full score unavailable: required inputs are missing."
+        ]
+      }
+    },
+    {
+      "property": {
+        "property": {
+          "property_id": "P00003",
+          "property_type": "detached",
+          "region": "South East",
+          "floor_area_m2": 192.0,
+          "property_age_years": 12,
+          "bedrooms": 5,
+          "energy_rating": "A",
+          "insulation": "good",
+          "heating_system": null,
+          "glazing": "triple",
+          "renewable_contribution": null,
+          "smart_controls": "advanced",
+          "roof_suitable_for_loft": null,
+          "roof_suitable_for_solar": null,
+          "heat_pump_compatible": null,
+          "controls_compatible": null,
+          "current_property_value_gbp": 725000.0,
+          "market_index": null,
+          "provenance": {
+            "record": "synthetic",
+            "source": "/home/mahesh/Documents/Codex/2026-10-10/so-x20/outputs/Megathon/Data/csv/properties.csv",
+            "source_heating": "Heat pump",
+            "solar_installed": "true",
+            "generation_seed": "42",
+            "customer_id": "C00003"
+          }
+        },
+        "annual_energy": {
+          "electricity_kwh": 5051.29,
+          "gas_kwh": 0.0,
+          "quality": "synthetic",
+          "method": "Sum of 12 monthly purchased-energy readings for 2025; incomplete fuel totals remain null",
+          "electricity_months_covered": 12,
+          "gas_months_covered": 12,
+          "warnings": [
+            "Heat pump recorded, but air-source/ground-source subtype is unknown.",
+            "Solar is present, but contribution category is not supplied.",
+            "Property snapshot and energy year differ; see dataset methodology."
+          ]
+        },
+        "benchmark": null,
+        "dataset_kind": "synthetic",
+        "dataset_source": "Data/csv/properties.csv and Data/csv/energy_usage.csv"
+      },
+      "assessment": {
+        "property_id": "P00003",
+        "score": {
+          "status": "unavailable",
+          "score": null,
+          "unrounded_score": null,
+          "classification": null,
+          "components": [
+            {
+              "name": "energy_efficiency",
+              "subscore": 100.0,
+              "weight": 0.25,
+              "contribution": 25.0,
+              "evidence": {
+                "energy_rating": "A"
+              }
+            },
+            {
+              "name": "consumption_intensity",
+              "subscore": null,
+              "weight": 0.2,
+              "contribution": null,
+              "evidence": {
+                "intensity_kwh_m2_year": 26.308802083333333,
+                "benchmark_kwh_m2_year": null,
+                "benchmark_source": null
+              }
+            },
+            {
+              "name": "insulation",
+              "subscore": 100.0,
+              "weight": 0.15,
+              "contribution": 15.0,
+              "evidence": {
+                "insulation": "good"
+              }
+            },
+            {
+              "name": "heating_system",
+              "subscore": null,
+              "weight": 0.15,
+              "contribution": null,
+              "evidence": {
+                "heating_system": null
+              }
+            },
+            {
+              "name": "windows",
+              "subscore": 100.0,
+              "weight": 0.1,
+              "contribution": 10.0,
+              "evidence": {
+                "glazing": "triple"
+              }
+            },
+            {
+              "name": "renewable_energy",
+              "subscore": null,
+              "weight": 0.1,
+              "contribution": null,
+              "evidence": {
+                "renewable_contribution": null
+              }
+            },
+            {
+              "name": "smart_management",
+              "subscore": 100.0,
+              "weight": 0.05,
+              "contribution": 5.0,
+              "evidence": {
+                "smart_controls": "advanced"
+              }
+            }
+          ],
+          "missing_fields": [
+            "property.heating_system",
+            "property.renewable_contribution",
+            "benchmark"
+          ],
+          "methodology_version": "greenprint-score-v1"
+        },
+        "poor_home": null,
+        "intensity_kwh_m2_year": 26.308802083333333,
+        "issues": [],
+        "warnings": [
+          "Heat pump recorded, but air-source/ground-source subtype is unknown.",
+          "Solar is present, but contribution category is not supplied.",
+          "Property snapshot and energy year differ; see dataset methodology.",
+          "Energy data quality: synthetic.",
+          "Full score unavailable: required inputs are missing."
+        ]
+      }
+    }
+  ],
+  "scenario": {
+    "http_status": 503,
+    "result": {
+      "scenario_id": "b03574fa-c040-4fa1-8e43-f2685352a147",
+      "property_id": "P00001",
+      "status": "unavailable",
+      "reason": "P4 retrofit feasibility engine is not integrated.",
+      "baseline_assessment": {
+        "property_id": "P00001",
+        "score": {
+          "status": "unavailable",
+          "score": null,
+          "unrounded_score": null,
+          "classification": null,
+          "components": [
+            {
+              "name": "energy_efficiency",
+              "subscore": 20.0,
+              "weight": 0.25,
+              "contribution": 5.0,
+              "evidence": {
+                "energy_rating": "F"
+              }
+            },
+            {
+              "name": "consumption_intensity",
+              "subscore": null,
+              "weight": 0.2,
+              "contribution": null,
+              "evidence": {
+                "intensity_kwh_m2_year": 202.95925675675676,
+                "benchmark_kwh_m2_year": null,
+                "benchmark_source": null
+              }
+            },
+            {
+              "name": "insulation",
+              "subscore": 20.0,
+              "weight": 0.15,
+              "contribution": 3.0,
+              "evidence": {
+                "insulation": "poor"
+              }
+            },
+            {
+              "name": "heating_system",
+              "subscore": 20.0,
+              "weight": 0.15,
+              "contribution": 3.0,
+              "evidence": {
+                "heating_system": "old_gas_boiler"
+              }
+            },
+            {
+              "name": "windows",
+              "subscore": 20.0,
+              "weight": 0.1,
+              "contribution": 2.0,
+              "evidence": {
+                "glazing": "single"
+              }
+            },
+            {
+              "name": "renewable_energy",
+              "subscore": 0.0,
+              "weight": 0.1,
+              "contribution": 0.0,
+              "evidence": {
+                "renewable_contribution": "none"
+              }
+            },
+            {
+              "name": "smart_management",
+              "subscore": 0.0,
+              "weight": 0.05,
+              "contribution": 0.0,
+              "evidence": {
+                "smart_controls": "none"
+              }
+            }
+          ],
+          "missing_fields": [
+            "benchmark"
+          ],
+          "methodology_version": "greenprint-score-v1"
+        },
+        "poor_home": null,
+        "intensity_kwh_m2_year": 202.95925675675676,
+        "issues": [
+          {
+            "code": "poor_insulation",
+            "severity": "high",
+            "message": "Insulation is poor.",
+            "evidence": {
+              "insulation": "poor"
+            }
+          },
+          {
+            "code": "old_heating",
+            "severity": "high",
+            "message": "An old gas boiler is recorded.",
+            "evidence": {
+              "heating_system": "old_gas_boiler"
+            }
+          },
+          {
+            "code": "single_glazing",
+            "severity": "medium",
+            "message": "Windows are single glazed.",
+            "evidence": {
+              "glazing": "single"
+            }
+          },
+          {
+            "code": "no_renewables",
+            "severity": "low",
+            "message": "No renewable contribution is recorded.",
+            "evidence": {
+              "renewable_contribution": "none"
+            }
+          },
+          {
+            "code": "no_controls",
+            "severity": "low",
+            "message": "No smart energy controls are recorded.",
+            "evidence": {
+              "smart_controls": "none"
+            }
+          }
+        ],
+        "warnings": [
+          "Property snapshot and energy year differ; see dataset methodology.",
+          "Energy data quality: synthetic.",
+          "Full score unavailable: required inputs are missing."
+        ]
+      },
+      "feasibility": {
+        "status": "unavailable",
+        "items": [],
+        "reason": "P4 retrofit feasibility engine is not integrated."
+      },
+      "after_assessment": null,
+      "updated_property": null,
+      "energy": null,
+      "carbon": {
+        "status": "unavailable",
+        "reduction_kg_co2e": null,
+        "factors": [],
+        "reason": "No completed scenario."
+      },
+      "valuation": {
+        "status": "unavailable",
+        "reason": "No completed scenario.",
+        "baseline_value_gbp": null,
+        "after_value_gbp": null,
+        "baseline_range_gbp": null,
+        "after_range_gbp": null,
+        "value_change_gbp": null,
+        "value_change_range_gbp": null,
+        "confidence_level": null,
+        "method": null,
+        "warnings": []
+      },
+      "installation_cost_gbp": null,
+      "applied_retrofits": [],
+      "assumptions": [],
+      "warnings": [],
+      "versions": {
+        "score": "greenprint-score-v1",
+        "retrofit": "not-integrated"
+      }
+    }
+  }
+}

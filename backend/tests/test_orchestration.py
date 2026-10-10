@@ -175,16 +175,16 @@ def test_property_routes():
     client = TestClient(app)
     listing = client.get('/properties')
     assert listing.status_code == 200
-    assert len(listing.json()) == 3
+    assert len(listing.json()) == 100
     assert all(row['dataset_kind'] == 'synthetic' for row in listing.json())
-    detail = client.get('/properties/DEMO1').json()
+    detail = client.get('/properties/P00001').json()
     assert detail['benchmark'] is None
     assert detail['annual_energy']['quality'] == 'synthetic'
-    assert client.get('/properties/DEMO1/assessment').json()['score']['status'] == 'unavailable'
+    assert client.get('/properties/P00001/assessment').json()['score']['status'] == 'unavailable'
     assert client.get('/properties/missing').status_code == 404
     assert client.get('/properties/missing/assessment').status_code == 404
     detail['property']['energy_rating'] = 'A'
-    assert client.get('/properties/DEMO1').json()['property']['energy_rating'] == 'E'
+    assert client.get('/properties/P00001').json()['property']['energy_rating'] == 'F'
 
 
 def test_injected_route(request_data):
