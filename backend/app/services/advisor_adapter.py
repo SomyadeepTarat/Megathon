@@ -51,6 +51,7 @@ def scenario_view(value, requested):
                   optimization_context=value.optimization_context.model_dump(mode='json') if value.optimization_context else None)
     if value.after_assessment:
         result['score']['after'] = value.after_assessment.score.score
+        result['score']['after_classification'] = value.after_assessment.score.classification
         result['score']['after_status'] = value.after_assessment.score.status
         result['score']['after_components'] = [c.model_dump(mode='json') for c in value.after_assessment.score.components]
     if value.energy:

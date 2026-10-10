@@ -2,7 +2,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { ArrowUp, Leaf, LoaderCircle } from 'lucide-react';
 import { api } from '@/lib/api';
+<<<<<<< HEAD
 import { needsPackageSelection } from '@/lib/advisor-context';
+=======
+import { advisorOutput } from '@/lib/results';
+>>>>>>> 8378ff5cc04ffc50a7b536cd88ec319fb0172798
 import { label, number } from '@/lib/format';
 import { inputOf, useWorkspace } from './workspace';
 import type { AdvisorResult, Objective, Retrofit } from '@/lib/types';
@@ -15,7 +19,7 @@ function ScenarioEvidence({ result }: { result: AdvisorResult }) {
   return <div className="chat-scenario"><strong>Calculated scenario</strong>{(['electricity_savings_kwh', 'gas_savings_kwh', 'net_savings_kwh'] as const).map((key) => <div key={key}><span>{label(key.replace('_kwh', ''))}</span><b>{number(typeof data[key] === 'number' ? data[key] : null, 'kWh/year')}</b></div>)}</div>;
 }
 export function Advisor() {
-  const { record, dirty, openAdvisor } = useWorkspace();
+  const { record, dirty, addOutput, setScenario } = useWorkspace();
   const [messages, setMessages] = useState<Message[]>([]); const [question, setQuestion] = useState('');
   const [progress, setProgress] = useState('Checking your home’s evidence…');
   const propertyId = record?.property.property_id;
@@ -30,8 +34,14 @@ export function Advisor() {
     setMessages((value) => [...value, { role: 'user', text }]); setQuestion(''); setBusy(true); setConfirm(false);
     setProgress('Connecting to your home advisor…');
     try {
+<<<<<<< HEAD
       const result = await api.advisorStream(record.property.property_id, text, setProgress, selected ? { intent: 'simulate_retrofit', retrofits: selected, budget_gbp: null, objective: 'carbon_reduction' as Objective } : undefined, dirty ? inputOf(record) : undefined);
       if (currentProperty.current !== record.property.property_id) return;
+=======
+      const result = await api.advisor(record.property.property_id, text, selected ? { intent: 'simulate_retrofit', retrofits: selected, budget_gbp: null, objective: 'carbon_reduction' as Objective } : undefined, dirty ? inputOf(record) : undefined);
+      const output = advisorOutput(result);
+      if (output) { setScenario(null); addOutput(output); }
+>>>>>>> 8378ff5cc04ffc50a7b536cd88ec319fb0172798
       setMessages((value) => [...value, { role: 'assistant', text: result.explanation, result }]);
       setConfirm(needsPackageSelection(result));
       if (result.clarification_kind === 'package') setPackageIds([]);

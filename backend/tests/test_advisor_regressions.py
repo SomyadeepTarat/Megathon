@@ -101,7 +101,7 @@ class MountedRouteTests(unittest.TestCase):
         row = repository.list_properties()[0]
         baseline = assess(row)
         scenario = ScenarioResponse(scenario_id='audit-test', property_id=row.property.property_id,
-            status='partial', baseline_assessment=baseline,
+            status='partial', baseline_assessment=baseline, after_assessment=baseline.model_copy(deep=True),
             feasibility=FeasibilityResult(status='available', items=[
                 FeasibilityItem(retrofit='heat_pump', status='feasible', reason='Synthetic regression fixture')]),
             energy=EnergyImpact(baseline=FuelState(electricity_kwh=1000, gas_kwh=1000),
@@ -113,6 +113,7 @@ class MountedRouteTests(unittest.TestCase):
         result = scenario_view(scenario, ['heat_pump'])
         self.assertEqual(result['status'], 'partial')
         self.assertEqual(result['energy']['electricity_savings_kwh'], -200)
+        self.assertEqual(result['score']['after_classification'], baseline.score.classification)
         self.assertTrue(result['feasibility']['all_feasible'])
         import asyncio
         text, _, _, _ = asyncio.run(generate_explanation(result))

@@ -1,0 +1,7 @@
+.opening-intro{position:fixed;inset:0;z-index:200;pointer-events:none;isolation:isolate}
+.opening-backdrop{position:absolute;inset:0;background:#f8f7f3;animation:opening-curtain 3.55s ease both}
+.opening-autumn-canvas{position:absolute;inset:0;width:100%;height:100%}
+.opening-logo{position:absolute;left:calc(50% - 14px);top:calc(50% - 14px);transform-origin:top left;opacity:0;color:#2d493e;line-height:0}
+.opening-logo>.brand-mark{margin:0;box-sizing:border-box}
+@keyframes opening-curtain{0%,61%{opacity:1}88%,100%{opacity:0}}
+@media(prefers-reduced-motion:reduce){.opening-intro{display:none}.opening-intro *{animation:none}}
