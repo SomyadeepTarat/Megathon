@@ -1,0 +1,184 @@
+import math
+from typing import Literal
+from pydantic import Field, model_validator
+from app.schemas.models import (StrictModel, Property, AnnualEnergy, AssessmentResponse,
+                                AssessmentRequest, Retrofit)
+
+
+class FeasibilityItem(StrictModel):
+    retrofit: Retrofit
+    status: Literal['feasible', 'conditional', 'infeasible']
+    reason: str = Field(min_length=1)
+
+
+class FeasibilityResult(StrictModel):
+    status: Literal['available', 'unavailable']
+    items: list[FeasibilityItem] = Field(default_factory=list)
+    reason: str | None = None
+
+    @model_validator(mode='after')
+    def valid_status(self):
+        if self.status == 'unavailable' and (not self.reason or self.items):
+            raise ValueError('Unavailable feasibility requires a reason and no items')
+        if len({item.retrofit for item in self.items}) != len(self.items):
+            raise ValueError('Feasibility contains duplicate measures')
+        return self
+
+
+class FuelState(StrictModel):
+    electricity_kwh: float = Field(ge=0, allow_inf_nan=False)
+    gas_kwh: float = Field(ge=0, allow_inf_nan=False)
+
+
+class SimulationResult(StrictModel):
+    updated_property: Property
+    after: FuelState
+    applied_retrofits: list[Retrofit]
+    installation_cost_gbp: float = Field(ge=0, allow_inf_nan=False)
+    methodology_version: str = Field(min_length=1)
+    assumptions: list[str] = Field(default_factory=list)
+    warnings: list[str] = Field(default_factory=list)
+
+
+class EnergyImpact(StrictModel):
+    baseline: FuelState
+    after: FuelState
+    electricity_savings_kwh: float = Field(allow_inf_nan=False)
+    gas_savings_kwh: float = Field(allow_inf_nan=False)
+    net_savings_kwh: float = Field(allow_inf_nan=False)
+    improvement_percentage: float | None = Field(default=None, allow_inf_nan=False)
+
+    @model_validator(mode='after')
+    def consistent(self):
+        e = self.baseline.electricity_kwh - self.after.electricity_kwh
+        g = self.baseline.gas_kwh - self.after.gas_kwh
+        for actual, expected in [(self.electricity_savings_kwh, e),
+                                 (self.gas_savings_kwh, g), (self.net_savings_kwh, e + g)]:
+            if not math.isclose(actual, expected, abs_tol=1e-7, rel_tol=1e-9):
+                raise ValueError('Energy savings disagree with fuel states')
+        total = self.baseline.electricity_kwh + self.baseline.gas_kwh
+        if total == 0:
+            if self.improvement_percentage is not None:
+                raise ValueError('Zero baseline requires unavailable percentage')
+        elif self.improvement_percentage is None or not math.isclose(
+            self.improvement_percentage, 100 * (e + g) / total, abs_tol=1e-7):
+            raise ValueError('Improvement percentage disagrees with energy states')
+        return self
+
+
+class EmissionFactor(StrictModel):
+    fuel: Literal['electricity', 'gas']
+    kg_co2e_per_kwh: float = Field(ge=0, allow_inf_nan=False)
+    source: str = Field(min_length=1)
+    source_year: int = Field(ge=1900)
+    accounting_boundary: str = Field(min_length=1)
+
+
+class CarbonResult(StrictModel):
+    status: Literal['available', 'unavailable']
+    reduction_kg_co2e: float | None = Field(default=None, allow_inf_nan=False)
+    factors: list[EmissionFactor] = Field(default_factory=list)
+    reason: str | None = None
+
+    @model_validator(mode='after')
+    def complete(self):
+        if self.status == 'unavailable':
+            if not self.reason or self.reduction_kg_co2e is not None or self.factors:
+                raise ValueError('Unavailable carbon requires reason and no estimates')
+        elif self.reduction_kg_co2e is None or len(self.factors) != 2 or {f.fuel for f in self.factors} != {'electricity', 'gas'}:
+            raise ValueError('Available carbon requires reduction and both documented fuel factors')
+        return self
+
+
+class ValuationResult(StrictModel):
+    status: Literal['indicative', 'illustrative', 'unavailable']
+    reason: str | None = None
+    baseline_value_gbp: float | None = Field(default=None, gt=0, allow_inf_nan=False)
+    after_value_gbp: float | None = Field(default=None, gt=0, allow_inf_nan=False)
+    baseline_range_gbp: tuple[float, float] | None = None
+    after_range_gbp: tuple[float, float] | None = None
+    value_change_gbp: float | None = Field(default=None, allow_inf_nan=False)
+    value_change_range_gbp: tuple[float, float] | None = None
+    confidence_level: float | None = Field(default=None, gt=0, lt=1)
+    method: str | None = None
+    warnings: list[str] = Field(default_factory=list)
+
+    @model_validator(mode='after')
+    def valid_result(self):
+        numeric = [self.baseline_value_gbp, self.after_value_gbp, self.value_change_gbp,
+                   self.baseline_range_gbp, self.after_range_gbp, self.value_change_range_gbp,
+                   self.confidence_level]
+        if self.status == 'unavailable':
+            if not self.reason or any(x is not None for x in numeric):
+                raise ValueError('Unavailable valuation requires reason and no estimates')
+        else:
+            if any(x is None for x in numeric) or not self.method:
+                raise ValueError('Available valuation requires estimates, ranges and calibration method')
+            for interval in [self.baseline_range_gbp, self.after_range_gbp, self.value_change_range_gbp]:
+                if not all(math.isfinite(x) for x in interval) or interval[0] > interval[1]:
+                    raise ValueError('Invalid valuation interval')
+            if self.baseline_range_gbp[0] < 0 or self.after_range_gbp[0] < 0:
+                raise ValueError('Property value ranges cannot be negative')
+            if not math.isclose(self.after_value_gbp - self.baseline_value_gbp, self.value_change_gbp, abs_tol=1e-7):
+                raise ValueError('Valuation contrast disagrees with predictions')
+        return self
+
+
+class ScenarioResponse(StrictModel):
+    scenario_id: str
+    property_id: str
+    status: Literal['success', 'partial', 'rejected', 'unavailable']
+    reason: str | None = None
+    baseline_assessment: AssessmentResponse
+    feasibility: FeasibilityResult
+    after_assessment: AssessmentResponse | None = None
+    updated_property: Property | None = None
+    energy: EnergyImpact | None = None
+    carbon: CarbonResult
+    valuation: ValuationResult
+    installation_cost_gbp: float | None = None
+    applied_retrofits: list[Retrofit] = Field(default_factory=list)
+    assumptions: list[str] = Field(default_factory=list)
+    warnings: list[str] = Field(default_factory=list)
+    versions: dict[str, str] = Field(default_factory=dict)
+
+
+class PropertyRecord(AssessmentRequest):
+    dataset_kind: Literal['synthetic', 'observed']
+    dataset_source: str = Field(min_length=1)
+
+
+class PropertySummary(StrictModel):
+    property_id: str
+    property_type: str
+    region: str
+    dataset_kind: Literal['synthetic', 'observed']
+    dataset_source: str
+
+
+class Recommendation(StrictModel):
+    retrofit: Retrofit
+    feasibility: FeasibilityItem
+    suitability: Literal['High', 'Medium', 'Low']
+    priority: int = Field(ge=1)
+    estimated_cost_gbp: float = Field(ge=0, allow_inf_nan=False)
+    energy: EnergyImpact | None = None
+    carbon: CarbonResult | None = None
+    reason: str = Field(min_length=1)
+    assumptions: list[str] = Field(default_factory=list)
+
+
+class OptimizationResult(StrictModel):
+    status: Literal['available', 'unavailable']
+    reason: str | None = None
+    ranked_packages: list[SimulationResult] = Field(default_factory=list)
+    objective: Literal['carbon_reduction', 'energy_reduction', 'shortest_payback']
+    methodology: str
+
+    @model_validator(mode='after')
+    def valid_status(self):
+        if self.status == 'unavailable' and (not self.reason or self.ranked_packages):
+            raise ValueError('Unavailable optimization requires reason and no packages')
+        if not self.methodology.strip():
+            raise ValueError('Optimization requires a documented methodology')
+        return self

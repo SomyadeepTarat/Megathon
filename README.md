@@ -1,3 +1,52 @@
+# GreenPrint AI
+
+FastAPI backend, explainable scoring, teammate integration contracts, property fixtures, and the existing Person 5 valuation/evaluation module.
+
+## Backend setup on Omarchy
+
+From the repository root:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r backend/requirements.lock.txt
+python -m uvicorn app.main:app --app-dir backend --reload --port 8001
+```
+
+Open http://localhost:8001/docs. Stop the old server using port 8001 before starting this checkout. Configuration is read from shell environment variables; `.env.example` is a template, not automatically loaded.
+
+For the exact combined dependency snapshot and the complete test suite:
+
+```bash
+pip install -r requirements.lock.txt
+python -m pytest -q
+```
+
+For backend-only verification:
+
+```bash
+python -m pytest backend/tests -q
+```
+
+## Available API
+
+| Route | Behavior |
+|---|---|
+| GET /health | Implementation status |
+| GET /properties | Three labeled synthetic development homes |
+| GET /properties/{id} | Validated property and annual energy snapshot |
+| GET /properties/{id}/assessment | Score components and issues |
+| POST /assessments | Assessment of a supplied or edited snapshot |
+| POST /scenarios/simulate | Orchestration through dependency-injected engines |
+
+Demo homes intentionally have no benchmark. Full score is unavailable until a documented applicable benchmark is supplied; known component subscores remain visible. No invented official benchmark is bundled. Benchmark source authenticity is not verified by Pydantic: P3 must provide a trusted repository.
+
+Default scenario responses are HTTP 503 with baseline assessment and explicit unavailable results while P4's engine is absent. Rejected or conditional packages use HTTP 409; completed simulations use HTTP 200 with success or partial status. Numerical test adapters are confined to tests and never installed in runtime routes. The existing valuation adapter disables illustrative synthetic-model uplift by default.
+
+See [backend handoff](docs/backend_handoff.md), [scoring methodology](docs/scoring_methodology.md), and [architecture](docs/backend_architecture.md). Existing teammate implementation and documentation are preserved below.
+
+---
+
 # GreenPrint AI — Person 5 module
 
 Valuation ML, conservative uncertainty, backend inference and evaluation tooling from `prd.md`. Other team members' engines are not implemented here.

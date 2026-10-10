@@ -1,0 +1,26 @@
+{
+  "property": {
+    "property_id": "DEMO1",
+    "property_type": "detached",
+    "region": "Greater London",
+    "floor_area_m2": 120,
+    "energy_rating": "E",
+    "insulation": "poor",
+    "heating_system": "old_gas_boiler",
+    "glazing": "single",
+    "renewable_contribution": "none",
+    "smart_controls": "none",
+    "provenance": {
+      "record": "synthetic demonstration"
+    }
+  },
+  "annual_energy": {
+    "electricity_kwh": 4800,
+    "gas_kwh": 12000,
+    "quality": "synthetic",
+    "method": "illustrative PRD input, not observed readings",
+    "electricity_months_covered": 12,
+    "gas_months_covered": 12
+  },
+  "benchmark": null
+}

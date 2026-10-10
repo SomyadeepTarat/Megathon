@@ -1,0 +1,86 @@
+[
+  {
+    "property": {
+      "property_id": "DEMO1",
+      "property_type": "detached",
+      "region": "Greater London",
+      "floor_area_m2": 120,
+      "energy_rating": "E",
+      "insulation": "poor",
+      "heating_system": "old_gas_boiler",
+      "glazing": "single",
+      "renewable_contribution": "none",
+      "smart_controls": "none",
+      "provenance": {
+        "record": "synthetic demonstration"
+      }
+    },
+    "annual_energy": {
+      "electricity_kwh": 4800,
+      "gas_kwh": 12000,
+      "quality": "synthetic",
+      "method": "illustrative PRD input, not observed readings",
+      "electricity_months_covered": 12,
+      "gas_months_covered": 12
+    },
+    "benchmark": null,
+    "dataset_kind": "synthetic",
+    "dataset_source": "Handwritten development fixtures; not real homes or market observations"
+  },
+  {
+    "property": {
+      "property_id": "DEMO2",
+      "property_type": "flat",
+      "region": "Greater London",
+      "floor_area_m2": 70,
+      "energy_rating": "C",
+      "insulation": "average",
+      "heating_system": "modern_gas_boiler",
+      "glazing": "double",
+      "renewable_contribution": "none",
+      "smart_controls": "none",
+      "provenance": {
+        "record": "synthetic demonstration"
+      }
+    },
+    "annual_energy": {
+      "electricity_kwh": 2400,
+      "gas_kwh": 6000,
+      "quality": "synthetic",
+      "method": "illustrative PRD input, not observed readings",
+      "electricity_months_covered": 12,
+      "gas_months_covered": 12
+    },
+    "benchmark": null,
+    "dataset_kind": "synthetic",
+    "dataset_source": "Handwritten development fixtures; not real homes or market observations"
+  },
+  {
+    "property": {
+      "property_id": "DEMO3",
+      "property_type": "semi_detached",
+      "region": "Greater London",
+      "floor_area_m2": 100,
+      "energy_rating": "B",
+      "insulation": "good",
+      "heating_system": "air_source_heat_pump",
+      "glazing": "double",
+      "renewable_contribution": "none",
+      "smart_controls": "none",
+      "provenance": {
+        "record": "synthetic demonstration"
+      }
+    },
+    "annual_energy": {
+      "electricity_kwh": 5500,
+      "gas_kwh": 0,
+      "quality": "synthetic",
+      "method": "illustrative PRD input, not observed readings",
+      "electricity_months_covered": 12,
+      "gas_months_covered": 12
+    },
+    "benchmark": null,
+    "dataset_kind": "synthetic",
+    "dataset_source": "Handwritten development fixtures; not real homes or market observations"
+  }
+]
