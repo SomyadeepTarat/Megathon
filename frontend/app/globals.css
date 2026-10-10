@@ -19,3 +19,10 @@ h1,h2,h3{color:#233e32;font-weight:750}
 .eyebrow,.mini-label{color:#617565;font-weight:700}
 .feature-card h3,.upgrade-title h3{font-weight:750}
 @media(max-width:680px){.page-heading h1{font-size:36px}.hero h1{font-size:clamp(42px,10vw,58px)}.section-heading h2{font-size:23px}}
+
+.tradeoff-table { overflow-x: auto; margin-top: 16px; }
+.tradeoff-table table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+.tradeoff-table caption { text-align: left; margin-bottom: 12px; color: var(--muted); }
+.tradeoff-table th, .tradeoff-table td { text-align: left; padding: 12px; border-bottom: 1px solid #e5e8e1; vertical-align: top; min-width: 110px; }
+.tradeoff-table th small { display: block; font-weight: normal; margin-top: 6px; }
+.upgrade-title { flex-wrap: wrap; }

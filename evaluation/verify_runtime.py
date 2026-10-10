@@ -56,7 +56,9 @@ def run(frontend_url=None):
                         assert all(x['status'] == 'feasible' for x in best['feasibility']['items'])
                         assert best['energy']['after']['electricity_kwh'] >= 0
                         assert best['energy']['after']['gas_kwh'] >= 0
-                        assert best['valuation']['status'] == 'unavailable'
+                        assert best['valuation']['status'] == 'illustrative', best['valuation']
+                        assert best['updated_property']['energy_rating'] == row.property.energy_rating
+                        assert best['optimization_context']['objective'] == objective
                     sample['objectives'][objective] = {'status': value['status'],
                         'package': best['applied_retrofits'] if best else None,
                         'reason': value['reason'], 'decisions': value['package_decisions']}

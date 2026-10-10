@@ -138,6 +138,24 @@ class ValuationResult(StrictModel):
         return self
 
 
+class PackageTradeoff(StrictModel):
+    objective: Literal['carbon_reduction', 'energy_reduction', 'shortest_payback']
+    retrofits: list[Retrofit]
+    installation_cost_gbp: float
+    carbon_reduction_kg_co2e: float | None = None
+    net_energy_savings_kwh: float
+    annual_bill_savings_gbp: float | None = None
+    simple_payback_years: float | None = None
+
+
+class OptimizationContext(StrictModel):
+    objective: Literal['carbon_reduction', 'energy_reduction', 'shortest_payback']
+    budget_gbp: float
+    explanation: str
+    alternatives: list[PackageTradeoff] = Field(default_factory=list)
+    installation_order: list[Retrofit] = Field(default_factory=list)
+
+
 class ScenarioResponse(StrictModel):
     scenario_id: str
     property_id: str
@@ -162,6 +180,7 @@ class ScenarioResponse(StrictModel):
     bill_savings_reason: str | None = None
     simple_payback_years: float | None = Field(default=None, ge=0, allow_inf_nan=False)
     payback_reason: str | None = None
+    optimization_context: OptimizationContext | None = None
 
 
 class PropertyRecord(AssessmentRequest):
@@ -245,6 +264,7 @@ class ValuationProperty(Property):
 
 class ValuationRequest(StrictModel):
     scenario_property: ValuationProperty | None = None
+    scenario_annual_energy: AnnualEnergy | None = None
 
 
 class FullAssessmentResponse(StrictModel):

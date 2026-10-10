@@ -3,15 +3,15 @@ import argparse
 import json
 from pathlib import Path
 from sklearn.metrics import classification_report
+from evaluation.reference_policy import reference_scope
 
 
 def evaluate(rows):
-    if not rows or any(r.get("independently_reviewed") is not True or not r.get("reference") for r in rows):
-        raise ValueError("Every label requires independent review and a reference")
+    scope = reference_scope(rows, "independently_reviewed", "reference")
     labels = ["eligible", "rejected", "conditional"]
     if any(r["expected"] not in labels or r["predicted"] not in labels for r in rows):
         raise ValueError("Use eligible, rejected or conditional labels")
-    return {"rows": len(rows), "metrics": classification_report(
+    return {"rows": len(rows), **scope, "metrics": classification_report(
         [r["expected"] for r in rows], [r["predicted"] for r in rows],
         labels=labels, output_dict=True, zero_division=0)}
 

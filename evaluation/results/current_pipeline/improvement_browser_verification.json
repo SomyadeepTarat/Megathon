@@ -1,0 +1,36 @@
+{
+  "status": "passed",
+  "date": "2026-10-11",
+  "frontend_url": "http://127.0.0.1:3001",
+  "backend_url": "http://127.0.0.1:8002",
+  "checks": [
+    {
+      "name": "recommendation labels/order",
+      "result": "Five feasible cards show Medium suitability, source reason and backend priorities; heat pump ranks first for carbon. Individual negative bill savings and unavailable payback remain explicit."
+    },
+    {
+      "name": "actual budget optimisation",
+      "result": "DEMO-P00001, 15000 GBP, carbon objective selects loft + heat pump + smart thermostat, cost 14200 GBP, score 22 to 49."
+    },
+    {
+      "name": "synthetic impact",
+      "result": "Illustrative change 2793 GBP, range approximately -9194 to 14780 GBP; recorded EPC unchanged; nominal/empirical coverage warning displayed."
+    },
+    {
+      "name": "objective tradeoffs",
+      "result": "Carbon/energy winner has approximately 51-year payback; shortest-payback winner is smart thermostat, 200 GBP, approximately 2 years."
+    },
+    {
+      "name": "mobile layout",
+      "result": "390x844 viewport; document width 390; tradeoff container width 310 with internal scroll width 869. No document-level horizontal overflow."
+    }
+  ],
+  "screenshots": [
+    "improvement-desktop.jpg",
+    "improvement-mobile.jpg"
+  ],
+  "limitations": [
+    "Browser smoke checks, not exhaustive accessibility certification.",
+    "Advisor semantic review remains human work."
+  ]
+}

@@ -3,8 +3,8 @@ from __future__ import annotations
 
 from itertools import combinations
 
-from carbon_engine.retrofit_catalogue import RETROFIT_CATALOGUE
-from app.schemas.engines import OptimizationResult, SimulationResult, FuelState
+from carbon_engine.retrofit_catalogue import RETROFIT_CATALOGUE, SEQUENTIAL_ORDER
+from app.schemas.engines import OptimizationResult, SimulationResult, OptimizationContext, PackageTradeoff
 from app.schemas.models import ScenarioRequest
 from app.services.orchestrator import run_scenario
 
@@ -21,6 +21,7 @@ def optimize_packages(request: ScenarioRequest, retrofit, carbon, valuation) -> 
     measures = tuple(RETROFIT_CATALOGUE)
     decisions = []
     scored = []
+    comparable = []
     for count in range(len(measures) + 1):
         for package in combinations(measures, count):
             label = list(package)
@@ -49,6 +50,7 @@ def optimize_packages(request: ScenarioRequest, retrofit, carbon, valuation) -> 
                 decisions.append({"retrofits": label, "status": "unavailable", "cost_gbp": cost,
                                   "reason": result.reason or "Fuel simulation unavailable."})
                 continue
+            comparable.append(result)
             if objective == "carbon_reduction":
                 if result.carbon.status != "available":
                     decisions.append({"retrofits": label, "status": "unavailable", "cost_gbp": cost,
@@ -86,5 +88,35 @@ def optimize_packages(request: ScenarioRequest, retrofit, carbon, valuation) -> 
         reason = "No package has enough documented inputs to satisfy the selected objective and budget."
         return OptimizationResult(status="unavailable", reason=reason, ranked_packages=[],
                                   package_decisions=decisions, objective=objective, methodology=method)
-    return OptimizationResult(status="available", ranked_packages=ranked, best_scenario=scored[0][3], package_decisions=decisions,
+    best = scored[0][3]
+    alternatives = []
+    for choice in ('carbon_reduction', 'energy_reduction', 'shortest_payback'):
+        eligible = [row for row in comparable if
+                    (row.carbon.status == 'available' if choice == 'carbon_reduction' else
+                     row.simple_payback_years is not None if choice == 'shortest_payback' else True)]
+        if not eligible:
+            continue
+        def key(row):
+            value = (row.carbon.reduction_kg_co2e if choice == 'carbon_reduction' else
+                     row.energy.net_savings_kwh if choice == 'energy_reduction' else row.simple_payback_years)
+            return (value if choice == 'shortest_payback' else -value,
+                    row.installation_cost_gbp, row.applied_retrofits)
+        winner = min(eligible, key=key)
+        alternatives.append(PackageTradeoff(objective=choice, retrofits=winner.applied_retrofits,
+            installation_cost_gbp=winner.installation_cost_gbp,
+            carbon_reduction_kg_co2e=winner.carbon.reduction_kg_co2e,
+            net_energy_savings_kwh=winner.energy.net_savings_kwh,
+            annual_bill_savings_gbp=winner.annual_bill_savings_gbp,
+            simple_payback_years=winner.simple_payback_years))
+    descriptions = {'carbon_reduction': 'the greatest annual operational carbon reduction',
+                    'energy_reduction': 'the greatest annual purchased-energy reduction',
+                    'shortest_payback': 'the shortest simple payback among packages with positive bill savings'}
+    explanation = ('This package provides ' + descriptions[objective] +
+        ' among feasible, calculable packages within your budget. Ties prefer lower installation cost, then retrofit IDs. '
+        'Carbon, energy and financial objectives can select different packages; compare the alternatives below. '
+        'Simple payback excludes maintenance, financing, tariff changes and property-value impact.')
+    best.optimization_context = OptimizationContext(objective=objective, budget_gbp=request.budget_gbp,
+        explanation=explanation, alternatives=alternatives,
+        installation_order=[measure for measure in SEQUENTIAL_ORDER if measure in best.applied_retrofits])
+    return OptimizationResult(status="available", ranked_packages=ranked, best_scenario=best, package_decisions=decisions,
                               objective=objective, methodology=method)

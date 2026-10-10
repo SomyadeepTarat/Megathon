@@ -66,3 +66,18 @@ def test_payback_requires_both_tariffs_and_positive_savings():
         electricity_tariff_gbp_per_kwh=.2, gas_tariff_gbp_per_kwh=.1), retrofit, carbon, valuation)
     assert with_tariff.status == 'available'
     assert with_tariff.ranked_packages[0].simple_payback_years is not None
+
+
+def test_tradeoffs_use_same_budget_and_preserve_objective():
+    names = ['loft_insulation', 'heat_pump', 'solar_panels', 'double_glazing', 'smart_thermostat']
+    costs = {name: {'amount_gbp': 1000, 'source': 'TEST ONLY', 'date': '2026-10-10'} for name in names}
+    retrofit, carbon, valuation = engines()
+    result = optimize_packages(request_fixture(retrofit_costs=costs, objective='carbon_reduction',
+        electricity_tariff_gbp_per_kwh=.3, gas_tariff_gbp_per_kwh=.06), retrofit, carbon, valuation)
+    context = result.best_scenario.optimization_context
+    assert context.objective == 'carbon_reduction'
+    assert all(row.installation_cost_gbp <= context.budget_gbp for row in context.alternatives)
+    assert {row.objective for row in context.alternatives} == {'carbon_reduction', 'energy_reduction', 'shortest_payback'}
+    selected = next(row for row in context.alternatives if row.objective == context.objective)
+    assert selected.retrofits == result.best_scenario.applied_retrofits
+    assert context.installation_order[-1] in ('heat_pump', 'solar_panels')

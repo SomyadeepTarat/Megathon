@@ -13273,36 +13273,7 @@
       }
     }
   ],
-  "live_frontend": [
-    {
-      "path": "/",
-      "status": 200
-    },
-    {
-      "path": "/assessment",
-      "status": 200
-    },
-    {
-      "path": "/planner",
-      "status": 200
-    },
-    {
-      "path": "/compare",
-      "status": 200
-    },
-    {
-      "path": "/portfolio",
-      "status": 200
-    },
-    {
-      "path": "/api/backend/health",
-      "status": 200
-    },
-    {
-      "path": "/api/backend/properties",
-      "status": 200
-    }
-  ],
+  "live_frontend": [],
   "curated_portfolio": [
     {
       "property_id": "DEMO-P00009",

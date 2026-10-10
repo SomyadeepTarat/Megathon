@@ -1,0 +1,5 @@
+{
+  "status": "passed",
+  "exit_code": 0,
+  "check": "Extracted bundle production routes use shipped models and data without original checkout paths."
+}

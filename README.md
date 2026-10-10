@@ -11,6 +11,7 @@ python3 -m venv .venv
 .venv/bin/python -m pip install -r requirements.lock.txt
 npm --prefix frontend ci
 .venv/bin/python -m ml.train_valuation --data Data/csv/properties.csv --provenance ml/snapshot_provenance.json --target-kind snapshot --output ml/models/snapshot.joblib --reports ml/reports/snapshot
+.venv/bin/python -m ml.synthetic_impact
 .venv/bin/python scripts/prepare_demo.py
 npm --prefix frontend run build
 ```
@@ -41,7 +42,7 @@ Open http://127.0.0.1:3000; API documentation is at http://127.0.0.1:8001/docs. 
 
 `GREENPRINT_PROPERTY_DATASET=csv` (default) selects all 100 supplied homes. `demo` selects 10 curated synthetic variants with clearly labelled suitability, proposed system, cost and tariff assumptions; it never modifies the supplied CSVs. `fixtures` selects three original development examples. Edited/API-submitted snapshots persist in `backend/data/user_properties.db`; override with `GREENPRINT_DB_PATH`.
 
-Demo sequence: select `DEMO-P00001` → run assessment → retrofit planner → choose measures or optimize a £15,000 budget → compare fuel, carbon, bills and payback → ask the advisor. Property-value impact remains explicitly unavailable where evidence does not support it. Conditional/infeasible measures are not simulated or recommended as confirmed installations.
+Demo sequence: select `DEMO-P00001` → run assessment → retrofit planner → choose measures or optimize a £15,000 budget → compare fuel, carbon, bills and payback → ask the advisor. Complete supported synthetic scenarios show an illustrative value-impact range; missing or unsupported inputs remain explicitly unavailable. Conditional/infeasible measures are not simulated or recommended as confirmed installations.
 
 ## Verification
 
@@ -92,12 +93,16 @@ The default carbon factors are extracted from the corrected 2026 DESNZ flat work
 .venv/bin/python scripts/extract_emission_factors.py --help
 ```
 
-Valuation selects the simplest validated model against Ridge/HistGradientBoosting alternatives, uses property-group separation and held-out conformal calibration, and checks input support. Synthetic uplift is disabled in production. New EPC estimates and causal premiums are never fabricated. Solar contribution and whole-home insulation categories remain unknown/unchanged without a supported category estimator, so some after-scenario full scores are unavailable even when fuel/carbon calculations work.
+Valuation selects the simplest validated model against Ridge/HistGradientBoosting alternatives, uses property-group separation and held-out conformal calibration, and checks input support. Complete explicitly synthetic scenarios use an illustrative intensity-based impact model with paired calibration; observed inputs retain strict evidence guards. New EPC estimates and causal premiums are never fabricated. Solar contribution and whole-home insulation categories remain unknown/unchanged without a supported category estimator, so some after-scenario full scores are unavailable even when fuel/carbon calculations work.
 
-Methodology: [scoring](docs/scoring_methodology.md), [valuation](docs/valuation_methodology.md), [advisor](docs/llm_methodology.md), [responsible AI](docs/responsible_ai.md). External evaluators require actual reviewed inputs, not unfilled templates: `evaluation.evaluate_energy`, `evaluation.evaluate_recommendations`, `evaluation.evaluate_explanations`, `ml.evaluate_valuation` (each provides `--help`).
+Methodology: [scoring](docs/scoring_methodology.md), [valuation](docs/valuation_methodology.md), [advisor](docs/llm_methodology.md), [responsible AI](docs/responsible_ai.md). External evaluators require documented reference labels or independent reviewed inputs, not unfilled templates: `evaluation.evaluate_energy`, `evaluation.evaluate_recommendations`, `evaluation.evaluate_explanations`, `ml.evaluate_valuation` (each provides `--help`).
 
 ## Synthetic-demo acceptance
 
 Synthetic data is the agreed hackathon scope. Observed-market and measured retrofit validation remain future work. Numerical implementation checks can be reproduced with `.venv/bin/python -m evaluation.verify_reference_cases`; fixed analytical expectations are not measured predictive accuracy. Desktop/mobile browser smoke testing is recorded in the current pipeline report.
 
 Somyadeep's [25-answer review](evaluation/reviews/somyadeep.md) is ready. Fill the true/false judgements in [the JSON review](evaluation/reviews/somyadeep.json), then run `.venv/bin/python -m evaluation.evaluate_explanations --input evaluation/reviews/somyadeep.json`. Pending human labels remain null; human quality targets have not been claimed.
+
+## Submission and expanded evaluation
+
+Run `.venv/bin/python scripts/reproduce_submission.py` to regenerate models, verify the pipeline and create the team-254 ZIP with trained artifacts and checksums. See [submission guide](docs/submission_guide.md), [current improvement report](docs/improvement_report.md), and [synthetic impact methodology](docs/synthetic_impact_methodology.md). Individual recommendations show backend suitability and rank; optimised comparisons show the carbon/energy/payback winners for the same budget.

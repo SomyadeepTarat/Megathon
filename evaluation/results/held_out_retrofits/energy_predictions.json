@@ -1,0 +1,1906 @@
+[
+  {
+    "case_id": "HELDOUT-917-000:",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 818.3346311671025,
+      "gas_kwh": 11385.079672739244
+    },
+    "predicted_after": {
+      "electricity_kwh": 818.3346311671025,
+      "gas_kwh": 11385.079672739244
+    },
+    "expected_carbon": 0.0,
+    "predicted_carbon": 0.0
+  },
+  {
+    "case_id": "HELDOUT-917-000:heat_pump",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 3526.9632542741806,
+      "gas_kwh": 301.0603407400704
+    },
+    "predicted_after": {
+      "electricity_kwh": 3526.9632542741806,
+      "gas_kwh": 301.0603407400713
+    },
+    "expected_carbon": 1666.0055599346665,
+    "predicted_carbon": 1666.0055599346665
+  },
+  {
+    "case_id": "HELDOUT-917-001:",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 1086.491823810476,
+      "gas_kwh": 17304.47350464722
+    },
+    "predicted_after": {
+      "electricity_kwh": 1086.491823810476,
+      "gas_kwh": 17304.47350464722
+    },
+    "expected_carbon": 0.0,
+    "predicted_carbon": 0.0
+  },
+  {
+    "case_id": "HELDOUT-917-001:heat_pump",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 5479.9265169136415,
+      "gas_kwh": 369.9767453917302
+    },
+    "predicted_after": {
+      "electricity_kwh": 5479.9265169136415,
+      "gas_kwh": 369.97674539172885
+    },
+    "expected_carbon": 2511.963896771078,
+    "predicted_carbon": 2511.963896771078
+  },
+  {
+    "case_id": "HELDOUT-917-001:double_glazing",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 1086.491823810476,
+      "gas_kwh": 15933.394807803117
+    },
+    "predicted_after": {
+      "electricity_kwh": 1086.491823810476,
+      "gas_kwh": 15933.394807803117
+    },
+    "expected_carbon": 249.96135722164834,
+    "predicted_carbon": 249.9613572216481
+  },
+  {
+    "case_id": "HELDOUT-917-001:smart_thermostat",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 1086.491823810476,
+      "gas_kwh": 16276.164482014145
+    },
+    "predicted_after": {
+      "electricity_kwh": 1086.491823810476,
+      "gas_kwh": 16276.164482014145
+    },
+    "expected_carbon": 187.47101791623592,
+    "predicted_carbon": 187.47101791623572
+  },
+  {
+    "case_id": "HELDOUT-917-001:heat_pump,double_glazing",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 5149.251704082562,
+      "gas_kwh": 369.9767453917302
+    },
+    "predicted_after": {
+      "electricity_kwh": 5149.251704082562,
+      "gas_kwh": 369.97674539172885
+    },
+    "expected_carbon": 2555.269070259436,
+    "predicted_carbon": 2555.2690702594364
+  },
+  {
+    "case_id": "HELDOUT-917-001:heat_pump,smart_thermostat",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 5231.920407290332,
+      "gas_kwh": 369.9767453917302
+    },
+    "predicted_after": {
+      "electricity_kwh": 5231.920407290332,
+      "gas_kwh": 369.97674539172885
+    },
+    "expected_carbon": 2544.4427768873466,
+    "predicted_carbon": 2544.4427768873466
+  },
+  {
+    "case_id": "HELDOUT-917-001:double_glazing,smart_thermostat",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 1086.491823810476,
+      "gas_kwh": 15007.91668743335
+    },
+    "predicted_after": {
+      "electricity_kwh": 1086.491823810476,
+      "gas_kwh": 15007.916687433346
+    },
+    "expected_carbon": 418.68527334626066,
+    "predicted_carbon": 418.68527334626106
+  },
+  {
+    "case_id": "HELDOUT-917-001:heat_pump,double_glazing,smart_thermostat",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 4926.046205421584,
+      "gas_kwh": 369.9767453917302
+    },
+    "predicted_after": {
+      "electricity_kwh": 4926.046205421584,
+      "gas_kwh": 369.97674539172885
+    },
+    "expected_carbon": 2584.5000623640776,
+    "predicted_carbon": 2584.500062364078
+  },
+  {
+    "case_id": "HELDOUT-917-002:",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 6137.360859452343,
+      "gas_kwh": 498.4216829030356
+    },
+    "predicted_after": {
+      "electricity_kwh": 6137.360859452343,
+      "gas_kwh": 498.4216829030356
+    },
+    "expected_carbon": 0.0,
+    "predicted_carbon": 0.0
+  },
+  {
+    "case_id": "HELDOUT-917-002:double_glazing",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 5927.13202571472,
+      "gas_kwh": 498.4216829030356
+    },
+    "predicted_after": {
+      "electricity_kwh": 5927.13202571472,
+      "gas_kwh": 498.4216829030356
+    },
+    "expected_carbon": 27.531568066279114,
+    "predicted_carbon": 27.53156806627908
+  },
+  {
+    "case_id": "HELDOUT-917-002:smart_thermostat",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 5979.689234149126,
+      "gas_kwh": 498.4216829030356
+    },
+    "predicted_after": {
+      "electricity_kwh": 5979.689234149126,
+      "gas_kwh": 498.4216829030356
+    },
+    "expected_carbon": 20.648676049709337,
+    "predicted_carbon": 20.648676049709366
+  },
+  {
+    "case_id": "HELDOUT-917-002:double_glazing,smart_thermostat",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 5785.227562941824,
+      "gas_kwh": 498.4216829030356
+    },
+    "predicted_after": {
+      "electricity_kwh": 5785.2275629418245,
+      "gas_kwh": 498.4216829030356
+    },
+    "expected_carbon": 46.115376511017615,
+    "predicted_carbon": 46.11537651101753
+  },
+  {
+    "case_id": "HELDOUT-917-003:",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 12232.696104996898,
+      "gas_kwh": 264.9597647408744
+    },
+    "predicted_after": {
+      "electricity_kwh": 12232.696104996898,
+      "gas_kwh": 264.9597647408744
+    },
+    "expected_carbon": 0.0,
+    "predicted_carbon": 0.0
+  },
+  {
+    "case_id": "HELDOUT-917-003:loft_insulation",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 11294.664758743149,
+      "gas_kwh": 264.9597647408744
+    },
+    "predicted_after": {
+      "electricity_kwh": 11294.664758743149,
+      "gas_kwh": 264.9597647408744
+    },
+    "expected_carbon": 122.84458510539093,
+    "predicted_carbon": 122.84458510539093
+  },
+  {
+    "case_id": "HELDOUT-917-003:solar_panels",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 11432.696104996898,
+      "gas_kwh": 264.9597647408744
+    },
+    "predicted_after": {
+      "electricity_kwh": 11432.696104996898,
+      "gas_kwh": 264.9597647408744
+    },
+    "expected_carbon": 104.768,
+    "predicted_carbon": 104.76800000000003
+  },
+  {
+    "case_id": "HELDOUT-917-003:double_glazing",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 11607.341874161066,
+      "gas_kwh": 264.9597647408744
+    },
+    "predicted_after": {
+      "electricity_kwh": 11607.341874161066,
+      "gas_kwh": 264.9597647408744
+    },
+    "expected_carbon": 81.89639007026054,
+    "predicted_carbon": 81.89639007026062
+  },
+  {
+    "case_id": "HELDOUT-917-003:loft_insulation,solar_panels",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 10494.664758743149,
+      "gas_kwh": 264.9597647408744
+    },
+    "predicted_after": {
+      "electricity_kwh": 10494.664758743149,
+      "gas_kwh": 264.9597647408744
+    },
+    "expected_carbon": 227.61258510539093,
+    "predicted_carbon": 227.61258510539096
+  },
+  {
+    "case_id": "HELDOUT-917-003:loft_insulation,double_glazing",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 10763.113662532693,
+      "gas_kwh": 264.9597647408744
+    },
+    "predicted_after": {
+      "electricity_kwh": 10763.113662532693,
+      "gas_kwh": 264.9597647408744
+    },
+    "expected_carbon": 192.45651666511228,
+    "predicted_carbon": 192.4565166651123
+  },
+  {
+    "case_id": "HELDOUT-917-003:solar_panels,double_glazing",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 10807.341874161066,
+      "gas_kwh": 264.9597647408744
+    },
+    "predicted_after": {
+      "electricity_kwh": 10807.341874161066,
+      "gas_kwh": 264.9597647408744
+    },
+    "expected_carbon": 186.66439007026054,
+    "predicted_carbon": 186.66439007026042
+  },
+  {
+    "case_id": "HELDOUT-917-003:loft_insulation,solar_panels,double_glazing",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 9963.113662532693,
+      "gas_kwh": 264.9597647408744
+    },
+    "predicted_after": {
+      "electricity_kwh": 9963.113662532693,
+      "gas_kwh": 264.9597647408744
+    },
+    "expected_carbon": 297.2245166651123,
+    "predicted_carbon": 297.22451666511233
+  },
+  {
+    "case_id": "HELDOUT-917-004:",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 3519.8767262591396,
+      "gas_kwh": 23017.805881112985
+    },
+    "predicted_after": {
+      "electricity_kwh": 3519.8767262591396,
+      "gas_kwh": 23017.805881112985
+    },
+    "expected_carbon": 0.0,
+    "predicted_carbon": 0.0
+  },
+  {
+    "case_id": "HELDOUT-917-004:double_glazing",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 3519.8767262591396,
+      "gas_kwh": 20927.23540462655
+    },
+    "predicted_after": {
+      "electricity_kwh": 3519.8767262591396,
+      "gas_kwh": 20927.23540462655
+    },
+    "expected_carbon": 381.13190356824197,
+    "predicted_carbon": 381.1319035682409
+  },
+  {
+    "case_id": "HELDOUT-917-005:",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 2634.4765722108377,
+      "gas_kwh": 9408.469969886874
+    },
+    "predicted_after": {
+      "electricity_kwh": 2634.4765722108377,
+      "gas_kwh": 9408.469969886874
+    },
+    "expected_carbon": 0.0,
+    "predicted_carbon": 0.0
+  },
+  {
+    "case_id": "HELDOUT-917-006:",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 5531.750459652637,
+      "gas_kwh": 100.37591809679641
+    },
+    "predicted_after": {
+      "electricity_kwh": 5531.750459652637,
+      "gas_kwh": 100.37591809679641
+    },
+    "expected_carbon": 0.0,
+    "predicted_carbon": 0.0
+  },
+  {
+    "case_id": "HELDOUT-917-006:loft_insulation",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 5080.481394076944,
+      "gas_kwh": 100.37591809679641
+    },
+    "predicted_after": {
+      "electricity_kwh": 5080.481394076944,
+      "gas_kwh": 100.37591809679641
+    },
+    "expected_carbon": 59.09819682779279,
+    "predicted_carbon": 59.09819682779289
+  },
+  {
+    "case_id": "HELDOUT-917-006:double_glazing",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 5230.904415935508,
+      "gas_kwh": 100.37591809679641
+    },
+    "predicted_after": {
+      "electricity_kwh": 5230.904415935508,
+      "gas_kwh": 100.37591809679641
+    },
+    "expected_carbon": 39.398797885195194,
+    "predicted_carbon": 39.39879788519522
+  },
+  {
+    "case_id": "HELDOUT-917-006:loft_insulation,double_glazing",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 4824.762256917384,
+      "gas_kwh": 100.37591809679641
+    },
+    "predicted_after": {
+      "electricity_kwh": 4824.762256917384,
+      "gas_kwh": 100.37591809679641
+    },
+    "expected_carbon": 92.58717503020875,
+    "predicted_carbon": 92.58717503020887
+  },
+  {
+    "case_id": "HELDOUT-917-007:",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 10813.149093726212,
+      "gas_kwh": 246.65902052529282
+    },
+    "predicted_after": {
+      "electricity_kwh": 10813.149093726212,
+      "gas_kwh": 246.65902052529282
+    },
+    "expected_carbon": 0.0,
+    "predicted_carbon": 0.0
+  },
+  {
+    "case_id": "HELDOUT-917-007:double_glazing",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 10125.991384112811,
+      "gas_kwh": 246.65902052529282
+    },
+    "predicted_after": {
+      "electricity_kwh": 10125.991384112811,
+      "gas_kwh": 246.65902052529282
+    },
+    "expected_carbon": 89.99017365097093,
+    "predicted_carbon": 89.99017365097097
+  },
+  {
+    "case_id": "HELDOUT-917-008:",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 1685.0617851200677,
+      "gas_kwh": 18382.483827858283
+    },
+    "predicted_after": {
+      "electricity_kwh": 1685.0617851200677,
+      "gas_kwh": 18382.483827858283
+    },
+    "expected_carbon": 0.0,
+    "predicted_carbon": 0.0
+  },
+  {
+    "case_id": "HELDOUT-917-008:double_glazing",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 1685.0617851200677,
+      "gas_kwh": 16590.00803983732
+    },
+    "predicted_after": {
+      "electricity_kwh": 1685.0617851200677,
+      "gas_kwh": 16590.00803983733
+    },
+    "expected_carbon": 326.78626091410155,
+    "predicted_carbon": 326.78626091410024
+  },
+  {
+    "case_id": "HELDOUT-917-009:",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 2015.8217505869009,
+      "gas_kwh": 19617.2664105503
+    },
+    "predicted_after": {
+      "electricity_kwh": 2015.8217505869009,
+      "gas_kwh": 19617.2664105503
+    },
+    "expected_carbon": 0.0,
+    "predicted_carbon": 0.0
+  },
+  {
+    "case_id": "HELDOUT-917-009:loft_insulation",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 2015.8217505869009,
+      "gas_kwh": 17031.428673230836
+    },
+    "predicted_after": {
+      "electricity_kwh": 2015.8217505869009,
+      "gas_kwh": 17031.42867323084
+    },
+    "expected_carbon": 471.4240778907114,
+    "predicted_carbon": 471.42407789071103
+  },
+  {
+    "case_id": "HELDOUT-917-009:heat_pump",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 5584.05680726205,
+      "gas_kwh": 289.2854136702408
+    },
+    "predicted_after": {
+      "electricity_kwh": 5584.056807262051,
+      "gas_kwh": 289.2854136702431
+    },
+    "expected_carbon": 3056.388152519026,
+    "predicted_carbon": 3056.3881525190254
+  },
+  {
+    "case_id": "HELDOUT-917-009:solar_panels",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 1215.8217505869009,
+      "gas_kwh": 19617.2664105503
+    },
+    "predicted_after": {
+      "electricity_kwh": 1215.8217505869009,
+      "gas_kwh": 19617.2664105503
+    },
+    "expected_carbon": 104.768,
+    "predicted_carbon": 104.76800000000003
+  },
+  {
+    "case_id": "HELDOUT-917-009:double_glazing",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 2015.8217505869009,
+      "gas_kwh": 17893.37458567066
+    },
+    "predicted_after": {
+      "electricity_kwh": 2015.8217505869009,
+      "gas_kwh": 17893.37458567066
+    },
+    "expected_carbon": 314.28271859380715,
+    "predicted_carbon": 314.2827185938072
+  },
+  {
+    "case_id": "HELDOUT-917-009:smart_thermostat",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 2015.8217505869009,
+      "gas_kwh": 18324.34754189057
+    },
+    "predicted_after": {
+      "electricity_kwh": 2015.8217505869009,
+      "gas_kwh": 18324.347541890573
+    },
+    "expected_carbon": 235.71203894535537,
+    "predicted_carbon": 235.71203894535483
+  },
+  {
+    "case_id": "HELDOUT-917-009:loft_insulation,heat_pump",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 5134.4177058323685,
+      "gas_kwh": 289.2854136702408
+    },
+    "predicted_after": {
+      "electricity_kwh": 5134.417705832369,
+      "gas_kwh": 289.2854136702431
+    },
+    "expected_carbon": 3115.272889242257,
+    "predicted_carbon": 3115.2728892422565
+  },
+  {
+    "case_id": "HELDOUT-917-009:loft_insulation,solar_panels",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 1215.8217505869009,
+      "gas_kwh": 17031.428673230836
+    },
+    "predicted_after": {
+      "electricity_kwh": 1215.8217505869009,
+      "gas_kwh": 17031.42867323084
+    },
+    "expected_carbon": 576.1920778907114,
+    "predicted_carbon": 576.1920778907111
+  },
+  {
+    "case_id": "HELDOUT-917-009:loft_insulation,double_glazing",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 2015.8217505869009,
+      "gas_kwh": 15566.120622083145
+    },
+    "predicted_after": {
+      "electricity_kwh": 2015.8217505869009,
+      "gas_kwh": 15566.120622083145
+    },
+    "expected_carbon": 738.564388695447,
+    "predicted_carbon": 738.5643886954472
+  },
+  {
+    "case_id": "HELDOUT-917-009:loft_insulation,smart_thermostat",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 2015.8217505869009,
+      "gas_kwh": 15932.447634870066
+    },
+    "predicted_after": {
+      "electricity_kwh": 2015.8217505869009,
+      "gas_kwh": 15932.44763487007
+    },
+    "expected_carbon": 671.7793109942633,
+    "predicted_carbon": 671.7793109942627
+  },
+  {
+    "case_id": "HELDOUT-917-009:heat_pump,solar_panels",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 4784.05680726205,
+      "gas_kwh": 289.2854136702408
+    },
+    "predicted_after": {
+      "electricity_kwh": 4784.056807262051,
+      "gas_kwh": 289.2854136702431
+    },
+    "expected_carbon": 3161.1561525190255,
+    "predicted_carbon": 3161.1561525190255
+  },
+  {
+    "case_id": "HELDOUT-917-009:heat_pump,double_glazing",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 5284.29740630893,
+      "gas_kwh": 289.2854136702408
+    },
+    "predicted_after": {
+      "electricity_kwh": 5284.2974063089305,
+      "gas_kwh": 289.2854136702431
+    },
+    "expected_carbon": 3095.644643667846,
+    "predicted_carbon": 3095.644643667846
+  },
+  {
+    "case_id": "HELDOUT-917-009:heat_pump,smart_thermostat",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 5359.23725654721,
+      "gas_kwh": 289.2854136702408
+    },
+    "predicted_after": {
+      "electricity_kwh": 5359.237256547211,
+      "gas_kwh": 289.2854136702431
+    },
+    "expected_carbon": 3085.8305208806414,
+    "predicted_carbon": 3085.8305208806414
+  },
+  {
+    "case_id": "HELDOUT-917-009:solar_panels,double_glazing",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 1215.8217505869009,
+      "gas_kwh": 17893.37458567066
+    },
+    "predicted_after": {
+      "electricity_kwh": 1215.8217505869009,
+      "gas_kwh": 17893.37458567066
+    },
+    "expected_carbon": 419.0507185938071,
+    "predicted_carbon": 419.05071859380723
+  },
+  {
+    "case_id": "HELDOUT-917-009:solar_panels,smart_thermostat",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 1215.8217505869009,
+      "gas_kwh": 18324.34754189057
+    },
+    "predicted_after": {
+      "electricity_kwh": 1215.8217505869009,
+      "gas_kwh": 18324.347541890573
+    },
+    "expected_carbon": 340.4800389453554,
+    "predicted_carbon": 340.48003894535486
+  },
+  {
+    "case_id": "HELDOUT-917-009:double_glazing,smart_thermostat",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 2015.8217505869009,
+      "gas_kwh": 16729.747603876902
+    },
+    "predicted_after": {
+      "electricity_kwh": 2015.8217505869009,
+      "gas_kwh": 16729.747603876902
+    },
+    "expected_carbon": 526.4235536446271,
+    "predicted_carbon": 526.4235536446272
+  },
+  {
+    "case_id": "HELDOUT-917-009:loft_insulation,heat_pump,solar_panels",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 4334.4177058323685,
+      "gas_kwh": 289.2854136702408
+    },
+    "predicted_after": {
+      "electricity_kwh": 4334.417705832369,
+      "gas_kwh": 289.2854136702431
+    },
+    "expected_carbon": 3220.0408892422565,
+    "predicted_carbon": 3220.0408892422565
+  },
+  {
+    "case_id": "HELDOUT-917-009:loft_insulation,heat_pump,double_glazing",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 4879.622215022217,
+      "gas_kwh": 289.2854136702408
+    },
+    "predicted_after": {
+      "electricity_kwh": 4879.622215022217,
+      "gas_kwh": 289.2854136702431
+    },
+    "expected_carbon": 3148.640906718754,
+    "predicted_carbon": 3148.640906718754
+  },
+  {
+    "case_id": "HELDOUT-917-009:loft_insulation,heat_pump,smart_thermostat",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 4943.321087724755,
+      "gas_kwh": 289.2854136702408
+    },
+    "predicted_after": {
+      "electricity_kwh": 4943.321087724755,
+      "gas_kwh": 289.2854136702431
+    },
+    "expected_carbon": 3140.2989023496298,
+    "predicted_carbon": 3140.29890234963
+  },
+  {
+    "case_id": "HELDOUT-917-009:loft_insulation,solar_panels,double_glazing",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 1215.8217505869009,
+      "gas_kwh": 15566.120622083145
+    },
+    "predicted_after": {
+      "electricity_kwh": 1215.8217505869009,
+      "gas_kwh": 15566.120622083145
+    },
+    "expected_carbon": 843.332388695447,
+    "predicted_carbon": 843.3323886954472
+  },
+  {
+    "case_id": "HELDOUT-917-009:loft_insulation,solar_panels,smart_thermostat",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 1215.8217505869009,
+      "gas_kwh": 15932.447634870066
+    },
+    "predicted_after": {
+      "electricity_kwh": 1215.8217505869009,
+      "gas_kwh": 15932.44763487007
+    },
+    "expected_carbon": 776.5473109942633,
+    "predicted_carbon": 776.5473109942627
+  },
+  {
+    "case_id": "HELDOUT-917-009:loft_insulation,double_glazing,smart_thermostat",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 2015.8217505869009,
+      "gas_kwh": 14577.037687558452
+    },
+    "predicted_after": {
+      "electricity_kwh": 2015.8217505869009,
+      "gas_kwh": 14577.037687558455
+    },
+    "expected_carbon": 918.8840984886438,
+    "predicted_carbon": 918.8840984886433
+  },
+  {
+    "case_id": "HELDOUT-917-009:heat_pump,solar_panels,double_glazing",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 4484.29740630893,
+      "gas_kwh": 289.2854136702408
+    },
+    "predicted_after": {
+      "electricity_kwh": 4484.2974063089305,
+      "gas_kwh": 289.2854136702431
+    },
+    "expected_carbon": 3200.412643667846,
+    "predicted_carbon": 3200.412643667846
+  },
+  {
+    "case_id": "HELDOUT-917-009:heat_pump,solar_panels,smart_thermostat",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 4559.23725654721,
+      "gas_kwh": 289.2854136702408
+    },
+    "predicted_after": {
+      "electricity_kwh": 4559.237256547211,
+      "gas_kwh": 289.2854136702431
+    },
+    "expected_carbon": 3190.598520880641,
+    "predicted_carbon": 3190.5985208806414
+  },
+  {
+    "case_id": "HELDOUT-917-009:heat_pump,double_glazing,smart_thermostat",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 5081.959810665573,
+      "gas_kwh": 289.2854136702408
+    },
+    "predicted_after": {
+      "electricity_kwh": 5081.959810665573,
+      "gas_kwh": 289.2854136702431
+    },
+    "expected_carbon": 3122.1427751933,
+    "predicted_carbon": 3122.1427751933006
+  },
+  {
+    "case_id": "HELDOUT-917-009:solar_panels,double_glazing,smart_thermostat",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 1215.8217505869009,
+      "gas_kwh": 16729.747603876902
+    },
+    "predicted_after": {
+      "electricity_kwh": 1215.8217505869009,
+      "gas_kwh": 16729.747603876902
+    },
+    "expected_carbon": 631.1915536446271,
+    "predicted_carbon": 631.1915536446272
+  },
+  {
+    "case_id": "HELDOUT-917-009:loft_insulation,heat_pump,solar_panels,double_glazing",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 4079.6222150222166,
+      "gas_kwh": 289.2854136702408
+    },
+    "predicted_after": {
+      "electricity_kwh": 4079.6222150222166,
+      "gas_kwh": 289.2854136702431
+    },
+    "expected_carbon": 3253.408906718754,
+    "predicted_carbon": 3253.408906718754
+  },
+  {
+    "case_id": "HELDOUT-917-009:loft_insulation,heat_pump,solar_panels,smart_thermostat",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 4143.321087724755,
+      "gas_kwh": 289.2854136702408
+    },
+    "predicted_after": {
+      "electricity_kwh": 4143.321087724755,
+      "gas_kwh": 289.2854136702431
+    },
+    "expected_carbon": 3245.06690234963,
+    "predicted_carbon": 3245.0669023496303
+  },
+  {
+    "case_id": "HELDOUT-917-009:loft_insulation,heat_pump,double_glazing,smart_thermostat",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 4707.635258725363,
+      "gas_kwh": 289.2854136702408
+    },
+    "predicted_after": {
+      "electricity_kwh": 4707.635258725364,
+      "gas_kwh": 289.2854136702431
+    },
+    "expected_carbon": 3171.1643185153903,
+    "predicted_carbon": 3171.1643185153903
+  },
+  {
+    "case_id": "HELDOUT-917-009:loft_insulation,solar_panels,double_glazing,smart_thermostat",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 1215.8217505869009,
+      "gas_kwh": 14577.037687558452
+    },
+    "predicted_after": {
+      "electricity_kwh": 1215.8217505869009,
+      "gas_kwh": 14577.037687558455
+    },
+    "expected_carbon": 1023.6520984886438,
+    "predicted_carbon": 1023.6520984886433
+  },
+  {
+    "case_id": "HELDOUT-917-009:heat_pump,solar_panels,double_glazing,smart_thermostat",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 4281.959810665573,
+      "gas_kwh": 289.2854136702408
+    },
+    "predicted_after": {
+      "electricity_kwh": 4281.959810665573,
+      "gas_kwh": 289.2854136702431
+    },
+    "expected_carbon": 3226.9107751933,
+    "predicted_carbon": 3226.9107751933007
+  },
+  {
+    "case_id": "HELDOUT-917-009:loft_insulation,heat_pump,solar_panels,double_glazing,smart_thermostat",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 3907.635258725363,
+      "gas_kwh": 289.2854136702408
+    },
+    "predicted_after": {
+      "electricity_kwh": 3907.635258725364,
+      "gas_kwh": 289.2854136702431
+    },
+    "expected_carbon": 3275.9323185153903,
+    "predicted_carbon": 3275.9323185153903
+  },
+  {
+    "case_id": "HELDOUT-917-010:",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 7153.992826932599,
+      "gas_kwh": 279.99573268842556
+    },
+    "predicted_after": {
+      "electricity_kwh": 7153.992826932599,
+      "gas_kwh": 279.99573268842556
+    },
+    "expected_carbon": 0.0,
+    "predicted_carbon": 0.0
+  },
+  {
+    "case_id": "HELDOUT-917-010:smart_thermostat",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 6906.6544024006425,
+      "gas_kwh": 279.99573268842556
+    },
+    "predicted_after": {
+      "electricity_kwh": 6906.6544024006425,
+      "gas_kwh": 279.99573268842556
+    },
+    "expected_carbon": 32.391440076705045,
+    "predicted_carbon": 32.39144007670507
+  },
+  {
+    "case_id": "HELDOUT-917-011:",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 18488.387466414406,
+      "gas_kwh": 33.80737272766443
+    },
+    "predicted_after": {
+      "electricity_kwh": 18488.387466414406,
+      "gas_kwh": 33.80737272766443
+    },
+    "expected_carbon": 0.0,
+    "predicted_carbon": 0.0
+  },
+  {
+    "case_id": "HELDOUT-917-011:heat_pump",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 8612.593322499182,
+      "gas_kwh": 33.80737272766443
+    },
+    "predicted_after": {
+      "electricity_kwh": 8612.593322499182,
+      "gas_kwh": 33.80737272766443
+    },
+    "expected_carbon": 1293.3340010871377,
+    "predicted_carbon": 1293.3340010871375
+  },
+  {
+    "case_id": "HELDOUT-917-011:double_glazing",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 17274.982374416664,
+      "gas_kwh": 33.80737272766443
+    },
+    "predicted_after": {
+      "electricity_kwh": 17274.982374416668,
+      "gas_kwh": 33.80737272766443
+    },
+    "expected_carbon": 158.90753084802424,
+    "predicted_carbon": 158.90753084802373
+  },
+  {
+    "case_id": "HELDOUT-917-011:smart_thermostat",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 17578.3336474161,
+      "gas_kwh": 33.80737272766443
+    },
+    "predicted_after": {
+      "electricity_kwh": 17578.3336474161,
+      "gas_kwh": 33.80737272766443
+    },
+    "expected_carbon": 119.18064813601806,
+    "predicted_carbon": 119.18064813601814
+  },
+  {
+    "case_id": "HELDOUT-917-011:heat_pump,double_glazing",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 8220.779494653125,
+      "gas_kwh": 33.80737272766443
+    },
+    "predicted_after": {
+      "electricity_kwh": 8220.779494653127,
+      "gas_kwh": 33.80737272766443
+    },
+    "expected_carbon": 1344.6459399818573,
+    "predicted_carbon": 1344.645939981857
+  },
+  {
+    "case_id": "HELDOUT-917-011:heat_pump,smart_thermostat",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 8318.73295161464,
+      "gas_kwh": 33.80737272766443
+    },
+    "predicted_after": {
+      "electricity_kwh": 8318.73295161464,
+      "gas_kwh": 33.80737272766443
+    },
+    "expected_carbon": 1331.8179552581773,
+    "predicted_carbon": 1331.8179552581773
+  },
+  {
+    "case_id": "HELDOUT-917-011:double_glazing,smart_thermostat",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 16455.93393731819,
+      "gas_kwh": 33.80737272766443
+    },
+    "predicted_after": {
+      "electricity_kwh": 16455.933937318194,
+      "gas_kwh": 33.80737272766443
+    },
+    "expected_carbon": 266.1701141704404,
+    "predicted_carbon": 266.1701141704398
+  },
+  {
+    "case_id": "HELDOUT-917-011:heat_pump,double_glazing,smart_thermostat",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 7956.305160857038,
+      "gas_kwh": 33.80737272766443
+    },
+    "predicted_after": {
+      "electricity_kwh": 7956.305160857039,
+      "gas_kwh": 33.80737272766443
+    },
+    "expected_carbon": 1379.2814987357929,
+    "predicted_carbon": 1379.2814987357926
+  },
+  {
+    "case_id": "HELDOUT-917-012:",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 2815.5491081700366,
+      "gas_kwh": 5870.219413962307
+    },
+    "predicted_after": {
+      "electricity_kwh": 2815.5491081700366,
+      "gas_kwh": 5870.219413962307
+    },
+    "expected_carbon": 0.0,
+    "predicted_carbon": 0.0
+  },
+  {
+    "case_id": "HELDOUT-917-012:loft_insulation",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 2815.5491081700366,
+      "gas_kwh": 5056.279963580693
+    },
+    "predicted_after": {
+      "electricity_kwh": 2815.5491081700366,
+      "gas_kwh": 5056.279963580692
+    },
+    "expected_carbon": 148.389301199072,
+    "predicted_carbon": 148.38930119907218
+  },
+  {
+    "case_id": "HELDOUT-917-012:double_glazing",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 2815.5491081700366,
+      "gas_kwh": 5327.593113707898
+    },
+    "predicted_after": {
+      "electricity_kwh": 2815.5491081700366,
+      "gas_kwh": 5327.593113707898
+    },
+    "expected_carbon": 98.92620079938135,
+    "predicted_carbon": 98.92620079938138
+  },
+  {
+    "case_id": "HELDOUT-917-012:loft_insulation,double_glazing",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 2815.5491081700366,
+      "gas_kwh": 4595.047608364445
+    },
+    "predicted_after": {
+      "electricity_kwh": 2815.5491081700366,
+      "gas_kwh": 4595.047608364445
+    },
+    "expected_carbon": 232.47657187854617,
+    "predicted_carbon": 232.47657187854634
+  },
+  {
+    "case_id": "HELDOUT-917-013:",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 3830.9475651690805,
+      "gas_kwh": 22893.322767231024
+    },
+    "predicted_after": {
+      "electricity_kwh": 3830.9475651690805,
+      "gas_kwh": 22893.322767231024
+    },
+    "expected_carbon": 0.0,
+    "predicted_carbon": 0.0
+  },
+  {
+    "case_id": "HELDOUT-917-013:double_glazing",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 3830.9475651690805,
+      "gas_kwh": 20646.559889028984
+    },
+    "predicted_after": {
+      "electricity_kwh": 3830.9475651690805,
+      "gas_kwh": 20646.55988902898
+    },
+    "expected_carbon": 409.6073403250139,
+    "predicted_carbon": 409.6073403250148
+  },
+  {
+    "case_id": "HELDOUT-917-014:",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 9665.805647168669,
+      "gas_kwh": 345.1719870822837
+    },
+    "predicted_after": {
+      "electricity_kwh": 9665.805647168669,
+      "gas_kwh": 345.1719870822837
+    },
+    "expected_carbon": 0.0,
+    "predicted_carbon": 0.0
+  },
+  {
+    "case_id": "HELDOUT-917-014:double_glazing",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 9163.136101423279,
+      "gas_kwh": 345.1719870822837
+    },
+    "predicted_after": {
+      "electricity_kwh": 9163.13610142328,
+      "gas_kwh": 345.1719870822837
+    },
+    "expected_carbon": 65.82960371081624,
+    "predicted_carbon": 65.82960371081595
+  },
+  {
+    "case_id": "HELDOUT-917-015:",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 5031.429876766521,
+      "gas_kwh": 443.8258788709239
+    },
+    "predicted_after": {
+      "electricity_kwh": 5031.429876766521,
+      "gas_kwh": 443.8258788709239
+    },
+    "expected_carbon": 0.0,
+    "predicted_carbon": 0.0
+  },
+  {
+    "case_id": "HELDOUT-917-015:loft_insulation",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 4521.163207717431,
+      "gas_kwh": 443.8258788709239
+    },
+    "predicted_after": {
+      "electricity_kwh": 4521.163207717431,
+      "gas_kwh": 443.8258788709239
+    },
+    "expected_carbon": 66.8245229786689,
+    "predicted_carbon": 66.82452297866894
+  },
+  {
+    "case_id": "HELDOUT-917-015:solar_panels",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 4231.429876766521,
+      "gas_kwh": 443.8258788709239
+    },
+    "predicted_after": {
+      "electricity_kwh": 4231.429876766521,
+      "gas_kwh": 443.8258788709239
+    },
+    "expected_carbon": 104.768,
+    "predicted_carbon": 104.76800000000003
+  },
+  {
+    "case_id": "HELDOUT-917-015:loft_insulation,solar_panels",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 3721.163207717431,
+      "gas_kwh": 443.8258788709239
+    },
+    "predicted_after": {
+      "electricity_kwh": 3721.163207717431,
+      "gas_kwh": 443.8258788709239
+    },
+    "expected_carbon": 171.59252297866888,
+    "predicted_carbon": 171.59252297866885
+  },
+  {
+    "case_id": "HELDOUT-917-016:",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 2761.2384607106064,
+      "gas_kwh": 20093.282136841055
+    },
+    "predicted_after": {
+      "electricity_kwh": 2761.2384607106064,
+      "gas_kwh": 20093.282136841055
+    },
+    "expected_carbon": 0.0,
+    "predicted_carbon": 0.0
+  },
+  {
+    "case_id": "HELDOUT-917-016:double_glazing",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 2761.2384607106064,
+      "gas_kwh": 18320.29516033963
+    },
+    "predicted_after": {
+      "electricity_kwh": 2761.2384607106064,
+      "gas_kwh": 18320.295160339625
+    },
+    "expected_carbon": 323.23325568597505,
+    "predicted_carbon": 323.233255685976
+  },
+  {
+    "case_id": "HELDOUT-917-017:",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 1063.8871347233155,
+      "gas_kwh": 14517.083558012535
+    },
+    "predicted_after": {
+      "electricity_kwh": 1063.8871347233155,
+      "gas_kwh": 14517.083558012535
+    },
+    "expected_carbon": 0.0,
+    "predicted_carbon": 0.0
+  },
+  {
+    "case_id": "HELDOUT-917-017:double_glazing",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 1063.8871347233155,
+      "gas_kwh": 13318.298442007945
+    },
+    "predicted_after": {
+      "electricity_kwh": 1063.8871347233155,
+      "gas_kwh": 13318.298442007945
+    },
+    "expected_carbon": 218.55051449879684,
+    "predicted_carbon": 218.55051449879693
+  },
+  {
+    "case_id": "HELDOUT-917-018:",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 7753.888648238425,
+      "gas_kwh": 143.10801341251045
+    },
+    "predicted_after": {
+      "electricity_kwh": 7753.888648238425,
+      "gas_kwh": 143.10801341251045
+    },
+    "expected_carbon": 0.0,
+    "predicted_carbon": 0.0
+  },
+  {
+    "case_id": "HELDOUT-917-018:loft_insulation",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 7355.432272272895,
+      "gas_kwh": 143.10801341251045
+    },
+    "predicted_after": {
+      "electricity_kwh": 7355.432272272896,
+      "gas_kwh": 143.10801341251045
+    },
+    "expected_carbon": 52.181846996445834,
+    "predicted_carbon": 52.18184699644587
+  },
+  {
+    "case_id": "HELDOUT-917-018:double_glazing",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 7488.251064261405,
+      "gas_kwh": 143.10801341251045
+    },
+    "predicted_after": {
+      "electricity_kwh": 7488.251064261405,
+      "gas_kwh": 143.10801341251045
+    },
+    "expected_carbon": 34.787897997630516,
+    "predicted_carbon": 34.787897997630694
+  },
+  {
+    "case_id": "HELDOUT-917-018:smart_thermostat",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 7554.66046025566,
+      "gas_kwh": 143.10801341251045
+    },
+    "predicted_after": {
+      "electricity_kwh": 7554.66046025566,
+      "gas_kwh": 143.10801341251045
+    },
+    "expected_carbon": 26.090923498222917,
+    "predicted_carbon": 26.090923498223106
+  },
+  {
+    "case_id": "HELDOUT-917-018:loft_insulation,double_glazing",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 7129.640325892427,
+      "gas_kwh": 143.10801341251045
+    },
+    "predicted_after": {
+      "electricity_kwh": 7129.640325892427,
+      "gas_kwh": 143.10801341251045
+    },
+    "expected_carbon": 81.75156029443184,
+    "predicted_carbon": 81.75156029443201
+  },
+  {
+    "case_id": "HELDOUT-917-018:loft_insulation,smart_thermostat",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 7186.088312487544,
+      "gas_kwh": 143.10801341251045
+    },
+    "predicted_after": {
+      "electricity_kwh": 7186.088312487544,
+      "gas_kwh": 143.10801341251045
+    },
+    "expected_carbon": 74.35913196993543,
+    "predicted_carbon": 74.35913196993556
+  },
+  {
+    "case_id": "HELDOUT-917-018:double_glazing,smart_thermostat",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 7308.945695076916,
+      "gas_kwh": 143.10801341251045
+    },
+    "predicted_after": {
+      "electricity_kwh": 7308.945695076916,
+      "gas_kwh": 143.10801341251045
+    },
+    "expected_carbon": 58.26972914603118,
+    "predicted_carbon": 58.269729146031295
+  },
+  {
+    "case_id": "HELDOUT-917-018:loft_insulation,double_glazing,smart_thermostat",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 6977.230762085612,
+      "gas_kwh": 143.10801341251045
+    },
+    "predicted_after": {
+      "electricity_kwh": 6977.230762085612,
+      "gas_kwh": 143.10801341251045
+    },
+    "expected_carbon": 101.71111677057242,
+    "predicted_carbon": 101.71111677057263
+  },
+  {
+    "case_id": "HELDOUT-917-019:",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 21458.13765299399,
+      "gas_kwh": 385.35540182740493
+    },
+    "predicted_after": {
+      "electricity_kwh": 21458.13765299399,
+      "gas_kwh": 385.35540182740493
+    },
+    "expected_carbon": 0.0,
+    "predicted_carbon": 0.0
+  },
+  {
+    "case_id": "HELDOUT-917-019:heat_pump",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 5579.144587025931,
+      "gas_kwh": 385.35540182740493
+    },
+    "predicted_after": {
+      "electricity_kwh": 5579.144587025932,
+      "gas_kwh": 385.35540182740493
+    },
+    "expected_carbon": 2079.5129319191774,
+    "predicted_carbon": 2079.512931919177
+  },
+  {
+    "case_id": "HELDOUT-917-019:double_glazing",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 19452.24278262256,
+      "gas_kwh": 385.35540182740493
+    },
+    "predicted_after": {
+      "electricity_kwh": 19452.24278262256,
+      "gas_kwh": 385.35540182740493
+    },
+    "expected_carbon": 262.69199222384253,
+    "predicted_carbon": 262.6919922238426
+  },
+  {
+    "case_id": "HELDOUT-917-019:smart_thermostat",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 19953.716500215418,
+      "gas_kwh": 385.35540182740493
+    },
+    "predicted_after": {
+      "electricity_kwh": 19953.716500215418,
+      "gas_kwh": 385.35540182740493
+    },
+    "expected_carbon": 197.018994167882,
+    "predicted_carbon": 197.01899416788228
+  },
+  {
+    "case_id": "HELDOUT-917-019:heat_pump,double_glazing",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 5113.702726016506,
+      "gas_kwh": 385.35540182740493
+    },
+    "predicted_after": {
+      "electricity_kwh": 5113.702726016507,
+      "gas_kwh": 385.35540182740493
+    },
+    "expected_carbon": 2140.4671980369717,
+    "predicted_carbon": 2140.4671980369712
+  },
+  {
+    "case_id": "HELDOUT-917-019:heat_pump,smart_thermostat",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 5230.063191268861,
+      "gas_kwh": 385.35540182740493
+    },
+    "predicted_after": {
+      "electricity_kwh": 5230.063191268862,
+      "gas_kwh": 385.35540182740493
+    },
+    "expected_carbon": 2125.228631507523,
+    "predicted_carbon": 2125.228631507523
+  },
+  {
+    "case_id": "HELDOUT-917-019:double_glazing,smart_thermostat",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 18098.263745121847,
+      "gas_kwh": 385.35540182740493
+    },
+    "predicted_after": {
+      "electricity_kwh": 18098.263745121847,
+      "gas_kwh": 385.35540182740493
+    },
+    "expected_carbon": 440.00908697493605,
+    "predicted_carbon": 440.00908697493605
+  },
+  {
+    "case_id": "HELDOUT-917-019:heat_pump,double_glazing,smart_thermostat",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 4799.529469835144,
+      "gas_kwh": 385.35540182740493
+    },
+    "predicted_after": {
+      "electricity_kwh": 4799.5294698351445,
+      "gas_kwh": 385.35540182740493
+    },
+    "expected_carbon": 2181.611327666483,
+    "predicted_carbon": 2181.611327666483
+  },
+  {
+    "case_id": "HELDOUT-917-020:",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 3343.28132950103,
+      "gas_kwh": 12339.883659151028
+    },
+    "predicted_after": {
+      "electricity_kwh": 3343.28132950103,
+      "gas_kwh": 12339.883659151028
+    },
+    "expected_carbon": 0.0,
+    "predicted_carbon": 0.0
+  },
+  {
+    "case_id": "HELDOUT-917-020:heat_pump",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 6880.536332521116,
+      "gas_kwh": 249.09256433465453
+    },
+    "predicted_after": {
+      "electricity_kwh": 6880.536332521116,
+      "gas_kwh": 249.09256433465407
+    },
+    "expected_carbon": 1741.0332093004627,
+    "predicted_carbon": 1741.0332093004629
+  },
+  {
+    "case_id": "HELDOUT-917-020:smart_thermostat",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 3343.28132950103,
+      "gas_kwh": 11646.420961164427
+    },
+    "predicted_after": {
+      "electricity_kwh": 3343.28132950103,
+      "gas_kwh": 11646.420961164427
+    },
+    "expected_carbon": 126.42518446993716,
+    "predicted_carbon": 126.42518446993745
+  },
+  {
+    "case_id": "HELDOUT-917-020:heat_pump,smart_thermostat",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 6678.363564221568,
+      "gas_kwh": 249.09256433465453
+    },
+    "predicted_after": {
+      "electricity_kwh": 6678.363564221568,
+      "gas_kwh": 249.09256433465407
+    },
+    "expected_carbon": 1767.5097550369715,
+    "predicted_carbon": 1767.5097550369717
+  },
+  {
+    "case_id": "HELDOUT-917-021:",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 2639.5325692676156,
+      "gas_kwh": 6814.357709229704
+    },
+    "predicted_after": {
+      "electricity_kwh": 2639.5325692676156,
+      "gas_kwh": 6814.357709229704
+    },
+    "expected_carbon": 0.0,
+    "predicted_carbon": 0.0
+  },
+  {
+    "case_id": "HELDOUT-917-021:solar_panels",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 1839.5325692676156,
+      "gas_kwh": 6814.357709229704
+    },
+    "predicted_after": {
+      "electricity_kwh": 1839.5325692676156,
+      "gas_kwh": 6814.357709229704
+    },
+    "expected_carbon": 104.768,
+    "predicted_carbon": 104.76800000000003
+  },
+  {
+    "case_id": "HELDOUT-917-021:double_glazing",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 2639.5325692676156,
+      "gas_kwh": 6215.891014313079
+    },
+    "predicted_after": {
+      "electricity_kwh": 2639.5325692676156,
+      "gas_kwh": 6215.89101431308
+    },
+    "expected_carbon": 109.10646315024988,
+    "predicted_carbon": 109.10646315024974
+  },
+  {
+    "case_id": "HELDOUT-917-021:solar_panels,double_glazing",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 1839.5325692676156,
+      "gas_kwh": 6215.891014313079
+    },
+    "predicted_after": {
+      "electricity_kwh": 1839.5325692676156,
+      "gas_kwh": 6215.89101431308
+    },
+    "expected_carbon": 213.87446315024988,
+    "predicted_carbon": 213.87446315024977
+  },
+  {
+    "case_id": "HELDOUT-917-022:",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 5314.02027533064,
+      "gas_kwh": 62.7690328205035
+    },
+    "predicted_after": {
+      "electricity_kwh": 5314.02027533064,
+      "gas_kwh": 62.7690328205035
+    },
+    "expected_carbon": 0.0,
+    "predicted_carbon": 0.0
+  },
+  {
+    "case_id": "HELDOUT-917-022:double_glazing",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 5084.235876436847,
+      "gas_kwh": 62.7690328205035
+    },
+    "predicted_after": {
+      "electricity_kwh": 5084.235876436848,
+      "gas_kwh": 62.7690328205035
+    },
+    "expected_carbon": 30.092564879131125,
+    "predicted_carbon": 30.09256487913092
+  },
+  {
+    "case_id": "HELDOUT-917-023:",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 15069.980145715956,
+      "gas_kwh": 110.99232263863983
+    },
+    "predicted_after": {
+      "electricity_kwh": 15069.980145715956,
+      "gas_kwh": 110.99232263863983
+    },
+    "expected_carbon": 0.0,
+    "predicted_carbon": 0.0
+  },
+  {
+    "case_id": "HELDOUT-917-023:double_glazing",
+    "reference_kind": "documented_rule",
+    "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
+    "expected_after": {
+      "electricity_kwh": 13845.732316956313,
+      "gas_kwh": 110.99232263863983
+    },
+    "predicted_after": {
+      "electricity_kwh": 13845.732316956313,
+      "gas_kwh": 110.99232263863983
+    },
+    "expected_carbon": 160.32749565436274,
+    "predicted_carbon": 160.3274956543628
+  }
+]

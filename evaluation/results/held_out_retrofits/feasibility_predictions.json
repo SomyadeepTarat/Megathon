@@ -1,0 +1,1082 @@
+[
+  {
+    "property_id": "HELDOUT-917-000",
+    "retrofit": "heat_pump",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-000",
+    "retrofit": "loft_insulation",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-000",
+    "retrofit": "solar_panels",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-000",
+    "retrofit": "double_glazing",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-000",
+    "retrofit": "smart_thermostat",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-001",
+    "retrofit": "heat_pump",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-001",
+    "retrofit": "double_glazing",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-001",
+    "retrofit": "smart_thermostat",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-001",
+    "retrofit": "loft_insulation",
+    "expected": "conditional",
+    "predicted": "conditional",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-001",
+    "retrofit": "solar_panels",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-002",
+    "retrofit": "double_glazing",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-002",
+    "retrofit": "smart_thermostat",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-002",
+    "retrofit": "loft_insulation",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-002",
+    "retrofit": "heat_pump",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-002",
+    "retrofit": "solar_panels",
+    "expected": "conditional",
+    "predicted": "conditional",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-003",
+    "retrofit": "loft_insulation",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-003",
+    "retrofit": "solar_panels",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-003",
+    "retrofit": "double_glazing",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-003",
+    "retrofit": "heat_pump",
+    "expected": "conditional",
+    "predicted": "conditional",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-003",
+    "retrofit": "smart_thermostat",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-004",
+    "retrofit": "double_glazing",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-004",
+    "retrofit": "loft_insulation",
+    "expected": "conditional",
+    "predicted": "conditional",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-004",
+    "retrofit": "heat_pump",
+    "expected": "conditional",
+    "predicted": "conditional",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-004",
+    "retrofit": "solar_panels",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-004",
+    "retrofit": "smart_thermostat",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-005",
+    "retrofit": "loft_insulation",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-005",
+    "retrofit": "heat_pump",
+    "expected": "conditional",
+    "predicted": "conditional",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-005",
+    "retrofit": "solar_panels",
+    "expected": "conditional",
+    "predicted": "conditional",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-005",
+    "retrofit": "double_glazing",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-005",
+    "retrofit": "smart_thermostat",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-006",
+    "retrofit": "loft_insulation",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-006",
+    "retrofit": "double_glazing",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-006",
+    "retrofit": "heat_pump",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-006",
+    "retrofit": "solar_panels",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-006",
+    "retrofit": "smart_thermostat",
+    "expected": "conditional",
+    "predicted": "conditional",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-007",
+    "retrofit": "double_glazing",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-007",
+    "retrofit": "loft_insulation",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-007",
+    "retrofit": "heat_pump",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-007",
+    "retrofit": "solar_panels",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-007",
+    "retrofit": "smart_thermostat",
+    "expected": "conditional",
+    "predicted": "conditional",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-008",
+    "retrofit": "double_glazing",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-008",
+    "retrofit": "loft_insulation",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-008",
+    "retrofit": "heat_pump",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-008",
+    "retrofit": "solar_panels",
+    "expected": "conditional",
+    "predicted": "conditional",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-008",
+    "retrofit": "smart_thermostat",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-009",
+    "retrofit": "heat_pump",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-009",
+    "retrofit": "loft_insulation",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-009",
+    "retrofit": "double_glazing",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-009",
+    "retrofit": "smart_thermostat",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-009",
+    "retrofit": "solar_panels",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-010",
+    "retrofit": "smart_thermostat",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-010",
+    "retrofit": "loft_insulation",
+    "expected": "conditional",
+    "predicted": "conditional",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-010",
+    "retrofit": "heat_pump",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-010",
+    "retrofit": "solar_panels",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-010",
+    "retrofit": "double_glazing",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-011",
+    "retrofit": "heat_pump",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-011",
+    "retrofit": "double_glazing",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-011",
+    "retrofit": "smart_thermostat",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-011",
+    "retrofit": "loft_insulation",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-011",
+    "retrofit": "solar_panels",
+    "expected": "conditional",
+    "predicted": "conditional",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-012",
+    "retrofit": "loft_insulation",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-012",
+    "retrofit": "double_glazing",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-012",
+    "retrofit": "heat_pump",
+    "expected": "conditional",
+    "predicted": "conditional",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-012",
+    "retrofit": "solar_panels",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-012",
+    "retrofit": "smart_thermostat",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-013",
+    "retrofit": "double_glazing",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-013",
+    "retrofit": "loft_insulation",
+    "expected": "conditional",
+    "predicted": "conditional",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-013",
+    "retrofit": "heat_pump",
+    "expected": "conditional",
+    "predicted": "conditional",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-013",
+    "retrofit": "solar_panels",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-013",
+    "retrofit": "smart_thermostat",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-014",
+    "retrofit": "double_glazing",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-014",
+    "retrofit": "loft_insulation",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-014",
+    "retrofit": "heat_pump",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-014",
+    "retrofit": "solar_panels",
+    "expected": "conditional",
+    "predicted": "conditional",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-014",
+    "retrofit": "smart_thermostat",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-015",
+    "retrofit": "solar_panels",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-015",
+    "retrofit": "loft_insulation",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-015",
+    "retrofit": "heat_pump",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-015",
+    "retrofit": "double_glazing",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-015",
+    "retrofit": "smart_thermostat",
+    "expected": "conditional",
+    "predicted": "conditional",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-016",
+    "retrofit": "double_glazing",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-016",
+    "retrofit": "loft_insulation",
+    "expected": "conditional",
+    "predicted": "conditional",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-016",
+    "retrofit": "heat_pump",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-016",
+    "retrofit": "solar_panels",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-016",
+    "retrofit": "smart_thermostat",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-017",
+    "retrofit": "double_glazing",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-017",
+    "retrofit": "loft_insulation",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-017",
+    "retrofit": "heat_pump",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-017",
+    "retrofit": "solar_panels",
+    "expected": "conditional",
+    "predicted": "conditional",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-017",
+    "retrofit": "smart_thermostat",
+    "expected": "conditional",
+    "predicted": "conditional",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-018",
+    "retrofit": "loft_insulation",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-018",
+    "retrofit": "double_glazing",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-018",
+    "retrofit": "smart_thermostat",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-018",
+    "retrofit": "heat_pump",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-018",
+    "retrofit": "solar_panels",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-019",
+    "retrofit": "heat_pump",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-019",
+    "retrofit": "double_glazing",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-019",
+    "retrofit": "smart_thermostat",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-019",
+    "retrofit": "loft_insulation",
+    "expected": "conditional",
+    "predicted": "conditional",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-019",
+    "retrofit": "solar_panels",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-020",
+    "retrofit": "heat_pump",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-020",
+    "retrofit": "smart_thermostat",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-020",
+    "retrofit": "loft_insulation",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-020",
+    "retrofit": "solar_panels",
+    "expected": "conditional",
+    "predicted": "conditional",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-020",
+    "retrofit": "double_glazing",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-021",
+    "retrofit": "double_glazing",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-021",
+    "retrofit": "solar_panels",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-021",
+    "retrofit": "loft_insulation",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-021",
+    "retrofit": "heat_pump",
+    "expected": "conditional",
+    "predicted": "conditional",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-021",
+    "retrofit": "smart_thermostat",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-022",
+    "retrofit": "double_glazing",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-022",
+    "retrofit": "loft_insulation",
+    "expected": "conditional",
+    "predicted": "conditional",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-022",
+    "retrofit": "heat_pump",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-022",
+    "retrofit": "solar_panels",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-022",
+    "retrofit": "smart_thermostat",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-023",
+    "retrofit": "double_glazing",
+    "expected": "eligible",
+    "predicted": "eligible",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-023",
+    "retrofit": "loft_insulation",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-023",
+    "retrofit": "heat_pump",
+    "expected": "conditional",
+    "predicted": "conditional",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-023",
+    "retrofit": "solar_panels",
+    "expected": "conditional",
+    "predicted": "conditional",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  },
+  {
+    "property_id": "HELDOUT-917-023",
+    "retrofit": "smart_thermostat",
+    "expected": "rejected",
+    "predicted": "rejected",
+    "reference_kind": "documented_rule",
+    "reference": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+    "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules."
+  }
+]

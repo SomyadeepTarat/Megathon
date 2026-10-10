@@ -46,8 +46,10 @@ export const api = {
   optimize: (input: AssessmentRequest, budget_gbp: number | null, objective: Objective) => request<OptimizationResult>('/retrofits/optimize', { ...input, budget_gbp, objective }),
   recommendations: async (input: AssessmentRequest, budget_gbp: number | null, objective: Objective): Promise<{ items: Recommendation[]; warnings: string[] }> => {
     const result = await request<RecommendationResponse>('/retrofits/recommend', { ...input, budget_gbp, objective });
-    const items = [...result.recommendations, ...result.other_options].map((option, index) => ({
-      retrofit: option.retrofit, feasibility: option.feasibility, priority: index + 1,
+    const items = [...result.recommendations.map((option) => ({ ...option, recommended: true })), ...result.other_options.map((option) => ({ ...option, recommended: false }))].map((option) => ({
+      retrofit: option.retrofit, feasibility: option.feasibility, priority: option.priority ?? null, recommended: option.recommended,
+      suitability: option.suitability, suitability_reason: option.suitability_reason,
+      annual_bill_savings_gbp: option.scenario.annual_bill_savings_gbp, simple_payback_years: option.scenario.simple_payback_years,
       estimated_cost_gbp: option.scenario.installation_cost_gbp,
       energy: option.scenario.energy, carbon: option.scenario.carbon,
       reason: [option.feasibility.reason, option.scenario.reason].filter(Boolean).join(' '),

@@ -1,0 +1,124 @@
+{
+  "python": "3.13.4",
+  "node": "v25.6.1",
+  "scope": "synthetic prototype and documented-rule agreement",
+  "steps": [
+    {
+      "command": [
+        "/Users/somyadeeptarat/Desktop/Megathon/.venv/bin/python",
+        "-m",
+        "ml.train_valuation",
+        "--data",
+        "Data/csv/properties.csv",
+        "--provenance",
+        "ml/snapshot_provenance.json",
+        "--target-kind",
+        "snapshot",
+        "--output",
+        "ml/models/snapshot.joblib",
+        "--reports",
+        "ml/reports/snapshot"
+      ],
+      "exit_code": 0,
+      "log": "evaluation/results/current_pipeline/reproduction-01.log"
+    },
+    {
+      "command": [
+        "/Users/somyadeeptarat/Desktop/Megathon/.venv/bin/python",
+        "-m",
+        "ml.synthetic_impact"
+      ],
+      "exit_code": 0,
+      "log": "evaluation/results/current_pipeline/reproduction-02.log"
+    },
+    {
+      "command": [
+        "/Users/somyadeeptarat/Desktop/Megathon/.venv/bin/python",
+        "scripts/prepare_demo.py"
+      ],
+      "exit_code": 0,
+      "log": "evaluation/results/current_pipeline/reproduction-03.log"
+    },
+    {
+      "command": [
+        "/Users/somyadeeptarat/Desktop/Megathon/.venv/bin/python",
+        "-m",
+        "evaluation.held_out_retrofits"
+      ],
+      "exit_code": 0,
+      "log": "evaluation/results/current_pipeline/reproduction-04.log"
+    },
+    {
+      "command": [
+        "/Users/somyadeeptarat/Desktop/Megathon/.venv/bin/python",
+        "-m",
+        "evaluation.verify_reference_cases"
+      ],
+      "exit_code": 0,
+      "log": "evaluation/results/current_pipeline/reproduction-05.log"
+    },
+    {
+      "command": [
+        "/Users/somyadeeptarat/Desktop/Megathon/.venv/bin/python",
+        "-m",
+        "evaluation.verify_runtime"
+      ],
+      "exit_code": 0,
+      "log": "evaluation/results/current_pipeline/reproduction-06.log"
+    },
+    {
+      "command": [
+        "/Users/somyadeeptarat/Desktop/Megathon/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "--junitxml=evaluation/results/current_pipeline/tests.xml"
+      ],
+      "exit_code": 0,
+      "log": "evaluation/results/current_pipeline/reproduction-07.log"
+    },
+    {
+      "command": [
+        "/Users/somyadeeptarat/Desktop/Megathon/.venv/bin/python",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "exit_code": 0,
+      "log": "evaluation/results/current_pipeline/reproduction-08.log"
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "frontend",
+        "run",
+        "typecheck"
+      ],
+      "exit_code": 0,
+      "log": "evaluation/results/current_pipeline/reproduction-09.log"
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "frontend",
+        "test"
+      ],
+      "exit_code": 0,
+      "log": "evaluation/results/current_pipeline/reproduction-10.log"
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "frontend",
+        "run",
+        "build"
+      ],
+      "exit_code": 0,
+      "log": "evaluation/results/current_pipeline/reproduction-11.log"
+    }
+  ],
+  "status": "passed"
+}

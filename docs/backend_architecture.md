@@ -1,26 +1,36 @@
-# Backend architecture
+# Current local architecture
 
 ```mermaid
 flowchart TD
-    UI[Frontend] --> API[FastAPI routes]
-    API --> Models[Pydantic validation]
-    API --> Repo[Property repository]
-    Models --> Score[Score and issue detection]
-    Models --> Scenario[Scenario orchestrator]
-    Scenario --> Feasible[P4 feasibility]
-    Feasible --> Simulate[P4 interacting retrofit simulation]
-    Simulate --> After[Updated property and fuel states]
-    After --> Score
-    After --> Carbon[P4 carbon adapter]
-    After --> Value[P5 valuation adapter]
-    Score --> Response[Typed response]
-    Carbon --> Response
-    Value --> Response
-    Response --> UI
+    UI[Next.js dashboard and what-if UI] --> Proxy[Same-origin backend proxy]
+    Proxy --> API[FastAPI / Pydantic contracts]
+    API --> Repo[CSV or curated demo repository + editable SQLite snapshots]
+    Repo --> Score[Seven-component score / deficiency detection]
+    API --> Feasibility[Explicit retrofit eligibility rules]
+    Feasibility --> Sim[Sequential thermal and purchased-fuel simulation]
+    Sim --> Score
+    Sim --> Carbon[Sourced 2026 operational carbon factors]
+    Sim --> Val[Valuation adapter]
+    Val --> Synthetic[Synthetic-only intensity regression / paired calibration]
+    Val --> Observed[Guarded observed-sales EPC model]
+    API --> Optimize[All 32 packages / budget and objective constraints]
+    Optimize --> Sim
+    Optimize --> Choices[Carbon / energy / payback alternatives]
+    Score --> Results[Typed numerical results and provenance]
+    Carbon --> Results
+    Val --> Results
+    Choices --> Results
+    Results --> UI
+    Results --> Advisor[Grounded advisor / optional local Ollama]
+    Advisor --> UI
 ```
 
-FastAPI routes depend on provider functions, enabling test-only adapters and explicit future integrations. Domain scoring remains independent of HTTP and LLM services. Scenario orchestration uses isolated input copies, preserves recorded EPC and fixed property characteristics, derives signed fuel savings, verifies carbon arithmetic, and returns unavailable subresults without manufacturing values.
+The runtime uses the contributed retrofit/carbon engines, production routes and persisted SQLite snapshots. Scoring and simulation operate without an LLM. The advisor calls these same services for fresh what-if results and only selects/explains supplied facts.
 
-Current runtime: synthetic JSON property repository, real scoring logic, pending retrofit/carbon adapters, existing P5 valuation adapter. Default scenario cannot run until feasibility/simulation is integrated. Tests inject fixture engines and validate orchestration, not predictive accuracy.
+Simulation preserves property identity, region, area, age, bedrooms, market context, current value and recorded EPC. It updates physical system state, derives signed per-fuel savings, verifies carbon arithmetic, and propagates missing-data reasons. Conditional/infeasible installations are blocked.
 
-Backend-owned files contain no code comments or docstrings per the user's preference. Existing teammate modules are unchanged.
+For explicitly synthetic properties **and** synthetic annual energy, the valuation adapter consumes the simulator's before/after purchased-energy intensity. It uses a separately trained, monotonic intensity-based model and paired conformal radius. It anchors the model contrast to the supplied current value and returns `illustrative` with synthetic/coverage warnings. It never changes EPC or supplies a real-market premium. Missing models, critical fields or unsupported features return `unavailable`. Observed/estimated inputs continue through the guarded EPC-sales path; unsupported projected EPC stays unavailable.
+
+The optimiser enumerates all 32 subsets and records eligibility, missing costs, rejected budgets and unavailable objective inputs. Its best scenario includes a structured explanation, comparable alternative winners and the simulation sequence. The frontend preserves backend suitability/priority, distinguishes unranked options, and displays actual financial and energy tradeoffs.
+
+Reproduction and packaging: `scripts/reproduce_submission.py`, `scripts/build_submission.py`, and [submission guide](submission_guide.md). Local models and build/dependency directories are generated artifacts; private SQLite snapshots and environment secrets are excluded from the bundle.

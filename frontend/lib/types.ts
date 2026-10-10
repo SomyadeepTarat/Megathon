@@ -43,15 +43,19 @@ export interface Scenario {
   energy: EnergyImpact | null;
   carbon: { status: string; reduction_kg_co2e: number | null; reason: string | null; factors: { source: string; source_year: number; accounting_boundary: string }[] };
   valuation: { status: string; reason: string | null; baseline_value_gbp: number | null; after_value_gbp: number | null; value_change_gbp: number | null; value_change_range_gbp: [number, number] | null; warnings: string[] };
+  optimization_context?: OptimizationContext | null;
   installation_cost_gbp: number | null; applied_retrofits: Retrofit[]; assumptions: string[]; warnings: string[];
   annual_bill_savings_gbp?: number | null; simple_payback_years?: number | null;
 }
-export interface Recommendation { retrofit: Retrofit; feasibility: { status: string; reason: string }; suitability?: string; priority: number; estimated_cost_gbp: number | null; energy: EnergyImpact | null; carbon: Scenario['carbon'] | null; reason: string; assumptions: string[] }
+export interface Recommendation { retrofit: Retrofit; feasibility: { status: string; reason: string }; suitability?: 'High' | 'Medium' | 'Low'; suitability_reason?: string; recommended: boolean; priority: number | null; annual_bill_savings_gbp?: number | null; simple_payback_years?: number | null; estimated_cost_gbp: number | null; energy: EnergyImpact | null; carbon: Scenario['carbon'] | null; reason: string; assumptions: string[] }
 export interface AdvisorResult { status: string; explanation: string; mode: string; fallback_reason: string | null; tool_calls: string[]; result: Record<string, unknown> | null; intent: { intent: string; retrofits: Retrofit[]; budget_gbp: number | null; objective: Objective } }
 export interface PortfolioRow { property_id: string; property_type: string; region: string; score: number | null; intensity: number | null; improvement: number | null; carbon: number | null; classification: string | null; error?: string; dataset_kind: string }
 
-export interface RecommendationResponse { status: string; recommendations: { retrofit: Retrofit; feasibility: { status: string; reason: string }; scenario: Scenario }[]; other_options: RecommendationResponse['recommendations']; methodology: string; warnings: string[] }
+export interface RecommendationResponse { status: string; recommendations: { retrofit: Retrofit; feasibility: { status: string; reason: string }; scenario: Scenario; suitability: 'High' | 'Medium' | 'Low'; suitability_reason: string; priority: number | null; estimated_cost_gbp: number | null }[]; other_options: RecommendationResponse['recommendations']; methodology: string; warnings: string[] }
 
 export interface BaselineValuation { property_id: string; status: 'unavailable' | 'illustrative' | 'indicative'; reason: string | null; value_gbp: number | null; range_gbp: [number, number] | null; confidence_level: number | null; target_kind: 'sales' | 'snapshot' | null; method: string | null; warnings: string[] }
 
 export interface OptimizationResult { status: string; reason: string | null; best_scenario: Scenario | null; ranked_packages: unknown[]; package_decisions: unknown[]; objective: Objective; methodology: string }
+
+export interface PackageTradeoff { objective: Objective; retrofits: Retrofit[]; installation_cost_gbp: number; carbon_reduction_kg_co2e: number | null; net_energy_savings_kwh: number; annual_bill_savings_gbp: number | null; simple_payback_years: number | null }
+export interface OptimizationContext { objective: Objective; budget_gbp: number; explanation: string; alternatives: PackageTradeoff[]; installation_order: Retrofit[] }

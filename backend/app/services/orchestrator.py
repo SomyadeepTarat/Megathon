@@ -87,6 +87,9 @@ def run_scenario(request: ScenarioRequest, retrofit: RetrofitEngine,
     input_reason = impact_input_reason(original.property, result.updated_property)
     if input_reason:
         response.valuation = ValuationResult(status='unavailable', reason=input_reason)
+    elif hasattr(valuation, 'predict_scenario_impact'):
+        response.valuation = valuation.predict_scenario_impact(original.model_copy(deep=True),
+            result.updated_property.model_copy(deep=True), impact.model_copy(deep=True))
     elif original.property.model_dump() != result.updated_property.model_dump() and original.property.energy_rating == result.updated_property.energy_rating:
         response.valuation = ValuationResult(status='unavailable', reason='No supported projected EPC estimate; the existing valuation model uses recorded EPC as its energy feature.')
     else:
@@ -118,5 +121,5 @@ def run_scenario(request: ScenarioRequest, retrofit: RetrofitEngine,
     response.versions['simulation'] = result.methodology_version
     response.status = 'success' if (response.after_assessment.score.status == 'available'
                                   and response.carbon.status == 'available'
-                                  and response.valuation.status == 'indicative') else 'partial'
+                                  and response.valuation.status in ('indicative', 'illustrative')) else 'partial'
     return response

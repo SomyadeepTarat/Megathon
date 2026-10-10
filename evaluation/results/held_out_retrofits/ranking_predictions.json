@@ -1,0 +1,900 @@
+[
+  {
+    "property_id": "HELDOUT-917-000",
+    "objective": "carbon_reduction",
+    "expected": [
+      "heat_pump"
+    ],
+    "predicted": [
+      "heat_pump"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-000",
+    "objective": "energy_reduction",
+    "expected": [
+      "heat_pump"
+    ],
+    "predicted": [
+      "heat_pump"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-000",
+    "objective": "shortest_payback",
+    "expected": [
+      "heat_pump"
+    ],
+    "predicted": [
+      "heat_pump"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-001",
+    "objective": "carbon_reduction",
+    "expected": [
+      "heat_pump",
+      "double_glazing",
+      "smart_thermostat"
+    ],
+    "predicted": [
+      "heat_pump",
+      "double_glazing",
+      "smart_thermostat"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-001",
+    "objective": "energy_reduction",
+    "expected": [
+      "heat_pump",
+      "double_glazing",
+      "smart_thermostat"
+    ],
+    "predicted": [
+      "heat_pump",
+      "double_glazing",
+      "smart_thermostat"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-001",
+    "objective": "shortest_payback",
+    "expected": [
+      "smart_thermostat",
+      "double_glazing",
+      "heat_pump"
+    ],
+    "predicted": [
+      "smart_thermostat",
+      "double_glazing",
+      "heat_pump"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-002",
+    "objective": "carbon_reduction",
+    "expected": [
+      "double_glazing",
+      "smart_thermostat"
+    ],
+    "predicted": [
+      "double_glazing",
+      "smart_thermostat"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-002",
+    "objective": "energy_reduction",
+    "expected": [
+      "double_glazing",
+      "smart_thermostat"
+    ],
+    "predicted": [
+      "double_glazing",
+      "smart_thermostat"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-002",
+    "objective": "shortest_payback",
+    "expected": [
+      "smart_thermostat",
+      "double_glazing"
+    ],
+    "predicted": [
+      "smart_thermostat",
+      "double_glazing"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-003",
+    "objective": "carbon_reduction",
+    "expected": [
+      "loft_insulation",
+      "solar_panels",
+      "double_glazing"
+    ],
+    "predicted": [
+      "loft_insulation",
+      "solar_panels",
+      "double_glazing"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-003",
+    "objective": "energy_reduction",
+    "expected": [
+      "loft_insulation",
+      "solar_panels",
+      "double_glazing"
+    ],
+    "predicted": [
+      "loft_insulation",
+      "solar_panels",
+      "double_glazing"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-003",
+    "objective": "shortest_payback",
+    "expected": [
+      "loft_insulation",
+      "solar_panels",
+      "double_glazing"
+    ],
+    "predicted": [
+      "loft_insulation",
+      "solar_panels",
+      "double_glazing"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-004",
+    "objective": "carbon_reduction",
+    "expected": [
+      "double_glazing"
+    ],
+    "predicted": [
+      "double_glazing"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-004",
+    "objective": "energy_reduction",
+    "expected": [
+      "double_glazing"
+    ],
+    "predicted": [
+      "double_glazing"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-004",
+    "objective": "shortest_payback",
+    "expected": [
+      "double_glazing"
+    ],
+    "predicted": [
+      "double_glazing"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-005",
+    "objective": "carbon_reduction",
+    "expected": [],
+    "predicted": [],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-005",
+    "objective": "energy_reduction",
+    "expected": [],
+    "predicted": [],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-005",
+    "objective": "shortest_payback",
+    "expected": [],
+    "predicted": [],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-006",
+    "objective": "carbon_reduction",
+    "expected": [
+      "loft_insulation",
+      "double_glazing"
+    ],
+    "predicted": [
+      "loft_insulation",
+      "double_glazing"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-006",
+    "objective": "energy_reduction",
+    "expected": [
+      "loft_insulation",
+      "double_glazing"
+    ],
+    "predicted": [
+      "loft_insulation",
+      "double_glazing"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-006",
+    "objective": "shortest_payback",
+    "expected": [
+      "loft_insulation",
+      "double_glazing"
+    ],
+    "predicted": [
+      "loft_insulation",
+      "double_glazing"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-007",
+    "objective": "carbon_reduction",
+    "expected": [
+      "double_glazing"
+    ],
+    "predicted": [
+      "double_glazing"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-007",
+    "objective": "energy_reduction",
+    "expected": [
+      "double_glazing"
+    ],
+    "predicted": [
+      "double_glazing"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-007",
+    "objective": "shortest_payback",
+    "expected": [
+      "double_glazing"
+    ],
+    "predicted": [
+      "double_glazing"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-008",
+    "objective": "carbon_reduction",
+    "expected": [
+      "double_glazing"
+    ],
+    "predicted": [
+      "double_glazing"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-008",
+    "objective": "energy_reduction",
+    "expected": [
+      "double_glazing"
+    ],
+    "predicted": [
+      "double_glazing"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-008",
+    "objective": "shortest_payback",
+    "expected": [
+      "double_glazing"
+    ],
+    "predicted": [
+      "double_glazing"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-009",
+    "objective": "carbon_reduction",
+    "expected": [
+      "heat_pump",
+      "loft_insulation",
+      "double_glazing",
+      "smart_thermostat",
+      "solar_panels"
+    ],
+    "predicted": [
+      "heat_pump",
+      "loft_insulation",
+      "double_glazing",
+      "smart_thermostat",
+      "solar_panels"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-009",
+    "objective": "energy_reduction",
+    "expected": [
+      "heat_pump",
+      "loft_insulation",
+      "double_glazing",
+      "smart_thermostat",
+      "solar_panels"
+    ],
+    "predicted": [
+      "heat_pump",
+      "loft_insulation",
+      "double_glazing",
+      "smart_thermostat",
+      "solar_panels"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-009",
+    "objective": "shortest_payback",
+    "expected": [
+      "smart_thermostat",
+      "loft_insulation",
+      "solar_panels",
+      "heat_pump",
+      "double_glazing"
+    ],
+    "predicted": [
+      "smart_thermostat",
+      "loft_insulation",
+      "solar_panels",
+      "heat_pump",
+      "double_glazing"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-010",
+    "objective": "carbon_reduction",
+    "expected": [
+      "smart_thermostat"
+    ],
+    "predicted": [
+      "smart_thermostat"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-010",
+    "objective": "energy_reduction",
+    "expected": [
+      "smart_thermostat"
+    ],
+    "predicted": [
+      "smart_thermostat"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-010",
+    "objective": "shortest_payback",
+    "expected": [
+      "smart_thermostat"
+    ],
+    "predicted": [
+      "smart_thermostat"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-011",
+    "objective": "carbon_reduction",
+    "expected": [
+      "heat_pump",
+      "double_glazing",
+      "smart_thermostat"
+    ],
+    "predicted": [
+      "heat_pump",
+      "double_glazing",
+      "smart_thermostat"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-011",
+    "objective": "energy_reduction",
+    "expected": [
+      "heat_pump",
+      "double_glazing",
+      "smart_thermostat"
+    ],
+    "predicted": [
+      "heat_pump",
+      "double_glazing",
+      "smart_thermostat"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-011",
+    "objective": "shortest_payback",
+    "expected": [
+      "smart_thermostat",
+      "heat_pump",
+      "double_glazing"
+    ],
+    "predicted": [
+      "smart_thermostat",
+      "heat_pump",
+      "double_glazing"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-012",
+    "objective": "carbon_reduction",
+    "expected": [
+      "loft_insulation",
+      "double_glazing"
+    ],
+    "predicted": [
+      "loft_insulation",
+      "double_glazing"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-012",
+    "objective": "energy_reduction",
+    "expected": [
+      "loft_insulation",
+      "double_glazing"
+    ],
+    "predicted": [
+      "loft_insulation",
+      "double_glazing"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-012",
+    "objective": "shortest_payback",
+    "expected": [
+      "loft_insulation",
+      "double_glazing"
+    ],
+    "predicted": [
+      "loft_insulation",
+      "double_glazing"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-013",
+    "objective": "carbon_reduction",
+    "expected": [
+      "double_glazing"
+    ],
+    "predicted": [
+      "double_glazing"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-013",
+    "objective": "energy_reduction",
+    "expected": [
+      "double_glazing"
+    ],
+    "predicted": [
+      "double_glazing"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-013",
+    "objective": "shortest_payback",
+    "expected": [
+      "double_glazing"
+    ],
+    "predicted": [
+      "double_glazing"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-014",
+    "objective": "carbon_reduction",
+    "expected": [
+      "double_glazing"
+    ],
+    "predicted": [
+      "double_glazing"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-014",
+    "objective": "energy_reduction",
+    "expected": [
+      "double_glazing"
+    ],
+    "predicted": [
+      "double_glazing"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-014",
+    "objective": "shortest_payback",
+    "expected": [
+      "double_glazing"
+    ],
+    "predicted": [
+      "double_glazing"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-015",
+    "objective": "carbon_reduction",
+    "expected": [
+      "solar_panels",
+      "loft_insulation"
+    ],
+    "predicted": [
+      "solar_panels",
+      "loft_insulation"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-015",
+    "objective": "energy_reduction",
+    "expected": [
+      "solar_panels",
+      "loft_insulation"
+    ],
+    "predicted": [
+      "solar_panels",
+      "loft_insulation"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-015",
+    "objective": "shortest_payback",
+    "expected": [
+      "loft_insulation",
+      "solar_panels"
+    ],
+    "predicted": [
+      "loft_insulation",
+      "solar_panels"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-016",
+    "objective": "carbon_reduction",
+    "expected": [
+      "double_glazing"
+    ],
+    "predicted": [
+      "double_glazing"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-016",
+    "objective": "energy_reduction",
+    "expected": [
+      "double_glazing"
+    ],
+    "predicted": [
+      "double_glazing"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-016",
+    "objective": "shortest_payback",
+    "expected": [
+      "double_glazing"
+    ],
+    "predicted": [
+      "double_glazing"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-017",
+    "objective": "carbon_reduction",
+    "expected": [
+      "double_glazing"
+    ],
+    "predicted": [
+      "double_glazing"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-017",
+    "objective": "energy_reduction",
+    "expected": [
+      "double_glazing"
+    ],
+    "predicted": [
+      "double_glazing"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-017",
+    "objective": "shortest_payback",
+    "expected": [
+      "double_glazing"
+    ],
+    "predicted": [
+      "double_glazing"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-018",
+    "objective": "carbon_reduction",
+    "expected": [
+      "loft_insulation",
+      "double_glazing",
+      "smart_thermostat"
+    ],
+    "predicted": [
+      "loft_insulation",
+      "double_glazing",
+      "smart_thermostat"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-018",
+    "objective": "energy_reduction",
+    "expected": [
+      "loft_insulation",
+      "double_glazing",
+      "smart_thermostat"
+    ],
+    "predicted": [
+      "loft_insulation",
+      "double_glazing",
+      "smart_thermostat"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-018",
+    "objective": "shortest_payback",
+    "expected": [
+      "smart_thermostat",
+      "loft_insulation",
+      "double_glazing"
+    ],
+    "predicted": [
+      "smart_thermostat",
+      "loft_insulation",
+      "double_glazing"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-019",
+    "objective": "carbon_reduction",
+    "expected": [
+      "heat_pump",
+      "double_glazing",
+      "smart_thermostat"
+    ],
+    "predicted": [
+      "heat_pump",
+      "double_glazing",
+      "smart_thermostat"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-019",
+    "objective": "energy_reduction",
+    "expected": [
+      "heat_pump",
+      "double_glazing",
+      "smart_thermostat"
+    ],
+    "predicted": [
+      "heat_pump",
+      "double_glazing",
+      "smart_thermostat"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-019",
+    "objective": "shortest_payback",
+    "expected": [
+      "smart_thermostat",
+      "heat_pump",
+      "double_glazing"
+    ],
+    "predicted": [
+      "smart_thermostat",
+      "heat_pump",
+      "double_glazing"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-020",
+    "objective": "carbon_reduction",
+    "expected": [
+      "heat_pump",
+      "smart_thermostat"
+    ],
+    "predicted": [
+      "heat_pump",
+      "smart_thermostat"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-020",
+    "objective": "energy_reduction",
+    "expected": [
+      "heat_pump",
+      "smart_thermostat"
+    ],
+    "predicted": [
+      "heat_pump",
+      "smart_thermostat"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-020",
+    "objective": "shortest_payback",
+    "expected": [
+      "smart_thermostat"
+    ],
+    "predicted": [
+      "smart_thermostat"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-021",
+    "objective": "carbon_reduction",
+    "expected": [
+      "double_glazing",
+      "solar_panels"
+    ],
+    "predicted": [
+      "double_glazing",
+      "solar_panels"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-021",
+    "objective": "energy_reduction",
+    "expected": [
+      "solar_panels",
+      "double_glazing"
+    ],
+    "predicted": [
+      "solar_panels",
+      "double_glazing"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-021",
+    "objective": "shortest_payback",
+    "expected": [
+      "solar_panels",
+      "double_glazing"
+    ],
+    "predicted": [
+      "solar_panels",
+      "double_glazing"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-022",
+    "objective": "carbon_reduction",
+    "expected": [
+      "double_glazing"
+    ],
+    "predicted": [
+      "double_glazing"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-022",
+    "objective": "energy_reduction",
+    "expected": [
+      "double_glazing"
+    ],
+    "predicted": [
+      "double_glazing"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-022",
+    "objective": "shortest_payback",
+    "expected": [
+      "double_glazing"
+    ],
+    "predicted": [
+      "double_glazing"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-023",
+    "objective": "carbon_reduction",
+    "expected": [
+      "double_glazing"
+    ],
+    "predicted": [
+      "double_glazing"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-023",
+    "objective": "energy_reduction",
+    "expected": [
+      "double_glazing"
+    ],
+    "predicted": [
+      "double_glazing"
+    ],
+    "exact_match": true
+  },
+  {
+    "property_id": "HELDOUT-917-023",
+    "objective": "shortest_payback",
+    "expected": [
+      "double_glazing"
+    ],
+    "predicted": [
+      "double_glazing"
+    ],
+    "exact_match": true
+  }
+]

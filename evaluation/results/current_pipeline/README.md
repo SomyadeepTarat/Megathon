@@ -1,3 +1,11 @@
+# Current synthetic-demo status
+
+The five-priority follow-up is documented in [the improvement report](../../../docs/improvement_report.md). Complete supported synthetic scenarios now show illustrative energy-intensity-based value impact while preserving recorded EPC. The current reproducible check results are in `submission_verification.json`; held-out retrofit evidence is in `../held_out_retrofits/metrics.json` and paired value evidence is in `../../../ml/reports/synthetic_impact/valuation_metrics.json`.
+
+The report below is **historical verification before this follow-up**. Its unavailable-uplift statements, old counts and recorded LLM/browser results should not be read as the current implementation. Human review remains pending.
+
+---
+
 # Current pipeline verification — 11 October 2026
 
 The implemented local prototype passes its automated checks and production HTTP smoke checks. This is **not** certification of observed-market valuation, real-world retrofit accuracy, exhaustive browser accessibility, or the PRD's human explanation-quality targets. The supplied dataset is synthetic and those evidence gaps remain explicit.

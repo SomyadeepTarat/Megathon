@@ -1,0 +1,2258 @@
+[
+  {
+    "property": {
+      "property_id": "HELDOUT-917-000",
+      "property_type": "detached",
+      "region": "Greater London",
+      "floor_area_m2": 200.10419537826934,
+      "property_age_years": 95,
+      "bedrooms": 4,
+      "energy_rating": "F",
+      "insulation": "good",
+      "heating_system": "old_gas_boiler",
+      "glazing": "double",
+      "renewable_contribution": "limited",
+      "smart_controls": "advanced",
+      "solar_installed": true,
+      "heat_pump_installed": false,
+      "loft_insulation_installed": false,
+      "smart_thermostat_installed": true,
+      "physical_inputs": {
+        "space_heating_demand_kwh": 6334.124973578082,
+        "hot_water_demand_kwh": 1775.738949546788,
+        "boiler_efficiency": 0.7316717591525647,
+        "scop": 3.2412794726938707,
+        "hot_water_cop": 2.353769422574433,
+        "electric_resistance_efficiency": 1,
+        "base_appliance_electricity_kwh": 1218.3346311671025,
+        "solar_generation_kwh": 1500,
+        "solar_self_consumed_kwh": 400,
+        "proposed_solar_generation_kwh": 2000,
+        "proposed_solar_self_consumed_kwh": 800,
+        "proposed_heat_pump_type": "air_source_heat_pump",
+        "provenance": {
+          "status": "synthetic",
+          "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits"
+        },
+        "annual_electricity_demand_kwh": 1218.3346311671025
+      },
+      "roof_suitable_for_loft": true,
+      "roof_suitable_for_solar": true,
+      "heat_pump_compatible": true,
+      "controls_compatible": true,
+      "current_property_value_gbp": 640000.0,
+      "market_index": null,
+      "provenance": {
+        "record": "synthetic",
+        "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+        "customer_id": "HELDOUT-C-917-000"
+      }
+    },
+    "annual_energy": {
+      "electricity_kwh": 818.3346311671025,
+      "gas_kwh": 11385.079672739244,
+      "quality": "synthetic",
+      "method": "Independent synthetic held-out thermal-component generator",
+      "electricity_months_covered": 12,
+      "gas_months_covered": 12,
+      "warnings": [
+        "Score uses a synthetic reference benchmark, not an official consumption standard.",
+        "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+        "Confirm alignment of the property snapshot and energy period; see source methodology."
+      ]
+    },
+    "benchmark": null,
+    "emission_factors": null,
+    "retrofit_costs": {
+      "loft_insulation": {
+        "amount_gbp": 1800,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "heat_pump": {
+        "amount_gbp": 8500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "solar_panels": {
+        "amount_gbp": 4500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "double_glazing": {
+        "amount_gbp": 7000,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "smart_thermostat": {
+        "amount_gbp": 300,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      }
+    },
+    "electricity_tariff_gbp_per_kwh": 0.25,
+    "gas_tariff_gbp_per_kwh": 0.065
+  },
+  {
+    "property": {
+      "property_id": "HELDOUT-917-001",
+      "property_type": "semi_detached",
+      "region": "South East",
+      "floor_area_m2": 157.67631582100745,
+      "property_age_years": 95,
+      "bedrooms": 4,
+      "energy_rating": "F",
+      "insulation": "poor",
+      "heating_system": "modern_gas_boiler",
+      "glazing": "single",
+      "renewable_contribution": "none",
+      "smart_controls": "none",
+      "solar_installed": false,
+      "heat_pump_installed": false,
+      "loft_insulation_installed": false,
+      "smart_thermostat_installed": false,
+      "physical_inputs": {
+        "space_heating_demand_kwh": 11649.147665144958,
+        "hot_water_demand_kwh": 2738.9727131790787,
+        "boiler_efficiency": 0.8496337731713379,
+        "scop": 3.5228409340918807,
+        "hot_water_cop": 2.5204808837425814,
+        "electric_resistance_efficiency": 1,
+        "base_appliance_electricity_kwh": 1086.491823810476,
+        "solar_generation_kwh": 0,
+        "solar_self_consumed_kwh": 0,
+        "proposed_solar_generation_kwh": 2000,
+        "proposed_solar_self_consumed_kwh": 800,
+        "proposed_heat_pump_type": "air_source_heat_pump",
+        "provenance": {
+          "status": "synthetic",
+          "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits"
+        },
+        "annual_electricity_demand_kwh": 1086.491823810476
+      },
+      "roof_suitable_for_loft": null,
+      "roof_suitable_for_solar": false,
+      "heat_pump_compatible": true,
+      "controls_compatible": true,
+      "current_property_value_gbp": 640000.0,
+      "market_index": null,
+      "provenance": {
+        "record": "synthetic",
+        "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+        "customer_id": "HELDOUT-C-917-001"
+      }
+    },
+    "annual_energy": {
+      "electricity_kwh": 1086.491823810476,
+      "gas_kwh": 17304.47350464722,
+      "quality": "synthetic",
+      "method": "Independent synthetic held-out thermal-component generator",
+      "electricity_months_covered": 12,
+      "gas_months_covered": 12,
+      "warnings": [
+        "Score uses a synthetic reference benchmark, not an official consumption standard.",
+        "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+        "Confirm alignment of the property snapshot and energy period; see source methodology."
+      ]
+    },
+    "benchmark": null,
+    "emission_factors": null,
+    "retrofit_costs": {
+      "loft_insulation": {
+        "amount_gbp": 1800,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "heat_pump": {
+        "amount_gbp": 8500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "solar_panels": {
+        "amount_gbp": 4500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "double_glazing": {
+        "amount_gbp": 7000,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "smart_thermostat": {
+        "amount_gbp": 300,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      }
+    },
+    "electricity_tariff_gbp_per_kwh": 0.25,
+    "gas_tariff_gbp_per_kwh": 0.065
+  },
+  {
+    "property": {
+      "property_id": "HELDOUT-917-002",
+      "property_type": "flat",
+      "region": "North West",
+      "floor_area_m2": 131.07328783358088,
+      "property_age_years": 95,
+      "bedrooms": 4,
+      "energy_rating": "F",
+      "insulation": "poor",
+      "heating_system": "air_source_heat_pump",
+      "glazing": "single",
+      "renewable_contribution": "none",
+      "smart_controls": "none",
+      "solar_installed": false,
+      "heat_pump_installed": true,
+      "loft_insulation_installed": false,
+      "smart_thermostat_installed": false,
+      "physical_inputs": {
+        "space_heating_demand_kwh": 5264.859568618807,
+        "hot_water_demand_kwh": 339.2544802722811,
+        "boiler_efficiency": 0.721369919303066,
+        "scop": 2.504347036995711,
+        "hot_water_cop": 2.325108981669728,
+        "electric_resistance_efficiency": 1,
+        "base_appliance_electricity_kwh": 3889.163455900359,
+        "solar_generation_kwh": 0,
+        "solar_self_consumed_kwh": 0,
+        "proposed_solar_generation_kwh": 2000,
+        "proposed_solar_self_consumed_kwh": 800,
+        "proposed_heat_pump_type": "air_source_heat_pump",
+        "provenance": {
+          "status": "synthetic",
+          "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits"
+        },
+        "annual_electricity_demand_kwh": 6137.360859452343
+      },
+      "roof_suitable_for_loft": false,
+      "roof_suitable_for_solar": null,
+      "heat_pump_compatible": true,
+      "controls_compatible": true,
+      "current_property_value_gbp": 640000.0,
+      "market_index": null,
+      "provenance": {
+        "record": "synthetic",
+        "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+        "customer_id": "HELDOUT-C-917-002"
+      }
+    },
+    "annual_energy": {
+      "electricity_kwh": 6137.360859452343,
+      "gas_kwh": 498.4216829030356,
+      "quality": "synthetic",
+      "method": "Independent synthetic held-out thermal-component generator",
+      "electricity_months_covered": 12,
+      "gas_months_covered": 12,
+      "warnings": [
+        "Score uses a synthetic reference benchmark, not an official consumption standard.",
+        "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+        "Confirm alignment of the property snapshot and energy period; see source methodology."
+      ]
+    },
+    "benchmark": null,
+    "emission_factors": null,
+    "retrofit_costs": {
+      "loft_insulation": {
+        "amount_gbp": 1800,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "heat_pump": {
+        "amount_gbp": 8500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "solar_panels": {
+        "amount_gbp": 4500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "double_glazing": {
+        "amount_gbp": 7000,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "smart_thermostat": {
+        "amount_gbp": 300,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      }
+    },
+    "electricity_tariff_gbp_per_kwh": 0.25,
+    "gas_tariff_gbp_per_kwh": 0.065
+  },
+  {
+    "property": {
+      "property_id": "HELDOUT-917-003",
+      "property_type": "terraced",
+      "region": "Greater London",
+      "floor_area_m2": 141.8042707023496,
+      "property_age_years": 95,
+      "bedrooms": 4,
+      "energy_rating": "F",
+      "insulation": "poor",
+      "heating_system": "electric_resistance",
+      "glazing": "single",
+      "renewable_contribution": "none",
+      "smart_controls": "none",
+      "solar_installed": false,
+      "heat_pump_installed": false,
+      "loft_insulation_installed": false,
+      "smart_thermostat_installed": false,
+      "physical_inputs": {
+        "space_heating_demand_kwh": 6253.542308358318,
+        "hot_water_demand_kwh": 1918.9107587247204,
+        "boiler_efficiency": 0.8640349309471229,
+        "scop": 4.0202604409932405,
+        "hot_water_cop": 2.865914754947593,
+        "electric_resistance_efficiency": 1,
+        "base_appliance_electricity_kwh": 4060.2430379138586,
+        "solar_generation_kwh": 0,
+        "solar_self_consumed_kwh": 0,
+        "proposed_solar_generation_kwh": 2000,
+        "proposed_solar_self_consumed_kwh": 800,
+        "proposed_heat_pump_type": "air_source_heat_pump",
+        "provenance": {
+          "status": "synthetic",
+          "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits"
+        },
+        "annual_electricity_demand_kwh": 12232.696104996898
+      },
+      "roof_suitable_for_loft": true,
+      "roof_suitable_for_solar": true,
+      "heat_pump_compatible": null,
+      "controls_compatible": false,
+      "current_property_value_gbp": 640000.0,
+      "market_index": null,
+      "provenance": {
+        "record": "synthetic",
+        "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+        "customer_id": "HELDOUT-C-917-003"
+      }
+    },
+    "annual_energy": {
+      "electricity_kwh": 12232.696104996898,
+      "gas_kwh": 264.9597647408744,
+      "quality": "synthetic",
+      "method": "Independent synthetic held-out thermal-component generator",
+      "electricity_months_covered": 12,
+      "gas_months_covered": 12,
+      "warnings": [
+        "Score uses a synthetic reference benchmark, not an official consumption standard.",
+        "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+        "Confirm alignment of the property snapshot and energy period; see source methodology."
+      ]
+    },
+    "benchmark": null,
+    "emission_factors": null,
+    "retrofit_costs": {
+      "loft_insulation": {
+        "amount_gbp": 1800,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "heat_pump": {
+        "amount_gbp": 8500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "solar_panels": {
+        "amount_gbp": 4500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "double_glazing": {
+        "amount_gbp": 7000,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "smart_thermostat": {
+        "amount_gbp": 300,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      }
+    },
+    "electricity_tariff_gbp_per_kwh": 0.25,
+    "gas_tariff_gbp_per_kwh": 0.065
+  },
+  {
+    "property": {
+      "property_id": "HELDOUT-917-004",
+      "property_type": "bungalow",
+      "region": "South East",
+      "floor_area_m2": 154.7797807895656,
+      "property_age_years": 95,
+      "bedrooms": 4,
+      "energy_rating": "F",
+      "insulation": "poor",
+      "heating_system": "old_gas_boiler",
+      "glazing": "single",
+      "renewable_contribution": "none",
+      "smart_controls": "none",
+      "solar_installed": false,
+      "heat_pump_installed": false,
+      "loft_insulation_installed": false,
+      "smart_thermostat_installed": false,
+      "physical_inputs": {
+        "space_heating_demand_kwh": 19476.31434845699,
+        "hot_water_demand_kwh": 1582.5579604838174,
+        "boiler_efficiency": 0.9316267768781606,
+        "scop": 3.643923341692815,
+        "hot_water_cop": 2.6567945259255903,
+        "electric_resistance_efficiency": 1,
+        "base_appliance_electricity_kwh": 3519.8767262591396,
+        "solar_generation_kwh": 0,
+        "solar_self_consumed_kwh": 0,
+        "proposed_solar_generation_kwh": 2000,
+        "proposed_solar_self_consumed_kwh": 800,
+        "proposed_heat_pump_type": "air_source_heat_pump",
+        "provenance": {
+          "status": "synthetic",
+          "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits"
+        },
+        "annual_electricity_demand_kwh": 3519.8767262591396
+      },
+      "roof_suitable_for_loft": null,
+      "roof_suitable_for_solar": false,
+      "heat_pump_compatible": null,
+      "controls_compatible": false,
+      "current_property_value_gbp": 640000.0,
+      "market_index": null,
+      "provenance": {
+        "record": "synthetic",
+        "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+        "customer_id": "HELDOUT-C-917-004"
+      }
+    },
+    "annual_energy": {
+      "electricity_kwh": 3519.8767262591396,
+      "gas_kwh": 23017.805881112985,
+      "quality": "synthetic",
+      "method": "Independent synthetic held-out thermal-component generator",
+      "electricity_months_covered": 12,
+      "gas_months_covered": 12,
+      "warnings": [
+        "Score uses a synthetic reference benchmark, not an official consumption standard.",
+        "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+        "Confirm alignment of the property snapshot and energy period; see source methodology."
+      ]
+    },
+    "benchmark": null,
+    "emission_factors": null,
+    "retrofit_costs": {
+      "loft_insulation": {
+        "amount_gbp": 1800,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "heat_pump": {
+        "amount_gbp": 8500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "solar_panels": {
+        "amount_gbp": 4500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "double_glazing": {
+        "amount_gbp": 7000,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "smart_thermostat": {
+        "amount_gbp": 300,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      }
+    },
+    "electricity_tariff_gbp_per_kwh": 0.25,
+    "gas_tariff_gbp_per_kwh": 0.065
+  },
+  {
+    "property": {
+      "property_id": "HELDOUT-917-005",
+      "property_type": "detached",
+      "region": "North West",
+      "floor_area_m2": 153.75750083340358,
+      "property_age_years": 95,
+      "bedrooms": 4,
+      "energy_rating": "F",
+      "insulation": "poor",
+      "heating_system": "modern_gas_boiler",
+      "glazing": "double",
+      "renewable_contribution": "none",
+      "smart_controls": "none",
+      "solar_installed": false,
+      "heat_pump_installed": false,
+      "loft_insulation_installed": false,
+      "smart_thermostat_installed": false,
+      "physical_inputs": {
+        "space_heating_demand_kwh": 6059.144511369736,
+        "hot_water_demand_kwh": 1576.6425226253923,
+        "boiler_efficiency": 0.829046181656158,
+        "scop": 2.9077764115418328,
+        "hot_water_cop": 2.9845301733532725,
+        "electric_resistance_efficiency": 1,
+        "base_appliance_electricity_kwh": 2634.4765722108377,
+        "solar_generation_kwh": 0,
+        "solar_self_consumed_kwh": 0,
+        "proposed_solar_generation_kwh": 2000,
+        "proposed_solar_self_consumed_kwh": 800,
+        "proposed_heat_pump_type": "air_source_heat_pump",
+        "provenance": {
+          "status": "synthetic",
+          "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits"
+        },
+        "annual_electricity_demand_kwh": 2634.4765722108377
+      },
+      "roof_suitable_for_loft": false,
+      "roof_suitable_for_solar": null,
+      "heat_pump_compatible": null,
+      "controls_compatible": false,
+      "current_property_value_gbp": 640000.0,
+      "market_index": null,
+      "provenance": {
+        "record": "synthetic",
+        "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+        "customer_id": "HELDOUT-C-917-005"
+      }
+    },
+    "annual_energy": {
+      "electricity_kwh": 2634.4765722108377,
+      "gas_kwh": 9408.469969886874,
+      "quality": "synthetic",
+      "method": "Independent synthetic held-out thermal-component generator",
+      "electricity_months_covered": 12,
+      "gas_months_covered": 12,
+      "warnings": [
+        "Score uses a synthetic reference benchmark, not an official consumption standard.",
+        "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+        "Confirm alignment of the property snapshot and energy period; see source methodology."
+      ]
+    },
+    "benchmark": null,
+    "emission_factors": null,
+    "retrofit_costs": {
+      "loft_insulation": {
+        "amount_gbp": 1800,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "heat_pump": {
+        "amount_gbp": 8500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "solar_panels": {
+        "amount_gbp": 4500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "double_glazing": {
+        "amount_gbp": 7000,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "smart_thermostat": {
+        "amount_gbp": 300,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      }
+    },
+    "electricity_tariff_gbp_per_kwh": 0.25,
+    "gas_tariff_gbp_per_kwh": 0.065
+  },
+  {
+    "property": {
+      "property_id": "HELDOUT-917-006",
+      "property_type": "semi_detached",
+      "region": "Greater London",
+      "floor_area_m2": 97.38723030778775,
+      "property_age_years": 95,
+      "bedrooms": 4,
+      "energy_rating": "F",
+      "insulation": "poor",
+      "heating_system": "air_source_heat_pump",
+      "glazing": "single",
+      "renewable_contribution": "limited",
+      "smart_controls": "none",
+      "solar_installed": true,
+      "heat_pump_installed": true,
+      "loft_insulation_installed": false,
+      "smart_thermostat_installed": false,
+      "physical_inputs": {
+        "space_heating_demand_kwh": 12073.7418083407,
+        "hot_water_demand_kwh": 2841.8028406758704,
+        "boiler_efficiency": 0.7263051260399357,
+        "scop": 4.013262617371515,
+        "hot_water_cop": 2.490824121993769,
+        "electric_resistance_efficiency": 1,
+        "base_appliance_electricity_kwh": 1782.3813506955767,
+        "solar_generation_kwh": 1500,
+        "solar_self_consumed_kwh": 400,
+        "proposed_solar_generation_kwh": 2000,
+        "proposed_solar_self_consumed_kwh": 800,
+        "proposed_heat_pump_type": "air_source_heat_pump",
+        "provenance": {
+          "status": "synthetic",
+          "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits"
+        },
+        "annual_electricity_demand_kwh": 5931.750459652637
+      },
+      "roof_suitable_for_loft": true,
+      "roof_suitable_for_solar": true,
+      "heat_pump_compatible": false,
+      "controls_compatible": null,
+      "current_property_value_gbp": 640000.0,
+      "market_index": null,
+      "provenance": {
+        "record": "synthetic",
+        "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+        "customer_id": "HELDOUT-C-917-006"
+      }
+    },
+    "annual_energy": {
+      "electricity_kwh": 5531.750459652637,
+      "gas_kwh": 100.37591809679641,
+      "quality": "synthetic",
+      "method": "Independent synthetic held-out thermal-component generator",
+      "electricity_months_covered": 12,
+      "gas_months_covered": 12,
+      "warnings": [
+        "Score uses a synthetic reference benchmark, not an official consumption standard.",
+        "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+        "Confirm alignment of the property snapshot and energy period; see source methodology."
+      ]
+    },
+    "benchmark": null,
+    "emission_factors": null,
+    "retrofit_costs": {
+      "loft_insulation": {
+        "amount_gbp": 1800,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "heat_pump": {
+        "amount_gbp": 8500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "solar_panels": {
+        "amount_gbp": 4500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "double_glazing": {
+        "amount_gbp": 7000,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "smart_thermostat": {
+        "amount_gbp": 300,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      }
+    },
+    "electricity_tariff_gbp_per_kwh": 0.25,
+    "gas_tariff_gbp_per_kwh": 0.065
+  },
+  {
+    "property": {
+      "property_id": "HELDOUT-917-007",
+      "property_type": "flat",
+      "region": "South East",
+      "floor_area_m2": 141.0185732624882,
+      "property_age_years": 95,
+      "bedrooms": 4,
+      "energy_rating": "F",
+      "insulation": "good",
+      "heating_system": "electric_resistance",
+      "glazing": "single",
+      "renewable_contribution": "none",
+      "smart_controls": "none",
+      "solar_installed": false,
+      "heat_pump_installed": false,
+      "loft_insulation_installed": false,
+      "smart_thermostat_installed": false,
+      "physical_inputs": {
+        "space_heating_demand_kwh": 6871.577096134017,
+        "hot_water_demand_kwh": 156.7802806719749,
+        "boiler_efficiency": 0.8779585771168558,
+        "scop": 2.1922599067186908,
+        "hot_water_cop": 2.692770201185861,
+        "electric_resistance_efficiency": 1,
+        "base_appliance_electricity_kwh": 3784.79171692022,
+        "solar_generation_kwh": 0,
+        "solar_self_consumed_kwh": 0,
+        "proposed_solar_generation_kwh": 2000,
+        "proposed_solar_self_consumed_kwh": 800,
+        "proposed_heat_pump_type": "air_source_heat_pump",
+        "provenance": {
+          "status": "synthetic",
+          "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits"
+        },
+        "annual_electricity_demand_kwh": 10813.149093726212
+      },
+      "roof_suitable_for_loft": null,
+      "roof_suitable_for_solar": false,
+      "heat_pump_compatible": false,
+      "controls_compatible": null,
+      "current_property_value_gbp": 640000.0,
+      "market_index": null,
+      "provenance": {
+        "record": "synthetic",
+        "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+        "customer_id": "HELDOUT-C-917-007"
+      }
+    },
+    "annual_energy": {
+      "electricity_kwh": 10813.149093726212,
+      "gas_kwh": 246.65902052529282,
+      "quality": "synthetic",
+      "method": "Independent synthetic held-out thermal-component generator",
+      "electricity_months_covered": 12,
+      "gas_months_covered": 12,
+      "warnings": [
+        "Score uses a synthetic reference benchmark, not an official consumption standard.",
+        "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+        "Confirm alignment of the property snapshot and energy period; see source methodology."
+      ]
+    },
+    "benchmark": null,
+    "emission_factors": null,
+    "retrofit_costs": {
+      "loft_insulation": {
+        "amount_gbp": 1800,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "heat_pump": {
+        "amount_gbp": 8500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "solar_panels": {
+        "amount_gbp": 4500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "double_glazing": {
+        "amount_gbp": 7000,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "smart_thermostat": {
+        "amount_gbp": 300,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      }
+    },
+    "electricity_tariff_gbp_per_kwh": 0.25,
+    "gas_tariff_gbp_per_kwh": 0.065
+  },
+  {
+    "property": {
+      "property_id": "HELDOUT-917-008",
+      "property_type": "terraced",
+      "region": "North West",
+      "floor_area_m2": 206.88834120619353,
+      "property_age_years": 95,
+      "bedrooms": 4,
+      "energy_rating": "F",
+      "insulation": "poor",
+      "heating_system": "old_gas_boiler",
+      "glazing": "single",
+      "renewable_contribution": "none",
+      "smart_controls": "advanced",
+      "solar_installed": false,
+      "heat_pump_installed": false,
+      "loft_insulation_installed": false,
+      "smart_thermostat_installed": true,
+      "physical_inputs": {
+        "space_heating_demand_kwh": 15701.63412890653,
+        "hot_water_demand_kwh": 19.78849851659281,
+        "boiler_efficiency": 0.8759746845028475,
+        "scop": 3.021357604792839,
+        "hot_water_cop": 2.0211229472789407,
+        "electric_resistance_efficiency": 1,
+        "base_appliance_electricity_kwh": 1685.0617851200677,
+        "solar_generation_kwh": 0,
+        "solar_self_consumed_kwh": 0,
+        "proposed_solar_generation_kwh": 2000,
+        "proposed_solar_self_consumed_kwh": 800,
+        "proposed_heat_pump_type": "air_source_heat_pump",
+        "provenance": {
+          "status": "synthetic",
+          "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits"
+        },
+        "annual_electricity_demand_kwh": 1685.0617851200677
+      },
+      "roof_suitable_for_loft": false,
+      "roof_suitable_for_solar": null,
+      "heat_pump_compatible": false,
+      "controls_compatible": null,
+      "current_property_value_gbp": 640000.0,
+      "market_index": null,
+      "provenance": {
+        "record": "synthetic",
+        "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+        "customer_id": "HELDOUT-C-917-008"
+      }
+    },
+    "annual_energy": {
+      "electricity_kwh": 1685.0617851200677,
+      "gas_kwh": 18382.483827858283,
+      "quality": "synthetic",
+      "method": "Independent synthetic held-out thermal-component generator",
+      "electricity_months_covered": 12,
+      "gas_months_covered": 12,
+      "warnings": [
+        "Score uses a synthetic reference benchmark, not an official consumption standard.",
+        "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+        "Confirm alignment of the property snapshot and energy period; see source methodology."
+      ]
+    },
+    "benchmark": null,
+    "emission_factors": null,
+    "retrofit_costs": {
+      "loft_insulation": {
+        "amount_gbp": 1800,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "heat_pump": {
+        "amount_gbp": 8500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "solar_panels": {
+        "amount_gbp": 4500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "double_glazing": {
+        "amount_gbp": 7000,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "smart_thermostat": {
+        "amount_gbp": 300,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      }
+    },
+    "electricity_tariff_gbp_per_kwh": 0.25,
+    "gas_tariff_gbp_per_kwh": 0.065
+  },
+  {
+    "property": {
+      "property_id": "HELDOUT-917-009",
+      "property_type": "bungalow",
+      "region": "Greater London",
+      "floor_area_m2": 191.70585212782103,
+      "property_age_years": 95,
+      "bedrooms": 4,
+      "energy_rating": "F",
+      "insulation": "poor",
+      "heating_system": "modern_gas_boiler",
+      "glazing": "single",
+      "renewable_contribution": "none",
+      "smart_controls": "none",
+      "solar_installed": false,
+      "heat_pump_installed": false,
+      "loft_insulation_installed": false,
+      "smart_thermostat_installed": false,
+      "physical_inputs": {
+        "space_heating_demand_kwh": 13205.784602814643,
+        "hot_water_demand_kwh": 1600.3157666162112,
+        "boiler_efficiency": 0.7660448534081687,
+        "scop": 4.405461366958058,
+        "hot_water_cop": 2.804417548695092,
+        "electric_resistance_efficiency": 1,
+        "base_appliance_electricity_kwh": 2015.8217505869009,
+        "solar_generation_kwh": 0,
+        "solar_self_consumed_kwh": 0,
+        "proposed_solar_generation_kwh": 2000,
+        "proposed_solar_self_consumed_kwh": 800,
+        "proposed_heat_pump_type": "air_source_heat_pump",
+        "provenance": {
+          "status": "synthetic",
+          "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits"
+        },
+        "annual_electricity_demand_kwh": 2015.8217505869009
+      },
+      "roof_suitable_for_loft": true,
+      "roof_suitable_for_solar": true,
+      "heat_pump_compatible": true,
+      "controls_compatible": true,
+      "current_property_value_gbp": 640000.0,
+      "market_index": null,
+      "provenance": {
+        "record": "synthetic",
+        "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+        "customer_id": "HELDOUT-C-917-009"
+      }
+    },
+    "annual_energy": {
+      "electricity_kwh": 2015.8217505869009,
+      "gas_kwh": 19617.2664105503,
+      "quality": "synthetic",
+      "method": "Independent synthetic held-out thermal-component generator",
+      "electricity_months_covered": 12,
+      "gas_months_covered": 12,
+      "warnings": [
+        "Score uses a synthetic reference benchmark, not an official consumption standard.",
+        "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+        "Confirm alignment of the property snapshot and energy period; see source methodology."
+      ]
+    },
+    "benchmark": null,
+    "emission_factors": null,
+    "retrofit_costs": {
+      "loft_insulation": {
+        "amount_gbp": 1800,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "heat_pump": {
+        "amount_gbp": 8500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "solar_panels": {
+        "amount_gbp": 4500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "double_glazing": {
+        "amount_gbp": 7000,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "smart_thermostat": {
+        "amount_gbp": 300,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      }
+    },
+    "electricity_tariff_gbp_per_kwh": 0.25,
+    "gas_tariff_gbp_per_kwh": 0.065
+  },
+  {
+    "property": {
+      "property_id": "HELDOUT-917-010",
+      "property_type": "detached",
+      "region": "South East",
+      "floor_area_m2": 203.78443286067983,
+      "property_age_years": 95,
+      "bedrooms": 4,
+      "energy_rating": "F",
+      "insulation": "poor",
+      "heating_system": "air_source_heat_pump",
+      "glazing": "double",
+      "renewable_contribution": "none",
+      "smart_controls": "none",
+      "solar_installed": false,
+      "heat_pump_installed": true,
+      "loft_insulation_installed": false,
+      "smart_thermostat_installed": false,
+      "physical_inputs": {
+        "space_heating_demand_kwh": 13891.733304006984,
+        "hot_water_demand_kwh": 2224.6343273761845,
+        "boiler_efficiency": 0.8445045624746215,
+        "scop": 4.212366112431142,
+        "hot_water_cop": 2.455554483454246,
+        "electric_resistance_efficiency": 1,
+        "base_appliance_electricity_kwh": 2950.1870901302805,
+        "solar_generation_kwh": 0,
+        "solar_self_consumed_kwh": 0,
+        "proposed_solar_generation_kwh": 2000,
+        "proposed_solar_self_consumed_kwh": 800,
+        "proposed_heat_pump_type": "air_source_heat_pump",
+        "provenance": {
+          "status": "synthetic",
+          "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits"
+        },
+        "annual_electricity_demand_kwh": 7153.992826932599
+      },
+      "roof_suitable_for_loft": null,
+      "roof_suitable_for_solar": false,
+      "heat_pump_compatible": true,
+      "controls_compatible": true,
+      "current_property_value_gbp": 640000.0,
+      "market_index": null,
+      "provenance": {
+        "record": "synthetic",
+        "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+        "customer_id": "HELDOUT-C-917-010"
+      }
+    },
+    "annual_energy": {
+      "electricity_kwh": 7153.992826932599,
+      "gas_kwh": 279.99573268842556,
+      "quality": "synthetic",
+      "method": "Independent synthetic held-out thermal-component generator",
+      "electricity_months_covered": 12,
+      "gas_months_covered": 12,
+      "warnings": [
+        "Score uses a synthetic reference benchmark, not an official consumption standard.",
+        "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+        "Confirm alignment of the property snapshot and energy period; see source methodology."
+      ]
+    },
+    "benchmark": null,
+    "emission_factors": null,
+    "retrofit_costs": {
+      "loft_insulation": {
+        "amount_gbp": 1800,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "heat_pump": {
+        "amount_gbp": 8500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "solar_panels": {
+        "amount_gbp": 4500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "double_glazing": {
+        "amount_gbp": 7000,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "smart_thermostat": {
+        "amount_gbp": 300,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      }
+    },
+    "electricity_tariff_gbp_per_kwh": 0.25,
+    "gas_tariff_gbp_per_kwh": 0.065
+  },
+  {
+    "property": {
+      "property_id": "HELDOUT-917-011",
+      "property_type": "semi_detached",
+      "region": "North West",
+      "floor_area_m2": 170.63481818076585,
+      "property_age_years": 95,
+      "bedrooms": 4,
+      "energy_rating": "F",
+      "insulation": "poor",
+      "heating_system": "electric_resistance",
+      "glazing": "single",
+      "renewable_contribution": "none",
+      "smart_controls": "none",
+      "solar_installed": false,
+      "heat_pump_installed": false,
+      "loft_insulation_installed": false,
+      "smart_thermostat_installed": false,
+      "physical_inputs": {
+        "space_heating_demand_kwh": 12134.050919977404,
+        "hot_water_demand_kwh": 2568.9047323203,
+        "boiler_efficiency": 0.6947246887133163,
+        "scop": 3.0968919567445417,
+        "hot_water_cop": 2.8260055934334583,
+        "electric_resistance_efficiency": 1,
+        "base_appliance_electricity_kwh": 3785.4318141167028,
+        "solar_generation_kwh": 0,
+        "solar_self_consumed_kwh": 0,
+        "proposed_solar_generation_kwh": 2000,
+        "proposed_solar_self_consumed_kwh": 800,
+        "proposed_heat_pump_type": "air_source_heat_pump",
+        "provenance": {
+          "status": "synthetic",
+          "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits"
+        },
+        "annual_electricity_demand_kwh": 18488.387466414406
+      },
+      "roof_suitable_for_loft": false,
+      "roof_suitable_for_solar": null,
+      "heat_pump_compatible": true,
+      "controls_compatible": true,
+      "current_property_value_gbp": 640000.0,
+      "market_index": null,
+      "provenance": {
+        "record": "synthetic",
+        "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+        "customer_id": "HELDOUT-C-917-011"
+      }
+    },
+    "annual_energy": {
+      "electricity_kwh": 18488.387466414406,
+      "gas_kwh": 33.80737272766443,
+      "quality": "synthetic",
+      "method": "Independent synthetic held-out thermal-component generator",
+      "electricity_months_covered": 12,
+      "gas_months_covered": 12,
+      "warnings": [
+        "Score uses a synthetic reference benchmark, not an official consumption standard.",
+        "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+        "Confirm alignment of the property snapshot and energy period; see source methodology."
+      ]
+    },
+    "benchmark": null,
+    "emission_factors": null,
+    "retrofit_costs": {
+      "loft_insulation": {
+        "amount_gbp": 1800,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "heat_pump": {
+        "amount_gbp": 8500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "solar_panels": {
+        "amount_gbp": 4500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "double_glazing": {
+        "amount_gbp": 7000,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "smart_thermostat": {
+        "amount_gbp": 300,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      }
+    },
+    "electricity_tariff_gbp_per_kwh": 0.25,
+    "gas_tariff_gbp_per_kwh": 0.065
+  },
+  {
+    "property": {
+      "property_id": "HELDOUT-917-012",
+      "property_type": "flat",
+      "region": "Greater London",
+      "floor_area_m2": 147.69850372213307,
+      "property_age_years": 95,
+      "bedrooms": 4,
+      "energy_rating": "F",
+      "insulation": "poor",
+      "heating_system": "old_gas_boiler",
+      "glazing": "single",
+      "renewable_contribution": "limited",
+      "smart_controls": "none",
+      "solar_installed": true,
+      "heat_pump_installed": false,
+      "loft_insulation_installed": false,
+      "smart_thermostat_installed": false,
+      "physical_inputs": {
+        "space_heating_demand_kwh": 5085.80981153598,
+        "hot_water_demand_kwh": 262.7771353461864,
+        "boiler_efficiency": 0.937258258427855,
+        "scop": 2.595341426219985,
+        "hot_water_cop": 2.262566997519149,
+        "electric_resistance_efficiency": 1,
+        "base_appliance_electricity_kwh": 3215.5491081700366,
+        "solar_generation_kwh": 1500,
+        "solar_self_consumed_kwh": 400,
+        "proposed_solar_generation_kwh": 2000,
+        "proposed_solar_self_consumed_kwh": 800,
+        "proposed_heat_pump_type": "air_source_heat_pump",
+        "provenance": {
+          "status": "synthetic",
+          "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits"
+        },
+        "annual_electricity_demand_kwh": 3215.5491081700366
+      },
+      "roof_suitable_for_loft": true,
+      "roof_suitable_for_solar": true,
+      "heat_pump_compatible": null,
+      "controls_compatible": false,
+      "current_property_value_gbp": 640000.0,
+      "market_index": null,
+      "provenance": {
+        "record": "synthetic",
+        "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+        "customer_id": "HELDOUT-C-917-012"
+      }
+    },
+    "annual_energy": {
+      "electricity_kwh": 2815.5491081700366,
+      "gas_kwh": 5870.219413962307,
+      "quality": "synthetic",
+      "method": "Independent synthetic held-out thermal-component generator",
+      "electricity_months_covered": 12,
+      "gas_months_covered": 12,
+      "warnings": [
+        "Score uses a synthetic reference benchmark, not an official consumption standard.",
+        "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+        "Confirm alignment of the property snapshot and energy period; see source methodology."
+      ]
+    },
+    "benchmark": null,
+    "emission_factors": null,
+    "retrofit_costs": {
+      "loft_insulation": {
+        "amount_gbp": 1800,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "heat_pump": {
+        "amount_gbp": 8500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "solar_panels": {
+        "amount_gbp": 4500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "double_glazing": {
+        "amount_gbp": 7000,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "smart_thermostat": {
+        "amount_gbp": 300,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      }
+    },
+    "electricity_tariff_gbp_per_kwh": 0.25,
+    "gas_tariff_gbp_per_kwh": 0.065
+  },
+  {
+    "property": {
+      "property_id": "HELDOUT-917-013",
+      "property_type": "terraced",
+      "region": "South East",
+      "floor_area_m2": 193.946949478422,
+      "property_age_years": 95,
+      "bedrooms": 4,
+      "energy_rating": "F",
+      "insulation": "poor",
+      "heating_system": "modern_gas_boiler",
+      "glazing": "single",
+      "renewable_contribution": "none",
+      "smart_controls": "none",
+      "solar_installed": false,
+      "heat_pump_installed": false,
+      "loft_insulation_installed": false,
+      "smart_thermostat_installed": false,
+      "physical_inputs": {
+        "space_heating_demand_kwh": 18065.975836947426,
+        "hot_water_demand_kwh": 23.74055620920068,
+        "boiler_efficiency": 0.8040891191599444,
+        "scop": 2.460731932436105,
+        "hot_water_cop": 2.3727744317131467,
+        "electric_resistance_efficiency": 1,
+        "base_appliance_electricity_kwh": 3830.9475651690805,
+        "solar_generation_kwh": 0,
+        "solar_self_consumed_kwh": 0,
+        "proposed_solar_generation_kwh": 2000,
+        "proposed_solar_self_consumed_kwh": 800,
+        "proposed_heat_pump_type": "air_source_heat_pump",
+        "provenance": {
+          "status": "synthetic",
+          "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits"
+        },
+        "annual_electricity_demand_kwh": 3830.9475651690805
+      },
+      "roof_suitable_for_loft": null,
+      "roof_suitable_for_solar": false,
+      "heat_pump_compatible": null,
+      "controls_compatible": false,
+      "current_property_value_gbp": 640000.0,
+      "market_index": null,
+      "provenance": {
+        "record": "synthetic",
+        "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+        "customer_id": "HELDOUT-C-917-013"
+      }
+    },
+    "annual_energy": {
+      "electricity_kwh": 3830.9475651690805,
+      "gas_kwh": 22893.322767231024,
+      "quality": "synthetic",
+      "method": "Independent synthetic held-out thermal-component generator",
+      "electricity_months_covered": 12,
+      "gas_months_covered": 12,
+      "warnings": [
+        "Score uses a synthetic reference benchmark, not an official consumption standard.",
+        "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+        "Confirm alignment of the property snapshot and energy period; see source methodology."
+      ]
+    },
+    "benchmark": null,
+    "emission_factors": null,
+    "retrofit_costs": {
+      "loft_insulation": {
+        "amount_gbp": 1800,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "heat_pump": {
+        "amount_gbp": 8500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "solar_panels": {
+        "amount_gbp": 4500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "double_glazing": {
+        "amount_gbp": 7000,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "smart_thermostat": {
+        "amount_gbp": 300,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      }
+    },
+    "electricity_tariff_gbp_per_kwh": 0.25,
+    "gas_tariff_gbp_per_kwh": 0.065
+  },
+  {
+    "property": {
+      "property_id": "HELDOUT-917-014",
+      "property_type": "bungalow",
+      "region": "North West",
+      "floor_area_m2": 206.91622011772543,
+      "property_age_years": 95,
+      "bedrooms": 4,
+      "energy_rating": "F",
+      "insulation": "good",
+      "heating_system": "air_source_heat_pump",
+      "glazing": "single",
+      "renewable_contribution": "none",
+      "smart_controls": "none",
+      "solar_installed": false,
+      "heat_pump_installed": true,
+      "loft_insulation_installed": false,
+      "smart_thermostat_installed": false,
+      "physical_inputs": {
+        "space_heating_demand_kwh": 15246.009398381573,
+        "hot_water_demand_kwh": 471.88325011770917,
+        "boiler_efficiency": 0.8603619628093594,
+        "scop": 3.03300837049394,
+        "hot_water_cop": 2.9617073531019846,
+        "electric_resistance_efficiency": 1,
+        "base_appliance_electricity_kwh": 4479.782074591071,
+        "solar_generation_kwh": 0,
+        "solar_self_consumed_kwh": 0,
+        "proposed_solar_generation_kwh": 2000,
+        "proposed_solar_self_consumed_kwh": 800,
+        "proposed_heat_pump_type": "air_source_heat_pump",
+        "provenance": {
+          "status": "synthetic",
+          "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits"
+        },
+        "annual_electricity_demand_kwh": 9665.805647168669
+      },
+      "roof_suitable_for_loft": false,
+      "roof_suitable_for_solar": null,
+      "heat_pump_compatible": null,
+      "controls_compatible": false,
+      "current_property_value_gbp": 640000.0,
+      "market_index": null,
+      "provenance": {
+        "record": "synthetic",
+        "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+        "customer_id": "HELDOUT-C-917-014"
+      }
+    },
+    "annual_energy": {
+      "electricity_kwh": 9665.805647168669,
+      "gas_kwh": 345.1719870822837,
+      "quality": "synthetic",
+      "method": "Independent synthetic held-out thermal-component generator",
+      "electricity_months_covered": 12,
+      "gas_months_covered": 12,
+      "warnings": [
+        "Score uses a synthetic reference benchmark, not an official consumption standard.",
+        "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+        "Confirm alignment of the property snapshot and energy period; see source methodology."
+      ]
+    },
+    "benchmark": null,
+    "emission_factors": null,
+    "retrofit_costs": {
+      "loft_insulation": {
+        "amount_gbp": 1800,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "heat_pump": {
+        "amount_gbp": 8500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "solar_panels": {
+        "amount_gbp": 4500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "double_glazing": {
+        "amount_gbp": 7000,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "smart_thermostat": {
+        "amount_gbp": 300,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      }
+    },
+    "electricity_tariff_gbp_per_kwh": 0.25,
+    "gas_tariff_gbp_per_kwh": 0.065
+  },
+  {
+    "property": {
+      "property_id": "HELDOUT-917-015",
+      "property_type": "detached",
+      "region": "Greater London",
+      "floor_area_m2": 87.72625932722768,
+      "property_age_years": 95,
+      "bedrooms": 4,
+      "energy_rating": "F",
+      "insulation": "poor",
+      "heating_system": "electric_resistance",
+      "glazing": "double",
+      "renewable_contribution": "none",
+      "smart_controls": "none",
+      "solar_installed": false,
+      "heat_pump_installed": false,
+      "loft_insulation_installed": false,
+      "smart_thermostat_installed": false,
+      "physical_inputs": {
+        "space_heating_demand_kwh": 3401.7777936606035,
+        "hot_water_demand_kwh": 608.4533084083648,
+        "boiler_efficiency": 0.9117052416475835,
+        "scop": 2.1459289565434987,
+        "hot_water_cop": 2.547273921575669,
+        "electric_resistance_efficiency": 1,
+        "base_appliance_electricity_kwh": 1021.1987746975528,
+        "solar_generation_kwh": 0,
+        "solar_self_consumed_kwh": 0,
+        "proposed_solar_generation_kwh": 2000,
+        "proposed_solar_self_consumed_kwh": 800,
+        "proposed_heat_pump_type": "air_source_heat_pump",
+        "provenance": {
+          "status": "synthetic",
+          "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits"
+        },
+        "annual_electricity_demand_kwh": 5031.429876766521
+      },
+      "roof_suitable_for_loft": true,
+      "roof_suitable_for_solar": true,
+      "heat_pump_compatible": false,
+      "controls_compatible": null,
+      "current_property_value_gbp": 640000.0,
+      "market_index": null,
+      "provenance": {
+        "record": "synthetic",
+        "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+        "customer_id": "HELDOUT-C-917-015"
+      }
+    },
+    "annual_energy": {
+      "electricity_kwh": 5031.429876766521,
+      "gas_kwh": 443.8258788709239,
+      "quality": "synthetic",
+      "method": "Independent synthetic held-out thermal-component generator",
+      "electricity_months_covered": 12,
+      "gas_months_covered": 12,
+      "warnings": [
+        "Score uses a synthetic reference benchmark, not an official consumption standard.",
+        "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+        "Confirm alignment of the property snapshot and energy period; see source methodology."
+      ]
+    },
+    "benchmark": null,
+    "emission_factors": null,
+    "retrofit_costs": {
+      "loft_insulation": {
+        "amount_gbp": 1800,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "heat_pump": {
+        "amount_gbp": 8500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "solar_panels": {
+        "amount_gbp": 4500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "double_glazing": {
+        "amount_gbp": 7000,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "smart_thermostat": {
+        "amount_gbp": 300,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      }
+    },
+    "electricity_tariff_gbp_per_kwh": 0.25,
+    "gas_tariff_gbp_per_kwh": 0.065
+  },
+  {
+    "property": {
+      "property_id": "HELDOUT-917-016",
+      "property_type": "semi_detached",
+      "region": "South East",
+      "floor_area_m2": 155.45404746279556,
+      "property_age_years": 95,
+      "bedrooms": 4,
+      "energy_rating": "F",
+      "insulation": "poor",
+      "heating_system": "old_gas_boiler",
+      "glazing": "single",
+      "renewable_contribution": "none",
+      "smart_controls": "advanced",
+      "solar_installed": false,
+      "heat_pump_installed": false,
+      "loft_insulation_installed": false,
+      "smart_thermostat_installed": true,
+      "physical_inputs": {
+        "space_heating_demand_kwh": 13109.716438246382,
+        "hot_water_demand_kwh": 1497.4565171634092,
+        "boiler_efficiency": 0.7394141418971566,
+        "scop": 4.365907857083635,
+        "hot_water_cop": 2.103780651930682,
+        "electric_resistance_efficiency": 1,
+        "base_appliance_electricity_kwh": 2761.2384607106064,
+        "solar_generation_kwh": 0,
+        "solar_self_consumed_kwh": 0,
+        "proposed_solar_generation_kwh": 2000,
+        "proposed_solar_self_consumed_kwh": 800,
+        "proposed_heat_pump_type": "air_source_heat_pump",
+        "provenance": {
+          "status": "synthetic",
+          "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits"
+        },
+        "annual_electricity_demand_kwh": 2761.2384607106064
+      },
+      "roof_suitable_for_loft": null,
+      "roof_suitable_for_solar": false,
+      "heat_pump_compatible": false,
+      "controls_compatible": null,
+      "current_property_value_gbp": 640000.0,
+      "market_index": null,
+      "provenance": {
+        "record": "synthetic",
+        "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+        "customer_id": "HELDOUT-C-917-016"
+      }
+    },
+    "annual_energy": {
+      "electricity_kwh": 2761.2384607106064,
+      "gas_kwh": 20093.282136841055,
+      "quality": "synthetic",
+      "method": "Independent synthetic held-out thermal-component generator",
+      "electricity_months_covered": 12,
+      "gas_months_covered": 12,
+      "warnings": [
+        "Score uses a synthetic reference benchmark, not an official consumption standard.",
+        "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+        "Confirm alignment of the property snapshot and energy period; see source methodology."
+      ]
+    },
+    "benchmark": null,
+    "emission_factors": null,
+    "retrofit_costs": {
+      "loft_insulation": {
+        "amount_gbp": 1800,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "heat_pump": {
+        "amount_gbp": 8500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "solar_panels": {
+        "amount_gbp": 4500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "double_glazing": {
+        "amount_gbp": 7000,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "smart_thermostat": {
+        "amount_gbp": 300,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      }
+    },
+    "electricity_tariff_gbp_per_kwh": 0.25,
+    "gas_tariff_gbp_per_kwh": 0.065
+  },
+  {
+    "property": {
+      "property_id": "HELDOUT-917-017",
+      "property_type": "flat",
+      "region": "North West",
+      "floor_area_m2": 74.06516042118378,
+      "property_age_years": 95,
+      "bedrooms": 4,
+      "energy_rating": "F",
+      "insulation": "poor",
+      "heating_system": "modern_gas_boiler",
+      "glazing": "single",
+      "renewable_contribution": "none",
+      "smart_controls": "none",
+      "solar_installed": false,
+      "heat_pump_installed": false,
+      "loft_insulation_installed": false,
+      "smart_thermostat_installed": false,
+      "physical_inputs": {
+        "space_heating_demand_kwh": 8640.283758874886,
+        "hot_water_demand_kwh": 1581.0497538790705,
+        "boiler_efficiency": 0.7207533396537271,
+        "scop": 2.3062970256874236,
+        "hot_water_cop": 2.9490053068566096,
+        "electric_resistance_efficiency": 1,
+        "base_appliance_electricity_kwh": 1063.8871347233155,
+        "solar_generation_kwh": 0,
+        "solar_self_consumed_kwh": 0,
+        "proposed_solar_generation_kwh": 2000,
+        "proposed_solar_self_consumed_kwh": 800,
+        "proposed_heat_pump_type": "air_source_heat_pump",
+        "provenance": {
+          "status": "synthetic",
+          "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits"
+        },
+        "annual_electricity_demand_kwh": 1063.8871347233155
+      },
+      "roof_suitable_for_loft": false,
+      "roof_suitable_for_solar": null,
+      "heat_pump_compatible": false,
+      "controls_compatible": null,
+      "current_property_value_gbp": 640000.0,
+      "market_index": null,
+      "provenance": {
+        "record": "synthetic",
+        "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+        "customer_id": "HELDOUT-C-917-017"
+      }
+    },
+    "annual_energy": {
+      "electricity_kwh": 1063.8871347233155,
+      "gas_kwh": 14517.083558012535,
+      "quality": "synthetic",
+      "method": "Independent synthetic held-out thermal-component generator",
+      "electricity_months_covered": 12,
+      "gas_months_covered": 12,
+      "warnings": [
+        "Score uses a synthetic reference benchmark, not an official consumption standard.",
+        "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+        "Confirm alignment of the property snapshot and energy period; see source methodology."
+      ]
+    },
+    "benchmark": null,
+    "emission_factors": null,
+    "retrofit_costs": {
+      "loft_insulation": {
+        "amount_gbp": 1800,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "heat_pump": {
+        "amount_gbp": 8500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "solar_panels": {
+        "amount_gbp": 4500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "double_glazing": {
+        "amount_gbp": 7000,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "smart_thermostat": {
+        "amount_gbp": 300,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      }
+    },
+    "electricity_tariff_gbp_per_kwh": 0.25,
+    "gas_tariff_gbp_per_kwh": 0.065
+  },
+  {
+    "property": {
+      "property_id": "HELDOUT-917-018",
+      "property_type": "terraced",
+      "region": "Greater London",
+      "floor_area_m2": 215.5495993548639,
+      "property_age_years": 95,
+      "bedrooms": 4,
+      "energy_rating": "F",
+      "insulation": "poor",
+      "heating_system": "air_source_heat_pump",
+      "glazing": "single",
+      "renewable_contribution": "limited",
+      "smart_controls": "none",
+      "solar_installed": true,
+      "heat_pump_installed": true,
+      "loft_insulation_installed": false,
+      "smart_thermostat_installed": false,
+      "physical_inputs": {
+        "space_heating_demand_kwh": 10730.080399885037,
+        "hot_water_demand_kwh": 2397.7127536750413,
+        "boiler_efficiency": 0.7557228895878558,
+        "scop": 4.039368314994639,
+        "hot_water_cop": 2.274173690382171,
+        "electric_resistance_efficiency": 1,
+        "base_appliance_electricity_kwh": 4443.190192823104,
+        "solar_generation_kwh": 1500,
+        "solar_self_consumed_kwh": 400,
+        "proposed_solar_generation_kwh": 2000,
+        "proposed_solar_self_consumed_kwh": 800,
+        "proposed_heat_pump_type": "air_source_heat_pump",
+        "provenance": {
+          "status": "synthetic",
+          "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits"
+        },
+        "annual_electricity_demand_kwh": 8153.888648238425
+      },
+      "roof_suitable_for_loft": true,
+      "roof_suitable_for_solar": true,
+      "heat_pump_compatible": true,
+      "controls_compatible": true,
+      "current_property_value_gbp": 640000.0,
+      "market_index": null,
+      "provenance": {
+        "record": "synthetic",
+        "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+        "customer_id": "HELDOUT-C-917-018"
+      }
+    },
+    "annual_energy": {
+      "electricity_kwh": 7753.888648238425,
+      "gas_kwh": 143.10801341251045,
+      "quality": "synthetic",
+      "method": "Independent synthetic held-out thermal-component generator",
+      "electricity_months_covered": 12,
+      "gas_months_covered": 12,
+      "warnings": [
+        "Score uses a synthetic reference benchmark, not an official consumption standard.",
+        "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+        "Confirm alignment of the property snapshot and energy period; see source methodology."
+      ]
+    },
+    "benchmark": null,
+    "emission_factors": null,
+    "retrofit_costs": {
+      "loft_insulation": {
+        "amount_gbp": 1800,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "heat_pump": {
+        "amount_gbp": 8500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "solar_panels": {
+        "amount_gbp": 4500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "double_glazing": {
+        "amount_gbp": 7000,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "smart_thermostat": {
+        "amount_gbp": 300,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      }
+    },
+    "electricity_tariff_gbp_per_kwh": 0.25,
+    "gas_tariff_gbp_per_kwh": 0.065
+  },
+  {
+    "property": {
+      "property_id": "HELDOUT-917-019",
+      "property_type": "bungalow",
+      "region": "South East",
+      "floor_area_m2": 93.14778270210893,
+      "property_age_years": 95,
+      "bedrooms": 4,
+      "energy_rating": "F",
+      "insulation": "poor",
+      "heating_system": "electric_resistance",
+      "glazing": "single",
+      "renewable_contribution": "none",
+      "smart_controls": "none",
+      "solar_installed": false,
+      "heat_pump_installed": false,
+      "loft_insulation_installed": false,
+      "smart_thermostat_installed": false,
+      "physical_inputs": {
+        "space_heating_demand_kwh": 20058.948703714304,
+        "hot_water_demand_kwh": 776.6649133504486,
+        "boiler_efficiency": 0.682008126408673,
+        "scop": 4.309657206210787,
+        "hot_water_cop": 2.5700196060097165,
+        "electric_resistance_efficiency": 1,
+        "base_appliance_electricity_kwh": 622.5240359292412,
+        "solar_generation_kwh": 0,
+        "solar_self_consumed_kwh": 0,
+        "proposed_solar_generation_kwh": 2000,
+        "proposed_solar_self_consumed_kwh": 800,
+        "proposed_heat_pump_type": "air_source_heat_pump",
+        "provenance": {
+          "status": "synthetic",
+          "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits"
+        },
+        "annual_electricity_demand_kwh": 21458.13765299399
+      },
+      "roof_suitable_for_loft": null,
+      "roof_suitable_for_solar": false,
+      "heat_pump_compatible": true,
+      "controls_compatible": true,
+      "current_property_value_gbp": 640000.0,
+      "market_index": null,
+      "provenance": {
+        "record": "synthetic",
+        "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+        "customer_id": "HELDOUT-C-917-019"
+      }
+    },
+    "annual_energy": {
+      "electricity_kwh": 21458.13765299399,
+      "gas_kwh": 385.35540182740493,
+      "quality": "synthetic",
+      "method": "Independent synthetic held-out thermal-component generator",
+      "electricity_months_covered": 12,
+      "gas_months_covered": 12,
+      "warnings": [
+        "Score uses a synthetic reference benchmark, not an official consumption standard.",
+        "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+        "Confirm alignment of the property snapshot and energy period; see source methodology."
+      ]
+    },
+    "benchmark": null,
+    "emission_factors": null,
+    "retrofit_costs": {
+      "loft_insulation": {
+        "amount_gbp": 1800,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "heat_pump": {
+        "amount_gbp": 8500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "solar_panels": {
+        "amount_gbp": 4500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "double_glazing": {
+        "amount_gbp": 7000,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "smart_thermostat": {
+        "amount_gbp": 300,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      }
+    },
+    "electricity_tariff_gbp_per_kwh": 0.25,
+    "gas_tariff_gbp_per_kwh": 0.065
+  },
+  {
+    "property": {
+      "property_id": "HELDOUT-917-020",
+      "property_type": "detached",
+      "region": "North West",
+      "floor_area_m2": 184.35623949156835,
+      "property_age_years": 95,
+      "bedrooms": 4,
+      "energy_rating": "F",
+      "insulation": "poor",
+      "heating_system": "old_gas_boiler",
+      "glazing": "double",
+      "renewable_contribution": "none",
+      "smart_controls": "none",
+      "solar_installed": false,
+      "heat_pump_installed": false,
+      "loft_insulation_installed": false,
+      "smart_thermostat_installed": false,
+      "physical_inputs": {
+        "space_heating_demand_kwh": 6128.500708068918,
+        "hot_water_demand_kwh": 1885.458298035472,
+        "boiler_efficiency": 0.6628151080651932,
+        "scop": 2.273488942012951,
+        "hot_water_cop": 2.240277763931689,
+        "electric_resistance_efficiency": 1,
+        "base_appliance_electricity_kwh": 3343.28132950103,
+        "solar_generation_kwh": 0,
+        "solar_self_consumed_kwh": 0,
+        "proposed_solar_generation_kwh": 2000,
+        "proposed_solar_self_consumed_kwh": 800,
+        "proposed_heat_pump_type": "air_source_heat_pump",
+        "provenance": {
+          "status": "synthetic",
+          "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits"
+        },
+        "annual_electricity_demand_kwh": 3343.28132950103
+      },
+      "roof_suitable_for_loft": false,
+      "roof_suitable_for_solar": null,
+      "heat_pump_compatible": true,
+      "controls_compatible": true,
+      "current_property_value_gbp": 640000.0,
+      "market_index": null,
+      "provenance": {
+        "record": "synthetic",
+        "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+        "customer_id": "HELDOUT-C-917-020"
+      }
+    },
+    "annual_energy": {
+      "electricity_kwh": 3343.28132950103,
+      "gas_kwh": 12339.883659151028,
+      "quality": "synthetic",
+      "method": "Independent synthetic held-out thermal-component generator",
+      "electricity_months_covered": 12,
+      "gas_months_covered": 12,
+      "warnings": [
+        "Score uses a synthetic reference benchmark, not an official consumption standard.",
+        "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+        "Confirm alignment of the property snapshot and energy period; see source methodology."
+      ]
+    },
+    "benchmark": null,
+    "emission_factors": null,
+    "retrofit_costs": {
+      "loft_insulation": {
+        "amount_gbp": 1800,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "heat_pump": {
+        "amount_gbp": 8500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "solar_panels": {
+        "amount_gbp": 4500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "double_glazing": {
+        "amount_gbp": 7000,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "smart_thermostat": {
+        "amount_gbp": 300,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      }
+    },
+    "electricity_tariff_gbp_per_kwh": 0.25,
+    "gas_tariff_gbp_per_kwh": 0.065
+  },
+  {
+    "property": {
+      "property_id": "HELDOUT-917-021",
+      "property_type": "semi_detached",
+      "region": "Greater London",
+      "floor_area_m2": 211.44077548656784,
+      "property_age_years": 95,
+      "bedrooms": 4,
+      "energy_rating": "F",
+      "insulation": "good",
+      "heating_system": "modern_gas_boiler",
+      "glazing": "single",
+      "renewable_contribution": "none",
+      "smart_controls": "none",
+      "solar_installed": false,
+      "heat_pump_installed": false,
+      "loft_insulation_installed": false,
+      "smart_thermostat_installed": false,
+      "physical_inputs": {
+        "space_heating_demand_kwh": 4114.601873778168,
+        "hot_water_demand_kwh": 236.54526441358593,
+        "boiler_efficiency": 0.6875239522479002,
+        "scop": 3.88652076619657,
+        "hot_water_cop": 2.6082649024286773,
+        "electric_resistance_efficiency": 1,
+        "base_appliance_electricity_kwh": 2639.5325692676156,
+        "solar_generation_kwh": 0,
+        "solar_self_consumed_kwh": 0,
+        "proposed_solar_generation_kwh": 2000,
+        "proposed_solar_self_consumed_kwh": 800,
+        "proposed_heat_pump_type": "air_source_heat_pump",
+        "provenance": {
+          "status": "synthetic",
+          "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits"
+        },
+        "annual_electricity_demand_kwh": 2639.5325692676156
+      },
+      "roof_suitable_for_loft": true,
+      "roof_suitable_for_solar": true,
+      "heat_pump_compatible": null,
+      "controls_compatible": false,
+      "current_property_value_gbp": 640000.0,
+      "market_index": null,
+      "provenance": {
+        "record": "synthetic",
+        "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+        "customer_id": "HELDOUT-C-917-021"
+      }
+    },
+    "annual_energy": {
+      "electricity_kwh": 2639.5325692676156,
+      "gas_kwh": 6814.357709229704,
+      "quality": "synthetic",
+      "method": "Independent synthetic held-out thermal-component generator",
+      "electricity_months_covered": 12,
+      "gas_months_covered": 12,
+      "warnings": [
+        "Score uses a synthetic reference benchmark, not an official consumption standard.",
+        "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+        "Confirm alignment of the property snapshot and energy period; see source methodology."
+      ]
+    },
+    "benchmark": null,
+    "emission_factors": null,
+    "retrofit_costs": {
+      "loft_insulation": {
+        "amount_gbp": 1800,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "heat_pump": {
+        "amount_gbp": 8500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "solar_panels": {
+        "amount_gbp": 4500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "double_glazing": {
+        "amount_gbp": 7000,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "smart_thermostat": {
+        "amount_gbp": 300,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      }
+    },
+    "electricity_tariff_gbp_per_kwh": 0.25,
+    "gas_tariff_gbp_per_kwh": 0.065
+  },
+  {
+    "property": {
+      "property_id": "HELDOUT-917-022",
+      "property_type": "flat",
+      "region": "South East",
+      "floor_area_m2": 184.90019238303904,
+      "property_age_years": 95,
+      "bedrooms": 4,
+      "energy_rating": "F",
+      "insulation": "poor",
+      "heating_system": "air_source_heat_pump",
+      "glazing": "single",
+      "renewable_contribution": "none",
+      "smart_controls": "none",
+      "solar_installed": false,
+      "heat_pump_installed": true,
+      "loft_insulation_installed": false,
+      "smart_thermostat_installed": false,
+      "physical_inputs": {
+        "space_heating_demand_kwh": 8565.69773397957,
+        "hot_water_demand_kwh": 576.6055702207857,
+        "boiler_efficiency": 0.7354184730371346,
+        "scop": 3.7277107476468285,
+        "hot_water_cop": 2.902889521657253,
+        "electric_resistance_efficiency": 1,
+        "base_appliance_electricity_kwh": 2817.5446933131384,
+        "solar_generation_kwh": 0,
+        "solar_self_consumed_kwh": 0,
+        "proposed_solar_generation_kwh": 2000,
+        "proposed_solar_self_consumed_kwh": 800,
+        "proposed_heat_pump_type": "air_source_heat_pump",
+        "provenance": {
+          "status": "synthetic",
+          "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits"
+        },
+        "annual_electricity_demand_kwh": 5314.02027533064
+      },
+      "roof_suitable_for_loft": null,
+      "roof_suitable_for_solar": false,
+      "heat_pump_compatible": null,
+      "controls_compatible": false,
+      "current_property_value_gbp": 640000.0,
+      "market_index": null,
+      "provenance": {
+        "record": "synthetic",
+        "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+        "customer_id": "HELDOUT-C-917-022"
+      }
+    },
+    "annual_energy": {
+      "electricity_kwh": 5314.02027533064,
+      "gas_kwh": 62.7690328205035,
+      "quality": "synthetic",
+      "method": "Independent synthetic held-out thermal-component generator",
+      "electricity_months_covered": 12,
+      "gas_months_covered": 12,
+      "warnings": [
+        "Score uses a synthetic reference benchmark, not an official consumption standard.",
+        "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+        "Confirm alignment of the property snapshot and energy period; see source methodology."
+      ]
+    },
+    "benchmark": null,
+    "emission_factors": null,
+    "retrofit_costs": {
+      "loft_insulation": {
+        "amount_gbp": 1800,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "heat_pump": {
+        "amount_gbp": 8500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "solar_panels": {
+        "amount_gbp": 4500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "double_glazing": {
+        "amount_gbp": 7000,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "smart_thermostat": {
+        "amount_gbp": 300,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      }
+    },
+    "electricity_tariff_gbp_per_kwh": 0.25,
+    "gas_tariff_gbp_per_kwh": 0.065
+  },
+  {
+    "property": {
+      "property_id": "HELDOUT-917-023",
+      "property_type": "terraced",
+      "region": "North West",
+      "floor_area_m2": 143.29340722145417,
+      "property_age_years": 95,
+      "bedrooms": 4,
+      "energy_rating": "F",
+      "insulation": "poor",
+      "heating_system": "electric_resistance",
+      "glazing": "single",
+      "renewable_contribution": "none",
+      "smart_controls": "none",
+      "solar_installed": false,
+      "heat_pump_installed": false,
+      "loft_insulation_installed": false,
+      "smart_thermostat_installed": false,
+      "physical_inputs": {
+        "space_heating_demand_kwh": 12242.478287596417,
+        "hot_water_demand_kwh": 826.4761550982761,
+        "boiler_efficiency": 0.8727524714179172,
+        "scop": 4.0111158972462615,
+        "hot_water_cop": 2.3254761085024613,
+        "electric_resistance_efficiency": 1,
+        "base_appliance_electricity_kwh": 2001.0257030212624,
+        "solar_generation_kwh": 0,
+        "solar_self_consumed_kwh": 0,
+        "proposed_solar_generation_kwh": 2000,
+        "proposed_solar_self_consumed_kwh": 800,
+        "proposed_heat_pump_type": "air_source_heat_pump",
+        "provenance": {
+          "status": "synthetic",
+          "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits"
+        },
+        "annual_electricity_demand_kwh": 15069.980145715956
+      },
+      "roof_suitable_for_loft": false,
+      "roof_suitable_for_solar": null,
+      "heat_pump_compatible": null,
+      "controls_compatible": false,
+      "current_property_value_gbp": 640000.0,
+      "market_index": null,
+      "provenance": {
+        "record": "synthetic",
+        "source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
+        "customer_id": "HELDOUT-C-917-023"
+      }
+    },
+    "annual_energy": {
+      "electricity_kwh": 15069.980145715956,
+      "gas_kwh": 110.99232263863983,
+      "quality": "synthetic",
+      "method": "Independent synthetic held-out thermal-component generator",
+      "electricity_months_covered": 12,
+      "gas_months_covered": 12,
+      "warnings": [
+        "Score uses a synthetic reference benchmark, not an official consumption standard.",
+        "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+        "Confirm alignment of the property snapshot and energy period; see source methodology."
+      ]
+    },
+    "benchmark": null,
+    "emission_factors": null,
+    "retrofit_costs": {
+      "loft_insulation": {
+        "amount_gbp": 1800,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "heat_pump": {
+        "amount_gbp": 8500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "solar_panels": {
+        "amount_gbp": 4500,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "double_glazing": {
+        "amount_gbp": 7000,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      },
+      "smart_thermostat": {
+        "amount_gbp": 300,
+        "source": "Synthetic held-out quote",
+        "date": "2026-10-11"
+      }
+    },
+    "electricity_tariff_gbp_per_kwh": 0.25,
+    "gas_tariff_gbp_per_kwh": 0.065
+  }
+]

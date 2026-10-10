@@ -3,11 +3,11 @@ import argparse
 import json
 from pathlib import Path
 import numpy as np
+from evaluation.reference_policy import reference_scope
 
 
 def evaluate(rows):
-    if not rows or any(r.get("independently_prepared") is not True or not r.get("reference_source") for r in rows):
-        raise ValueError("Independent reference sources required; simulator self-agreement is not accuracy")
+    scope = reference_scope(rows, "independently_prepared", "reference_source")
     result = {}
     for fuel in ["electricity_kwh", "gas_kwh"]:
         expected = np.array([r["expected_after"][fuel] for r in rows], dtype=float)
@@ -18,7 +18,7 @@ def evaluate(rows):
         result[fuel] = {"mae_kwh": float(np.mean(abs(expected - predicted))),
                         "mape_percent": float(100 * np.mean(abs((expected[nonzero] - predicted[nonzero]) / expected[nonzero]))) if nonzero.any() else None,
                         "percentage_error_rows": int(nonzero.sum()), "zero_reference_rows": int((~nonzero).sum())}
-    return {"rows": len(rows), "per_fuel": result}
+    return {"rows": len(rows), "per_fuel": result, **scope}
 
 
 if __name__ == "__main__":

@@ -57,3 +57,7 @@ Unavailable impact responses include `status`, a human-readable `reason`, and nu
 The ID-based `/properties/{id}/valuation/impact` route accepts omitted/null/blank critical scenario fields and returns this unavailable contract. General assessment/simulation input schemas still enforce the structural inputs needed for physical calculations; malformed requests return explicit HTTP 422 validation errors. For valid simulation requests with insufficient valuation context, energy/carbon results can remain useful while nested valuation is unavailable.
 
 Missing model-used features are always rejected before prediction, even when an estimator could impute them. Missing optional fields unused by the chosen model are disclosed in warnings and never imputed. Synthetic/evidence/support gates continue to apply. Standalone baseline-value prediction does not require an existing price because its purpose is to estimate that price; it still refuses missing model inputs.
+
+## Current integrated synthetic-demo path
+
+The EPC-sales contracts above describe the legacy observed/experimental path. Complete synthetic simulation requests now use the separate [energy-intensity impact model](synthetic_impact_methodology.md), with unchanged recorded EPC, paired calibration and a supplied-current-value anchor. This path is explicitly illustrative and never used for observed inputs. Missing critical details still return unavailable; the snapshot baseline remains distinct.

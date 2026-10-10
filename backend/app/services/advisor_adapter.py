@@ -47,7 +47,8 @@ def scenario_view(value, requested):
                   simple_payback_years=value.simple_payback_years,
                   payback_reason=value.payback_reason,
                   carbon_savings_by_fuel_kg_co2e=value.carbon_savings_by_fuel_kg_co2e,
-                  applied_retrofits=list(value.applied_retrofits), versions=value.versions)
+                  applied_retrofits=list(value.applied_retrofits), versions=value.versions,
+                  optimization_context=value.optimization_context.model_dump(mode='json') if value.optimization_context else None)
     if value.after_assessment:
         result['score']['after'] = value.after_assessment.score.score
         result['score']['after_status'] = value.after_assessment.score.status

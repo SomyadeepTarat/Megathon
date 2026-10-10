@@ -1,0 +1,92 @@
+{
+  "scope": "held-out synthetic property agreement against separately implemented documented rules",
+  "seed": 917,
+  "properties": 24,
+  "energy": {
+    "rows": 119,
+    "per_fuel": {
+      "electricity_kwh": {
+        "mae_kwh": 2.292843785982172e-13,
+        "mape_percent": 3.3947740456172054e-15,
+        "percentage_error_rows": 119,
+        "zero_reference_rows": 0
+      },
+      "gas_kwh": {
+        "mae_kwh": 7.872096998538791e-13,
+        "mape_percent": 1.2646005856423184e-13,
+        "percentage_error_rows": 119,
+        "zero_reference_rows": 0
+      }
+    },
+    "reference_kinds": [
+      "documented_rule"
+    ],
+    "scope": "synthetic/reference agreement",
+    "limitation": "Rule/simulator label agreement does not establish measured real-world accuracy."
+  },
+  "carbon_mae_kg_co2e": 1.7575483552183654e-13,
+  "feasibility": {
+    "rows": 120,
+    "reference_kinds": [
+      "documented_rule"
+    ],
+    "scope": "synthetic/reference agreement",
+    "limitation": "Rule/simulator label agreement does not establish measured real-world accuracy.",
+    "metrics": {
+      "eligible": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 43.0
+      },
+      "rejected": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 51.0
+      },
+      "conditional": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 26.0
+      },
+      "accuracy": 1.0,
+      "macro avg": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 120.0
+      },
+      "weighted avg": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 120.0
+      }
+    }
+  },
+  "ranking_cases": 72,
+  "ranking_exact_match_fraction": 1.0,
+  "ranking_nonempty_cases": 69,
+  "fixed_catalogue_order_exact_match_fraction": 0.8472222222222222,
+  "feasibility_majority_baseline_accuracy": 0.425,
+  "optimizer_cases": 72,
+  "optimizer_exact_match_fraction": 1.0,
+  "coverage": [
+    "five property types",
+    "three regions",
+    "gas/heat-pump/resistance heating",
+    "existing PV",
+    "already-installed measures",
+    "unknown/false eligibility",
+    "all 32 packages",
+    "three objectives",
+    "signed fuel changes"
+  ],
+  "limitations": [
+    "Shared PRD assumptions; zero numerical error is implementation agreement, not measured savings accuracy.",
+    "These properties are never used to fit or calibrate valuation models.",
+    "Human explanation quality and observed-market validity are separate evidence."
+  ]
+}

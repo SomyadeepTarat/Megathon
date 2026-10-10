@@ -76,3 +76,14 @@ def test_score_verifier_matches_backend_half_up_rounding():
     components = [{"weight": w, "subscore": s, "contribution": w*s}
                   for w, s in zip([.25,.2,.15,.15,.1,.1,.05], [40, 77.5, 20, 50, 20, 0, 50])]
     check_score({"score": 41, "classification": "Poor", "components": components})
+
+
+def test_documented_synthetic_references_are_scoped_separately():
+    rows = [{'expected': 'eligible', 'predicted': 'eligible', 'reference_kind': 'documented_rule',
+             'reference': 'prd.md section 8', 'label_methodology': 'Known compatible installation'}]
+    result = feasibility(rows)
+    assert result['scope'] == 'synthetic/reference agreement'
+    assert result['limitation'] is not None
+    rows[0].pop('label_methodology')
+    with pytest.raises(ValueError):
+        feasibility(rows)

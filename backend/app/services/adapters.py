@@ -15,6 +15,18 @@ class PendingCarbonEngine:
 
 
 class ExistingValuationAdapter:
+    def predict_scenario_impact(self, request, scenario, energy):
+        if request.annual_energy.quality == 'synthetic' and request.property.provenance.get('record') == 'synthetic':
+            try:
+                from ml.synthetic_impact import predict_impact
+                result = predict_impact(request.property, scenario, energy)
+            except ImportError:
+                return ValuationResult(status='unavailable', reason='Synthetic valuation dependencies unavailable.')
+            return ValuationResult.model_validate(result)
+        if request.property.model_dump() != scenario.model_dump() and request.property.energy_rating == scenario.energy_rating:
+            return ValuationResult(status='unavailable', reason='No supported projected EPC estimate for observed/estimated inputs.')
+        return self.predict_value_impact(request.property, scenario)
+
     @staticmethod
     def to_features(prop):
         row = prop.model_dump(mode='json')

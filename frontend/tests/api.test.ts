@@ -59,3 +59,19 @@ test('optimizer requests actual package calculation and preserves null results',
   };
   assert.equal((await api.optimize(input, 5000, 'energy_reduction')).best_scenario, null);
 });
+
+test('recommendation mapping preserves suitability, backend rank and unranked options', async () => {
+  const scenario = { installation_cost_gbp: 1000, energy: null, carbon: null, reason: null, assumptions: [], warnings: [], annual_bill_savings_gbp: 100, simple_payback_years: 10 };
+  globalThis.fetch = async () => Response.json({
+    recommendations: [{ retrofit: 'heat_pump', priority: 2, suitability: 'Medium', suitability_reason: 'Synthetic screening estimate', feasibility: { status: 'feasible', reason: 'Compatible' }, scenario }],
+    other_options: [{ retrofit: 'solar_panels', priority: null, suitability: 'Low', suitability_reason: 'Roof unsuitable', feasibility: { status: 'infeasible', reason: 'Roof unsuitable' }, scenario }], methodology: 'Ranked individual measures', warnings: []
+  });
+  const result = await api.recommendations(input, null, 'carbon_reduction');
+  assert.equal(result.items[0].priority, 2);
+  assert.equal(result.items[0].suitability, 'Medium');
+  assert.equal(result.items[0].suitability_reason, 'Synthetic screening estimate');
+  assert.equal(result.items[0].recommended, true);
+  assert.equal(result.items[0].simple_payback_years, 10);
+  assert.equal(result.items[1].priority, null);
+  assert.equal(result.items[1].recommended, false);
+});

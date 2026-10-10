@@ -8,7 +8,7 @@ from fastapi.responses import JSONResponse
 from app.core.efficiency import assess
 from app.db.repository import JsonPropertyRepository, CsvPropertyRepository, EditableRepository
 from app.schemas.models import AssessmentRequest, AssessmentResponse, ScenarioRequest, RecommendationRequest
-from app.schemas.engines import PropertyRecord, PropertySummary, ScenarioResponse, RecommendationResponse, OptimizationResult, ValuationRequest, ValuationResult, FullAssessmentResponse
+from app.schemas.engines import PropertyRecord, PropertySummary, ScenarioResponse, RecommendationResponse, OptimizationResult, ValuationRequest, ValuationResult, FullAssessmentResponse, EnergyImpact, FuelState
 from app.services.adapters import ExistingValuationAdapter
 from app.services.p4_adapter import P4RetrofitAdapter, P4CarbonAdapter, configured_factors
 from app.services.recommendations import recommend
@@ -75,7 +75,7 @@ def health():
                              'retrofit_simulation': 'connected_input_dependent', 'valuation': 'adapter_present', 'advisor': True},
             'readiness': {'retrofit_engine': {'connected': True, 'requires': ['confirmed feasibility', 'physical inputs', 'documented factors']},
                           'emissions_factors': factor_ready,
-                          'valuation': {'artifact_present': model_ready, 'evidence_supported': 'checked per request; synthetic uplift disabled'},
+                          'valuation': {'artifact_present': model_ready, 'synthetic_impact_artifact_present': (project_root / 'ml/models/synthetic_impact.joblib').is_file(), 'evidence_supported': 'checked per request; illustrative intensity-based impact only for explicitly synthetic property and energy inputs'},
                           'advisor': {'mounted': True, 'provider': os.getenv('LLM_PROVIDER', 'deterministic')},
                           'scoring': {'complete_dataset_scores_ready': all(assess(row).score.status == 'available' for row in repository.list_properties()), 'requires': ['applicable benchmark and complete component inputs']},
                           'budget_optimizer': {'ready': True, 'requires': ['budget', 'documented costs for selected measures', 'objective-specific inputs']}}}
@@ -164,13 +164,29 @@ def optimize(request: RecommendationRequest, retrofit=Depends(get_retrofit_engin
 
 @app.post('/properties/{property_id}/valuation/impact', response_model=ValuationResult)
 def valuation(property_id: str, request: ValuationRequest, repo=Depends(get_repository), engine=Depends(get_valuation_engine)):
-    baseline = load_record(repo, property_id).property
+    record = load_record(repo, property_id)
+    baseline = record.property
     scenario = request.scenario_property or baseline
     if scenario.property_id != property_id:
         raise HTTPException(422, 'Scenario property ID differs from baseline')
     input_reason = impact_input_reason(baseline, scenario)
     if input_reason:
         return ValuationResult(status='unavailable', reason=input_reason)
+    if request.scenario_annual_energy is not None:
+        before, after = record.annual_energy, request.scenario_annual_energy
+        if after.quality not in ('synthetic', 'estimated'):
+            return ValuationResult(status='unavailable', reason='Scenario energy must be explicitly synthetic or estimated for illustrative impact; observed after data needs separate validation.')
+        if any(value is None for value in [before.electricity_kwh, before.gas_kwh, after.electricity_kwh, after.gas_kwh]):
+            return ValuationResult(status='unavailable', reason='Both baseline and scenario fuel totals are required for energy-based value impact.')
+        e, g = before.electricity_kwh-after.electricity_kwh, before.gas_kwh-after.gas_kwh
+        total = before.electricity_kwh+before.gas_kwh
+        energy = EnergyImpact(baseline=FuelState(electricity_kwh=before.electricity_kwh, gas_kwh=before.gas_kwh),
+            after=FuelState(electricity_kwh=after.electricity_kwh, gas_kwh=after.gas_kwh),
+            electricity_savings_kwh=e, gas_savings_kwh=g, net_savings_kwh=e+g,
+            improvement_percentage=100*(e+g)/total if total else None)
+        if hasattr(engine, 'predict_scenario_impact'):
+            return engine.predict_scenario_impact(record, scenario, energy)
+        return ValuationResult(status='unavailable', reason='The configured valuation engine does not support energy-based scenario impact.')
     if scenario.model_dump() != baseline.model_dump():
         return ValuationResult(status='unavailable', reason='No supported projected EPC estimate for the retrofit scenario.')
     return engine.predict_value_impact(baseline, scenario)
