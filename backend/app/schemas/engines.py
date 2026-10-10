@@ -34,7 +34,7 @@ class SimulationResult(StrictModel):
     updated_property: Property
     after: FuelState
     applied_retrofits: list[Retrofit]
-    installation_cost_gbp: float = Field(ge=0, allow_inf_nan=False)
+    installation_cost_gbp: float | None = Field(default=None, ge=0, allow_inf_nan=False)
     methodology_version: str = Field(min_length=1)
     assumptions: list[str] = Field(default_factory=list)
     warnings: list[str] = Field(default_factory=list)
@@ -72,6 +72,7 @@ class EmissionFactor(StrictModel):
     source: str = Field(min_length=1)
     source_year: int = Field(ge=1900)
     accounting_boundary: str = Field(min_length=1)
+    version: str | None = None
 
 
 class CarbonResult(StrictModel):
@@ -128,6 +129,8 @@ class ScenarioResponse(StrictModel):
     scenario_id: str
     property_id: str
     status: Literal['success', 'partial', 'rejected', 'unavailable']
+    baseline_carbon: dict | None = None
+    after_carbon: dict | None = None
     reason: str | None = None
     baseline_assessment: AssessmentResponse
     feasibility: FeasibilityResult
@@ -144,7 +147,7 @@ class ScenarioResponse(StrictModel):
 
 
 class PropertyRecord(AssessmentRequest):
-    dataset_kind: Literal['synthetic', 'observed']
+    dataset_kind: Literal['synthetic', 'observed', 'estimated', 'imported']
     dataset_source: str = Field(min_length=1)
 
 
@@ -152,7 +155,7 @@ class PropertySummary(StrictModel):
     property_id: str
     property_type: str
     region: str
-    dataset_kind: Literal['synthetic', 'observed']
+    dataset_kind: Literal['synthetic', 'observed', 'estimated', 'imported']
     dataset_source: str
 
 
@@ -182,3 +185,30 @@ class OptimizationResult(StrictModel):
         if not self.methodology.strip():
             raise ValueError('Optimization requires a documented methodology')
         return self
+
+
+class RecommendationOption(StrictModel):
+    retrofit: Retrofit
+    feasibility: FeasibilityItem
+    scenario: ScenarioResponse
+
+
+class RecommendationResponse(StrictModel):
+    property_id: str
+    status: Literal['available', 'partial', 'unavailable']
+    recommendations: list[RecommendationOption]
+    other_options: list[RecommendationOption]
+    methodology: str
+    warnings: list[str] = Field(default_factory=list)
+
+
+class ValuationRequest(StrictModel):
+    scenario_property: Property | None = None
+
+
+class FullAssessmentResponse(StrictModel):
+    property_id: str
+    assessment: AssessmentResponse
+    annual_energy: AnnualEnergy
+    baseline_carbon: dict
+    valuation: ValuationResult
