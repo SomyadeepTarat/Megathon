@@ -8,6 +8,9 @@ import { api } from '@/lib/api';
 import type { Assessment, AssessmentRequest, PropertyRecord, PropertySummary, Scenario } from '@/lib/types';
 import { label } from '@/lib/format';
 import { Advisor } from './advisor';
+import { scenarioOutput, type OutputSnapshot } from '@/lib/results';
+import { OutputSummary } from './results';
+import { previewOutputs } from '@/lib/ui-preview';
 import { HomeJourney, ReplayJourney } from './home-journey';
 
 interface State {
@@ -15,7 +18,7 @@ interface State {
   loading: boolean; error: string | null; dirty: boolean; service: 'checking' | 'online' | 'offline';
   selectProperty: (id: string) => Promise<void>; newProperty: () => void;
   edit: (record: PropertyRecord) => void; runAssessment: () => Promise<void>;
-  setScenario: (scenario: Scenario | null) => void; openAdvisor: () => void; refresh: () => void;
+  outputs: OutputSnapshot[]; addOutput: (output: OutputSnapshot) => void; setScenario: (scenario: Scenario | null) => void; openAdvisor: () => void; refresh: () => void;
 }
 const Context = createContext<State | null>(null);
 export function useWorkspace() { const value = useContext(Context); if (!value) throw new Error('Workspace missing'); return value; }
@@ -73,11 +76,25 @@ export function Workspace({ children }: { children: ReactNode }) {
   const [properties, setProperties] = useState<PropertySummary[]>([]);
   const [record, setRecord] = useState<PropertyRecord | null>(null);
   const [assessment, setAssessment] = useState<Assessment | null>(null);
-  const [scenario, setScenario] = useState<Scenario | null>(null);
+  const [scenario, updateScenario] = useState<Scenario | null>(null);
+  const [outputs, setOutputs] = useState<OutputSnapshot[]>([]);
+  const [uiPreview, setUiPreview] = useState(false);
+  useEffect(() => { setUiPreview(process.env.NODE_ENV !== 'production' && new URLSearchParams(window.location.search).get('ui-preview') === '1'); }, []);
+  const visibleOutputs = uiPreview ? previewOutputs : outputs;
   const [dirty, setDirty] = useState(false); const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null); const [service, setService] = useState<State['service']>('checking');
   const [advisor, setAdvisor] = useState(false); const [mobile, setMobile] = useState(false);
   const version = useRef(0);
+  const outputVersion = version.current;
+  function addOutput(output: OutputSnapshot) {
+    if (outputVersion !== version.current || output.propertyId !== record?.property.property_id) return;
+    setOutputs((rows) => [...rows.filter((row) => row.id !== output.id), output].slice(-6));
+  }
+  function setScenario(value: Scenario | null) {
+    if (value && outputVersion !== version.current) return;
+    updateScenario(value);
+    if (value && ['success', 'partial'].includes(value.status)) addOutput(scenarioOutput(value));
+  }
   async function refresh() {
     setService('checking');
     try { const [, rows] = await Promise.all([api.health(), api.properties()]); setProperties(rows); setService('online'); }
@@ -86,13 +103,13 @@ export function Workspace({ children }: { children: ReactNode }) {
   useEffect(() => { void refresh(); }, []);
   useEffect(() => { setMobile(false); }, [pathname]);
   async function selectProperty(id: string) {
-    const token = ++version.current; setLoading(true); setError(null); setRecord(null); setAssessment(null); setScenario(null); setDirty(false);
+    const token = ++version.current; setLoading(true); setError(null); setRecord(null); setAssessment(null); setScenario(null); setOutputs([]); setDirty(false);
     try { const value = await api.property(id); if (token === version.current) setRecord(value); }
     catch (e) { if (token === version.current) setError((e as Error).message); }
     finally { if (token === version.current) setLoading(false); }
   }
-  function edit(value: PropertyRecord) { version.current++; setLoading(false); setRecord(value); setDirty(true); setAssessment(null); setScenario(null); setError(null); }
-  function newProperty() { version.current++; setLoading(false); setRecord(blankProperty()); setAssessment(null); setScenario(null); setDirty(true); setError(null); router.push('/assessment'); }
+  function edit(value: PropertyRecord) { version.current++; setLoading(false); setRecord(value); setDirty(true); setAssessment(null); setScenario(null); setOutputs([]); setError(null); }
+  function newProperty() { version.current++; setLoading(false); setRecord(blankProperty()); setAssessment(null); setScenario(null); setOutputs([]); setDirty(true); setError(null); router.push('/assessment'); }
   async function runAssessment() {
     if (!record) return;
     const token = ++version.current; setLoading(true); setError(null);
@@ -101,7 +118,7 @@ export function Workspace({ children }: { children: ReactNode }) {
     finally { if (token === version.current) setLoading(false); }
   }
   const title = pathname === '/compare' ? 'Scenario comparison' : navigation.find((item) => item.href === pathname)?.name || 'Workspace';
-  const value: State = { properties, record, assessment, scenario, dirty, loading, error, service, selectProperty, newProperty, edit, runAssessment, setScenario, openAdvisor: () => setAdvisor(true), refresh };
+  const value: State = { properties, record, assessment, scenario, dirty, loading, error, service, selectProperty, newProperty, edit, runAssessment, outputs: visibleOutputs, addOutput, setScenario, openAdvisor: () => setAdvisor(true), refresh };
   return <Context.Provider value={value}>
     {introductionActive && <HomeJourney onComplete={finishIntroduction} resumeFromEnd={resumeIntroduction} />}
     <a href="#main" className="skip-link">Skip to content</a>
@@ -115,11 +132,11 @@ export function Workspace({ children }: { children: ReactNode }) {
       </aside>
       <div className="main-shell"><header className="topbar"><div className="breadcrumb"><button className="icon-button mobile-menu" onClick={() => setMobile(!mobile)} aria-label="Open navigation" aria-expanded={mobile} aria-controls="workspace-navigation"><Menu size={21} /></button><Link href="/">Kew</Link><ChevronRight size={14} /><span>{title}</span></div><div className="header-actions"><span className={`service-state ${service}`}><i />{service === 'online' ? 'Your workspace' : service === 'checking' ? 'Loading…' : 'Service unavailable'}</span><button className="icon-button" onClick={() => void refresh()} aria-label="Refresh properties"><RefreshCw size={18} /></button><span className="header-separator" /><button className="icon-button" aria-label="Open Kew advisor" onClick={() => setAdvisor(true)}><MessageCircle size={20} /></button></div></header>
         {service === 'offline' && <div className="connection-notice" role="status">The assessment service is offline. You can explore Kew and enter your details. <button onClick={() => void refresh()}>Reconnect <ArrowUpRight size={13} /></button></div>}
-        <main id="main" tabIndex={-1} className="main-content">{pathname === '/' && <ReplayJourney onReplay={replayIntroduction} />}{children}</main>
+        <main id="main" tabIndex={-1} className="main-content">{uiPreview && <div className="notice warning" role="status"><div><strong>Dummy UI preview</strong><p>These figures are invented for design review. They are not model results and are not saved.</p><button className="button secondary" onClick={() => setAdvisor(true)}>Preview Ask Kew</button> <Link className="button secondary" href="/compare" onClick={() => { setUiPreview(false); setAdvisor(false); }}>Exit dummy preview</Link></div></div>}{pathname === '/' && <ReplayJourney onReplay={replayIntroduction} />}{children}</main>
         <footer className="footer"><span><Leaf size={13} /> Kew · A considered path to a greener home</span><span>Transparent estimates. Informed decisions.</span></footer>
       </div>
     </div>
     {!introductionActive && !advisor && <button className="advisor-launch" onClick={() => setAdvisor(true)}><span className="advisor-dot"><Leaf size={16} /></span>Ask Kew<ArrowUpRight size={15} /></button>}
-    {advisor && <section className="advisor-panel" role="dialog" aria-modal="false" aria-label="Kew advisor"><header><div><span className="brand-mark"><Leaf size={18} /></span><div><strong>Ask Kew</strong><small>Your home, explained.</small></div></div><button className="icon-button" onClick={() => setAdvisor(false)} aria-label="Close advisor"><X size={19} /></button></header><Advisor key={JSON.stringify(record)} /></section>}
+    {advisor && <section className="advisor-panel" role="dialog" aria-modal="false" aria-label="Kew advisor"><header><div><span className="brand-mark"><Leaf size={18} /></span><div><strong>Ask Kew</strong><small>{uiPreview ? 'Dummy UI preview · invented figures' : 'Your home, explained.'}</small></div></div><button className="icon-button" onClick={() => setAdvisor(false)} aria-label="Close advisor"><X size={19} /></button></header><div className="advisor-body"><aside className="advisor-results"><OutputSummary output={visibleOutputs.at(-1)} assessment={assessment} /><Link href="/compare" className="button secondary" onClick={() => setAdvisor(false)}>Compare packages <ArrowUpRight size={14} /></Link></aside><div className="advisor-conversation"><Advisor key={JSON.stringify(record)} /></div></div></section>}
   </Context.Provider>;
 }

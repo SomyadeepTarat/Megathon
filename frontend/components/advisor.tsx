@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { ArrowUp, Leaf, LoaderCircle } from 'lucide-react';
 import { api } from '@/lib/api';
+import { advisorOutput } from '@/lib/results';
 import { label, number } from '@/lib/format';
 import { inputOf, useWorkspace } from './workspace';
 import type { AdvisorResult, Objective, Retrofit } from '@/lib/types';
@@ -14,7 +15,7 @@ function ScenarioEvidence({ result }: { result: AdvisorResult }) {
   return <div className="chat-scenario"><strong>Calculated scenario</strong>{(['electricity_savings_kwh', 'gas_savings_kwh', 'net_savings_kwh'] as const).map((key) => <div key={key}><span>{label(key.replace('_kwh', ''))}</span><b>{number(typeof data[key] === 'number' ? data[key] : null, 'kWh/year')}</b></div>)}</div>;
 }
 export function Advisor() {
-  const { record, dirty, openAdvisor } = useWorkspace();
+  const { record, dirty, addOutput, setScenario } = useWorkspace();
   const [messages, setMessages] = useState<Message[]>([]); const [question, setQuestion] = useState('');
   const [busy, setBusy] = useState(false); const [confirm, setConfirm] = useState(false);
   const [packageIds, setPackageIds] = useState<Retrofit[]>([]); const end = useRef<HTMLDivElement>(null);
@@ -25,6 +26,8 @@ export function Advisor() {
     setMessages((value) => [...value, { role: 'user', text }]); setQuestion(''); setBusy(true); setConfirm(false);
     try {
       const result = await api.advisor(record.property.property_id, text, selected ? { intent: 'simulate_retrofit', retrofits: selected, budget_gbp: null, objective: 'carbon_reduction' as Objective } : undefined, dirty ? inputOf(record) : undefined);
+      const output = advisorOutput(result);
+      if (output) { setScenario(null); addOutput(output); }
       setMessages((value) => [...value, { role: 'assistant', text: result.explanation, result }]);
       setConfirm(result.status === 'clarification_required');
     } catch (e) { setMessages((value) => [...value, { role: 'assistant', text: (e as Error).message }]); }
