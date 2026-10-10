@@ -57,7 +57,7 @@ def supported_state(trained):
     # Pick a row inside development numeric bounds.
     for _, row in df.iterrows():
         if all(lo <= row[c] <= hi for c, (lo, hi) in artifact["numeric_bounds"].items()):
-            return row.to_dict()
+            return {**row.to_dict(), "current_property_value_gbp": float(row.sale_price)}
 
 
 def test_safe_default_and_same_state(trained):
@@ -87,3 +87,37 @@ def test_observed_requires_review(trained, tmp_path):
     joblib.dump(artifact, path)
     state = supported_state(trained)
     assert predict_value_impact(state, state, path)["status"] == "unavailable"
+
+
+@pytest.mark.parametrize('field', ['floor_area', 'region', 'property_type', 'current_property_value_gbp', 'energy_rating'])
+@pytest.mark.parametrize('value', [None, '', '   ', float('nan')])
+def test_critical_missing_never_loads_model(trained, monkeypatch, field, value):
+    import backend.app.services.valuation_service as service
+    state = supported_state(trained)
+    state[field] = value
+    def forbidden(*args, **kwargs):
+        pytest.fail('Model must not be loaded or called for missing critical inputs')
+    monkeypatch.setattr(service, 'load_artifact', forbidden)
+    result = service.predict_value_impact(state, state, trained[-1], allow_illustrative=True)
+    assert result['status'] == 'unavailable'
+    assert 'Insufficient property details' in result['reason']
+    assert result['value_before'] is result['value_after'] is result['uplift_range'] is None
+
+
+def test_missing_scenario_input_and_noncritical_warning(trained):
+    state = supported_state(trained)
+    result = predict_value_impact(state, {**state, 'region': None}, trained[-1], allow_illustrative=True)
+    assert 'scenario region' in result['reason']
+    complete = {**state, 'smart_controls': None}
+    result = predict_value_impact(complete, complete, trained[-1], allow_illustrative=True)
+    assert result['status'] == 'illustrative'
+    assert any('smart_controls' in warning for warning in result['warnings'])
+    assert result['value_before'] == result['baseline_value_gbp']
+
+
+def test_current_value_required_but_not_a_prediction_anchor(trained):
+    state = supported_state(trained)
+    first = predict_value_impact(state, state, trained[-1], allow_illustrative=True)
+    other = {**state, 'current_property_value_gbp': state['current_property_value_gbp'] * 2}
+    second = predict_value_impact(other, other, trained[-1], allow_illustrative=True)
+    assert first['baseline_value_gbp'] == second['baseline_value_gbp']

@@ -94,6 +94,9 @@ class CarbonResult(StrictModel):
 class ValuationResult(StrictModel):
     status: Literal['indicative', 'illustrative', 'unavailable']
     reason: str | None = None
+    value_before: float | None = Field(default=None, gt=0, allow_inf_nan=False)
+    value_after: float | None = Field(default=None, gt=0, allow_inf_nan=False)
+    uplift_range: tuple[float, float] | None = None
     baseline_value_gbp: float | None = Field(default=None, gt=0, allow_inf_nan=False)
     after_value_gbp: float | None = Field(default=None, gt=0, allow_inf_nan=False)
     baseline_range_gbp: tuple[float, float] | None = None
@@ -106,7 +109,13 @@ class ValuationResult(StrictModel):
 
     @model_validator(mode='after')
     def valid_result(self):
-        numeric = [self.baseline_value_gbp, self.after_value_gbp, self.value_change_gbp,
+        if self.status != 'unavailable':
+            for alias, original in [('value_before', 'baseline_value_gbp'), ('value_after', 'after_value_gbp'), ('uplift_range', 'value_change_range_gbp')]:
+                if getattr(self, alias) is None:
+                    setattr(self, alias, getattr(self, original))
+                elif getattr(self, alias) != getattr(self, original):
+                    raise ValueError('Valuation aliases disagree with estimates')
+        numeric = [self.value_before, self.value_after, self.uplift_range, self.baseline_value_gbp, self.after_value_gbp, self.value_change_gbp,
                    self.baseline_range_gbp, self.after_range_gbp, self.value_change_range_gbp,
                    self.confidence_level]
         if self.status == 'unavailable':
@@ -202,8 +211,25 @@ class RecommendationResponse(StrictModel):
     warnings: list[str] = Field(default_factory=list)
 
 
+class ValuationProperty(Property):
+    """Allow incomplete impact inputs to reach the explicit availability guard."""
+    floor_area_m2: float | None = Field(default=None, gt=0, allow_inf_nan=False)
+    region: str | None = None
+    property_type: Literal['detached', 'semi_detached', 'terraced', 'flat', 'bungalow'] | None = None
+
+    @model_validator(mode='before')
+    @classmethod
+    def blank_critical_fields(cls, value):
+        if isinstance(value, dict):
+            value = dict(value)
+            for field in ['floor_area_m2', 'region', 'property_type', 'current_property_value_gbp', 'energy_rating']:
+                if isinstance(value.get(field), str) and not value[field].strip():
+                    value[field] = None
+        return value
+
+
 class ValuationRequest(StrictModel):
-    scenario_property: Property | None = None
+    scenario_property: ValuationProperty | None = None
 
 
 class FullAssessmentResponse(StrictModel):

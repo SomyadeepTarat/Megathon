@@ -25,15 +25,16 @@ def unavailable(reason):
     return {"status": "unavailable", "reason": reason}
 
 
+from backend.app.services.valuation_inputs import normalize_property, impact_input_reason, missing
+
+
 def normalize(state):
-    if hasattr(state, "model_dump"):
-        state = state.model_dump(mode="json")
-    row = dict(state)
-    if row.get("floor_area") is None:
-        row["floor_area"] = row.get("floor_area_m2")
-    if row.get("age") is None:
-        row["age"] = row.get("property_age_years")
-    return row
+    return normalize_property(state)
+
+
+def impact_unavailable(reason):
+    return {"status": "unavailable", "reason": reason,
+            "value_before": None, "value_after": None, "uplift_range": None}
 
 
 def feature_row(state, artifact):
@@ -41,7 +42,7 @@ def feature_row(state, artifact):
     row = {}
     for col in artifact["features"]:
         value = state.get(col)
-        if value is None:
+        if missing(value):
             raise ValueError(f"Missing valuation input: {col}")
         if col in artifact["numeric_bounds"]:
             try:
@@ -94,34 +95,42 @@ def predict_property_value(property_data, model_path=None, *, allow_illustrative
 
 def predict_value_impact(baseline, scenario, model_path=None, *, allow_illustrative=False):
     baseline, scenario = normalize(baseline), normalize(scenario)
+    reason = impact_input_reason(baseline, scenario)
+    if reason:
+        return impact_unavailable(reason)
     path = Path(model_path or os.environ.get("VALUATION_MODEL_PATH", DEFAULT_MODEL))
     if not path.is_file():
-        return unavailable("No calibrated valuation model available")
+        return impact_unavailable("No calibrated valuation model available")
     try:
         artifact = load_artifact(path)
     except (ValueError, OSError, EOFError, KeyError, TypeError, AttributeError, ImportError, pickle.UnpicklingError):
-        return unavailable("Valuation artifact is invalid or incompatible")
+        return impact_unavailable("Valuation artifact is invalid or incompatible")
     synthetic = artifact["provenance"]["kind"] == "synthetic"
     if synthetic and not allow_illustrative:
-        return unavailable("Synthetic training data cannot support real-world value uplift")
+        return impact_unavailable("Synthetic training data cannot support real-world value uplift")
     if not synthetic and not artifact["energy_supported"]:
-        return unavailable("No reviewed evidence supporting an energy-efficiency valuation relationship")
+        return impact_unavailable("No reviewed evidence supporting an energy-efficiency valuation relationship")
     features = artifact["features"]
     if ENERGY not in features:
-        return unavailable("Model has no supported energy-efficiency feature")
+        return impact_unavailable("Model has no supported energy-efficiency feature")
     # Reject changes unrelated to retrofits rather than silently crediting them.
     for col in ["floor_area", "bedrooms", "age", "market_index", *CATEGORICAL]:
         if baseline.get(col) != scenario.get(col):
-            return unavailable(f"Unrelated characteristic changed: {col}")
+            return impact_unavailable(f"Unrelated characteristic changed: {col}")
     if baseline.get("property_id") != scenario.get("property_id"):
-        return unavailable("Baseline and scenario refer to different properties")
+        return impact_unavailable("Baseline and scenario refer to different properties")
     try:
         rows = [feature_row(state, artifact) for state in [baseline, scenario]]
     except ValueError as error:
-        return unavailable(str(error))
+        return impact_unavailable(str(error))
+    optional_fields = {'age', 'bedrooms', 'market_index', 'heating_system', 'insulation',
+                       'glazing', 'renewable_contribution', 'smart_controls'}
+    optional_missing = sorted({key for state in [baseline, scenario]
+                               for key in optional_fields | set(state)
+                               if missing(state.get(key)) and key not in features and key != 'baseline_value'})
     predictions = artifact["model"].predict(pd.DataFrame(rows))
     if not np.isfinite(predictions).all() or (predictions <= 0).any():
-        return unavailable("Model produced an invalid property value")
+        return impact_unavailable("Model produced an invalid property value")
     before, after = map(float, predictions)
     delta = after - before
     q = artifact["radius"]
@@ -130,12 +139,13 @@ def predict_value_impact(baseline, scenario, model_path=None, *, allow_illustrat
     return {
         "status": "illustrative" if synthetic else "indicative",
         "baseline_value_gbp": before, "after_value_gbp": after,
+        "value_before": before, "value_after": after, "uplift_range": [delta-width, delta+width],
         "baseline_range_gbp": [max(0, before - q), before + q],
         "after_range_gbp": [max(0, after - q), after + q],
         "value_change_gbp": delta, "value_change_range_gbp": [delta - width, delta + width],
         "confidence_level": 1 - artifact["alpha"],
         "method": "Split conformal absolute residuals; contrast uses two alpha/2 marginal bands",
-        "warnings": ["Observational model contrast; not a causal retrofit premium.",
+        "warnings": (["Unused optional fields are missing: " + ', '.join(optional_missing)] if optional_missing else []) + ["Observational model contrast; not a causal retrofit premium.",
                      "Contrast coverage is unvalidated; exchangeability may fail for retrofit scenarios.",
                      "Physical upgrades without a supported updated EPC do not change the model estimate."],
     }

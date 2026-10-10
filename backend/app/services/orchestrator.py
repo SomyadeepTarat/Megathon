@@ -1,3 +1,4 @@
+from app.services.valuation_inputs import impact_input_reason
 import math
 from uuid import uuid4
 from app.core.efficiency import assess
@@ -83,7 +84,10 @@ def run_scenario(request: ScenarioRequest, retrofit: RetrofitEngine,
         if not math.isclose(carbon_result.reduction_kg_co2e, expected, abs_tol=1e-7, rel_tol=1e-9):
             raise EngineContractError('Carbon result disagrees with fuel changes and factors')
     response.carbon = carbon_result
-    if original.property.model_dump() != result.updated_property.model_dump() and original.property.energy_rating == result.updated_property.energy_rating:
+    input_reason = impact_input_reason(original.property, result.updated_property)
+    if input_reason:
+        response.valuation = ValuationResult(status='unavailable', reason=input_reason)
+    elif original.property.model_dump() != result.updated_property.model_dump() and original.property.energy_rating == result.updated_property.energy_rating:
         response.valuation = ValuationResult(status='unavailable', reason='No supported projected EPC estimate; the existing valuation model uses recorded EPC as its energy feature.')
     else:
         response.valuation = valuation.predict_value_impact(original.property.model_copy(deep=True),

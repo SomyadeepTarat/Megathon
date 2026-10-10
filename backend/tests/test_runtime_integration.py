@@ -16,7 +16,7 @@ def client():
 @pytest.fixture
 def complete_input():
     value = json.loads((Path(__file__).resolve().parents[2] / 'docs/assessment-example.json').read_text())
-    value['property'].update(property_id='INTEGRATION1', solar_installed=False, heat_pump_installed=False,
+    value['property'].update(property_id='INTEGRATION1', current_property_value_gbp=250000, solar_installed=False, heat_pump_installed=False,
         heat_pump_compatible=True, controls_compatible=True, roof_suitable_for_solar=True,
         roof_suitable_for_loft=True, loft_insulation_installed=False,
         physical_inputs={'thermal_demand_kwh': 8000, 'boiler_efficiency': .8, 'scop': 4,
@@ -180,3 +180,42 @@ def test_unknown_glazing_is_conditional(client, complete_input):
     response = client.post('/scenarios/simulate', json=complete_input)
     assert response.status_code == 409
     assert response.json()['feasibility']['items'][0]['status'] == 'conditional'
+
+
+@pytest.mark.parametrize('endpoint', ['/scenarios/simulate', '/assessments/full'])
+def test_incomplete_value_input_returns_null_estimates(client, complete_input, endpoint):
+    complete_input['property']['current_property_value_gbp'] = None
+    complete_input['retrofits'] = ['heat_pump']
+    if endpoint == '/assessments/full':
+        complete_input.pop('retrofits')
+    response = client.post(endpoint, json=complete_input)
+    assert response.status_code == 200
+    result = response.json()['valuation']
+    assert result['status'] == 'unavailable'
+    assert 'current baseline value' in result['reason']
+    assert result['value_before'] is result['value_after'] is result['uplift_range'] is None
+
+
+def test_id_impact_missing_baseline_value(client, complete_input):
+    complete_input['property']['current_property_value_gbp'] = None
+    assert client.post('/properties', json=complete_input).status_code == 201
+    result = client.post('/properties/INTEGRATION1/valuation/impact', json={})
+    assert result.status_code == 200
+    assert 'current baseline value' in result.json()['reason']
+    assert result.json()['value_before'] is result.json()['uplift_range'] is None
+
+
+@pytest.mark.parametrize('field', ['floor_area_m2', 'region', 'property_type', 'energy_rating'])
+@pytest.mark.parametrize('mode', ['omitted', 'null', 'blank'])
+def test_impact_api_incomplete_scenario(client, field, mode):
+    scenario = client.get('/properties/P00001').json()['property']
+    if mode == 'omitted':
+        scenario.pop(field)
+    else:
+        scenario[field] = None if mode == 'null' else ' '
+    response = client.post('/properties/P00001/valuation/impact', json={'scenario_property': scenario})
+    assert response.status_code == 200
+    value = response.json()
+    assert value['status'] == 'unavailable'
+    assert 'Insufficient property details' in value['reason']
+    assert value['value_before'] is value['value_after'] is value['uplift_range'] is None

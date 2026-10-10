@@ -1,3 +1,4 @@
+from app.services.valuation_inputs import impact_input_reason
 import logging
 import os
 from pathlib import Path
@@ -154,6 +155,9 @@ def valuation(property_id: str, request: ValuationRequest, repo=Depends(get_repo
     scenario = request.scenario_property or baseline
     if scenario.property_id != property_id:
         raise HTTPException(422, 'Scenario property ID differs from baseline')
+    input_reason = impact_input_reason(baseline, scenario)
+    if input_reason:
+        return ValuationResult(status='unavailable', reason=input_reason)
     if scenario.model_dump() != baseline.model_dump():
         return ValuationResult(status='unavailable', reason='No supported projected EPC estimate for the retrofit scenario.')
     return engine.predict_value_impact(baseline, scenario)
