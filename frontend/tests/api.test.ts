@@ -75,3 +75,23 @@ test('recommendation mapping preserves suitability, backend rank and unranked op
   assert.equal(result.items[1].priority, null);
   assert.equal(result.items[1].recommended, false);
 });
+
+test('advisor stream handles split network chunks and delivers real progress', async () => {
+  const progress: string[] = [];
+  const encoder = new TextEncoder();
+  globalThis.fetch = async () => new Response(new ReadableStream({ start(controller) {
+    for (const chunk of ['event: pro', 'gress\ndata: {"message":"Checking feasibility"}\n\n',
+      'event: result\ndata: {"status":"success","explanation":"Verified answer"}\n\n']) {
+      controller.enqueue(encoder.encode(chunk));
+    }
+    controller.close();
+  } }));
+  const answer = await api.advisorStream('P1', 'install solar', (message) => progress.push(message));
+  assert.deepEqual(progress, ['Checking feasibility']);
+  assert.equal(answer.explanation, 'Verified answer');
+});
+
+test('advisor stream never treats an interrupted connection as an answer', async () => {
+  globalThis.fetch = async () => new Response(new ReadableStream({ start(controller) { controller.close(); } }));
+  await assert.rejects(api.advisorStream('P1', 'Explain', () => {}), /ended before an answer/);
+});

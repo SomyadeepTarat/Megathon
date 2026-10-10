@@ -105,6 +105,28 @@ class BackendAdvisorEngines:
             return result
         return await asyncio.to_thread(execute)
 
+    async def recommendations(self, property_id):
+        result = await self.assessment(property_id)
+        def execute():
+            from app.schemas.models import RecommendationRequest
+            from app.services.recommendations import recommend
+            from app.services.p4_adapter import P4CarbonAdapter
+            request = RecommendationRequest.model_validate(self._request(property_id, []).model_dump(mode='json'))
+            carbon = self.carbon()
+            if isinstance(carbon, P4CarbonAdapter):
+                carbon = P4CarbonAdapter(request.emission_factors)
+            return recommend(request, self.retrofit(), carbon, self.valuation())
+        options = await asyncio.to_thread(execute)
+        result['recommendations'] = [
+            {'retrofit': option.retrofit, 'feasible': option.feasibility.status == 'feasible',
+             'reason': option.feasibility.reason, 'estimated_cost_gbp': option.estimated_cost_gbp,
+             'after_score': option.scenario.after_assessment.score.score if option.scenario.after_assessment else None,
+             'suitability': option.suitability, 'suitability_reason': option.suitability_reason}
+            for option in options.recommendations if option.suitability != 'Low']
+        result['warnings'].extend(options.warnings)
+        result['sources'].append(options.methodology)
+        return result
+
     async def feasibility(self, property_id, retrofits):
         def execute():
             value = self.retrofit().check_feasibility(self._request(property_id, retrofits))

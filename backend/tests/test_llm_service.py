@@ -56,7 +56,7 @@ class AdvisorTests(unittest.IsolatedAsyncioTestCase):
         response = await self.ask('What if I install only a heat pump?')
         self.assertEqual(response.tool_calls, ['feasibility', 'simulate'])
         self.assertEqual(self.engines.calls[1][1], ['heat_pump'])
-        self.assertIn('-1200 kWh/year', response.explanation)
+        self.assertIn('-1,200 kWh/year', response.explanation)
         self.assertIn('increased consumption', response.explanation)
 
     async def test_two_upgrades(self):
@@ -151,7 +151,7 @@ class AdvisorTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(mode, 'deterministic')
 
     async def test_valid_fact_selection_preserves_caveats(self):
-        text, _, mode, _ = await generate_explanation(FakeEngines().result, provider=FakeProvider({'fact_ids': ['f0']}))
+        text, _, mode, _ = await generate_explanation(FakeEngines().result, provider=FakeProvider({'sentences': [{'text': 'Your current score reflects the recorded property details.', 'fact_ids': ['f0']}]}))
         self.assertEqual(mode, 'grounded_llm')
         self.assertIn('Carbon estimate is unavailable', text)
         self.assertIn('Roof survey required', text)
@@ -183,7 +183,7 @@ class AdvisorTests(unittest.IsolatedAsyncioTestCase):
         engines.result['status'] = 'partial'
         response = await AdvisorService(engines).chat(ChatRequest(property_id='P1', message='install heat pump'))
         self.assertEqual(response.status, 'partial')
-        self.assertIn('-1200 kWh/year', response.explanation)
+        self.assertIn('-1,200 kWh/year', response.explanation)
         self.assertIn('Valuation estimate is unavailable', response.explanation)
 
     async def test_explicit_selection_resolves_negation(self):
@@ -295,3 +295,180 @@ class AdvisorTests(unittest.IsolatedAsyncioTestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+class LiveAdvisorTests(unittest.IsolatedAsyncioTestCase):
+    async def test_follow_up_recalculates_previous_package(self):
+        engines = FakeEngines()
+        response = await AdvisorService(engines).chat(ChatRequest(
+            property_id='P1', message='Why does its electricity consumption increase?',
+            context=Intent(intent='simulate_retrofit', retrofits=['heat_pump'])))
+        self.assertEqual(response.tool_calls, ['feasibility', 'simulate'])
+        self.assertEqual(engines.calls[1][1], ['heat_pump'])
+
+    async def test_context_cannot_replace_new_action(self):
+        engines = FakeEngines()
+        response = await AdvisorService(engines).chat(ChatRequest(
+            property_id='P1', message='install solar',
+            context=Intent(intent='simulate_retrofit', retrofits=['heat_pump'])))
+        self.assertEqual(response.intent.retrofits, ['solar_panels'])
+
+    async def test_progress_tracks_actual_tools(self):
+        progress = []
+        async def record(message):
+            progress.append(message)
+        await AdvisorService(FakeEngines()).chat(ChatRequest(
+            property_id='P1', message='install heat pump'), progress=record)
+        self.assertEqual(len(progress), 4)
+        self.assertIn('feasibility', progress[1])
+        self.assertIn('Recalculating', progress[2])
+
+    async def test_fallback_focuses_on_requested_topic(self):
+        result = FakeEngines().result
+        result['simple_payback_years'] = 12.5
+        text, facts, _, _ = await generate_explanation(result, 'What is the payback?')
+        self.assertTrue(text.startswith('The modeled simple payback is 12.5 years'))
+        self.assertIn('Roof survey required', text)
+        self.assertIn('Evidence and limitations', text)
+
+
+def test_stream_emits_progress_then_validated_result():
+    import json
+    from fastapi import FastAPI
+    from fastapi.testclient import TestClient
+    from backend.app.api.advisor import router
+    app = FastAPI()
+    app.include_router(router)
+    app.state.advisor_service = AdvisorService(FakeEngines())
+    with TestClient(app) as client:
+        response = client.post('/advisor/chat/stream', json={'property_id': 'P1', 'message': 'install heat pump'})
+    assert response.status_code == 200
+    blocks = response.text.strip().split('\n\n')
+    assert blocks[0].startswith('event: progress')
+    assert blocks[-1].startswith('event: result')
+    answer = json.loads(blocks[-1].split('data: ', 1)[1])
+    assert answer['tool_calls'] == ['feasibility', 'simulate']
+    assert answer['mode'] == 'deterministic'
+
+
+def test_stream_reports_missing_property_without_internal_error():
+    from fastapi import FastAPI
+    from fastapi.testclient import TestClient
+    from backend.app.api.advisor import router
+    from backend.app.services.llm_service import PropertyNotFound
+    class Missing(FakeEngines):
+        async def assessment(self, pid):
+            raise PropertyNotFound()
+    app = FastAPI(); app.include_router(router)
+    app.state.advisor_service = AdvisorService(Missing())
+    with TestClient(app) as client:
+        response = client.post('/advisor/chat/stream', json={'property_id': 'P1', 'message': 'Explain my score'})
+    assert 'event: error' in response.text
+    assert 'Property not found' in response.text
+
+class PlanningGrammarTests(unittest.IsolatedAsyncioTestCase):
+    async def test_currency_plans_preserve_objective_without_model(self):
+        intent, _ = await extract_intent('Plan upgrades within 5000 pounds to reduce carbon', None)
+        self.assertEqual(intent.intent, 'optimize_budget')
+        self.assertEqual(intent.budget_gbp, 5000)
+        intent, _ = await extract_intent('My budget is £15000 for energy reduction', None)
+        self.assertEqual(intent.objective, 'energy_reduction')
+
+    async def test_failed_unresolved_plan_never_reads_stale_assessment(self):
+        engines = FakeEngines()
+        result = await AdvisorService(engines, FakeProvider(fail=True)).chat(ChatRequest(
+            property_id='P1', message='Plan upgrades for my home'))
+        self.assertEqual(result.status, 'clarification_required')
+        self.assertEqual(engines.calls, [])
+
+class BlockedConversationTests(unittest.IsolatedAsyncioTestCase):
+    async def test_blocked_upgrade_exposes_reason_and_follow_up_rechecks(self):
+        engines = FakeEngines()
+        engines.feasible = {'all_feasible': False, 'rejected_retrofits': ['heat_pump'],
+                            'items': [{'retrofit': 'heat_pump', 'status': 'infeasible', 'reason': 'A heat pump is already installed.'}]}
+        service = AdvisorService(engines)
+        first = await service.chat(ChatRequest(property_id='P1', message='install heat pump'))
+        second = await service.chat(ChatRequest(property_id='P1', message='what do you mean', context=first.intent))
+        self.assertIn('already installed', first.explanation)
+        self.assertIn('already installed', second.explanation)
+        self.assertEqual(second.status, 'infeasible')
+        self.assertEqual(second.tool_calls, ['feasibility'])
+        self.assertIsNone(second.clarification_kind)
+        self.assertNotIn('simulate', [call[0] for call in engines.calls])
+
+    async def test_missing_budget_asks_amount_not_package(self):
+        engines = FakeEngines()
+        result = await AdvisorService(engines).chat(ChatRequest(property_id='P1',
+            message="what if i don't have enough budget?", context=Intent(intent='simulate_retrofit', retrofits=['heat_pump'])))
+        self.assertEqual(result.status, 'clarification_required')
+        self.assertEqual(result.clarification_kind, 'budget')
+        self.assertIn('maximum you can spend', result.explanation)
+        self.assertEqual(engines.calls, [])
+        next_answer = await AdvisorService(engines).chat(ChatRequest(property_id='P1', message='budget £5000'))
+        self.assertEqual(next_answer.tool_calls, ['optimize'])
+
+    async def test_unclear_package_still_requires_selection(self):
+        result = await AdvisorService(FakeEngines()).chat(ChatRequest(property_id='P1', message='remove it'))
+        self.assertEqual(result.clarification_kind, 'package')
+
+
+def test_demo_p00003_reports_existing_heat_pump_on_follow_up(monkeypatch):
+    from pathlib import Path
+    from fastapi.testclient import TestClient
+    from app import main
+    from app.db.repository import JsonPropertyRepository
+    from app.services.llm_service import AdvisorService as MountedService
+    from app.services.advisor_adapter import BackendAdvisorEngines
+    root = Path(__file__).resolve().parents[2]
+    repository = JsonPropertyRepository(root / 'backend/data/curated_demo_properties.json')
+    service = MountedService(BackendAdvisorEngines(lambda: repository, main.get_retrofit_engine,
+                                                  main.get_carbon_engine, main.get_valuation_engine))
+    monkeypatch.setattr(main.app.state, 'advisor_service', service)
+    with TestClient(main.app) as client:
+        first = client.post('/advisor/chat', json={'property_id': 'DEMO-P00003', 'message': 'install heat pump'}).json()
+        assert first['status'] == 'infeasible'
+        assert 'already' in first['explanation'].lower()
+        second = client.post('/advisor/chat', json={'property_id': 'DEMO-P00003', 'message': 'what do you mean', 'context': first['intent']}).json()
+        assert second['explanation'] == first['explanation']
+        assert second['tool_calls'] == ['feasibility']
+
+class ImprovementRoutingTests(unittest.IsolatedAsyncioTestCase):
+    async def test_score_improvement_uses_recommendation_tool(self):
+        class RecommendationEngines(FakeEngines):
+            async def recommendations(self, pid):
+                self.calls.append(('recommendations', pid))
+                result = self.result.copy()
+                result['recommendations'] = [
+                    {'retrofit': 'loft_insulation', 'feasible': True, 'after_score': 45, 'estimated_cost_gbp': 1500},
+                    {'retrofit': 'heat_pump', 'feasible': False, 'after_score': 99, 'estimated_cost_gbp': 12500},
+                    {'retrofit': 'solar_panels', 'feasible': True, 'after_score': None, 'estimated_cost_gbp': 6500}]
+                return result
+        engines = RecommendationEngines()
+        response = await AdvisorService(engines).chat(ChatRequest(property_id='P1', message='how do i improve my score'))
+        self.assertEqual(response.intent.intent, 'recommend')
+        self.assertEqual(response.tool_calls, ['recommendations'])
+        main = response.explanation.split('\n\nEvidence')[0]
+        self.assertIn('38 → 45 points', main)
+        self.assertNotIn('99', main)
+        self.assertIn('Score impact is unavailable for solar panels', main)
+
+
+def test_demo_p00005_improvement_answer_uses_actual_recommendation_scores(monkeypatch):
+    from pathlib import Path
+    from fastapi.testclient import TestClient
+    from app import main
+    from app.db.repository import JsonPropertyRepository
+    from app.services.llm_service import AdvisorService as MountedService
+    from app.services.advisor_adapter import BackendAdvisorEngines
+    repository = JsonPropertyRepository(Path(__file__).resolve().parents[2] / 'backend/data/curated_demo_properties.json')
+    monkeypatch.setattr(main.app.state, 'advisor_service', MountedService(BackendAdvisorEngines(
+        lambda: repository, main.get_retrofit_engine, main.get_carbon_engine, main.get_valuation_engine)))
+    with TestClient(main.app) as client:
+        response = client.post('/advisor/chat', json={'property_id': 'DEMO-P00005', 'message': 'how do i improve my score'}).json()
+    assert response['intent']['intent'] == 'recommend'
+    assert response['tool_calls'] == ['recommendations']
+    answer = response['explanation'].split('\n\nEvidence')[0]
+    assert 'Feasible options to explore' in answer
+    assert 'Tell me your budget' in answer
+    for rec in response['result']['recommendations']:
+        if rec['after_score'] is not None and rec['retrofit'].replace('_', ' ').capitalize() + ':' in answer:
+            assert f"32 → {rec['after_score']:g} points" in answer

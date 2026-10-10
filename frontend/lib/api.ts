@@ -57,6 +57,39 @@ export const api = {
     }));
     return { items, warnings: [result.methodology, ...result.warnings] };
   },
+  advisorStream: async (property_id: string, message: string,
+    onProgress: (message: string) => void, scenario?: AdvisorResult['intent'],
+    snapshot?: AssessmentRequest, context?: AdvisorResult['intent']) => {
+    if (snapshot) {
+      if (snapshot.property.property_id !== property_id) throw new ApiError(422, 'Advisor property differs from the selected home.');
+      await request<PropertyRecord>('/properties', snapshot);
+    }
+    const response = await fetch('/api/backend/advisor/chat/stream', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ property_id, message, scenario, context }), cache: 'no-store',
+    });
+    if (!response.ok || !response.body) throw new ApiError(response.status, 'Cannot start the advisor. Check that the backend is running.');
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder(); let buffer = '';
+    try {
+      while (true) {
+        const chunk = await reader.read();
+        buffer += decoder.decode(chunk.value, { stream: !chunk.done });
+        let boundary: number;
+        while ((boundary = buffer.indexOf('\n\n')) >= 0) {
+          const block = buffer.slice(0, boundary); buffer = buffer.slice(boundary + 2);
+          const event = block.split('\n').find((line) => line.startsWith('event: '))?.slice(7);
+          const raw = block.split('\n').filter((line) => line.startsWith('data: ')).map((line) => line.slice(6)).join('\n');
+          if (!raw) continue;
+          const data = JSON.parse(raw);
+          if (event === 'progress') onProgress(data.message);
+          if (event === 'error') throw new ApiError(503, data.message);
+          if (event === 'result') return data as AdvisorResult;
+        }
+        if (chunk.done) throw new ApiError(503, 'The advisor connection ended before an answer was ready. Please retry.');
+      }
+    } finally { await reader.cancel(); reader.releaseLock(); }
+  },
   advisor: async (property_id: string, message: string, scenario?: { intent: string; retrofits: Retrofit[]; budget_gbp: number | null; objective: Objective }, snapshot?: AssessmentRequest) => {
     if (snapshot) {
       if (snapshot.property.property_id !== property_id) throw new ApiError(422, 'Advisor property differs from the selected home.');
