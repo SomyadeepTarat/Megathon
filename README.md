@@ -38,6 +38,7 @@ python -m pytest backend/tests -q
 | GET /properties/{id}/assessment | Score components and issues |
 | POST /assessments | Assessment of a supplied or edited snapshot |
 | POST /scenarios/simulate | Orchestration through dependency-injected engines |
+| POST /advisor/chat | Grounded explanations of server-owned results; explicit partial/unavailable status |
 
 The CSV dataset intentionally has no scoring benchmark. Full score is unavailable until a documented applicable benchmark is supplied; known component subscores remain visible. No invented official benchmark is bundled. Benchmark source authenticity is not verified by Pydantic: P3 must provide a trusted repository.
 
@@ -46,6 +47,21 @@ Default scenario responses are HTTP 503 with baseline assessment and explicit un
 The API defaults to `Data/csv/properties.csv` and `Data/csv/energy_usage.csv`. Complete annual consumption is the sum of twelve monthly readings per fuel. Missing fuel coverage produces null annual totals. Set `GREENPRINT_PROPERTY_DATASET=fixtures` to select the original three development homes. Generic heat-pump subtype and solar contribution stay unknown when the CSV does not provide them. See [dataset integration](docs/dataset_integration.md).
 
 See [backend handoff](docs/backend_handoff.md), [scoring methodology](docs/scoring_methodology.md), and [architecture](docs/backend_architecture.md). Existing teammate implementation and documentation are preserved below.
+
+## Local AI advisor (Person 2)
+
+The advisor is mounted in the existing backend. Without an LLM it uses deterministic
+explanations. For local Ollama, start its server, ensure `qwen3:4b` is already installed,
+and set `LLM_PROVIDER=ollama`, `LLM_MODEL=qwen3:4b` before starting the backend.
+The adapter disables thinking and enforces task-specific JSON output schemas.
+
+Use `/docs` to call `/advisor/chat` with a property ID from `/properties` and a message
+such as `Explain my score`. Verified partial evidence remains visible when the full
+score or valuation is unavailable. What-if requests report unavailable while P4's
+runtime engine is pending; budget optimization is also pending. Negated/comparison
+requests require explicit full package selection. Frontend implementation is deferred.
+See [AI advisor methodology and integration](docs/llm_methodology.md) for request examples,
+PowerShell settings and limitations.
 
 ---
 

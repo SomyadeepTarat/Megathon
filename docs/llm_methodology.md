@@ -1,7 +1,30 @@
 # Person 2: AI advisor implementation and handoff
 
 This implements only the AI engineering portion of the PRD. No frontend or numerical
-engine was added. Person 1 must connect the adapters before the full application works.
+engine was added. The advisor route is now mounted in the existing application, with
+`BackendAdvisorEngines` translating P1's actual assessment/scenario contracts. P4's
+production engines and budget optimization still need integration by their owners.
+
+## Audit fixes — 10 October 2026
+
+- Ollama now receives `think: false` and task-specific JSON schemas. Explanation
+  selection is restricted to actual supplied fact IDs. Empty or truncated content
+  is rejected explicitly. See [Ollama chat API](https://docs.ollama.com/api/chat).
+- Negations, comparisons, exclusions and retaining existing systems require an
+  explicit full package selection. These are blocked before LLM extraction, even
+  if the model proposes a syntactically valid package containing mentioned upgrades.
+- Partial assessments/scenarios retain verified figures and explicitly mark missing
+  score/carbon/valuation estimates unavailable. A missing optional valuation no longer
+  suppresses verified energy evidence.
+- Score components, feasible recommendation reasons and valuation intervals are
+  rendered as readable sentences instead of raw JSON. Numbers remain server-owned.
+- `/advisor/chat` is mounted; no test adapter is installed in production. Actual
+  baseline assessments work; absent retrofit/optimizer engines return unavailable.
+- `.env.example` includes local `qwen3:4b` settings. No weights are downloaded.
+
+The earlier audit reports a live installed-model run. Ollama is not currently
+listening at this checkout's localhost endpoint. Mocked transport/behavior tests do not
+establish real-model quality or latency. Rerun live evaluation on the demo machine.
 
 ## What the service does
 
@@ -25,6 +48,8 @@ duplicate upgrades, invented budgets/upgrades and provider errors fail validatio
 Unclear what-if requests ask for clarification rather than explain an old assessment.
 There is no conversation history: “remove it” requires the complete desired package.
 The client can resolve ambiguity by sending an explicit `scenario` selection.
+For example, “skip insulation and install only a heat pump” asks for confirmation
+through a full package selection, rather than letting the LLM decide what was negated.
 
 ## Grounding design
 
@@ -65,8 +90,8 @@ for absent properties and `EngineUnavailable` for expected missing data/dependen
 Other programming errors are intentionally not swallowed. Apply the application's
 authentication and property-access checks before loading a customer's property.
 
-Successful assessment/simulation/optimization output must have `property_id` matching
-the request and `status: "success"`. Simulation/optimization must also include
+Completed assessment/simulation/optimization output must have `property_id` matching
+the request and `status: "success"` or `"partial"`. Simulation/optimization must also include
 `feasibility: {"all_feasible": true, "rejected_retrofits": []}`. Unknown eligibility
 must not be marked true. Feasibility checks can supply `conditional_retrofits`.
 The selected package should be included in optimization output for frontend display.
@@ -81,7 +106,8 @@ Sections with status `unavailable`, `awaiting_factors`, or `missing_data` get an
 unavailable notice. Include provenance in `sources`/`assumptions`, including synthetic
 or imputed inputs. Do not put customer addresses or secrets in explanation evidence.
 
-Register at startup in Person 1's existing app (do not create another app):
+The existing `app.main` already registers the router and real adapter at startup.
+For a different application, the registration pattern is (do not register it twice):
 
 ```python
 from backend.app.api.advisor import router
@@ -94,9 +120,10 @@ app.state.advisor_service = AdvisorService(
 )
 ```
 
-Unconfigured router returns HTTP 503. Missing properties return HTTP 404; invalid
+An unconfigured standalone router returns HTTP 503. The production app configures it
+with real backend adapters. Missing properties return HTTP 404; invalid
 request schemas return HTTP 422. Domain outcomes use `ChatResponse.status`:
-`success`, `clarification_required`, `unavailable`, `infeasible`, `conditional`.
+`success`, `partial`, `clarification_required`, `unavailable`, `infeasible`, `conditional`.
 `tool_calls` records operations attempted, not proof those operations succeeded.
 
 Example request:
@@ -148,15 +175,28 @@ configured per-call timeout. Cold model loads may time out; fallback remains usa
 ## Verification and remaining evaluation
 
 ```powershell
-python -m unittest discover -s backend/tests -p test_llm_service.py -v
+python -m pytest backend/tests/test_llm_service.py backend/tests/test_advisor_regressions.py -q
 ```
 
-The offline suite uses synthetic test evidence and a fake provider. It checks routing,
+The offline suite uses synthetic test evidence and a fake provider. The regression
+suite also exercises the mounted production app without dependency overrides. It checks routing,
 negative savings, feasibility gates, budgets, missing results, property identity,
 schema validation, malformed provider output, provenance and fallback. The Ollama
 transport test mocks the HTTP response; it does not test a real model.
 
 The existing Person 5 `evaluation/explanation_cases.json` has 25 human-review cases.
+Run the live transport/service regression on a machine running Ollama using actual
+configured backend dependencies:
+
+```powershell
+python backend/probe_advisor.py --model qwen3:4b
+```
+
+This writes `docs/advisor_live_results.json` with outcomes, modes, timings and provider
+error types; it exits unsuccessfully if any model call fails or no explanation reaches
+`grounded_llm` mode. It never replaces missing scenario engines with fixtures. This
+report is a diagnostic record, not a human-reviewed input to P5's quality evaluator.
+
 After engine integration and local Ollama startup, record actual responses for those
 questions, derive `allowed_numbers` from the backend evidence, and have a reviewer
 fill the existing review fields. Then run:
