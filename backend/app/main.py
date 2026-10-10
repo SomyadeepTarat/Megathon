@@ -5,7 +5,7 @@ from fastapi import Depends, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from app.core.efficiency import assess
-from app.db.repository import JsonPropertyRepository
+from app.db.repository import JsonPropertyRepository, CsvPropertyRepository
 from app.schemas.models import AssessmentRequest, AssessmentResponse, ScenarioRequest
 from app.schemas.engines import PropertyRecord, PropertySummary, ScenarioResponse
 from app.services.adapters import PendingRetrofitEngine, PendingCarbonEngine, ExistingValuationAdapter
@@ -15,7 +15,14 @@ app = FastAPI(title='GreenPrint AI', version='0.2.0')
 app.add_middleware(CORSMiddleware,
     allow_origins=[x.strip() for x in os.getenv('GREENPRINT_CORS_ORIGINS', 'http://localhost:3000').split(',') if x.strip()],
     allow_methods=['GET', 'POST'], allow_headers=['Content-Type'], allow_credentials=False)
-repository = JsonPropertyRepository(Path(__file__).resolve().parents[1] / 'data/demo_properties.json')
+project_root = Path(__file__).resolve().parents[2]
+dataset_kind = os.getenv('GREENPRINT_PROPERTY_DATASET', 'csv')
+if dataset_kind == 'csv':
+    repository = CsvPropertyRepository(project_root / 'Data/csv/properties.csv', project_root / 'Data/csv/energy_usage.csv')
+elif dataset_kind == 'fixtures':
+    repository = JsonPropertyRepository(project_root / 'backend/data/demo_properties.json')
+else:
+    raise ValueError('GREENPRINT_PROPERTY_DATASET must be csv or fixtures')
 
 
 def get_repository():
@@ -43,7 +50,7 @@ async def engine_contract_error(request, exc):
 @app.get('/health')
 def health():
     return {'status': 'ok', 'version': '0.2.0',
-            'capabilities': {'scoring': True, 'property_repository': 'synthetic_development_fixtures',
+            'capabilities': {'scoring': True, 'property_repository': f'synthetic_{dataset_kind}',
                              'retrofit_simulation': False, 'valuation': 'adapter_present', 'advisor': False}}
 
 

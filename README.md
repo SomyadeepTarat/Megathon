@@ -33,15 +33,17 @@ python -m pytest backend/tests -q
 | Route | Behavior |
 |---|---|
 | GET /health | Implementation status |
-| GET /properties | Three labeled synthetic development homes |
+| GET /properties | 100 synthetic homes from the teammate CSV dataset |
 | GET /properties/{id} | Validated property and annual energy snapshot |
 | GET /properties/{id}/assessment | Score components and issues |
 | POST /assessments | Assessment of a supplied or edited snapshot |
 | POST /scenarios/simulate | Orchestration through dependency-injected engines |
 
-Demo homes intentionally have no benchmark. Full score is unavailable until a documented applicable benchmark is supplied; known component subscores remain visible. No invented official benchmark is bundled. Benchmark source authenticity is not verified by Pydantic: P3 must provide a trusted repository.
+The CSV dataset intentionally has no scoring benchmark. Full score is unavailable until a documented applicable benchmark is supplied; known component subscores remain visible. No invented official benchmark is bundled. Benchmark source authenticity is not verified by Pydantic: P3 must provide a trusted repository.
 
 Default scenario responses are HTTP 503 with baseline assessment and explicit unavailable results while P4's engine is absent. Rejected or conditional packages use HTTP 409; completed simulations use HTTP 200 with success or partial status. Numerical test adapters are confined to tests and never installed in runtime routes. The existing valuation adapter disables illustrative synthetic-model uplift by default.
+
+The API defaults to `Data/csv/properties.csv` and `Data/csv/energy_usage.csv`. Complete annual consumption is the sum of twelve monthly readings per fuel. Missing fuel coverage produces null annual totals. Set `GREENPRINT_PROPERTY_DATASET=fixtures` to select the original three development homes. Generic heat-pump subtype and solar contribution stay unknown when the CSV does not provide them. See [dataset integration](docs/dataset_integration.md).
 
 See [backend handoff](docs/backend_handoff.md), [scoring methodology](docs/scoring_methodology.md), and [architecture](docs/backend_architecture.md). Existing teammate implementation and documentation are preserved below.
 

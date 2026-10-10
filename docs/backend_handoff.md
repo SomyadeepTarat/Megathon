@@ -8,9 +8,9 @@ All fields use the declared units. Missing consumption is null, not zero. Enum s
 
 ## P3: data
 
-Implement `PropertyRepository` from `backend/app/services/contracts.py`: `list_properties()` and `load_property(id)` return `PropertyRecord` objects, with data provenance, annual energy coverage, and applicable benchmark. Unknown IDs raise KeyError. Replace `get_repository()` in `app/main.py` when integrating. Current JSON repository copies records to avoid shared mutation. Its three homes are explicitly synthetic handwritten fixtures, not a training dataset.
+Implement `PropertyRepository` from `backend/app/services/contracts.py`: `list_properties()` and `load_property(id)` return `PropertyRecord` objects, with data provenance, annual energy coverage, and applicable benchmark. Unknown IDs raise KeyError. Replace `get_repository()` in `app/main.py` when integrating. Default CSV repository loads the 100 synthetic homes and complete 2025 monthly energy from Data/csv. It sums twelve available months per fuel and leaves incomplete annual totals null. Both repositories copy records to avoid shared mutation. The original three handwritten JSON fixtures remain selectable with GREENPRINT_PROPERTY_DATASET=fixtures.
 
-Annualization is still P3's work. Preserve missing months and provide method/quality. Observed annual values require full-year coverage. Benchmarks require documented methodology, source, type, and optional region matching. Do not adopt test fixture benchmarks as real references.
+P3 supplies and documents monthly readings; the backend now sums complete-year CSV coverage. Partial-year estimation is still pending. Preserve missing months and provide method/quality. Observed annual values require full-year coverage. Benchmarks require documented methodology, source, type, and optional region matching. Do not adopt test fixture benchmarks as real references.
 
 ## P4: retrofit and carbon
 
