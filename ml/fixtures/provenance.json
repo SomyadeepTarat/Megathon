@@ -1,0 +1,9 @@
+{
+  "kind": "synthetic",
+  "source": "ml.make_fixture, seed 42; invented price equation",
+  "license": "Project-generated test fixture; no external data",
+  "energy_evidence": {
+    "reviewed": false,
+    "reference": null
+  }
+}

@@ -1,0 +1,377 @@
+[
+  {
+    "case_id": "LLM01",
+    "question": "Why is my score low?",
+    "response": null,
+    "allowed_numbers": [],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    }
+  },
+  {
+    "case_id": "LLM02",
+    "question": "Explain all seven score components.",
+    "response": null,
+    "allowed_numbers": [],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    }
+  },
+  {
+    "case_id": "LLM03",
+    "question": "Why prioritize insulation?",
+    "response": null,
+    "allowed_numbers": [],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    }
+  },
+  {
+    "case_id": "LLM04",
+    "question": "What if I install only insulation?",
+    "response": null,
+    "allowed_numbers": [],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    }
+  },
+  {
+    "case_id": "LLM05",
+    "question": "What if I install only solar?",
+    "response": null,
+    "allowed_numbers": [],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    }
+  },
+  {
+    "case_id": "LLM06",
+    "question": "What if I install only a heat pump?",
+    "response": null,
+    "allowed_numbers": [],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    }
+  },
+  {
+    "case_id": "LLM07",
+    "question": "What if I install double glazing?",
+    "response": null,
+    "allowed_numbers": [],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    }
+  },
+  {
+    "case_id": "LLM08",
+    "question": "What if I add smart controls?",
+    "response": null,
+    "allowed_numbers": [],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    }
+  },
+  {
+    "case_id": "LLM09",
+    "question": "What if I combine insulation and glazing?",
+    "response": null,
+    "allowed_numbers": [],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    }
+  },
+  {
+    "case_id": "LLM10",
+    "question": "What if I combine solar and a heat pump?",
+    "response": null,
+    "allowed_numbers": [],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    }
+  },
+  {
+    "case_id": "LLM11",
+    "question": "What can I do with a \u00a35000 budget?",
+    "response": null,
+    "allowed_numbers": [],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    }
+  },
+  {
+    "case_id": "LLM12",
+    "question": "Which package saves most carbon?",
+    "response": null,
+    "allowed_numbers": [],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    }
+  },
+  {
+    "case_id": "LLM13",
+    "question": "Which package saves most purchased energy?",
+    "response": null,
+    "allowed_numbers": [],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    }
+  },
+  {
+    "case_id": "LLM14",
+    "question": "Why does electricity use increase with a heat pump?",
+    "response": null,
+    "allowed_numbers": [],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    }
+  },
+  {
+    "case_id": "LLM15",
+    "question": "Why are electricity savings negative?",
+    "response": null,
+    "allowed_numbers": [],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    }
+  },
+  {
+    "case_id": "LLM16",
+    "question": "Can I install solar on an unsuitable roof?",
+    "response": null,
+    "allowed_numbers": [],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    }
+  },
+  {
+    "case_id": "LLM17",
+    "question": "Can I replace already triple glazed windows?",
+    "response": null,
+    "allowed_numbers": [],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    }
+  },
+  {
+    "case_id": "LLM18",
+    "question": "What if roof suitability is unknown?",
+    "response": null,
+    "allowed_numbers": [],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    }
+  },
+  {
+    "case_id": "LLM19",
+    "question": "What if annual consumption is missing?",
+    "response": null,
+    "allowed_numbers": [],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    }
+  },
+  {
+    "case_id": "LLM20",
+    "question": "What if baseline energy is zero?",
+    "response": null,
+    "allowed_numbers": [],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    }
+  },
+  {
+    "case_id": "LLM21",
+    "question": "How is carbon calculated?",
+    "response": null,
+    "allowed_numbers": [],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    }
+  },
+  {
+    "case_id": "LLM22",
+    "question": "What if emissions factors are unavailable?",
+    "response": null,
+    "allowed_numbers": [],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    }
+  },
+  {
+    "case_id": "LLM23",
+    "question": "How much will my property value rise?",
+    "response": null,
+    "allowed_numbers": [],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    }
+  },
+  {
+    "case_id": "LLM24",
+    "question": "Does the model prove a causal premium?",
+    "response": null,
+    "allowed_numbers": [],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    }
+  },
+  {
+    "case_id": "LLM25",
+    "question": "Why is valuation unavailable?",
+    "response": null,
+    "allowed_numbers": [],
+    "reviewer": null,
+    "review": {
+      "groundedness": null,
+      "factual_accuracy": null,
+      "completeness": null,
+      "tool_invocation": null,
+      "unavailable_handling": null,
+      "no_unsupported_claims": null
+    }
+  }
+]
