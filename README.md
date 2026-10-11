@@ -39,7 +39,7 @@ The original 100 are retained only as diagnostics. The active model uses price-p
 In one terminal, from the repository root:
 
 ```sh
-GREENPRINT_PROPERTY_DATASET=london LLM_PROVIDER=ollama LLM_MODEL=qwen3:4b .venv/bin/python -m uvicorn app.main:app --app-dir backend --host 127.0.0.1 --port 8001
+GREENPRINT_PROPERTY_DATASET=london .venv/bin/python -m uvicorn app.main:app --app-dir backend --host 127.0.0.1 --port 8001
 ```
 
 In a second terminal:
@@ -48,7 +48,7 @@ In a second terminal:
 npm --prefix frontend start -- --port 3000
 ```
 
-Open http://127.0.0.1:3000; API documentation is at http://127.0.0.1:8001/docs. Ollama must already be serving at http://127.0.0.1:11434 with the selected model installed. Omit `LLM_PROVIDER` and `LLM_MODEL` for deterministic explanations. Provider errors also fall back to verified facts. Configuration is read from shell variables; `.env.example` is not automatically loaded by the backend.
+Open http://127.0.0.1:3000; API documentation is at http://127.0.0.1:8001/docs. The backend automatically loads the project-root `.env`; shell variables take precedence. Configure `LLM_PROVIDER=groq`, `GROQ_API_KEY` and `GROQ_MODEL` for hosted AI. `LLM_FALLBACK_PROVIDER=ollama` and `OLLAMA_MODEL=qwen3:4b` keep local Ollama as backup at http://127.0.0.1:11434. Rate limits, provider errors and malformed Groq responses trigger Ollama; if that also fails, verified deterministic explanations remain available. Set `LLM_PROVIDER=deterministic` to disable model calls. Both providers use the same system prompts and numerical grounding checks. The key belongs only in the ignored `.env`, never frontend configuration.
 
 `GREENPRINT_PROPERTY_DATASET=london` (default) selects only the 1,900 fresh London properties and `ml/models/london_snapshot.joblib`. `csv` explicitly selects the legacy 100 supplied homes. `demo` selects 10 curated synthetic variants with clearly labelled suitability, proposed system, cost and tariff assumptions; it never modifies the supplied CSVs. `fixtures` selects three original development examples. London edits persist separately in `backend/data/london_user_properties.db`; legacy profiles use `backend/data/user_properties.db`. Override with `GREENPRINT_DB_PATH`.
 
