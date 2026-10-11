@@ -224,7 +224,7 @@ def provider_from_env() -> Provider | None:
         if not model:
             raise ValueError('Set LLM_MODEL or OLLAMA_MODEL to an installed Ollama model')
         return OllamaProvider(model, os.getenv('OLLAMA_BASE_URL', 'http://127.0.0.1:11434'), timeout)
-    model = os.getenv('GROQ_MODEL', '').strip() or os.getenv('LLM_MODEL', 'llama-3.3-70b-versatile').strip()
+    model = os.getenv('GROQ_MODEL', '').strip() or os.getenv('LLM_MODEL', 'qwen/qwen3.8-27b').strip()
     primary_timeout = float(os.getenv('GROQ_TIMEOUT_SECONDS', '10'))
     if not model or not 0 < primary_timeout <= 60:
         raise ValueError('Set a Groq model and GROQ_TIMEOUT_SECONDS in (0, 60]')
@@ -409,6 +409,8 @@ def evidence(result: dict[str, Any]) -> list[Fact]:
             text = f'{name}: this score component is unavailable because required evidence is missing.'
         else:
             text = f'{name}: subscore {subscore}; weighted contribution {contribution} points.'
+            if subscore >= 75:
+                text += ' This subscore is in the upper quarter of the component scale.'
         detail = component.get('evidence', {})
         if isinstance(detail, dict):
             fields = [f"{str(k).replace('_', ' ')}: {v}" for k, v in detail.items() if v is not None]
@@ -434,7 +436,7 @@ def evidence(result: dict[str, Any]) -> list[Fact]:
     value = result.get('valuation', {})
     baseline_value = result.get('baseline_valuation', {})
     baseline_range = baseline_value.get('range_gbp')
-    if baseline_value.get('status') in ('illustrative', 'indicative') and isinstance(baseline_range, (list, tuple)) and len(baseline_range) == 2:
+    if (value or {}).get('purpose') != 'baseline_only' and baseline_value.get('status') in ('illustrative', 'indicative') and isinstance(baseline_range, (list, tuple)) and len(baseline_range) == 2:
         add('valuation.baseline_model_range', f"Baseline-only property-value range: £{baseline_range[0]} to £{baseline_range[1]} ({baseline_value['status']} backend estimate). This is not a retrofit-value impact.")
         for warning in baseline_value.get('warnings', []):
             add('warnings.valuation_baseline', warning)
@@ -530,6 +532,8 @@ async def generate_explanation(verified_result: dict[str, Any], question: str = 
             # Relevant concept definitions and recommendations must be available
             # even when the question has no literal match to a metric field.
             candidates += [f for f in facts if f.source.startswith(('recommendations', 'definitions', 'feasibility')) and f not in candidates]
+            if baseline_question:
+                candidates = [f for f in candidates if f.source.startswith('valuation.') or f.source in ('definitions.value', 'definitions.scope')]
             if 'heat pump' in question.lower() and re.search(r'\b(?:what is|what are|how does)\b', question.lower()):
                 candidates = [f for f in candidates if f.source.startswith(('definitions.heat_pump', 'definitions.scope', 'feasibility'))]
             from .grounded_language import render_natural
@@ -544,6 +548,9 @@ async def generate_explanation(verified_result: dict[str, Any], question: str = 
                 from .grounded_language import metric_sentence
                 baseline_fact = next((f for f in facts if f.source == 'valuation.baseline_range_gbp'), None)
                 if baseline_fact:
+                    if (verified_result.get('valuation') or {}).get('status') == 'illustrative' and re.search(
+                            r'\b(?:based on|reflects?|using)\s+(?:the\s+)?(?:current|real[- ]world|today.s)\s+market\b', prose, re.I):
+                        raise ValueError('Synthetic baseline attributed to current market conditions')
                     if re.search(r'\b(?:unavailable|cannot estimate|insufficient)\b', prose, re.I):
                         raise ValueError('Available baseline valuation described as unavailable')
                     if '£' not in prose:

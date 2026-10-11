@@ -89,7 +89,7 @@ The active source is the fresh London cohort, with public-reference-anchored syn
 
 The project-root `.env` is loaded by the backend without evaluating shell code;
 explicit shell variables override file settings. Set `LLM_PROVIDER=groq`,
-`GROQ_MODEL=llama-3.3-70b-versatile` and `GROQ_API_KEY`. Keep the credential in
+`GROQ_MODEL=qwen/qwen3.8-27b` and `GROQ_API_KEY`. Keep the credential in
 `.env` (ignored by Git), not `.env.example` or frontend variables.
 
 The primary uses Groq's chat-completions endpoint, JSON object mode, temperature
@@ -114,6 +114,4 @@ with its model installed to provide the second model layer.
 Numerical masking, factual citations, feasibility checks and server-owned metric
 rendering are unchanged. Groq receives the selected question and grounded
 qualitative evidence; this is a hosted provider rather than local-only inference.
-Restart the backend after editing credentials/provider settings. No live Groq
-request was made as part of this configuration change; response quality and
-account/model availability remain to be evaluated in your running application.
+Restart the backend after editing credentials/provider settings. The live API verification on 11 October 2026 authenticated the configured key, but the previously configured Llama model returned HTTP 404 and was absent from the account model list. The available Qwen model passed direct intent extraction and grounded explanation calls. The full nine-question workflow encountered HTTP 429 and continued through installed Ollama; a separately injected outage also verified local fallback. The initial run used two deterministic grounding fallbacks. After fixing component-strength interpretation and false certainty rejection, the repeated nine-question run produced seven grounded explanations and two feasibility/clarification replies, with no generation-validation fallback. A further baseline guard rejects attributing synthetic values to current market conditions; focused checks and regression tests cover it. This verifies the integrated fallback workflow, not sustained primary-API availability or human factual-quality targets. See `evaluation/results/api_advisor/` and rerun `.venv/bin/python -m evaluation.verify_api_advisor`; the strict probe exits nonzero when any primary workflow call fails, so fallback cannot conceal API readiness problems. No customer memory was added.

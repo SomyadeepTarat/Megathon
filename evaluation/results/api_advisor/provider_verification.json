@@ -1,0 +1,180 @@
+{
+  "model": "qwen/qwen3.8-27b",
+  "scope": "explicit synthetic fixtures; human semantic review remains required",
+  "memory_implemented": false,
+  "direct_primary": "passed",
+  "workflow": "passed",
+  "workflow_provider_calls": [
+    {
+      "provider": "GroqProvider",
+      "model": "qwen/qwen3.8-27b",
+      "task": "intent",
+      "status": "passed",
+      "seconds": 0.956
+    },
+    {
+      "provider": "GroqProvider",
+      "model": "qwen/qwen3.8-27b",
+      "task": "explanation",
+      "status": "passed",
+      "seconds": 1.476
+    },
+    {
+      "provider": "GroqProvider",
+      "model": "qwen/qwen3.8-27b",
+      "task": "explanation",
+      "status": "passed",
+      "seconds": 2.146
+    },
+    {
+      "provider": "GroqProvider",
+      "model": "qwen/qwen3.8-27b",
+      "task": "explanation",
+      "status": "passed",
+      "seconds": 1.455
+    },
+    {
+      "provider": "GroqProvider",
+      "model": "qwen/qwen3.8-27b",
+      "task": "explanation",
+      "status": "failed",
+      "error_type": "HTTPError",
+      "http_status": 429,
+      "seconds": 0.799
+    },
+    {
+      "provider": "OllamaProvider",
+      "model": "qwen3:4b",
+      "task": "explanation",
+      "status": "passed",
+      "seconds": 5.05
+    },
+    {
+      "provider": "OllamaProvider",
+      "model": "qwen3:4b",
+      "task": "intent",
+      "status": "passed",
+      "seconds": 0.903
+    },
+    {
+      "provider": "OllamaProvider",
+      "model": "qwen3:4b",
+      "task": "explanation",
+      "status": "passed",
+      "seconds": 1.918
+    },
+    {
+      "provider": "OllamaProvider",
+      "model": "qwen3:4b",
+      "task": "explanation",
+      "status": "passed",
+      "seconds": 2.617
+    },
+    {
+      "provider": "OllamaProvider",
+      "model": "qwen3:4b",
+      "task": "explanation",
+      "status": "passed",
+      "seconds": 3.147
+    },
+    {
+      "provider": "OllamaProvider",
+      "model": "qwen3:4b",
+      "task": "intent",
+      "status": "passed",
+      "seconds": 2.89
+    }
+  ],
+  "injected_outage_local_fallback": "passed",
+  "status": "failed",
+  "error_type": "AssertionError",
+  "http_status": null,
+  "provider_calls": [
+    {
+      "provider": "GroqProvider",
+      "model": "qwen/qwen3.8-27b",
+      "task": "intent",
+      "status": "passed",
+      "seconds": 0.956
+    },
+    {
+      "provider": "GroqProvider",
+      "model": "qwen/qwen3.8-27b",
+      "task": "explanation",
+      "status": "passed",
+      "seconds": 1.476
+    },
+    {
+      "provider": "GroqProvider",
+      "model": "qwen/qwen3.8-27b",
+      "task": "explanation",
+      "status": "passed",
+      "seconds": 2.146
+    },
+    {
+      "provider": "GroqProvider",
+      "model": "qwen/qwen3.8-27b",
+      "task": "explanation",
+      "status": "passed",
+      "seconds": 1.455
+    },
+    {
+      "provider": "GroqProvider",
+      "model": "qwen/qwen3.8-27b",
+      "task": "explanation",
+      "status": "failed",
+      "error_type": "HTTPError",
+      "http_status": 429,
+      "seconds": 0.799
+    },
+    {
+      "provider": "OllamaProvider",
+      "model": "qwen3:4b",
+      "task": "explanation",
+      "status": "passed",
+      "seconds": 5.05
+    },
+    {
+      "provider": "OllamaProvider",
+      "model": "qwen3:4b",
+      "task": "intent",
+      "status": "passed",
+      "seconds": 0.903
+    },
+    {
+      "provider": "OllamaProvider",
+      "model": "qwen3:4b",
+      "task": "explanation",
+      "status": "passed",
+      "seconds": 1.918
+    },
+    {
+      "provider": "OllamaProvider",
+      "model": "qwen3:4b",
+      "task": "explanation",
+      "status": "passed",
+      "seconds": 2.617
+    },
+    {
+      "provider": "OllamaProvider",
+      "model": "qwen3:4b",
+      "task": "explanation",
+      "status": "passed",
+      "seconds": 3.147
+    },
+    {
+      "provider": "OllamaProvider",
+      "model": "qwen3:4b",
+      "task": "intent",
+      "status": "passed",
+      "seconds": 2.89
+    },
+    {
+      "provider": "OllamaProvider",
+      "model": "qwen3:4b",
+      "task": "intent",
+      "status": "passed",
+      "seconds": 0.812
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "python_tests": 295,
+  "python_subtests": 34,
+  "frontend_tests": 26,
+  "frontend_typecheck": "passed",
+  "frontend_production_build": "passed",
+  "key_authenticated": true,
+  "previous_model_http_status": 404,
+  "configured_model": "qwen/qwen3.8-27b",
+  "full_integrated_workflow": "passed",
+  "strict_uninterrupted_primary_api": "failed_http_429",
+  "local_outage_fallback": "passed",
+  "final_focused_interpretation": "passed",
+  "memory_implemented": false,
+  "human_semantic_targets": "not_certified",
+  "live_browser_streaming": "passed_final_baseline_answer",
+  "demo_running": {
+    "backend": "http://127.0.0.1:8001",
+    "frontend": "http://127.0.0.1:3000"
+  }
+}

@@ -35,6 +35,8 @@ placeholders or quantitative comparisons in the prose. Do not say a final score 
 an increase, or compare independent retrofit results as a package. Select up to four
 relevant metric_fact_ids instead; the server adds accurate, naturally worded numerical
 sentences. Never add independent upgrade savings together.
+The efficiency classification summarizes the score; it does not cause the score.
+Do not call a component weak when its evidence says it is in the upper quarter.
 Only explain a proposed scenario if the tools have computed it. If a requested result
 is unavailable, say so clearly and explain the supplied reason. If evidence is insufficient, do not claim a model is missing or broken. A negative saving
 means more consumption, not a benefit. Explain electricity/gas tradeoffs when relevant.
@@ -46,7 +48,7 @@ Synthetic results are illustrative; estimates are not promises. Value impact mus
 expressed as the supplied range, never a guaranteed or proven causal premium. If no
 range is supplied, say the impact cannot be estimated from these results.
 Baseline-only valuation ranges describe today's home; never present them as retrofit
-uplift. London public-reference simulations are synthetic individual records, even
+uplift or claim they reflect current market conditions without dated observed-market evidence. London public-reference simulations are synthetic individual records, even
 when their aggregate anchors come from public sources. Unknown survey eligibility,
 installation costs and tariffs remain unknown; ask for evidence before recommending work.
 For general energy concepts use the supplied definitions; for unrelated questions
@@ -80,7 +82,14 @@ def render(answer, facts, slots):
         without_slots = SLOT.sub('', text)
         if re.search(r'\d', without_slots) or '{{' in without_slots or '}}' in without_slots:
             raise ValueError('Generated number or invalid slot')
-        if re.search(r'\b(?:guarantees?|guaranteed|proven causal|definitely increase|will increase your property value)\b', text, re.I):
+        # Recognized disclaimers negate certainty; a later positive guarantee
+        # in the same sentence must still be rejected.
+        certainty_text = re.sub(
+            r"\b(?:not|no|never)\s+(?:an?\s+)?(?:guarantee(?:d)?|proven causal)\b|"
+            r"\b(?:does not|do not|cannot|can't|will not)\s+(?:establish|provide|promise|ensure|imply|prove)\s+"
+            r"(?:real market accuracy or\s+)?(?:an?\s+)?(?:guarantee(?:d)?|proven causal)\b",
+            '', text, flags=re.I)
+        if re.search(r'\b(?:guarantees?|guaranteed|proven causal|definitely increase|will increase your property value)\b', certainty_text, re.I):
             raise ValueError('Unsupported certainty')
         if any(mark in text for mark in ('```', '**', '\n•', '\n-')):
             raise ValueError('Answer must be conversational prose')
@@ -154,6 +163,17 @@ def render_natural(answer, facts):
         raise ValueError('Unsupported numerical placeholder or score gain')
     if re.search(r'heat pump[^.!?]{0,110}\b(?:reduce|lower|cut)\b[^.!?]{0,25}\b(?:heating|heat|thermal) demand\b', text, re.I):
         raise ValueError('Heat pump incorrectly described as reducing thermal demand')
+    # A fact citation alone cannot justify reversing a known component's strength.
+    for fact in facts:
+        if not fact.source.startswith('score.components.'):
+            continue
+        subscore = re.search(r'subscore ([0-9]+(?:\.[0-9]+)?)', fact.text)
+        if not subscore or float(subscore[1]) < 75:
+            continue
+        name = re.escape(fact.text.split(':', 1)[0].lower())
+        for sentence in parsed.sentences:
+            if re.search(r'\b(?:weak(?:est)?|poor|low|lowest)\b[^.!?]{0,140}\b' + name + r'\b', sentence.text.lower()):
+                raise ValueError('High component subscore described as weak')
     lookup = {f.id: f for f in facts}
     for fid in dict.fromkeys(parsed.metric_fact_ids):
         if fid not in lookup:
