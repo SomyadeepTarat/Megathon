@@ -59,7 +59,9 @@ export function OpeningIntro() {
           const destination = symbol?.getBoundingClientRect();
           element.style.left = `${destination?.left ?? 24}px`;
           element.style.top = `${destination?.top ?? 24}px`;
-          const seconds = (now - start) / 1000;
+          // Compress the existing choreography into two seconds, followed by
+          // the 200 ms logo handoff and 300 ms wordmark reveal.
+          const seconds = (now - start) / 1000 * (3.15 / 2);
           const blend = arrivedAt === undefined ? 0 : Math.min(1, (now - arrivedAt) / 200);
           const arrived = scene ? scene.render(seconds, blend) : seconds >= 3.15;
           if (arrived && arrivedAt === undefined) arrivedAt = now;
@@ -71,7 +73,7 @@ export function OpeningIntro() {
       });
       if (!active) return;
       restore(); element.style.display = 'none';
-      if (wordmark) textFade = wordmark.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 450, easing: 'ease-out' });
+      if (wordmark) textFade = wordmark.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 300, easing: 'ease-out' });
       if (textFade) { try { await textFade.finished; } catch {} }
       if (active) { scene?.dispose(); scene = undefined; setFinished(true); }
     };

@@ -1,4 +1,4 @@
-GREENPRINT AI
+Kew
 Megathon X: Singularity — Lloyds | Problem Statement 2
 Product Requirements Document (PRD) + 24-Hour Execution Plan
 Team: 5 developers
