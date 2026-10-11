@@ -57,3 +57,18 @@ h1,h2,h3{color:#233e32;font-weight:750}
 .package-comparison .comparison-guidance,.package-comparison .field>span,.package-comparison .output-footnote{font-size:14px!important;color:#465c4c}
 .package-evidence{font-size:15px;padding:17px 0}
 @media(max-width:700px){.package-table-scroll th,.package-table-scroll td,.tradeoff-table th,.tradeoff-table td{padding:16px;min-width:195px}.package-table-scroll tbody th{position:static;min-width:210px}.package-table-scroll thead th,.tradeoff-table thead th{font-size:16px}}
+
+.budget-results>p{font-size:13px;line-height:1.8;color:var(--body)}
+.budget-package-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:20px}
+.budget-package-card{border:1px solid var(--line);border-radius:8px;padding:18px;min-width:0}
+.budget-package-card.chosen{border-color:#557d63;background:#f3f6ed}
+.budget-package-card h3{font-size:18px;margin:15px 0 8px}
+.budget-package-name{font-size:13px;line-height:1.7;min-height:65px}
+.budget-package-card .mini-label{font-size:9px;letter-spacing:.4px;white-space:normal}
+.budget-package-card dl{font-size:12px;margin:18px 0}
+.budget-package-card dl>div{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line)}
+.budget-package-card dd{margin:0;text-align:right;font-weight:600}
+.budget-package-card .button{width:100%;font-size:11px;white-space:normal}
+.budget-result-note{margin-top:18px}
+@media(max-width:1100px){.budget-package-grid{grid-template-columns:1fr}.budget-package-name{min-height:0}.budget-package-card dl{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}}
+@media(max-width:680px){.budget-package-card dl{grid-template-columns:1fr}.budget-results .section-heading{align-items:flex-start;flex-wrap:wrap}}
