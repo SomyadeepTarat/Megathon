@@ -31,17 +31,19 @@ def build(output=ROOT/'submission/greenprint-team-254.zip'):
         for path in (ROOT/directory).glob('*'):
             if path.is_file() and path.suffix in ALLOWED_SUFFIXES and path.name != 'next-env.d.ts':
                 paths.add(path)
-    for name in ['README.md', 'prd.md', '.python-version', '.node-version', 'docs/reproducibility.md', '.env.example', '.gitignore', 'pytest.ini', 'conftest.py', 'requirements.lock.txt',
+    for name in ['docs/repository_layout.md', 'docs/project_overview.md', 'prd.md', '.python-version', '.node-version', 'docs/reproducibility.md', '.env.example', '.gitignore', 'pytest.ini', 'conftest.py', 'requirements.lock.txt',
                  'backend/catalog.json', 'docs/backend_architecture.md', 'docs/scoring_methodology.md',
                  'docs/valuation_methodology.md', 'docs/synthetic_impact_methodology.md', 'docs/llm_methodology.md',
                  'docs/responsible_ai.md', 'docs/submission_guide.md', 'docs/improvement_report.md', *models, *london_data]:
         paths.add(ROOT/name)
+    paths.update([ROOT.parent / 'README.md', ROOT.parent / 'LICENSE'])
+    archive_root = ROOT.parent
     # Files selected from allowlisted directories must not follow external symlinks.
     for path in paths:
-        if path.is_symlink() or not path.resolve().is_relative_to(ROOT):
+        if path.is_symlink() or not path.resolve().is_relative_to(archive_root):
             raise ValueError('External or symlinked submission input: '+str(path))
     manifest = {'team_number': 254, 'scope': 'synthetic hackathon prototype',
-        'files': [{'path': str(p.relative_to(ROOT)), 'size_bytes': p.stat().st_size,
+        'files': [{'path': str(p.relative_to(archive_root)), 'size_bytes': p.stat().st_size,
                    'sha256': hashlib.sha256(p.read_bytes()).hexdigest()} for p in sorted(paths)],
         'limitations': ['No observed-market or measured retrofit accuracy claim.', 'Human advisor review remains pending.']}
     output = Path(output)
@@ -50,7 +52,7 @@ def build(output=ROOT/'submission/greenprint-team-254.zip'):
     try:
         with zipfile.ZipFile(temporary, 'w', zipfile.ZIP_DEFLATED) as archive:
             for path in sorted(paths):
-                archive.write(path, str(path.relative_to(ROOT)))
+                archive.write(path, str(path.relative_to(archive_root)))
             archive.writestr('SUBMISSION_MANIFEST.json', json.dumps(manifest, indent=2)+'\n')
         with zipfile.ZipFile(temporary) as archive:
             assert archive.testzip() is None

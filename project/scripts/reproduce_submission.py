@@ -68,7 +68,7 @@ def main():
     report['sha256'] = {name: hashlib.sha256((ROOT / name).read_bytes()).hexdigest() for name in paths}
     report['git_commit'] = None
     report['working_tree_dirty'] = None
-    if (ROOT / '.git').exists():
+    if (ROOT.parent / '.git').exists():
         report['git_commit'] = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()
         report['working_tree_dirty'] = bool(subprocess.check_output(['git', 'status', '--porcelain'], cwd=ROOT, text=True).strip())
     report['training_seeds'] = {'snapshot': 42, 'synthetic_impact': 254}
@@ -78,7 +78,7 @@ def main():
         with tempfile.TemporaryDirectory(prefix='greenprint-extracted-') as extracted:
             with zipfile.ZipFile(ROOT / 'submission/greenprint-team-254.zip') as archive:
                 archive.extractall(extracted)
-            subprocess.run([sys.executable, '-m', 'evaluation.reproducibility'], cwd=extracted, check=True)
+            subprocess.run([sys.executable, '-m', 'evaluation.reproducibility'], cwd=Path(extracted) / 'project', check=True)
         report['extracted_bundle_reference_check'] = 'passed'
         (output/'submission_verification.json').write_text(json.dumps(report, indent=2)+'\n')
     except subprocess.CalledProcessError:
