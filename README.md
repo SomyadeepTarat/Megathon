@@ -33,6 +33,14 @@ For the London dataset, also run:
 
 ## Backend
 
+For local development, start both the backend and frontend together from `project/`:
+
+```bash
+bash scripts/dev.sh
+```
+
+Open [Kew](http://127.0.0.1:3000), select a property, and use Assessment or Retrofit planner. The script waits for the backend before starting the frontend; Ctrl+C stops the services it started. Run the data and model preparation above first.
+
 Start the prepared demo dataset:
 
 ```bash

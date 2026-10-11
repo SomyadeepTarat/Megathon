@@ -17,5 +17,5 @@
   "label_rule": "area*region_rate + type_offset + bedrooms*5000 - age*100 + coefficient*(300-intensity) + noise; coefficient~Uniform(100,140), noise~Normal(0,15000). Same noise/coefficient in paired scenario; only intensity changes.",
   "after_rule": "baseline intensity * Uniform(0,1); independent property-group fit/selection/calibration/test; boosting constrained nonincreasing in intensity",
   "source_properties_sha256": "b5da395c0d2bee5ebb6d790ea609af00da9912d66f3120aebc73eab3016ef000",
-  "data_sha256": "02137eb726f7eb667b2458343a94c3c0ec0de63a16f2d7b4c25d2b593a23b32c"
+  "data_sha256": "3c7a413d9de7049abb651d99fd7301e83c20523dad7f5d1d761c9e43603c7ab2"
 }

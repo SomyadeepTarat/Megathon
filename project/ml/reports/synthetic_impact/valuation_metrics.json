@@ -5,9 +5,9 @@
   "alpha": 0.1,
   "selection_metrics": {
     "ridge": {
-      "mae_gbp": 66629.59709144541,
-      "rmse_gbp": 108719.80733126582,
-      "r2": 0.9099487250208818
+      "mae_gbp": 66629.59709144528,
+      "rmse_gbp": 108719.80733126553,
+      "r2": 0.9099487250208822
     },
     "hist_gradient_boosting": {
       "mae_gbp": 32291.251955684933,
@@ -16,30 +16,30 @@
     }
   },
   "without_energy_selection_metrics": {
-    "mae_gbp": 37201.60358231648,
-    "rmse_gbp": 55325.67814989646,
+    "mae_gbp": 37201.603582316486,
+    "rmse_gbp": 55325.678149896456,
     "r2": 0.9766801361862004
   },
   "held_out_metrics": {
     "ridge": {
-      "mae_gbp": 67422.3514920683,
+      "mae_gbp": 67422.35149206818,
       "rmse_gbp": 98250.17288418749,
       "r2": 0.9283245895022938
     },
     "hist_gradient_boosting": {
       "mae_gbp": 23642.313142961077,
-      "rmse_gbp": 32866.21852204446,
+      "rmse_gbp": 32866.21852204445,
       "r2": 0.9919794708907306
     }
   },
   "median_baseline": {
     "mae_gbp": 284195.57024365343,
     "rmse_gbp": 373768.82044912456,
-    "r2": -0.03731266972725922
+    "r2": -0.037312669727258996
   },
   "interval_coverage": 0.9083333333333333,
   "mean_interval_width_gbp": 100708.66669565774,
-  "paired_uplift_mae_gbp": 5655.173561538629,
+  "paired_uplift_mae_gbp": 5655.17356153863,
   "paired_uplift_interval_coverage": 0.8638888888888889,
   "paired_uplift_mean_interval_width_gbp": 23974.67933490075,
   "nonnegative_direction_fraction": 1.0,
