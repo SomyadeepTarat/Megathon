@@ -4,13 +4,15 @@ from app.services.orchestrator import run_scenario
 from carbon_engine.retrofit_catalogue import RETROFIT_CATALOGUE, SEQUENTIAL_ORDER
 
 
-def recommend(request, retrofit, carbon, valuation):
+def recommend(request, retrofit, carbon, valuation, *, excluded_retrofits=(), excluded_packages=()):
     ranked, other = [], []
     policy = ('High requires feasible eligibility, positive modeled objective benefit, and observed annual-energy plus '
               'physical-input provenance. Medium means benefit is calculable from synthetic/estimated inputs or eligibility '
               'is conditional. Low means explicit incompatibility/already-present or no positive objective benefit. '
               'Ranking position alone never sets suitability.')
     for measure in RETROFIT_CATALOGUE:
+        if measure in excluded_retrofits or any(set(package) == {measure} for package in excluded_packages):
+            continue
         data = request.model_dump(mode='json', exclude={'scenario_id'})
         data['retrofits'] = [measure]
         candidate = ScenarioRequest.model_validate(data)

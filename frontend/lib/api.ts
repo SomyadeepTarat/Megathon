@@ -5,11 +5,11 @@ export class ApiError extends Error {
   constructor(status: number, message: string) { super(message); this.status = status; }
 }
 
-async function request<T>(path: string, body?: unknown, scenarioResponse = false): Promise<T> {
+async function request<T>(path: string, body?: unknown, scenarioResponse = false, method?: 'PUT'): Promise<T> {
   let response: Response;
   try {
     response = await fetch(`/api/backend${path}`, {
-      method: body === undefined ? 'GET' : 'POST',
+      method: method || (body === undefined ? 'GET' : 'POST'),
       headers: body === undefined ? undefined : { 'Content-Type': 'application/json' },
       body: body === undefined ? undefined : JSON.stringify(body),
       cache: 'no-store',
@@ -31,6 +31,9 @@ async function request<T>(path: string, body?: unknown, scenarioResponse = false
 }
 
 export const api = {
+  memory: (id: string) => request<import('./types').CustomerMemory>(`/advisor/memory/${encodeURIComponent(id)}`),
+  updateMemory: (id: string, update: { revision: number; preferences?: import('./types').CustomerMemory['preferences']; completed_retrofits?: Retrofit[]; feedback?: { retrofits: Retrofit[]; response: 'accepted' | 'rejected' | 'deferred' }; reset?: boolean }) => request<import('./types').CustomerMemory>(`/advisor/memory/${encodeURIComponent(id)}`, update, false, 'PUT'),
+  register: (input: AssessmentRequest) => request<PropertyRecord>('/properties', input),
   health: () => request<{ status: string; readiness: Record<string, unknown> }>('/health'),
   propertyRanking: () => request<PortfolioRow[]>('/properties/ranking'),
   portfolio: () => request<PortfolioRow[]>('/portfolio/rank'),

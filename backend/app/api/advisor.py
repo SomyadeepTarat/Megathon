@@ -55,3 +55,26 @@ async def chat_stream(body: ChatRequest, request: Request):
             await asyncio.gather(task, return_exceptions=True)
     return StreamingResponse(events(), media_type='text/event-stream',
                              headers={'Cache-Control': 'no-cache', 'X-Accel-Buffering': 'no'})
+
+
+from ..services.customer_memory import MemoryUpdate, MemoryConflict, identity, view
+
+@router.get('/memory/{property_id}')
+async def read_memory(property_id: str, request: Request):
+    service = request.app.state.advisor_service
+    try:
+        customer, _ = identity(service.repository(), property_id)
+    except PropertyNotFound:
+        raise HTTPException(404, 'Property not found') from None
+    return view(service.store.load(customer), property_id)
+
+@router.put('/memory/{property_id}')
+async def update_memory(property_id: str, body: MemoryUpdate, request: Request):
+    service = request.app.state.advisor_service
+    try:
+        customer, _ = identity(service.repository(), property_id)
+        return view(service.store.update(customer, property_id, body), property_id)
+    except PropertyNotFound:
+        raise HTTPException(404, 'Property not found') from None
+    except MemoryConflict:
+        raise HTTPException(409, 'Memory changed in another request. Reload your saved preferences and try again.') from None

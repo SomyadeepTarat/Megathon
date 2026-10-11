@@ -139,3 +139,7 @@ python Data/scripts/build_documentation.py
 ```
 
 These documentation commands use only Python's standard library. No externally hosted Kew/documentation URL is recorded here.
+
+### Persistent customer memory
+
+Kew's **What Kew remembers** panel saves budgets, priorities, unwanted upgrades, completed work and package feedback in SQLite. Saved choices adapt fresh engine calculations across reloads and server restarts. See [customer memory guide](docs/customer_memory.md) for the workflow, consistency safeguards, verification and deployment limitations.

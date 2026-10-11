@@ -86,3 +86,13 @@ h1,h2,h3{color:#233e32;font-weight:750}
 .property-ranking-table::after,.tradeoff-table::after,.package-table-scroll::after{content:'Scroll horizontally to see all columns';display:block;padding:10px 16px;font-size:12px;color:var(--body)}
 .chat-message>small{font-size:11px;line-height:1.7}
 @media(max-width:680px){.budget-inputs{grid-template-columns:1fr}.budget-results .budget-package-grid{grid-template-columns:1fr}.budget-package-card dl{grid-template-columns:1fr}.field input,.field select{font-size:14px}.upgrade-title>.badge{font-size:11px}.budget-results>p,.upgrade-main p{font-size:13px}.service-state,.field-source{font-size:10px}}
+
+.customer-memory { flex: 0 0 auto; max-height: 45vh; overflow-y: auto; border-bottom: 1px solid var(--line); padding: 12px 20px; font-size: 13px; }
+.customer-memory summary { cursor: pointer; font-weight: 600; }
+.customer-memory p { margin: 10px 0; line-height: 1.5; }
+.customer-memory form { display: grid; gap: 10px; }
+.customer-memory form > label { display: grid; gap: 5px; }
+.customer-memory input[type="number"], .customer-memory select { width: 100%; padding: 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--paper); color: inherit; }
+.customer-memory fieldset { border: 1px solid var(--line); border-radius: 6px; padding: 10px; }
+.customer-memory fieldset label { display: flex; align-items: center; gap: 8px; margin: 6px 0; }
+.customer-memory .button { margin: 6px 4px 6px 0; }

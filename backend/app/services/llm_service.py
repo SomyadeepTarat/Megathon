@@ -70,6 +70,7 @@ class ChatResponse(StrictModel):
     mode: Literal['grounded_llm', 'deterministic'] = 'deterministic'
     fallback_reason: str | None = None
     clarification_kind: Literal['package', 'budget'] | None = None
+    memory: dict[str, Any] | None = None
     facts: list[Fact] = Field(default_factory=list)
     result: dict[str, Any] | None = None
     tool_calls: list[str] = Field(default_factory=list)
@@ -693,6 +694,8 @@ class AdvisorService:
                 and request.context.intent in ('simulate_retrofit', 'optimize_budget')
                 and re.search(r'\b(?:that|this package|these|its|payback|savings|electricity)\b', request.message.lower())):
             intent = request.context
+        if hasattr(self.engines, 'apply_intent'):
+            intent = self.engines.apply_intent(intent)
         if intent.intent == 'clarify':
             return ChatResponse(status='clarification_required', intent=intent, fallback_reason=reason,
                                 clarification_kind='budget' if re.search(r'\bbudget\b|\bafford\b', message) else 'package',

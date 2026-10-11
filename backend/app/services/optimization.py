@@ -9,7 +9,7 @@ from app.schemas.models import ScenarioRequest
 from app.services.orchestrator import run_scenario
 
 
-def optimize_packages(request: ScenarioRequest, retrofit, carbon, valuation) -> OptimizationResult:
+def optimize_packages(request: ScenarioRequest, retrofit, carbon, valuation, *, excluded_retrofits=(), excluded_packages=()) -> OptimizationResult:
     """Enumerate all 32 subsets; only documented, feasible, affordable results rank."""
     objective = request.objective
     method = ("Enumerate all retrofit subsets against the same baseline; require known feasibility and "
@@ -25,6 +25,9 @@ def optimize_packages(request: ScenarioRequest, retrofit, carbon, valuation) -> 
     for count in range(len(measures) + 1):
         for package in combinations(measures, count):
             label = list(package)
+            if set(package).intersection(excluded_retrofits) or any(set(package) == set(p) for p in excluded_packages):
+                decisions.append({'retrofits': label, 'status': 'excluded', 'reason': 'Excluded by remembered customer preferences, completed work or package feedback.'})
+                continue
             if package:
                 costs_missing = [m for m in package if m not in request.retrofit_costs]
                 if costs_missing:

@@ -108,13 +108,13 @@ class BackendAdvisorEngines:
             return result
         return await asyncio.to_thread(execute)
 
-    async def recommendations(self, property_id):
+    async def recommendations(self, property_id, *, excluded_retrofits=(), excluded_packages=(), objective="carbon_reduction"):
         result = await self.assessment(property_id)
         def execute():
             from app.schemas.models import RecommendationRequest
             from app.services.recommendations import recommend
             from app.services.p4_adapter import P4CarbonAdapter
-            request = RecommendationRequest.model_validate(self._request(property_id, []).model_dump(mode='json'))
+            request = RecommendationRequest.model_validate(self._request(property_id, [], objective=objective).model_dump(mode='json'))
             carbon = self.carbon()
             if isinstance(carbon, P4CarbonAdapter):
                 carbon = P4CarbonAdapter(request.emission_factors)
@@ -125,7 +125,7 @@ class BackendAdvisorEngines:
              'reason': option.feasibility.reason, 'estimated_cost_gbp': option.estimated_cost_gbp,
              'after_score': option.scenario.after_assessment.score.score if option.scenario.after_assessment else None,
              'suitability': option.suitability, 'suitability_reason': option.suitability_reason}
-            for option in options.recommendations if option.suitability != 'Low']
+            for option in options.recommendations if option.suitability != 'Low' and option.retrofit not in excluded_retrofits and [option.retrofit] not in excluded_packages]
         result['warnings'].extend(options.warnings)
         result['sources'].append(options.methodology)
         return result
@@ -155,7 +155,7 @@ class BackendAdvisorEngines:
             return result
         return await asyncio.to_thread(execute)
 
-    async def optimize(self, property_id, budget_gbp, objective):
+    async def optimize(self, property_id, budget_gbp, objective, *, excluded_retrofits=(), excluded_packages=()):
         def execute():
             from app.services.optimization import optimize_packages
             from app.services.p4_adapter import P4CarbonAdapter
@@ -163,7 +163,7 @@ class BackendAdvisorEngines:
             carbon = self.carbon()
             if isinstance(carbon, P4CarbonAdapter):
                 carbon = P4CarbonAdapter(request.emission_factors)
-            value = optimize_packages(request, self.retrofit(), carbon, self.valuation())
+            value = optimize_packages(request, self.retrofit(), carbon, self.valuation(), excluded_retrofits=excluded_retrofits, excluded_packages=excluded_packages)
             if value.best_scenario is None:
                 return {'property_id': property_id, 'status': 'unavailable', 'reason': value.reason,
                         'package_decisions': value.package_decisions, 'warnings': [value.methodology]}

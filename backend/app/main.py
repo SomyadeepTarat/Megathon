@@ -28,7 +28,7 @@ from app.services.portfolio import rank_portfolio
 app = FastAPI(title='GreenPrint AI', version='0.3.0')
 app.add_middleware(CORSMiddleware,
     allow_origins=[x.strip() for x in os.getenv('GREENPRINT_CORS_ORIGINS', 'http://localhost:3000').split(',') if x.strip()],
-    allow_methods=['GET', 'POST'], allow_headers=['Content-Type'], allow_credentials=False)
+    allow_methods=['GET', 'POST', 'PUT'], allow_headers=['Content-Type'], allow_credentials=False)
 project_root = Path(__file__).resolve().parents[2]
 dataset_kind = os.getenv('GREENPRINT_PROPERTY_DATASET', 'london')
 if dataset_kind == 'london':
@@ -138,10 +138,26 @@ def baseline_valuation(property_id: str, repo=Depends(get_repository)):
     return {'property_id': property_id, **result}
 
 
+def personalized_request(request, *, selected_package=False):
+    from app.services.customer_memory import planner_memory, restrictions, stale_completed
+    memory = planner_memory(app.state.advisor_service, get_repository(), request)
+    if memory is None:
+        return request, set(), []
+    if stale_completed(memory, request.property):
+        raise HTTPException(status_code=409, detail='Completed work is not reflected in this baseline. Update Assessment and current energy/physical inputs before estimating further improvements.')
+    excluded, packages = restrictions(memory)
+    if selected_package and (excluded.intersection(request.retrofits) or any(set(request.retrofits) == set(p) for p in packages)):
+        raise HTTPException(status_code=409, detail='This package conflicts with saved exclusions, completed work or rejected/deferred package feedback. Review customer memory before proceeding.')
+    if request.budget_gbp is None and memory['preferences']['budget_gbp'] is not None:
+        request = request.model_copy(update={'budget_gbp': memory['preferences']['budget_gbp']})
+    return request, excluded, packages
+
+
 @app.post('/scenarios/simulate', response_model=ScenarioResponse,
           responses={409: {'model': ScenarioResponse}, 503: {'model': ScenarioResponse}})
 def simulate(request: ScenarioRequest, retrofit=Depends(get_retrofit_engine),
              carbon=Depends(get_carbon_engine), valuation=Depends(get_valuation_engine)):
+    request, _, _ = personalized_request(request, selected_package=True)
     result = run_scenario(request, retrofit, P4CarbonAdapter(request.emission_factors) if isinstance(carbon, P4CarbonAdapter) else carbon, valuation)
     status_code = {'rejected': 409, 'unavailable': 503}.get(result.status, 200)
     return JSONResponse(status_code=status_code, content=result.model_dump(mode='json'))
@@ -165,7 +181,10 @@ def register_property(request: AssessmentRequest, repo=Depends(get_repository)):
 @app.post('/retrofits/recommend', response_model=RecommendationResponse)
 def recommendations(request: RecommendationRequest, retrofit=Depends(get_retrofit_engine),
                     carbon=Depends(get_carbon_engine), valuation=Depends(get_valuation_engine), repo=Depends(get_repository)):
-    result = recommend(request, retrofit, P4CarbonAdapter(request.emission_factors) if isinstance(carbon, P4CarbonAdapter) else carbon, valuation)
+    request, excluded, packages = personalized_request(request)
+    result = recommend(request, retrofit, P4CarbonAdapter(request.emission_factors) if isinstance(carbon, P4CarbonAdapter) else carbon, valuation, excluded_retrofits=excluded, excluded_packages=packages)
+    if excluded or packages:
+        result.warnings.append("Saved customer exclusions, completed work and package feedback were applied.")
     return repo.save_recommendations(request, result)
 
 
@@ -180,9 +199,10 @@ def stored_recommendations(property_id: str, scenario_id: str | None = None, rep
 @app.post('/retrofits/optimize', response_model=OptimizationResult)
 def optimize(request: OptimizationRequest, retrofit=Depends(get_retrofit_engine),
              carbon=Depends(get_carbon_engine), valuation=Depends(get_valuation_engine)):
+    request, excluded, packages = personalized_request(request)
     return optimize_packages(request, retrofit,
         P4CarbonAdapter(request.emission_factors) if isinstance(carbon, P4CarbonAdapter) else carbon,
-        valuation)
+        valuation, excluded_retrofits=excluded, excluded_packages=packages)
 
 
 @app.post('/properties/{property_id}/valuation/impact', response_model=ValuationResult)
@@ -220,8 +240,10 @@ def valuation(property_id: str, request: ValuationRequest, repo=Depends(get_repo
 
 
 app.include_router(advisor_router)
-app.state.advisor_service = AdvisorService(
+from app.services.customer_memory import MemoryAdvisorService, MemoryStore
+app.state.customer_memory = MemoryStore(repository.database_path)
+app.state.advisor_service = MemoryAdvisorService(
     BackendAdvisorEngines(lambda: get_repository(), lambda: get_retrofit_engine(),
                          lambda: get_carbon_engine(), lambda: get_valuation_engine()),
-    provider=provider_from_env(),
+    provider=provider_from_env(), repository=lambda: get_repository(), store=app.state.customer_memory,
 )
