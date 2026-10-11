@@ -1,0 +1,49 @@
+{
+  "raw": [
+    {
+      "answer": {
+        "sentences": [
+          {
+            "text": "Your baseline property value is estimated at an illustrative range, which reflects the home's current condition rather than any future retrofit uplift.",
+            "fact_ids": [
+              "f23",
+              "f28",
+              "f38"
+            ]
+          },
+          {
+            "text": "This estimate is conditional on available inputs and model support, so it does not establish real market accuracy or a guaranteed causal premium.",
+            "fact_ids": [
+              "f38"
+            ]
+          },
+          {
+            "text": "The home currently has a Poor efficiency classification, which is part of the baseline context for this valuation.",
+            "fact_ids": [
+              "f0",
+              "f35"
+            ]
+          }
+        ],
+        "metric_fact_ids": [
+          "f23",
+          "f28"
+        ]
+      },
+      "fact_sources": [
+        "valuation.baseline_model_range",
+        "valuation.baseline_range_gbp",
+        "score.classification",
+        "definitions.heat_pump",
+        "definitions.solar",
+        "definitions.score",
+        "definitions.insulation",
+        "definitions.carbon",
+        "definitions.value",
+        "definitions.scope"
+      ]
+    }
+  ],
+  "mode": "deterministic",
+  "fallback_reason": "explanation_provider_failed_or_invalid"
+}

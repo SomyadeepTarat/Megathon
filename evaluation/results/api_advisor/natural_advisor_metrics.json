@@ -1,0 +1,68 @@
+{
+  "responses": 9,
+  "human_reviewed": 0,
+  "human_metrics": null,
+  "responses_with_unsupported_numbers_fraction": 0.0,
+  "checks": [
+    {
+      "case_id": "natural-01",
+      "unsupported_numeric_tokens": [],
+      "numeric_tokens": 11
+    },
+    {
+      "case_id": "natural-02",
+      "unsupported_numeric_tokens": [],
+      "numeric_tokens": 10
+    },
+    {
+      "case_id": "natural-03",
+      "unsupported_numeric_tokens": [],
+      "numeric_tokens": 15
+    },
+    {
+      "case_id": "natural-04",
+      "unsupported_numeric_tokens": [],
+      "numeric_tokens": 9
+    },
+    {
+      "case_id": "natural-05",
+      "unsupported_numeric_tokens": [],
+      "numeric_tokens": 4
+    },
+    {
+      "case_id": "natural-06",
+      "unsupported_numeric_tokens": [],
+      "numeric_tokens": 2
+    },
+    {
+      "case_id": "natural-07",
+      "unsupported_numeric_tokens": [],
+      "numeric_tokens": 2
+    },
+    {
+      "case_id": "natural-08",
+      "unsupported_numeric_tokens": [],
+      "numeric_tokens": 0
+    },
+    {
+      "case_id": "natural-09",
+      "unsupported_numeric_tokens": [],
+      "numeric_tokens": 0
+    }
+  ],
+  "targets_met": null,
+  "limitations": "Token matching cannot verify units, attribution, semantics or unsupported nonnumeric claims. Human review required.",
+  "local_latency_seconds": [
+    1.489,
+    2.266,
+    1.477,
+    5.96,
+    2.842,
+    2.641,
+    3.162,
+    0.001,
+    2.893
+  ],
+  "grounded_llm_responses": 7,
+  "generation_validation_fallbacks": 0
+}

@@ -70,3 +70,31 @@ def test_baseline_explanation_does_not_confuse_unavailable_uplift(provider_enabl
     assert mode == 'deterministic'
     impact, _, _, _ = asyncio.run(generate_explanation(result, 'How much could my property value change?'))
     assert 'cannot establish real-world uplift' in impact
+
+def test_high_component_cannot_be_explained_as_weak():
+    facts = [Fact(id='f0', source='score.components.1',
+                  text='Consumption intensity: subscore 83.53; weighted contribution 16.71 points.')]
+    with pytest.raises(ValueError, match='High component'):
+        render_natural({'sentences': [{'text': 'Weak performance in insulation and consumption intensity pulls the score down.', 'fact_ids': ['f0']}]}, facts)
+    assert 'strong' in render_natural({'sentences': [{'text': 'Consumption intensity is a strong component of this assessment.', 'fact_ids': ['f0']}]}, facts)
+
+@pytest.mark.parametrize('text', ['This is not a guaranteed sale price.',
+    'This estimate does not establish real market accuracy or a guaranteed causal premium.'])
+def test_uncertainty_disclaimer_is_not_a_positive_guarantee(facts, text):
+    assert render_natural({'sentences': [{'text': text, 'fact_ids': ['f0']}]}, facts) == text
+
+def test_disclaimer_does_not_whitelist_a_later_guarantee(facts):
+    with pytest.raises(ValueError, match='Unsupported certainty'):
+        render_natural({'sentences': [{'text': 'This is not a guaranteed sale price, but a heat pump guarantees savings.', 'fact_ids': ['f0']}]}, facts)
+
+def test_synthetic_baseline_cannot_claim_current_market_conditions():
+    import asyncio
+    from app.services.llm_service import generate_explanation
+    class Provider:
+        async def complete(self, prompt, payload):
+            fact = next(f for f in payload['answer_facts'] if f['source'] == 'valuation.baseline_range_gbp')
+            return {'sentences': [{'text': 'Your baseline value is estimated based on current market conditions.', 'fact_ids': [fact['id']]}], 'metric_fact_ids': [fact['id']]}
+    result = {'baseline_valuation': {'status': 'illustrative', 'range_gbp': [120000, 450000]}}
+    text, _, mode, _ = asyncio.run(generate_explanation(result, 'What is my baseline property value?', Provider()))
+    assert mode == 'deterministic' and '£120,000' in text
+    assert 'current market conditions' not in text

@@ -128,7 +128,7 @@
       "case": "loft_insulation",
       "http": 200,
       "result": {
-        "scenario_id": "7a54674f-4409-4ad2-987b-2840c7f7c371",
+        "scenario_id": "98fc66cd-6845-423b-ae19-cc37415365ed",
         "property_id": "TEST-LONDON-EDITED",
         "status": "success",
         "baseline_carbon": {
@@ -616,7 +616,7 @@
       "case": "double_glazing",
       "http": 200,
       "result": {
-        "scenario_id": "87798430-0636-49ba-b661-bb1f4d700e60",
+        "scenario_id": "3dd5ca56-8646-4ee5-9206-e89d34ef04ab",
         "property_id": "TEST-LONDON-EDITED",
         "status": "success",
         "baseline_carbon": {
@@ -1094,7 +1094,7 @@
       "case": "smart_thermostat",
       "http": 200,
       "result": {
-        "scenario_id": "08b9c155-c7de-434a-91dd-cdf2a56e9da7",
+        "scenario_id": "11814c7a-3820-40cf-825f-8e6609378fe3",
         "property_id": "TEST-LONDON-EDITED",
         "status": "success",
         "baseline_carbon": {
@@ -1572,7 +1572,7 @@
       "case": "solar_panels",
       "http": 200,
       "result": {
-        "scenario_id": "0463540e-0e29-444d-96f9-a52915dabec7",
+        "scenario_id": "ab154fe4-6dca-42e2-9620-cfeca2226467",
         "property_id": "TEST-LONDON-EDITED",
         "status": "partial",
         "baseline_carbon": {
@@ -2056,7 +2056,7 @@
       "case": "heat_pump",
       "http": 200,
       "result": {
-        "scenario_id": "49038a41-15a8-4f13-aabe-5cd3f358a94f",
+        "scenario_id": "a5908d8e-da0e-4340-97f9-c7c375ac2c8e",
         "property_id": "TEST-LONDON-EDITED",
         "status": "success",
         "baseline_carbon": {
@@ -2543,7 +2543,7 @@
       "case": "interacting_fabric_controls",
       "http": 200,
       "result": {
-        "scenario_id": "6ad26125-bc0e-4534-9cde-c231823ae4eb",
+        "scenario_id": "77127e16-6a93-4f66-9b0b-6e5aba759771",
         "property_id": "TEST-LONDON-EDITED",
         "status": "success",
         "baseline_carbon": {
@@ -3030,7 +3030,7 @@
       "case": "infeasible_heat_pump",
       "http": 409,
       "result": {
-        "scenario_id": "0525b574-8e7e-4be7-805f-c46c06ea496f",
+        "scenario_id": "ed34bb84-fa7c-4a0a-b82b-0838b0fbd0e5",
         "property_id": "TEST-LONDON-EDITED",
         "status": "rejected",
         "baseline_carbon": null,
@@ -3212,7 +3212,7 @@
       "case": "conflicting_installation",
       "http": 503,
       "result": {
-        "scenario_id": "3d275ec1-b476-4d4d-b42a-9da98bb449a8",
+        "scenario_id": "aacc8ab6-ffec-462d-b7d0-b981e4da93e7",
         "property_id": "TEST-LONDON-EDITED",
         "status": "unavailable",
         "baseline_carbon": null,
@@ -3395,7 +3395,7 @@
       "case": "conflicting_thermal",
       "http": 503,
       "result": {
-        "scenario_id": "d2455ad7-3591-4af1-92fb-56a916685379",
+        "scenario_id": "6ce99c3e-b05e-452f-9459-1fd9f1f3e385",
         "property_id": "TEST-LONDON-EDITED",
         "status": "unavailable",
         "baseline_carbon": null,
@@ -3578,7 +3578,7 @@
       "case": "missing_gas",
       "http": 503,
       "result": {
-        "scenario_id": "55c14666-5c25-4a5f-be71-bcba9731c43a",
+        "scenario_id": "a12c5eb7-0ead-46ca-895b-ad2204378de5",
         "property_id": "TEST-LONDON-EDITED",
         "status": "unavailable",
         "baseline_carbon": null,
@@ -3763,7 +3763,7 @@
       "case": "missing_baseline_value",
       "http": 200,
       "result": {
-        "scenario_id": "d3fe1bef-3609-4f5c-b875-9a39911ea7de",
+        "scenario_id": "24f6b81e-d4a7-462d-b5db-382ab930e8e4",
         "property_id": "TEST-LONDON-EDITED",
         "status": "partial",
         "baseline_carbon": {
@@ -4233,7 +4233,7 @@
       "case": "zero_baseline",
       "http": 200,
       "result": {
-        "scenario_id": "2ad25ca5-4949-4307-937e-563ba90c9cea",
+        "scenario_id": "4c9cb632-ffaa-4f2e-9ff1-666997629b15",
         "property_id": "TEST-LONDON-EDITED",
         "status": "success",
         "baseline_carbon": {
@@ -4891,7 +4891,7 @@
           }
         ],
         "best_scenario": {
-          "scenario_id": "fe091302-aaea-40b4-98a6-8682ddc37a73",
+          "scenario_id": "82609dd1-ceb6-46f7-b4f5-6ce7b2d7e60d",
           "property_id": "TEST-LONDON-EDITED",
           "status": "success",
           "baseline_carbon": {
@@ -5804,7 +5804,7 @@
           }
         ],
         "best_scenario": {
-          "scenario_id": "dff67f27-cb63-49ad-8bcd-766168dee6e9",
+          "scenario_id": "8462b70d-8ba0-4d8c-9dbc-01a1de085c78",
           "property_id": "TEST-LONDON-EDITED",
           "status": "success",
           "baseline_carbon": {
@@ -7344,7 +7344,7 @@
           }
         ],
         "best_scenario": {
-          "scenario_id": "bd554b55-f291-4212-bcd8-52dd4d75d936",
+          "scenario_id": "2c108a4a-2caf-46e5-952f-e06ab62b494f",
           "property_id": "TEST-LONDON-EDITED",
           "status": "success",
           "baseline_carbon": {
@@ -8601,7 +8601,7 @@
           }
         ],
         "best_scenario": {
-          "scenario_id": "56658055-2bfb-4384-aaaf-41fbab2da35b",
+          "scenario_id": "1f3de43b-76b1-451e-9c0f-c9984882a181",
           "property_id": "TEST-LONDON-EDITED",
           "status": "success",
           "baseline_carbon": {
@@ -9760,7 +9760,7 @@
           }
         ],
         "best_scenario": {
-          "scenario_id": "66c38b19-c233-4280-b30b-17191ee32c49",
+          "scenario_id": "cc01c654-b0d6-4d71-8a96-3c3e8ac60f44",
           "property_id": "TEST-LONDON-EDITED",
           "status": "success",
           "baseline_carbon": {
@@ -11006,7 +11006,7 @@
           }
         ],
         "best_scenario": {
-          "scenario_id": "d809c70b-652a-4fbb-ad8b-1c75a1994b99",
+          "scenario_id": "fe0f70a0-5cc6-4bb3-97fc-963ed50feb3d",
           "property_id": "TEST-LONDON-EDITED",
           "status": "success",
           "baseline_carbon": {
@@ -12263,7 +12263,7 @@
           }
         ],
         "best_scenario": {
-          "scenario_id": "36bdcc38-43fc-4ad6-a622-0b81c24ebb43",
+          "scenario_id": "9b0aca4b-cb7b-4b4d-b627-1fdd49cf4408",
           "property_id": "TEST-LONDON-EDITED",
           "status": "success",
           "baseline_carbon": {
@@ -13422,7 +13422,7 @@
           }
         ],
         "best_scenario": {
-          "scenario_id": "a2e44a7a-6fc0-46b0-90be-393b79f3fd1d",
+          "scenario_id": "eed33db4-f11a-4caa-bdad-926321238144",
           "property_id": "TEST-LONDON-EDITED",
           "status": "success",
           "baseline_carbon": {
@@ -16368,7 +16368,7 @@
           }
         ],
         "best_scenario": {
-          "scenario_id": "a7724052-8ff4-4668-9aab-1522aee3d4e6",
+          "scenario_id": "7861d78e-bd38-4c6c-9c8f-8059004ff6b9",
           "property_id": "TEST-LONDON-EDITED",
           "status": "success",
           "baseline_carbon": {
@@ -19352,7 +19352,7 @@
           }
         ],
         "best_scenario": {
-          "scenario_id": "cc4b091f-96f2-49e6-8dd5-564045dac213",
+          "scenario_id": "72a8b591-9446-46e3-bef0-cdf4d83b40ec",
           "property_id": "TEST-LONDON-EDITED",
           "status": "success",
           "baseline_carbon": {
@@ -21816,7 +21816,7 @@
           }
         ],
         "best_scenario": {
-          "scenario_id": "a9e8cdcf-aaca-44d7-b9f9-548be7342559",
+          "scenario_id": "fcbd86b8-0220-4e43-90f3-dc144be7c5df",
           "property_id": "TEST-LONDON-EDITED",
           "status": "success",
           "baseline_carbon": {
@@ -22664,10 +22664,10 @@
     "property_id": "TEST-LONDON-EDITED",
     "status": "illustrative",
     "reason": null,
-    "value_gbp": 712049.4479573463,
+    "value_gbp": 712049.4479573458,
     "range_gbp": [
-      265976.45878905,
-      1158122.4371256428
+      265976.4587890474,
+      1158122.4371256442
     ],
     "confidence_level": 0.9,
     "target_kind": "snapshot",
@@ -22680,7 +22680,7 @@
     ]
   },
   "unknown_source_heat_pump": {
-    "scenario_id": "0645b4b5-2f1e-4e31-857e-15839edc9cca",
+    "scenario_id": "c415dc31-6dc0-4702-98e0-c33cfb146997",
     "property_id": "P100001",
     "status": "rejected",
     "baseline_carbon": null,

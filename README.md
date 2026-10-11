@@ -4,7 +4,7 @@ Local Next.js frontend, FastAPI backend, SQLite property snapshots, deterministi
 
 ## Install and prepare
 
-Run from the repository root with Python 3.11+ and Node.js 22+:
+The reference environment is Python 3.14.7 and Node.js 26.8.2. See [reproducibility guide](docs/reproducibility.md) for fresh-checkout setup, isolated verification and reference-output comparisons. Run from the repository root:
 
 ```sh
 python3 -m venv .venv
@@ -39,7 +39,7 @@ The original 100 are retained only as diagnostics. The active model uses price-p
 In one terminal, from the repository root:
 
 ```sh
-GREENPRINT_PROPERTY_DATASET=london LLM_PROVIDER=ollama LLM_MODEL=qwen3:4b .venv/bin/python -m uvicorn app.main:app --app-dir backend --host 127.0.0.1 --port 8001
+GREENPRINT_PROPERTY_DATASET=london .venv/bin/python -m uvicorn app.main:app --app-dir backend --host 127.0.0.1 --port 8001
 ```
 
 In a second terminal:
@@ -48,7 +48,7 @@ In a second terminal:
 npm --prefix frontend start -- --port 3000
 ```
 
-Open http://127.0.0.1:3000; API documentation is at http://127.0.0.1:8001/docs. Ollama must already be serving at http://127.0.0.1:11434 with the selected model installed. Omit `LLM_PROVIDER` and `LLM_MODEL` for deterministic explanations. Provider errors also fall back to verified facts. Configuration is read from shell variables; `.env.example` is not automatically loaded by the backend.
+Open http://127.0.0.1:3000; API documentation is at http://127.0.0.1:8001/docs. The backend automatically loads the project-root `.env`; shell variables take precedence. Configure `LLM_PROVIDER=groq`, `GROQ_API_KEY` and `GROQ_MODEL` for hosted AI. `LLM_FALLBACK_PROVIDER=ollama` and `OLLAMA_MODEL=qwen3:4b` keep local Ollama as backup at http://127.0.0.1:11434. Rate limits, provider errors and malformed Groq responses trigger Ollama; if that also fails, verified deterministic explanations remain available. Set `LLM_PROVIDER=deterministic` to disable model calls. Both providers use the same system prompts and numerical grounding checks. The key belongs only in the ignored `.env`, never frontend configuration.
 
 `GREENPRINT_PROPERTY_DATASET=london` (default) selects only the 1,900 fresh London properties and `ml/models/london_snapshot.joblib`. `csv` explicitly selects the legacy 100 supplied homes. `demo` selects 10 curated synthetic variants with clearly labelled suitability, proposed system, cost and tariff assumptions; it never modifies the supplied CSVs. `fixtures` selects three original development examples. London edits persist separately in `backend/data/london_user_properties.db`; legacy profiles use `backend/data/user_properties.db`. Override with `GREENPRINT_DB_PATH`.
 
@@ -92,7 +92,7 @@ The property generator preserves contributed physical fields only when they matc
 | POST /scenarios/simulate | Confirmed-feasible, sequential retrofit simulation |
 | POST /retrofits/recommend | Feasibility and objective-ranked individual measures |
 | POST /retrofits/optimize | All 32 subsets; explicit budget, documented costs and objective |
-| GET /portfolio/rank | Complete feasible-package improvement potential; unavailable stays null |
+| GET /properties/ranking; GET /portfolio/rank | Complete feasible-package improvement potential; unavailable stays null |
 | POST /advisor/chat | Fresh backend calculations followed by fact selection or deterministic explanation |
 
 Scores use PRD weights and mappings; unknown fields stay unknown. Annual energy requires all 12 monthly readings per fuel. Envelope/controls changes affect space heating; hot water and appliance loads are retained. Heat pumps preserve signed electricity/gas changes, and solar reduces grid imports. Financial outputs require supplied cost sources and tariffs. Missing dependencies/physical inputs are explicit, not invented zeroes.
@@ -115,6 +115,27 @@ Somyadeep's [25-answer review](evaluation/reviews/somyadeep.md) is ready. Fill t
 
 ## Submission and expanded evaluation
 
-Run `.venv/bin/python scripts/reproduce_submission.py` to regenerate models, verify the pipeline and create the team-254 ZIP with trained artifacts and checksums. See [submission guide](docs/submission_guide.md), [current improvement report](docs/improvement_report.md), and [synthetic impact methodology](docs/synthetic_impact_methodology.md). Individual recommendations show backend suitability and rank; optimised comparisons show the carbon/energy/payback winners for the same budget.
+Run `.venv/bin/python scripts/reproduce_submission.py` to regenerate models, verify the pipeline and create the team-254 ZIP with trained artifacts and checksums. See [submission guide](docs/submission_guide.md), [current improvement report](docs/improvement_report.md), and [synthetic impact methodology](docs/synthetic_impact_methodology.md). The separate property-ranking page shows backend improvement-potential ranks and recorded current valuations. Individual recommendations retain suitability; optimised comparisons show the carbon/energy/payback winners for the same budget.
 
 London verification: `.venv/bin/python -m evaluation.verify_london_workflow` (set `LLM_PROVIDER=ollama LLM_MODEL=qwen3:4b` for local AI). See `evaluation/results/london_active/README.md` for current workflow evidence, arbitrary edited inputs, missing/conflicting cases and limitations. Property tables paginate in groups of 50; search and export operate across the complete result set.
+
+
+## Static data documentation
+
+The data relationships, formulas, label generation, quality, validation and reproducibility are documented in [Data/index.html](Data/index.html), with a clickable section index. The page uses local CSS and works without JavaScript or a network connection. Its maintained source is [README_DATA_METHODOLOGY.md](Data/README_DATA_METHODOLOGY.md).
+
+Open the HTML file directly, or serve the repository root:
+
+```sh
+python -m http.server 8080 --bind 127.0.0.1
+```
+
+Then open [the data documentation](http://127.0.0.1:8080/Data/index.html). Serving from the repository root also makes linked reports and source files available.
+
+After editing the methodology source, regenerate the static page:
+
+```sh
+python Data/scripts/build_documentation.py
+```
+
+These documentation commands use only Python's standard library. No externally hosted Kew/documentation URL is recorded here.

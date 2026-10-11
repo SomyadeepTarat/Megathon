@@ -7,22 +7,22 @@
     {
       "case_id": "natural-01",
       "unsupported_numeric_tokens": [],
-      "numeric_tokens": 6
+      "numeric_tokens": 3
     },
     {
       "case_id": "natural-02",
       "unsupported_numeric_tokens": [],
-      "numeric_tokens": 5
+      "numeric_tokens": 13
     },
     {
       "case_id": "natural-03",
       "unsupported_numeric_tokens": [],
-      "numeric_tokens": 14
+      "numeric_tokens": 16
     },
     {
       "case_id": "natural-04",
       "unsupported_numeric_tokens": [],
-      "numeric_tokens": 9
+      "numeric_tokens": 13
     },
     {
       "case_id": "natural-05",
@@ -32,12 +32,12 @@
     {
       "case_id": "natural-06",
       "unsupported_numeric_tokens": [],
-      "numeric_tokens": 4
+      "numeric_tokens": 2
     },
     {
       "case_id": "natural-07",
       "unsupported_numeric_tokens": [],
-      "numeric_tokens": 2
+      "numeric_tokens": 3
     },
     {
       "case_id": "natural-08",
@@ -53,16 +53,16 @@
   "targets_met": null,
   "limitations": "Token matching cannot verify units, attribution, semantics or unsupported nonnumeric claims. Human review required.",
   "local_latency_seconds": [
-    3.711,
-    1.977,
-    4.221,
-    4.916,
-    6.963,
-    2.573,
-    2.916,
-    0.004,
-    0.841
+    0.015,
+    0.041,
+    0.009,
+    0.03,
+    0.01,
+    0.009,
+    0.011,
+    0.003,
+    0.002
   ],
-  "grounded_llm_responses": 6,
-  "generation_validation_fallbacks": 1
+  "grounded_llm_responses": 0,
+  "generation_validation_fallbacks": 8
 }

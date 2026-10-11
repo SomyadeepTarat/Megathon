@@ -44,10 +44,10 @@ def custom_request(record):
     return value
 
 
-def main():
+def main(output=None):
     from fastapi.testclient import TestClient
     from evaluation.verify_natural_advisor import write_evaluation
-    output = ROOT / 'evaluation/results/london_active'
+    output = Path(output) if output is not None else ROOT / 'evaluation/results/london_active'
     output.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(prefix='london-workflow-') as temp:
         os.environ['GREENPRINT_DB_PATH'] = str(Path(temp) / 'test.db')

@@ -1,3 +1,7 @@
+from app.core.environment import load_project_environment
+
+load_project_environment()
+
 from app.services.valuation_inputs import impact_input_reason
 import logging
 import os

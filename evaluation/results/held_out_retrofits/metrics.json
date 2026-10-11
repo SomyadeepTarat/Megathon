@@ -6,14 +6,14 @@
     "rows": 119,
     "per_fuel": {
       "electricity_kwh": {
-        "mae_kwh": 2.292843785982172e-13,
-        "mape_percent": 3.3947740456172054e-15,
+        "mae_kwh": 2.2164156597827662e-13,
+        "mape_percent": 3.262664936048244e-15,
         "percentage_error_rows": 119,
         "zero_reference_rows": 0
       },
       "gas_kwh": {
-        "mae_kwh": 7.872096998538791e-13,
-        "mape_percent": 1.2646005856423184e-13,
+        "mae_kwh": 8.330665755735225e-13,
+        "mape_percent": 1.2680437338732522e-13,
         "percentage_error_rows": 119,
         "zero_reference_rows": 0
       }
@@ -24,7 +24,7 @@
     "scope": "synthetic/reference agreement",
     "limitation": "Rule/simulator label agreement does not establish measured real-world accuracy."
   },
-  "carbon_mae_kg_co2e": 1.7575483552183654e-13,
+  "carbon_mae_kg_co2e": 1.7330674710451183e-13,
   "feasibility": {
     "rows": 120,
     "reference_kinds": [
