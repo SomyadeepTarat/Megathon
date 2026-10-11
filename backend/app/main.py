@@ -26,18 +26,21 @@ app.add_middleware(CORSMiddleware,
     allow_origins=[x.strip() for x in os.getenv('GREENPRINT_CORS_ORIGINS', 'http://localhost:3000').split(',') if x.strip()],
     allow_methods=['GET', 'POST'], allow_headers=['Content-Type'], allow_credentials=False)
 project_root = Path(__file__).resolve().parents[2]
-dataset_kind = os.getenv('GREENPRINT_PROPERTY_DATASET', 'csv')
-if dataset_kind == 'csv':
+dataset_kind = os.getenv('GREENPRINT_PROPERTY_DATASET', 'london')
+if dataset_kind == 'london':
+    repository = CsvPropertyRepository.from_london(project_root)
+    os.environ.setdefault('VALUATION_BASELINE_MODEL_PATH', str(project_root / 'ml/models/london_snapshot.joblib'))
+elif dataset_kind == 'csv':
     repository = CsvPropertyRepository.from_project_root(project_root)
 elif dataset_kind == 'demo':
     repository = JsonPropertyRepository(project_root / 'backend/data/curated_demo_properties.json')
 elif dataset_kind == 'fixtures':
     repository = JsonPropertyRepository(project_root / 'backend/data/demo_properties.json')
 else:
-    raise ValueError('GREENPRINT_PROPERTY_DATASET must be csv, demo or fixtures')
+    raise ValueError('GREENPRINT_PROPERTY_DATASET must be london, csv, demo or fixtures')
 
 
-repository = EditableRepository(repository, os.getenv('GREENPRINT_DB_PATH', str(project_root / 'backend/data/user_properties.db')))
+repository = EditableRepository(repository, os.getenv('GREENPRINT_DB_PATH', str(project_root / 'backend/data' / ('london_user_properties.db' if dataset_kind == 'london' else 'user_properties.db'))))
 
 
 def get_repository():

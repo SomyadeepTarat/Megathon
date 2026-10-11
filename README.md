@@ -24,12 +24,22 @@ Model binaries, SQLite databases, dependencies and build output are ignored by G
 .venv/bin/python -m ml.demo_valuation
 ```
 
-## Run the demo
+## Run the London demo
+
+Prepare the 1,900 fresh London simulations and frozen Ridge baseline first:
+
+```sh
+.venv/bin/python scripts/prepare_london_demo.py
+```
+
+The original 100 are retained only as diagnostics. The active model uses price-proportional calibrated ranges. Prices and properties remain synthetic; published aggregate references are not matched transactions. Compatibility, cost and tariff gaps remain explicit.
+
+## Start services
 
 In one terminal, from the repository root:
 
 ```sh
-GREENPRINT_PROPERTY_DATASET=demo LLM_PROVIDER=ollama LLM_MODEL=qwen3:4b .venv/bin/python -m uvicorn app.main:app --app-dir backend --host 127.0.0.1 --port 8001
+GREENPRINT_PROPERTY_DATASET=london LLM_PROVIDER=ollama LLM_MODEL=qwen3:4b .venv/bin/python -m uvicorn app.main:app --app-dir backend --host 127.0.0.1 --port 8001
 ```
 
 In a second terminal:
@@ -40,7 +50,7 @@ npm --prefix frontend start -- --port 3000
 
 Open http://127.0.0.1:3000; API documentation is at http://127.0.0.1:8001/docs. Ollama must already be serving at http://127.0.0.1:11434 with the selected model installed. Omit `LLM_PROVIDER` and `LLM_MODEL` for deterministic explanations. Provider errors also fall back to verified facts. Configuration is read from shell variables; `.env.example` is not automatically loaded by the backend.
 
-`GREENPRINT_PROPERTY_DATASET=csv` (default) selects all 100 supplied homes. `demo` selects 10 curated synthetic variants with clearly labelled suitability, proposed system, cost and tariff assumptions; it never modifies the supplied CSVs. `fixtures` selects three original development examples. Edited/API-submitted snapshots persist in `backend/data/user_properties.db`; override with `GREENPRINT_DB_PATH`.
+`GREENPRINT_PROPERTY_DATASET=london` (default) selects only the 1,900 fresh London properties and `ml/models/london_snapshot.joblib`. `csv` explicitly selects the legacy 100 supplied homes. `demo` selects 10 curated synthetic variants with clearly labelled suitability, proposed system, cost and tariff assumptions; it never modifies the supplied CSVs. `fixtures` selects three original development examples. London edits persist separately in `backend/data/london_user_properties.db`; legacy profiles use `backend/data/user_properties.db`. Override with `GREENPRINT_DB_PATH`.
 
 Demo sequence: select `DEMO-P00001` → run assessment → retrofit planner → choose measures or optimize a £15,000 budget → compare fuel, carbon, bills and payback → ask the advisor. Complete supported synthetic scenarios show an illustrative value-impact range; missing or unsupported inputs remain explicitly unavailable. Conditional/infeasible measures are not simulated or recommended as confirmed installations.
 
@@ -106,3 +116,5 @@ Somyadeep's [25-answer review](evaluation/reviews/somyadeep.md) is ready. Fill t
 ## Submission and expanded evaluation
 
 Run `.venv/bin/python scripts/reproduce_submission.py` to regenerate models, verify the pipeline and create the team-254 ZIP with trained artifacts and checksums. See [submission guide](docs/submission_guide.md), [current improvement report](docs/improvement_report.md), and [synthetic impact methodology](docs/synthetic_impact_methodology.md). Individual recommendations show backend suitability and rank; optimised comparisons show the carbon/energy/payback winners for the same budget.
+
+London verification: `.venv/bin/python -m evaluation.verify_london_workflow` (set `LLM_PROVIDER=ollama LLM_MODEL=qwen3:4b` for local AI). See `evaluation/results/london_active/README.md` for current workflow evidence, arbitrary edited inputs, missing/conflicting cases and limitations. Property tables paginate in groups of 50; search and export operate across the complete result set.

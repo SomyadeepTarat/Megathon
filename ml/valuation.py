@@ -137,9 +137,37 @@ def validate_snapshot(df):
     return df.reset_index(drop=True)
 
 
-def train(df, provenance, seed=42, alpha=.1, target_kind="sales"):
+def manifest_splits(df, manifest):
+    """Apply an exact, externally supplied property/customer partition."""
+    required = {"property_id", "customer_id", "split"}
+    if required - set(manifest) or "customer_id" not in df:
+        raise ValueError("Split manifest requires property_id, customer_id and split")
+    manifest = manifest.copy()
+    for col in required:
+        if manifest[col].isna().any():
+            raise ValueError(f"Missing split manifest {col}")
+        manifest[col] = manifest[col].astype(str).str.strip()
+    names = {"fit", "selection", "calibration", "test"}
+    if set(manifest.split) != names or not manifest.property_id.is_unique:
+        raise ValueError("Manifest must uniquely assign properties to all four valid splits")
+    if set(manifest.property_id) != set(df.property_id):
+        raise ValueError("Split manifest property IDs must exactly match training data")
+    assigned = df[["property_id", "customer_id"]].merge(manifest, on="property_id", how="left", suffixes=("", "_manifest"), validate="many_to_one")
+    if not assigned.customer_id.eq(assigned.customer_id_manifest).all():
+        raise ValueError("Split manifest customer IDs differ from training data")
+    if assigned.groupby("customer_id").split.nunique().max() != 1:
+        raise ValueError("Split manifest leaks a customer across partitions")
+    result = {name: np.flatnonzero(assigned.split.eq(name).to_numpy()) for name in names}
+    if assigned.loc[result["fit"], "customer_id"].nunique() < 5:
+        raise ValueError("At least five independent fit groups required")
+    return result
+
+
+def train(df, provenance, seed=42, alpha=.1, target_kind="sales", split_manifest=None, interval_policy="absolute"):
     if target_kind not in {"sales", "snapshot"}:
         raise ValueError("target_kind must be sales or snapshot")
+    if interval_policy not in {"absolute", "price_proportional"} or (interval_policy != "absolute" and target_kind != "snapshot"):
+        raise ValueError("Price-proportional intervals are supported only for snapshot baselines")
     df = validate_snapshot(df) if target_kind == "snapshot" else validate_data(df)
     if provenance.get("kind") not in {"observed", "synthetic"}:
         raise ValueError("Provenance kind must be observed or synthetic")
@@ -152,7 +180,8 @@ def train(df, provenance, seed=42, alpha=.1, target_kind="sales"):
     # Synthetic snapshot generation has no EPC premium. Do not train one into inference.
     energy = ENERGY in df and target_kind == "sales"
     features = numeric + CATEGORICAL + ([ENERGY] if energy else [])
-    splits = grouped_splits(df, seed, .2, .2, .2) if target_kind == "snapshot" else grouped_splits(df, seed)
+    splits = (manifest_splits(df, split_manifest) if split_manifest is not None else
+              grouped_splits(df, seed, .2, .2, .2) if target_kind == "snapshot" else grouped_splits(df, seed))
     fit, select, cal, test = (df.iloc[splits[k]] for k in ["fit", "selection", "calibration", "test"])
     candidates, selection_metrics, cross_validation = {}, {}, {}
     for kind in ["ridge", "hist_gradient_boosting"]:
@@ -188,15 +217,20 @@ def train(df, provenance, seed=42, alpha=.1, target_kind="sales"):
     radius = conformal_radius(residuals, alpha)
     pair_radius = conformal_radius(residuals, alpha / 2)
     pred = model.predict(test[features])
+    relative_radius = (conformal_radius(residuals / np.maximum(50000, model.predict(cal_independent[features])), alpha)
+                       if interval_policy == "price_proportional" else None)
+    test_radius = relative_radius * np.maximum(50000, pred) if relative_radius is not None else np.full(len(pred), radius)
     report = {
         "selected_model": selected, "seed": seed, "alpha": alpha, "target_kind": target_kind, "target": target,
+        "split_policy": "supplied property/customer manifest" if split_manifest is not None else "grouped random partition",
         "grouped_cross_validation": cross_validation,
         "provenance": provenance, "selection_metrics": selection_metrics,
         "energy_signal_ablation": energy_signal,
         "held_out_metrics": {k: metrics(test[target], m.predict(test[features])) for k, m in candidates.items()},
         "median_baseline": metrics(test[target], np.full(len(test), dev[target].median())),
-        "interval_coverage": float(np.mean(np.abs(test[target] - pred) <= radius)),
-        "mean_interval_width_gbp": float(np.mean(pred + radius - np.maximum(0, pred - radius))),
+        "interval_policy": interval_policy,
+        "interval_coverage": float(np.mean(np.abs(test[target] - pred) <= test_radius)),
+        "mean_interval_width_gbp": float(np.mean(pred + test_radius - np.maximum(0, pred - test_radius))),
         "pair_marginal_coverage": float(np.mean(np.abs(test[target] - pred) <= pair_radius)),
         "counts": {k: {"rows": len(v), "properties": df.iloc[v].property_id.nunique(),
                        "groups": df.iloc[v]["customer_id" if "customer_id" in df else "property_id"].nunique()} for k, v in splits.items()},
@@ -221,17 +255,19 @@ def train(df, provenance, seed=42, alpha=.1, target_kind="sales"):
             mask = test[col].eq(value).to_numpy()
             report["subgroup_metrics"][col][value] = {"rows": int(mask.sum()),
                 **metrics(test.loc[mask, target], pred[mask]),
-                "coverage": float(np.mean(np.abs(test.loc[mask, target].to_numpy()-pred[mask]) <= radius))}
+                "coverage": float(np.mean(np.abs(test.loc[mask, target].to_numpy()-pred[mask]) <= test_radius[mask]))}
     artifact = {"format_version": 1, "model": model, "features": features, "target_kind": target_kind,
                 "radius": radius, "pair_radius": pair_radius, "alpha": alpha,
                 "provenance": provenance, "energy_supported": supported,
                 "numeric_bounds": {c: [float(dev[c].min()), float(dev[c].max())] for c in numeric},
                 "categories": {c: sorted(dev[c].unique().tolist()) for c in CATEGORICAL + ([ENERGY] if energy else [])},
                 "report": report}
+    if relative_radius is not None:
+        artifact["baseline_interval"] = {"policy": "price_proportional", "relative_radius": relative_radius, "minimum_scale_gbp": 50000}
     held_out = test[["property_id"] + (["sale_date"] if target_kind == "sales" else []) + [target]].copy()
     held_out["prediction_gbp"] = pred
-    held_out["lower_gbp"] = np.maximum(0, pred - radius)
-    held_out["upper_gbp"] = pred + radius
+    held_out["lower_gbp"] = np.maximum(0, pred - test_radius)
+    held_out["upper_gbp"] = pred + test_radius
     manifest = df[["property_id"] + (["customer_id"] if "customer_id" in df else [])].copy()
     for name, indices in splits.items():
         manifest.loc[indices, "split"] = name

@@ -80,3 +80,7 @@ Reproduce the smoke run with:
 ```bash
 LLM_PROVIDER=ollama LLM_MODEL=qwen3:4b OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 .venv/bin/python -m evaluation.verify_natural_advisor
 ```
+
+## Active London integration (11 October 2026)
+
+The active source is the fresh London cohort, with public-reference-anchored synthetic individual properties. Baseline questions use `baseline_valuation` evidence; retrofit-impact questions use the separate contrast result. A valid illustrative baseline range must not be described as unavailable merely because causal/real-world uplift is unavailable. Ranges are server-rendered and cannot be invented by Ollama. The London workflow checks nine advisor questions on custom synthetic inputs and source-data blockers. Numeric grounding is an automated check; Somyadeep's recorded-answer review is still required for human explanation-quality validation. See `evaluation/results/london_active/README.md`.

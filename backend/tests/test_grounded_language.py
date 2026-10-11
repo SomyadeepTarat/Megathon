@@ -52,3 +52,21 @@ def test_backend_metric_sentence_preserves_final_score_meaning():
 def test_heat_pump_does_not_reduce_required_thermal_demand(facts):
     with pytest.raises(ValueError):
         render_natural({'sentences': [{'text': 'A heat pump could lower heating demand.', 'fact_ids': ['f2']}]}, facts)
+
+@pytest.mark.parametrize('provider_enabled', [False, True])
+def test_baseline_explanation_does_not_confuse_unavailable_uplift(provider_enabled):
+    import asyncio
+    from app.services.llm_service import generate_explanation
+    class IncorrectProvider:
+        async def complete(self, prompt, payload):
+            return {'sentences': [{'text': 'Your baseline value is unavailable.',
+                                   'fact_ids': [payload['answer_facts'][0]['id']]}]}
+    result = {'valuation': {'status': 'unavailable', 'reason': 'Synthetic training cannot establish real-world uplift.'},
+              'baseline_valuation': {'status': 'illustrative', 'range_gbp': [128627, 560073]}}
+    text, _, mode, _ = asyncio.run(generate_explanation(result, 'What is my baseline property value?', IncorrectProvider() if provider_enabled else None))
+    assert '£128,627' in text and '£560,073' in text
+    assert 'baseline value is unavailable' not in text
+    assert 'cannot establish real-world uplift' not in text
+    assert mode == 'deterministic'
+    impact, _, _, _ = asyncio.run(generate_explanation(result, 'How much could my property value change?'))
+    assert 'cannot establish real-world uplift' in impact

@@ -348,6 +348,12 @@ def evidence(result: dict[str, Any]) -> list[Fact]:
                 text += f" Suitability: {rec['suitability']}. {rec.get('suitability_reason', '')}"
             add(f'recommendations.{index}', text)
     value = result.get('valuation', {})
+    baseline_value = result.get('baseline_valuation', {})
+    baseline_range = baseline_value.get('range_gbp')
+    if baseline_value.get('status') in ('illustrative', 'indicative') and isinstance(baseline_range, (list, tuple)) and len(baseline_range) == 2:
+        add('valuation.baseline_model_range', f"Baseline-only property-value range: £{baseline_range[0]} to £{baseline_range[1]} ({baseline_value['status']} backend estimate). This is not a retrofit-value impact.")
+        for warning in baseline_value.get('warnings', []):
+            add('warnings.valuation_baseline', warning)
     if value and value.get('status') not in ('unavailable', 'missing_data'):
         for key, label in [('baseline_value_gbp', 'Baseline property value'),
                            ('after_value_gbp', 'Post-retrofit property value'),
@@ -415,6 +421,14 @@ def relevant_facts(facts: list[Fact], question: str) -> list[Fact]:
 
 async def generate_explanation(verified_result: dict[str, Any], question: str = '',
                                provider: Provider | None = None) -> tuple[str, list[Fact], str, str | None]:
+    # A baseline valuation and a retrofit contrast have different evidence.
+    baseline_question = bool(re.search(r'\b(?:value|valuation|worth)\b', question, re.I)) and not bool(
+        re.search(r'\b(?:uplift|premium|change|after|retrofit|increase|upgrade|doubles)\b', question, re.I))
+    if baseline_question and 'baseline_valuation' in verified_result:
+        baseline = verified_result['baseline_valuation'] or {}
+        verified_result = {**verified_result, 'valuation': {
+            **baseline, 'baseline_range_gbp': baseline.get('range_gbp'),
+            'purpose': 'baseline_only'}, 'recommendations': []}
     facts = evidence(verified_result)
     selected = relevant_facts(facts, question) if question else facts
     mode, reason = 'deterministic', 'provider_disabled'
@@ -442,6 +456,14 @@ async def generate_explanation(verified_result: dict[str, Any], question: str = 
             answer = await provider.complete(EXPLANATION_PROMPT,
                 {'question': 'Explain the selected feasible package and why it suits my stated budget and objective.' if verified_result.get('optimization_context') else question, 'answer_facts': prepared})
             prose = render_natural(answer, candidates)
+            if baseline_question and (verified_result.get('valuation') or {}).get('purpose') == 'baseline_only':
+                from .grounded_language import metric_sentence
+                baseline_fact = next((f for f in facts if f.source == 'valuation.baseline_range_gbp'), None)
+                if baseline_fact:
+                    if re.search(r'\b(?:unavailable|cannot estimate|insufficient)\b', prose, re.I):
+                        raise ValueError('Available baseline valuation described as unavailable')
+                    if '£' not in prose:
+                        prose += ' ' + metric_sentence(baseline_fact)
             if verified_result.get('optimization_context') and '£' not in prose:
                 from .grounded_language import metric_sentence
                 cost = next((f for f in facts if f.source == 'installation_cost_gbp'), None)

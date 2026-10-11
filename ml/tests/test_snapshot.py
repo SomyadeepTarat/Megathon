@@ -78,3 +78,28 @@ def test_backend_directory_import():
     import sys
     result = subprocess.run([sys.executable, '-c', 'from app.services.valuation_service import predict_property_value'], cwd=ROOT / 'backend', capture_output=True, text=True)
     assert result.returncode == 0, result.stderr
+
+
+def test_price_proportional_baseline_intervals_and_inference(tmp_path):
+    import numpy as np
+    frame = pd.read_csv(ROOT / 'Data/csv/properties.csv')
+    artifact, report, predictions, _ = train(frame,
+        {'kind': 'synthetic', 'source': 'test', 'license': 'test'},
+        target_kind='snapshot', interval_policy='price_proportional')
+    policy = artifact['baseline_interval']
+    assert report['interval_policy'] == 'price_proportional'
+    expected = policy['relative_radius'] * np.maximum(50000, predictions.prediction_gbp)
+    assert np.allclose(predictions.upper_gbp, predictions.prediction_gbp + expected)
+    assert np.allclose(predictions.lower_gbp, np.maximum(0, predictions.prediction_gbp - expected))
+    normalized = frame.rename(columns={'floor_area_m2': 'floor_area'})
+    state = next(row.to_dict() for _, row in normalized.iterrows()
+                 if all(lo <= row[c] <= hi for c, (lo, hi) in artifact['numeric_bounds'].items()))
+    path = tmp_path / 'relative.joblib'
+    joblib.dump(artifact, path)
+    result = predict_property_value(state, path, allow_illustrative=True)
+    assert result['status'] == 'illustrative'
+    radius = policy['relative_radius'] * max(50000, result['value_gbp'])
+    assert result['range_gbp'] == pytest.approx([max(0, result['value_gbp'] - radius), result['value_gbp'] + radius])
+    artifact['baseline_interval']['relative_radius'] = float('nan')
+    joblib.dump(artifact, path)
+    assert predict_property_value(state, path, allow_illustrative=True)['status'] == 'unavailable'

@@ -6,6 +6,14 @@
     {
       "command": [
         "/Users/somyadeeptarat/Desktop/Megathon/.venv/bin/python",
+        "scripts/prepare_london_demo.py"
+      ],
+      "exit_code": 0,
+      "log": "evaluation/results/current_pipeline/reproduction-01.log"
+    },
+    {
+      "command": [
+        "/Users/somyadeeptarat/Desktop/Megathon/.venv/bin/python",
         "-m",
         "ml.train_valuation",
         "--data",
@@ -20,7 +28,7 @@
         "ml/reports/snapshot"
       ],
       "exit_code": 0,
-      "log": "evaluation/results/current_pipeline/reproduction-01.log"
+      "log": "evaluation/results/current_pipeline/reproduction-02.log"
     },
     {
       "command": [
@@ -29,21 +37,12 @@
         "ml.synthetic_impact"
       ],
       "exit_code": 0,
-      "log": "evaluation/results/current_pipeline/reproduction-02.log"
-    },
-    {
-      "command": [
-        "/Users/somyadeeptarat/Desktop/Megathon/.venv/bin/python",
-        "scripts/prepare_demo.py"
-      ],
-      "exit_code": 0,
       "log": "evaluation/results/current_pipeline/reproduction-03.log"
     },
     {
       "command": [
         "/Users/somyadeeptarat/Desktop/Megathon/.venv/bin/python",
-        "-m",
-        "evaluation.held_out_retrofits"
+        "scripts/prepare_demo.py"
       ],
       "exit_code": 0,
       "log": "evaluation/results/current_pipeline/reproduction-04.log"
@@ -52,7 +51,7 @@
       "command": [
         "/Users/somyadeeptarat/Desktop/Megathon/.venv/bin/python",
         "-m",
-        "evaluation.verify_reference_cases"
+        "evaluation.held_out_retrofits"
       ],
       "exit_code": 0,
       "log": "evaluation/results/current_pipeline/reproduction-05.log"
@@ -61,10 +60,28 @@
       "command": [
         "/Users/somyadeeptarat/Desktop/Megathon/.venv/bin/python",
         "-m",
-        "evaluation.verify_runtime"
+        "evaluation.verify_reference_cases"
       ],
       "exit_code": 0,
       "log": "evaluation/results/current_pipeline/reproduction-06.log"
+    },
+    {
+      "command": [
+        "/Users/somyadeeptarat/Desktop/Megathon/.venv/bin/python",
+        "-m",
+        "evaluation.verify_runtime"
+      ],
+      "exit_code": 0,
+      "log": "evaluation/results/current_pipeline/reproduction-07.log"
+    },
+    {
+      "command": [
+        "/Users/somyadeeptarat/Desktop/Megathon/.venv/bin/python",
+        "-m",
+        "evaluation.verify_london_workflow"
+      ],
+      "exit_code": 0,
+      "log": "evaluation/results/current_pipeline/reproduction-08.log"
     },
     {
       "command": [
@@ -75,7 +92,7 @@
         "--junitxml=evaluation/results/current_pipeline/tests.xml"
       ],
       "exit_code": 0,
-      "log": "evaluation/results/current_pipeline/reproduction-07.log"
+      "log": "evaluation/results/current_pipeline/reproduction-09.log"
     },
     {
       "command": [
@@ -83,27 +100,6 @@
         "-m",
         "pip",
         "check"
-      ],
-      "exit_code": 0,
-      "log": "evaluation/results/current_pipeline/reproduction-08.log"
-    },
-    {
-      "command": [
-        "npm",
-        "--prefix",
-        "frontend",
-        "run",
-        "typecheck"
-      ],
-      "exit_code": 0,
-      "log": "evaluation/results/current_pipeline/reproduction-09.log"
-    },
-    {
-      "command": [
-        "npm",
-        "--prefix",
-        "frontend",
-        "test"
       ],
       "exit_code": 0,
       "log": "evaluation/results/current_pipeline/reproduction-10.log"
@@ -114,10 +110,31 @@
         "--prefix",
         "frontend",
         "run",
-        "build"
+        "typecheck"
       ],
       "exit_code": 0,
       "log": "evaluation/results/current_pipeline/reproduction-11.log"
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "frontend",
+        "test"
+      ],
+      "exit_code": 0,
+      "log": "evaluation/results/current_pipeline/reproduction-12.log"
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "frontend",
+        "run",
+        "build"
+      ],
+      "exit_code": 0,
+      "log": "evaluation/results/current_pipeline/reproduction-13.log"
     }
   ],
   "status": "passed"

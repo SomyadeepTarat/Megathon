@@ -4,6 +4,7 @@
   "alpha": 0.1,
   "target_kind": "snapshot",
   "target": "current_value_estimate_gbp",
+  "split_policy": "grouped random partition",
   "grouped_cross_validation": {
     "ridge": {
       "folds": [
@@ -108,6 +109,7 @@
     "rmse_gbp": 130302.34073108587,
     "r2": -0.05917881779606571
   },
+  "interval_policy": "absolute",
   "interval_coverage": 1.0,
   "mean_interval_width_gbp": 301820.3609547793,
   "pair_marginal_coverage": 1.0,

@@ -1,0 +1,105 @@
+{
+  "checks": [
+    {
+      "path": "Data/csv/emission_factors_2026.csv",
+      "exact_match": true,
+      "line_endings_only": false
+    },
+    {
+      "path": "Data/csv/emission_factors_2026.provenance.json",
+      "exact_match": false,
+      "line_endings_only": true
+    },
+    {
+      "path": "Data/csv/energy_usage.csv",
+      "exact_match": true,
+      "line_endings_only": false
+    },
+    {
+      "path": "Data/csv/properties.csv",
+      "exact_match": true,
+      "line_endings_only": false
+    },
+    {
+      "path": "Data/manifests/kew_schema_v1.json",
+      "exact_match": false,
+      "line_endings_only": true
+    },
+    {
+      "path": "Data/scripts/expand_dataset.py",
+      "exact_match": true,
+      "line_endings_only": false
+    },
+    {
+      "path": "Data/scripts/generate_energy_usage.py",
+      "exact_match": false,
+      "line_endings_only": true
+    },
+    {
+      "path": "Data/scripts/generate_properties.py",
+      "exact_match": false,
+      "line_endings_only": true
+    },
+    {
+      "path": "ml/reports/current_snapshot/split_manifest.csv",
+      "exact_match": false,
+      "line_endings_only": true
+    },
+    {
+      "path": "Data/generated/kew_synthetic_v2/derived_diagnostics.json",
+      "exact_match": false,
+      "line_endings_only": true
+    },
+    {
+      "path": "Data/generated/kew_synthetic_v2/edge_cases/energy_usage.csv",
+      "exact_match": true,
+      "line_endings_only": false
+    },
+    {
+      "path": "Data/generated/kew_synthetic_v2/edge_cases/manifest.json",
+      "exact_match": false,
+      "line_endings_only": true
+    },
+    {
+      "path": "Data/generated/kew_synthetic_v2/edge_cases/properties.csv",
+      "exact_match": true,
+      "line_endings_only": false
+    },
+    {
+      "path": "Data/generated/kew_synthetic_v2/energy_usage.csv",
+      "exact_match": true,
+      "line_endings_only": false
+    },
+    {
+      "path": "Data/generated/kew_synthetic_v2/properties.csv",
+      "exact_match": true,
+      "line_endings_only": false
+    },
+    {
+      "path": "Data/generated/kew_synthetic_v2/quality_report.json",
+      "exact_match": false,
+      "line_endings_only": true
+    },
+    {
+      "path": "Data/generated/kew_synthetic_v2/sample/energy_usage.csv",
+      "exact_match": true,
+      "line_endings_only": false
+    },
+    {
+      "path": "Data/generated/kew_synthetic_v2/sample/properties.csv",
+      "exact_match": true,
+      "line_endings_only": false
+    },
+    {
+      "path": "Data/generated/kew_synthetic_v2/source_audit.json",
+      "exact_match": false,
+      "line_endings_only": true
+    },
+    {
+      "path": "Data/generated/kew_synthetic_v2/split_manifest.csv",
+      "exact_match": true,
+      "line_endings_only": false
+    }
+  ],
+  "audit_errors": []
+}

@@ -14,12 +14,14 @@ def main():
     output = ROOT/'evaluation/results/current_pipeline'
     output.mkdir(parents=True, exist_ok=True)
     commands = [
+        [sys.executable, 'scripts/prepare_london_demo.py'],
         [sys.executable, '-m', 'ml.train_valuation', '--data', 'Data/csv/properties.csv', '--provenance', 'ml/snapshot_provenance.json', '--target-kind', 'snapshot', '--output', 'ml/models/snapshot.joblib', '--reports', 'ml/reports/snapshot'],
         [sys.executable, '-m', 'ml.synthetic_impact'],
         [sys.executable, 'scripts/prepare_demo.py'],
         [sys.executable, '-m', 'evaluation.held_out_retrofits'],
         [sys.executable, '-m', 'evaluation.verify_reference_cases'],
         [sys.executable, '-m', 'evaluation.verify_runtime'],
+        [sys.executable, '-m', 'evaluation.verify_london_workflow'],
         [sys.executable, '-m', 'pytest', '-q', '--junitxml=evaluation/results/current_pipeline/tests.xml'],
         [sys.executable, '-m', 'pip', 'check'],
         ['npm', '--prefix', 'frontend', 'run', 'typecheck'],

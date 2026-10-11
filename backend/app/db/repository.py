@@ -163,7 +163,7 @@ class CsvPropertyRepository:
                 electricity_months_covered=coverage['electricity'], gas_months_covered=coverage['gas'],
                 warnings=warnings + ['Confirm alignment of the property snapshot and energy period; see source methodology.'])
             self._records[identifier] = PropertyRecord(property=prop, annual_energy=annual, benchmark=benchmark,
-                dataset_kind=row['data_status'], dataset_source='Data/csv/properties.csv and Data/csv/energy_usage.csv')
+                dataset_kind=row['data_status'], dataset_source=f'Synthetic/declared CSV inputs: {properties_path} and {energy_path}')
 
     def list_properties(self):
         return [record.model_copy(deep=True) for record in self._records.values()]
@@ -195,6 +195,30 @@ class CsvPropertyRepository:
         """Load the source CSVs using paths anchored at the project root."""
         root = Path(project_root) if project_root is not None else Path(__file__).resolve().parents[3]
         return cls(root / 'Data/csv/properties.csv', root / 'Data/csv/energy_usage.csv')
+
+    @classmethod
+    def from_london(cls, project_root=None):
+        """Serve only the fresh supplied London cohort; legacy rows stay diagnostic."""
+        import csv
+        root = Path(project_root) if project_root is not None else Path(__file__).resolve().parents[3]
+        data = root / 'Data/generated/kew_london_v3'
+        required = [data / name for name in ('properties.csv', 'energy_usage.csv', 'split_manifest.csv')]
+        if not all(path.is_file() for path in required):
+            raise ValueError('Prepare London data first: python scripts/prepare_london_demo.py')
+        repository = cls(required[0], required[1])
+        with required[2].open(newline='') as stream:
+            manifest = list(csv.DictReader(stream))
+        ids = [row['property_id'] for row in manifest]
+        if len(set(ids)) != len(ids) or set(ids) != set(repository._records):
+            raise ValueError('London manifest must uniquely match all source properties')
+        allowed = {'fit', 'selection', 'calibration', 'test', 'legacy_diagnostic'}
+        if any(row['split'] not in allowed for row in manifest):
+            raise ValueError('Unknown London manifest partition')
+        fresh = {row['property_id'] for row in manifest if row['split'] != 'legacy_diagnostic'}
+        if not fresh or any(repository._records[key].property.region != 'Greater London' for key in fresh):
+            raise ValueError('Fresh London cohort must contain only Greater London properties')
+        repository._records = {key: value for key, value in repository._records.items() if key in fresh}
+        return repository
 
     def load_combined_record(self, property_id):
         """Return source property fields, annual energy sums and raw monthly rows.

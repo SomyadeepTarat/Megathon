@@ -1,0 +1,12 @@
+{
+  "kind": "synthetic",
+  "source": "London public-reference simulation v3; Data/relations/london_simulation.md and Data/manifests/london_reference_v1.json",
+  "license": "Project-generated synthetic rows; public-reference attribution/licence exceptions documented in source manifest",
+  "energy_evidence": {
+    "reviewed": false,
+    "reference": null
+  },
+  "dataset_version": "kew_london_v3",
+  "handoff_provenance_sha256": "5e6543093a705559e0ef55cdd8b7278f9a8414670e3ae0601a6d2ebe0dca2fb4",
+  "scope": "Fresh Greater London synthetic cohort only; legacy 100 excluded. No observed transaction or retrofit-price relationship."
+}
