@@ -1,0 +1,44 @@
+{
+  "base_batch_seeds": "43 + zero-based batch index; 90 appended properties per batch",
+  "field_provenance": {
+    "new_base_fields": "generate_properties.generate_base; inherited assumptions, independently seeded batches.",
+    "new_benchmark_fields": "Existing fixed synthetic type-specific reference; not an official standard.",
+    "new_compatibility_fields": "Unavailable; blank, no survey evidence.",
+    "new_physical_fields": "generate_energy_usage physical model; 2025; seed 42 per stable property ID.",
+    "original_rows": "Source CSVs retained cell-for-cell; existing field provenance preserved."
+  },
+  "inference": "Original inputs unchanged. No observed transaction/date enrichment or market/causal validity claim.",
+  "monthly_readings": 24000,
+  "new_ml_inputs": [],
+  "observed_enrichment": false,
+  "output_sha256": {
+    "derived_diagnostics.json": "4611e0aed1ca65ec2c2bf69f0bf0420d31ae89fc4757f598988550ccfc4ae3ae",
+    "edge_cases/energy_usage.csv": "ba30296c58e71f6fa21ce0b28feada4bc29f86b1a8331b35ebc9e8244246a6cf",
+    "edge_cases/manifest.json": "8490bb71e41210e2e8f40c071e0c10677d5ad4ed6711b442ba9a0d1557c4d400",
+    "edge_cases/properties.csv": "52e4e8028de21fc3d0e65c76a69d83b967e56f81eea0f46606dad7cc3ce2b88a",
+    "energy_usage.csv": "863651901b358286bf6cc28fde8c05f9497e70fc2e01ad44a379cdd9bf7234f8",
+    "properties.csv": "bda0ca56c1790d4611d2dc6eae8568b2c5d794a1f8ce812777f8b4c9956dbac9",
+    "quality_report.json": "f90f2431d4c04e6bd0be7cafbaf3e3ed1d88e6df1d9b395e6fed463bd1bd1111",
+    "sample/energy_usage.csv": "5b864599595835211fde008ee7d531fd4de023df4854b4b3062d453bc1b5e75d",
+    "sample/properties.csv": "dcc501d0a2da7f05ea3ae407d13d07ad70b9f6d86118af4f1298ac35f68351eb",
+    "source_audit.json": "2c097a73e16cf0ff84d2df97cfc4d61a197af3b50c0e8e6e8d1f6830ce131ac7",
+    "split_manifest.csv": "8ede837d4391587969919dfa5b1a93e9cd9b1d834d60a0faa7dcd0a5e735af43"
+  },
+  "physical_seed": 42,
+  "price_model": "Inherited regional/type/size/bedroom/age anchors plus independent lognormal noise; no retrofit uplift or energy features.",
+  "schema_changed": false,
+  "source_sha256": {
+    "Data/csv/emission_factors_2026.csv": "e793857d56602acf4376d3357a43c66701c729a794303fae720071d2d16c0bb2",
+    "Data/csv/emission_factors_2026.provenance.json": "a03d26b153ee8579f763a8623d638d6e9ce6717453b6bbab8cb8be120cb8b1c9",
+    "Data/csv/energy_usage.csv": "7bee3e14c1ad9e007da31ab1a07e5e5b859afd1e9f2fdae8455d434e67369622",
+    "Data/csv/properties.csv": "b5da395c0d2bee5ebb6d790ea609af00da9912d66f3120aebc73eab3016ef000",
+    "Data/manifests/kew_schema_v1.json": "07acbed534a3e3ce4d6a3226655ec15ec7550f9f3fb1836a38fb052d2d6bbd83",
+    "Data/scripts/expand_dataset.py": "a790c606357400f1411c3fa47a5b39da0ffd078f0e1acfb4adc86a2d0eef59b5",
+    "Data/scripts/generate_energy_usage.py": "40aed97f0dbd72952941ecfa3140f1ce55239d2f76064861a1558ab0da19c1e4",
+    "Data/scripts/generate_properties.py": "eb7716a168585c6f92558afbbf07d52ab3ff649f4116a40aafa2a8a8b9588c99",
+    "ml/reports/current_snapshot/split_manifest.csv": "1f8df3e3ab323862fb96cb53f5f4f2f4dc3a56a116a8a38db6bcedcd52775597"
+  },
+  "status": "synthetic",
+  "total_properties": 2000,
+  "version": "kew_synthetic_v2"
+}

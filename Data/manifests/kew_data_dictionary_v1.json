@@ -1,0 +1,672 @@
+{
+  "schema_changes": false,
+  "new_ml_inputs": [],
+  "tables": {
+    "properties": [
+      {
+        "field": "property_id",
+        "storage": "CSV text",
+        "semantic_type": "identifier",
+        "unit": null,
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "stable synthetic identifier, not UPRN"
+      },
+      {
+        "field": "customer_id",
+        "storage": "CSV text",
+        "semantic_type": "identifier",
+        "unit": null,
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "stable synthetic identifier, not UPRN"
+      },
+      {
+        "field": "property_type",
+        "storage": "CSV text",
+        "semantic_type": "string",
+        "unit": null,
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic base model, see properties_methodology.md",
+        "existing_values": [
+          "Detached",
+          "Flat",
+          "Semi-detached",
+          "Terraced"
+        ]
+      },
+      {
+        "field": "age",
+        "storage": "CSV text",
+        "semantic_type": "number",
+        "unit": "years",
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic base model, see properties_methodology.md"
+      },
+      {
+        "field": "floor_area_m2",
+        "storage": "CSV text",
+        "semantic_type": "number",
+        "unit": "m2",
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic base model, see properties_methodology.md"
+      },
+      {
+        "field": "bedrooms",
+        "storage": "CSV text",
+        "semantic_type": "number",
+        "unit": "dimensionless",
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic base model, see properties_methodology.md"
+      },
+      {
+        "field": "energy_rating",
+        "storage": "CSV text",
+        "semantic_type": "string",
+        "unit": null,
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic base model, see properties_methodology.md",
+        "existing_values": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G"
+        ]
+      },
+      {
+        "field": "heating",
+        "storage": "CSV text",
+        "semantic_type": "string",
+        "unit": null,
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic base model, see properties_methodology.md",
+        "existing_values": [
+          "Electric resistance",
+          "Heat pump",
+          "Modern gas boiler",
+          "Old gas boiler"
+        ]
+      },
+      {
+        "field": "insulation",
+        "storage": "CSV text",
+        "semantic_type": "string",
+        "unit": null,
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic base model, see properties_methodology.md",
+        "existing_values": [
+          "Average",
+          "Good",
+          "Poor"
+        ]
+      },
+      {
+        "field": "glazing",
+        "storage": "CSV text",
+        "semantic_type": "string",
+        "unit": null,
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic base model, see properties_methodology.md",
+        "existing_values": [
+          "Double",
+          "Single",
+          "Triple"
+        ]
+      },
+      {
+        "field": "solar",
+        "storage": "CSV text",
+        "semantic_type": "boolean",
+        "unit": null,
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic base model, see properties_methodology.md",
+        "existing_values": [
+          "false",
+          "true"
+        ],
+        "allowed_values": [
+          "true",
+          "false",
+          ""
+        ]
+      },
+      {
+        "field": "smart_controls",
+        "storage": "CSV text",
+        "semantic_type": "boolean",
+        "unit": null,
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic base model, see properties_methodology.md",
+        "existing_values": [
+          "false",
+          "true"
+        ],
+        "allowed_values": [
+          "true",
+          "false",
+          ""
+        ]
+      },
+      {
+        "field": "region",
+        "storage": "CSV text",
+        "semantic_type": "string",
+        "unit": null,
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic base model, see properties_methodology.md",
+        "existing_values": [
+          "East Midlands",
+          "East of England",
+          "Greater London",
+          "North East",
+          "North West",
+          "South East",
+          "South West",
+          "Wales",
+          "West Midlands",
+          "Yorkshire and The Humber"
+        ]
+      },
+      {
+        "field": "current_value_estimate_gbp",
+        "storage": "CSV text",
+        "semantic_type": "number",
+        "unit": "GBP",
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic base model, see properties_methodology.md",
+        "note": "Synthetic target; exclude from model inputs. Not an observed sale price."
+      },
+      {
+        "field": "data_status",
+        "storage": "CSV text",
+        "semantic_type": "string",
+        "unit": null,
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic base model, see properties_methodology.md",
+        "existing_values": [
+          "synthetic"
+        ]
+      },
+      {
+        "field": "generation_seed",
+        "storage": "CSV text",
+        "semantic_type": "number",
+        "unit": "dimensionless",
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic base model, see properties_methodology.md"
+      },
+      {
+        "field": "heating_system",
+        "storage": "CSV text",
+        "semantic_type": "string",
+        "unit": null,
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic physical model, see expanded_dataset.md",
+        "existing_values": [
+          "air_source_heat_pump",
+          "electric_resistance",
+          "modern_gas_boiler",
+          "old_gas_boiler"
+        ]
+      },
+      {
+        "field": "heating_system_status",
+        "storage": "CSV text",
+        "semantic_type": "string",
+        "unit": null,
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic physical model, see expanded_dataset.md",
+        "existing_values": [
+          "derived_from_synthetic",
+          "synthetic_assumption"
+        ]
+      },
+      {
+        "field": "renewable_contribution",
+        "storage": "CSV text",
+        "semantic_type": "string",
+        "unit": null,
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic physical model, see expanded_dataset.md",
+        "existing_values": [
+          "none",
+          "substantial"
+        ]
+      },
+      {
+        "field": "renewable_share",
+        "storage": "CSV text",
+        "semantic_type": "number",
+        "unit": "dimensionless",
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic physical model, see expanded_dataset.md",
+        "note": "Self-consumed PV divided by total electrical demand, 0-1; not total delivered heat share."
+      },
+      {
+        "field": "annual_electricity_demand_kwh",
+        "storage": "CSV text",
+        "semantic_type": "number",
+        "unit": "kWh/year",
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic physical model, see expanded_dataset.md"
+      },
+      {
+        "field": "annual_solar_generation_kwh",
+        "storage": "CSV text",
+        "semantic_type": "number",
+        "unit": "kWh/year",
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic physical model, see expanded_dataset.md"
+      },
+      {
+        "field": "annual_solar_self_consumed_kwh",
+        "storage": "CSV text",
+        "semantic_type": "number",
+        "unit": "kWh/year",
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic physical model, see expanded_dataset.md"
+      },
+      {
+        "field": "benchmark_property_type",
+        "storage": "CSV text",
+        "semantic_type": "string",
+        "unit": null,
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "inherited synthetic type reference",
+        "existing_values": [
+          "detached",
+          "flat",
+          "semi_detached",
+          "terraced"
+        ]
+      },
+      {
+        "field": "benchmark_intensity_kwh_m2_year",
+        "storage": "CSV text",
+        "semantic_type": "number",
+        "unit": "kWh/m2/year",
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "inherited synthetic type reference"
+      },
+      {
+        "field": "benchmark_source",
+        "storage": "CSV text",
+        "semantic_type": "string",
+        "unit": null,
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "inherited synthetic type reference"
+      },
+      {
+        "field": "benchmark_methodology",
+        "storage": "CSV text",
+        "semantic_type": "string",
+        "unit": null,
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "inherited synthetic type reference"
+      },
+      {
+        "field": "benchmark_source_year",
+        "storage": "CSV text",
+        "semantic_type": "number",
+        "unit": "calendar year",
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "inherited synthetic type reference"
+      },
+      {
+        "field": "benchmark_data_status",
+        "storage": "CSV text",
+        "semantic_type": "string",
+        "unit": null,
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "inherited synthetic type reference",
+        "existing_values": [
+          "synthetic"
+        ]
+      },
+      {
+        "field": "annual_space_heating_demand_kwh",
+        "storage": "CSV text",
+        "semantic_type": "number",
+        "unit": "kWh/year",
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic physical model, see expanded_dataset.md"
+      },
+      {
+        "field": "annual_hot_water_demand_kwh",
+        "storage": "CSV text",
+        "semantic_type": "number",
+        "unit": "kWh/year",
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic physical model, see expanded_dataset.md"
+      },
+      {
+        "field": "thermal_demand_kwh",
+        "storage": "CSV text",
+        "semantic_type": "number",
+        "unit": "kWh/year",
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic physical model, see expanded_dataset.md"
+      },
+      {
+        "field": "thermal_demand_scope",
+        "storage": "CSV text",
+        "semantic_type": "string",
+        "unit": null,
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic physical model, see expanded_dataset.md",
+        "existing_values": [
+          "space_heating_plus_hot_water"
+        ]
+      },
+      {
+        "field": "annual_base_appliance_electricity_kwh",
+        "storage": "CSV text",
+        "semantic_type": "number",
+        "unit": "kWh/year",
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic physical model, see expanded_dataset.md"
+      },
+      {
+        "field": "annual_gas_space_heating_kwh",
+        "storage": "CSV text",
+        "semantic_type": "number",
+        "unit": "kWh/year",
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic physical model, see expanded_dataset.md"
+      },
+      {
+        "field": "annual_gas_hot_water_kwh",
+        "storage": "CSV text",
+        "semantic_type": "number",
+        "unit": "kWh/year",
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic physical model, see expanded_dataset.md"
+      },
+      {
+        "field": "annual_electric_space_heating_kwh",
+        "storage": "CSV text",
+        "semantic_type": "number",
+        "unit": "kWh/year",
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic physical model, see expanded_dataset.md"
+      },
+      {
+        "field": "annual_electric_hot_water_kwh",
+        "storage": "CSV text",
+        "semantic_type": "number",
+        "unit": "kWh/year",
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic physical model, see expanded_dataset.md"
+      },
+      {
+        "field": "boiler_efficiency",
+        "storage": "CSV text",
+        "semantic_type": "number",
+        "unit": "dimensionless",
+        "blank_semantics": "not applicable for other heating systems",
+        "provenance": "synthetic physical model, see expanded_dataset.md"
+      },
+      {
+        "field": "scop",
+        "storage": "CSV text",
+        "semantic_type": "number",
+        "unit": "dimensionless",
+        "blank_semantics": "not applicable for other heating systems",
+        "provenance": "synthetic physical model, see expanded_dataset.md"
+      },
+      {
+        "field": "hot_water_cop",
+        "storage": "CSV text",
+        "semantic_type": "number",
+        "unit": "dimensionless",
+        "blank_semantics": "not applicable for other heating systems",
+        "provenance": "synthetic physical model, see expanded_dataset.md"
+      },
+      {
+        "field": "electric_resistance_efficiency",
+        "storage": "CSV text",
+        "semantic_type": "number",
+        "unit": "dimensionless",
+        "blank_semantics": "not applicable for other heating systems",
+        "provenance": "synthetic physical model, see expanded_dataset.md"
+      },
+      {
+        "field": "solar_installed",
+        "storage": "CSV text",
+        "semantic_type": "boolean",
+        "unit": null,
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic physical model, see expanded_dataset.md",
+        "existing_values": [
+          "false",
+          "true"
+        ],
+        "allowed_values": [
+          "true",
+          "false",
+          ""
+        ]
+      },
+      {
+        "field": "roof_suitable_for_loft",
+        "storage": "CSV text",
+        "semantic_type": "boolean",
+        "unit": null,
+        "blank_semantics": "unknown eligibility; never default false",
+        "provenance": "unavailable survey evidence",
+        "existing_values": [],
+        "allowed_values": [
+          "true",
+          "false",
+          ""
+        ]
+      },
+      {
+        "field": "roof_suitable_for_solar",
+        "storage": "CSV text",
+        "semantic_type": "boolean",
+        "unit": null,
+        "blank_semantics": "unknown eligibility; never default false",
+        "provenance": "unavailable survey evidence",
+        "existing_values": [],
+        "allowed_values": [
+          "true",
+          "false",
+          ""
+        ]
+      },
+      {
+        "field": "heat_pump_compatible",
+        "storage": "CSV text",
+        "semantic_type": "boolean",
+        "unit": null,
+        "blank_semantics": "unknown eligibility; never default false",
+        "provenance": "unavailable survey evidence",
+        "existing_values": [],
+        "allowed_values": [
+          "true",
+          "false",
+          ""
+        ]
+      },
+      {
+        "field": "controls_compatible",
+        "storage": "CSV text",
+        "semantic_type": "boolean",
+        "unit": null,
+        "blank_semantics": "unknown eligibility; never default false",
+        "provenance": "unavailable survey evidence",
+        "existing_values": [],
+        "allowed_values": [
+          "true",
+          "false",
+          ""
+        ]
+      },
+      {
+        "field": "physical_inputs_status",
+        "storage": "CSV text",
+        "semantic_type": "string",
+        "unit": null,
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic physical model, see expanded_dataset.md",
+        "existing_values": [
+          "synthetic_modelled"
+        ]
+      },
+      {
+        "field": "physical_inputs_source",
+        "storage": "CSV text",
+        "semantic_type": "string",
+        "unit": null,
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic physical model, see expanded_dataset.md"
+      },
+      {
+        "field": "physical_inputs_year",
+        "storage": "CSV text",
+        "semantic_type": "number",
+        "unit": "calendar year",
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic physical model, see expanded_dataset.md"
+      },
+      {
+        "field": "physical_inputs_generation_seed",
+        "storage": "CSV text",
+        "semantic_type": "number",
+        "unit": "dimensionless",
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic physical model, see expanded_dataset.md"
+      }
+    ],
+    "energy_usage": [
+      {
+        "field": "property_id",
+        "storage": "CSV text",
+        "semantic_type": "identifier",
+        "unit": null,
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "stable synthetic identifier, not UPRN"
+      },
+      {
+        "field": "month",
+        "storage": "CSV text",
+        "semantic_type": "string",
+        "unit": null,
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic physical model, see expanded_dataset.md",
+        "existing_values": [
+          "2025-01",
+          "2025-02",
+          "2025-03",
+          "2025-04",
+          "2025-05",
+          "2025-06",
+          "2025-07",
+          "2025-08",
+          "2025-09",
+          "2025-10",
+          "2025-11",
+          "2025-12"
+        ],
+        "note": "YYYY-MM; full primary dataset Jan-Dec 2025."
+      },
+      {
+        "field": "electricity_kwh",
+        "storage": "CSV text",
+        "semantic_type": "number",
+        "unit": "kWh/month",
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic physical model, see expanded_dataset.md",
+        "note": "Purchased grid import after PV self-consumption, not total demand."
+      },
+      {
+        "field": "gas_kwh",
+        "storage": "CSV text",
+        "semantic_type": "number",
+        "unit": "kWh/month",
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic physical model, see expanded_dataset.md"
+      },
+      {
+        "field": "reading_status",
+        "storage": "CSV text",
+        "semantic_type": "string",
+        "unit": null,
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic physical model, see expanded_dataset.md",
+        "existing_values": [
+          "synthetic"
+        ]
+      },
+      {
+        "field": "electricity_demand_kwh",
+        "storage": "CSV text",
+        "semantic_type": "number",
+        "unit": "kWh/month",
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic physical model, see expanded_dataset.md"
+      },
+      {
+        "field": "solar_generation_kwh",
+        "storage": "CSV text",
+        "semantic_type": "number",
+        "unit": "kWh/month",
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic physical model, see expanded_dataset.md"
+      },
+      {
+        "field": "solar_self_consumed_kwh",
+        "storage": "CSV text",
+        "semantic_type": "number",
+        "unit": "kWh/month",
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic physical model, see expanded_dataset.md"
+      },
+      {
+        "field": "solar_export_kwh",
+        "storage": "CSV text",
+        "semantic_type": "number",
+        "unit": "kWh/month",
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic physical model, see expanded_dataset.md"
+      },
+      {
+        "field": "space_heating_demand_kwh",
+        "storage": "CSV text",
+        "semantic_type": "number",
+        "unit": "kWh/month",
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic physical model, see expanded_dataset.md"
+      },
+      {
+        "field": "hot_water_demand_kwh",
+        "storage": "CSV text",
+        "semantic_type": "number",
+        "unit": "kWh/month",
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic physical model, see expanded_dataset.md"
+      },
+      {
+        "field": "physical_inputs_status",
+        "storage": "CSV text",
+        "semantic_type": "string",
+        "unit": null,
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic physical model, see expanded_dataset.md",
+        "existing_values": [
+          "synthetic_modelled"
+        ]
+      },
+      {
+        "field": "reading_source",
+        "storage": "CSV text",
+        "semantic_type": "string",
+        "unit": null,
+        "blank_semantics": "unavailable; do not impute",
+        "provenance": "synthetic physical model, see expanded_dataset.md"
+      }
+    ]
+  }
+}

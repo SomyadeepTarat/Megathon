@@ -1,0 +1,62 @@
+[
+  {
+    "case": "missing_month",
+    "expected": "preserve missingness/zero and apply eligibility gating",
+    "property_id": "EDGE001",
+    "status": "synthetic QA fixture; excluded from splits/training"
+  },
+  {
+    "case": "missing_reading",
+    "expected": "preserve missingness/zero and apply eligibility gating",
+    "property_id": "EDGE002",
+    "status": "synthetic QA fixture; excluded from splits/training"
+  },
+  {
+    "case": "zero_gas_electric",
+    "expected": "preserve missingness/zero and apply eligibility gating",
+    "property_id": "EDGE003",
+    "status": "synthetic QA fixture; excluded from splits/training"
+  },
+  {
+    "case": "zero_all_consumption",
+    "expected": "preserve missingness/zero and apply eligibility gating",
+    "property_id": "EDGE004",
+    "status": "synthetic QA fixture; excluded from splits/training"
+  },
+  {
+    "case": "conflicting_heating",
+    "expected": "reject conflicting source or mark unavailable",
+    "property_id": "EDGE005",
+    "status": "synthetic QA fixture; excluded from splits/training"
+  },
+  {
+    "case": "conflicting_solar",
+    "expected": "reject conflicting source or mark unavailable",
+    "property_id": "EDGE006",
+    "status": "synthetic QA fixture; excluded from splits/training"
+  },
+  {
+    "case": "infeasible_solar",
+    "expected": "preserve missingness/zero and apply eligibility gating",
+    "property_id": "EDGE007",
+    "status": "synthetic QA fixture; excluded from splits/training"
+  },
+  {
+    "case": "infeasible_heat_pump",
+    "expected": "preserve missingness/zero and apply eligibility gating",
+    "property_id": "EDGE008",
+    "status": "synthetic QA fixture; excluded from splits/training"
+  },
+  {
+    "case": "unknown_floor_area",
+    "expected": "reject conflicting source or mark unavailable",
+    "property_id": "EDGE009",
+    "status": "synthetic QA fixture; excluded from splits/training"
+  },
+  {
+    "case": "missing_thermal_inputs",
+    "expected": "preserve missingness/zero and apply eligibility gating",
+    "property_id": "EDGE010",
+    "status": "synthetic QA fixture; excluded from splits/training"
+  }
+]

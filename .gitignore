@@ -11,3 +11,4 @@ evaluation/results/**/*.joblib
 submission/
 evaluation/results/current_pipeline/reproduction-*.log
 frontend/.next*/
+Data/generated/

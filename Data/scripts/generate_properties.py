@@ -13,8 +13,8 @@ BASE_FIELDS = ['property_id', 'customer_id', 'property_type', 'age', 'floor_area
                'region', 'current_value_estimate_gbp', 'data_status', 'generation_seed']
 
 
-def generate_base(demos):
-    rng = random.Random(42)
+def generate_base(demos, seed=42):
+    rng = random.Random(seed)
     anchors = {'Greater London':550037,'South East':380878,'South West':302298,'East of England':337518,'West Midlands':250880,'East Midlands':242274,'North West':221445,'North East':166943,'Yorkshire and The Humber':209116,'Wales':215037}
     type_prices = {'Detached':444936,'Semi-detached':278555,'Terraced':231945,'Flat':192704}
     areas = {'Detached':(128,19,65,240),'Semi-detached':(101,18,51,200),'Terraced':(86,16,45,170),'Flat':(63,16,30,130)}
@@ -45,7 +45,7 @@ def generate_base(demos):
             rating = next((label for threshold,label in [(85,'A'),(75,'B'),(65,'C'),(50,'D'),(35,'E'),(20,'F')] if score>=threshold),'G')
             # HPI averages are anchors; all adjustments below are synthetic assumptions.
             value = anchors[region]*(type_prices[kind]/272611)*(area/mean)**.55*(1+.02*(bedrooms-3))*(1.04 if age<=10 else 1)*math.exp(rng.gauss(-.5*.18**2,.18))
-            row = [f'P{j+11:05d}',f'C{j+11:05d}',kind,age,area,bedrooms,rating,heating,insulation,glazing,str(solar).lower(),str(controls).lower(),region,int(round(max(50000,value)/1000)*1000),'synthetic',42]
+            row = [f'P{j+11:05d}',f'C{j+11:05d}',kind,age,area,bedrooms,rating,heating,insulation,glazing,str(solar).lower(),str(controls).lower(),region,int(round(max(50000,value)/1000)*1000),'synthetic',seed]
             rows.append(dict(zip(BASE_FIELDS,row)))
         return rows
     return generate()

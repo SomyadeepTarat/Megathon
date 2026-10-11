@@ -1,0 +1,126 @@
+{
+  "categories": {
+    "data_status": {
+      "synthetic": 100
+    },
+    "energy_rating": {
+      "A": 17,
+      "B": 12,
+      "C": 21,
+      "D": 24,
+      "E": 17,
+      "F": 6,
+      "G": 3
+    },
+    "glazing": {
+      "Double": 75,
+      "Single": 17,
+      "Triple": 8
+    },
+    "heating": {
+      "Electric resistance": 4,
+      "Heat pump": 4,
+      "Modern gas boiler": 73,
+      "Old gas boiler": 19
+    },
+    "insulation": {
+      "Average": 30,
+      "Good": 37,
+      "Poor": 33
+    },
+    "physical_inputs_status": {
+      "synthetic_modelled": 100
+    },
+    "property_type": {
+      "Detached": 22,
+      "Flat": 23,
+      "Semi-detached": 28,
+      "Terraced": 27
+    },
+    "region": {
+      "East Midlands": 10,
+      "East of England": 10,
+      "Greater London": 10,
+      "North East": 10,
+      "North West": 10,
+      "South East": 10,
+      "South West": 10,
+      "Wales": 10,
+      "West Midlands": 10,
+      "Yorkshire and The Humber": 10
+    }
+  },
+  "energy_columns": 13,
+  "errors": [],
+  "joins": {
+    "duplicate_month_keys": 0,
+    "duplicate_property_ids": 0,
+    "key": "property_id; monthly uniqueness is property_id + month",
+    "observed_external_joins": 0,
+    "properties_without_meters": [],
+    "unmatched_meter_ids": []
+  },
+  "limitations": [
+    "All property and meter rows are synthetic; value labels are not observed sale prices.",
+    "Four compatibility fields are unknown, not false; blank performance fields are not applicable.",
+    "No UPRNs, EPC dates, transactions, tariffs, costs or surveyed eligibility available in this schema.",
+    "Inherited source rows reference missing Data/relations/P3_HANDOFF.md; retained without inventing evidence.",
+    "2026 emission factors with 2025 energy are a scenario assumption, not a historical 2025 emissions estimate."
+  ],
+  "meter_missing_cells": {},
+  "missing_cells": {
+    "boiler_efficiency": 8,
+    "controls_compatible": 100,
+    "electric_resistance_efficiency": 96,
+    "heat_pump_compatible": 100,
+    "hot_water_cop": 96,
+    "roof_suitable_for_loft": 100,
+    "roof_suitable_for_solar": 100,
+    "scop": 96
+  },
+  "monthly_readings": 1200,
+  "numeric_ranges": {
+    "age": {
+      "max": 159.0,
+      "median": 58.0,
+      "min": 1.0
+    },
+    "annual_electricity_demand_kwh": {
+      "max": 7899.732144,
+      "median": 2401.7803165,
+      "min": 1236.924731
+    },
+    "bedrooms": {
+      "max": 5.0,
+      "median": 3.0,
+      "min": 1.0
+    },
+    "current_value_estimate_gbp": {
+      "max": 1255000.0,
+      "median": 246000.0,
+      "min": 101000.0
+    },
+    "floor_area_m2": {
+      "max": 192.0,
+      "median": 90.0,
+      "min": 35.7
+    },
+    "thermal_demand_kwh": {
+      "max": 27168.343037,
+      "median": 7479.6338515,
+      "min": 2442.394284
+    }
+  },
+  "outlier_review": {
+    "property_ids": [],
+    "rule": "Engineering QA flags only; no clipping or empirical market claim."
+  },
+  "period": {
+    "alignment": "Scenario assumes equipment unchanged during 2025; source age is approximately one year newer. No observed snapshot date.",
+    "energy_year": 2025,
+    "property_snapshot_date": null,
+    "transaction_dates": null
+  },
+  "properties": 100,
+  "property_columns": 51
+}

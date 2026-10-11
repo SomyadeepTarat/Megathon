@@ -1,0 +1,301 @@
+{
+  "categories": {
+    "data_status": {
+      "synthetic": 2000
+    },
+    "energy_rating": {
+      "A": 266,
+      "B": 334,
+      "C": 370,
+      "D": 474,
+      "E": 405,
+      "F": 126,
+      "G": 25
+    },
+    "glazing": {
+      "Double": 1589,
+      "Single": 297,
+      "Triple": 114
+    },
+    "heating": {
+      "Electric resistance": 67,
+      "Heat pump": 46,
+      "Modern gas boiler": 1368,
+      "Old gas boiler": 519
+    },
+    "insulation": {
+      "Average": 699,
+      "Good": 723,
+      "Poor": 578
+    },
+    "physical_inputs_status": {
+      "synthetic_modelled": 2000
+    },
+    "property_type": {
+      "Detached": 380,
+      "Flat": 466,
+      "Semi-detached": 576,
+      "Terraced": 578
+    },
+    "region": {
+      "East Midlands": 201,
+      "East of England": 201,
+      "Greater London": 178,
+      "North East": 221,
+      "North West": 200,
+      "South East": 200,
+      "South West": 199,
+      "Wales": 201,
+      "West Midlands": 199,
+      "Yorkshire and The Humber": 200
+    }
+  },
+  "energy_columns": 13,
+  "errors": [],
+  "joins": {
+    "duplicate_month_keys": 0,
+    "duplicate_property_ids": 0,
+    "key": "property_id; monthly uniqueness is property_id + month",
+    "observed_external_joins": 0,
+    "properties_without_meters": [],
+    "unmatched_meter_ids": []
+  },
+  "limitations": [
+    "All property and meter rows are synthetic; value labels are not observed sale prices.",
+    "Four compatibility fields are unknown, not false; blank performance fields are not applicable.",
+    "No UPRNs, EPC dates, transactions, tariffs, costs or surveyed eligibility available in this schema.",
+    "Inherited source rows reference missing Data/relations/P3_HANDOFF.md; retained without inventing evidence.",
+    "2026 emission factors with 2025 energy are a scenario assumption, not a historical 2025 emissions estimate."
+  ],
+  "meter_missing_cells": {},
+  "missing_cells": {
+    "boiler_efficiency": 113,
+    "controls_compatible": 2000,
+    "electric_resistance_efficiency": 1933,
+    "heat_pump_compatible": 2000,
+    "hot_water_cop": 1954,
+    "roof_suitable_for_loft": 2000,
+    "roof_suitable_for_solar": 2000,
+    "scop": 1954
+  },
+  "monthly_readings": 24000,
+  "numeric_ranges": {
+    "age": {
+      "max": 177.0,
+      "median": 60.0,
+      "min": 1.0
+    },
+    "annual_electricity_demand_kwh": {
+      "max": 18573.63785,
+      "median": 2301.3985675,
+      "min": 1211.148711
+    },
+    "bedrooms": {
+      "max": 6.0,
+      "median": 3.0,
+      "min": 1.0
+    },
+    "current_value_estimate_gbp": {
+      "max": 1392000.0,
+      "median": 241500.0,
+      "min": 64000.0
+    },
+    "floor_area_m2": {
+      "max": 193.8,
+      "median": 91.2,
+      "min": 30.0
+    },
+    "thermal_demand_kwh": {
+      "max": 27168.343037,
+      "median": 7388.366724,
+      "min": 1930.121023
+    }
+  },
+  "original_records_preserved": true,
+  "outlier_review": {
+    "property_ids": [],
+    "rule": "Engineering QA flags only; no clipping or empirical market claim."
+  },
+  "period": {
+    "alignment": "Scenario assumes equipment unchanged during 2025; source age is approximately one year newer. No observed snapshot date.",
+    "energy_year": 2025,
+    "property_snapshot_date": null,
+    "transaction_dates": null
+  },
+  "properties": 2000,
+  "property_columns": 51,
+  "split_policy": "Preserve current_snapshot assignments; hash new customer IDs: 55/15/15/15. Sidecar requires explicit ML adoption; existing train() is unchanged.",
+  "splits": {
+    "calibration": {
+      "categories": {
+        "energy_rating": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G"
+        ],
+        "heating": [
+          "Electric resistance",
+          "Heat pump",
+          "Modern gas boiler",
+          "Old gas boiler"
+        ],
+        "property_type": [
+          "Detached",
+          "Flat",
+          "Semi-detached",
+          "Terraced"
+        ],
+        "region": [
+          "East Midlands",
+          "East of England",
+          "Greater London",
+          "North East",
+          "North West",
+          "South East",
+          "South West",
+          "Wales",
+          "West Midlands",
+          "Yorkshire and The Humber"
+        ]
+      },
+      "count": 310
+    },
+    "fit": {
+      "categories": {
+        "energy_rating": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G"
+        ],
+        "heating": [
+          "Electric resistance",
+          "Heat pump",
+          "Modern gas boiler",
+          "Old gas boiler"
+        ],
+        "property_type": [
+          "Detached",
+          "Flat",
+          "Semi-detached",
+          "Terraced"
+        ],
+        "region": [
+          "East Midlands",
+          "East of England",
+          "Greater London",
+          "North East",
+          "North West",
+          "South East",
+          "South West",
+          "Wales",
+          "West Midlands",
+          "Yorkshire and The Humber"
+        ]
+      },
+      "count": 1088
+    },
+    "selection": {
+      "categories": {
+        "energy_rating": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G"
+        ],
+        "heating": [
+          "Electric resistance",
+          "Heat pump",
+          "Modern gas boiler",
+          "Old gas boiler"
+        ],
+        "property_type": [
+          "Detached",
+          "Flat",
+          "Semi-detached",
+          "Terraced"
+        ],
+        "region": [
+          "East Midlands",
+          "East of England",
+          "Greater London",
+          "North East",
+          "North West",
+          "South East",
+          "South West",
+          "Wales",
+          "West Midlands",
+          "Yorkshire and The Humber"
+        ]
+      },
+      "count": 315
+    },
+    "test": {
+      "categories": {
+        "energy_rating": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F"
+        ],
+        "heating": [
+          "Electric resistance",
+          "Heat pump",
+          "Modern gas boiler",
+          "Old gas boiler"
+        ],
+        "property_type": [
+          "Detached",
+          "Flat",
+          "Semi-detached",
+          "Terraced"
+        ],
+        "region": [
+          "East Midlands",
+          "East of England",
+          "Greater London",
+          "North East",
+          "North West",
+          "South East",
+          "South West",
+          "Wales",
+          "West Midlands",
+          "Yorkshire and The Humber"
+        ]
+      },
+      "count": 287
+    }
+  },
+  "unseen_vs_fit": {
+    "calibration": {
+      "energy_rating": [],
+      "heating": [],
+      "property_type": [],
+      "region": []
+    },
+    "selection": {
+      "energy_rating": [],
+      "heating": [],
+      "property_type": [],
+      "region": []
+    },
+    "test": {
+      "energy_rating": [],
+      "heating": [],
+      "property_type": [],
+      "region": []
+    }
+  }
+}

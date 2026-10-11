@@ -1,0 +1,361 @@
+property_id,month,electricity_kwh,gas_kwh,reading_status,electricity_demand_kwh,solar_generation_kwh,solar_self_consumed_kwh,solar_export_kwh,space_heating_demand_kwh,hot_water_demand_kwh,physical_inputs_status,reading_source
+P00001,2025-01,282.01,4276.47,synthetic,282.011042,0.000000,0.000000,0.000000,2909.595571,169.460840,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00001,2025-02,251.49,3589.90,synthetic,251.493147,0.000000,0.000000,0.000000,2415.267166,169.460840,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00001,2025-03,252.12,3223.72,synthetic,252.120494,0.000000,0.000000,0.000000,2151.616119,169.460840,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00001,2025-04,236.71,2172.56,synthetic,236.712441,0.000000,0.000000,0.000000,1394.783175,169.460840,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00001,2025-05,236.49,1210.29,synthetic,236.488783,0.000000,0.000000,0.000000,701.950138,169.460840,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00001,2025-06,217.86,582.09,synthetic,217.858338,0.000000,0.000000,0.000000,249.646591,169.460840,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00001,2025-07,238.88,358.51,synthetic,238.878959,0.000000,0.000000,0.000000,88.668597,169.460840,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00001,2025-08,225.55,361.37,synthetic,225.554863,0.000000,0.000000,0.000000,90.723980,169.460840,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00001,2025-09,236.06,1070.70,synthetic,236.059302,0.000000,0.000000,0.000000,601.444270,169.460840,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00001,2025-10,260.30,2265.55,synthetic,260.302385,0.000000,0.000000,0.000000,1461.732327,169.460840,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00001,2025-11,274.99,3387.97,synthetic,274.991352,0.000000,0.000000,0.000000,2269.879567,169.460840,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00001,2025-12,284.95,4541.43,synthetic,284.952231,0.000000,0.000000,0.000000,3100.369080,169.460840,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00002,2025-01,167.53,468.07,synthetic,167.528660,0.000000,0.000000,0.000000,319.462151,101.803087,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00002,2025-02,146.95,435.97,synthetic,146.945537,0.000000,0.000000,0.000000,290.568814,101.803087,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00002,2025-03,155.66,380.24,synthetic,155.657039,0.000000,0.000000,0.000000,240.411491,101.803087,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00002,2025-04,139.75,279.64,synthetic,139.749064,0.000000,0.000000,0.000000,149.875354,101.803087,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00002,2025-05,134.89,204.19,synthetic,134.889380,0.000000,0.000000,0.000000,81.971454,101.803087,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00002,2025-06,125.94,144.46,synthetic,125.944385,0.000000,0.000000,0.000000,28.206447,101.803087,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00002,2025-07,136.85,123.54,synthetic,136.847739,0.000000,0.000000,0.000000,9.385363,101.803087,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00002,2025-08,135.93,124.53,synthetic,135.933952,0.000000,0.000000,0.000000,10.277913,101.803087,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00002,2025-09,144.97,189.78,synthetic,144.967644,0.000000,0.000000,0.000000,68.997757,101.803087,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00002,2025-10,149.54,295.81,synthetic,149.535371,0.000000,0.000000,0.000000,164.427568,101.803087,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00002,2025-11,156.26,404.88,synthetic,156.264300,0.000000,0.000000,0.000000,262.589790,101.803087,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00002,2025-12,161.14,492.63,synthetic,161.135383,0.000000,0.000000,0.000000,341.568050,101.803087,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00003,2025-01,840.69,0.00,synthetic,895.524943,121.865285,54.839378,67.025907,1473.928057,192.430762,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00003,2025-02,658.63,0.00,synthetic,746.370212,194.984456,87.743005,107.241451,1159.429578,192.430762,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00003,2025-03,550.32,0.00,synthetic,714.841870,365.595855,164.518135,201.077720,1033.245095,192.430762,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00003,2025-04,365.37,0.00,synthetic,584.726195,487.461140,219.357513,268.103627,703.965171,192.430762,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00003,2025-05,193.49,0.00,synthetic,467.688163,609.326425,274.196891,335.129534,327.759474,192.430762,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00003,2025-06,64.47,0.00,synthetic,360.599902,658.072539,296.132642,361.939896,123.904540,192.430762,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00003,2025-07,57.45,0.00,synthetic,353.586548,658.072539,296.132642,361.939896,41.591989,192.430762,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00003,2025-08,94.05,0.00,synthetic,346.311164,560.580311,252.261140,308.319171,39.875351,192.430762,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00003,2025-09,263.89,0.00,synthetic,461.312191,438.715026,197.421762,241.293264,298.005768,192.430762,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00003,2025-10,462.88,0.00,synthetic,605.461050,316.849741,142.582383,174.267358,677.893891,192.430762,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00003,2025-11,665.77,0.00,synthetic,742.544920,170.611399,76.775130,93.836269,1114.966827,192.430762,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00003,2025-12,834.28,0.00,synthetic,889.124175,121.865285,54.839378,67.025907,1444.724015,192.430762,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00004,2025-01,208.65,1368.30,synthetic,208.647758,0.000000,0.000000,0.000000,1105.918382,125.555492,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00004,2025-02,187.43,1237.73,synthetic,187.427808,0.000000,0.000000,0.000000,988.405167,125.555492,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00004,2025-03,197.27,1079.65,synthetic,197.269764,0.000000,0.000000,0.000000,846.127243,125.555492,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00004,2025-04,170.62,722.70,synthetic,170.615632,0.000000,0.000000,0.000000,524.872851,125.555492,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00004,2025-05,173.59,458.18,synthetic,173.593212,0.000000,0.000000,0.000000,286.806126,125.555492,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00004,2025-06,169.39,248.05,synthetic,169.393870,0.000000,0.000000,0.000000,97.688282,125.555492,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00004,2025-07,166.27,177.91,synthetic,166.268045,0.000000,0.000000,0.000000,34.560332,125.555492,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00004,2025-08,165.48,178.65,synthetic,165.480235,0.000000,0.000000,0.000000,35.227419,125.555492,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00004,2025-09,172.27,408.85,synthetic,172.269142,0.000000,0.000000,0.000000,242.412783,125.555492,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00004,2025-10,179.11,804.11,synthetic,179.109590,0.000000,0.000000,0.000000,598.140650,125.555492,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00004,2025-11,196.81,1107.57,synthetic,196.809191,0.000000,0.000000,0.000000,871.261833,125.555492,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00004,2025-12,211.93,1489.32,synthetic,211.934833,0.000000,0.000000,0.000000,1214.829107,125.555492,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00005,2025-01,242.01,1923.55,synthetic,242.005827,0.000000,0.000000,0.000000,1585.804864,145.394353,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00005,2025-02,218.68,1709.33,synthetic,218.675040,0.000000,0.000000,0.000000,1393.006139,145.394353,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00005,2025-03,219.98,1463.17,synthetic,219.977318,0.000000,0.000000,0.000000,1171.458821,145.394353,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00005,2025-04,200.01,1024.00,synthetic,200.010028,0.000000,0.000000,0.000000,776.208577,145.394353,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00005,2025-05,206.67,612.80,synthetic,206.665749,0.000000,0.000000,0.000000,406.124213,145.394353,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00005,2025-06,182.57,324.85,synthetic,182.568349,0.000000,0.000000,0.000000,146.967583,145.394353,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00005,2025-07,193.69,215.88,synthetic,193.692528,0.000000,0.000000,0.000000,48.898034,145.394353,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00005,2025-08,186.04,214.57,synthetic,186.042813,0.000000,0.000000,0.000000,47.719510,145.394353,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00005,2025-09,206.30,519.95,synthetic,206.299927,0.000000,0.000000,0.000000,322.563659,145.394353,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00005,2025-10,216.18,1047.24,synthetic,216.175907,0.000000,0.000000,0.000000,797.118569,145.394353,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00005,2025-11,217.28,1583.07,synthetic,217.275911,0.000000,0.000000,0.000000,1279.364452,145.394353,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00005,2025-12,235.71,1962.21,synthetic,235.713993,0.000000,0.000000,0.000000,1620.596328,145.394353,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00006,2025-01,823.31,0.00,synthetic,823.312270,0.000000,0.000000,0.000000,1350.391454,181.438238,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00006,2025-02,723.83,0.00,synthetic,723.826106,0.000000,0.000000,0.000000,1147.283415,181.438238,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00006,2025-03,649.31,0.00,synthetic,649.306778,0.000000,0.000000,0.000000,906.265245,181.438238,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00006,2025-04,527.89,0.00,synthetic,527.885922,0.000000,0.000000,0.000000,620.964690,181.438238,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00006,2025-05,430.02,0.00,synthetic,430.016367,0.000000,0.000000,0.000000,289.497479,181.438238,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00006,2025-06,362.91,0.00,synthetic,362.912471,0.000000,0.000000,0.000000,113.213118,181.438238,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00006,2025-07,329.78,0.00,synthetic,329.781290,0.000000,0.000000,0.000000,38.575834,181.438238,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00006,2025-08,326.44,0.00,synthetic,326.437793,0.000000,0.000000,0.000000,37.268406,181.438238,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00006,2025-09,423.66,0.00,synthetic,423.662392,0.000000,0.000000,0.000000,254.728325,181.438238,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00006,2025-10,555.64,0.00,synthetic,555.640373,0.000000,0.000000,0.000000,659.317839,181.438238,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00006,2025-11,698.54,0.00,synthetic,698.537541,0.000000,0.000000,0.000000,1020.901386,181.438238,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00006,2025-12,778.71,0.00,synthetic,778.713597,0.000000,0.000000,0.000000,1230.737545,181.438238,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00007,2025-01,243.38,2463.20,synthetic,286.295597,95.369171,42.916127,52.453044,2042.707045,174.175738,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00007,2025-02,202.66,2236.52,synthetic,271.321452,152.590674,68.665803,83.924870,1838.692452,174.175738,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00007,2025-03,140.80,1873.10,synthetic,269.543935,286.107513,128.748381,157.359132,1511.615255,174.175738,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00007,2025-04,78.71,1292.40,synthetic,250.370099,381.476684,171.664508,209.812176,988.988095,174.175738,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00007,2025-05,34.25,715.48,synthetic,248.828004,476.845855,214.580635,262.265220,469.755799,174.175738,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00007,2025-06,1.76,387.51,synthetic,233.510742,514.993523,231.747085,283.246438,174.582671,174.175738,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00007,2025-07,0.00,260.34,synthetic,221.792235,514.993523,221.792235,293.201288,60.132811,174.175738,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00007,2025-08,43.54,259.84,synthetic,240.957497,438.698187,197.414184,241.284003,59.679972,174.175738,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00007,2025-09,97.94,660.13,synthetic,252.439480,343.329016,154.498057,188.830959,419.937133,174.175738,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00007,2025-10,138.41,1292.88,synthetic,249.988163,247.959845,111.581930,136.377915,989.420010,174.175738,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00007,2025-11,217.15,2018.99,synthetic,277.229338,133.516839,60.082578,73.434262,1642.911692,174.175738,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00007,2025-12,242.94,2522.06,synthetic,285.859295,95.369171,42.916127,52.453044,2095.674433,174.175738,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00008,2025-01,591.10,0.00,synthetic,591.095631,0.000000,0.000000,0.000000,314.133030,104.483543,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00008,2025-02,510.06,0.00,synthetic,510.056239,0.000000,0.000000,0.000000,258.029827,104.483543,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00008,2025-03,473.17,0.00,synthetic,473.172282,0.000000,0.000000,0.000000,214.564119,104.483543,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00008,2025-04,398.34,0.00,synthetic,398.339970,0.000000,0.000000,0.000000,146.546173,104.483543,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00008,2025-05,317.94,0.00,synthetic,317.943370,0.000000,0.000000,0.000000,69.845108,104.483543,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00008,2025-06,268.17,0.00,synthetic,268.165713,0.000000,0.000000,0.000000,26.622604,104.483543,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00008,2025-07,242.70,0.00,synthetic,242.698864,0.000000,0.000000,0.000000,8.782593,104.483543,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00008,2025-08,248.35,0.00,synthetic,248.351303,0.000000,0.000000,0.000000,9.275728,104.483543,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00008,2025-09,320.66,0.00,synthetic,320.660847,0.000000,0.000000,0.000000,67.177164,104.483543,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00008,2025-10,417.75,0.00,synthetic,417.753141,0.000000,0.000000,0.000000,156.210612,104.483543,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00008,2025-11,506.26,0.00,synthetic,506.259294,0.000000,0.000000,0.000000,248.134895,104.483543,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00008,2025-12,581.36,0.00,synthetic,581.364234,0.000000,0.000000,0.000000,306.905533,104.483543,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00009,2025-01,294.43,6004.34,synthetic,294.433521,0.000000,0.000000,0.000000,4144.840740,178.286116,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00009,2025-02,283.18,5164.34,synthetic,283.184219,0.000000,0.000000,0.000000,3540.042110,178.286116,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00009,2025-03,280.38,4430.19,synthetic,280.379834,0.000000,0.000000,0.000000,3011.447660,178.286116,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00009,2025-04,268.42,2940.80,synthetic,268.420357,0.000000,0.000000,0.000000,1939.092058,178.286116,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00009,2025-05,243.59,1683.07,synthetic,243.588373,0.000000,0.000000,0.000000,1033.525065,178.286116,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00009,2025-06,240.48,753.27,synthetic,240.475829,0.000000,0.000000,0.000000,364.065862,178.286116,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00009,2025-07,243.29,425.99,synthetic,243.286860,0.000000,0.000000,0.000000,128.423516,178.286116,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00009,2025-08,233.93,428.65,synthetic,233.926234,0.000000,0.000000,0.000000,130.340835,178.286116,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00009,2025-09,246.17,1539.34,synthetic,246.168534,0.000000,0.000000,0.000000,930.039995,178.286116,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00009,2025-10,267.82,3156.29,synthetic,267.823686,0.000000,0.000000,0.000000,2094.240635,178.286116,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00009,2025-11,277.36,4940.75,synthetic,277.357823,0.000000,0.000000,0.000000,3379.056087,178.286116,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00009,2025-12,303.36,6266.78,synthetic,303.361904,0.000000,0.000000,0.000000,4333.795079,178.286116,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00010,2025-01,306.34,1806.43,synthetic,306.340967,0.000000,0.000000,0.000000,1443.096308,182.693274,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00010,2025-02,289.27,1647.85,synthetic,289.269332,0.000000,0.000000,0.000000,1300.372644,182.693274,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00010,2025-03,281.75,1379.99,synthetic,281.747887,0.000000,0.000000,0.000000,1059.295116,182.693274,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00010,2025-04,253.79,947.29,synthetic,253.794534,0.000000,0.000000,0.000000,669.866439,182.693274,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00010,2025-05,258.53,576.09,synthetic,258.529852,0.000000,0.000000,0.000000,335.790656,182.693274,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00010,2025-06,239.19,341.89,synthetic,239.191915,0.000000,0.000000,0.000000,125.007011,182.693274,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00010,2025-07,243.22,250.14,synthetic,243.222149,0.000000,0.000000,0.000000,42.432012,182.693274,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00010,2025-08,242.54,250.10,synthetic,242.544415,0.000000,0.000000,0.000000,42.399934,182.693274,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00010,2025-09,266.33,557.18,synthetic,266.326885,0.000000,0.000000,0.000000,318.767794,182.693274,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00010,2025-10,273.42,1054.72,synthetic,273.420050,0.000000,0.000000,0.000000,766.555680,182.693274,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00010,2025-11,284.73,1488.62,synthetic,284.727593,0.000000,0.000000,0.000000,1157.065759,182.693274,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00010,2025-12,311.00,1889.04,synthetic,310.997764,0.000000,0.000000,0.000000,1517.445519,182.693274,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00101,2025-01,180.42,2283.25,synthetic,206.812499,58.647668,26.391451,32.256218,1518.480102,125.460682,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00101,2025-02,143.42,1877.52,synthetic,185.644640,93.836269,42.226321,51.609948,1226.355935,125.460682,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00101,2025-03,114.15,1567.47,synthetic,193.324253,175.943005,79.174352,96.768653,1003.116393,125.460682,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00101,2025-04,61.31,1139.50,synthetic,166.872457,234.590674,105.565803,129.024870,694.977668,125.460682,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00101,2025-05,37.55,636.55,synthetic,169.506205,293.238342,131.957254,161.281088,332.857477,125.460682,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00101,2025-06,17.57,359.15,synthetic,160.084537,316.697409,142.513834,174.183575,133.124156,125.460682,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00101,2025-07,24.69,233.82,synthetic,167.208236,316.697409,142.513834,174.183575,42.891768,125.460682,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00101,2025-08,40.59,232.25,synthetic,161.995394,269.779275,121.400674,148.378601,41.760590,125.460682,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00101,2025-09,77.39,600.95,synthetic,172.398905,211.131606,95.009223,116.122383,307.222472,125.460682,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00101,2025-10,125.01,1220.10,synthetic,193.626751,152.483938,68.617772,83.866166,753.009545,125.460682,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00101,2025-11,169.75,1732.46,synthetic,206.701035,82.106736,36.948031,45.158705,1121.910484,125.460682,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00101,2025-12,172.36,2235.00,synthetic,198.749712,58.647668,26.391451,32.256218,1483.741718,125.460682,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00102,2025-01,377.44,0.00,synthetic,377.441167,0.000000,0.000000,0.000000,404.342009,118.510517,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00102,2025-02,336.54,0.00,synthetic,336.537532,0.000000,0.000000,0.000000,360.139716,118.510517,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00102,2025-03,329.12,0.00,synthetic,329.122604,0.000000,0.000000,0.000000,298.481561,118.510517,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00102,2025-04,283.22,0.00,synthetic,283.216339,0.000000,0.000000,0.000000,194.070982,118.510517,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00102,2025-05,233.88,0.00,synthetic,233.880901,0.000000,0.000000,0.000000,92.420969,118.510517,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00102,2025-06,209.17,0.00,synthetic,209.170622,0.000000,0.000000,0.000000,35.821062,118.510517,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00102,2025-07,198.78,0.00,synthetic,198.781117,0.000000,0.000000,0.000000,12.077809,118.510517,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00102,2025-08,210.93,0.00,synthetic,210.932350,0.000000,0.000000,0.000000,11.637891,118.510517,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00102,2025-09,244.14,0.00,synthetic,244.138732,0.000000,0.000000,0.000000,83.412016,118.510517,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00102,2025-10,293.34,0.00,synthetic,293.336340,0.000000,0.000000,0.000000,204.265547,118.510517,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00102,2025-11,331.45,0.00,synthetic,331.454474,0.000000,0.000000,0.000000,309.440997,118.510517,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00102,2025-12,368.18,0.00,synthetic,368.181090,0.000000,0.000000,0.000000,405.459945,118.510517,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00103,2025-01,212.62,1246.13,synthetic,212.618411,0.000000,0.000000,0.000000,986.153408,135.365959,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00103,2025-02,197.60,1062.04,synthetic,197.600173,0.000000,0.000000,0.000000,820.466610,135.365959,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00103,2025-03,193.59,861.55,synthetic,193.586951,0.000000,0.000000,0.000000,640.031874,135.365959,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00103,2025-04,179.21,649.83,synthetic,179.211696,0.000000,0.000000,0.000000,449.477454,135.365959,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00103,2025-05,183.89,389.91,synthetic,183.885833,0.000000,0.000000,0.000000,215.554121,135.365959,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00103,2025-06,181.10,245.96,synthetic,181.102705,0.000000,0.000000,0.000000,85.999406,135.365959,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00103,2025-07,180.75,181.88,synthetic,180.751897,0.000000,0.000000,0.000000,28.323577,135.365959,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00103,2025-08,181.37,180.32,synthetic,181.366957,0.000000,0.000000,0.000000,26.925955,135.365959,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00103,2025-09,185.19,365.29,synthetic,185.194754,0.000000,0.000000,0.000000,193.391674,135.365959,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00103,2025-10,206.48,675.04,synthetic,206.478060,0.000000,0.000000,0.000000,472.172773,135.365959,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00103,2025-11,214.07,988.87,synthetic,214.070991,0.000000,0.000000,0.000000,754.618474,135.365959,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00103,2025-12,221.19,1202.83,synthetic,221.187931,0.000000,0.000000,0.000000,947.182906,135.365959,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00104,2025-01,240.54,1885.10,synthetic,240.538878,0.000000,0.000000,0.000000,1211.711731,145.562627,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00104,2025-02,220.04,1603.29,synthetic,220.040226,0.000000,0.000000,0.000000,1008.806448,145.562627,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00104,2025-03,216.61,1423.53,synthetic,216.612022,0.000000,0.000000,0.000000,879.378665,145.562627,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00104,2025-04,208.33,990.38,synthetic,208.326459,0.000000,0.000000,0.000000,567.511602,145.562627,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00104,2025-05,194.34,575.70,synthetic,194.340371,0.000000,0.000000,0.000000,268.937792,145.562627,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00104,2025-06,192.53,350.15,synthetic,192.534073,0.000000,0.000000,0.000000,106.548946,145.562627,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00104,2025-07,197.63,250.61,synthetic,197.629919,0.000000,0.000000,0.000000,34.879779,145.562627,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00104,2025-08,184.12,249.05,synthetic,184.115001,0.000000,0.000000,0.000000,33.754869,145.562627,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00104,2025-09,206.88,539.28,synthetic,206.877009,0.000000,0.000000,0.000000,242.716620,145.562627,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00104,2025-10,209.57,1014.41,synthetic,209.565909,0.000000,0.000000,0.000000,584.811890,145.562627,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00104,2025-11,234.21,1427.77,synthetic,234.207530,0.000000,0.000000,0.000000,882.430774,145.562627,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00104,2025-12,239.86,1893.39,synthetic,239.859047,0.000000,0.000000,0.000000,1217.678555,145.562627,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00105,2025-01,229.61,2218.16,synthetic,229.612494,0.000000,0.000000,0.000000,1860.303867,136.037481,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00105,2025-02,203.29,1894.22,synthetic,203.292652,0.000000,0.000000,0.000000,1568.764235,136.037481,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00105,2025-03,193.06,1593.45,synthetic,193.057366,0.000000,0.000000,0.000000,1298.065797,136.037481,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00105,2025-04,185.19,1113.52,synthetic,185.194569,0.000000,0.000000,0.000000,866.134461,136.037481,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00105,2025-05,192.67,623.23,synthetic,192.674063,0.000000,0.000000,0.000000,424.870494,136.037481,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00105,2025-06,186.22,324.01,synthetic,186.218346,0.000000,0.000000,0.000000,155.572235,136.037481,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00105,2025-07,173.72,212.08,synthetic,173.719288,0.000000,0.000000,0.000000,54.832039,136.037481,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00105,2025-08,176.88,207.00,synthetic,176.878010,0.000000,0.000000,0.000000,50.261215,136.037481,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00105,2025-09,189.27,567.37,synthetic,189.269703,0.000000,0.000000,0.000000,374.593297,136.037481,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00105,2025-10,200.83,1113.49,synthetic,200.828307,0.000000,0.000000,0.000000,866.099982,136.037481,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00105,2025-11,218.85,1652.88,synthetic,218.845866,0.000000,0.000000,0.000000,1351.556915,136.037481,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00105,2025-12,234.08,2062.39,synthetic,234.082808,0.000000,0.000000,0.000000,1720.116262,136.037481,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00106,2025-01,222.76,2513.72,synthetic,222.764144,0.000000,0.000000,0.000000,1679.385918,130.491845,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00106,2025-02,201.06,2100.16,synthetic,201.060477,0.000000,0.000000,0.000000,1381.621112,130.491845,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00106,2025-03,192.64,1807.60,synthetic,192.644504,0.000000,0.000000,0.000000,1170.979891,130.491845,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00106,2025-04,190.26,1258.32,synthetic,190.263215,0.000000,0.000000,0.000000,775.501476,130.491845,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00106,2025-05,175.20,723.98,synthetic,175.196537,0.000000,0.000000,0.000000,390.777151,130.491845,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00106,2025-06,166.54,380.77,synthetic,166.536540,0.000000,0.000000,0.000000,143.665005,130.491845,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00106,2025-07,175.49,251.23,synthetic,175.486239,0.000000,0.000000,0.000000,50.395228,130.491845,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00106,2025-08,166.23,251.13,synthetic,166.226402,0.000000,0.000000,0.000000,50.318387,130.491845,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00106,2025-09,175.34,669.93,synthetic,175.344897,0.000000,0.000000,0.000000,351.856404,130.491845,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00106,2025-10,202.85,1311.90,synthetic,202.852725,0.000000,0.000000,0.000000,814.075158,130.491845,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00106,2025-11,216.31,1964.01,synthetic,216.311280,0.000000,0.000000,0.000000,1283.594149,130.491845,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00106,2025-12,213.87,2421.42,synthetic,213.867575,0.000000,0.000000,0.000000,1612.932679,130.491845,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00107,2025-01,311.10,2201.19,synthetic,311.104947,0.000000,0.000000,0.000000,1402.338296,182.521526,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00107,2025-02,283.07,1947.63,synthetic,283.068105,0.000000,0.000000,0.000000,1219.769110,182.521526,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00107,2025-03,269.72,1719.84,synthetic,269.722994,0.000000,0.000000,0.000000,1055.762339,182.521526,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00107,2025-04,264.01,1183.08,synthetic,264.006631,0.000000,0.000000,0.000000,669.292864,182.521526,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00107,2025-05,244.23,744.90,synthetic,244.229534,0.000000,0.000000,0.000000,353.808461,182.521526,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00107,2025-06,248.57,437.97,synthetic,248.574885,0.000000,0.000000,0.000000,132.816646,182.521526,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00107,2025-07,228.95,311.77,synthetic,228.950053,0.000000,0.000000,0.000000,41.951279,182.521526,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00107,2025-08,228.47,314.45,synthetic,228.471788,0.000000,0.000000,0.000000,43.884605,182.521526,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00107,2025-09,248.44,659.31,synthetic,248.436731,0.000000,0.000000,0.000000,292.184104,182.521526,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00107,2025-10,271.07,1213.68,synthetic,271.073030,0.000000,0.000000,0.000000,691.327018,182.521526,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00107,2025-11,282.94,1739.87,synthetic,282.940774,0.000000,0.000000,0.000000,1070.187199,182.521526,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00107,2025-12,295.51,2199.83,synthetic,295.514110,0.000000,0.000000,0.000000,1401.359433,182.521526,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00108,2025-01,186.14,800.98,synthetic,186.139700,0.000000,0.000000,0.000000,604.432820,116.453010,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00108,2025-02,174.76,687.75,synthetic,174.759969,0.000000,0.000000,0.000000,502.519890,116.453010,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00108,2025-03,166.36,636.80,synthetic,166.364879,0.000000,0.000000,0.000000,456.667880,116.453010,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00108,2025-04,164.58,453.80,synthetic,164.584782,0.000000,0.000000,0.000000,291.964475,116.453010,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00108,2025-05,154.64,289.68,synthetic,154.640778,0.000000,0.000000,0.000000,144.260633,116.453010,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00108,2025-06,151.10,189.49,synthetic,151.095792,0.000000,0.000000,0.000000,54.091123,116.453010,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00108,2025-07,145.48,150.29,synthetic,145.475695,0.000000,0.000000,0.000000,18.809113,116.453010,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00108,2025-08,152.59,148.62,synthetic,152.588859,0.000000,0.000000,0.000000,17.303124,116.453010,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00108,2025-09,166.61,271.03,synthetic,166.609069,0.000000,0.000000,0.000000,127.472400,116.453010,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00108,2025-10,173.18,459.64,synthetic,173.180285,0.000000,0.000000,0.000000,297.219613,116.453010,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00108,2025-11,175.60,637.04,synthetic,175.601739,0.000000,0.000000,0.000000,456.886289,116.453010,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00108,2025-12,201.80,837.93,synthetic,201.803946,0.000000,0.000000,0.000000,637.688127,116.453010,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00109,2025-01,168.48,781.03,synthetic,168.482945,0.000000,0.000000,0.000000,598.469100,104.461405,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00109,2025-02,157.48,686.86,synthetic,157.477178,0.000000,0.000000,0.000000,513.712028,104.461405,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00109,2025-03,156.52,565.78,synthetic,156.517413,0.000000,0.000000,0.000000,404.739335,104.461405,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00109,2025-04,143.26,427.66,synthetic,143.262718,0.000000,0.000000,0.000000,280.430266,104.461405,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00109,2025-05,145.81,270.35,synthetic,145.808194,0.000000,0.000000,0.000000,138.852431,104.461405,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00109,2025-06,134.35,173.56,synthetic,134.349825,0.000000,0.000000,0.000000,51.740094,104.461405,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00109,2025-07,136.25,135.77,synthetic,136.247541,0.000000,0.000000,0.000000,17.732025,104.461405,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00109,2025-08,138.61,135.26,synthetic,138.611835,0.000000,0.000000,0.000000,17.276297,104.461405,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00109,2025-09,143.54,254.57,synthetic,143.537909,0.000000,0.000000,0.000000,124.655144,104.461405,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00109,2025-10,154.38,454.39,synthetic,154.379743,0.000000,0.000000,0.000000,304.488565,104.461405,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00109,2025-11,162.39,619.67,synthetic,162.394716,0.000000,0.000000,0.000000,453.244234,104.461405,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00109,2025-12,167.78,747.41,synthetic,167.783671,0.000000,0.000000,0.000000,568.205038,104.461405,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00110,2025-01,225.83,2240.14,synthetic,253.066491,60.516839,27.232578,33.284262,1861.336526,154.792910,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00110,2025-02,187.04,2013.43,synthetic,230.609702,96.826943,43.572124,53.254819,1657.292443,154.792910,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00110,2025-03,157.20,1580.99,synthetic,238.895422,181.550518,81.697733,99.852785,1268.094794,154.792910,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00110,2025-04,100.01,1191.21,synthetic,208.943710,242.067358,108.930311,133.137047,917.292281,154.792910,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00110,2025-05,84.94,671.57,synthetic,221.106014,302.584197,136.162889,166.421308,449.622709,154.792910,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00110,2025-06,48.29,362.44,synthetic,195.340950,326.790933,147.055920,179.735013,171.398594,154.792910,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00110,2025-07,63.75,233.12,synthetic,210.803505,326.790933,147.055920,179.735013,55.016032,154.792910,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00110,2025-08,77.14,234.79,synthetic,202.412945,278.377461,125.269858,153.107604,56.519831,154.792910,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00110,2025-09,117.53,591.50,synthetic,215.565951,217.860622,98.037280,119.823342,377.554060,154.792910,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00110,2025-10,157.17,1215.64,synthetic,227.978037,157.343782,70.804702,86.539080,939.286760,154.792910,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00110,2025-11,200.53,1849.61,synthetic,238.658207,84.723575,38.125609,46.597966,1509.858112,154.792910,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00110,2025-12,229.66,2350.32,synthetic,256.888505,60.516839,27.232578,33.284262,1960.496938,154.792910,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00111,2025-01,132.68,292.91,synthetic,132.684974,0.000000,0.000000,0.000000,183.333129,80.284752,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00111,2025-02,112.10,263.46,synthetic,112.098669,0.000000,0.000000,0.000000,156.830021,80.284752,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00111,2025-03,115.18,224.33,synthetic,115.177490,0.000000,0.000000,0.000000,121.610615,80.284752,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00111,2025-04,109.11,186.06,synthetic,109.110022,0.000000,0.000000,0.000000,87.171798,80.284752,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00111,2025-05,104.40,133.62,synthetic,104.400215,0.000000,0.000000,0.000000,39.975101,80.284752,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00111,2025-06,101.55,106.79,synthetic,101.552977,0.000000,0.000000,0.000000,15.828917,80.284752,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00111,2025-07,103.38,95.16,synthetic,103.379889,0.000000,0.000000,0.000000,5.363044,80.284752,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00111,2025-08,101.03,95.02,synthetic,101.034683,0.000000,0.000000,0.000000,5.235513,80.284752,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00111,2025-09,111.05,131.39,synthetic,111.048385,0.000000,0.000000,0.000000,37.966650,80.284752,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00111,2025-10,117.86,184.51,synthetic,117.855398,0.000000,0.000000,0.000000,85.773191,80.284752,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00111,2025-11,117.18,241.37,synthetic,117.178757,0.000000,0.000000,0.000000,136.950537,80.284752,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00111,2025-12,123.26,295.35,synthetic,123.262367,0.000000,0.000000,0.000000,185.529782,80.284752,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00112,2025-01,168.27,432.27,synthetic,168.268877,0.000000,0.000000,0.000000,285.200333,103.846666,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00112,2025-02,154.75,377.99,synthetic,154.745599,0.000000,0.000000,0.000000,236.341746,103.846666,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00112,2025-03,153.18,322.93,synthetic,153.181901,0.000000,0.000000,0.000000,186.792516,103.846666,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00112,2025-04,139.86,258.95,synthetic,139.855344,0.000000,0.000000,0.000000,129.207903,103.846666,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00112,2025-05,148.20,188.78,synthetic,148.196905,0.000000,0.000000,0.000000,66.051577,103.846666,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00112,2025-06,130.24,141.20,synthetic,130.244093,0.000000,0.000000,0.000000,23.233900,103.846666,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00112,2025-07,138.23,124.21,synthetic,138.232822,0.000000,0.000000,0.000000,7.940297,103.846666,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00112,2025-08,129.73,124.13,synthetic,129.728933,0.000000,0.000000,0.000000,7.866367,103.846666,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00112,2025-09,142.95,176.71,synthetic,142.954545,0.000000,0.000000,0.000000,55.192889,103.846666,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00112,2025-10,147.46,269.17,synthetic,147.458296,0.000000,0.000000,0.000000,138.402796,103.846666,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00112,2025-11,160.29,352.15,synthetic,160.290625,0.000000,0.000000,0.000000,213.088515,103.846666,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00112,2025-12,165.30,424.49,synthetic,165.304084,0.000000,0.000000,0.000000,278.195250,103.846666,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00113,2025-01,231.59,2564.21,synthetic,231.585905,0.000000,0.000000,0.000000,1708.921955,137.311009,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00113,2025-02,203.87,2231.90,synthetic,203.866288,0.000000,0.000000,0.000000,1469.658237,137.311009,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00113,2025-03,214.15,1872.30,synthetic,214.146203,0.000000,0.000000,0.000000,1210.742039,137.311009,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00113,2025-04,196.71,1300.42,synthetic,196.709865,0.000000,0.000000,0.000000,798.992952,137.311009,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00113,2025-05,184.59,771.69,synthetic,184.591331,0.000000,0.000000,0.000000,418.303807,137.311009,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00113,2025-06,175.49,414.44,synthetic,175.489866,0.000000,0.000000,0.000000,161.087942,137.311009,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00113,2025-07,185.58,263.87,synthetic,185.578015,0.000000,0.000000,0.000000,52.674609,137.311009,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00113,2025-08,181.07,263.19,synthetic,181.071138,0.000000,0.000000,0.000000,52.185238,137.311009,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00113,2025-09,192.89,673.53,synthetic,192.889934,0.000000,0.000000,0.000000,347.631682,137.311009,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00113,2025-10,208.86,1457.33,synthetic,208.857315,0.000000,0.000000,0.000000,911.965396,137.311009,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00113,2025-11,217.35,2003.07,synthetic,217.353864,0.000000,0.000000,0.000000,1304.900231,137.311009,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00113,2025-12,222.24,2494.37,synthetic,222.237194,0.000000,0.000000,0.000000,1658.634964,137.311009,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00114,2025-01,683.43,0.00,synthetic,683.434663,0.000000,0.000000,0.000000,409.745791,104.974276,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00114,2025-02,616.02,0.00,synthetic,616.017603,0.000000,0.000000,0.000000,355.354940,104.974276,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00114,2025-03,566.42,0.00,synthetic,566.417059,0.000000,0.000000,0.000000,306.154144,104.974276,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00114,2025-04,446.27,0.00,synthetic,446.271740,0.000000,0.000000,0.000000,202.304696,104.974276,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00114,2025-05,343.25,0.00,synthetic,343.245988,0.000000,0.000000,0.000000,99.556334,104.974276,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00114,2025-06,279.30,0.00,synthetic,279.304650,0.000000,0.000000,0.000000,35.663196,104.974276,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00114,2025-07,257.52,0.00,synthetic,257.522617,0.000000,0.000000,0.000000,12.448346,104.974276,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00114,2025-08,249.04,0.00,synthetic,249.038949,0.000000,0.000000,0.000000,12.900824,104.974276,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00114,2025-09,333.02,0.00,synthetic,333.015100,0.000000,0.000000,0.000000,82.930936,104.974276,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00114,2025-10,470.50,0.00,synthetic,470.496067,0.000000,0.000000,0.000000,206.280858,104.974276,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00114,2025-11,602.36,0.00,synthetic,602.356784,0.000000,0.000000,0.000000,334.425788,104.974276,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00114,2025-12,714.79,0.00,synthetic,714.791484,0.000000,0.000000,0.000000,438.155103,104.974276,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00115,2025-01,213.30,1566.69,synthetic,213.297668,0.000000,0.000000,0.000000,1278.111519,131.906783,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00115,2025-02,199.96,1337.84,synthetic,199.959419,0.000000,0.000000,0.000000,1072.152258,131.906783,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00115,2025-03,195.48,1118.35,synthetic,195.476017,0.000000,0.000000,0.000000,874.606685,131.906783,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00115,2025-04,191.94,812.73,synthetic,191.942463,0.000000,0.000000,0.000000,599.549064,131.906783,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00115,2025-05,181.53,465.10,synthetic,181.527002,0.000000,0.000000,0.000000,286.680528,131.906783,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00115,2025-06,177.13,269.26,synthetic,177.131045,0.000000,0.000000,0.000000,110.427311,131.906783,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00115,2025-07,179.93,185.17,synthetic,179.934665,0.000000,0.000000,0.000000,34.749644,131.906783,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00115,2025-08,178.35,186.03,synthetic,178.349027,0.000000,0.000000,0.000000,35.520137,131.906783,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00115,2025-09,182.40,415.17,synthetic,182.400398,0.000000,0.000000,0.000000,241.745883,131.906783,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00115,2025-10,199.72,820.75,synthetic,199.715238,0.000000,0.000000,0.000000,606.770957,131.906783,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00115,2025-11,212.36,1151.70,synthetic,212.355606,0.000000,0.000000,0.000000,904.618867,131.906783,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00115,2025-12,225.40,1527.67,synthetic,225.395574,0.000000,0.000000,0.000000,1242.992333,131.906783,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00116,2025-01,173.07,936.74,synthetic,173.071383,0.000000,0.000000,0.000000,739.378501,103.686793,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00116,2025-02,152.57,798.96,synthetic,152.573502,0.000000,0.000000,0.000000,615.375164,103.686793,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00116,2025-03,153.66,719.53,synthetic,153.657917,0.000000,0.000000,0.000000,543.894129,103.686793,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00116,2025-04,138.06,517.61,synthetic,138.064183,0.000000,0.000000,0.000000,362.160130,103.686793,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00116,2025-05,147.88,304.62,synthetic,147.880173,0.000000,0.000000,0.000000,170.467462,103.686793,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00116,2025-06,141.16,187.14,synthetic,141.155191,0.000000,0.000000,0.000000,64.742942,103.686793,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00116,2025-07,137.20,140.49,synthetic,137.200677,0.000000,0.000000,0.000000,22.750904,103.686793,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00116,2025-08,129.61,138.64,synthetic,129.613226,0.000000,0.000000,0.000000,21.086191,103.686793,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00116,2025-09,149.60,291.86,synthetic,149.598151,0.000000,0.000000,0.000000,158.988750,103.686793,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00116,2025-10,146.23,544.29,synthetic,146.233114,0.000000,0.000000,0.000000,386.176150,103.686793,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00116,2025-11,163.79,762.25,synthetic,163.793092,0.000000,0.000000,0.000000,582.335703,103.686793,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00116,2025-12,167.96,917.08,synthetic,167.959717,0.000000,0.000000,0.000000,721.684788,103.686793,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00117,2025-01,255.54,1398.23,synthetic,294.555903,86.702073,39.015933,47.686140,1087.748259,170.660031,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00117,2025-02,206.22,1200.30,synthetic,268.648331,138.723316,62.425492,76.297824,909.610944,170.660031,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00117,2025-03,130.79,1070.26,synthetic,247.837017,260.106218,117.047798,143.058420,792.572362,170.660031,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00117,2025-04,74.72,730.09,synthetic,230.786308,346.808290,156.063731,190.744560,486.423752,170.660031,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00117,2025-05,43.71,463.27,synthetic,238.785913,433.510363,195.079663,238.430699,246.282245,170.660031,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00117,2025-06,15.40,291.90,synthetic,226.082582,468.191192,210.686036,257.505155,92.047002,170.660031,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00117,2025-07,18.62,224.58,synthetic,229.301414,468.191192,210.686036,257.505155,31.464731,170.660031,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00117,2025-08,37.80,223.99,synthetic,217.269086,398.829534,179.473290,219.356244,30.926499,170.660031,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00117,2025-09,107.80,447.65,synthetic,248.253786,312.127461,140.457358,171.670104,232.229018,170.660031,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00117,2025-10,152.49,809.00,synthetic,253.933543,225.425389,101.441425,123.983964,557.441355,170.660031,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00117,2025-11,221.33,1063.11,synthetic,275.947787,121.382902,54.622306,66.760596,786.142767,170.660031,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00117,2025-12,236.54,1376.86,synthetic,275.559807,86.702073,39.015933,47.686140,1068.516065,170.660031,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00118,2025-01,261.91,1779.69,synthetic,261.909400,0.000000,0.000000,0.000000,1447.598862,154.120209,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00118,2025-02,218.74,1436.31,synthetic,218.743764,0.000000,0.000000,0.000000,1138.562876,154.120209,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00118,2025-03,226.13,1247.32,synthetic,226.132844,0.000000,0.000000,0.000000,968.471998,154.120209,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00118,2025-04,220.25,890.71,synthetic,220.253896,0.000000,0.000000,0.000000,647.521508,154.120209,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00118,2025-05,210.24,536.57,synthetic,210.235282,0.000000,0.000000,0.000000,328.796720,154.120209,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00118,2025-06,208.15,310.06,synthetic,208.152751,0.000000,0.000000,0.000000,124.932462,154.120209,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00118,2025-07,209.47,216.22,synthetic,209.465831,0.000000,0.000000,0.000000,40.477813,154.120209,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00118,2025-08,190.56,214.85,synthetic,190.557367,0.000000,0.000000,0.000000,39.246349,154.120209,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00118,2025-09,220.10,494.06,synthetic,220.096823,0.000000,0.000000,0.000000,290.530644,154.120209,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00118,2025-10,236.10,923.08,synthetic,236.095153,0.000000,0.000000,0.000000,676.648202,154.120209,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00118,2025-11,239.72,1297.02,synthetic,239.722094,0.000000,0.000000,0.000000,1013.195485,154.120209,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00118,2025-12,265.11,1690.77,synthetic,265.108961,0.000000,0.000000,0.000000,1367.572931,154.120209,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00119,2025-01,241.74,1621.49,synthetic,241.743466,0.000000,0.000000,0.000000,1026.062003,141.410322,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00119,2025-02,216.10,1309.47,synthetic,216.100399,0.000000,0.000000,0.000000,801.405093,141.410322,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00119,2025-03,213.51,1166.39,synthetic,213.510471,0.000000,0.000000,0.000000,698.387811,141.410322,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00119,2025-04,200.70,847.49,synthetic,200.701244,0.000000,0.000000,0.000000,468.780874,141.410322,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00119,2025-05,189.42,528.50,synthetic,189.415119,0.000000,0.000000,0.000000,239.107930,141.410322,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00119,2025-06,192.35,319.63,synthetic,192.352853,0.000000,0.000000,0.000000,88.725997,141.410322,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00119,2025-07,185.41,236.86,synthetic,185.406867,0.000000,0.000000,0.000000,29.128846,141.410322,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00119,2025-08,174.62,235.56,synthetic,174.622935,0.000000,0.000000,0.000000,28.190099,141.410322,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00119,2025-09,203.78,485.17,synthetic,203.783942,0.000000,0.000000,0.000000,207.913391,141.410322,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00119,2025-10,206.10,860.86,synthetic,206.102309,0.000000,0.000000,0.000000,478.407867,141.410322,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00119,2025-11,222.42,1270.59,synthetic,222.416474,0.000000,0.000000,0.000000,773.413864,141.410322,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00119,2025-12,226.83,1611.47,synthetic,226.827627,0.000000,0.000000,0.000000,1018.851481,141.410322,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00120,2025-01,214.18,1290.52,synthetic,214.183803,0.000000,0.000000,0.000000,1035.127748,126.335782,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00120,2025-02,178.30,1121.49,synthetic,178.298198,0.000000,0.000000,0.000000,883.003184,126.335782,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00120,2025-03,190.56,1022.70,synthetic,190.564155,0.000000,0.000000,0.000000,794.096185,126.335782,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00120,2025-04,178.53,728.15,synthetic,178.528376,0.000000,0.000000,0.000000,528.995279,126.335782,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00120,2025-05,182.24,429.25,synthetic,182.242762,0.000000,0.000000,0.000000,259.992138,126.335782,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00120,2025-06,168.29,247.26,synthetic,168.286879,0.000000,0.000000,0.000000,96.195469,126.335782,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00120,2025-07,166.71,177.30,synthetic,166.713691,0.000000,0.000000,0.000000,33.235501,126.335782,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00120,2025-08,172.47,175.81,synthetic,172.467011,0.000000,0.000000,0.000000,31.892771,126.335782,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00120,2025-09,168.44,378.73,synthetic,168.440873,0.000000,0.000000,0.000000,214.522426,126.335782,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00120,2025-10,183.20,731.63,synthetic,183.201844,0.000000,0.000000,0.000000,532.128428,126.335782,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00120,2025-11,192.72,1091.36,synthetic,192.722627,0.000000,0.000000,0.000000,855.886824,126.335782,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
+P00120,2025-12,206.91,1293.58,synthetic,206.910782,0.000000,0.000000,0.000000,1037.885271,126.335782,synthetic_modelled,Data/scripts/expand_dataset.py v2; synthetic physical model; no observed meter record
