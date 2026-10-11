@@ -32,6 +32,7 @@ async function request<T>(path: string, body?: unknown, scenarioResponse = false
 
 export const api = {
   health: () => request<{ status: string; readiness: Record<string, unknown> }>('/health'),
+  propertyRanking: () => request<PortfolioRow[]>('/properties/ranking'),
   portfolio: () => request<PortfolioRow[]>('/portfolio/rank'),
   properties: () => request<PropertySummary[]>('/properties'),
   property: (id: string) => request<PropertyRecord>(`/properties/${encodeURIComponent(id)}`),

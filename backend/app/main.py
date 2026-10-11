@@ -95,6 +95,13 @@ def load_record(repo, property_id):
         raise HTTPException(status_code=404, detail='Property not found') from None
 
 
+@app.get('/properties/ranking', response_model=list[PortfolioEntry])
+@app.get('/portfolio/rank', response_model=list[PortfolioEntry])
+def portfolio(repo=Depends(get_repository), retrofit=Depends(get_retrofit_engine),
+              carbon=Depends(get_carbon_engine), valuation=Depends(get_valuation_engine)):
+    return rank_portfolio(repo, retrofit, carbon, valuation)
+
+
 @app.get('/properties/{property_id}', response_model=PropertyRecord)
 def property_details(property_id: str, repo=Depends(get_repository)):
     return load_record(repo, property_id)
@@ -207,9 +214,3 @@ app.state.advisor_service = AdvisorService(
                          lambda: get_carbon_engine(), lambda: get_valuation_engine()),
     provider=provider_from_env(),
 )
-
-
-@app.get('/portfolio/rank', response_model=list[PortfolioEntry])
-def portfolio(repo=Depends(get_repository), retrofit=Depends(get_retrofit_engine),
-              carbon=Depends(get_carbon_engine), valuation=Depends(get_valuation_engine)):
-    return rank_portfolio(repo, retrofit, carbon, valuation)

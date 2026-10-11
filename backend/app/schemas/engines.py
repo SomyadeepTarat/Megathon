@@ -298,3 +298,10 @@ class PortfolioEntry(StrictModel):
     improvement: float | None
     carbon: float | None
     reason: str | None = None
+    rank: int | None = None
+    poor_home: bool | None = None
+    issues: list[str] = Field(default_factory=list)
+    current_property_value_gbp: float | None = None
+    electricity_savings_kwh: float | None = None
+    gas_savings_kwh: float | None = None
+    feasible_retrofits: list[str] = Field(default_factory=list)

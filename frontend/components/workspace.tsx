@@ -26,7 +26,7 @@ export function inputOf(record: PropertyRecord): AssessmentRequest { return { pr
 export function blankProperty(): PropertyRecord {
   return { property: { property_id: `HOME-${Date.now()}`, property_type: 'detached', region: '', floor_area_m2: 0, property_age_years: null, bedrooms: null, energy_rating: null, insulation: null, heating_system: null, glazing: null, renewable_contribution: null, smart_controls: null, roof_suitable_for_loft: null, roof_suitable_for_solar: null, heat_pump_compatible: null, controls_compatible: null, current_property_value_gbp: null, market_index: null, provenance: {} }, annual_energy: { electricity_kwh: null, gas_kwh: null, quality: 'missing', method: 'User-provided annual totals; no readings supplied yet', electricity_months_covered: 0, gas_months_covered: 0, warnings: [] }, benchmark: null, dataset_kind: 'observed', dataset_source: 'User-provided property details; energy quality is declared separately' };
 }
-const navigation = [{ href: '/', name: 'Overview', icon: House }, { href: '/assessment', name: 'Assessment', icon: ChartNoAxesColumnIncreasing }, { href: '/planner', name: 'Retrofit planner', icon: SlidersHorizontal }, { href: '/portfolio', name: 'Portfolio', icon: Trees }];
+const navigation = [{ href: '/', name: 'Overview', icon: House }, { href: '/assessment', name: 'Assessment', icon: ChartNoAxesColumnIncreasing }, { href: '/planner', name: 'Retrofit planner', icon: SlidersHorizontal }, { href: '/portfolio', name: 'Portfolio', icon: Trees }, { href: '/ranking', name: 'Property ranking', icon: ChartNoAxesColumnIncreasing }];
 
 export function Workspace({ children }: { children: ReactNode }) {
   const pathname = usePathname(); const router = useRouter();
