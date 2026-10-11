@@ -72,3 +72,17 @@ h1,h2,h3{color:#233e32;font-weight:750}
 .budget-result-note{margin-top:18px}
 @media(max-width:1100px){.budget-package-grid{grid-template-columns:1fr}.budget-package-name{min-height:0}.budget-package-card dl{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}}
 @media(max-width:680px){.budget-package-card dl{grid-template-columns:1fr}.budget-results .section-heading{align-items:flex-start;flex-wrap:wrap}}
+.property-ranking-table table{font-size:16px;line-height:1.65;border-collapse:collapse;width:100%}.property-ranking-table caption{text-align:left;padding:18px;font-size:14px}.property-ranking-table th,.property-ranking-table td{padding:18px;vertical-align:top;text-align:left;min-width:180px;border-bottom:1px solid var(--line)}.property-ranking-table thead th{font-size:16px;background:#edf2e7}.property-ranking-table tbody th{min-width:250px;font-size:16px;font-weight:500}.property-ranking-table td>strong{font-size:20px;color:var(--green)}.property-ranking-table small{display:block;font-size:14px;line-height:1.65;margin-top:8px;color:var(--body)}.property-ranking-table .property-table-link{font-size:17px}.property-ranking-table details{font-size:14px;margin-top:12px}.property-ranking-table summary{cursor:pointer;color:var(--green)}.property-ranking-table details p{font-size:14px}.ranking-filter{display:flex;align-items:center;gap:8px;font-size:14px}.ranking-footnote{font-size:14px;margin-top:18px}
+
+.property-views{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px;border-bottom:1px solid var(--line);padding-bottom:12px}
+.property-views a{padding:10px 15px;border-radius:6px;color:var(--body);font-size:14px}
+.property-views a[aria-current=page]{background:#e8eee0;color:var(--ink);font-weight:600}
+.preserve-lines{white-space:pre-line;line-height:1.8}
+.recommendation-method summary,.other-options summary{cursor:pointer;font-size:14px;font-weight:600}
+.recommendation-method p,.other-options p{font-size:13px;line-height:1.8}
+.winning-objectives{font-size:12px;line-height:1.65;color:var(--body)}
+.upgrade-title .badge,.budget-results .badge{font-size:11px;line-height:1.6;white-space:normal}
+.budget-results .budget-package-grid{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.property-ranking-table::after,.tradeoff-table::after,.package-table-scroll::after{content:'Scroll horizontally to see all columns';display:block;padding:10px 16px;font-size:12px;color:var(--body)}
+.chat-message>small{font-size:11px;line-height:1.7}
+@media(max-width:680px){.budget-inputs{grid-template-columns:1fr}.budget-results .budget-package-grid{grid-template-columns:1fr}.budget-package-card dl{grid-template-columns:1fr}.field input,.field select{font-size:14px}.upgrade-title>.badge{font-size:11px}.budget-results>p,.upgrade-main p{font-size:13px}.service-state,.field-source{font-size:10px}}

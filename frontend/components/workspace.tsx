@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
+import { createContext, useContext, useEffect, useRef, useState, type ReactNode, type Dispatch, type SetStateAction } from 'react';
 import { ArrowUpRight, ChartNoAxesColumnIncreasing, ChevronRight, CircleHelp, House, Leaf, Menu, MessageCircle, RefreshCw, SlidersHorizontal, Trees, X } from 'lucide-react';
 import { api } from '@/lib/api';
 import type { Assessment, AssessmentRequest, PropertyRecord, PropertySummary, Scenario } from '@/lib/types';
@@ -13,7 +13,10 @@ import { OutputSummary } from './results';
 import { previewOutputs } from '@/lib/ui-preview';
 import { HomeJourney, ReplayJourney } from './home-journey';
 
+import type { PlannerDraft } from '@/lib/planner';
+
 interface State {
+  plannerDraft: PlannerDraft | null; setPlannerDraft: Dispatch<SetStateAction<PlannerDraft | null>>;
   properties: PropertySummary[]; record: PropertyRecord | null; assessment: Assessment | null; scenario: Scenario | null;
   loading: boolean; error: string | null; dirty: boolean; service: 'checking' | 'online' | 'offline';
   selectProperty: (id: string) => Promise<void>; newProperty: () => void;
@@ -73,6 +76,7 @@ export function Workspace({ children }: { children: ReactNode }) {
     window.addEventListener('keydown', key);
     return () => { clearTimeout(timer); window.removeEventListener('wheel', wheel); window.removeEventListener('touchstart', touchStart); window.removeEventListener('touchmove', touchMove); window.removeEventListener('keydown', key); };
   }, [pathname, introductionActive]);
+  const [plannerDraft, setPlannerDraft] = useState<PlannerDraft | null>(null);
   const [properties, setProperties] = useState<PropertySummary[]>([]);
   const [record, setRecord] = useState<PropertyRecord | null>(null);
   const [assessment, setAssessment] = useState<Assessment | null>(null);
@@ -103,13 +107,13 @@ export function Workspace({ children }: { children: ReactNode }) {
   useEffect(() => { void refresh(); }, []);
   useEffect(() => { setMobile(false); }, [pathname]);
   async function selectProperty(id: string) {
-    const token = ++version.current; setLoading(true); setError(null); setRecord(null); setAssessment(null); setScenario(null); setOutputs([]); setDirty(false);
+    const token = ++version.current; setPlannerDraft(null); setLoading(true); setError(null); setRecord(null); setAssessment(null); setScenario(null); setOutputs([]); setDirty(false);
     try { const value = await api.property(id); if (token === version.current) setRecord(value); }
     catch (e) { if (token === version.current) setError((e as Error).message); }
     finally { if (token === version.current) setLoading(false); }
   }
-  function edit(value: PropertyRecord) { version.current++; setLoading(false); setRecord(value); setDirty(true); setAssessment(null); setScenario(null); setOutputs([]); setError(null); }
-  function newProperty() { version.current++; setLoading(false); setRecord(blankProperty()); setAssessment(null); setScenario(null); setOutputs([]); setDirty(true); setError(null); router.push('/assessment'); }
+  function edit(value: PropertyRecord) { version.current++; setPlannerDraft(null); setLoading(false); setRecord(value); setDirty(true); setAssessment(null); setScenario(null); setOutputs([]); setError(null); }
+  function newProperty() { version.current++; setPlannerDraft(null); setLoading(false); setRecord(blankProperty()); setAssessment(null); setScenario(null); setOutputs([]); setDirty(true); setError(null); router.push('/assessment'); }
   async function runAssessment() {
     if (!record) return;
     const token = ++version.current; setLoading(true); setError(null);
@@ -117,8 +121,8 @@ export function Workspace({ children }: { children: ReactNode }) {
     catch (e) { if (token === version.current) setError((e as Error).message); }
     finally { if (token === version.current) setLoading(false); }
   }
-  const title = pathname === '/compare' ? 'Scenario comparison' : navigation.find((item) => item.href === pathname)?.name || 'Workspace';
-  const value: State = { properties, record, assessment, scenario, dirty, loading, error, service, selectProperty, newProperty, edit, runAssessment, outputs: visibleOutputs, addOutput, setScenario, openAdvisor: () => setAdvisor(true), refresh };
+  const title = pathname === '/ranking' ? 'Property ranking' : pathname === '/compare' ? 'Scenario comparison' : navigation.find((item) => item.href === pathname)?.name || 'Workspace';
+  const value: State = { plannerDraft, setPlannerDraft, properties, record, assessment, scenario, dirty, loading, error, service, selectProperty, newProperty, edit, runAssessment, outputs: visibleOutputs, addOutput, setScenario, openAdvisor: () => setAdvisor(true), refresh };
   return <Context.Provider value={value}>
     {introductionActive && <HomeJourney onComplete={finishIntroduction} resumeFromEnd={resumeIntroduction} />}
     <a href="#main" className="skip-link">Skip to content</a>
@@ -127,7 +131,7 @@ export function Workspace({ children }: { children: ReactNode }) {
       <aside id="workspace-navigation" className={`sidebar ${mobile ? 'is-open' : ''}`}>
         <Link href="/" className="brand" aria-label="Kew home"><span className="brand-mark"><Leaf size={24} strokeWidth={1.6} /></span><span className="intro-wordmark">Kew</span></Link>
         <div className="nav-heading">Your workspace</div>
-        <nav aria-label="Main navigation">{navigation.map(({ href, name, icon: Icon }) => <Link key={href} href={href} aria-current={pathname === href || (href === '/planner' && pathname === '/compare') ? 'page' : undefined} className={`nav-link ${pathname === href || (href === '/planner' && pathname === '/compare') ? 'active' : ''}`}><Icon size={19} strokeWidth={1.6} />{name}</Link>)}</nav>
+        <nav aria-label="Main navigation">{navigation.map(({ href, name, icon: Icon }) => <Link key={href} href={href} aria-current={pathname === href || (href === '/portfolio' && pathname === '/ranking') || (href === '/planner' && pathname === '/compare') ? 'page' : undefined} className={`nav-link ${pathname === href || (href === '/portfolio' && pathname === '/ranking') || (href === '/planner' && pathname === '/compare') ? 'active' : ''}`}><Icon size={19} strokeWidth={1.6} />{name}</Link>)}</nav>
         <div className="sidebar-bottom"><div className="sidebar-note"><span className="mini-label">A little clarity.</span><p>A better future starts<br />with understanding home.</p><Leaf size={28} strokeWidth={1} /></div><button className="nav-link help-link" onClick={() => setAdvisor(true)}><CircleHelp size={18} /> Ask Kew</button><div className="profile"><span className="avatar">YH</span><div>Your home workspace<small>Personal assessment</small></div></div></div>
       </aside>
       <div className="main-shell"><header className="topbar"><div className="breadcrumb"><button className="icon-button mobile-menu" onClick={() => setMobile(!mobile)} aria-label="Open navigation" aria-expanded={mobile} aria-controls="workspace-navigation"><Menu size={21} /></button><Link href="/">Kew</Link><ChevronRight size={14} /><span>{title}</span></div><div className="header-actions"><span className={`service-state ${service}`}><i />{service === 'online' ? 'Your workspace' : service === 'checking' ? 'Loading…' : 'Service unavailable'}</span><button className="icon-button" onClick={() => void refresh()} aria-label="Refresh properties"><RefreshCw size={18} /></button><span className="header-separator" /><button className="icon-button" aria-label="Open Kew advisor" onClick={() => setAdvisor(true)}><MessageCircle size={20} /></button></div></header>

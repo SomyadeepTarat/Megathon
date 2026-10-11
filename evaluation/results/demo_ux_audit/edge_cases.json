@@ -1,0 +1,341 @@
+[
+  {
+    "case": "missing_fuel",
+    "http": 503,
+    "status": "unavailable",
+    "reason": "Both baseline fuel values are required for simulation.",
+    "energy": null,
+    "valuation": {
+      "status": "unavailable",
+      "reason": "No completed scenario.",
+      "value_before": null,
+      "value_after": null,
+      "uplift_range": null,
+      "baseline_value_gbp": null,
+      "after_value_gbp": null,
+      "baseline_range_gbp": null,
+      "after_range_gbp": null,
+      "value_change_gbp": null,
+      "value_change_range_gbp": null,
+      "confidence_level": null,
+      "method": null,
+      "warnings": []
+    },
+    "detail": null
+  },
+  {
+    "case": "infeasible_heat_pump",
+    "http": 409,
+    "status": "rejected",
+    "reason": "Package contains infeasible or conditional measures; resolve conditions before simulation.",
+    "energy": null,
+    "valuation": {
+      "status": "unavailable",
+      "reason": "No completed scenario.",
+      "value_before": null,
+      "value_after": null,
+      "uplift_range": null,
+      "baseline_value_gbp": null,
+      "after_value_gbp": null,
+      "baseline_range_gbp": null,
+      "after_range_gbp": null,
+      "value_change_gbp": null,
+      "value_change_range_gbp": null,
+      "confidence_level": null,
+      "method": null,
+      "warnings": []
+    },
+    "detail": null
+  },
+  {
+    "case": "heat_pump_signed_savings",
+    "http": 200,
+    "status": "success",
+    "reason": null,
+    "energy": {
+      "baseline": {
+        "electricity_kwh": 2525.12,
+        "gas_kwh": 12600.62
+      },
+      "after": {
+        "electricity_kwh": 6421.623146133334,
+        "gas_kwh": 0.0
+      },
+      "electricity_savings_kwh": -3896.5031461333338,
+      "gas_savings_kwh": 12600.62,
+      "net_savings_kwh": 8704.116853866668,
+      "improvement_percentage": 57.545064597610875
+    },
+    "valuation": {
+      "status": "illustrative",
+      "reason": null,
+      "value_before": 195000.0,
+      "value_after": 203991.17047751928,
+      "uplift_range": [
+        -2996.169189931097,
+        20978.510144969652
+      ],
+      "baseline_value_gbp": 195000.0,
+      "after_value_gbp": 203991.17047751928,
+      "baseline_range_gbp": [
+        195000.0,
+        195000.0
+      ],
+      "after_range_gbp": [
+        192003.8308100689,
+        215978.51014496965
+      ],
+      "value_change_gbp": 8991.170477519277,
+      "value_change_range_gbp": [
+        -2996.169189931097,
+        20978.510144969652
+      ],
+      "confidence_level": 0.9,
+      "method": "Synthetic regression contrast on simulated purchased-energy intensity, anchored to supplied current value; paired split-conformal calibration.",
+      "warnings": [
+        "Unused optional fields are missing: market_index",
+        "Synthetic demo estimate from an invented price relationship; not an observed-market valuation or guaranteed premium.",
+        "Current value is supplied as an anchor, not used as a model input; baseline range describes that fixed anchor.",
+        "Nominal 90% contrast interval; held-out synthetic coverage 86.4%. Real-world coverage is unknown.",
+        "Recorded EPC, location, area, age, type and market conditions are held fixed."
+      ]
+    },
+    "detail": null
+  },
+  {
+    "case": "interacting_loft_controls",
+    "http": 200,
+    "status": "success",
+    "reason": null,
+    "energy": {
+      "baseline": {
+        "electricity_kwh": 2525.12,
+        "gas_kwh": 12600.62
+      },
+      "after": {
+        "electricity_kwh": 2525.12,
+        "gas_kwh": 10321.610197794445
+      },
+      "electricity_savings_kwh": 0.0,
+      "gas_savings_kwh": 2279.0098022055554,
+      "net_savings_kwh": 2279.0098022055554,
+      "improvement_percentage": 15.06709623598948
+    },
+    "valuation": {
+      "status": "illustrative",
+      "reason": null,
+      "value_before": 195000.0,
+      "value_after": 195874.5573918432,
+      "uplift_range": [
+        -11112.78227560717,
+        12861.89705929358
+      ],
+      "baseline_value_gbp": 195000.0,
+      "after_value_gbp": 195874.5573918432,
+      "baseline_range_gbp": [
+        195000.0,
+        195000.0
+      ],
+      "after_range_gbp": [
+        183887.21772439283,
+        207861.89705929358
+      ],
+      "value_change_gbp": 874.5573918432056,
+      "value_change_range_gbp": [
+        -11112.78227560717,
+        12861.89705929358
+      ],
+      "confidence_level": 0.9,
+      "method": "Synthetic regression contrast on simulated purchased-energy intensity, anchored to supplied current value; paired split-conformal calibration.",
+      "warnings": [
+        "Unused optional fields are missing: market_index",
+        "Synthetic demo estimate from an invented price relationship; not an observed-market valuation or guaranteed premium.",
+        "Current value is supplied as an anchor, not used as a model input; baseline range describes that fixed anchor.",
+        "Nominal 90% contrast interval; held-out synthetic coverage 86.4%. Real-world coverage is unknown.",
+        "Recorded EPC, location, area, age, type and market conditions are held fixed."
+      ]
+    },
+    "detail": null
+  },
+  {
+    "case": "missing_baseline_value",
+    "http": 200,
+    "status": "partial",
+    "reason": null,
+    "energy": {
+      "baseline": {
+        "electricity_kwh": 2525.12,
+        "gas_kwh": 12600.62
+      },
+      "after": {
+        "electricity_kwh": 2525.12,
+        "gas_kwh": 11001.314875777778
+      },
+      "electricity_savings_kwh": 0.0,
+      "gas_savings_kwh": 1599.3051242222227,
+      "net_savings_kwh": 1599.3051242222227,
+      "improvement_percentage": 10.573400866484697
+    },
+    "valuation": {
+      "status": "unavailable",
+      "reason": "Insufficient property details provided (missing current baseline value). Value impact cannot be estimated.",
+      "value_before": null,
+      "value_after": null,
+      "uplift_range": null,
+      "baseline_value_gbp": null,
+      "after_value_gbp": null,
+      "baseline_range_gbp": null,
+      "after_range_gbp": null,
+      "value_change_gbp": null,
+      "value_change_range_gbp": null,
+      "confidence_level": null,
+      "method": null,
+      "warnings": []
+    },
+    "detail": null
+  },
+  {
+    "case": "conflicting_thermal_and_meter_data",
+    "http": 200,
+    "status": "success",
+    "reason": null,
+    "energy": {
+      "baseline": {
+        "electricity_kwh": 2525.12,
+        "gas_kwh": 12600.62
+      },
+      "after": {
+        "electricity_kwh": 36556.346230133335,
+        "gas_kwh": 0.0
+      },
+      "electricity_savings_kwh": -34031.22623013333,
+      "gas_savings_kwh": 12600.62,
+      "net_savings_kwh": -21430.60623013333,
+      "improvement_percentage": -141.68302661643878
+    },
+    "valuation": {
+      "status": "illustrative",
+      "reason": null,
+      "value_before": 195000.0,
+      "value_after": 158996.61209534478,
+      "uplift_range": [
+        -47990.72757210559,
+        -24016.048237204843
+      ],
+      "baseline_value_gbp": 195000.0,
+      "after_value_gbp": 158996.61209534478,
+      "baseline_range_gbp": [
+        195000.0,
+        195000.0
+      ],
+      "after_range_gbp": [
+        147009.2724278944,
+        170983.95176279516
+      ],
+      "value_change_gbp": -36003.38790465522,
+      "value_change_range_gbp": [
+        -47990.72757210559,
+        -24016.048237204843
+      ],
+      "confidence_level": 0.9,
+      "method": "Synthetic regression contrast on simulated purchased-energy intensity, anchored to supplied current value; paired split-conformal calibration.",
+      "warnings": [
+        "Unused optional fields are missing: market_index",
+        "Synthetic demo estimate from an invented price relationship; not an observed-market valuation or guaranteed premium.",
+        "Current value is supplied as an anchor, not used as a model input; baseline range describes that fixed anchor.",
+        "Nominal 90% contrast interval; held-out synthetic coverage 86.4%. Real-world coverage is unknown.",
+        "Recorded EPC, location, area, age, type and market conditions are held fixed."
+      ]
+    },
+    "detail": null
+  },
+  {
+    "case": "conflicting_heating_flags",
+    "http": 200,
+    "status": "success",
+    "reason": null,
+    "energy": {
+      "baseline": {
+        "electricity_kwh": 2525.12,
+        "gas_kwh": 12600.62
+      },
+      "after": {
+        "electricity_kwh": 2525.12,
+        "gas_kwh": 11001.314875777778
+      },
+      "electricity_savings_kwh": 0.0,
+      "gas_savings_kwh": 1599.3051242222227,
+      "net_savings_kwh": 1599.3051242222227,
+      "improvement_percentage": 10.573400866484697
+    },
+    "valuation": {
+      "status": "illustrative",
+      "reason": null,
+      "value_before": 195000.0,
+      "value_after": 195358.3231863571,
+      "uplift_range": [
+        -11629.016481093277,
+        12345.662853807473
+      ],
+      "baseline_value_gbp": 195000.0,
+      "after_value_gbp": 195358.3231863571,
+      "baseline_range_gbp": [
+        195000.0,
+        195000.0
+      ],
+      "after_range_gbp": [
+        183370.98351890672,
+        207345.66285380747
+      ],
+      "value_change_gbp": 358.32318635709817,
+      "value_change_range_gbp": [
+        -11629.016481093277,
+        12345.662853807473
+      ],
+      "confidence_level": 0.9,
+      "method": "Synthetic regression contrast on simulated purchased-energy intensity, anchored to supplied current value; paired split-conformal calibration.",
+      "warnings": [
+        "Unused optional fields are missing: market_index",
+        "Synthetic demo estimate from an invented price relationship; not an observed-market valuation or guaranteed premium.",
+        "Current value is supplied as an anchor, not used as a model input; baseline range describes that fixed anchor.",
+        "Nominal 90% contrast interval; held-out synthetic coverage 86.4%. Real-world coverage is unknown.",
+        "Recorded EPC, location, area, age, type and market conditions are held fixed."
+      ]
+    },
+    "detail": null
+  },
+  {
+    "case": "observed_incomplete_months",
+    "http": 422,
+    "status": null,
+    "reason": null,
+    "energy": null,
+    "valuation": null,
+    "detail": [
+      {
+        "type": "value_error",
+        "loc": [
+          "body",
+          "annual_energy"
+        ],
+        "msg": "Value error, observed annual values require complete 12-month coverage",
+        "input": {
+          "electricity_kwh": 2525.12,
+          "gas_kwh": 12600.62,
+          "quality": "observed",
+          "method": "Sum of 12 monthly purchased-energy readings for 2025; incomplete fuel totals remain null",
+          "electricity_months_covered": 6,
+          "gas_months_covered": 12,
+          "warnings": [
+            "Score uses a synthetic reference benchmark, not an official consumption standard.",
+            "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+            "Confirm alignment of the property snapshot and energy period; see source methodology."
+          ]
+        },
+        "ctx": {
+          "error": {}
+        }
+      }
+    ]
+  }
+]

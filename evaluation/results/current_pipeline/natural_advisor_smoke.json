@@ -1,10 +1,11 @@
 {
-  "scope": "Local engine-backed smoke test; semantic metrics require human review",
+  "scope": "Eight local engine-backed smoke cases; semantic targets require human review",
+  "provider": "ollama",
   "cases": [
     {
       "question": "Why is my score low?",
       "property_id": "DEMO-P00005",
-      "seconds": 4.839,
+      "seconds": 4.621,
       "answer": {
         "status": "success",
         "intent": {
@@ -13,7 +14,7 @@
           "budget_gbp": null,
           "objective": "carbon_reduction"
         },
-        "explanation": "Your Green Home Score is classified as Poor, primarily due to weak insulation and energy efficiency. These results include illustrative synthetic estimates.\n\nEvidence and limitations\nValuation estimate is unavailable. Synthetic training data cannot support real-world value uplift\nWarnings: Score uses a synthetic reference benchmark, not an official consumption standard.\nWarnings: Heating subtype is a disclosed synthetic modeling input, not survey evidence.\nWarnings: Confirm alignment of the property snapshot and energy period; see source methodology.\nWarnings: Energy data quality: synthetic.\nSources: Property dataset: synthetic; Curated synthetic demo assumptions; not survey evidence, market tariffs or contractor quotes; base data from Data/csv/properties.csv and energy_usage.csv\nSources: Annual energy: synthetic; Sum of 12 monthly purchased-energy readings for 2025; incomplete fuel totals remain null\nSources: Synthetic fixed reference model v1; not an official NEED benchmark\nProperty-value associations do not prove a causal retrofit premium.",
+        "explanation": "Your Green Home Score is classified as Poor, primarily due to weak insulation and energy efficiency. The energy efficiency component has a subscore of 40 and contributes 10 points to the weighted score. The insulation component has a subscore of 20 and contributes 3 points to the weighted score. These results include illustrative synthetic estimates.\n\nEvidence and limitations\nValuation estimate is unavailable. Synthetic training data cannot support real-world value uplift\nWarnings: Score uses a synthetic reference benchmark, not an official consumption standard.\nWarnings: Heating subtype is a disclosed synthetic modeling input, not survey evidence.\nWarnings: Confirm alignment of the property snapshot and energy period; see source methodology.\nWarnings: Energy data quality: synthetic.\nSources: Property dataset: synthetic; Curated synthetic demo assumptions; not survey evidence, market tariffs or contractor quotes; base data from Data/csv/properties.csv and energy_usage.csv\nSources: Annual energy: synthetic; Sum of 12 monthly purchased-energy readings for 2025; incomplete fuel totals remain null\nSources: Synthetic fixed reference model v1; not an official NEED benchmark\nProperty-value associations do not prove a causal retrofit premium.",
         "mode": "grounded_llm",
         "fallback_reason": null,
         "clarification_kind": null,
@@ -324,7 +325,7 @@
     {
       "question": "How do I improve my score?",
       "property_id": "DEMO-P00005",
-      "seconds": 1.92,
+      "seconds": 1.903,
       "answer": {
         "status": "success",
         "intent": {
@@ -333,7 +334,7 @@
           "budget_gbp": null,
           "objective": "carbon_reduction"
         },
-        "explanation": "Your Green Home Score is currently Poor, so improving insulation is a key area to address. For loft insulation alone, the model predicts a final score of 33 points, with an estimated installation cost of \u00a31,500. These results include illustrative synthetic estimates.\n\nEvidence and limitations\nValuation estimate is unavailable. Synthetic training data cannot support real-world value uplift\nWarnings: Score uses a synthetic reference benchmark, not an official consumption standard.\nWarnings: Heating subtype is a disclosed synthetic modeling input, not survey evidence.\nWarnings: Confirm alignment of the property snapshot and energy period; see source methodology.\nWarnings: Energy data quality: synthetic.\nWarnings: This ranks individual measures, not budget-optimized packages.\nSources: Property dataset: synthetic; Curated synthetic demo assumptions; not survey evidence, market tariffs or contractor quotes; base data from Data/csv/properties.csv and energy_usage.csv\nSources: Annual energy: synthetic; Sum of 12 monthly purchased-energy readings for 2025; incomplete fuel totals remain null\nSources: Synthetic fixed reference model v1; not an official NEED benchmark\nSources: Individual feasible options simulated by P4; interactions require a selected package simulation. Suitability policy: High requires feasible eligibility, positive modeled objective benefit, and observed annual-energy plus physical-input provenance. Medium means benefit is calculable from synthetic/estimated inputs or eligibility is conditional. Low means explicit incompatibility/already-present or no positive objective benefit. Ranking position alone never sets suitability.\nProperty-value associations do not prove a causal retrofit premium.",
+        "explanation": "Your Green Home Score is currently Poor, so improving insulation is a key area to address. The insulation component has a subscore of 20 and contributes 3 points to the weighted score. These results include illustrative synthetic estimates.\n\nEvidence and limitations\nValuation estimate is unavailable. Synthetic training data cannot support real-world value uplift\nWarnings: Score uses a synthetic reference benchmark, not an official consumption standard.\nWarnings: Heating subtype is a disclosed synthetic modeling input, not survey evidence.\nWarnings: Confirm alignment of the property snapshot and energy period; see source methodology.\nWarnings: Energy data quality: synthetic.\nWarnings: This ranks individual measures, not budget-optimized packages.\nWarnings: Installation order is separate from benefit rank: demand reduction before heat-pump sizing/installation, then solar. Confirm dependencies with an installer; combined outcomes require package simulation, not addition of individual savings.\nSources: Property dataset: synthetic; Curated synthetic demo assumptions; not survey evidence, market tariffs or contractor quotes; base data from Data/csv/properties.csv and energy_usage.csv\nSources: Annual energy: synthetic; Sum of 12 monthly purchased-energy readings for 2025; incomplete fuel totals remain null\nSources: Synthetic fixed reference model v1; not an official NEED benchmark\nSources: Individual feasible options simulated against the same baseline; energy ranking uses 100 * (baseline purchased electricity + gas - after purchased electricity - gas) / baseline purchased energy. Other explicit objectives use carbon reduction or shortest positive payback. Suitability policy: High requires feasible eligibility, positive modeled objective benefit, and observed annual-energy plus physical-input provenance. Medium means benefit is calculable from synthetic/estimated inputs or eligibility is conditional. Low means explicit incompatibility/already-present or no positive objective benefit. Ranking position alone never sets suitability.\nProperty-value associations do not prove a causal retrofit premium.",
         "mode": "grounded_llm",
         "fallback_reason": null,
         "clarification_kind": null,
@@ -415,116 +416,121 @@
           },
           {
             "id": "f15",
+            "text": "Warnings: Installation order is separate from benefit rank: demand reduction before heat-pump sizing/installation, then solar. Confirm dependencies with an installer; combined outcomes require package simulation, not addition of individual savings.",
+            "source": "warnings.5"
+          },
+          {
+            "id": "f16",
             "text": "Sources: Property dataset: synthetic; Curated synthetic demo assumptions; not survey evidence, market tariffs or contractor quotes; base data from Data/csv/properties.csv and energy_usage.csv",
             "source": "sources.0"
           },
           {
-            "id": "f16",
+            "id": "f17",
             "text": "Sources: Annual energy: synthetic; Sum of 12 monthly purchased-energy readings for 2025; incomplete fuel totals remain null",
             "source": "sources.1"
           },
           {
-            "id": "f17",
+            "id": "f18",
             "text": "Sources: Synthetic fixed reference model v1; not an official NEED benchmark",
             "source": "sources.2"
           },
           {
-            "id": "f18",
-            "text": "Sources: Individual feasible options simulated by P4; interactions require a selected package simulation. Suitability policy: High requires feasible eligibility, positive modeled objective benefit, and observed annual-energy plus physical-input provenance. Medium means benefit is calculable from synthetic/estimated inputs or eligibility is conditional. Low means explicit incompatibility/already-present or no positive objective benefit. Ranking position alone never sets suitability.",
+            "id": "f19",
+            "text": "Sources: Individual feasible options simulated against the same baseline; energy ranking uses 100 * (baseline purchased electricity + gas - after purchased electricity - gas) / baseline purchased energy. Other explicit objectives use carbon reduction or shortest positive payback. Suitability policy: High requires feasible eligibility, positive modeled objective benefit, and observed annual-energy plus physical-input provenance. Medium means benefit is calculable from synthetic/estimated inputs or eligibility is conditional. Low means explicit incompatibility/already-present or no positive objective benefit. Ranking position alone never sets suitability.",
             "source": "sources.3"
           },
           {
-            "id": "f19",
+            "id": "f20",
             "text": "Energy efficiency: subscore 40.0; weighted contribution 10.0 points. Recorded evidence: energy rating: E.",
             "source": "score.components.0"
           },
           {
-            "id": "f20",
+            "id": "f21",
             "text": "Consumption intensity: subscore 45.932955194039174; weighted contribution 9.186591038807835 points. Recorded evidence: intensity kwh m2 year: 171.8834090909091; benchmark kwh m2 year: 108.694722; benchmark source: Synthetic fixed reference model v1; not an official NEED benchmark.",
             "source": "score.components.1"
           },
           {
-            "id": "f21",
+            "id": "f22",
             "text": "Insulation: subscore 20.0; weighted contribution 3.0 points. Recorded evidence: insulation: poor.",
             "source": "score.components.2"
           },
           {
-            "id": "f22",
+            "id": "f23",
             "text": "Heating system: subscore 50.0; weighted contribution 7.5 points. Recorded evidence: heating system: modern_gas_boiler.",
             "source": "score.components.3"
           },
           {
-            "id": "f23",
+            "id": "f24",
             "text": "Windows: subscore 20.0; weighted contribution 2.0 points. Recorded evidence: glazing: single.",
             "source": "score.components.4"
           },
           {
-            "id": "f24",
+            "id": "f25",
             "text": "Renewable energy: subscore 0.0; weighted contribution 0.0 points. Recorded evidence: renewable contribution: none.",
             "source": "score.components.5"
           },
           {
-            "id": "f25",
+            "id": "f26",
             "text": "Smart management: subscore 0.0; weighted contribution 0.0 points. Recorded evidence: smart controls: none.",
             "source": "score.components.6"
           },
           {
-            "id": "f26",
+            "id": "f27",
             "text": "Heat pump is confirmed feasible by the backend. Known installation and compatibility fields permit screening; survey confirmation may still be needed. Estimated installation cost: \u00a312500.0. Modeled score after this upgrade alone: 47 points. Suitability: Medium. The result is a screening estimate based on synthetic/estimated inputs or lacks objective evidence.",
             "source": "recommendations.0"
           },
           {
-            "id": "f27",
+            "id": "f28",
             "text": "Loft insulation is confirmed feasible by the backend. Known installation and compatibility fields permit screening; survey confirmation may still be needed. Estimated installation cost: \u00a31500.0. Modeled score after this upgrade alone: 33 points. Suitability: Medium. The result is a screening estimate based on synthetic/estimated inputs or lacks objective evidence.",
             "source": "recommendations.1"
           },
           {
-            "id": "f28",
+            "id": "f29",
             "text": "Double glazing is confirmed feasible by the backend. Known installation and compatibility fields permit screening; survey confirmation may still be needed. Estimated installation cost: \u00a35000.0. Modeled score after this upgrade alone: 38 points. Suitability: Medium. The result is a screening estimate based on synthetic/estimated inputs or lacks objective evidence.",
             "source": "recommendations.2"
           },
           {
-            "id": "f29",
+            "id": "f30",
             "text": "Solar panels is confirmed feasible by the backend. Known installation and compatibility fields permit screening; survey confirmation may still be needed. Estimated installation cost: \u00a36500.0. Score impact is unavailable. Suitability: Medium. The result is a screening estimate based on synthetic/estimated inputs or lacks objective evidence.",
             "source": "recommendations.3"
           },
           {
-            "id": "f30",
+            "id": "f31",
             "text": "Smart thermostat is confirmed feasible by the backend. Known installation and compatibility fields permit screening; survey confirmation may still be needed. Estimated installation cost: \u00a3200.0. Modeled score after this upgrade alone: 38 points. Suitability: Medium. The result is a screening estimate based on synthetic/estimated inputs or lacks objective evidence.",
             "source": "recommendations.4"
           },
           {
-            "id": "f31",
+            "id": "f32",
             "text": "A heat pump uses electricity to transfer heat. Switching from gas heating can increase electricity consumption while reducing gas consumption; use the per-fuel simulation to assess the net outcome.",
             "source": "definitions.heat_pump"
           },
           {
-            "id": "f32",
+            "id": "f33",
             "text": "Solar generation can reduce purchased grid electricity without reducing the home\u2019s underlying electricity demand. Suitability must be checked for the property.",
             "source": "definitions.solar"
           },
           {
-            "id": "f33",
+            "id": "f34",
             "text": "The Green Home Score uses fixed weighted components for energy rating, consumption intensity, insulation, heating, windows, renewables and smart management. Weak component scores identify areas to investigate, not guaranteed retrofit benefits.",
             "source": "definitions.score"
           },
           {
-            "id": "f34",
+            "id": "f35",
             "text": "Insulation reduces heating demand in the documented simulation. Package interactions are simulated sequentially, not by adding independent savings.",
             "source": "definitions.insulation"
           },
           {
-            "id": "f35",
+            "id": "f36",
             "text": "Carbon reduction uses the computed electricity and gas changes and documented emissions factors for each fuel. A higher electricity use can coexist with lower total emissions.",
             "source": "definitions.carbon"
           },
           {
-            "id": "f36",
+            "id": "f37",
             "text": "Property-value impacts are indicative ranges conditional on available inputs and model support. Synthetic results do not establish real market accuracy or a causal retrofit premium.",
             "source": "definitions.value"
           },
           {
-            "id": "f37",
+            "id": "f38",
             "text": "Kew helps explain this property\u2019s energy performance, score, retrofit suitability and modeled impacts. It cannot supply unrelated personal, legal or investment advice, live energy-meter readings or contractor quotes.",
             "source": "definitions.scope"
           }
@@ -619,7 +625,8 @@
             "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
             "Confirm alignment of the property snapshot and energy period; see source methodology.",
             "Energy data quality: synthetic.",
-            "This ranks individual measures, not budget-optimized packages."
+            "This ranks individual measures, not budget-optimized packages.",
+            "Installation order is separate from benefit rank: demand reduction before heat-pump sizing/installation, then solar. Confirm dependencies with an installer; combined outcomes require package simulation, not addition of individual savings."
           ],
           "energy": {
             "baseline_electricity_kwh": 2525.12,
@@ -670,7 +677,7 @@
             "Property dataset: synthetic; Curated synthetic demo assumptions; not survey evidence, market tariffs or contractor quotes; base data from Data/csv/properties.csv and energy_usage.csv",
             "Annual energy: synthetic; Sum of 12 monthly purchased-energy readings for 2025; incomplete fuel totals remain null",
             "Synthetic fixed reference model v1; not an official NEED benchmark",
-            "Individual feasible options simulated by P4; interactions require a selected package simulation. Suitability policy: High requires feasible eligibility, positive modeled objective benefit, and observed annual-energy plus physical-input provenance. Medium means benefit is calculable from synthetic/estimated inputs or eligibility is conditional. Low means explicit incompatibility/already-present or no positive objective benefit. Ranking position alone never sets suitability."
+            "Individual feasible options simulated against the same baseline; energy ranking uses 100 * (baseline purchased electricity + gas - after purchased electricity - gas) / baseline purchased energy. Other explicit objectives use carbon reduction or shortest positive payback. Suitability policy: High requires feasible eligibility, positive modeled objective benefit, and observed annual-energy plus physical-input provenance. Medium means benefit is calculable from synthetic/estimated inputs or eligibility is conditional. Low means explicit incompatibility/already-present or no positive objective benefit. Ranking position alone never sets suitability."
           ],
           "recommendations": [
             {
@@ -728,7 +735,7 @@
     {
       "question": "What if I install a heat pump?",
       "property_id": "DEMO-P00001",
-      "seconds": 2.237,
+      "seconds": 2.247,
       "answer": {
         "status": "success",
         "intent": {
@@ -1133,6 +1140,7 @@
             "methodology_version": "greenprint-score-v1",
             "baseline": 22,
             "after": 43,
+            "after_classification": "Poor",
             "after_status": "available",
             "after_components": [
               {
@@ -1220,7 +1228,7 @@
             "Confirm alignment of the property snapshot and energy period; see source methodology.",
             "Physical component totals differ from rounded monthly purchased-energy totals by at most 0.06 kWh; the small residual was capped at zero."
           ],
-          "scenario_id": "20f6b373-b63e-414f-a55a-e29537f62d39",
+          "scenario_id": "cdab8a4a-1ccb-4b82-81ba-8f86f293da3f",
           "reason": null,
           "feasibility": {
             "status": "available",
@@ -1341,7 +1349,7 @@
     {
       "question": "What is a heat pump and could it help my home?",
       "property_id": "DEMO-P00005",
-      "seconds": 2.925,
+      "seconds": 3.224,
       "answer": {
         "status": "success",
         "intent": {
@@ -1661,7 +1669,7 @@
     {
       "question": "How much could my property value change?",
       "property_id": "DEMO-P00005",
-      "seconds": 3.984,
+      "seconds": 2.335,
       "answer": {
         "status": "success",
         "intent": {
@@ -1670,7 +1678,7 @@
           "budget_gbp": null,
           "objective": "carbon_reduction"
         },
-        "explanation": "I cannot estimate your property value change with the current data. The available evidence is insufficient: Synthetic training data cannot support real-world value uplift These results include illustrative synthetic estimates.\n\nEvidence and limitations\nValuation estimate is unavailable. Synthetic training data cannot support real-world value uplift\nWarnings: Score uses a synthetic reference benchmark, not an official consumption standard.\nWarnings: Heating subtype is a disclosed synthetic modeling input, not survey evidence.\nWarnings: Confirm alignment of the property snapshot and energy period; see source methodology.\nWarnings: Energy data quality: synthetic.\nSources: Property dataset: synthetic; Curated synthetic demo assumptions; not survey evidence, market tariffs or contractor quotes; base data from Data/csv/properties.csv and energy_usage.csv\nSources: Annual energy: synthetic; Sum of 12 monthly purchased-energy readings for 2025; incomplete fuel totals remain null\nSources: Synthetic fixed reference model v1; not an official NEED benchmark\nProperty-value associations do not prove a causal retrofit premium.",
+        "explanation": "I cannot estimate your property value change with the current data. The available evidence is insufficient: Synthetic training data cannot support real-world value uplift. These results include illustrative synthetic estimates.\n\nEvidence and limitations\nValuation estimate is unavailable. Synthetic training data cannot support real-world value uplift\nWarnings: Score uses a synthetic reference benchmark, not an official consumption standard.\nWarnings: Heating subtype is a disclosed synthetic modeling input, not survey evidence.\nWarnings: Confirm alignment of the property snapshot and energy period; see source methodology.\nWarnings: Energy data quality: synthetic.\nSources: Property dataset: synthetic; Curated synthetic demo assumptions; not survey evidence, market tariffs or contractor quotes; base data from Data/csv/properties.csv and energy_usage.csv\nSources: Annual energy: synthetic; Sum of 12 monthly purchased-energy readings for 2025; incomplete fuel totals remain null\nSources: Synthetic fixed reference model v1; not an official NEED benchmark\nProperty-value associations do not prove a causal retrofit premium.",
         "mode": "grounded_llm",
         "fallback_reason": null,
         "clarification_kind": null,
@@ -1981,7 +1989,7 @@
     {
       "question": "What if I install a heat pump?",
       "property_id": "DEMO-P00003",
-      "seconds": 0.002,
+      "seconds": 0.001,
       "answer": {
         "status": "infeasible",
         "intent": {
@@ -2023,7 +2031,7 @@
     {
       "question": "What can I do with a \u00a35000 budget?",
       "property_id": "DEMO-P00001",
-      "seconds": 4.542,
+      "seconds": 4.557,
       "answer": {
         "status": "success",
         "intent": {
@@ -2426,6 +2434,7 @@
             "methodology_version": "greenprint-score-v1",
             "baseline": 22,
             "after": 30,
+            "after_classification": "Poor",
             "after_status": "available",
             "after_components": [
               {
@@ -2514,7 +2523,7 @@
             "Physical component totals differ from rounded monthly purchased-energy totals by at most 0.06 kWh; the small residual was capped at zero.",
             "Loft upgraded; whole-home insulation category is retained without an estimator."
           ],
-          "scenario_id": "987ac063-824d-4c74-b7f4-23471252a957",
+          "scenario_id": "7cdee1f8-8766-4809-b2cf-5008b886a0b7",
           "reason": null,
           "feasibility": {
             "status": "available",
@@ -2992,7 +3001,7 @@
     {
       "question": "How is carbon reduction calculated?",
       "property_id": "DEMO-P00005",
-      "seconds": 1.837,
+      "seconds": 1.808,
       "answer": {
         "status": "success",
         "intent": {

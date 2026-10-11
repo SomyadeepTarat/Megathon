@@ -59,6 +59,10 @@ class P4RetrofitAdapter:
         return FeasibilityResult(status='available', items=items)
 
     def raw_simulation(self, request):
+        from app.services.input_consistency import conflicting_inputs
+        conflicts = conflicting_inputs(request.property)
+        if conflicts:
+            raise CalculationUnavailable('Conflicting property evidence: ' + '; '.join(conflicts) + '. Confirm these inputs before estimating retrofit outcomes.')
         try:
             factors = factor_data(request)
         except CalculationUnavailable:

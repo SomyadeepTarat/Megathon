@@ -1,0 +1,386 @@
+[
+  {
+    "field": "space_heating_demand_kwh",
+    "http_status": 503,
+    "result": {
+      "scenario_id": "0714cb09-fdbd-42e7-9b02-1d0b31e9e793",
+      "property_id": "DEMO-P00005",
+      "status": "unavailable",
+      "baseline_carbon": null,
+      "after_carbon": null,
+      "carbon_savings_by_fuel_kg_co2e": null,
+      "reason": "Conflicting property evidence: thermal_demand_kwh and space/hot-water demand; space_heating_demand_kwh and heating fuel component/efficiency. Confirm these inputs before estimating retrofit outcomes.",
+      "baseline_assessment": {
+        "property_id": "DEMO-P00005",
+        "score": {
+          "status": "available",
+          "score": 32,
+          "unrounded_score": 31.686591038807833,
+          "classification": "Poor",
+          "components": [
+            {
+              "name": "energy_efficiency",
+              "subscore": 40.0,
+              "weight": 0.25,
+              "contribution": 10.0,
+              "evidence": {
+                "energy_rating": "E"
+              }
+            },
+            {
+              "name": "consumption_intensity",
+              "subscore": 45.932955194039174,
+              "weight": 0.2,
+              "contribution": 9.186591038807835,
+              "evidence": {
+                "intensity_kwh_m2_year": 171.8834090909091,
+                "benchmark_kwh_m2_year": 108.694722,
+                "benchmark_source": "Synthetic fixed reference model v1; not an official NEED benchmark"
+              }
+            },
+            {
+              "name": "insulation",
+              "subscore": 20.0,
+              "weight": 0.15,
+              "contribution": 3.0,
+              "evidence": {
+                "insulation": "poor"
+              }
+            },
+            {
+              "name": "heating_system",
+              "subscore": 50.0,
+              "weight": 0.15,
+              "contribution": 7.5,
+              "evidence": {
+                "heating_system": "modern_gas_boiler"
+              }
+            },
+            {
+              "name": "windows",
+              "subscore": 20.0,
+              "weight": 0.1,
+              "contribution": 2.0,
+              "evidence": {
+                "glazing": "single"
+              }
+            },
+            {
+              "name": "renewable_energy",
+              "subscore": 0.0,
+              "weight": 0.1,
+              "contribution": 0.0,
+              "evidence": {
+                "renewable_contribution": "none"
+              }
+            },
+            {
+              "name": "smart_management",
+              "subscore": 0.0,
+              "weight": 0.05,
+              "contribution": 0.0,
+              "evidence": {
+                "smart_controls": "none"
+              }
+            }
+          ],
+          "missing_fields": [],
+          "methodology_version": "greenprint-score-v1"
+        },
+        "poor_home": true,
+        "intensity_kwh_m2_year": 171.8834090909091,
+        "issues": [
+          {
+            "code": "poor_insulation",
+            "severity": "high",
+            "message": "Insulation is poor.",
+            "evidence": {
+              "insulation": "poor"
+            }
+          },
+          {
+            "code": "single_glazing",
+            "severity": "medium",
+            "message": "Windows are single glazed.",
+            "evidence": {
+              "glazing": "single"
+            }
+          },
+          {
+            "code": "no_renewables",
+            "severity": "low",
+            "message": "No renewable contribution is recorded.",
+            "evidence": {
+              "renewable_contribution": "none"
+            }
+          },
+          {
+            "code": "no_controls",
+            "severity": "low",
+            "message": "No smart energy controls are recorded.",
+            "evidence": {
+              "smart_controls": "none"
+            }
+          },
+          {
+            "code": "above_benchmark_intensity",
+            "severity": "high",
+            "message": "Purchased-energy intensity exceeds the supplied benchmark.",
+            "evidence": {
+              "intensity_kwh_m2_year": 171.8834090909091,
+              "benchmark_kwh_m2_year": 108.694722
+            }
+          }
+        ],
+        "warnings": [
+          "Score uses a synthetic reference benchmark, not an official consumption standard.",
+          "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+          "Confirm alignment of the property snapshot and energy period; see source methodology.",
+          "Conflicting property evidence: thermal_demand_kwh and space/hot-water demand; space_heating_demand_kwh and heating fuel component/efficiency. Confirm these fields before estimating retrofit outcomes.",
+          "Energy data quality: synthetic."
+        ]
+      },
+      "feasibility": {
+        "status": "available",
+        "items": [
+          {
+            "retrofit": "loft_insulation",
+            "status": "feasible",
+            "reason": "Known installation and compatibility fields permit screening; survey confirmation may still be needed."
+          }
+        ],
+        "reason": null
+      },
+      "after_assessment": null,
+      "updated_property": null,
+      "energy": null,
+      "carbon": {
+        "status": "unavailable",
+        "reduction_kg_co2e": null,
+        "factors": [],
+        "reason": "No completed scenario."
+      },
+      "valuation": {
+        "status": "unavailable",
+        "reason": "No completed scenario.",
+        "value_before": null,
+        "value_after": null,
+        "uplift_range": null,
+        "baseline_value_gbp": null,
+        "after_value_gbp": null,
+        "baseline_range_gbp": null,
+        "after_range_gbp": null,
+        "value_change_gbp": null,
+        "value_change_range_gbp": null,
+        "confidence_level": null,
+        "method": null,
+        "warnings": []
+      },
+      "installation_cost_gbp": null,
+      "applied_retrofits": [],
+      "assumptions": [],
+      "warnings": [],
+      "versions": {
+        "score": "greenprint-score-v1",
+        "retrofit": "p4-carbon-package-adapter-v1"
+      },
+      "annual_bill_savings_gbp": null,
+      "bill_savings_reason": null,
+      "simple_payback_years": null,
+      "payback_reason": null,
+      "optimization_context": null
+    }
+  },
+  {
+    "field": "heat_pump_installed",
+    "http_status": 503,
+    "result": {
+      "scenario_id": "0efe3926-401e-4d51-9ed6-5d8757bc2875",
+      "property_id": "DEMO-P00005",
+      "status": "unavailable",
+      "baseline_carbon": null,
+      "after_carbon": null,
+      "carbon_savings_by_fuel_kg_co2e": null,
+      "reason": "Conflicting property evidence: heating_system and heat_pump_installed. Confirm these inputs before estimating retrofit outcomes.",
+      "baseline_assessment": {
+        "property_id": "DEMO-P00005",
+        "score": {
+          "status": "available",
+          "score": 32,
+          "unrounded_score": 31.686591038807833,
+          "classification": "Poor",
+          "components": [
+            {
+              "name": "energy_efficiency",
+              "subscore": 40.0,
+              "weight": 0.25,
+              "contribution": 10.0,
+              "evidence": {
+                "energy_rating": "E"
+              }
+            },
+            {
+              "name": "consumption_intensity",
+              "subscore": 45.932955194039174,
+              "weight": 0.2,
+              "contribution": 9.186591038807835,
+              "evidence": {
+                "intensity_kwh_m2_year": 171.8834090909091,
+                "benchmark_kwh_m2_year": 108.694722,
+                "benchmark_source": "Synthetic fixed reference model v1; not an official NEED benchmark"
+              }
+            },
+            {
+              "name": "insulation",
+              "subscore": 20.0,
+              "weight": 0.15,
+              "contribution": 3.0,
+              "evidence": {
+                "insulation": "poor"
+              }
+            },
+            {
+              "name": "heating_system",
+              "subscore": 50.0,
+              "weight": 0.15,
+              "contribution": 7.5,
+              "evidence": {
+                "heating_system": "modern_gas_boiler"
+              }
+            },
+            {
+              "name": "windows",
+              "subscore": 20.0,
+              "weight": 0.1,
+              "contribution": 2.0,
+              "evidence": {
+                "glazing": "single"
+              }
+            },
+            {
+              "name": "renewable_energy",
+              "subscore": 0.0,
+              "weight": 0.1,
+              "contribution": 0.0,
+              "evidence": {
+                "renewable_contribution": "none"
+              }
+            },
+            {
+              "name": "smart_management",
+              "subscore": 0.0,
+              "weight": 0.05,
+              "contribution": 0.0,
+              "evidence": {
+                "smart_controls": "none"
+              }
+            }
+          ],
+          "missing_fields": [],
+          "methodology_version": "greenprint-score-v1"
+        },
+        "poor_home": true,
+        "intensity_kwh_m2_year": 171.8834090909091,
+        "issues": [
+          {
+            "code": "poor_insulation",
+            "severity": "high",
+            "message": "Insulation is poor.",
+            "evidence": {
+              "insulation": "poor"
+            }
+          },
+          {
+            "code": "single_glazing",
+            "severity": "medium",
+            "message": "Windows are single glazed.",
+            "evidence": {
+              "glazing": "single"
+            }
+          },
+          {
+            "code": "no_renewables",
+            "severity": "low",
+            "message": "No renewable contribution is recorded.",
+            "evidence": {
+              "renewable_contribution": "none"
+            }
+          },
+          {
+            "code": "no_controls",
+            "severity": "low",
+            "message": "No smart energy controls are recorded.",
+            "evidence": {
+              "smart_controls": "none"
+            }
+          },
+          {
+            "code": "above_benchmark_intensity",
+            "severity": "high",
+            "message": "Purchased-energy intensity exceeds the supplied benchmark.",
+            "evidence": {
+              "intensity_kwh_m2_year": 171.8834090909091,
+              "benchmark_kwh_m2_year": 108.694722
+            }
+          }
+        ],
+        "warnings": [
+          "Score uses a synthetic reference benchmark, not an official consumption standard.",
+          "Heating subtype is a disclosed synthetic modeling input, not survey evidence.",
+          "Confirm alignment of the property snapshot and energy period; see source methodology.",
+          "Conflicting property evidence: heating_system and heat_pump_installed. Confirm these fields before estimating retrofit outcomes.",
+          "Energy data quality: synthetic."
+        ]
+      },
+      "feasibility": {
+        "status": "available",
+        "items": [
+          {
+            "retrofit": "loft_insulation",
+            "status": "feasible",
+            "reason": "Known installation and compatibility fields permit screening; survey confirmation may still be needed."
+          }
+        ],
+        "reason": null
+      },
+      "after_assessment": null,
+      "updated_property": null,
+      "energy": null,
+      "carbon": {
+        "status": "unavailable",
+        "reduction_kg_co2e": null,
+        "factors": [],
+        "reason": "No completed scenario."
+      },
+      "valuation": {
+        "status": "unavailable",
+        "reason": "No completed scenario.",
+        "value_before": null,
+        "value_after": null,
+        "uplift_range": null,
+        "baseline_value_gbp": null,
+        "after_value_gbp": null,
+        "baseline_range_gbp": null,
+        "after_range_gbp": null,
+        "value_change_gbp": null,
+        "value_change_range_gbp": null,
+        "confidence_level": null,
+        "method": null,
+        "warnings": []
+      },
+      "installation_cost_gbp": null,
+      "applied_retrofits": [],
+      "assumptions": [],
+      "warnings": [],
+      "versions": {
+        "score": "greenprint-score-v1",
+        "retrofit": "p4-carbon-package-adapter-v1"
+      },
+      "annual_bill_savings_gbp": null,
+      "bill_savings_reason": null,
+      "simple_payback_years": null,
+      "payback_reason": null,
+      "optimization_context": null
+    }
+  }
+]

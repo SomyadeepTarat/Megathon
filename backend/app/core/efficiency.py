@@ -25,6 +25,10 @@ def assess(request: AssessmentRequest) -> AssessmentResponse:
         if condition:
             issues.append(Issue(code=code, severity=severity, message=message, evidence=evidence))
     warnings = list(request.annual_energy.warnings)
+    from app.services.input_consistency import conflicting_inputs
+    conflicts = conflicting_inputs(prop)
+    if conflicts:
+        warnings.append('Conflicting property evidence: ' + '; '.join(conflicts) + '. Confirm these fields before estimating retrofit outcomes.')
     if request.annual_energy.quality != "observed":
         warnings.append(f"Energy data quality: {request.annual_energy.quality}.")
     if score.missing_fields:

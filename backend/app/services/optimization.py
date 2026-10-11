@@ -36,7 +36,7 @@ def optimize_packages(request: ScenarioRequest, retrofit, carbon, valuation) -> 
                 decisions.append({"retrofits": label, "status": "rejected", "cost_gbp": cost,
                                   "reason": f"Package cost £{cost:g} exceeds budget £{request.budget_gbp:g}."})
                 continue
-            payload = request.model_dump(mode="python")
+            payload = request.model_dump(mode="python", exclude={'scenario_id'})
             payload["retrofits"] = label
             candidate = ScenarioRequest.model_validate(payload)
             result = run_scenario(candidate, retrofit, carbon, valuation)

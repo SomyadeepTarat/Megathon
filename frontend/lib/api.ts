@@ -32,6 +32,7 @@ async function request<T>(path: string, body?: unknown, scenarioResponse = false
 
 export const api = {
   health: () => request<{ status: string; readiness: Record<string, unknown> }>('/health'),
+  propertyRanking: () => request<PortfolioRow[]>('/properties/ranking'),
   portfolio: () => request<PortfolioRow[]>('/portfolio/rank'),
   properties: () => request<PropertySummary[]>('/properties'),
   property: (id: string) => request<PropertyRecord>(`/properties/${encodeURIComponent(id)}`),
@@ -44,18 +45,23 @@ export const api = {
   assess: (input: AssessmentRequest) => request<Assessment>('/assessments', input),
   simulate: (input: AssessmentRequest, retrofits: Retrofit[], budget_gbp: number | null, objective: Objective) => request<Scenario>('/scenarios/simulate', { ...input, retrofits, budget_gbp, objective }, true),
   optimize: (input: AssessmentRequest, budget_gbp: number | null, objective: Objective) => request<OptimizationResult>('/retrofits/optimize', { ...input, budget_gbp, objective }),
-  recommendations: async (input: AssessmentRequest, budget_gbp: number | null, objective: Objective): Promise<{ items: Recommendation[]; warnings: string[] }> => {
-    const result = await request<RecommendationResponse>('/retrofits/recommend', { ...input, budget_gbp, objective });
+  storedRecommendations: (propertyId: string, scenarioId?: string) => request<RecommendationResponse>(`/properties/${encodeURIComponent(propertyId)}/recommendations${scenarioId ? `?scenario_id=${encodeURIComponent(scenarioId)}` : ''}`),
+  recommendations: async (input: AssessmentRequest, budget_gbp: number | null, objective: Objective, scenario_id?: string): Promise<{ items: Recommendation[]; warnings: string[] }> => {
+    const saved = await request<RecommendationResponse>('/retrofits/recommend', { ...input, budget_gbp, objective, ...(scenario_id ? { scenario_id } : {}) });
+    if (!saved.scenario_id) throw new ApiError(500, 'The service did not return a saved recommendation scenario.');
+    const result = await api.storedRecommendations(input.property.property_id, saved.scenario_id);
+    if (result.property_id !== input.property.property_id || result.scenario_id !== saved.scenario_id) throw new ApiError(500, 'Stored recommendations differ from the requested property or scenario.');
     const items = [...result.recommendations.map((option) => ({ ...option, recommended: true })), ...result.other_options.map((option) => ({ ...option, recommended: false }))].map((option) => ({
       retrofit: option.retrofit, feasibility: option.feasibility, priority: option.priority ?? null, recommended: option.recommended,
       suitability: option.suitability, suitability_reason: option.suitability_reason,
       annual_bill_savings_gbp: option.scenario.annual_bill_savings_gbp, simple_payback_years: option.scenario.simple_payback_years,
       estimated_cost_gbp: option.scenario.installation_cost_gbp,
       energy: option.scenario.energy, carbon: option.scenario.carbon,
-      reason: [option.feasibility.reason, option.scenario.reason].filter(Boolean).join(' '),
-      assumptions: [...option.scenario.assumptions, ...option.scenario.warnings],
+      reason: [...new Set([option.feasibility.reason, option.scenario.reason, option.ranking_reason].filter(Boolean))].join(' '),
+      assumptions: [...new Set([...option.scenario.assumptions, ...option.scenario.warnings])],
     }));
-    return { items, warnings: [result.methodology, ...result.warnings] };
+    return { items, warnings: [result.methodology, ...result.warnings,
+      ...(result.installation_order?.length ? [`Suggested installation sequence: ${result.installation_order.map((id) => id.replaceAll('_', ' ')).join(' → ')}. Benefit rank is separate from installation order.`] : [])] };
   },
   advisorStream: async (property_id: string, message: string,
     onProgress: (message: string) => void, scenario?: AdvisorResult['intent'],

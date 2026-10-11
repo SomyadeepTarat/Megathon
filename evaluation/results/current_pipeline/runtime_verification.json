@@ -13273,7 +13273,36 @@
       }
     }
   ],
-  "live_frontend": [],
+  "live_frontend": [
+    {
+      "path": "/",
+      "status": 200
+    },
+    {
+      "path": "/assessment",
+      "status": 200
+    },
+    {
+      "path": "/planner",
+      "status": 200
+    },
+    {
+      "path": "/compare",
+      "status": 200
+    },
+    {
+      "path": "/portfolio",
+      "status": 200
+    },
+    {
+      "path": "/api/backend/health",
+      "status": 200
+    },
+    {
+      "path": "/api/backend/properties",
+      "status": 200
+    }
+  ],
   "curated_portfolio": [
     {
       "property_id": "DEMO-P00009",
@@ -13285,7 +13314,27 @@
       "classification": "Very poor",
       "improvement": 79.00129179477784,
       "carbon": 6170.827006470122,
-      "reason": null
+      "reason": null,
+      "rank": 1,
+      "poor_home": true,
+      "issues": [
+        "Insulation is poor.",
+        "An old gas boiler is recorded.",
+        "Windows are single glazed.",
+        "No renewable contribution is recorded.",
+        "No smart energy controls are recorded.",
+        "Purchased-energy intensity exceeds the supplied benchmark."
+      ],
+      "current_property_value_gbp": 310000.0,
+      "electricity_savings_kwh": -5409.467419406748,
+      "gas_savings_kwh": 37733.809773,
+      "feasible_retrofits": [
+        "loft_insulation",
+        "heat_pump",
+        "solar_panels",
+        "double_glazing",
+        "smart_thermostat"
+      ]
     },
     {
       "property_id": "DEMO-P00001",
@@ -13297,7 +13346,27 @@
       "classification": "Very poor",
       "improvement": 78.1161124332191,
       "carbon": 4461.442944962504,
-      "reason": null
+      "reason": null,
+      "rank": 2,
+      "poor_home": true,
+      "issues": [
+        "Insulation is poor.",
+        "An old gas boiler is recorded.",
+        "Windows are single glazed.",
+        "No renewable contribution is recorded.",
+        "No smart energy controls are recorded.",
+        "Purchased-energy intensity exceeds the supplied benchmark."
+      ],
+      "current_property_value_gbp": 640000.0,
+      "electricity_savings_kwh": -3576.0655821433757,
+      "gas_savings_kwh": 27040.56,
+      "feasible_retrofits": [
+        "loft_insulation",
+        "heat_pump",
+        "solar_panels",
+        "double_glazing",
+        "smart_thermostat"
+      ]
     },
     {
       "property_id": "DEMO-P00005",
@@ -13309,7 +13378,26 @@
       "classification": "Poor",
       "improvement": 72.65304392059826,
       "carbon": 2086.20194342151,
-      "reason": null
+      "reason": null,
+      "rank": 3,
+      "poor_home": true,
+      "issues": [
+        "Insulation is poor.",
+        "Windows are single glazed.",
+        "No renewable contribution is recorded.",
+        "No smart energy controls are recorded.",
+        "Purchased-energy intensity exceeds the supplied benchmark."
+      ],
+      "current_property_value_gbp": 195000.0,
+      "electricity_savings_kwh": -1611.3094744845002,
+      "gas_savings_kwh": 12600.62,
+      "feasible_retrofits": [
+        "loft_insulation",
+        "heat_pump",
+        "solar_panels",
+        "double_glazing",
+        "smart_thermostat"
+      ]
     },
     {
       "property_id": "DEMO-P00004",
@@ -13321,7 +13409,22 @@
       "classification": "Moderate",
       "improvement": 71.72629090509972,
       "carbon": 1554.9132144066862,
-      "reason": null
+      "reason": null,
+      "rank": 4,
+      "poor_home": false,
+      "issues": [
+        "No renewable contribution is recorded.",
+        "No smart energy controls are recorded."
+      ],
+      "current_property_value_gbp": 285000.0,
+      "electricity_savings_kwh": -1046.95442616,
+      "gas_savings_kwh": 9281.01786,
+      "feasible_retrofits": [
+        "loft_insulation",
+        "heat_pump",
+        "solar_panels",
+        "smart_thermostat"
+      ]
     },
     {
       "property_id": "DEMO-P00007",
@@ -13333,7 +13436,20 @@
       "classification": "Good",
       "improvement": 68.4362676899493,
       "carbon": 2382.3088598282234,
-      "reason": null
+      "reason": null,
+      "rank": 5,
+      "poor_home": false,
+      "issues": [
+        "No smart energy controls are recorded."
+      ],
+      "current_property_value_gbp": 480000.0,
+      "electricity_savings_kwh": -4058.12156133,
+      "gas_savings_kwh": 15982.45,
+      "feasible_retrofits": [
+        "loft_insulation",
+        "heat_pump",
+        "smart_thermostat"
+      ]
     },
     {
       "property_id": "DEMO-P00010",
@@ -13345,7 +13461,19 @@
       "classification": "Good",
       "improvement": 63.061684946462904,
       "carbon": 1900.9985823644747,
-      "reason": null
+      "reason": null,
+      "rank": 6,
+      "poor_home": false,
+      "issues": [
+        "No renewable contribution is recorded."
+      ],
+      "current_property_value_gbp": 365000.0,
+      "electricity_savings_kwh": -2452.9626835333333,
+      "gas_savings_kwh": 12189.34,
+      "feasible_retrofits": [
+        "heat_pump",
+        "solar_panels"
+      ]
     },
     {
       "property_id": "DEMO-P00006",
@@ -13357,7 +13485,18 @@
       "classification": "Good",
       "improvement": 20.36186810335986,
       "carbon": 176.79600000000005,
-      "reason": null
+      "reason": null,
+      "rank": 7,
+      "poor_home": false,
+      "issues": [
+        "No renewable contribution is recorded."
+      ],
+      "current_property_value_gbp": 435000.0,
+      "electricity_savings_kwh": 1350.0,
+      "gas_savings_kwh": 0.0,
+      "feasible_retrofits": [
+        "solar_panels"
+      ]
     },
     {
       "property_id": "DEMO-P00002",
@@ -13369,7 +13508,16 @@
       "classification": "Good",
       "improvement": 0.0,
       "carbon": 0.0,
-      "reason": null
+      "reason": null,
+      "rank": 8,
+      "poor_home": false,
+      "issues": [
+        "No renewable contribution is recorded."
+      ],
+      "current_property_value_gbp": 455000.0,
+      "electricity_savings_kwh": 0.0,
+      "gas_savings_kwh": 0.0,
+      "feasible_retrofits": []
     },
     {
       "property_id": "DEMO-P00003",
@@ -13381,7 +13529,14 @@
       "classification": "Highly efficient",
       "improvement": 0.0,
       "carbon": 0.0,
-      "reason": null
+      "reason": null,
+      "rank": 8,
+      "poor_home": false,
+      "issues": [],
+      "current_property_value_gbp": 725000.0,
+      "electricity_savings_kwh": 0.0,
+      "gas_savings_kwh": 0.0,
+      "feasible_retrofits": []
     },
     {
       "property_id": "DEMO-P00008",
@@ -13393,7 +13548,16 @@
       "classification": "Good",
       "improvement": 0.0,
       "carbon": 0.0,
-      "reason": null
+      "reason": null,
+      "rank": 8,
+      "poor_home": false,
+      "issues": [
+        "No renewable contribution is recorded."
+      ],
+      "current_property_value_gbp": 180000.0,
+      "electricity_savings_kwh": 0.0,
+      "gas_savings_kwh": 0.0,
+      "feasible_retrofits": []
     }
   ],
   "missing_critical_fields": {

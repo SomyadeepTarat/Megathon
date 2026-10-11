@@ -7,7 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from app.core.efficiency import assess
 from app.db.repository import JsonPropertyRepository, CsvPropertyRepository, EditableRepository
-from app.schemas.models import AssessmentRequest, AssessmentResponse, ScenarioRequest, RecommendationRequest
+from app.schemas.models import AssessmentRequest, AssessmentResponse, ScenarioRequest, RecommendationRequest, OptimizationRequest
 from app.schemas.engines import PropertyRecord, PropertySummary, ScenarioResponse, RecommendationResponse, OptimizationResult, ValuationRequest, ValuationResult, FullAssessmentResponse, EnergyImpact, FuelState
 from app.services.adapters import ExistingValuationAdapter
 from app.services.p4_adapter import P4RetrofitAdapter, P4CarbonAdapter, configured_factors
@@ -95,6 +95,13 @@ def load_record(repo, property_id):
         raise HTTPException(status_code=404, detail='Property not found') from None
 
 
+@app.get('/properties/ranking', response_model=list[PortfolioEntry])
+@app.get('/portfolio/rank', response_model=list[PortfolioEntry])
+def portfolio(repo=Depends(get_repository), retrofit=Depends(get_retrofit_engine),
+              carbon=Depends(get_carbon_engine), valuation=Depends(get_valuation_engine)):
+    return rank_portfolio(repo, retrofit, carbon, valuation)
+
+
 @app.get('/properties/{property_id}', response_model=PropertyRecord)
 def property_details(property_id: str, repo=Depends(get_repository)):
     return load_record(repo, property_id)
@@ -150,12 +157,21 @@ def register_property(request: AssessmentRequest, repo=Depends(get_repository)):
 
 @app.post('/retrofits/recommend', response_model=RecommendationResponse)
 def recommendations(request: RecommendationRequest, retrofit=Depends(get_retrofit_engine),
-                    carbon=Depends(get_carbon_engine), valuation=Depends(get_valuation_engine)):
-    return recommend(request, retrofit, P4CarbonAdapter(request.emission_factors) if isinstance(carbon, P4CarbonAdapter) else carbon, valuation)
+                    carbon=Depends(get_carbon_engine), valuation=Depends(get_valuation_engine), repo=Depends(get_repository)):
+    result = recommend(request, retrofit, P4CarbonAdapter(request.emission_factors) if isinstance(carbon, P4CarbonAdapter) else carbon, valuation)
+    return repo.save_recommendations(request, result)
+
+
+@app.get('/properties/{property_id}/recommendations', response_model=RecommendationResponse)
+def stored_recommendations(property_id: str, scenario_id: str | None = None, repo=Depends(get_repository)):
+    try:
+        return repo.load_recommendations(property_id, scenario_id)
+    except KeyError:
+        raise HTTPException(status_code=404, detail='No stored recommendations for this property/scenario') from None
 
 
 @app.post('/retrofits/optimize', response_model=OptimizationResult)
-def optimize(request: RecommendationRequest, retrofit=Depends(get_retrofit_engine),
+def optimize(request: OptimizationRequest, retrofit=Depends(get_retrofit_engine),
              carbon=Depends(get_carbon_engine), valuation=Depends(get_valuation_engine)):
     return optimize_packages(request, retrofit,
         P4CarbonAdapter(request.emission_factors) if isinstance(carbon, P4CarbonAdapter) else carbon,
@@ -167,6 +183,10 @@ def valuation(property_id: str, request: ValuationRequest, repo=Depends(get_repo
     record = load_record(repo, property_id)
     baseline = record.property
     scenario = request.scenario_property or baseline
+    from app.services.input_consistency import conflicting_inputs
+    conflicts = sorted(set(conflicting_inputs(baseline) + conflicting_inputs(scenario)))
+    if conflicts:
+        return ValuationResult(status='unavailable', reason='Conflicting property evidence: ' + '; '.join(conflicts) + '. Confirm these inputs before estimating value impact.')
     if scenario.property_id != property_id:
         raise HTTPException(422, 'Scenario property ID differs from baseline')
     input_reason = impact_input_reason(baseline, scenario)
@@ -198,9 +218,3 @@ app.state.advisor_service = AdvisorService(
                          lambda: get_carbon_engine(), lambda: get_valuation_engine()),
     provider=provider_from_env(),
 )
-
-
-@app.get('/portfolio/rank', response_model=list[PortfolioEntry])
-def portfolio(repo=Depends(get_repository), retrofit=Depends(get_retrofit_engine),
-              carbon=Depends(get_carbon_engine), valuation=Depends(get_valuation_engine)):
-    return rank_portfolio(repo, retrofit, carbon, valuation)

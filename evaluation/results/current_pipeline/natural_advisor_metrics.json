@@ -7,12 +7,12 @@
     {
       "case_id": "natural-01",
       "unsupported_numeric_tokens": [],
-      "numeric_tokens": 2
+      "numeric_tokens": 6
     },
     {
       "case_id": "natural-02",
       "unsupported_numeric_tokens": [],
-      "numeric_tokens": 4
+      "numeric_tokens": 5
     },
     {
       "case_id": "natural-03",
@@ -48,14 +48,14 @@
   "targets_met": null,
   "limitations": "Token matching cannot verify units, attribution, semantics or unsupported nonnumeric claims. Human review required.",
   "local_latency_seconds": [
-    4.839,
-    1.92,
-    2.237,
-    2.925,
-    3.984,
-    0.002,
-    4.542,
-    1.837
+    4.621,
+    1.903,
+    2.247,
+    3.224,
+    2.335,
+    0.001,
+    4.557,
+    1.808
   ],
   "grounded_llm_responses": 6,
   "generation_validation_fallbacks": 1
