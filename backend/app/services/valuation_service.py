@@ -80,6 +80,15 @@ def predict_property_value(property_data, model_path=None, *, allow_illustrative
         row = feature_row(property_data, artifact)
         value = float(artifact["model"].predict(pd.DataFrame([row]))[0])
         radius = artifact["radius"]
+        interval = artifact.get("baseline_interval")
+        if interval is not None:
+            if (artifact.get("target_kind") != "snapshot" or interval.get("policy") != "price_proportional"
+                    or interval.get("minimum_scale_gbp") != 50000):
+                raise ValueError("Invalid baseline interval policy")
+            relative = interval["relative_radius"]
+            if not np.isfinite(relative) or relative < 0:
+                raise ValueError("Invalid baseline relative calibration radius")
+            radius = relative * max(value, interval["minimum_scale_gbp"])
         if not np.isfinite(value) or value <= 0 or not np.isfinite(radius) or radius < 0:
             return unavailable("Model produced an invalid baseline valuation")
     except (ValueError, OSError, EOFError, KeyError, TypeError, AttributeError, ImportError, pickle.UnpicklingError) as error:
@@ -87,8 +96,11 @@ def predict_property_value(property_data, model_path=None, *, allow_illustrative
     return {"status": "illustrative" if synthetic else "indicative", "value_gbp": value,
             "range_gbp": [max(0, value-radius), value+radius], "confidence_level": 1-artifact["alpha"],
             "target_kind": artifact.get("target_kind", "sales"),
-            "method": "Grouped regression with separate split-conformal residual calibration",
+            "method": ("Grouped regression with price-proportional split-conformal residual calibration"
+                       if interval is not None else "Grouped regression with separate split-conformal residual calibration"),
             "warnings": (["Synthetic baseline-estimate model; not an observed-market valuation."] if synthetic else []) +
+                        ([f"Price-proportional intervals; held-out coverage {artifact['report']['interval_coverage']:.1%}. Coverage is marginal, not guaranteed for an individual property."]
+                         if interval is not None else []) +
                         ["Marginal interval coverage requires exchangeability; not a guaranteed sale price.",
                          "Baseline valuation does not establish a causal retrofit premium."]}
 

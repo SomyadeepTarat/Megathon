@@ -1,0 +1,54 @@
+[
+  {
+    "path": "/",
+    "status": 200,
+    "seconds": 0.086
+  },
+  {
+    "path": "/assessment",
+    "status": 200,
+    "seconds": 0.008
+  },
+  {
+    "path": "/planner",
+    "status": 200,
+    "seconds": 0.009
+  },
+  {
+    "path": "/compare",
+    "status": 200,
+    "seconds": 0.009
+  },
+  {
+    "path": "/portfolio",
+    "status": 200,
+    "seconds": 0.006
+  },
+  {
+    "path": "/ranking",
+    "status": 200,
+    "seconds": 0.004
+  },
+  {
+    "path": "/api/backend/health",
+    "status": 200,
+    "seconds": 0.223
+  },
+  {
+    "path": "/api/backend/properties",
+    "status": 200,
+    "seconds": 0.232,
+    "properties": 1900
+  },
+  {
+    "path": "/api/backend/properties/P100001/valuation",
+    "status": 200,
+    "seconds": 0.006
+  },
+  {
+    "path": "/api/backend/properties/ranking",
+    "status": 200,
+    "seconds": 0.263,
+    "rows": 1900
+  }
+]

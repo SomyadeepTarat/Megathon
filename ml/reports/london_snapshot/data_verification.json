@@ -1,0 +1,135 @@
+{
+  "generation_runtime": "Python 3.13.4; supplied handoff generated using Python 3.10.11",
+  "checks": [
+    {
+      "path": "Data/csv/emission_factors_2026.csv",
+      "expected": "e793857d56602acf4376d3357a43c66701c729a794303fae720071d2d16c0bb2",
+      "actual": "e793857d56602acf4376d3357a43c66701c729a794303fae720071d2d16c0bb2",
+      "status": "exact"
+    },
+    {
+      "path": "Data/csv/emission_factors_2026.provenance.json",
+      "expected": "a03d26b153ee8579f763a8623d638d6e9ce6717453b6bbab8cb8be120cb8b1c9",
+      "actual": "1365ada617d91f12c844a8d6e694560d5d6435efc21b5721f22891b539841294",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "Data/csv/energy_usage.csv",
+      "expected": "7bee3e14c1ad9e007da31ab1a07e5e5b859afd1e9f2fdae8455d434e67369622",
+      "actual": "7bee3e14c1ad9e007da31ab1a07e5e5b859afd1e9f2fdae8455d434e67369622",
+      "status": "exact"
+    },
+    {
+      "path": "Data/csv/properties.csv",
+      "expected": "b5da395c0d2bee5ebb6d790ea609af00da9912d66f3120aebc73eab3016ef000",
+      "actual": "b5da395c0d2bee5ebb6d790ea609af00da9912d66f3120aebc73eab3016ef000",
+      "status": "exact"
+    },
+    {
+      "path": "Data/manifests/kew_schema_v1.json",
+      "expected": "07acbed534a3e3ce4d6a3226655ec15ec7550f9f3fb1836a38fb052d2d6bbd83",
+      "actual": "520bd12f2b5e8215f1e4ccc3cac78fbd592d301c3f1af72b16024f6eb7b0848b",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "Data/manifests/london_reference_v1.json",
+      "expected": "b2b65561e976f13eeb9570a5f33c11d175957b06c2e532a268e4973c2792c774",
+      "actual": "127520dd0afeee19b35dc58345fa71afc2c582e5608b8b56923a8c03b44b4f6e",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "Data/scripts/expand_dataset.py",
+      "expected": "a790c606357400f1411c3fa47a5b39da0ffd078f0e1acfb4adc86a2d0eef59b5",
+      "actual": "a790c606357400f1411c3fa47a5b39da0ffd078f0e1acfb4adc86a2d0eef59b5",
+      "status": "exact"
+    },
+    {
+      "path": "Data/scripts/generate_energy_usage.py",
+      "expected": "40aed97f0dbd72952941ecfa3140f1ce55239d2f76064861a1558ab0da19c1e4",
+      "actual": "64898f05e019f84d53b7dacf0ec1c9e6a072fa29cec3bee9ed91148555c13f2e",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "Data/scripts/simulate_london.py",
+      "expected": "9f83cdccc144179f865eecf18364e9bcc2018881d4846107098c1658bba9b5ea",
+      "actual": "9f83cdccc144179f865eecf18364e9bcc2018881d4846107098c1658bba9b5ea",
+      "status": "exact"
+    },
+    {
+      "path": "Data/generated/kew_london_v3/derived_diagnostics.json",
+      "expected": "e9e25e12f97894b08f8a33ab46dec079657d2f5fda75458cf27cff691c12d3b6",
+      "actual": "360a0619b39776b4b8c368a64d5010654cb701cbc02d5cacfea5cd597279f1c4",
+      "status": "not_byte_identical"
+    },
+    {
+      "path": "Data/generated/kew_london_v3/edge_cases/energy_usage.csv",
+      "expected": "ba30296c58e71f6fa21ce0b28feada4bc29f86b1a8331b35ebc9e8244246a6cf",
+      "actual": "ba30296c58e71f6fa21ce0b28feada4bc29f86b1a8331b35ebc9e8244246a6cf",
+      "status": "exact"
+    },
+    {
+      "path": "Data/generated/kew_london_v3/edge_cases/manifest.json",
+      "expected": "8490bb71e41210e2e8f40c071e0c10677d5ad4ed6711b442ba9a0d1557c4d400",
+      "actual": "3904acb3a93ef80829184d693f89b4d075ff4046768e0695e9bec1425b4f79ff",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "Data/generated/kew_london_v3/edge_cases/properties.csv",
+      "expected": "52e4e8028de21fc3d0e65c76a69d83b967e56f81eea0f46606dad7cc3ce2b88a",
+      "actual": "52e4e8028de21fc3d0e65c76a69d83b967e56f81eea0f46606dad7cc3ce2b88a",
+      "status": "exact"
+    },
+    {
+      "path": "Data/generated/kew_london_v3/energy_usage.csv",
+      "expected": "d44d780caaa844c9d68f326424c78123f392f10962686dc029ad8b3d803594c1",
+      "actual": "d44d780caaa844c9d68f326424c78123f392f10962686dc029ad8b3d803594c1",
+      "status": "exact"
+    },
+    {
+      "path": "Data/generated/kew_london_v3/latent_provenance.json",
+      "expected": "db5a51cdaafd66230a94ae467fe41dfc0360f5033280b9c476f689741cb9f4d0",
+      "actual": "84d50e0d007328a65e43fb670ed4ff8c4e91fc8f4f6aedaf32466c7048767ee3",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "Data/generated/kew_london_v3/parameters.json",
+      "expected": "13c8c9cae02926ece92d553c338843770e75455161226ea8ad417229f8e0531e",
+      "actual": "85e451915bf2c806026627ae0a56dcb1bc199080a5d398ac4d0b01985e79ecd8",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "Data/generated/kew_london_v3/properties.csv",
+      "expected": "99947ef2c4a4c9f11b0029887876e4507762e4361c3fa6236112dcc8abcd3214",
+      "actual": "471b0019cca47f0fa05386c6c476971e1bfe3524eef65b5471f41ba9aa6df0a8",
+      "status": "not_byte_identical"
+    },
+    {
+      "path": "Data/generated/kew_london_v3/quality_report.json",
+      "expected": "3671835cb9eb5e39a829292ea8b54e1d16b63d1ae494d3a510fcf5e0ea552ff8",
+      "actual": "059c130a1e4ee3c467ad9b8607e75f6c2135fe85750509b8eb20a189ef308a8b",
+      "status": "line_endings_only"
+    },
+    {
+      "path": "Data/generated/kew_london_v3/sample/energy_usage.csv",
+      "expected": "90165d2cfcf6ec865a83cfe5c477c98495e4ed2e2ce08fc48e97e3e114298088",
+      "actual": "90165d2cfcf6ec865a83cfe5c477c98495e4ed2e2ce08fc48e97e3e114298088",
+      "status": "exact"
+    },
+    {
+      "path": "Data/generated/kew_london_v3/sample/properties.csv",
+      "expected": "b1d52acc161331a60a0d1819879938d3721c41b0acbc8e3fee7f6924b1cfecf2",
+      "actual": "b1d52acc161331a60a0d1819879938d3721c41b0acbc8e3fee7f6924b1cfecf2",
+      "status": "exact"
+    },
+    {
+      "path": "Data/generated/kew_london_v3/split_manifest.csv",
+      "expected": "397702992dbba5900121ab78b91f50222ee451848c6421e0b7db675a40b671f3",
+      "actual": "397702992dbba5900121ab78b91f50222ee451848c6421e0b7db675a40b671f3",
+      "status": "exact"
+    }
+  ],
+  "audit_errors": [],
+  "tracked_sample_match": true,
+  "frozen_selected_model_and_relative_calibration_reproduced_within": 1e-09,
+  "limitations": "properties.csv and derived_diagnostics.json are not byte-identical to Python 3.10 handoff; full external source extraction not reverified. Archived final_evaluation.json contains only frozen configuration marker, not detailed final metrics; locally reproduced metrics are saved separately. No post-test tuning."
+}

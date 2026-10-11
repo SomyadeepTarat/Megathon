@@ -165,11 +165,11 @@
     "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
     "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
     "expected_after": {
-      "electricity_kwh": 6137.360859452343,
+      "electricity_kwh": 6137.360859452342,
       "gas_kwh": 498.4216829030356
     },
     "predicted_after": {
-      "electricity_kwh": 6137.360859452343,
+      "electricity_kwh": 6137.360859452342,
       "gas_kwh": 498.4216829030356
     },
     "expected_carbon": 0.0,
@@ -181,11 +181,11 @@
     "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
     "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
     "expected_after": {
-      "electricity_kwh": 5927.13202571472,
+      "electricity_kwh": 5927.132025714719,
       "gas_kwh": 498.4216829030356
     },
     "predicted_after": {
-      "electricity_kwh": 5927.13202571472,
+      "electricity_kwh": 5927.132025714719,
       "gas_kwh": 498.4216829030356
     },
     "expected_carbon": 27.531568066279114,
@@ -197,11 +197,11 @@
     "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
     "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
     "expected_after": {
-      "electricity_kwh": 5979.689234149126,
+      "electricity_kwh": 5979.689234149125,
       "gas_kwh": 498.4216829030356
     },
     "predicted_after": {
-      "electricity_kwh": 5979.689234149126,
+      "electricity_kwh": 5979.689234149125,
       "gas_kwh": 498.4216829030356
     },
     "expected_carbon": 20.648676049709337,
@@ -217,10 +217,10 @@
       "gas_kwh": 498.4216829030356
     },
     "predicted_after": {
-      "electricity_kwh": 5785.2275629418245,
+      "electricity_kwh": 5785.227562941824,
       "gas_kwh": 498.4216829030356
     },
-    "expected_carbon": 46.115376511017615,
+    "expected_carbon": 46.115376511017494,
     "predicted_carbon": 46.11537651101753
   },
   {
@@ -358,11 +358,11 @@
     "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
     "expected_after": {
       "electricity_kwh": 3519.8767262591396,
-      "gas_kwh": 23017.805881112985
+      "gas_kwh": 23017.80588111298
     },
     "predicted_after": {
       "electricity_kwh": 3519.8767262591396,
-      "gas_kwh": 23017.805881112985
+      "gas_kwh": 23017.80588111298
     },
     "expected_carbon": 0.0,
     "predicted_carbon": 0.0
@@ -374,14 +374,14 @@
     "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
     "expected_after": {
       "electricity_kwh": 3519.8767262591396,
-      "gas_kwh": 20927.23540462655
+      "gas_kwh": 20927.235404626546
     },
     "predicted_after": {
       "electricity_kwh": 3519.8767262591396,
-      "gas_kwh": 20927.23540462655
+      "gas_kwh": 20927.235404626546
     },
     "expected_carbon": 381.13190356824197,
-    "predicted_carbon": 381.1319035682409
+    "predicted_carbon": 381.1319035682418
   },
   {
     "case_id": "HELDOUT-917-005:",
@@ -1301,11 +1301,11 @@
     "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
     "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
     "expected_after": {
-      "electricity_kwh": 9665.805647168669,
+      "electricity_kwh": 9665.80564716867,
       "gas_kwh": 345.1719870822837
     },
     "predicted_after": {
-      "electricity_kwh": 9665.805647168669,
+      "electricity_kwh": 9665.80564716867,
       "gas_kwh": 345.1719870822837
     },
     "expected_carbon": 0.0,
@@ -1324,8 +1324,8 @@
       "electricity_kwh": 9163.13610142328,
       "gas_kwh": 345.1719870822837
     },
-    "expected_carbon": 65.82960371081624,
-    "predicted_carbon": 65.82960371081595
+    "expected_carbon": 65.82960371081649,
+    "predicted_carbon": 65.82960371081617
   },
   {
     "case_id": "HELDOUT-917-015:",
@@ -1429,12 +1429,12 @@
     "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
     "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
     "expected_after": {
-      "electricity_kwh": 1063.8871347233155,
-      "gas_kwh": 14517.083558012535
+      "electricity_kwh": 1063.8871347233153,
+      "gas_kwh": 14517.083558012531
     },
     "predicted_after": {
-      "electricity_kwh": 1063.8871347233155,
-      "gas_kwh": 14517.083558012535
+      "electricity_kwh": 1063.8871347233153,
+      "gas_kwh": 14517.083558012531
     },
     "expected_carbon": 0.0,
     "predicted_carbon": 0.0
@@ -1445,14 +1445,14 @@
     "reference_source": "prd.md sections 8\u20139; independent closed-form oracle in evaluation.held_out_retrofits",
     "label_methodology": "Sequential space multipliers .85*.90*.925; water unchanged; per-system thermal conversion; preserved appliance/nonheating gas; bounded PV imports; explicit installation/compatibility rules.",
     "expected_after": {
-      "electricity_kwh": 1063.8871347233155,
+      "electricity_kwh": 1063.8871347233153,
       "gas_kwh": 13318.298442007945
     },
     "predicted_after": {
-      "electricity_kwh": 1063.8871347233155,
-      "gas_kwh": 13318.298442007945
+      "electricity_kwh": 1063.8871347233153,
+      "gas_kwh": 13318.29844200794
     },
-    "expected_carbon": 218.55051449879684,
+    "expected_carbon": 218.5505144987962,
     "predicted_carbon": 218.55051449879693
   },
   {

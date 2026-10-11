@@ -8,6 +8,15 @@ the reported results. The property schema has **51 columns**, energy has **13**,
 and emission factors have **10**. Column names, order, API contracts and ML input
 features are unchanged. This documentation does not modify the data or models.
 
+**Current application integration:** the merged application now defaults to the
+1,900 fresh London simulations, excluding the original hundred from its active
+London repository. Run `scripts/prepare_london_demo.py` for the active data/model.
+See the [London integration review](../ml/reports/london_snapshot/README.md),
+[workflow evidence](../evaluation/results/london_active/README.md), and
+[current setup instructions](../README.md). The generation/evaluation results
+below describe the original frozen data review; integration reproduction is
+not a new independent test or evidence of observed market accuracy.
+
 The 2,000-property dataset comprises **100 retained synthetic legacy properties**
 and **1,900 newly simulated London properties**, with **24,000 monthly energy
 rows** for January–December 2025. The original hundred include multiple regions;
@@ -19,7 +28,7 @@ are distinct from the synthetic property-level records they inform.
 
 | File or directory, relative to `Data/` | Contents and role |
 |---|---|
-| `csv/properties.csv`, `csv/energy_usage.csv` | Unchanged canonical 100-property seed dataset; retained cell-for-cell in v3. The active application still uses this pair. |
+| `csv/properties.csv`, `csv/energy_usage.csv` | Unchanged canonical 100-property seed dataset; retained cell-for-cell in v3. Used by the explicit legacy `csv` profile; the default London profile uses the 1,900 new rows from the generated pair. |
 | `generated/kew_london_v3/properties.csv` | Full versioned 2,000-property simulation; ignored by Git. |
 | `generated/kew_london_v3/energy_usage.csv` | Full versioned 24,000-row meter simulation; ignored by Git. |
 | `csv/emission_factors_2026.csv` | Two unchanged published operational-emission factors. |
@@ -641,9 +650,13 @@ The evaluator reports symmetric intervals without clipping negative endpoints.
 Price-proportional scaling was declared before test evaluation; the comparator
 is not selected using test coverage. Exchangeability supports marginal
 synthetic coverage, not guaranteed subgroup coverage, future market coverage
-or causal effects. Production model artifacts/inference code are unchanged.
-The existing production trainer does not automatically consume this manifest;
-Person 5 must explicitly adopt it before using these holdout assignments.
+or causal effects. The merged London integration now consumes this manifest
+explicitly through `scripts/prepare_london_demo.py`: it excludes
+`legacy_diagnostic`, trains `ml/models/london_snapshot.joblib`, and enables
+the price-proportional interval policy. Existing absolute-interval artifacts
+retain their behavior. These integration changes are documented separately in
+the [London model review](../ml/reports/london_snapshot/README.md); they do not
+make the already exposed test cohort fresh again.
 
 ## 13. Reported metrics and interpretation
 

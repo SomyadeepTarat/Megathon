@@ -75,7 +75,7 @@
       "market_index": null,
       "provenance": {
         "record": "synthetic",
-        "source": "/Users/somyadeeptarat/Desktop/Megathon/Data/csv/properties.csv",
+        "source": "Data/csv/properties.csv",
         "source_heating": "Old gas boiler",
         "solar_installed": "false",
         "generation_seed": "42",
@@ -210,7 +210,7 @@
       "market_index": null,
       "provenance": {
         "record": "synthetic",
-        "source": "/Users/somyadeeptarat/Desktop/Megathon/Data/csv/properties.csv",
+        "source": "Data/csv/properties.csv",
         "source_heating": "Modern gas boiler",
         "solar_installed": "false",
         "generation_seed": "42",
@@ -343,7 +343,7 @@
       "market_index": null,
       "provenance": {
         "record": "synthetic",
-        "source": "/Users/somyadeeptarat/Desktop/Megathon/Data/csv/properties.csv",
+        "source": "Data/csv/properties.csv",
         "source_heating": "Heat pump",
         "solar_installed": "true",
         "generation_seed": "42",
@@ -480,7 +480,7 @@
       "market_index": null,
       "provenance": {
         "record": "synthetic",
-        "source": "/Users/somyadeeptarat/Desktop/Megathon/Data/csv/properties.csv",
+        "source": "Data/csv/properties.csv",
         "source_heating": "Modern gas boiler",
         "solar_installed": "false",
         "generation_seed": "42",
@@ -617,7 +617,7 @@
       "market_index": null,
       "provenance": {
         "record": "synthetic",
-        "source": "/Users/somyadeeptarat/Desktop/Megathon/Data/csv/properties.csv",
+        "source": "Data/csv/properties.csv",
         "source_heating": "Modern gas boiler",
         "solar_installed": "false",
         "generation_seed": "42",
@@ -752,7 +752,7 @@
       "market_index": null,
       "provenance": {
         "record": "synthetic",
-        "source": "/Users/somyadeeptarat/Desktop/Megathon/Data/csv/properties.csv",
+        "source": "Data/csv/properties.csv",
         "source_heating": "Heat pump",
         "solar_installed": "false",
         "generation_seed": "42",
@@ -887,7 +887,7 @@
       "market_index": null,
       "provenance": {
         "record": "synthetic",
-        "source": "/Users/somyadeeptarat/Desktop/Megathon/Data/csv/properties.csv",
+        "source": "Data/csv/properties.csv",
         "source_heating": "Modern gas boiler",
         "solar_installed": "true",
         "generation_seed": "42",
@@ -1019,7 +1019,7 @@
       "market_index": null,
       "provenance": {
         "record": "synthetic",
-        "source": "/Users/somyadeeptarat/Desktop/Megathon/Data/csv/properties.csv",
+        "source": "Data/csv/properties.csv",
         "source_heating": "Electric resistance",
         "solar_installed": "false",
         "generation_seed": "42",
@@ -1156,7 +1156,7 @@
       "market_index": null,
       "provenance": {
         "record": "synthetic",
-        "source": "/Users/somyadeeptarat/Desktop/Megathon/Data/csv/properties.csv",
+        "source": "Data/csv/properties.csv",
         "source_heating": "Old gas boiler",
         "solar_installed": "false",
         "generation_seed": "42",
@@ -1293,7 +1293,7 @@
       "market_index": null,
       "provenance": {
         "record": "synthetic",
-        "source": "/Users/somyadeeptarat/Desktop/Megathon/Data/csv/properties.csv",
+        "source": "Data/csv/properties.csv",
         "source_heating": "Modern gas boiler",
         "solar_installed": "false",
         "generation_seed": "42",

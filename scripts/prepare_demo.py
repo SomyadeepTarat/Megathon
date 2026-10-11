@@ -34,7 +34,7 @@ def main():
         if p.solar_installed is False and p.roof_suitable_for_solar:
             p.physical_inputs.proposed_solar_generation_kwh = 3000
             p.physical_inputs.proposed_solar_self_consumption_fraction = .45
-        p.provenance.update(record='synthetic', demo_assumptions=source)
+        p.provenance.update(record='synthetic', source='Data/csv/properties.csv', demo_assumptions=source)
         p.physical_inputs.provenance['demo_assumptions'] = source
         for key, value in p.physical_inputs.model_dump().items():
             if key == 'provenance' or value is None:

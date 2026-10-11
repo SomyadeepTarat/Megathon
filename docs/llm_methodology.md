@@ -80,3 +80,40 @@ Reproduce the smoke run with:
 ```bash
 LLM_PROVIDER=ollama LLM_MODEL=qwen3:4b OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 .venv/bin/python -m evaluation.verify_natural_advisor
 ```
+
+## Active London integration (11 October 2026)
+
+The active source is the fresh London cohort, with public-reference-anchored synthetic individual properties. Baseline questions use `baseline_valuation` evidence; retrofit-impact questions use the separate contrast result. A valid illustrative baseline range must not be described as unavailable merely because causal/real-world uplift is unavailable. Ranges are server-rendered and cannot be invented by Ollama. The London workflow checks nine advisor questions on custom synthetic inputs and source-data blockers. Numeric grounding is an automated check; Somyadeep's recorded-answer review is still required for human explanation-quality validation. See `evaluation/results/london_active/README.md`.
+
+## Groq primary with Ollama backup
+
+The project-root `.env` is loaded by the backend without evaluating shell code;
+explicit shell variables override file settings. Set `LLM_PROVIDER=groq`,
+`GROQ_MODEL=llama-3.3-70b-versatile` and `GROQ_API_KEY`. Keep the credential in
+`.env` (ignored by Git), not `.env.example` or frontend variables.
+
+The primary uses Groq's chat-completions endpoint, JSON object mode, temperature
+zero, and the same intent/explanation system prompts. It includes the same task
+schema in the user payload; Pydantic validation and existing grounding/rendering
+checks remain mandatory. JSON mode alone does not guarantee schema compliance:
+https://console.groq.com/docs/structured-outputs
+
+Set `LLM_FALLBACK_PROVIDER=ollama`, `OLLAMA_MODEL=qwen3:4b`,
+`OLLAMA_BASE_URL=http://127.0.0.1:11434` and `LLM_TIMEOUT_SECONDS=20` for local
+backup. `GROQ_TIMEOUT_SECONDS=10` bounds the primary wait. Transport failures,
+quota/rate limits, incomplete responses and malformed response schemas fall back
+to Ollama with the original system prompt and payload. A cooldown avoids calling
+Groq on every request while unavailable: 30 seconds for ordinary failures, at
+least 300 seconds for HTTP 401/403/429, or longer numeric Retry-After up to one
+hour. After cooldown the next request tries Groq again. Failed semantic grounding
+is still handled by the existing deterministic explanation guard. If Ollama also
+fails, the advisor returns verified deterministic facts. This cannot guarantee
+continued Groq availability during daily quota exhaustion; Ollama must be running
+with its model installed to provide the second model layer.
+
+Numerical masking, factual citations, feasibility checks and server-owned metric
+rendering are unchanged. Groq receives the selected question and grounded
+qualitative evidence; this is a hosted provider rather than local-only inference.
+Restart the backend after editing credentials/provider settings. No live Groq
+request was made as part of this configuration change; response quality and
+account/model availability remain to be evaluated in your running application.

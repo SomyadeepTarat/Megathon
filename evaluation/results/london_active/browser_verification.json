@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "checks": [
+    "London source selection and baseline assessment",
+    "Baseline-only advisor range, separate from unavailable real-world uplift",
+    "Explicit non-preset floor area and synthetic suitability/cost/tariff inputs",
+    "1733 GBP optimizer selects 1700 GBP package with 33 GBP remaining",
+    "Alternative 200 GBP controls-only payback comparison",
+    "Integrated score 38 to 45 and per-fuel savings comparison",
+    "1900-home portfolio assessment; 50-row pages and property search",
+    "390px mobile portfolio; document width 390px",
+    "No observed browser console errors"
+  ],
+  "source_overrides": "Custom browser inputs remain explicitly synthetic; active source CSV is unchanged",
+  "screenshots": [
+    "budget-demo.png",
+    "advisor-baseline.png",
+    "custom-package.png"
+  ]
+}

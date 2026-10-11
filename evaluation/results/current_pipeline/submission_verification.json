@@ -1,11 +1,19 @@
 {
-  "python": "3.13.4",
-  "node": "v25.6.1",
+  "python": "3.14.7",
+  "node": "v26.8.2",
   "scope": "synthetic prototype and documented-rule agreement",
   "steps": [
     {
       "command": [
-        "/Users/somyadeeptarat/Desktop/Megathon/.venv/bin/python",
+        "/home/mahesh/Documents/Codex/2026-10-10/so-x20/outputs/Megathon/.venv/bin/python",
+        "scripts/prepare_london_demo.py"
+      ],
+      "exit_code": 0,
+      "log": "evaluation/results/current_pipeline/reproduction-01.log"
+    },
+    {
+      "command": [
+        "/home/mahesh/Documents/Codex/2026-10-10/so-x20/outputs/Megathon/.venv/bin/python",
         "-m",
         "ml.train_valuation",
         "--data",
@@ -14,78 +22,98 @@
         "ml/snapshot_provenance.json",
         "--target-kind",
         "snapshot",
+        "--seed",
+        "42",
         "--output",
         "ml/models/snapshot.joblib",
         "--reports",
         "ml/reports/snapshot"
       ],
       "exit_code": 0,
-      "log": "evaluation/results/current_pipeline/reproduction-01.log"
-    },
-    {
-      "command": [
-        "/Users/somyadeeptarat/Desktop/Megathon/.venv/bin/python",
-        "-m",
-        "ml.synthetic_impact"
-      ],
-      "exit_code": 0,
       "log": "evaluation/results/current_pipeline/reproduction-02.log"
     },
     {
       "command": [
-        "/Users/somyadeeptarat/Desktop/Megathon/.venv/bin/python",
-        "scripts/prepare_demo.py"
+        "/home/mahesh/Documents/Codex/2026-10-10/so-x20/outputs/Megathon/.venv/bin/python",
+        "-m",
+        "ml.synthetic_impact"
       ],
       "exit_code": 0,
       "log": "evaluation/results/current_pipeline/reproduction-03.log"
     },
     {
       "command": [
-        "/Users/somyadeeptarat/Desktop/Megathon/.venv/bin/python",
-        "-m",
-        "evaluation.held_out_retrofits"
+        "/home/mahesh/Documents/Codex/2026-10-10/so-x20/outputs/Megathon/.venv/bin/python",
+        "scripts/prepare_demo.py"
       ],
       "exit_code": 0,
       "log": "evaluation/results/current_pipeline/reproduction-04.log"
     },
     {
       "command": [
-        "/Users/somyadeeptarat/Desktop/Megathon/.venv/bin/python",
+        "/home/mahesh/Documents/Codex/2026-10-10/so-x20/outputs/Megathon/.venv/bin/python",
         "-m",
-        "evaluation.verify_reference_cases"
+        "evaluation.held_out_retrofits"
       ],
       "exit_code": 0,
       "log": "evaluation/results/current_pipeline/reproduction-05.log"
     },
     {
       "command": [
-        "/Users/somyadeeptarat/Desktop/Megathon/.venv/bin/python",
+        "/home/mahesh/Documents/Codex/2026-10-10/so-x20/outputs/Megathon/.venv/bin/python",
         "-m",
-        "evaluation.verify_runtime"
+        "evaluation.verify_reference_cases"
       ],
       "exit_code": 0,
       "log": "evaluation/results/current_pipeline/reproduction-06.log"
     },
     {
       "command": [
-        "/Users/somyadeeptarat/Desktop/Megathon/.venv/bin/python",
+        "/home/mahesh/Documents/Codex/2026-10-10/so-x20/outputs/Megathon/.venv/bin/python",
         "-m",
-        "pytest",
-        "-q",
-        "--junitxml=evaluation/results/current_pipeline/tests.xml"
+        "evaluation.verify_runtime"
       ],
       "exit_code": 0,
       "log": "evaluation/results/current_pipeline/reproduction-07.log"
     },
     {
       "command": [
-        "/Users/somyadeeptarat/Desktop/Megathon/.venv/bin/python",
+        "/home/mahesh/Documents/Codex/2026-10-10/so-x20/outputs/Megathon/.venv/bin/python",
+        "-m",
+        "evaluation.verify_london_workflow"
+      ],
+      "exit_code": 0,
+      "log": "evaluation/results/current_pipeline/reproduction-08.log"
+    },
+    {
+      "command": [
+        "/home/mahesh/Documents/Codex/2026-10-10/so-x20/outputs/Megathon/.venv/bin/python",
+        "-m",
+        "evaluation.reproducibility"
+      ],
+      "exit_code": 0,
+      "log": "evaluation/results/current_pipeline/reproduction-09.log"
+    },
+    {
+      "command": [
+        "/home/mahesh/Documents/Codex/2026-10-10/so-x20/outputs/Megathon/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "--junitxml=evaluation/results/current_pipeline/tests.xml"
+      ],
+      "exit_code": 0,
+      "log": "evaluation/results/current_pipeline/reproduction-10.log"
+    },
+    {
+      "command": [
+        "/home/mahesh/Documents/Codex/2026-10-10/so-x20/outputs/Megathon/.venv/bin/python",
         "-m",
         "pip",
         "check"
       ],
       "exit_code": 0,
-      "log": "evaluation/results/current_pipeline/reproduction-08.log"
+      "log": "evaluation/results/current_pipeline/reproduction-11.log"
     },
     {
       "command": [
@@ -96,7 +124,7 @@
         "typecheck"
       ],
       "exit_code": 0,
-      "log": "evaluation/results/current_pipeline/reproduction-09.log"
+      "log": "evaluation/results/current_pipeline/reproduction-12.log"
     },
     {
       "command": [
@@ -106,7 +134,7 @@
         "test"
       ],
       "exit_code": 0,
-      "log": "evaluation/results/current_pipeline/reproduction-10.log"
+      "log": "evaluation/results/current_pipeline/reproduction-13.log"
     },
     {
       "command": [
@@ -117,8 +145,28 @@
         "build"
       ],
       "exit_code": 0,
-      "log": "evaluation/results/current_pipeline/reproduction-11.log"
+      "log": "evaluation/results/current_pipeline/reproduction-14.log"
     }
   ],
-  "status": "passed"
+  "status": "passed",
+  "sha256": {
+    "requirements.lock.txt": "3df8a58e3c5a245c0c9ba8f6f13e48031a17565721d9473e06eeeba516b33125",
+    "frontend/package-lock.json": "4529257ddf1129ac85f59e639ecec7056c1f1c26bdb85677fda90761c1a82697",
+    "Data/csv/properties.csv": "b5da395c0d2bee5ebb6d790ea609af00da9912d66f3120aebc73eab3016ef000",
+    "Data/csv/energy_usage.csv": "7bee3e14c1ad9e007da31ab1a07e5e5b859afd1e9f2fdae8455d434e67369622",
+    "Data/csv/emission_factors_2026.csv": "e793857d56602acf4376d3357a43c66701c729a794303fae720071d2d16c0bb2",
+    "backend/data/curated_demo_properties.json": "f6415a2050222a00d3ac5ab01b512ef3c03d375f6503243eb686029fbcca09a7",
+    "ml/models/snapshot.joblib": "089bc195f9811b258df71a111cdd71456ae98b9e3289f619e75510372ad6897d",
+    "ml/models/synthetic_impact.joblib": "a7ddb05912ca73b4e8571429541e872ea9cd4b6b6716902be7fdeeb7a085e0d2",
+    "ml/reports/snapshot/split_manifest.csv": "325398eb0bd4d6d1c9aa98e43ce22fe2000829cf05de3d46e4acf9f4272c2773",
+    "ml/reports/synthetic_impact/split_manifest.csv": "7ed2f4776617d186a70e3521fc1f9e0b071529ec85e557352e657d1532b9ba66",
+    "evaluation/references/runtime_outputs.json": "a2e227759d0dd2748fbc7270e6edf2a5ec657bd48e0a4d325795bc76688de498"
+  },
+  "git_commit": "86b01c4d10940d80aa38cec7f15c60ae2794c644",
+  "working_tree_dirty": true,
+  "training_seeds": {
+    "snapshot": 42,
+    "synthetic_impact": 254
+  },
+  "extracted_bundle_reference_check": "passed"
 }

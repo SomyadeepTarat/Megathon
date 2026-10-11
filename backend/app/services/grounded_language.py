@@ -45,6 +45,10 @@ not checked, explain the concept without asserting it is suitable for this prope
 Synthetic results are illustrative; estimates are not promises. Value impact must be
 expressed as the supplied range, never a guaranteed or proven causal premium. If no
 range is supplied, say the impact cannot be estimated from these results.
+Baseline-only valuation ranges describe today's home; never present them as retrofit
+uplift. London public-reference simulations are synthetic individual records, even
+when their aggregate anchors come from public sources. Unknown survey eligibility,
+installation costs and tariffs remain unknown; ask for evidence before recommending work.
 For general energy concepts use the supplied definitions; for unrelated questions
 politely explain the assistant's scope. Do not dump all available facts or unrelated
 unavailable sections. Prefer ordinary prose without headings, bullet lists or Markdown.
@@ -124,8 +128,8 @@ def metric_sentence(fact):
         return f'The modeled annual bill saving is £{value}.'
     if source == 'simple_payback_years':
         return f'The modeled simple payback is {value} years.'
-    if source in ('valuation.value_change_range_gbp', 'valuation.after_range_gbp') and len(values) == 2:
-        label = 'property-value change' if source.endswith('value_change_range_gbp') else 'post-retrofit property value'
+    if source in ('valuation.value_change_range_gbp', 'valuation.after_range_gbp', 'valuation.baseline_range_gbp', 'valuation.baseline_model_range') and len(values) == 2:
+        label = ('property-value change' if source.endswith('value_change_range_gbp') else 'baseline property value' if 'baseline' in source else 'post-retrofit property value')
         return f'The illustrative estimated {label} ranges from £{display(values[0])} to £{display(values[1])}.'
     if source.startswith('recommendations.'):
         name = fact.text.split(' is confirmed feasible')[0]
@@ -163,6 +167,11 @@ def render_natural(answer, facts):
 def natural_fallback(result, question, facts):
     """Conversational deterministic fallback; never expose a raw metric dump."""
     text = question.lower()
+    if (result.get('valuation') or {}).get('purpose') == 'baseline_only':
+        fact = next((f for f in facts if f.source == 'valuation.baseline_range_gbp'), None)
+        if fact:
+            return metric_sentence(fact) + ' This describes today’s home; it is not a retrofit premium or a guaranteed sale price.'
+        return 'I cannot estimate the baseline property value. ' + ((result.get('valuation') or {}).get('reason') or 'Required property evidence is missing.')
     if 'score' in text or result.get('recommendations'):
         from .llm_service import score_guidance
         answer = score_guidance(result, bool(result.get('recommendations')))

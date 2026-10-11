@@ -1,0 +1,199 @@
+{
+  "selected_model": "ridge",
+  "seed": 42,
+  "alpha": 0.1,
+  "target_kind": "snapshot",
+  "target": "current_value_estimate_gbp",
+  "split_policy": "supplied property/customer manifest",
+  "grouped_cross_validation": {
+    "ridge": {
+      "folds": [
+        {
+          "mae_gbp": 181428.97151194522,
+          "rmse_gbp": 264970.7176051407,
+          "r2": 0.18463679659505738
+        },
+        {
+          "mae_gbp": 246184.04679236584,
+          "rmse_gbp": 412214.1380761389,
+          "r2": 0.29601779543283946
+        },
+        {
+          "mae_gbp": 227111.0302539572,
+          "rmse_gbp": 380317.45885421784,
+          "r2": 0.28405752802551676
+        },
+        {
+          "mae_gbp": 238001.77996105282,
+          "rmse_gbp": 385696.10780144105,
+          "r2": 0.27654195044652363
+        },
+        {
+          "mae_gbp": 213539.93350057365,
+          "rmse_gbp": 343822.75396207045,
+          "r2": 0.35500476688658655
+        }
+      ],
+      "mean_mae_gbp": 221253.15240397895,
+      "scope": "fit groups only; calibration/test untouched"
+    },
+    "hist_gradient_boosting": {
+      "folds": [
+        {
+          "mae_gbp": 204822.36155119244,
+          "rmse_gbp": 299730.7355358884,
+          "r2": -0.04332089030912645
+        },
+        {
+          "mae_gbp": 247633.24757015382,
+          "rmse_gbp": 402359.97375303693,
+          "r2": 0.32927351264680316
+        },
+        {
+          "mae_gbp": 232469.87228523399,
+          "rmse_gbp": 391768.26989065984,
+          "r2": 0.24029651422327358
+        },
+        {
+          "mae_gbp": 261783.45337634644,
+          "rmse_gbp": 417788.1503964587,
+          "r2": 0.15114193986917224
+        },
+        {
+          "mae_gbp": 217302.17996279532,
+          "rmse_gbp": 350202.2349948702,
+          "r2": 0.33084750351705683
+        }
+      ],
+      "mean_mae_gbp": 232802.22294914437,
+      "scope": "fit groups only; calibration/test untouched"
+    }
+  },
+  "provenance": {
+    "kind": "synthetic",
+    "source": "London public-reference simulation v3; Data/relations/london_simulation.md and Data/manifests/london_reference_v1.json",
+    "license": "Project-generated synthetic rows; public-reference attribution/licence exceptions documented in source manifest",
+    "energy_evidence": {
+      "reviewed": false,
+      "reference": null
+    },
+    "dataset_version": "kew_london_v3",
+    "handoff_provenance_sha256": "5e6543093a705559e0ef55cdd8b7278f9a8414670e3ae0601a6d2ebe0dca2fb4",
+    "scope": "Fresh Greater London synthetic cohort only; legacy 100 excluded. No observed transaction or retrofit-price relationship.",
+    "data_sha256": "471b0019cca47f0fa05386c6c476971e1bfe3524eef65b5471f41ba9aa6df0a8",
+    "excluded_partition": {
+      "name": "legacy_diagnostic",
+      "properties": 100
+    },
+    "split_manifest_sha256": "397702992dbba5900121ab78b91f50222ee451848c6421e0b7db675a40b671f3"
+  },
+  "selection_metrics": {
+    "ridge": {
+      "mae_gbp": 209002.43321181985,
+      "rmse_gbp": 316241.86126550264,
+      "r2": 0.3322268656390144
+    },
+    "hist_gradient_boosting": {
+      "mae_gbp": 223293.9779284008,
+      "rmse_gbp": 340533.68356134556,
+      "r2": 0.22569800144058128
+    }
+  },
+  "energy_signal_ablation": null,
+  "held_out_metrics": {
+    "ridge": {
+      "mae_gbp": 210233.96791642983,
+      "rmse_gbp": 318059.17073495465,
+      "r2": 0.24274703033765377
+    },
+    "hist_gradient_boosting": {
+      "mae_gbp": 224705.87872835388,
+      "rmse_gbp": 343879.87665456685,
+      "r2": 0.11480558499980897
+    }
+  },
+  "median_baseline": {
+    "mae_gbp": 224659.68586387436,
+    "rmse_gbp": 376706.15709835634,
+    "r2": -0.062259387579986614
+  },
+  "interval_policy": "price_proportional",
+  "interval_coverage": 0.8952879581151832,
+  "mean_interval_width_gbp": 701118.462996803,
+  "pair_marginal_coverage": 0.9659685863874345,
+  "counts": {
+    "calibration": {
+      "rows": 381,
+      "properties": 381,
+      "groups": 381
+    },
+    "selection": {
+      "rows": 334,
+      "properties": 334,
+      "groups": 334
+    },
+    "fit": {
+      "rows": 803,
+      "properties": 803,
+      "groups": 803
+    },
+    "test": {
+      "rows": 382,
+      "properties": 382,
+      "groups": 382
+    }
+  },
+  "calibration_independent_groups": 381,
+  "group_overlap": false,
+  "time_evaluation": {
+    "status": "unavailable",
+    "reason": "No observed dated sales supplied; synthetic dates are not market evidence"
+  },
+  "limitations": [
+    "Observational associations are not causal retrofit effects.",
+    "Conformal coverage is marginal under exchangeability; scenario shifts can invalidate it.",
+    "Synthetic metrics verify implementation, not market accuracy.",
+    "Value-change intervals have no paired counterfactual coverage validation."
+  ],
+  "subgroup_metrics": {
+    "region": {
+      "Greater London": {
+        "rows": 382,
+        "mae_gbp": 210233.96791642983,
+        "rmse_gbp": 318059.17073495465,
+        "r2": 0.24274703033765377,
+        "coverage": 0.8952879581151832
+      }
+    },
+    "property_type": {
+      "Detached": {
+        "rows": 25,
+        "mae_gbp": 449214.0771234927,
+        "rmse_gbp": 558583.1767946612,
+        "r2": -0.048600949729038945,
+        "coverage": 0.88
+      },
+      "Flat": {
+        "rows": 208,
+        "mae_gbp": 144286.21785726052,
+        "rmse_gbp": 191803.61236978899,
+        "r2": 0.11016148675363191,
+        "coverage": 0.8798076923076923
+      },
+      "Semi-detached": {
+        "rows": 66,
+        "mae_gbp": 307211.65159031644,
+        "rmse_gbp": 450091.1463943749,
+        "r2": 0.07151241114184759,
+        "coverage": 0.9242424242424242
+      },
+      "Terraced": {
+        "rows": 83,
+        "mae_gbp": 226403.8734544313,
+        "rmse_gbp": 343982.99652220606,
+        "r2": 0.06715084748700839,
+        "coverage": 0.9156626506024096
+      }
+    }
+  }
+}

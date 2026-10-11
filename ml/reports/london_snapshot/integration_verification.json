@@ -1,0 +1,38 @@
+{
+  "properties": 2000,
+  "scores": {
+    "available": 2000
+  },
+  "fresh_london_baseline_statuses": {
+    "illustrative": 1896,
+    "unavailable": 4
+  },
+  "unavailable_reasons": {
+    "Outside training support: floor_area": 4
+  },
+  "baseline_api": {
+    "property_id": "P100001",
+    "status": "illustrative",
+    "reason": null,
+    "value_gbp": 344350.3746152188,
+    "range_gbp": [
+      128627.43379070086,
+      560073.3154397367
+    ],
+    "confidence_level": 0.9,
+    "target_kind": "snapshot",
+    "method": "Grouped regression with separate split-conformal residual calibration",
+    "warnings": [
+      "Synthetic baseline-estimate model; not an observed-market valuation.",
+      "Marginal interval coverage requires exchangeability; not a guaranteed sale price.",
+      "Baseline valuation does not establish a causal retrofit premium."
+    ]
+  },
+  "assessment_http": 200,
+  "unknown_heat_pump_scenario": {
+    "http": 409,
+    "status": "rejected",
+    "reason": "Package contains infeasible or conditional measures; resolve conditions before simulation."
+  },
+  "active_demo_replaced": false
+}

@@ -3,5 +3,8 @@
 .opening-autumn-canvas{position:absolute;inset:0;width:100%;height:100%}
 .opening-logo{position:absolute;left:calc(50% - 14px);top:calc(50% - 14px);transform-origin:top left;opacity:0;color:#2d493e;line-height:0}
 .opening-logo>.brand-mark{margin:0;box-sizing:border-box}
+/* Hide every stationary brand from the server-rendered first frame. Overview
+   restoration can replace the introduction's brand during hydration. */
+body:has(.opening-intro:not(.has-arrived)) :is(.brand .brand-mark,.brand .brand-mark *,.kew-journey-brand>svg,.intro-wordmark){visibility:hidden!important}
 @keyframes opening-curtain{0%,61%{opacity:1}88%,100%{opacity:0}}
-@media(prefers-reduced-motion:reduce){.opening-intro{display:none}.opening-intro *{animation:none}}
+@media(prefers-reduced-motion:reduce){.opening-intro{display:none}.opening-intro *{animation:none}body:has(.opening-intro:not(.has-arrived)) :is(.brand .brand-mark,.brand .brand-mark *,.kew-journey-brand>svg,.intro-wordmark){visibility:visible!important}}

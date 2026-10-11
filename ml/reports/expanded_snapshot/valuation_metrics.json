@@ -1,0 +1,258 @@
+{
+  "selected_model": "hist_gradient_boosting",
+  "seed": 42,
+  "alpha": 0.1,
+  "target_kind": "snapshot",
+  "target": "current_value_estimate_gbp",
+  "split_policy": "supplied property/customer manifest",
+  "grouped_cross_validation": {
+    "ridge": {
+      "folds": [
+        {
+          "mae_gbp": 50704.886966617574,
+          "rmse_gbp": 77425.67308163189,
+          "r2": 0.791896691532785
+        },
+        {
+          "mae_gbp": 48841.75629472895,
+          "rmse_gbp": 69556.33378954217,
+          "r2": 0.7975106539148886
+        },
+        {
+          "mae_gbp": 48130.00755792812,
+          "rmse_gbp": 66871.13399031971,
+          "r2": 0.8222780544135484
+        },
+        {
+          "mae_gbp": 46068.80060117081,
+          "rmse_gbp": 60193.77250212396,
+          "r2": 0.7994190247082112
+        },
+        {
+          "mae_gbp": 49418.111151742785,
+          "rmse_gbp": 72754.20325613824,
+          "r2": 0.792350621553425
+        }
+      ],
+      "mean_mae_gbp": 48632.71251443765,
+      "scope": "fit groups only; calibration/test untouched"
+    },
+    "hist_gradient_boosting": {
+      "folds": [
+        {
+          "mae_gbp": 50018.98111752861,
+          "rmse_gbp": 73815.28865762804,
+          "r2": 0.8108520448152936
+        },
+        {
+          "mae_gbp": 47706.03071742505,
+          "rmse_gbp": 69786.9519445447,
+          "r2": 0.7961656970609474
+        },
+        {
+          "mae_gbp": 44736.884731477694,
+          "rmse_gbp": 68404.43191471198,
+          "r2": 0.8140345933638176
+        },
+        {
+          "mae_gbp": 46590.51992585163,
+          "rmse_gbp": 62791.3094412463,
+          "r2": 0.7817341991351965
+        },
+        {
+          "mae_gbp": 49782.04929500073,
+          "rmse_gbp": 67438.84433626363,
+          "r2": 0.8215836311928526
+        }
+      ],
+      "mean_mae_gbp": 47766.89315745674,
+      "scope": "fit groups only; calibration/test untouched"
+    }
+  },
+  "provenance": {
+    "kind": "synthetic",
+    "source": "Data/generated/kew_synthetic_v2/properties.csv; reproducible expansion documented in Data/relations/expanded_dataset.md",
+    "license": "Project-generated synthetic data; inherited source references documented in Data/relations/properties_methodology.md",
+    "energy_evidence": {
+      "reviewed": false,
+      "reference": null
+    },
+    "dataset_version": "kew_synthetic_v2",
+    "data_handoff_provenance_sha256": "0b2a847554dbea4fffff7d30685250fea53b79b3d1ca6fd0d3fd1bc80cc33b16",
+    "limitations": "Original inputs unchanged. No observed transaction/date enrichment or market/causal validity claim.",
+    "price_model": "Inherited regional/type/size/bedroom/age anchors plus independent lognormal noise; no retrofit uplift or energy features.",
+    "data_sha256": "bda0ca56c1790d4611d2dc6eae8568b2c5d794a1f8ce812777f8b4c9956dbac9",
+    "split_manifest_sha256": "8ede837d4391587969919dfa5b1a93e9cd9b1d834d60a0faa7dcd0a5e735af43"
+  },
+  "selection_metrics": {
+    "ridge": {
+      "mae_gbp": 50221.0883454889,
+      "rmse_gbp": 70674.01535918162,
+      "r2": 0.7929948297809477
+    },
+    "hist_gradient_boosting": {
+      "mae_gbp": 47175.20833899021,
+      "rmse_gbp": 68933.62932075952,
+      "r2": 0.803064527886834
+    }
+  },
+  "energy_signal_ablation": null,
+  "held_out_metrics": {
+    "ridge": {
+      "mae_gbp": 50362.27885461352,
+      "rmse_gbp": 71423.5366191001,
+      "r2": 0.7885226112350121
+    },
+    "hist_gradient_boosting": {
+      "mae_gbp": 45985.08077973374,
+      "rmse_gbp": 69284.99876119469,
+      "r2": 0.8009969812713028
+    }
+  },
+  "median_baseline": {
+    "mae_gbp": 111142.85714285714,
+    "rmse_gbp": 163536.8875478868,
+    "r2": -0.10869654262345785
+  },
+  "interval_coverage": 0.8501742160278746,
+  "mean_interval_width_gbp": 182524.7269622679,
+  "pair_marginal_coverage": 0.9512195121951219,
+  "counts": {
+    "selection": {
+      "rows": 315,
+      "properties": 315,
+      "groups": 315
+    },
+    "test": {
+      "rows": 287,
+      "properties": 287,
+      "groups": 287
+    },
+    "calibration": {
+      "rows": 310,
+      "properties": 310,
+      "groups": 310
+    },
+    "fit": {
+      "rows": 1088,
+      "properties": 1088,
+      "groups": 1088
+    }
+  },
+  "calibration_independent_groups": 310,
+  "group_overlap": false,
+  "time_evaluation": {
+    "status": "unavailable",
+    "reason": "No observed dated sales supplied; synthetic dates are not market evidence"
+  },
+  "limitations": [
+    "Observational associations are not causal retrofit effects.",
+    "Conformal coverage is marginal under exchangeability; scenario shifts can invalidate it.",
+    "Synthetic metrics verify implementation, not market accuracy.",
+    "Value-change intervals have no paired counterfactual coverage validation."
+  ],
+  "subgroup_metrics": {
+    "region": {
+      "East Midlands": {
+        "rows": 29,
+        "mae_gbp": 26974.820575845202,
+        "rmse_gbp": 34642.91949570814,
+        "r2": 0.8607785579960049,
+        "coverage": 0.9655172413793104
+      },
+      "East of England": {
+        "rows": 28,
+        "mae_gbp": 52958.73365105916,
+        "rmse_gbp": 67619.2816256266,
+        "r2": 0.7164172849245114,
+        "coverage": 0.8571428571428571
+      },
+      "Greater London": {
+        "rows": 24,
+        "mae_gbp": 108277.73770882927,
+        "rmse_gbp": 144616.85753789844,
+        "r2": 0.6067361039684853,
+        "coverage": 0.5
+      },
+      "North East": {
+        "rows": 30,
+        "mae_gbp": 25356.196052297408,
+        "rmse_gbp": 35401.48564315352,
+        "r2": 0.6255854969002355,
+        "coverage": 0.9333333333333333
+      },
+      "North West": {
+        "rows": 28,
+        "mae_gbp": 36296.62077611439,
+        "rmse_gbp": 47953.438423862106,
+        "r2": 0.7501234544156742,
+        "coverage": 0.9285714285714286
+      },
+      "South East": {
+        "rows": 35,
+        "mae_gbp": 54415.40722905634,
+        "rmse_gbp": 67153.35945942218,
+        "r2": 0.7666385960387986,
+        "coverage": 0.7714285714285715
+      },
+      "South West": {
+        "rows": 28,
+        "mae_gbp": 60450.10747136255,
+        "rmse_gbp": 97331.39472316182,
+        "r2": 0.320750352387588,
+        "coverage": 0.7857142857142857
+      },
+      "Wales": {
+        "rows": 31,
+        "mae_gbp": 31479.711316567344,
+        "rmse_gbp": 43012.89865202839,
+        "r2": 0.6864433629987267,
+        "coverage": 0.9354838709677419
+      },
+      "West Midlands": {
+        "rows": 27,
+        "mae_gbp": 40902.49088357359,
+        "rmse_gbp": 54037.33388947425,
+        "r2": 0.6025453350042144,
+        "coverage": 0.8518518518518519
+      },
+      "Yorkshire and The Humber": {
+        "rows": 27,
+        "mae_gbp": 32576.52998730335,
+        "rmse_gbp": 43750.79610521264,
+        "r2": 0.7807715332576158,
+        "coverage": 0.9259259259259259
+      }
+    },
+    "property_type": {
+      "Detached": {
+        "rows": 59,
+        "mae_gbp": 74171.65148087208,
+        "rmse_gbp": 107115.95247777276,
+        "r2": 0.682438675686551,
+        "coverage": 0.6949152542372882
+      },
+      "Flat": {
+        "rows": 62,
+        "mae_gbp": 31096.502508100155,
+        "rmse_gbp": 49099.049866350186,
+        "r2": 0.660850343297902,
+        "coverage": 0.9032258064516129
+      },
+      "Semi-detached": {
+        "rows": 73,
+        "mae_gbp": 47273.89525527856,
+        "rmse_gbp": 61525.82504953569,
+        "r2": 0.7040841182453688,
+        "coverage": 0.821917808219178
+      },
+      "Terraced": {
+        "rows": 93,
+        "mae_gbp": 37017.34663736112,
+        "rmse_gbp": 54374.403568801856,
+        "r2": 0.6808482018564677,
+        "coverage": 0.9354838709677419
+      }
+    }
+  }
+}

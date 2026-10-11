@@ -99,6 +99,8 @@ class BackendAdvisorEngines:
                                 'baseline_gas_kwh': row.annual_energy.gas_kwh}
             result['carbon'] = self.carbon().baseline(row) if hasattr(self.carbon(), 'baseline') else {'status': 'unavailable'}
             result['valuation'] = self.valuation().predict_value_impact(row.property, row.property).model_dump(mode='json')
+            from app.services.valuation_service import predict_property_value
+            result['baseline_valuation'] = predict_property_value(row.property, allow_illustrative=row.dataset_kind == 'synthetic')
             result['sources'] = [f'Property dataset: {row.dataset_kind}; {row.dataset_source}',
                                  f'Annual energy: {row.annual_energy.quality}; {row.annual_energy.method}']
             if row.benchmark:

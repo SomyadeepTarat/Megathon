@@ -1,0 +1,9 @@
+{
+  "properties": 2000,
+  "statuses": {
+    "illustrative": 2000
+  },
+  "unavailable_reasons": {},
+  "artifact": "ml/models/expanded_snapshot.joblib",
+  "active_default_replaced": false
+}

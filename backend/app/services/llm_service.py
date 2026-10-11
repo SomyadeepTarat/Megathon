@@ -5,8 +5,10 @@ import asyncio
 import json
 import os
 import re
+import time
+import urllib.error
 import urllib.request
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Any, Literal, Protocol, Callable, Awaitable
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
@@ -99,6 +101,20 @@ class PropertyNotFound(Exception):
     pass
 
 
+def response_schema(payload):
+    from .grounded_language import GroundedAnswer
+    schema = (GroundedAnswer.model_json_schema() if 'answer_facts' in payload
+              else FactSelection.model_json_schema() if 'facts' in payload
+              else Intent.model_json_schema())
+    if 'answer_facts' in payload:
+        ids = [fact['id'] for fact in payload['answer_facts']]
+        schema['$defs']['Sentence']['properties']['fact_ids']['items'] = {'type': 'string', 'enum': ids}
+        schema['properties']['metric_fact_ids']['items'] = {'type': 'string', 'enum': ids}
+    if 'facts' in payload:
+        schema['properties']['fact_ids']['items'] = {'type': 'string', 'enum': [fact['id'] for fact in payload['facts']]}
+    return schema
+
+
 @dataclass(frozen=True)
 class OllamaProvider:
     model: str
@@ -106,18 +122,7 @@ class OllamaProvider:
     timeout: float = 20.0
 
     async def complete(self, system, payload):
-        from .grounded_language import GroundedAnswer
-        schema = (GroundedAnswer.model_json_schema() if 'answer_facts' in payload
-                  else FactSelection.model_json_schema() if 'facts' in payload
-                  else Intent.model_json_schema())
-        if 'answer_facts' in payload:
-            schema['$defs']['Sentence']['properties']['fact_ids']['items'] = {
-                'type': 'string', 'enum': [fact['id'] for fact in payload['answer_facts']]}
-            schema['properties']['metric_fact_ids']['items'] = {
-                'type': 'string', 'enum': [fact['id'] for fact in payload['answer_facts']]}
-        if 'facts' in payload:
-            schema['properties']['fact_ids']['items'] = {
-                'type': 'string', 'enum': [fact['id'] for fact in payload['facts']]}
+        schema = response_schema(payload)
         def send():
             body = json.dumps({'model': self.model, 'stream': False, 'format': schema, 'think': False, 'keep_alive': '15m',
                                'options': {'temperature': 0, 'num_predict': 640 if 'answer_facts' in payload else 256, 'num_ctx': 8192},
@@ -142,19 +147,98 @@ class OllamaProvider:
         return await asyncio.wait_for(asyncio.to_thread(send), timeout=self.timeout + 1)
 
 
+@dataclass(frozen=True)
+class GroqProvider:
+    model: str
+    api_key: str = field(repr=False)
+    timeout: float = 10.0
+
+    async def complete(self, system, payload):
+        def send():
+            # JSON mode plus the same task schema; existing server-side grounding
+            # validators remain authoritative. System prompts are unchanged.
+            body = json.dumps({'model': self.model, 'stream': False,
+                'temperature': 0, 'max_completion_tokens': 1024 if 'answer_facts' in payload else 256,
+                'response_format': {'type': 'json_object'},
+                'messages': [{'role': 'system', 'content': system},
+                             {'role': 'user', 'content': json.dumps({**payload, 'response_schema': response_schema(payload)})}]}).encode()
+            request = urllib.request.Request('https://api.groq.com/openai/v1/chat/completions', body,
+                {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + self.api_key,
+                 'User-Agent': 'GreenPrintAI/0.3.0'})
+            with urllib.request.urlopen(request, timeout=self.timeout) as response:
+                raw = response.read(262145)
+            if len(raw) > 262144:
+                raise ValueError('Provider response too large')
+            choice = json.loads(raw)['choices'][0]
+            if choice.get('finish_reason') != 'stop':
+                raise ValueError('Provider output incomplete')
+            content = choice.get('message', {}).get('content')
+            if not isinstance(content, str) or not content.strip():
+                raise ValueError('Provider returned empty content')
+            answer = json.loads(content)
+            if not isinstance(answer, dict):
+                raise ValueError('Provider must return an object')
+            from .grounded_language import GroundedAnswer
+            model = GroundedAnswer if 'answer_facts' in payload else FactSelection if 'facts' in payload else Intent
+            model.model_validate(answer)
+            return answer
+        return await asyncio.wait_for(asyncio.to_thread(send), timeout=self.timeout + 1)
+
+
+@dataclass
+class FallbackProvider:
+    primary: Provider
+    secondary: Provider
+    retry_after: float = field(default=0.0, init=False, repr=False)
+
+    async def complete(self, system, payload):
+        if time.monotonic() >= self.retry_after:
+            try:
+                return await self.primary.complete(system, payload)
+            except Exception as exc:
+                # Never log provider bodies, credentials or property payloads.
+                delay = 30.0
+                if isinstance(exc, urllib.error.HTTPError):
+                    delay = 300.0 if exc.code in (401, 403, 429) else 30.0
+                    try:
+                        delay = max(delay, min(3600.0, float(exc.headers.get('Retry-After', delay))))
+                    except (ValueError, TypeError, AttributeError):
+                        pass
+                self.retry_after = time.monotonic() + delay
+        # Both calls receive the exact same system prompt and engine-owned data.
+        # If this also fails, existing advisor code uses deterministic facts.
+        return await self.secondary.complete(system, payload)
+
+
 def provider_from_env() -> Provider | None:
     name = os.getenv('LLM_PROVIDER', 'deterministic').lower()
     if name == 'deterministic':
         return None
-    if name != 'ollama':
-        raise ValueError('LLM_PROVIDER must be ollama or deterministic')
-    model = os.getenv('LLM_MODEL', '').strip()
-    if not model:
-        raise ValueError('Set LLM_MODEL to an installed Ollama model')
+    if name not in ('groq', 'ollama'):
+        raise ValueError('LLM_PROVIDER must be groq, ollama or deterministic')
     timeout = float(os.getenv('LLM_TIMEOUT_SECONDS', '20'))
     if not 0 < timeout <= 60:
         raise ValueError('LLM_TIMEOUT_SECONDS must be in (0, 60]')
-    return OllamaProvider(model, os.getenv('OLLAMA_BASE_URL', 'http://127.0.0.1:11434'), timeout)
+    if name == 'ollama':
+        model = os.getenv('LLM_MODEL', '').strip() or os.getenv('OLLAMA_MODEL', '').strip()
+        if not model:
+            raise ValueError('Set LLM_MODEL or OLLAMA_MODEL to an installed Ollama model')
+        return OllamaProvider(model, os.getenv('OLLAMA_BASE_URL', 'http://127.0.0.1:11434'), timeout)
+    model = os.getenv('GROQ_MODEL', '').strip() or os.getenv('LLM_MODEL', 'llama-3.3-70b-versatile').strip()
+    primary_timeout = float(os.getenv('GROQ_TIMEOUT_SECONDS', '10'))
+    if not model or not 0 < primary_timeout <= 60:
+        raise ValueError('Set a Groq model and GROQ_TIMEOUT_SECONDS in (0, 60]')
+    api_key = os.getenv('GROQ_API_KEY', '').strip()
+    if not api_key:
+        raise ValueError('Set GROQ_API_KEY in the project-root .env or shell')
+    primary = GroqProvider(model, api_key, primary_timeout)
+    fallback = os.getenv('LLM_FALLBACK_PROVIDER', 'ollama').lower()
+    if fallback == 'deterministic':
+        return primary
+    if fallback != 'ollama':
+        raise ValueError('LLM_FALLBACK_PROVIDER must be ollama or deterministic')
+    return FallbackProvider(primary, OllamaProvider(os.getenv('OLLAMA_MODEL', 'qwen3:4b'),
+        os.getenv('OLLAMA_BASE_URL', 'http://127.0.0.1:11434'), timeout))
 
 
 INTENT_PROMPT = """You are GreenPrint AI's intent extractor. Return JSON only with keys
@@ -348,6 +432,12 @@ def evidence(result: dict[str, Any]) -> list[Fact]:
                 text += f" Suitability: {rec['suitability']}. {rec.get('suitability_reason', '')}"
             add(f'recommendations.{index}', text)
     value = result.get('valuation', {})
+    baseline_value = result.get('baseline_valuation', {})
+    baseline_range = baseline_value.get('range_gbp')
+    if baseline_value.get('status') in ('illustrative', 'indicative') and isinstance(baseline_range, (list, tuple)) and len(baseline_range) == 2:
+        add('valuation.baseline_model_range', f"Baseline-only property-value range: £{baseline_range[0]} to £{baseline_range[1]} ({baseline_value['status']} backend estimate). This is not a retrofit-value impact.")
+        for warning in baseline_value.get('warnings', []):
+            add('warnings.valuation_baseline', warning)
     if value and value.get('status') not in ('unavailable', 'missing_data'):
         for key, label in [('baseline_value_gbp', 'Baseline property value'),
                            ('after_value_gbp', 'Post-retrofit property value'),
@@ -415,6 +505,14 @@ def relevant_facts(facts: list[Fact], question: str) -> list[Fact]:
 
 async def generate_explanation(verified_result: dict[str, Any], question: str = '',
                                provider: Provider | None = None) -> tuple[str, list[Fact], str, str | None]:
+    # A baseline valuation and a retrofit contrast have different evidence.
+    baseline_question = bool(re.search(r'\b(?:value|valuation|worth)\b', question, re.I)) and not bool(
+        re.search(r'\b(?:uplift|premium|change|after|retrofit|increase|upgrade|doubles)\b', question, re.I))
+    if baseline_question and 'baseline_valuation' in verified_result:
+        baseline = verified_result['baseline_valuation'] or {}
+        verified_result = {**verified_result, 'valuation': {
+            **baseline, 'baseline_range_gbp': baseline.get('range_gbp'),
+            'purpose': 'baseline_only'}, 'recommendations': []}
     facts = evidence(verified_result)
     selected = relevant_facts(facts, question) if question else facts
     mode, reason = 'deterministic', 'provider_disabled'
@@ -442,6 +540,14 @@ async def generate_explanation(verified_result: dict[str, Any], question: str = 
             answer = await provider.complete(EXPLANATION_PROMPT,
                 {'question': 'Explain the selected feasible package and why it suits my stated budget and objective.' if verified_result.get('optimization_context') else question, 'answer_facts': prepared})
             prose = render_natural(answer, candidates)
+            if baseline_question and (verified_result.get('valuation') or {}).get('purpose') == 'baseline_only':
+                from .grounded_language import metric_sentence
+                baseline_fact = next((f for f in facts if f.source == 'valuation.baseline_range_gbp'), None)
+                if baseline_fact:
+                    if re.search(r'\b(?:unavailable|cannot estimate|insufficient)\b', prose, re.I):
+                        raise ValueError('Available baseline valuation described as unavailable')
+                    if '£' not in prose:
+                        prose += ' ' + metric_sentence(baseline_fact)
             if verified_result.get('optimization_context') and '£' not in prose:
                 from .grounded_language import metric_sentence
                 cost = next((f for f in facts if f.source == 'installation_cost_gbp'), None)

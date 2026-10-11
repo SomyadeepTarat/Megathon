@@ -1,0 +1,13 @@
+{
+  "kind": "synthetic",
+  "source": "Data/generated/kew_synthetic_v2/properties.csv; reproducible expansion documented in Data/relations/expanded_dataset.md",
+  "license": "Project-generated synthetic data; inherited source references documented in Data/relations/properties_methodology.md",
+  "energy_evidence": {
+    "reviewed": false,
+    "reference": null
+  },
+  "dataset_version": "kew_synthetic_v2",
+  "data_handoff_provenance_sha256": "0b2a847554dbea4fffff7d30685250fea53b79b3d1ca6fd0d3fd1bc80cc33b16",
+  "limitations": "Original inputs unchanged. No observed transaction/date enrichment or market/causal validity claim.",
+  "price_model": "Inherited regional/type/size/bedroom/age anchors plus independent lognormal noise; no retrofit uplift or energy features."
+}

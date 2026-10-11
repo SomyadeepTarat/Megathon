@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { createContext, useContext, useEffect, useRef, useState, type ReactNode, type Dispatch, type SetStateAction } from 'react';
+import { createContext, useContext, useEffect, useLayoutEffect, useRef, useState, type ReactNode, type Dispatch, type SetStateAction } from 'react';
 import { ArrowUpRight, ChartNoAxesColumnIncreasing, ChevronRight, CircleHelp, House, Leaf, Menu, MessageCircle, RefreshCw, SlidersHorizontal, Trees, X } from 'lucide-react';
 import { api } from '@/lib/api';
 import type { Assessment, AssessmentRequest, PropertyRecord, PropertySummary, Scenario } from '@/lib/types';
@@ -33,11 +33,42 @@ const navigation = [{ href: '/', name: 'Overview', icon: House }, { href: '/asse
 
 export function Workspace({ children }: { children: ReactNode }) {
   const pathname = usePathname(); const router = useRouter();
-  const [showIntroduction, setShowIntroduction] = useState(true);
+  const [showIntroduction, setShowIntroduction] = useState(() => pathname === '/');
   const [resumeIntroduction, setResumeIntroduction] = useState(false);
   const [returningToIntroduction, setReturningToIntroduction] = useState(false);
   const overviewEnteredAt = useRef(0);
+  const viewRestored = useRef(false);
+  useLayoutEffect(() => {
+    if (viewRestored.current) return;
+    viewRestored.current = true;
+    const navigation = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming | undefined;
+    let savedView: string | null = null;
+    try { savedView = sessionStorage.getItem('kew-home-view'); } catch {}
+    if ((navigation?.type === 'reload' || navigation?.type === 'back_forward') && savedView === 'overview') {
+      setShowIntroduction(false);
+      overviewEnteredAt.current = performance.now();
+    }
+  }, []);
+  useEffect(() => {
+    if (pathname !== '/') return;
+    try { sessionStorage.setItem('kew-home-view', showIntroduction ? 'introduction' : 'overview'); } catch {}
+  }, [pathname, showIntroduction]);
   const introductionActive = pathname === '/' && showIntroduction;
+  const openOverview = () => {
+    overviewEnteredAt.current = performance.now();
+    setShowIntroduction(false);
+    setResumeIntroduction(false);
+    setReturningToIntroduction(false);
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  };
+  useEffect(() => {
+    if (pathname !== '/') {
+      setShowIntroduction(false);
+      setReturningToIntroduction(false);
+    } else {
+      overviewEnteredAt.current = performance.now();
+    }
+  }, [pathname]);
   const finishIntroduction = () => {
     overviewEnteredAt.current = performance.now();
     setReturningToIntroduction(false);
@@ -129,12 +160,12 @@ export function Workspace({ children }: { children: ReactNode }) {
     <div id="kew-workspace" hidden={introductionActive} className={`app-shell ${returningToIntroduction ? 'is-returning-to-intro' : ''} ${pathname === '/' ? 'journey-workspace' : ''}`}>
       {mobile && <button className="nav-backdrop" aria-label="Close navigation" onClick={() => setMobile(false)} />}
       <aside id="workspace-navigation" className={`sidebar ${mobile ? 'is-open' : ''}`}>
-        <Link href="/" className="brand" aria-label="Kew home"><span className="brand-mark"><Leaf size={24} strokeWidth={1.6} /></span><span className="intro-wordmark">Kew</span></Link>
+        <Link href="/" onClick={openOverview} className="brand" aria-label="Kew home"><span className="brand-mark"><Leaf size={24} strokeWidth={1.6} /></span><span className="intro-wordmark">Kew</span></Link>
         <div className="nav-heading">Your workspace</div>
-        <nav aria-label="Main navigation">{navigation.map(({ href, name, icon: Icon }) => <Link key={href} href={href} aria-current={pathname === href || (href === '/portfolio' && pathname === '/ranking') || (href === '/planner' && pathname === '/compare') ? 'page' : undefined} className={`nav-link ${pathname === href || (href === '/portfolio' && pathname === '/ranking') || (href === '/planner' && pathname === '/compare') ? 'active' : ''}`}><Icon size={19} strokeWidth={1.6} />{name}</Link>)}</nav>
+        <nav aria-label="Main navigation">{navigation.map(({ href, name, icon: Icon }) => <Link key={href} href={href} onClick={href === "/" ? openOverview : undefined} aria-current={pathname === href || (href === '/portfolio' && pathname === '/ranking') || (href === '/planner' && pathname === '/compare') ? 'page' : undefined} className={`nav-link ${pathname === href || (href === '/portfolio' && pathname === '/ranking') || (href === '/planner' && pathname === '/compare') ? 'active' : ''}`}><Icon size={19} strokeWidth={1.6} />{name}</Link>)}</nav>
         <div className="sidebar-bottom"><div className="sidebar-note"><span className="mini-label">A little clarity.</span><p>A better future starts<br />with understanding home.</p><Leaf size={28} strokeWidth={1} /></div><button className="nav-link help-link" onClick={() => setAdvisor(true)}><CircleHelp size={18} /> Ask Kew</button><div className="profile"><span className="avatar">YH</span><div>Your home workspace<small>Personal assessment</small></div></div></div>
       </aside>
-      <div className="main-shell"><header className="topbar"><div className="breadcrumb"><button className="icon-button mobile-menu" onClick={() => setMobile(!mobile)} aria-label="Open navigation" aria-expanded={mobile} aria-controls="workspace-navigation"><Menu size={21} /></button><Link href="/">Kew</Link><ChevronRight size={14} /><span>{title}</span></div><div className="header-actions"><span className={`service-state ${service}`}><i />{service === 'online' ? 'Your workspace' : service === 'checking' ? 'Loading…' : 'Service unavailable'}</span><button className="icon-button" onClick={() => void refresh()} aria-label="Refresh properties"><RefreshCw size={18} /></button><span className="header-separator" /><button className="icon-button" aria-label="Open Kew advisor" onClick={() => setAdvisor(true)}><MessageCircle size={20} /></button></div></header>
+      <div className="main-shell"><header className="topbar"><div className="breadcrumb"><button className="icon-button mobile-menu" onClick={() => setMobile(!mobile)} aria-label="Open navigation" aria-expanded={mobile} aria-controls="workspace-navigation"><Menu size={21} /></button><Link href="/" onClick={openOverview}>Kew</Link><ChevronRight size={14} /><span>{title}</span></div><div className="header-actions"><span className={`service-state ${service}`}><i />{service === 'online' ? 'Your workspace' : service === 'checking' ? 'Loading…' : 'Service unavailable'}</span><button className="icon-button" onClick={() => void refresh()} aria-label="Refresh properties"><RefreshCw size={18} /></button><span className="header-separator" /><button className="icon-button" aria-label="Open Kew advisor" onClick={() => setAdvisor(true)}><MessageCircle size={20} /></button></div></header>
         {service === 'offline' && <div className="connection-notice" role="status">The assessment service is offline. You can explore Kew and enter your details. <button onClick={() => void refresh()}>Reconnect <ArrowUpRight size={13} /></button></div>}
         <main id="main" tabIndex={-1} className="main-content">{uiPreview && <div className="notice warning" role="status"><div><strong>Dummy UI preview</strong><p>These figures are invented for design review. They are not model results and are not saved.</p><button className="button secondary" onClick={() => setAdvisor(true)}>Preview Ask Kew</button> <Link className="button secondary" href="/compare" onClick={() => { setUiPreview(false); setAdvisor(false); }}>Exit dummy preview</Link></div></div>}{pathname === '/' && <ReplayJourney onReplay={replayIntroduction} />}{children}</main>
         <footer className="footer"><span><Leaf size={13} /> Kew · A considered path to a greener home</span><span>Transparent estimates. Informed decisions.</span></footer>
