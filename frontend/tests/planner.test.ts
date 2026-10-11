@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {emptyPlan, groupedPackages, orderedRecommendations, uniqueText} from '../lib/planner.ts';
+import {baselineOnlyOptimization, emptyPlan, groupedPackages, orderedRecommendations, uniqueText} from '../lib/planner.ts';
 import type {PackageTradeoff, Recommendation} from '../lib/types.ts';
 
 test('identical packages merge across objectives and selected priority comes first', () => {
@@ -23,5 +23,13 @@ test('recommended measures keep backend priority and excluded options stay last'
 test('fresh snapshot plans have no stale estimates and duplicated evidence is removed',()=>{
   assert.equal(emptyPlan('new-property-version').optimization,null);
   assert.deepEqual(emptyPlan('new-property-version').selected,[]);
+  assert.equal(emptyPlan('new-property-version').recommendationsChecked,false);
   assert.deepEqual(uniqueText([' Same reason ', 'Same reason', '']),['Same reason']);
+});
+
+test('baseline-only search does not imply a validated upgrade recommendation',()=>{
+  const result={best_scenario:{applied_retrofits:[]},ranked_packages:[{}]};
+  assert.equal(baselineOnlyOptimization(result),true);
+  assert.equal(baselineOnlyOptimization({...result, ranked_packages:[{},{}]}),false);
+  assert.equal(baselineOnlyOptimization({...result,best_scenario:null}),false);
 });

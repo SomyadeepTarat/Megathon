@@ -135,16 +135,22 @@ export function Workspace({ children }: { children: ReactNode }) {
     try { const [, rows] = await Promise.all([api.health(), api.properties()]); setProperties(rows); setService('online'); }
     catch { setService('offline'); }
   }
-  useEffect(() => { void refresh(); }, []);
+  useEffect(() => {
+    void refresh();
+    try {
+      const saved = sessionStorage.getItem('kew-selected-property');
+      if (saved) void selectProperty(saved);
+    } catch {}
+  }, []);
   useEffect(() => { setMobile(false); }, [pathname]);
   async function selectProperty(id: string) {
     const token = ++version.current; setPlannerDraft(null); setLoading(true); setError(null); setRecord(null); setAssessment(null); setScenario(null); setOutputs([]); setDirty(false);
-    try { const value = await api.property(id); if (token === version.current) setRecord(value); }
+    try { const value = await api.property(id); if (token === version.current) { setRecord(value); try { sessionStorage.setItem('kew-selected-property', id); } catch {} } }
     catch (e) { if (token === version.current) setError((e as Error).message); }
     finally { if (token === version.current) setLoading(false); }
   }
   function edit(value: PropertyRecord) { version.current++; setPlannerDraft(null); setLoading(false); setRecord(value); setDirty(true); setAssessment(null); setScenario(null); setOutputs([]); setError(null); }
-  function newProperty() { version.current++; setPlannerDraft(null); setLoading(false); setRecord(blankProperty()); setAssessment(null); setScenario(null); setOutputs([]); setDirty(true); setError(null); router.push('/assessment'); }
+  function newProperty() { version.current++; setPlannerDraft(null); setLoading(false); setRecord(blankProperty()); try { sessionStorage.removeItem('kew-selected-property'); } catch {} setAssessment(null); setScenario(null); setOutputs([]); setDirty(true); setError(null); router.push('/assessment'); }
   async function runAssessment() {
     if (!record) return;
     const token = ++version.current; setLoading(true); setError(null);

@@ -2,7 +2,7 @@
 
 import type { OptimizationResult, Objective } from '@/lib/types';
 import { label, money, number } from '@/lib/format';
-import { groupedPackages, uniqueText } from '@/lib/planner';
+import { baselineOnlyOptimization, groupedPackages, uniqueText } from '@/lib/planner';
 import { Badge } from './ui';
 
 const priorities = {
@@ -16,6 +16,16 @@ export function BudgetPackages({ result, budget, busy, onCompare }: {
 }) {
   const best = result.best_scenario;
   if (!best) return null;
+  if (baselineOnlyOptimization(result)) {
+    const reasons = uniqueText(result.package_decisions.flatMap(row =>
+      row && typeof row === 'object' && 'reason' in row && typeof row.reason === 'string' ? [row.reason] : []));
+    return <section className="panel budget-results" aria-label="Budget optimization needs more information" aria-live="polite">
+      <h2>No upgrade package could be confirmed</h2>
+      <p>No upgrade package passed the input, feasibility and {money(budget)} budget checks. The unchanged home is the comparison baseline; this does not establish that keeping it unchanged is the best investment.</p>
+      <p>Review the reasons below. Add documented costs and any missing eligibility or energy evidence in Assessment, or adjust your budget.</p>
+      <details><summary>Why packages were excluded · {result.package_decisions.length} combinations checked</summary><ul>{reasons.map(reason => <li key={reason}>{reason}</li>)}</ul></details>
+    </section>;
+  }
   const options = groupedPackages(best.optimization_context?.alternatives ?? [], result.objective);
   return <section className="panel budget-results" aria-label="Budget-optimized package recommendations" aria-live="polite">
     <div className="section-heading"><div><h2>Your budget, put to work</h2><p>Best packages within {money(budget)}, using confirmed feasibility and documented costs.</p></div><Badge>{result.package_decisions.length} combinations checked</Badge></div>
