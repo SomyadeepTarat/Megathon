@@ -1,6 +1,6 @@
 # Reproduce and submit the local prototype
 
-Install Python dependencies from `requirements.lock.txt` and Node dependencies with `npm --prefix frontend ci`. Use Python 3.11+ and Node 22+ (exact installed versions are recorded in the generated verification summary). From the repository root:
+Install Python dependencies from `requirements.lock.txt` and Node dependencies with `npm --prefix frontend ci`. Use the tested Python 3.14.7 and Node 26.8.2 environment; exact installed versions are recorded in the generated verification summary. See [reproducibility guide](reproducibility.md) for reference comparisons and environment isolation. From the repository root:
 
 ```sh
 .venv/bin/python scripts/reproduce_submission.py

@@ -4,7 +4,7 @@ Local Next.js frontend, FastAPI backend, SQLite property snapshots, deterministi
 
 ## Install and prepare
 
-Run from the repository root with Python 3.11+ and Node.js 22+:
+The reference environment is Python 3.14.7 and Node.js 26.8.2. See [reproducibility guide](docs/reproducibility.md) for fresh-checkout setup, isolated verification and reference-output comparisons. Run from the repository root:
 
 ```sh
 python3 -m venv .venv
@@ -92,7 +92,7 @@ The property generator preserves contributed physical fields only when they matc
 | POST /scenarios/simulate | Confirmed-feasible, sequential retrofit simulation |
 | POST /retrofits/recommend | Feasibility and objective-ranked individual measures |
 | POST /retrofits/optimize | All 32 subsets; explicit budget, documented costs and objective |
-| GET /portfolio/rank | Complete feasible-package improvement potential; unavailable stays null |
+| GET /properties/ranking; GET /portfolio/rank | Complete feasible-package improvement potential; unavailable stays null |
 | POST /advisor/chat | Fresh backend calculations followed by fact selection or deterministic explanation |
 
 Scores use PRD weights and mappings; unknown fields stay unknown. Annual energy requires all 12 monthly readings per fuel. Envelope/controls changes affect space heating; hot water and appliance loads are retained. Heat pumps preserve signed electricity/gas changes, and solar reduces grid imports. Financial outputs require supplied cost sources and tariffs. Missing dependencies/physical inputs are explicit, not invented zeroes.
@@ -115,6 +115,6 @@ Somyadeep's [25-answer review](evaluation/reviews/somyadeep.md) is ready. Fill t
 
 ## Submission and expanded evaluation
 
-Run `.venv/bin/python scripts/reproduce_submission.py` to regenerate models, verify the pipeline and create the team-254 ZIP with trained artifacts and checksums. See [submission guide](docs/submission_guide.md), [current improvement report](docs/improvement_report.md), and [synthetic impact methodology](docs/synthetic_impact_methodology.md). Individual recommendations show backend suitability and rank; optimised comparisons show the carbon/energy/payback winners for the same budget.
+Run `.venv/bin/python scripts/reproduce_submission.py` to regenerate models, verify the pipeline and create the team-254 ZIP with trained artifacts and checksums. See [submission guide](docs/submission_guide.md), [current improvement report](docs/improvement_report.md), and [synthetic impact methodology](docs/synthetic_impact_methodology.md). The separate property-ranking page shows backend improvement-potential ranks and recorded current valuations. Individual recommendations retain suitability; optimised comparisons show the carbon/energy/payback winners for the same budget.
 
 London verification: `.venv/bin/python -m evaluation.verify_london_workflow` (set `LLM_PROVIDER=ollama LLM_MODEL=qwen3:4b` for local AI). See `evaluation/results/london_active/README.md` for current workflow evidence, arbitrary edited inputs, missing/conflicting cases and limitations. Property tables paginate in groups of 50; search and export operate across the complete result set.

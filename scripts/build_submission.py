@@ -6,14 +6,14 @@ from pathlib import Path
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
-ALLOWED_SUFFIXES = {'.py', '.ts', '.tsx', '.css', '.json', '.csv', '.md', '.txt', '.ini', '.toml', '.svg', '.xml', '.joblib', '.log', '.jpg'}
+ALLOWED_SUFFIXES = {'.js', '.sql', '.py', '.ts', '.tsx', '.css', '.json', '.csv', '.md', '.txt', '.ini', '.toml', '.svg', '.xml', '.joblib', '.log', '.jpg'}
 EXCLUDED = {'.git', '.venv', '__pycache__', '.pytest_cache', 'node_modules', '.next', '.codex', '.agents', 'generated', 'raw'}
 
 
 def build(output=ROOT/'submission/greenprint-team-254.zip'):
     models = ['ml/models/snapshot.joblib', 'ml/models/london_snapshot.joblib', 'ml/models/synthetic_impact.joblib']
     london_data = ['Data/generated/kew_london_v3/' + name for name in ['properties.csv', 'energy_usage.csv', 'split_manifest.csv', 'FINAL_EVALUATION.json']]
-    required = models + london_data + ['ml/reports/synthetic_impact/held_out_predictions.csv',
+    required = models + london_data + ['backend/app/db/migrations/001_recommendation_snapshots.sql', 'ml/reports/synthetic_impact/held_out_predictions.csv',
                         'evaluation/results/held_out_retrofits/metrics.json', 'docs/improvement_report.md']
     absent = [name for name in required if not (ROOT/name).is_file()]
     if absent:
@@ -22,7 +22,7 @@ def build(output=ROOT/'submission/greenprint-team-254.zip'):
     directories = ['backend/app', 'backend/tests', 'backend/data', 'carbon_engine', 'frontend/app',
         'frontend/components', 'frontend/lib', 'frontend/tests', 'frontend/public', 'Data', 'scripts',
         'ml/tests', 'ml/fixtures', 'ml/reports/snapshot', 'ml/reports/london_snapshot', 'ml/reports/synthetic_impact', 'evaluation/results/london_active', 'evaluation/tests',
-        'evaluation/reviews', 'evaluation/results/held_out_retrofits', 'evaluation/results/current_pipeline']
+        'evaluation/reviews', 'evaluation/references', 'evaluation/results/held_out_retrofits', 'evaluation/results/current_pipeline']
     for directory in directories:
         for path in (ROOT/directory).rglob('*'):
             if path.is_file() and path.suffix in ALLOWED_SUFFIXES and not any(p in EXCLUDED for p in path.parts):
@@ -31,7 +31,7 @@ def build(output=ROOT/'submission/greenprint-team-254.zip'):
         for path in (ROOT/directory).glob('*'):
             if path.is_file() and path.suffix in ALLOWED_SUFFIXES and path.name != 'next-env.d.ts':
                 paths.add(path)
-    for name in ['README.md', 'prd.md', '.env.example', '.gitignore', 'pytest.ini', 'conftest.py', 'requirements.lock.txt',
+    for name in ['README.md', 'prd.md', '.python-version', '.node-version', 'docs/reproducibility.md', '.env.example', '.gitignore', 'pytest.ini', 'conftest.py', 'requirements.lock.txt',
                  'backend/catalog.json', 'docs/backend_architecture.md', 'docs/scoring_methodology.md',
                  'docs/valuation_methodology.md', 'docs/synthetic_impact_methodology.md', 'docs/llm_methodology.md',
                  'docs/responsible_ai.md', 'docs/submission_guide.md', 'docs/improvement_report.md', *models, *london_data]:
