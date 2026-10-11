@@ -118,3 +118,24 @@ Somyadeep's [25-answer review](evaluation/reviews/somyadeep.md) is ready. Fill t
 Run `.venv/bin/python scripts/reproduce_submission.py` to regenerate models, verify the pipeline and create the team-254 ZIP with trained artifacts and checksums. See [submission guide](docs/submission_guide.md), [current improvement report](docs/improvement_report.md), and [synthetic impact methodology](docs/synthetic_impact_methodology.md). The separate property-ranking page shows backend improvement-potential ranks and recorded current valuations. Individual recommendations retain suitability; optimised comparisons show the carbon/energy/payback winners for the same budget.
 
 London verification: `.venv/bin/python -m evaluation.verify_london_workflow` (set `LLM_PROVIDER=ollama LLM_MODEL=qwen3:4b` for local AI). See `evaluation/results/london_active/README.md` for current workflow evidence, arbitrary edited inputs, missing/conflicting cases and limitations. Property tables paginate in groups of 50; search and export operate across the complete result set.
+
+
+## Static data documentation
+
+The data relationships, formulas, label generation, quality, validation and reproducibility are documented in [Data/index.html](Data/index.html), with a clickable section index. The page uses local CSS and works without JavaScript or a network connection. Its maintained source is [README_DATA_METHODOLOGY.md](Data/README_DATA_METHODOLOGY.md).
+
+Open the HTML file directly, or serve the repository root:
+
+```sh
+python -m http.server 8080 --bind 127.0.0.1
+```
+
+Then open [the data documentation](http://127.0.0.1:8080/Data/index.html). Serving from the repository root also makes linked reports and source files available.
+
+After editing the methodology source, regenerate the static page:
+
+```sh
+python Data/scripts/build_documentation.py
+```
+
+These documentation commands use only Python's standard library. No externally hosted Kew/documentation URL is recorded here.
