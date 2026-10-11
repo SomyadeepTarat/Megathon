@@ -88,7 +88,7 @@ export function createAutumnScene(canvas, destination, logoSvg) {
   resize();
   return {
     resize,
-    render(seconds) {
+    render(seconds, handoff = 0) {
       const fallHeight = 25;
       // Preserve the original small, airy leaves with a denser layered fall.
       for (let i = 0; i < count; i++) {
@@ -116,25 +116,27 @@ export function createAutumnScene(canvas, destination, logoSvg) {
         const z = from.z;
         const distance = camera.position.z - z;
         const height = 2 * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * distance;
-        const end = new THREE.Vector3(((rect.left + rect.width / 2) / innerWidth - .5) * height * camera.aspect, (.5 - (rect.top + rect.height / 2) / innerHeight) * height, z);
+        const viewport = canvas.getBoundingClientRect();
+        const end = new THREE.Vector3(((rect.left + rect.width / 2 - viewport.left) / viewport.width - .5) * height * camera.aspect, (.5 - (rect.top + rect.height / 2 - viewport.top) / viewport.height) * height, z);
         chosen.position.lerpVectors(from, end, t);
-        chosen.position.x += Math.sin(t * Math.PI) * 1.8;
+        if (t < 1) chosen.position.x += Math.sin(t * Math.PI) * 1.8;
         chosen.quaternion.slerpQuaternions(fromRotation, new THREE.Quaternion(), t);
-        chosen.scale.setScalar(THREE.MathUtils.lerp(fromSize, rect.height / innerHeight * height / 1.5, t));
+        chosen.scale.setScalar(THREE.MathUtils.lerp(fromSize, rect.height / viewport.height * height / 1.5, t));
         const morph = ease((seconds - 1.8) / 1.15);
         const vertices = morphGeometry.attributes.position;
         for (let i = 0; i < vertices.array.length; i++) vertices.array[i] = THREE.MathUtils.lerp(startVertices[i], endVertices[i], morph);
         vertices.needsUpdate = true;
         morphGeometry.computeVertexNormals();
-        veinMaterial.opacity = morph * (1 - ease((seconds - 3.15) / .2));
+        veinMaterial.opacity = morph * (1 - handoff);
         chosenMaterial.color.set('#ca873c').lerp(new THREE.Color('#2d493e'), ease((seconds - 1.9) / .9));
         // Keep the travelling leaf solid until it has reached the logo.
         // Only then blend into the exact DOM symbol at the same position.
-        chosenMaterial.opacity = 1 - ease((seconds - 3.15) / .2);
+        chosenMaterial.opacity = 1 - handoff;
       }
       renderer.setClearAlpha(0);
       field.material.transparent = true; field.material.opacity = 1 - ease((seconds - 2.4) / .8);
       renderer.render(scene, camera);
+      return selected >= 0 && seconds >= 3.15;
     },
     dispose() { veinGroup.children.forEach(mesh => mesh.geometry.dispose()); veinMaterial.dispose(); morphGeometry.dispose(); geometry.dispose(); materials.forEach(m => m.dispose()); chosenMaterial.dispose(); fieldMaterial.dispose(); field.dispose(); scene.clear(); renderer.dispose(); renderer.forceContextLoss(); },
   };
