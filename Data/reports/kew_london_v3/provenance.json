@@ -1,0 +1,43 @@
+{
+  "limitations": [
+    "HPI aggregate averages are not correctly matched observed price labels.",
+    "EPC lodgements are biased and may repeat homes.",
+    "Census/EHS 2021, NEED 2024, EPC 2025 and HPI July 2026 are different populations/periods.",
+    "Uniform latent borough weights, conditional area distributions and equipment probabilities remain assumptions."
+  ],
+  "new_ml_inputs": [],
+  "observed_property_joins": 0,
+  "output_sha256": {
+    "derived_diagnostics.json": "e9e25e12f97894b08f8a33ab46dec079657d2f5fda75458cf27cff691c12d3b6",
+    "edge_cases/energy_usage.csv": "ba30296c58e71f6fa21ce0b28feada4bc29f86b1a8331b35ebc9e8244246a6cf",
+    "edge_cases/manifest.json": "8490bb71e41210e2e8f40c071e0c10677d5ad4ed6711b442ba9a0d1557c4d400",
+    "edge_cases/properties.csv": "52e4e8028de21fc3d0e65c76a69d83b967e56f81eea0f46606dad7cc3ce2b88a",
+    "energy_usage.csv": "d44d780caaa844c9d68f326424c78123f392f10962686dc029ad8b3d803594c1",
+    "latent_provenance.json": "db5a51cdaafd66230a94ae467fe41dfc0360f5033280b9c476f689741cb9f4d0",
+    "parameters.json": "13c8c9cae02926ece92d553c338843770e75455161226ea8ad417229f8e0531e",
+    "properties.csv": "99947ef2c4a4c9f11b0029887876e4507762e4361c3fa6236112dcc8abcd3214",
+    "quality_report.json": "3671835cb9eb5e39a829292ea8b54e1d16b63d1ae494d3a510fcf5e0ea552ff8",
+    "sample/energy_usage.csv": "90165d2cfcf6ec865a83cfe5c477c98495e4ed2e2ce08fc48e97e3e114298088",
+    "sample/properties.csv": "b1d52acc161331a60a0d1819879938d3721c41b0acbc8e3fee7f6924b1cfecf2",
+    "split_manifest.csv": "397702992dbba5900121ab78b91f50222ee451848c6421e0b7db675a40b671f3"
+  },
+  "price": "Public HPI type/borough anchors; independent location and unchanged .18 log noise; never EPC/retrofit uplift.",
+  "python_runtime": "3.10.11",
+  "schema_changed": false,
+  "smartmeter": "Catalogue reviewed; historical 2011-2014 household rows not downloaded. Existing seasonal model retained; not claimed to be empirically fitted.",
+  "source_reference": "Data\\manifests\\london_reference_v1.json",
+  "source_sha256": {
+    "Data/csv/emission_factors_2026.csv": "e793857d56602acf4376d3357a43c66701c729a794303fae720071d2d16c0bb2",
+    "Data/csv/emission_factors_2026.provenance.json": "a03d26b153ee8579f763a8623d638d6e9ce6717453b6bbab8cb8be120cb8b1c9",
+    "Data/csv/energy_usage.csv": "7bee3e14c1ad9e007da31ab1a07e5e5b859afd1e9f2fdae8455d434e67369622",
+    "Data/csv/properties.csv": "b5da395c0d2bee5ebb6d790ea609af00da9912d66f3120aebc73eab3016ef000",
+    "Data/manifests/kew_schema_v1.json": "07acbed534a3e3ce4d6a3226655ec15ec7550f9f3fb1836a38fb052d2d6bbd83",
+    "Data/manifests/london_reference_v1.json": "b2b65561e976f13eeb9570a5f33c11d175957b06c2e532a268e4973c2792c774",
+    "Data/scripts/expand_dataset.py": "a790c606357400f1411c3fa47a5b39da0ffd078f0e1acfb4adc86a2d0eef59b5",
+    "Data/scripts/generate_energy_usage.py": "40aed97f0dbd72952941ecfa3140f1ce55239d2f76064861a1558ab0da19c1e4",
+    "Data/scripts/simulate_london.py": "9f83cdccc144179f865eecf18364e9bcc2018881d4846107098c1658bba9b5ea"
+  },
+  "status": "synthetic",
+  "unknown_eligibility": "Four compatibility columns remain blank; no cost or tariff columns introduced.",
+  "version": "kew_london_v3"
+}

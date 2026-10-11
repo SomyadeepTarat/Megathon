@@ -1,0 +1,264 @@
+{
+  "calibration": {
+    "absolute_radius_gbp": 436896.80078227795,
+    "alpha": 0.1,
+    "count": 381,
+    "interval_policy": "Predeclared price-proportional scale max(predicted price, GBP 50,000); no test-driven interval selection.",
+    "relative_radius": 0.6264634997582638
+  },
+  "calibration_assumption": "Fresh customer groups from the same frozen synthetic generator are exchangeable; coverage is marginal, not guaranteed per type.",
+  "features": [
+    "floor_area",
+    "bedrooms",
+    "age",
+    "region",
+    "property_type"
+  ],
+  "frozen_configuration_sha256": "85b2652948ec9f27189313b0c92a11c21d39c9e7698c86b55404fa4d9d79310c",
+  "learning_curves_fit_only": [
+    {
+      "fit_rows": 100,
+      "folds": 5,
+      "mean_grouped_cv_mae_gbp": 227484.9435793786,
+      "std_fold_mae_gbp": 65218.523202152166
+    },
+    {
+      "fit_rows": 250,
+      "folds": 5,
+      "mean_grouped_cv_mae_gbp": 209087.25022222375,
+      "std_fold_mae_gbp": 29414.8052371145
+    },
+    {
+      "fit_rows": 500,
+      "folds": 5,
+      "mean_grouped_cv_mae_gbp": 223126.46817651432,
+      "std_fold_mae_gbp": 24543.818860311178
+    },
+    {
+      "fit_rows": 803,
+      "folds": 5,
+      "mean_grouped_cv_mae_gbp": 221204.41169712314,
+      "std_fold_mae_gbp": 13505.365292690693
+    }
+  ],
+  "new_ml_inputs": [],
+  "selected_model": "ridge",
+  "selection_diagnostics": {
+    "hist_gradient_boosting": {
+      "errors": {
+        "price_band": {
+          "[0.0, 300000.0)": {
+            "count": 48,
+            "mae_gbp": 159975.3564445957,
+            "r2": -22.6691673995914,
+            "rmse_gbp": 190411.3170491276
+          },
+          "[1000000.0, inf)": {
+            "count": 34,
+            "mae_gbp": 634063.727781177,
+            "r2": -1.2466511192483276,
+            "rmse_gbp": 811711.3151097731
+          },
+          "[300000.0, 500000.0)": {
+            "count": 127,
+            "mae_gbp": 152403.61522874155,
+            "r2": -16.489984739807543,
+            "rmse_gbp": 228385.89779188493
+          },
+          "[500000.0, 750000.0)": {
+            "count": 88,
+            "mae_gbp": 175112.05119435387,
+            "r2": -9.800467116630275,
+            "rmse_gbp": 221428.478808565
+          },
+          "[750000.0, 1000000.0)": {
+            "count": 37,
+            "mae_gbp": 287830.9793537222,
+            "r2": -15.288261498482502,
+            "rmse_gbp": 325095.36674047355
+          }
+        },
+        "property_type": {
+          "Detached": {
+            "count": 20,
+            "mae_gbp": 471232.82432104246,
+            "r2": -0.023152570577593234,
+            "rmse_gbp": 729319.5824222043
+          },
+          "Flat": {
+            "count": 159,
+            "mae_gbp": 142356.33495484194,
+            "r2": -0.017000108050249985,
+            "rmse_gbp": 191493.0346614118
+          },
+          "Semi-detached": {
+            "count": 65,
+            "mae_gbp": 309469.0173549125,
+            "r2": -0.014663181923225466,
+            "rmse_gbp": 410828.1322961603
+          },
+          "Terraced": {
+            "count": 90,
+            "mae_gbp": 249744.9984092402,
+            "r2": -0.14883706658877616,
+            "rmse_gbp": 358270.9227539664
+          }
+        },
+        "region": {
+          "Greater London": {
+            "count": 334,
+            "mae_gbp": 223508.5321231786,
+            "r2": 0.22050406493490715,
+            "rmse_gbp": 341673.90672977176
+          }
+        },
+        "size_band": {
+          "[0.0, 55.0)": {
+            "count": 61,
+            "mae_gbp": 132894.85747117628,
+            "r2": -0.12824314527470837,
+            "rmse_gbp": 181287.06843804716
+          },
+          "[140.0, inf)": {
+            "count": 19,
+            "mae_gbp": 476799.16624198656,
+            "r2": 0.08483041939710467,
+            "rmse_gbp": 711346.077770313
+          },
+          "[55.0, 90.0)": {
+            "count": 169,
+            "mae_gbp": 173561.48789761183,
+            "r2": 0.042661663933912686,
+            "rmse_gbp": 243701.41378552368
+          },
+          "[90.0, 140.0)": {
+            "count": 85,
+            "mae_gbp": 331225.7389424206,
+            "r2": -0.292317586058652,
+            "rmse_gbp": 451605.27807413944
+          }
+        }
+      },
+      "metrics": {
+        "mae_gbp": 223508.5321231786,
+        "r2": 0.22050406493490715,
+        "rmse_gbp": 341673.90672977176
+      }
+    },
+    "ridge": {
+      "errors": {
+        "price_band": {
+          "[0.0, 300000.0)": {
+            "count": 48,
+            "mae_gbp": 153506.6444890408,
+            "r2": -20.27063563636164,
+            "rmse_gbp": 180505.9410367323
+          },
+          "[1000000.0, inf)": {
+            "count": 34,
+            "mae_gbp": 612206.2742043161,
+            "r2": -1.0873821725871324,
+            "rmse_gbp": 782410.6742745058
+          },
+          "[300000.0, 500000.0)": {
+            "count": 127,
+            "mae_gbp": 148430.45669440966,
+            "r2": -11.751589238545593,
+            "rmse_gbp": 195009.9297663246
+          },
+          "[500000.0, 750000.0)": {
+            "count": 88,
+            "mae_gbp": 150549.47248928781,
+            "r2": -6.471160822605683,
+            "rmse_gbp": 184164.6404739906
+          },
+          "[750000.0, 1000000.0)": {
+            "count": 37,
+            "mae_gbp": 257417.80689404835,
+            "r2": -12.375078562535219,
+            "rmse_gbp": 294592.43100608466
+          }
+        },
+        "property_type": {
+          "Detached": {
+            "count": 20,
+            "mae_gbp": 394480.8816897992,
+            "r2": 0.15312449518286653,
+            "rmse_gbp": 663525.259482178
+          },
+          "Flat": {
+            "count": 159,
+            "mae_gbp": 136812.83350604642,
+            "r2": 0.09748731853763215,
+            "rmse_gbp": 180392.77466542984
+          },
+          "Semi-detached": {
+            "count": 65,
+            "mae_gbp": 290013.3241454616,
+            "r2": 0.13125849035325465,
+            "rmse_gbp": 380140.82316914323
+          },
+          "Terraced": {
+            "count": 90,
+            "mae_gbp": 236812.09402261628,
+            "r2": 0.0024846255853540056,
+            "rmse_gbp": 333842.8979272374
+          }
+        },
+        "region": {
+          "Greater London": {
+            "count": 334,
+            "mae_gbp": 209002.4332118199,
+            "r2": 0.3322268656390146,
+            "rmse_gbp": 316241.8612655025
+          }
+        },
+        "size_band": {
+          "[0.0, 55.0)": {
+            "count": 61,
+            "mae_gbp": 128434.31343401794,
+            "r2": -0.08751754677157453,
+            "rmse_gbp": 177985.08518156075
+          },
+          "[140.0, inf)": {
+            "count": 19,
+            "mae_gbp": 482334.0801386543,
+            "r2": 0.11191128328808408,
+            "rmse_gbp": 700742.2920100419
+          },
+          "[55.0, 90.0)": {
+            "count": 169,
+            "mae_gbp": 168075.9534221952,
+            "r2": 0.10995104038884251,
+            "rmse_gbp": 234980.74259100834
+          },
+          "[90.0, 140.0)": {
+            "count": 85,
+            "mae_gbp": 287095.71673279203,
+            "r2": 0.045098429567538845,
+            "rmse_gbp": 388198.3504874479
+          }
+        }
+      },
+      "metrics": {
+        "mae_gbp": 209002.4332118199,
+        "r2": 0.3322268656390146,
+        "rmse_gbp": 316241.8612655025
+      }
+    }
+  },
+  "selection_rule": "Existing candidates and 2% MAE improvement rule; selection partition only",
+  "selection_unseen_categories": {
+    "property_type": [],
+    "region": []
+  },
+  "splits": {
+    "calibration": 381,
+    "fit": 803,
+    "legacy_diagnostic": 100,
+    "selection": 334,
+    "test": 382
+  },
+  "status": "synthetic evaluation; not market accuracy or causal retrofit evidence",
+  "test_status": "reserved; not evaluated"
+}

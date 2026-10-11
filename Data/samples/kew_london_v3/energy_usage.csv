@@ -1,0 +1,361 @@
+property_id,month,electricity_kwh,gas_kwh,reading_status,electricity_demand_kwh,solar_generation_kwh,solar_self_consumed_kwh,solar_export_kwh,space_heating_demand_kwh,hot_water_demand_kwh,physical_inputs_status,reading_source
+P00001,2025-01,282.01,4276.47,synthetic,282.011042,0.000000,0.000000,0.000000,2909.595571,169.460840,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00001,2025-02,251.49,3589.90,synthetic,251.493147,0.000000,0.000000,0.000000,2415.267166,169.460840,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00001,2025-03,252.12,3223.72,synthetic,252.120494,0.000000,0.000000,0.000000,2151.616119,169.460840,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00001,2025-04,236.71,2172.56,synthetic,236.712441,0.000000,0.000000,0.000000,1394.783175,169.460840,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00001,2025-05,236.49,1210.29,synthetic,236.488783,0.000000,0.000000,0.000000,701.950138,169.460840,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00001,2025-06,217.86,582.09,synthetic,217.858338,0.000000,0.000000,0.000000,249.646591,169.460840,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00001,2025-07,238.88,358.51,synthetic,238.878959,0.000000,0.000000,0.000000,88.668597,169.460840,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00001,2025-08,225.55,361.37,synthetic,225.554863,0.000000,0.000000,0.000000,90.723980,169.460840,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00001,2025-09,236.06,1070.70,synthetic,236.059302,0.000000,0.000000,0.000000,601.444270,169.460840,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00001,2025-10,260.30,2265.55,synthetic,260.302385,0.000000,0.000000,0.000000,1461.732327,169.460840,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00001,2025-11,274.99,3387.97,synthetic,274.991352,0.000000,0.000000,0.000000,2269.879567,169.460840,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00001,2025-12,284.95,4541.43,synthetic,284.952231,0.000000,0.000000,0.000000,3100.369080,169.460840,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00002,2025-01,167.53,468.07,synthetic,167.528660,0.000000,0.000000,0.000000,319.462151,101.803087,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00002,2025-02,146.95,435.97,synthetic,146.945537,0.000000,0.000000,0.000000,290.568814,101.803087,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00002,2025-03,155.66,380.24,synthetic,155.657039,0.000000,0.000000,0.000000,240.411491,101.803087,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00002,2025-04,139.75,279.64,synthetic,139.749064,0.000000,0.000000,0.000000,149.875354,101.803087,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00002,2025-05,134.89,204.19,synthetic,134.889380,0.000000,0.000000,0.000000,81.971454,101.803087,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00002,2025-06,125.94,144.46,synthetic,125.944385,0.000000,0.000000,0.000000,28.206447,101.803087,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00002,2025-07,136.85,123.54,synthetic,136.847739,0.000000,0.000000,0.000000,9.385363,101.803087,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00002,2025-08,135.93,124.53,synthetic,135.933952,0.000000,0.000000,0.000000,10.277913,101.803087,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00002,2025-09,144.97,189.78,synthetic,144.967644,0.000000,0.000000,0.000000,68.997757,101.803087,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00002,2025-10,149.54,295.81,synthetic,149.535371,0.000000,0.000000,0.000000,164.427568,101.803087,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00002,2025-11,156.26,404.88,synthetic,156.264300,0.000000,0.000000,0.000000,262.589790,101.803087,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00002,2025-12,161.14,492.63,synthetic,161.135383,0.000000,0.000000,0.000000,341.568050,101.803087,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00003,2025-01,840.69,0.00,synthetic,895.524943,121.865285,54.839378,67.025907,1473.928057,192.430762,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00003,2025-02,658.63,0.00,synthetic,746.370212,194.984456,87.743005,107.241451,1159.429578,192.430762,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00003,2025-03,550.32,0.00,synthetic,714.841870,365.595855,164.518135,201.077720,1033.245095,192.430762,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00003,2025-04,365.37,0.00,synthetic,584.726195,487.461140,219.357513,268.103627,703.965171,192.430762,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00003,2025-05,193.49,0.00,synthetic,467.688163,609.326425,274.196891,335.129534,327.759474,192.430762,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00003,2025-06,64.47,0.00,synthetic,360.599902,658.072539,296.132642,361.939896,123.904540,192.430762,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00003,2025-07,57.45,0.00,synthetic,353.586548,658.072539,296.132642,361.939896,41.591989,192.430762,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00003,2025-08,94.05,0.00,synthetic,346.311164,560.580311,252.261140,308.319171,39.875351,192.430762,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00003,2025-09,263.89,0.00,synthetic,461.312191,438.715026,197.421762,241.293264,298.005768,192.430762,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00003,2025-10,462.88,0.00,synthetic,605.461050,316.849741,142.582383,174.267358,677.893891,192.430762,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00003,2025-11,665.77,0.00,synthetic,742.544920,170.611399,76.775130,93.836269,1114.966827,192.430762,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00003,2025-12,834.28,0.00,synthetic,889.124175,121.865285,54.839378,67.025907,1444.724015,192.430762,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00004,2025-01,208.65,1368.30,synthetic,208.647758,0.000000,0.000000,0.000000,1105.918382,125.555492,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00004,2025-02,187.43,1237.73,synthetic,187.427808,0.000000,0.000000,0.000000,988.405167,125.555492,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00004,2025-03,197.27,1079.65,synthetic,197.269764,0.000000,0.000000,0.000000,846.127243,125.555492,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00004,2025-04,170.62,722.70,synthetic,170.615632,0.000000,0.000000,0.000000,524.872851,125.555492,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00004,2025-05,173.59,458.18,synthetic,173.593212,0.000000,0.000000,0.000000,286.806126,125.555492,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00004,2025-06,169.39,248.05,synthetic,169.393870,0.000000,0.000000,0.000000,97.688282,125.555492,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00004,2025-07,166.27,177.91,synthetic,166.268045,0.000000,0.000000,0.000000,34.560332,125.555492,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00004,2025-08,165.48,178.65,synthetic,165.480235,0.000000,0.000000,0.000000,35.227419,125.555492,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00004,2025-09,172.27,408.85,synthetic,172.269142,0.000000,0.000000,0.000000,242.412783,125.555492,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00004,2025-10,179.11,804.11,synthetic,179.109590,0.000000,0.000000,0.000000,598.140650,125.555492,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00004,2025-11,196.81,1107.57,synthetic,196.809191,0.000000,0.000000,0.000000,871.261833,125.555492,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00004,2025-12,211.93,1489.32,synthetic,211.934833,0.000000,0.000000,0.000000,1214.829107,125.555492,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00005,2025-01,242.01,1923.55,synthetic,242.005827,0.000000,0.000000,0.000000,1585.804864,145.394353,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00005,2025-02,218.68,1709.33,synthetic,218.675040,0.000000,0.000000,0.000000,1393.006139,145.394353,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00005,2025-03,219.98,1463.17,synthetic,219.977318,0.000000,0.000000,0.000000,1171.458821,145.394353,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00005,2025-04,200.01,1024.00,synthetic,200.010028,0.000000,0.000000,0.000000,776.208577,145.394353,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00005,2025-05,206.67,612.80,synthetic,206.665749,0.000000,0.000000,0.000000,406.124213,145.394353,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00005,2025-06,182.57,324.85,synthetic,182.568349,0.000000,0.000000,0.000000,146.967583,145.394353,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00005,2025-07,193.69,215.88,synthetic,193.692528,0.000000,0.000000,0.000000,48.898034,145.394353,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00005,2025-08,186.04,214.57,synthetic,186.042813,0.000000,0.000000,0.000000,47.719510,145.394353,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00005,2025-09,206.30,519.95,synthetic,206.299927,0.000000,0.000000,0.000000,322.563659,145.394353,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00005,2025-10,216.18,1047.24,synthetic,216.175907,0.000000,0.000000,0.000000,797.118569,145.394353,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00005,2025-11,217.28,1583.07,synthetic,217.275911,0.000000,0.000000,0.000000,1279.364452,145.394353,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00005,2025-12,235.71,1962.21,synthetic,235.713993,0.000000,0.000000,0.000000,1620.596328,145.394353,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00006,2025-01,823.31,0.00,synthetic,823.312270,0.000000,0.000000,0.000000,1350.391454,181.438238,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00006,2025-02,723.83,0.00,synthetic,723.826106,0.000000,0.000000,0.000000,1147.283415,181.438238,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00006,2025-03,649.31,0.00,synthetic,649.306778,0.000000,0.000000,0.000000,906.265245,181.438238,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00006,2025-04,527.89,0.00,synthetic,527.885922,0.000000,0.000000,0.000000,620.964690,181.438238,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00006,2025-05,430.02,0.00,synthetic,430.016367,0.000000,0.000000,0.000000,289.497479,181.438238,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00006,2025-06,362.91,0.00,synthetic,362.912471,0.000000,0.000000,0.000000,113.213118,181.438238,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00006,2025-07,329.78,0.00,synthetic,329.781290,0.000000,0.000000,0.000000,38.575834,181.438238,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00006,2025-08,326.44,0.00,synthetic,326.437793,0.000000,0.000000,0.000000,37.268406,181.438238,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00006,2025-09,423.66,0.00,synthetic,423.662392,0.000000,0.000000,0.000000,254.728325,181.438238,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00006,2025-10,555.64,0.00,synthetic,555.640373,0.000000,0.000000,0.000000,659.317839,181.438238,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00006,2025-11,698.54,0.00,synthetic,698.537541,0.000000,0.000000,0.000000,1020.901386,181.438238,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00006,2025-12,778.71,0.00,synthetic,778.713597,0.000000,0.000000,0.000000,1230.737545,181.438238,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00007,2025-01,243.38,2463.20,synthetic,286.295597,95.369171,42.916127,52.453044,2042.707045,174.175738,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00007,2025-02,202.66,2236.52,synthetic,271.321452,152.590674,68.665803,83.924870,1838.692452,174.175738,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00007,2025-03,140.80,1873.10,synthetic,269.543935,286.107513,128.748381,157.359132,1511.615255,174.175738,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00007,2025-04,78.71,1292.40,synthetic,250.370099,381.476684,171.664508,209.812176,988.988095,174.175738,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00007,2025-05,34.25,715.48,synthetic,248.828004,476.845855,214.580635,262.265220,469.755799,174.175738,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00007,2025-06,1.76,387.51,synthetic,233.510742,514.993523,231.747085,283.246438,174.582671,174.175738,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00007,2025-07,0.00,260.34,synthetic,221.792235,514.993523,221.792235,293.201288,60.132811,174.175738,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00007,2025-08,43.54,259.84,synthetic,240.957497,438.698187,197.414184,241.284003,59.679972,174.175738,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00007,2025-09,97.94,660.13,synthetic,252.439480,343.329016,154.498057,188.830959,419.937133,174.175738,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00007,2025-10,138.41,1292.88,synthetic,249.988163,247.959845,111.581930,136.377915,989.420010,174.175738,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00007,2025-11,217.15,2018.99,synthetic,277.229338,133.516839,60.082578,73.434262,1642.911692,174.175738,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00007,2025-12,242.94,2522.06,synthetic,285.859295,95.369171,42.916127,52.453044,2095.674433,174.175738,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00008,2025-01,591.10,0.00,synthetic,591.095631,0.000000,0.000000,0.000000,314.133030,104.483543,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00008,2025-02,510.06,0.00,synthetic,510.056239,0.000000,0.000000,0.000000,258.029827,104.483543,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00008,2025-03,473.17,0.00,synthetic,473.172282,0.000000,0.000000,0.000000,214.564119,104.483543,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00008,2025-04,398.34,0.00,synthetic,398.339970,0.000000,0.000000,0.000000,146.546173,104.483543,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00008,2025-05,317.94,0.00,synthetic,317.943370,0.000000,0.000000,0.000000,69.845108,104.483543,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00008,2025-06,268.17,0.00,synthetic,268.165713,0.000000,0.000000,0.000000,26.622604,104.483543,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00008,2025-07,242.70,0.00,synthetic,242.698864,0.000000,0.000000,0.000000,8.782593,104.483543,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00008,2025-08,248.35,0.00,synthetic,248.351303,0.000000,0.000000,0.000000,9.275728,104.483543,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00008,2025-09,320.66,0.00,synthetic,320.660847,0.000000,0.000000,0.000000,67.177164,104.483543,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00008,2025-10,417.75,0.00,synthetic,417.753141,0.000000,0.000000,0.000000,156.210612,104.483543,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00008,2025-11,506.26,0.00,synthetic,506.259294,0.000000,0.000000,0.000000,248.134895,104.483543,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00008,2025-12,581.36,0.00,synthetic,581.364234,0.000000,0.000000,0.000000,306.905533,104.483543,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00009,2025-01,294.43,6004.34,synthetic,294.433521,0.000000,0.000000,0.000000,4144.840740,178.286116,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00009,2025-02,283.18,5164.34,synthetic,283.184219,0.000000,0.000000,0.000000,3540.042110,178.286116,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00009,2025-03,280.38,4430.19,synthetic,280.379834,0.000000,0.000000,0.000000,3011.447660,178.286116,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00009,2025-04,268.42,2940.80,synthetic,268.420357,0.000000,0.000000,0.000000,1939.092058,178.286116,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00009,2025-05,243.59,1683.07,synthetic,243.588373,0.000000,0.000000,0.000000,1033.525065,178.286116,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00009,2025-06,240.48,753.27,synthetic,240.475829,0.000000,0.000000,0.000000,364.065862,178.286116,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00009,2025-07,243.29,425.99,synthetic,243.286860,0.000000,0.000000,0.000000,128.423516,178.286116,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00009,2025-08,233.93,428.65,synthetic,233.926234,0.000000,0.000000,0.000000,130.340835,178.286116,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00009,2025-09,246.17,1539.34,synthetic,246.168534,0.000000,0.000000,0.000000,930.039995,178.286116,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00009,2025-10,267.82,3156.29,synthetic,267.823686,0.000000,0.000000,0.000000,2094.240635,178.286116,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00009,2025-11,277.36,4940.75,synthetic,277.357823,0.000000,0.000000,0.000000,3379.056087,178.286116,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00009,2025-12,303.36,6266.78,synthetic,303.361904,0.000000,0.000000,0.000000,4333.795079,178.286116,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00010,2025-01,306.34,1806.43,synthetic,306.340967,0.000000,0.000000,0.000000,1443.096308,182.693274,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00010,2025-02,289.27,1647.85,synthetic,289.269332,0.000000,0.000000,0.000000,1300.372644,182.693274,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00010,2025-03,281.75,1379.99,synthetic,281.747887,0.000000,0.000000,0.000000,1059.295116,182.693274,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00010,2025-04,253.79,947.29,synthetic,253.794534,0.000000,0.000000,0.000000,669.866439,182.693274,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00010,2025-05,258.53,576.09,synthetic,258.529852,0.000000,0.000000,0.000000,335.790656,182.693274,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00010,2025-06,239.19,341.89,synthetic,239.191915,0.000000,0.000000,0.000000,125.007011,182.693274,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00010,2025-07,243.22,250.14,synthetic,243.222149,0.000000,0.000000,0.000000,42.432012,182.693274,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00010,2025-08,242.54,250.10,synthetic,242.544415,0.000000,0.000000,0.000000,42.399934,182.693274,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00010,2025-09,266.33,557.18,synthetic,266.326885,0.000000,0.000000,0.000000,318.767794,182.693274,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00010,2025-10,273.42,1054.72,synthetic,273.420050,0.000000,0.000000,0.000000,766.555680,182.693274,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00010,2025-11,284.73,1488.62,synthetic,284.727593,0.000000,0.000000,0.000000,1157.065759,182.693274,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P00010,2025-12,311.00,1889.04,synthetic,310.997764,0.000000,0.000000,0.000000,1517.445519,182.693274,synthetic_modelled,generate_energy_usage.py v1; no observed meter record
+P100001,2025-01,148.46,1983.79,synthetic,170.610249,49.222798,22.150259,27.072539,1347.333396,80.997729,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100001,2025-02,106.04,1676.72,synthetic,141.482902,78.756477,35.440415,43.316062,1126.242799,80.997729,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100001,2025-03,80.04,1514.38,synthetic,146.487246,147.668394,66.450777,81.217617,1009.356392,80.997729,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100001,2025-04,44.62,1007.01,synthetic,133.216703,196.891192,88.601036,108.290156,644.046482,80.997729,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100001,2025-05,29.95,575.12,synthetic,140.699724,246.113990,110.751295,135.362695,333.091643,80.997729,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100001,2025-06,13.15,280.44,synthetic,132.763194,265.803109,119.611399,146.191710,120.915520,80.997729,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100001,2025-07,11.75,167.00,synthetic,131.362066,265.803109,119.611399,146.191710,39.245319,80.997729,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100001,2025-08,33.08,171.25,synthetic,134.968941,226.424870,101.891192,124.533678,42.301253,80.997729,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100001,2025-09,62.93,499.55,synthetic,142.673707,177.202073,79.740933,97.461140,278.677639,80.997729,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100001,2025-10,90.81,1056.67,synthetic,148.405419,127.979275,57.590674,70.388601,679.802846,80.997729,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100001,2025-11,127.44,1643.34,synthetic,158.445671,68.911917,31.010363,37.901554,1102.205898,80.997729,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100001,2025-12,140.69,1951.35,synthetic,162.839052,49.222798,22.150259,27.072539,1323.976235,80.997729,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100002,2025-01,268.06,2025.31,synthetic,268.062725,0.000000,0.000000,0.000000,1687.582930,135.195117,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100002,2025-02,243.51,1821.07,synthetic,243.513047,0.000000,0.000000,0.000000,1503.770477,135.195117,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100002,2025-03,248.06,1549.36,synthetic,248.057915,0.000000,0.000000,0.000000,1259.227130,135.195117,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100002,2025-04,246.97,1059.78,synthetic,246.970723,0.000000,0.000000,0.000000,818.605839,135.195117,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100002,2025-05,224.56,594.51,synthetic,224.557523,0.000000,0.000000,0.000000,399.861392,135.195117,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100002,2025-06,212.16,323.55,synthetic,212.155311,0.000000,0.000000,0.000000,155.997030,135.195117,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100002,2025-07,230.47,210.00,synthetic,230.471260,0.000000,0.000000,0.000000,53.807050,135.195117,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100002,2025-08,217.23,209.26,synthetic,217.226697,0.000000,0.000000,0.000000,53.140628,135.195117,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100002,2025-09,244.60,557.97,synthetic,244.603940,0.000000,0.000000,0.000000,366.979939,135.195117,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100002,2025-10,258.76,1133.65,synthetic,258.755088,0.000000,0.000000,0.000000,885.092410,135.195117,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100002,2025-11,256.98,1639.50,synthetic,256.980981,0.000000,0.000000,0.000000,1340.355418,135.195117,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100002,2025-12,284.97,2102.64,synthetic,284.974294,0.000000,0.000000,0.000000,1757.177524,135.195117,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100003,2025-01,219.47,1220.80,synthetic,219.466541,0.000000,0.000000,0.000000,994.456707,104.265690,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100003,2025-02,195.75,990.29,synthetic,195.754992,0.000000,0.000000,0.000000,786.996063,104.265690,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100003,2025-03,192.15,861.60,synthetic,192.149514,0.000000,0.000000,0.000000,671.177684,104.265690,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100003,2025-04,181.27,642.74,synthetic,181.272158,0.000000,0.000000,0.000000,474.202622,104.265690,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100003,2025-05,183.35,376.03,synthetic,183.351590,0.000000,0.000000,0.000000,234.160977,104.265690,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100003,2025-06,160.78,211.91,synthetic,160.780588,0.000000,0.000000,0.000000,86.449781,104.265690,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100003,2025-07,170.14,146.79,synthetic,170.140732,0.000000,0.000000,0.000000,27.843566,104.265690,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100003,2025-08,166.86,147.15,synthetic,166.860556,0.000000,0.000000,0.000000,28.168753,104.265690,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100003,2025-09,175.70,345.91,synthetic,175.701597,0.000000,0.000000,0.000000,207.053449,104.265690,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100003,2025-10,200.34,628.64,synthetic,200.343955,0.000000,0.000000,0.000000,461.513867,104.265690,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100003,2025-11,200.30,901.28,synthetic,200.301569,0.000000,0.000000,0.000000,706.886807,104.265690,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100003,2025-12,217.57,1151.22,synthetic,217.569663,0.000000,0.000000,0.000000,931.835097,104.265690,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100004,2025-01,197.53,822.13,synthetic,197.525780,0.000000,0.000000,0.000000,639.977648,99.935484,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100004,2025-02,192.52,706.82,synthetic,192.516672,0.000000,0.000000,0.000000,536.205871,99.935484,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100004,2025-03,181.79,611.83,synthetic,181.792254,0.000000,0.000000,0.000000,450.711283,99.935484,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100004,2025-04,173.96,433.71,synthetic,173.955680,0.000000,0.000000,0.000000,290.402847,99.935484,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100004,2025-05,178.18,277.06,synthetic,178.176559,0.000000,0.000000,0.000000,149.417922,99.935484,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100004,2025-06,158.36,172.19,synthetic,158.363696,0.000000,0.000000,0.000000,55.037542,99.935484,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100004,2025-07,165.79,131.01,synthetic,165.787874,0.000000,0.000000,0.000000,17.970514,99.935484,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100004,2025-08,161.15,132.44,synthetic,161.145985,0.000000,0.000000,0.000000,19.263657,99.935484,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100004,2025-09,179.93,250.53,synthetic,179.926051,0.000000,0.000000,0.000000,125.540227,99.935484,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100004,2025-10,182.70,458.24,synthetic,182.697665,0.000000,0.000000,0.000000,312.482173,99.935484,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100004,2025-11,188.63,654.73,synthetic,188.625273,0.000000,0.000000,0.000000,489.319296,99.935484,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100004,2025-12,209.17,808.46,synthetic,209.167640,0.000000,0.000000,0.000000,627.679918,99.935484,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100005,2025-01,241.30,822.75,synthetic,241.299983,0.000000,0.000000,0.000000,628.889669,111.584510,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100005,2025-02,201.80,758.10,synthetic,201.798723,0.000000,0.000000,0.000000,570.701246,111.584510,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100005,2025-03,203.44,625.31,synthetic,203.441930,0.000000,0.000000,0.000000,451.197799,111.584510,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100005,2025-04,185.95,468.61,synthetic,185.954184,0.000000,0.000000,0.000000,310.162285,111.584510,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100005,2025-05,195.39,293.60,synthetic,195.385052,0.000000,0.000000,0.000000,152.654418,111.584510,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100005,2025-06,183.41,185.78,synthetic,183.405812,0.000000,0.000000,0.000000,55.617238,111.584510,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100005,2025-07,174.82,144.56,synthetic,174.818153,0.000000,0.000000,0.000000,18.516998,111.584510,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100005,2025-08,185.44,144.87,synthetic,185.441134,0.000000,0.000000,0.000000,18.797179,111.584510,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100005,2025-09,204.60,281.23,synthetic,204.601304,0.000000,0.000000,0.000000,141.523755,111.584510,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100005,2025-10,200.43,493.69,synthetic,200.428206,0.000000,0.000000,0.000000,332.740615,111.584510,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100005,2025-11,213.76,657.95,synthetic,213.755033,0.000000,0.000000,0.000000,480.573796,111.584510,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100005,2025-12,222.54,818.70,synthetic,222.537942,0.000000,0.000000,0.000000,625.245811,111.584510,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100006,2025-01,217.74,1469.83,synthetic,217.736593,0.000000,0.000000,0.000000,1218.284416,104.559637,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100006,2025-02,199.51,1260.06,synthetic,199.508438,0.000000,0.000000,0.000000,1029.497870,104.559637,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100006,2025-03,182.22,1003.09,synthetic,182.218766,0.000000,0.000000,0.000000,798.218595,104.559637,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100006,2025-04,175.48,703.72,synthetic,175.483878,0.000000,0.000000,0.000000,528.788461,104.559637,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100006,2025-05,188.49,414.72,synthetic,188.494519,0.000000,0.000000,0.000000,268.692810,104.559637,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100006,2025-06,174.19,229.92,synthetic,174.192036,0.000000,0.000000,0.000000,102.369327,104.559637,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100006,2025-07,167.92,153.02,synthetic,167.924912,0.000000,0.000000,0.000000,33.162064,104.559637,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100006,2025-08,166.04,156.38,synthetic,166.035889,0.000000,0.000000,0.000000,36.180372,104.559637,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100006,2025-09,173.71,377.06,synthetic,173.708206,0.000000,0.000000,0.000000,234.791636,104.559637,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100006,2025-10,188.34,746.80,synthetic,188.339501,0.000000,0.000000,0.000000,567.564599,104.559637,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100006,2025-11,204.22,1128.90,synthetic,204.215102,0.000000,0.000000,0.000000,911.447853,104.559637,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100006,2025-12,217.88,1437.05,synthetic,217.882172,0.000000,0.000000,0.000000,1188.789813,104.559637,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100007,2025-01,214.92,1179.49,synthetic,214.916448,0.000000,0.000000,0.000000,954.744047,106.801136,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100007,2025-02,204.31,991.92,synthetic,204.308956,0.000000,0.000000,0.000000,785.926919,106.801136,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100007,2025-03,195.52,867.10,synthetic,195.521926,0.000000,0.000000,0.000000,673.586404,106.801136,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100007,2025-04,185.92,609.96,synthetic,185.918344,0.000000,0.000000,0.000000,442.163907,106.801136,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100007,2025-05,187.55,365.60,synthetic,187.552171,0.000000,0.000000,0.000000,222.238701,106.801136,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100007,2025-06,179.30,208.90,synthetic,179.301298,0.000000,0.000000,0.000000,81.210192,106.801136,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100007,2025-07,168.93,150.68,synthetic,168.931104,0.000000,0.000000,0.000000,28.809725,106.801136,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100007,2025-08,176.24,150.94,synthetic,176.236446,0.000000,0.000000,0.000000,29.046949,106.801136,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100007,2025-09,190.10,328.87,synthetic,190.100808,0.000000,0.000000,0.000000,189.180966,106.801136,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100007,2025-10,194.93,649.38,synthetic,194.930398,0.000000,0.000000,0.000000,477.640782,106.801136,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100007,2025-11,216.72,952.21,synthetic,216.720680,0.000000,0.000000,0.000000,750.188179,106.801136,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100007,2025-12,229.24,1179.19,synthetic,229.243500,0.000000,0.000000,0.000000,954.467534,106.801136,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100008,2025-01,299.61,1680.17,synthetic,299.612171,0.000000,0.000000,0.000000,1066.548518,143.173547,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100008,2025-02,266.68,1513.92,synthetic,266.678629,0.000000,0.000000,0.000000,946.851770,143.173547,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100008,2025-03,259.14,1219.51,synthetic,259.141980,0.000000,0.000000,0.000000,734.875431,143.173547,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100008,2025-04,251.86,859.42,synthetic,251.861743,0.000000,0.000000,0.000000,475.607438,143.173547,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100008,2025-05,255.41,535.78,synthetic,255.412721,0.000000,0.000000,0.000000,242.590583,143.173547,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100008,2025-06,222.75,326.30,synthetic,222.749083,0.000000,0.000000,0.000000,91.761366,143.173547,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100008,2025-07,223.89,243.73,synthetic,223.893476,0.000000,0.000000,0.000000,32.311577,143.173547,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100008,2025-08,228.58,244.15,synthetic,228.581167,0.000000,0.000000,0.000000,32.614356,143.173547,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100008,2025-09,258.74,515.03,synthetic,258.738874,0.000000,0.000000,0.000000,227.647826,143.173547,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100008,2025-10,273.11,951.08,synthetic,273.114620,0.000000,0.000000,0.000000,541.601609,143.173547,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100008,2025-11,272.63,1368.94,synthetic,272.634193,0.000000,0.000000,0.000000,842.460784,143.173547,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100008,2025-12,283.17,1617.64,synthetic,283.172122,0.000000,0.000000,0.000000,1021.526077,143.173547,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100009,2025-01,159.09,1504.04,synthetic,159.089342,0.000000,0.000000,0.000000,1001.067488,81.839964,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100009,2025-02,152.68,1287.75,synthetic,152.675734,0.000000,0.000000,0.000000,845.336546,81.839964,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100009,2025-03,154.85,1007.64,synthetic,154.850895,0.000000,0.000000,0.000000,643.660187,81.839964,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100009,2025-04,142.39,724.74,synthetic,142.385173,0.000000,0.000000,0.000000,439.974060,81.839964,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100009,2025-05,142.17,421.69,synthetic,142.170196,0.000000,0.000000,0.000000,221.775034,81.839964,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100009,2025-06,126.64,234.75,synthetic,126.638295,0.000000,0.000000,0.000000,87.179720,81.839964,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100009,2025-07,125.63,154.69,synthetic,125.629028,0.000000,0.000000,0.000000,29.537608,81.839964,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100009,2025-08,135.66,153.31,synthetic,135.659570,0.000000,0.000000,0.000000,28.539792,81.839964,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100009,2025-09,144.86,386.26,synthetic,144.857843,0.000000,0.000000,0.000000,196.265545,81.839964,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100009,2025-10,148.56,775.67,synthetic,148.561824,0.000000,0.000000,0.000000,476.642363,81.839964,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100009,2025-11,150.26,1098.41,synthetic,150.259221,0.000000,0.000000,0.000000,709.017955,81.839964,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100009,2025-12,167.99,1397.61,synthetic,167.991394,0.000000,0.000000,0.000000,924.441984,81.839964,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100010,2025-01,267.02,1240.99,synthetic,267.022749,0.000000,0.000000,0.000000,985.196568,131.692226,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100010,2025-02,245.95,1109.84,synthetic,245.948631,0.000000,0.000000,0.000000,867.164754,131.692226,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100010,2025-03,235.04,905.94,synthetic,235.044537,0.000000,0.000000,0.000000,683.654246,131.692226,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100010,2025-04,228.18,665.31,synthetic,228.179955,0.000000,0.000000,0.000000,467.087598,131.692226,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100010,2025-05,227.16,390.02,synthetic,227.162328,0.000000,0.000000,0.000000,219.324855,131.692226,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100010,2025-06,211.84,239.83,synthetic,211.841517,0.000000,0.000000,0.000000,84.158073,131.692226,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100010,2025-07,218.54,177.91,synthetic,218.538479,0.000000,0.000000,0.000000,28.424818,131.692226,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100010,2025-08,221.04,176.68,synthetic,221.038335,0.000000,0.000000,0.000000,27.316189,131.692226,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100010,2025-09,226.05,358.72,synthetic,226.046942,0.000000,0.000000,0.000000,191.152635,131.692226,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100010,2025-10,237.65,701.17,synthetic,237.651568,0.000000,0.000000,0.000000,499.363180,131.692226,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100010,2025-11,263.25,988.78,synthetic,263.248437,0.000000,0.000000,0.000000,758.212208,131.692226,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100010,2025-12,268.28,1177.97,synthetic,268.279000,0.000000,0.000000,0.000000,928.477015,131.692226,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100011,2025-01,256.10,2530.38,synthetic,256.096799,0.000000,0.000000,0.000000,2149.599063,127.740670,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100011,2025-02,226.42,2212.71,synthetic,226.418867,0.000000,0.000000,0.000000,1863.696033,127.740670,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100011,2025-03,239.97,1925.42,synthetic,239.974101,0.000000,0.000000,0.000000,1605.134586,127.740670,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100011,2025-04,229.74,1285.07,synthetic,229.735492,0.000000,0.000000,0.000000,1028.818746,127.740670,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100011,2025-05,230.50,749.42,synthetic,230.503186,0.000000,0.000000,0.000000,546.733192,127.740670,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100011,2025-06,213.37,365.25,synthetic,213.370049,0.000000,0.000000,0.000000,200.987138,127.740670,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100011,2025-07,204.30,212.64,synthetic,204.302736,0.000000,0.000000,0.000000,63.637050,127.740670,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100011,2025-08,216.95,216.40,synthetic,216.950261,0.000000,0.000000,0.000000,67.020734,127.740670,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100011,2025-09,229.53,679.18,synthetic,229.528406,0.000000,0.000000,0.000000,483.520516,127.740670,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100011,2025-10,247.24,1446.37,synthetic,247.240339,0.000000,0.000000,0.000000,1173.989104,127.740670,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100011,2025-11,255.64,2111.69,synthetic,255.642219,0.000000,0.000000,0.000000,1772.778004,127.740670,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100011,2025-12,277.28,2523.04,synthetic,277.283648,0.000000,0.000000,0.000000,2142.991687,127.740670,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100012,2025-01,148.25,655.23,synthetic,148.247937,0.000000,0.000000,0.000000,515.550778,74.156142,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100012,2025-02,129.37,584.30,synthetic,129.367405,0.000000,0.000000,0.000000,451.709514,74.156142,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100012,2025-03,136.12,468.93,synthetic,136.122655,0.000000,0.000000,0.000000,347.877575,74.156142,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100012,2025-04,129.97,354.89,synthetic,129.966713,0.000000,0.000000,0.000000,245.244390,74.156142,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100012,2025-05,125.37,215.90,synthetic,125.366533,0.000000,0.000000,0.000000,120.156159,74.156142,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100012,2025-06,118.20,134.04,synthetic,118.204420,0.000000,0.000000,0.000000,46.482961,74.156142,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100012,2025-07,116.32,98.99,synthetic,116.315416,0.000000,0.000000,0.000000,14.935323,74.156142,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100012,2025-08,118.49,99.58,synthetic,118.485384,0.000000,0.000000,0.000000,15.464149,74.156142,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100012,2025-09,122.52,201.03,synthetic,122.524278,0.000000,0.000000,0.000000,106.773504,74.156142,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100012,2025-10,138.16,377.05,synthetic,138.155519,0.000000,0.000000,0.000000,265.193015,74.156142,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100012,2025-11,143.18,505.61,synthetic,143.184993,0.000000,0.000000,0.000000,380.896775,74.156142,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100012,2025-12,150.66,626.20,synthetic,150.664437,0.000000,0.000000,0.000000,489.420680,74.156142,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100013,2025-01,216.41,1724.49,synthetic,216.412404,0.000000,0.000000,0.000000,1453.362682,98.680362,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100013,2025-02,178.06,1525.23,synthetic,178.056848,0.000000,0.000000,0.000000,1274.028609,98.680362,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100013,2025-03,182.25,1212.64,synthetic,182.247713,0.000000,0.000000,0.000000,992.695308,98.680362,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100013,2025-04,166.40,897.48,synthetic,166.395740,0.000000,0.000000,0.000000,709.049354,98.680362,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100013,2025-05,169.65,496.26,synthetic,169.651130,0.000000,0.000000,0.000000,347.956642,98.680362,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100013,2025-06,155.38,251.52,synthetic,155.380126,0.000000,0.000000,0.000000,127.687860,98.680362,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100013,2025-07,165.31,156.15,synthetic,165.311991,0.000000,0.000000,0.000000,41.850654,98.680362,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100013,2025-08,160.21,154.70,synthetic,160.213926,0.000000,0.000000,0.000000,40.546275,98.680362,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100013,2025-09,181.54,445.84,synthetic,181.536523,0.000000,0.000000,0.000000,302.576705,98.680362,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100013,2025-10,189.96,925.56,synthetic,189.964176,0.000000,0.000000,0.000000,734.320406,98.680362,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100013,2025-11,186.53,1367.22,synthetic,186.526690,0.000000,0.000000,0.000000,1131.821409,98.680362,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100013,2025-12,209.54,1641.30,synthetic,209.537457,0.000000,0.000000,0.000000,1378.491608,98.680362,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100014,2025-01,310.27,2041.32,synthetic,310.270329,0.000000,0.000000,0.000000,1693.673969,143.516628,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100014,2025-02,260.25,1741.95,synthetic,260.253919,0.000000,0.000000,0.000000,1424.242200,143.516628,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100014,2025-03,265.79,1479.16,synthetic,265.786205,0.000000,0.000000,0.000000,1187.731647,143.516628,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100014,2025-04,248.74,1110.70,synthetic,248.740192,0.000000,0.000000,0.000000,856.110168,143.516628,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100014,2025-05,254.74,632.27,synthetic,254.737611,0.000000,0.000000,0.000000,425.525213,143.516628,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100014,2025-06,248.79,338.08,synthetic,248.785663,0.000000,0.000000,0.000000,160.752829,143.516628,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100014,2025-07,239.98,218.48,synthetic,239.979610,0.000000,0.000000,0.000000,53.117713,143.516628,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100014,2025-08,233.74,216.39,synthetic,233.740432,0.000000,0.000000,0.000000,51.237837,143.516628,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100014,2025-09,247.98,558.00,synthetic,247.983643,0.000000,0.000000,0.000000,358.684395,143.516628,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100014,2025-10,264.11,1118.59,synthetic,264.109268,0.000000,0.000000,0.000000,863.212266,143.516628,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100014,2025-11,293.40,1696.51,synthetic,293.395610,0.000000,0.000000,0.000000,1383.345233,143.516628,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100014,2025-12,300.39,2193.18,synthetic,300.389466,0.000000,0.000000,0.000000,1830.346953,143.516628,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100015,2025-01,274.21,2056.71,synthetic,274.213196,0.000000,0.000000,0.000000,1724.940339,126.101704,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100015,2025-02,226.27,1818.17,synthetic,226.273051,0.000000,0.000000,0.000000,1510.253723,126.101704,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100015,2025-03,235.44,1472.93,synthetic,235.437849,0.000000,0.000000,0.000000,1199.534300,126.101704,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100015,2025-04,220.97,1105.38,synthetic,220.965565,0.000000,0.000000,0.000000,868.741440,126.101704,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100015,2025-05,233.25,601.59,synthetic,233.247049,0.000000,0.000000,0.000000,415.325617,126.101704,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100015,2025-06,215.20,309.34,synthetic,215.202759,0.000000,0.000000,0.000000,152.303909,126.101704,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100015,2025-07,206.56,196.58,synthetic,206.564480,0.000000,0.000000,0.000000,50.817742,126.101704,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100015,2025-08,205.03,198.69,synthetic,205.031882,0.000000,0.000000,0.000000,52.720839,126.101704,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100015,2025-09,215.37,555.99,synthetic,215.371723,0.000000,0.000000,0.000000,374.285265,126.101704,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100015,2025-10,226.44,1127.41,synthetic,226.441776,0.000000,0.000000,0.000000,888.565231,126.101704,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100015,2025-11,256.28,1713.06,synthetic,256.281824,0.000000,0.000000,0.000000,1415.656007,126.101704,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100015,2025-12,254.39,2021.06,synthetic,254.387167,0.000000,0.000000,0.000000,1692.856445,126.101704,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100016,2025-01,327.31,1991.86,synthetic,327.305391,0.000000,0.000000,0.000000,1642.327830,150.350340,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100016,2025-02,293.41,1814.22,synthetic,293.408382,0.000000,0.000000,0.000000,1482.444941,150.350340,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100016,2025-03,285.48,1471.90,synthetic,285.477066,0.000000,0.000000,0.000000,1174.362081,150.350340,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100016,2025-04,270.01,1066.88,synthetic,270.007413,0.000000,0.000000,0.000000,809.840945,150.350340,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100016,2025-05,253.02,599.11,synthetic,253.017740,0.000000,0.000000,0.000000,388.845597,150.350340,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100016,2025-06,240.64,326.88,synthetic,240.637497,0.000000,0.000000,0.000000,143.838592,150.350340,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100016,2025-07,251.61,223.32,synthetic,251.607158,0.000000,0.000000,0.000000,50.640524,150.350340,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100016,2025-08,238.62,220.86,synthetic,238.615656,0.000000,0.000000,0.000000,48.421034,150.350340,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100016,2025-09,251.81,550.67,synthetic,251.809792,0.000000,0.000000,0.000000,345.251980,150.350340,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100016,2025-10,274.91,1096.87,synthetic,274.910889,0.000000,0.000000,0.000000,836.834108,150.350340,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100016,2025-11,310.94,1545.34,synthetic,310.935962,0.000000,0.000000,0.000000,1240.458222,150.350340,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100016,2025-12,305.47,2020.49,synthetic,305.467372,0.000000,0.000000,0.000000,1668.090974,150.350340,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100017,2025-01,155.65,815.90,synthetic,155.652751,0.000000,0.000000,0.000000,661.391140,72.917941,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100017,2025-02,127.35,691.60,synthetic,127.349857,0.000000,0.000000,0.000000,549.524893,72.917941,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100017,2025-03,129.54,603.18,synthetic,129.539509,0.000000,0.000000,0.000000,469.947485,72.917941,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100017,2025-04,129.07,407.86,synthetic,129.070410,0.000000,0.000000,0.000000,294.154177,72.917941,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100017,2025-05,119.88,245.31,synthetic,119.880881,0.000000,0.000000,0.000000,147.863222,72.917941,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100017,2025-06,112.33,147.46,synthetic,112.326063,0.000000,0.000000,0.000000,59.795712,72.917941,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100017,2025-07,123.37,102.97,synthetic,123.371628,0.000000,0.000000,0.000000,19.757959,72.917941,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100017,2025-08,121.86,101.16,synthetic,121.864276,0.000000,0.000000,0.000000,18.122971,72.917941,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100017,2025-09,122.15,228.77,synthetic,122.152624,0.000000,0.000000,0.000000,132.975190,72.917941,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100017,2025-10,127.62,441.51,synthetic,127.617398,0.000000,0.000000,0.000000,324.437122,72.917941,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100017,2025-11,137.76,632.49,synthetic,137.756432,0.000000,0.000000,0.000000,496.327133,72.917941,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100017,2025-12,154.25,767.57,synthetic,154.249004,0.000000,0.000000,0.000000,617.894864,72.917941,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100018,2025-01,291.53,3735.94,synthetic,291.526440,0.000000,0.000000,0.000000,2545.520467,144.355480,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100018,2025-02,267.24,3154.37,synthetic,267.242981,0.000000,0.000000,0.000000,2126.793055,144.355480,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100018,2025-03,265.47,2483.63,synthetic,265.474373,0.000000,0.000000,0.000000,1643.857973,144.355480,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100018,2025-04,254.92,1791.30,synthetic,254.916595,0.000000,0.000000,0.000000,1145.383943,144.355480,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100018,2025-05,241.63,1018.80,synthetic,241.630566,0.000000,0.000000,0.000000,589.179646,144.355480,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100018,2025-06,235.26,506.65,synthetic,235.260975,0.000000,0.000000,0.000000,220.435971,144.355480,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100018,2025-07,238.34,297.09,synthetic,238.336601,0.000000,0.000000,0.000000,69.546538,144.355480,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100018,2025-08,245.85,302.81,synthetic,245.846264,0.000000,0.000000,0.000000,73.668304,144.355480,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100018,2025-09,247.50,879.60,synthetic,247.495436,0.000000,0.000000,0.000000,488.957675,144.355480,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100018,2025-10,272.84,1936.91,synthetic,272.842847,0.000000,0.000000,0.000000,1250.218342,144.355480,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100018,2025-11,295.57,2871.94,synthetic,295.573639,0.000000,0.000000,0.000000,1923.438485,144.355480,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100018,2025-12,302.53,3602.35,synthetic,302.528280,0.000000,0.000000,0.000000,2449.337893,144.355480,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100019,2025-01,1520.24,0.00,synthetic,1520.238312,0.000000,0.000000,0.000000,3402.245565,158.039090,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100019,2025-02,1350.10,0.00,synthetic,1350.096549,0.000000,0.000000,0.000000,2987.126489,158.039090,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100019,2025-03,1201.26,0.00,synthetic,1201.261190,0.000000,0.000000,0.000000,2537.356992,158.039090,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100019,2025-04,895.03,0.00,synthetic,895.029936,0.000000,0.000000,0.000000,1680.677446,158.039090,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100019,2025-05,612.29,0.00,synthetic,612.288712,0.000000,0.000000,0.000000,799.252414,158.039090,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100019,2025-06,422.31,0.00,synthetic,422.305317,0.000000,0.000000,0.000000,295.422706,158.039090,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100019,2025-07,364.25,0.00,synthetic,364.254745,0.000000,0.000000,0.000000,103.394479,158.039090,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100019,2025-08,371.58,0.00,synthetic,371.577659,0.000000,0.000000,0.000000,100.852189,158.039090,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100019,2025-09,603.62,0.00,synthetic,603.616588,0.000000,0.000000,0.000000,732.018748,158.039090,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100019,2025-10,909.04,0.00,synthetic,909.044553,0.000000,0.000000,0.000000,1635.370447,158.039090,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100019,2025-11,1205.26,0.00,synthetic,1205.258984,0.000000,0.000000,0.000000,2510.480783,158.039090,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100019,2025-12,1542.88,0.00,synthetic,1542.877330,0.000000,0.000000,0.000000,3474.221466,158.039090,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100020,2025-01,154.18,1429.73,synthetic,154.182574,0.000000,0.000000,0.000000,949.748342,79.654441,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100020,2025-02,138.55,1220.52,synthetic,138.553818,0.000000,0.000000,0.000000,799.122519,79.654441,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100020,2025-03,143.06,1037.55,synthetic,143.064768,0.000000,0.000000,0.000000,667.384934,79.654441,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100020,2025-04,132.16,725.80,synthetic,132.163620,0.000000,0.000000,0.000000,442.924927,79.654441,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100020,2025-05,140.19,437.07,synthetic,140.192841,0.000000,0.000000,0.000000,235.033072,79.654441,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100020,2025-06,124.83,234.40,synthetic,124.827954,0.000000,0.000000,0.000000,89.112919,79.654441,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100020,2025-07,133.66,148.38,synthetic,133.655351,0.000000,0.000000,0.000000,27.178170,79.654441,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100020,2025-08,134.12,150.44,synthetic,134.117745,0.000000,0.000000,0.000000,28.663049,79.654441,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100020,2025-09,134.86,396.15,synthetic,134.859787,0.000000,0.000000,0.000000,205.570814,79.654441,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100020,2025-10,152.14,751.40,synthetic,152.136015,0.000000,0.000000,0.000000,461.356148,79.654441,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100020,2025-11,151.71,1124.94,synthetic,151.709186,0.000000,0.000000,0.000000,730.300030,79.654441,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"
+P100020,2025-12,155.69,1478.67,synthetic,155.685676,0.000000,0.000000,0.000000,984.987686,79.654441,synthetic_modelled,"simulate_london.py v3; London NEED-2024 anchored synthetic scenario, not observed"

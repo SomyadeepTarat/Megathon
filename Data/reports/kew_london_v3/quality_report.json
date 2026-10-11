@@ -1,0 +1,176 @@
+{
+  "categories": {
+    "data_status": {
+      "synthetic": 2000
+    },
+    "energy_rating": {
+      "A": 18,
+      "B": 152,
+      "C": 1117,
+      "D": 601,
+      "E": 84,
+      "F": 19,
+      "G": 9
+    },
+    "glazing": {
+      "Double": 1542,
+      "Single": 349,
+      "Triple": 109
+    },
+    "heating": {
+      "Electric resistance": 64,
+      "Heat pump": 49,
+      "Modern gas boiler": 1301,
+      "Old gas boiler": 586
+    },
+    "insulation": {
+      "Average": 739,
+      "Good": 567,
+      "Poor": 694
+    },
+    "physical_inputs_status": {
+      "synthetic_modelled": 2000
+    },
+    "property_type": {
+      "Detached": 137,
+      "Flat": 1015,
+      "Semi-detached": 374,
+      "Terraced": 474
+    },
+    "region": {
+      "East Midlands": 10,
+      "East of England": 10,
+      "Greater London": 1910,
+      "North East": 10,
+      "North West": 10,
+      "South East": 10,
+      "South West": 10,
+      "Wales": 10,
+      "West Midlands": 10,
+      "Yorkshire and The Humber": 10
+    }
+  },
+  "energy_columns": 13,
+  "errors": [],
+  "joins": {
+    "duplicate_month_keys": 0,
+    "duplicate_property_ids": 0,
+    "key": "property_id; monthly uniqueness is property_id + month",
+    "observed_external_joins": 0,
+    "properties_without_meters": [],
+    "unmatched_meter_ids": []
+  },
+  "limitations": [
+    "All property and meter rows are synthetic; value labels are not observed sale prices.",
+    "Four compatibility fields are unknown, not false; blank performance fields are not applicable.",
+    "No UPRNs, EPC dates, transactions, tariffs, costs or surveyed eligibility available in this schema.",
+    "Inherited source rows reference missing Data/relations/P3_HANDOFF.md; retained without inventing evidence.",
+    "2026 emission factors with 2025 energy are a scenario assumption, not a historical 2025 emissions estimate."
+  ],
+  "meter_missing_cells": {},
+  "missing_cells": {
+    "boiler_efficiency": 113,
+    "controls_compatible": 2000,
+    "electric_resistance_efficiency": 1936,
+    "heat_pump_compatible": 2000,
+    "hot_water_cop": 1951,
+    "roof_suitable_for_loft": 2000,
+    "roof_suitable_for_solar": 2000,
+    "scop": 1951
+  },
+  "monthly_readings": 24000,
+  "numeric_ranges": {
+    "age": {
+      "max": 176.0,
+      "median": 79.0,
+      "min": 1.0
+    },
+    "annual_electricity_demand_kwh": {
+      "max": 34569.992087,
+      "median": 2490.2212445,
+      "min": 1236.924731
+    },
+    "bedrooms": {
+      "max": 6.0,
+      "median": 2.0,
+      "min": 1.0
+    },
+    "current_value_estimate_gbp": {
+      "max": 3837000.0,
+      "median": 440000.0,
+      "min": 101000.0
+    },
+    "floor_area_m2": {
+      "max": 230.9,
+      "median": 73.4,
+      "min": 26.2
+    },
+    "thermal_demand_kwh": {
+      "max": 43124.985509,
+      "median": 9021.253618,
+      "min": 2442.394284
+    }
+  },
+  "original_records_preserved": true,
+  "outlier_review": {
+    "property_ids": [],
+    "rule": "Engineering QA flags only; no clipping or empirical market claim."
+  },
+  "period": {
+    "alignment": "Scenario assumes equipment unchanged during 2025; source age is approximately one year newer. No observed snapshot date.",
+    "energy_year": 2025,
+    "property_snapshot_date": null,
+    "transaction_dates": null
+  },
+  "properties": 2000,
+  "property_columns": 51,
+  "reference_comparison": {
+    "epc_certificate_mean_area_m2": 78.7467017006556,
+    "interpretation": "Historical aggregates guide marginal simulation; joint distributions and current household/market realism are unvalidated.",
+    "new_epc_mix": {
+      "A": 1,
+      "B": 140,
+      "C": 1096,
+      "D": 577,
+      "E": 67,
+      "F": 13,
+      "G": 6
+    },
+    "new_gas_heated_median_kwh": 10787.22,
+    "new_london_properties": 1900,
+    "new_mean_floor_area_m2": 78.9308947368421,
+    "new_median_grid_kwh": 2463.6,
+    "new_type_mix": {
+      "Detached": 115,
+      "Flat": 992,
+      "Semi-detached": 346,
+      "Terraced": 447
+    },
+    "reference_need": {
+      "electricity": {
+        "columns": "H sample, V mean, AJ median",
+        "mean_kwh": 3290.206066128264,
+        "median_kwh": 2466.300000126385,
+        "row": 27,
+        "sample_dwellings": 3036334,
+        "sheet": "Table_16"
+      },
+      "gas": {
+        "columns": "H sample, V mean, AJ median",
+        "mean_kwh": 12278.39612060083,
+        "median_kwh": 10817.37253845012,
+        "row": 27,
+        "sample_dwellings": 2156202,
+        "sheet": "Table_15"
+      }
+    }
+  },
+  "split_counts": {
+    "calibration": 381,
+    "fit": 803,
+    "legacy_diagnostic": 100,
+    "selection": 334,
+    "test": 382
+  },
+  "split_policy": "Legacy 100 diagnostic only; independent fresh customer IDs with 40/20/20/20 hash assignment. Public pilot parameters frozen before model evaluation."
+}

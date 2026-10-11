@@ -1,0 +1,22 @@
+{
+  "appliance_scale": 1.2586991921489243,
+  "epc_score_cutoffs_ascending": [
+    14.23738840667911,
+    18.552211309749115,
+    28.00403955365365,
+    50.91803914875045,
+    86.34598973148147,
+    104.08834771292713
+  ],
+  "frozen_from": "public aggregates + independently seeded pilot; no valuation error/holdout feedback",
+  "heat_scale": 1.9030779568522123,
+  "pilot_count": 3000,
+  "pilot_namespace": "PILOT only; disjoint from all labelled evaluation rows",
+  "price_intercepts_by_type": {
+    "Detached": 0.7601471065383097,
+    "Flat": 0.9971349793732286,
+    "Semi-detached": 0.7228324285074288,
+    "Terraced": 0.8474605284247946
+  },
+  "residual_log_price_sigma": 0.18
+}

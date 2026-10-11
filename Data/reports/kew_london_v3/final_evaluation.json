@@ -1,0 +1,21 @@
+{
+  "configuration": {
+    "absolute_radius": 436896.80078227795,
+    "features": [
+      "floor_area",
+      "bedrooms",
+      "age",
+      "region",
+      "property_type"
+    ],
+    "relative_radius": 0.6264634997582638,
+    "selected_model": "ridge",
+    "source_sha256": {
+      "evaluator.py": "4e81cf3cf5dee84ca3283d9adeeec2d9b3aa6fa0c2c0641121cbd07c24263d04",
+      "properties.csv": "99947ef2c4a4c9f11b0029887876e4507762e4361c3fa6236112dcc8abcd3214",
+      "split_manifest.csv": "397702992dbba5900121ab78b91f50222ee451848c6421e0b7db675a40b671f3"
+    }
+  },
+  "configuration_sha256": "e76adeb42024a8138f854757789cdae60b84c2e778caa9d475badfd3c4e37394",
+  "test_status": "evaluated once after freezing model and intervals; now exposed, do not tune"
+}

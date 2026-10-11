@@ -1,0 +1,325 @@
+{
+  "age_bands": [
+    [
+      1850,
+      1918,
+      0.276
+    ],
+    [
+      1919,
+      1944,
+      0.223
+    ],
+    [
+      1945,
+      1964,
+      0.128
+    ],
+    [
+      1965,
+      1980,
+      0.146
+    ],
+    [
+      1981,
+      1990,
+      0.029
+    ],
+    [
+      1991,
+      2002,
+      0.078
+    ],
+    [
+      2003,
+      2021,
+      0.12
+    ]
+  ],
+  "borough_type_prices_gbp": {
+    "Barking and Dagenham": {
+      "Detached": 664346.0,
+      "Flat": 251856.0,
+      "Semi-detached": 494567.0,
+      "Terraced": 409511.0
+    },
+    "Barnet": {
+      "Detached": 1610998.0,
+      "Flat": 372014.0,
+      "Semi-detached": 850442.0,
+      "Terraced": 634437.0
+    },
+    "Bexley": {
+      "Detached": 736523.0,
+      "Flat": 244998.0,
+      "Semi-detached": 534337.0,
+      "Terraced": 416198.0
+    },
+    "Brent": {
+      "Detached": 1326037.0,
+      "Flat": 378992.0,
+      "Semi-detached": 829853.0,
+      "Terraced": 700019.0
+    },
+    "Bromley": {
+      "Detached": 1067151.0,
+      "Flat": 302447.0,
+      "Semi-detached": 652925.0,
+      "Terraced": 483699.0
+    },
+    "Camden": {
+      "Detached": 3645110.0,
+      "Flat": 671443.0,
+      "Semi-detached": 2117585.0,
+      "Terraced": 1554868.0
+    },
+    "City of London": {
+      "Flat": 709939.0
+    },
+    "City of Westminster": {
+      "Detached": 3892403.0,
+      "Flat": 775956.0,
+      "Semi-detached": 2760923.0,
+      "Terraced": 1616250.0
+    },
+    "Croydon": {
+      "Detached": 837514.0,
+      "Flat": 253660.0,
+      "Semi-detached": 535706.0,
+      "Terraced": 396579.0
+    },
+    "Ealing": {
+      "Detached": 1411890.0,
+      "Flat": 407789.0,
+      "Semi-detached": 887458.0,
+      "Terraced": 711468.0
+    },
+    "Enfield": {
+      "Detached": 1243138.0,
+      "Flat": 298486.0,
+      "Semi-detached": 714519.0,
+      "Terraced": 496816.0
+    },
+    "Greenwich": {
+      "Detached": 1009528.0,
+      "Flat": 351675.0,
+      "Semi-detached": 712724.0,
+      "Terraced": 545565.0
+    },
+    "Hackney": {
+      "Detached": 1330617.0,
+      "Flat": 524885.0,
+      "Semi-detached": 1193876.0,
+      "Terraced": 960633.0
+    },
+    "Hammersmith and Fulham": {
+      "Detached": 1716974.0,
+      "Flat": 568235.0,
+      "Semi-detached": 1503460.0,
+      "Terraced": 1139759.0
+    },
+    "Haringey": {
+      "Detached": 2460369.0,
+      "Flat": 473036.0,
+      "Semi-detached": 1235802.0,
+      "Terraced": 803381.0
+    },
+    "Harrow": {
+      "Detached": 1206272.0,
+      "Flat": 317917.0,
+      "Semi-detached": 663954.0,
+      "Terraced": 536748.0
+    },
+    "Havering": {
+      "Detached": 841116.0,
+      "Flat": 251321.0,
+      "Semi-detached": 540897.0,
+      "Terraced": 435382.0
+    },
+    "Hillingdon": {
+      "Detached": 941938.0,
+      "Flat": 285116.0,
+      "Semi-detached": 583573.0,
+      "Terraced": 457686.0
+    },
+    "Hounslow": {
+      "Detached": 1043294.0,
+      "Flat": 352823.0,
+      "Semi-detached": 716213.0,
+      "Terraced": 611320.0
+    },
+    "Islington": {
+      "Detached": 1674032.0,
+      "Flat": 560124.0,
+      "Semi-detached": 1406430.0,
+      "Terraced": 1151398.0
+    },
+    "Kensington and Chelsea": {
+      "Detached": 4525386.0,
+      "Flat": 971688.0,
+      "Semi-detached": 3051816.0,
+      "Terraced": 2429086.0
+    },
+    "Kingston upon Thames": {
+      "Detached": 1304915.0,
+      "Flat": 364805.0,
+      "Semi-detached": 812491.0,
+      "Terraced": 591784.0
+    },
+    "Lambeth": {
+      "Detached": 1153203.0,
+      "Flat": 439289.0,
+      "Semi-detached": 1028861.0,
+      "Terraced": 796865.0
+    },
+    "Lewisham": {
+      "Detached": 1116536.0,
+      "Flat": 376322.0,
+      "Semi-detached": 773685.0,
+      "Terraced": 602116.0
+    },
+    "Merton": {
+      "Detached": 2338085.0,
+      "Flat": 405123.0,
+      "Semi-detached": 954064.0,
+      "Terraced": 686591.0
+    },
+    "Newham": {
+      "Detached": 729853.0,
+      "Flat": 325381.0,
+      "Semi-detached": 502633.0,
+      "Terraced": 458668.0
+    },
+    "Redbridge": {
+      "Detached": 1095799.0,
+      "Flat": 301186.0,
+      "Semi-detached": 681463.0,
+      "Terraced": 534863.0
+    },
+    "Richmond upon Thames": {
+      "Detached": 1814548.0,
+      "Flat": 487215.0,
+      "Semi-detached": 1192249.0,
+      "Terraced": 915886.0
+    },
+    "Southwark": {
+      "Detached": 1740029.0,
+      "Flat": 469796.0,
+      "Semi-detached": 1229706.0,
+      "Terraced": 838160.0
+    },
+    "Sutton": {
+      "Detached": 1038684.0,
+      "Flat": 284015.0,
+      "Semi-detached": 657577.0,
+      "Terraced": 464085.0
+    },
+    "Tower Hamlets": {
+      "Detached": 889618.0,
+      "Flat": 430120.0,
+      "Semi-detached": 666730.0,
+      "Terraced": 690210.0
+    },
+    "Waltham Forest": {
+      "Detached": 1045867.0,
+      "Flat": 389823.0,
+      "Semi-detached": 804982.0,
+      "Terraced": 624560.0
+    },
+    "Wandsworth": {
+      "Detached": 2495892.0,
+      "Flat": 526813.0,
+      "Semi-detached": 1345411.0,
+      "Terraced": 970844.0
+    }
+  },
+  "epc_existing_2025": {
+    "certificate_count": 234439,
+    "floor_area_total_m2": 18461298.0,
+    "population": "Existing-dwelling certificate lodgements, not unique homes or a stock-representative sample.",
+    "quarters": [
+      "2025/1",
+      "2025/2",
+      "2025/3",
+      "2025/4"
+    ],
+    "rating_counts": {
+      "A": 261,
+      "B": 16797,
+      "C": 131747,
+      "D": 74388,
+      "E": 9396,
+      "F": 1301,
+      "G": 549
+    },
+    "sheet": "EB1_by_Region"
+  },
+  "housing_mix_counts": {
+    "Detached": 208078,
+    "Flat": 1847649,
+    "Semi-detached": 636084,
+    "Terraced": 727673
+  },
+  "housing_source": {
+    "age_period": "English Housing Survey 2021",
+    "assumptions": "Uniform build years inside bands; pre-1919 truncated at 1850. No stock extrapolation to 2026.",
+    "exclusions": "4,406 mobile/temporary households outside the existing type schema",
+    "mix_period": "Census 2021",
+    "pages": "10-12 (printed)",
+    "title": "London's Housing Stock, November 2024",
+    "url": "https://www.london.gov.uk/media/107179/download"
+  },
+  "london_type_prices_gbp": {
+    "Detached": 1167718.0,
+    "Flat": 424013.0,
+    "Semi-detached": 724106.0,
+    "Terraced": 642452.0
+  },
+  "need_london_2024": {
+    "electricity": {
+      "columns": "H sample, V mean, AJ median",
+      "mean_kwh": 3290.206066128264,
+      "median_kwh": 2466.300000126385,
+      "row": 27,
+      "sample_dwellings": 3036334,
+      "sheet": "Table_16"
+    },
+    "gas": {
+      "columns": "H sample, V mean, AJ median",
+      "mean_kwh": 12278.39612060083,
+      "median_kwh": 10817.37253845012,
+      "row": 27,
+      "sample_dwellings": 2156202,
+      "sheet": "Table_15"
+    }
+  },
+  "post_2002_flat_share": 0.867,
+  "price_period": "2026-07",
+  "raw_sources": {
+    "epc_existing.ods": {
+      "bytes": 1900269,
+      "retrieved": "2026-10-11",
+      "sha256": "5118a0627fbc16009df2580514bc78cb14c4808be4594f75c76233b41d42a4f2",
+      "url": "https://assets.publishing.service.gov.uk/media/6a69c5e816bc92f51e1a42d7/EB1-_Existing_Domestic_Properties.ods"
+    },
+    "hpi_borough.csv": {
+      "bytes": 1175,
+      "retrieved": "2026-10-11",
+      "sha256": "07d3e60c3f307dc2977054d14de5c7ca7cbc5ded7263b4799d68ddfcacfbf8f4",
+      "url": "https://publicdata.landregistry.gov.uk/market-trend-data/house-price-index-data/England-annual-price-change-by-London-Borough-2026-07.csv"
+    },
+    "hpi_property_type.csv": {
+      "bytes": 16404068,
+      "retrieved": "2026-10-11",
+      "sha256": "e2f11c183fb1a7ef5fbadc43e496453fb25282e870fc4867771581319178e3bc",
+      "url": "https://publicdata.landregistry.gov.uk/market-trend-data/house-price-index-data/Average-prices-Property-Type-2026-07.csv"
+    },
+    "need_headline.xlsx": {
+      "bytes": 554604,
+      "retrieved": "2026-10-11",
+      "sha256": "be421af2e9f0906821dfcedade770b245eb58fd96feffba4c8dca74853b4d756",
+      "url": "https://assets.publishing.service.gov.uk/media/6a2827843b15d05a7ce31fa7/Consumption_headline_EW_2024.xlsx"
+    }
+  },
+  "retrieved": "2026-10-11"
+}
