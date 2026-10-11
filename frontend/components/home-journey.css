@@ -66,3 +66,15 @@ html.kew-introduction-active::-webkit-scrollbar,html.kew-introduction-active bod
 .journey-workspace.is-returning-to-intro:not([hidden]){animation:kew-workspace-exit 250ms ease forwards}
 @keyframes kew-workspace-exit{from{opacity:1}to{opacity:0}}
 @media(prefers-reduced-motion:reduce){.journey-workspace.is-returning-to-intro:not([hidden]){animation:none}}
+
+.kew-journey-copy h1,.kew-journey-copy h2{font-family:var(--font-heading,Georgia,serif);font-weight:600;letter-spacing:-.035em;line-height:1.12}
+
+.kew-journey-brand{font-family:var(--font-heading,Georgia,serif);font-weight:500;letter-spacing:-.04em}
+.kew-journey-header button{border-radius:4px;background:#f8f7f3c9;border-color:#d7ddcf;padding:12px 18px}
+
+/* Keep the closing scene open, with restrained contrast on the text itself. */
+.kew-land-copy{z-index:2}
+.kew-land-copy h2{color:#173526;text-shadow:0 1px 3px #f8f7f370}
+.kew-land-copy h2 em{color:#244c35}
+.kew-land-copy .eyebrow,.kew-land-copy p{color:#253e30;text-shadow:0 1px 2px #f8f7f380}
+.kew-journey-copy p,.kew-callout span{text-wrap:balance}

@@ -156,16 +156,16 @@ export function HomeJourney({ onComplete, resumeFromEnd = false }: { onComplete:
       <canvas ref={canvas} aria-hidden="true" />
       <div className="kew-journey-wash" />
       <header className="kew-journey-header"><span className="kew-journey-brand"><Leaf size={28} /><span className="intro-wordmark">Kew</span></span><button onClick={skip}>Skip to Overview <ArrowUpRight size={16} /></button></header>
-      <div className="kew-journey-copy kew-city-copy"><span className="eyebrow">A different perspective</span><h1>Every city.<br />Every street.<br /><em>Every home.</em></h1><p>A greener future begins<br />closer than you think.</p></div>
-      <div className="kew-journey-copy kew-eco-copy"><span className="eyebrow">Small changes. Better homes.</span><h2>See the<br /><em>possibilities.</em></h2><p>From the roof above you<br />to the energy that warms you.</p></div>
-      <div className="kew-journey-copy kew-land-copy"><span className="eyebrow">Your home, understood</span><h2>A little more<br /><em>clarity.</em></h2><p>Continue to your Kew Overview.</p><button className="button primary" onClick={skip}>Explore your home <ArrowDown size={16} /></button></div>
+      <div className="kew-journey-copy kew-city-copy"><span className="eyebrow">A different perspective</span><h1>Every city.<br />Every street.<br /><em>Every home.</em></h1><p>Find out how your home<br />could use less energy.</p></div>
+      <div className="kew-journey-copy kew-eco-copy"><span className="eyebrow">Improvements worth exploring</span><h2>See the<br /><em>possibilities.</em></h2><p>Compare insulation, solar<br />and heating for your home.</p></div>
+      <div className="kew-journey-copy kew-land-copy"><span className="eyebrow">Your home, understood</span><h2>Ready to explore<br /><em>your home?</em></h2><p>Continue to your Kew Overview.</p><button className="button primary" onClick={skip}>Explore your home <ArrowDown size={16} /></button></div>
       <div className="kew-journey-callouts" aria-hidden="true">
         <div className="kew-callout kew-solar"><Sun size={23} /><div><strong>Solar panels</strong><span>Explore electricity from the sun.</span></div></div>
         <div className="kew-callout kew-insulation"><Layers size={23} /><div><strong>Insulation</strong><span>Help keep warmth inside the home.</span></div></div>
         <div className="kew-callout kew-pump"><Wind size={23} /><div><strong>Heat pump</strong><span>Move heat from outside to inside.</span></div></div>
       </div>
       <p className="sr-only">The illustrated city descends to a home. Solar panels can generate electricity; insulation can retain warmth; a heat pump can transfer heat from outdoors. These are illustrations, not recommendations or calculated savings.</p>
-      {mode === 'loading' && <span className="kew-journey-status" role="status">Drawing a greener perspective…</span>}
+      {mode === 'loading' && <span className="kew-journey-status" role="status">Loading your introduction…</span>}
       {mode === 'static' && <div className="kew-journey-fallback"><img src="/home.svg" alt="An illustrated home with solar panels and a garden" /><p>Solar panels · Insulation · Heat pump</p><p>Explore the possibilities for your home in Overview.</p><button className="button primary" onClick={skip}>Continue to Overview <ArrowDown size={16} /></button></div>}
       <span className="kew-scroll-cue"><ArrowDown size={17} /> Scroll to find your way home</span>
     </div>
