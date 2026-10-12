@@ -1,4 +1,4 @@
-# GreenPrint AI / Kew — Setup and Run
+# Kew — Setup and Run
 
 ## Requirements
 
